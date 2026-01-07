@@ -1,23 +1,27 @@
-# Clone Website Skill
+---
+name: clone
+description: Clone a website pixel-perfect, templatize it, and extract design tokens
+arguments:
+  - name: url
+    description: The URL to clone
+    required: true
+---
 
-Pixel-perfect website cloning using centralized screenshot capture and parallel HTML generation agents.
+# Clone Website Command
 
-## Usage
-```
-/clone https://linear.app
-/clone https://spotify.com
-```
+Clone the website at **$ARGUMENTS** pixel-perfect, then automatically templatize (generic copy) and extract design tokens for coding agents.
 
 ## Quick Start Checklist
-
-When cloning a new site, ensure you:
 
 1. **Scroll through ENTIRE page** - Capture viewport-by-viewport, don't rely on JS section detection alone
 2. **Name sections descriptively** - `00-nav-hero`, `01-logos`, `02-features`, `03-testimonials`, `04-footer`
 3. **Pass section index to agents** - So they know if they're section 0 (include nav) or not (skip nav)
 4. **Tell agents about colors** - Read screenshots yourself first to note actual colors (don't assume!)
-5. **Run assembler** - `node tools/assemble.js output/<dir>/`
-6. **Open result** - `open output/<dir>/assembled.html`
+5. **Assemble clone** - `node tools/assemble.js output/<dir>/`
+6. **Templatize all sections** - Spawn parallel agents to rewrite text to generic copy
+7. **Assemble template** - `node tools/assemble.js output/<dir>-template/`
+8. **Extract design tokens** - Parse CSS and write design-tokens.json
+9. **Open result** - `open output/<dir>-template/assembled.html`
 
 ## Common Pitfalls (Avoid These!)
 
@@ -43,16 +47,29 @@ PHASE 2: Sub-Agents - HTML Generation (Parallel)
 ├── Write output file
 └── Exit (NO iteration)
 
-PHASE 3: Main Agent - Assembly
-├── Merge all sections
-└── Open result
+PHASE 3: Main Agent - Assembly (Clone)
+├── Run assembler on clone directory
+└── Verify assembled.html created
+
+PHASE 4: Sub-Agents - Templatize (Parallel)
+├── Read ONE section HTML file
+├── Rewrite text to generic copy
+├── Write to template directory
+└── Exit (NO iteration)
+
+PHASE 5: Main Agent - Extract Design Tokens
+├── Read assembled.html
+├── Parse CSS and extract values
+└── Write design-tokens.json
+
+PHASE 6: Main Agent - Final Output
+├── Run assembler on template directory
+└── Open result and report paths
 ```
 
-**Key Insight**: Sub-agents don't need Playwright. They only Read screenshots and Write HTML.
+**Key Insight**: Sub-agents don't need Playwright. They only Read and Write files.
 
 ## Process
-
-When the user invokes this skill with a URL:
 
 ### Phase 1: Setup & Centralized Screenshot Capture
 
@@ -220,11 +237,114 @@ After all agents complete, run the assembler:
 node tools/assemble.js output/<domain>-<timestamp>/
 ```
 
-### Phase 4: Open Result
+### Phase 4: Templatize (Generic Copy)
 
-Open the final assembled file:
+Create a template version with generic text (no copyright issues):
+
+1. Create template directory: `output/<domain>-<timestamp>-template/`
+
+2. For each section HTML file, spawn a sub-agent to rewrite text:
+
+**CRITICAL**: Spawn ALL templatize agents in a SINGLE message with multiple Task tool calls.
+
+Each templatize agent prompt:
+```
+Templatize this HTML section by rewriting all text content to be generic placeholders.
+
+=== INPUT ===
+HTML file: <clone_dir>/{filename}
+Output file: <template_dir>/{filename}
+
+=== YOUR TASK ===
+1. Read the HTML file using the Read tool
+2. Rewrite ALL text content to be generic/placeholder while keeping HTML structure and CSS EXACTLY the same
+3. Write the templatized HTML to the output file
+4. Exit immediately
+
+=== TEXT REPLACEMENT RULES ===
+
+**IMPORTANT: Write REAL copy, NOT placeholder brackets like [Feature] or [Your text here]. Everything should read like a real website.**
+
+**Company/Brand Names:**
+- Specific company name → "Acme" (use consistently throughout)
+- Domain names → "acme.com"
+
+**Headlines & Copy:**
+- Write real marketing copy that sounds professional
+- Keep the same tone, length, and energy
+- "The better way to schedule meetings" → "The better way to grow your business"
+- NO brackets or placeholders - write actual text
+
+**Statistics & Numbers:**
+- "5000+ teams" → "2000+ customers"
+- Use realistic but generic numbers
+
+**Testimonials:**
+- Replace real names with generic: "Sarah J.", "Mike T.", "Alex K."
+- Replace real companies with generic: "Tech Startup", "E-commerce Brand"
+- Write real-sounding generic praise:
+  - "This product transformed how our team works. Highly recommend!"
+  - "We switched 6 months ago and never looked back."
+
+**Feature Descriptions:**
+- Write real benefit-focused descriptions
+- "Connect your Google Calendar" → "Connect your favorite tools"
+
+**CTAs:**
+- Keep generic: "Get Started", "Learn More", "Sign Up", "Contact Sales"
+
+**Logos Section:**
+- Replace company names with: "Nexus", "Cloudify", "DataSync", "Flowbase", "TechCorp"
+
+=== CRITICAL RULES ===
+- DO NOT modify any CSS or HTML structure
+- DO NOT change class names, IDs, or element hierarchy
+- ONLY replace text content inside elements
+- Keep the same text length approximately
+```
+
+3. After all agents complete, run assembler on template directory:
 ```bash
-open output/<domain>-<timestamp>/assembled.html
+node tools/assemble.js <template_dir>/
+```
+
+### Phase 5: Extract Design Tokens
+
+Generate `design-tokens.json` for coding agents:
+
+1. Read the assembled.html from the template directory
+2. Parse all `<style>` blocks to extract CSS rules
+3. Organize into categories:
+   - **Colors**: primary, secondary, accent, background, text, border, status
+   - **Typography**: fonts, sizes, weights, line heights, letter spacing
+   - **Buttons**: primary, secondary, nav styles with hover states
+   - **Spacing**: section padding, card padding, gaps, margins
+   - **Borders**: radius values, colors, widths
+   - **Shadows**: box shadow values
+   - **Layout**: max-width, container padding
+   - **Components**: card, badge, input, select presets
+   - **Breakpoints**: mobile, tablet, desktop, wide
+
+4. Write `design-tokens.json` to the template directory
+
+### Phase 6: Open Result
+
+Open the final templatized result:
+```bash
+open <template_dir>/assembled.html
+```
+
+Report to user:
+```
+Clone complete!
+
+Exact clone: output/<domain>-<timestamp>/assembled.html
+Template: output/<domain>-<timestamp>-template/assembled.html
+Design tokens: output/<domain>-<timestamp>-template/design-tokens.json
+
+For coding agents, provide:
+- Visual reference: <template_dir>/assembled.html
+- Tokens: <template_dir>/design-tokens.json
 ```
 
 ## Token Budget
@@ -232,48 +352,22 @@ open output/<domain>-<timestamp>/assembled.html
 | Phase | Agent | Expected Tokens |
 |-------|-------|-----------------|
 | 1 | Main | ~50K (screenshots + analysis) |
-| 2 | Each sub-agent | ~70K (read screenshot + generate + write) |
+| 2 | Each clone sub-agent | ~70K (read screenshot + generate + write) |
 | 3 | Main | ~5K (run assembler) |
+| 4 | Each templatize sub-agent | ~30K (read HTML + rewrite text + write) |
+| 5 | Main | ~20K (extract design tokens) |
+| 6 | Main | ~5K (final assembly + open) |
 
-**Total for 8 sections**: ~50K + (8 × 70K) + 5K = **~615K tokens**
-
-Compare to previous approach: 8 × 1M+ = **8M+ tokens** (13x more expensive)
+**Total for 8 sections**: ~50K + (8 × 70K) + 5K + (8 × 30K) + 20K + 5K = **~880K tokens**
 
 ## Key Points
 
+- **Full pipeline**: Clone → Templatize → Extract Tokens in one command
 - **Centralized screenshots**: Main agent captures ALL screenshots before spawning sub-agents
 - **Sub-agents are constrained**: They only have Read + Write tools, no Playwright
-- **Predictable token usage**: Each sub-agent reads ONE file, generates HTML, writes, exits
-- **Parallel execution**: All sub-agents run simultaneously
+- **Predictable token usage**: Each sub-agent reads ONE file, processes, writes, exits
+- **Parallel execution**: Clone agents run in parallel, then templatize agents run in parallel
 - **Resilient**: Assembler merges whatever sections completed
 - **CSS namespacing**: Prevents conflicts between sections
-
-## Why This Architecture Works
-
-Previous approach failed because sub-agents had Playwright access and would:
-- Navigate multiple times
-- Take multiple screenshots
-- Read screenshots back to "verify"
-- Waste 1M+ tokens before writing HTML
-
-New approach eliminates this by:
-- Removing Playwright from sub-agents entirely
-- Pre-capturing all screenshots in main agent
-- Giving sub-agents a simple, constrained task: read → generate → write → exit
-
-## Example Output Structure
-
-```
-output/linear.app-1234567890/
-  screenshots/           # Pre-captured by main agent
-    00-header.png
-    01-hero.png
-    02-features.png
-    ...
-  manifest.json          # Section analysis + paths
-  00-header.html         # Generated by sub-agents
-  01-hero.html
-  02-features.html
-  ...
-  assembled.html         # Final merged output
-```
+- **Copyright-safe templates**: Generic text, no real company names or claims
+- **Coding agent ready**: Design tokens JSON for easy reference
