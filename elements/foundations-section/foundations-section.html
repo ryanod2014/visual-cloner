@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built on strong foundations - Linear Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0b;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 24px;
+        }
+
+        .foundations-section {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Header area */
+        .section-header {
+            margin-bottom: 56px;
+        }
+
+        .badge {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #8a8f98;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        .section-heading {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .section-description {
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #8a8f98;
+            max-width: 480px;
+        }
+
+        /* Features list */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 56px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-item {
+            display: flex;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-term {
+            flex: 0 0 260px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .feature-term a {
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .feature-term a:hover {
+            color: #b4b9c1;
+        }
+
+        .feature-term .arrow-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+
+        .feature-definition {
+            flex: 0 0 200px;
+            font-size: 16px;
+            line-height: 1.55;
+            color: #8a8f98;
+        }
+
+        /* Certification badges */
+        .certifications {
+            display: flex;
+            gap: 24px;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #8a8f98;
+        }
+
+        .cert-badge .checkmark {
+            width: 18px;
+            height: 18px;
+            color: #3d8c40;
+        }
+    </style>
+</head>
+<body>
+    <section class="foundations-section">
+        <div class="section-header">
+            <span class="badge">Under the hood</span>
+            <h2 class="section-heading">Built on strong foundations</h2>
+            <p class="section-description">Linear is so simple to use, it's easy to overlook the wealth of complex technologies packed under the hood that keep Linear robust, safe, and blazing fast.</p>
+        </div>
+
+        <dl class="features-list">
+            <div class="feature-item">
+                <dt class="feature-term">Linear Sync Engine</dt>
+                <dd class="feature-definition">Built with a high-performance architecture and an obsessive focus on speed.</dd>
+            </div>
+            <div class="feature-item">
+                <dt class="feature-term">
+                    <a href="#">
+                        Enterprise-ready security
+                        <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </dt>
+                <dd class="feature-definition">Best-in-class security practices keep your work safe and secure at every layer.</dd>
+            </div>
+            <div class="feature-item">
+                <dt class="feature-term">Engineered for scale</dt>
+                <dd class="feature-definition">Built for teams of all sizes. From early-stage startups to global enterprises.</dd>
+            </div>
+        </dl>
+
+        <div class="certifications">
+            <div class="cert-badge">
+                <span>SOC 2</span>
+                <svg class="checkmark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="cert-badge">
+                <span>GDPR</span>
+                <svg class="checkmark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="cert-badge">
+                <span>HIPAA</span>
+                <svg class="checkmark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

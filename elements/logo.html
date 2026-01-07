@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .logo svg {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5E6AD2"/>
+          <stop offset="100%" stop-color="#8A7FF7"/>
+        </linearGradient>
+      </defs>
+      <rect width="20" height="20" rx="4" fill="url(#logoGradient)"/>
+      <path d="M6 10.5L8.5 13L14 6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Linear
+  </a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "visual-cloner",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Iterative visual-feedback website cloning system",
+  "main": "clone.js",
+  "scripts": {
+    "clone": "node tools/clone-page.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "playwright": "^1.40.0",
+    "tsx": "^4.7.0"
+  }
+}

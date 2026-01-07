@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>Workflows and Integrations - Linear Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #08090a;
+            color: #f5f5f5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 48px;
+            gap: 60px;
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            max-width: 580px;
+        }
+
+        .header-right {
+            flex: 0 1 380px;
+            padding-top: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #666;
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: #fff;
+        }
+
+        .section-description {
+            font-size: 18px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-container {
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 32px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 280px;
+            height: 420px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.14);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+        }
+
+        .card-image-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-content {
+            padding: 0 20px 20px 20px;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            letter-spacing: 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .card-description {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .card-arrow {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: background 0.2s ease;
+        }
+
+        .card:hover .card-arrow {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .card-arrow svg {
+            width: 14px;
+            height: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mock UI elements for cards */
+        .mock-ui {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            font-size: 11px;
+        }
+
+        .mock-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .mock-icon {
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .mock-line {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+        }
+
+        .mock-line--short {
+            width: 60%;
+        }
+
+        .mock-line--medium {
+            width: 80%;
+        }
+
+        .mock-line--full {
+            width: 100%;
+        }
+
+        .mock-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mock-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mock-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mock-text {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 3px;
+        }
+
+        /* Navigation */
+        .carousel-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+
+        .nav-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .nav-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Card-specific image backgrounds */
+        .card--customer-requests .card-image-placeholder {
+            background: linear-gradient(180deg, rgba(30, 30, 35, 0.8) 0%, rgba(20, 20, 25, 0.9) 100%);
+        }
+
+        .card--git .card-image-placeholder {
+            background: linear-gradient(180deg, rgba(30, 30, 35, 0.8) 0%, rgba(20, 20, 25, 0.9) 100%);
+        }
+
+        .card--mobile .card-image-placeholder {
+            background: linear-gradient(180deg, rgba(25, 25, 30, 0.8) 0%, rgba(15, 15, 20, 0.9) 100%);
+        }
+
+        .card--asks .card-image-placeholder {
+            background: linear-gradient(180deg, rgba(30, 30, 35, 0.8) 0%, rgba(20, 20, 25, 0.9) 100%);
+        }
+
+        /* Mobile mockup specific */
+        .mobile-mockup {
+            width: 80px;
+            height: 160px;
+            background: #1a1a1e;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-header {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        .mobile-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .mobile-item {
+            height: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="section-header">
+            <div class="header-left">
+                <span class="badge">Workflows and integrations</span>
+                <h2 class="section-title">Collaborate across<br>tools and teams</h2>
+            </div>
+            <div class="header-right">
+                <p class="section-description">Expand the capabilities of the Linear system with a wide variety of integrations that keep everyone in your organization aligned and focused.</p>
+            </div>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Customer Requests -->
+                <a href="#" class="card card--customer-requests">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div class="mock-header">
+                                    <div class="mock-icon"></div>
+                                    <span>Intercom</span>
+                                    <span style="color: rgba(255,255,255,0.25)">zoe@acme.inc</span>
+                                </div>
+                                <div class="mock-content">
+                                    <div class="mock-line mock-line--medium"></div>
+                                    <div class="mock-line mock-line--short"></div>
+                                    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 6px;">
+                                        <div class="mock-row">
+                                            <div class="mock-dot"></div>
+                                            <div class="mock-text"></div>
+                                        </div>
+                                        <div class="mock-row">
+                                            <div class="mock-dot" style="background: rgba(100, 200, 100, 0.4);"></div>
+                                            <div class="mock-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Customer Requests</h3>
+                        <p class="card-description">Build what customers actually want</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Powerful git workflows -->
+                <div class="card card--git">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div class="mock-header">
+                                    <span style="color: rgba(255,255,255,0.3)">#20319</span>
+                                    <span style="color: rgba(100, 180, 255, 0.6)">igor/lin</span>
+                                    <span style="color: rgba(255,255,255,0.25)">15287</span>
+                                </div>
+                                <div class="mock-content">
+                                    <div class="mock-row">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                                        <span style="color: rgba(255,255,255,0.3); font-size: 10px;">igor linked</span>
+                                    </div>
+                                    <div class="mock-row">
+                                        <div class="mock-dot" style="background: rgba(150, 100, 255, 0.4);"></div>
+                                        <div class="mock-text" style="width: 70%;"></div>
+                                    </div>
+                                    <div class="mock-row">
+                                        <div class="mock-dot" style="background: rgba(100, 200, 100, 0.4);"></div>
+                                        <div class="mock-text" style="width: 85%;"></div>
+                                    </div>
+                                    <div class="mock-row">
+                                        <div class="mock-dot" style="background: rgba(100, 180, 255, 0.4);"></div>
+                                        <div class="mock-text" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Powerful git workflows</h3>
+                        <p class="card-description">Automate pull requests and commit workflows</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linear Mobile -->
+                <a href="#" class="card card--mobile">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mobile-mockup">
+                                <div class="mobile-header"></div>
+                                <div class="mobile-content">
+                                    <div class="mobile-item"></div>
+                                    <div class="mobile-item"></div>
+                                    <div class="mobile-item"></div>
+                                    <div class="mobile-item"></div>
+                                    <div class="mobile-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Linear Mobile</h3>
+                        <p class="card-description">Move product work forward from anywhere</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Linear Asks -->
+                <a href="#" class="card card--asks">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div class="mock-header">
+                                    <div class="mock-icon" style="background: rgba(255, 200, 100, 0.2);"></div>
+                                    <span>Slack request</span>
+                                </div>
+                                <div class="mock-content">
+                                    <div class="mock-line mock-line--full"></div>
+                                    <div class="mock-line mock-line--medium"></div>
+                                    <div style="margin-top: 12px;">
+                                        <div class="mock-row">
+                                            <div style="width: 20px; height: 20px; background: rgba(100, 180, 255, 0.15); border-radius: 50%;"></div>
+                                            <div class="mock-text" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Linear Asks</h3>
+                        <p class="card-description">Turn workplace requests into actionable issues</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Linear integrations -->
+                <a href="#" class="card card--integrations">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 16px;">
+                                    <div style="width: 32px; height: 32px; background: rgba(255, 100, 100, 0.15); border-radius: 8px;"></div>
+                                    <div style="width: 32px; height: 32px; background: rgba(100, 200, 255, 0.15); border-radius: 8px;"></div>
+                                    <div style="width: 32px; height: 32px; background: rgba(200, 100, 255, 0.15); border-radius: 8px;"></div>
+                                    <div style="width: 32px; height: 32px; background: rgba(100, 255, 200, 0.15); border-radius: 8px;"></div>
+                                    <div style="width: 32px; height: 32px; background: rgba(255, 200, 100, 0.15); border-radius: 8px;"></div>
+                                    <div style="width: 32px; height: 32px; background: rgba(255, 255, 255, 0.08); border-radius: 8px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Linear integrations</h3>
+                        <p class="card-description">100+ ways to enhance your Linear experience</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Figma integration -->
+                <a href="#" class="card card--figma">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="rgba(100, 200, 100, 0.5)"/>
+                                        <path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="rgba(150, 100, 255, 0.5)"/>
+                                        <path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="rgba(255, 150, 100, 0.5)"/>
+                                        <path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="rgba(255, 100, 150, 0.5)"/>
+                                        <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="rgba(100, 180, 255, 0.5)"/>
+                                    </svg>
+                                    <span style="color: rgba(255,255,255,0.4); font-size: 11px;">Figma</span>
+                                </div>
+                                <div class="mock-content">
+                                    <div class="mock-line mock-line--medium"></div>
+                                    <div class="mock-line mock-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Figma integration</h3>
+                        <p class="card-description">Bridge the gap between engineering and design</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Built for developers -->
+                <a href="#" class="card card--developers">
+                    <div class="card-image-area">
+                        <div class="card-image-placeholder">
+                            <div class="mock-ui">
+                                <div style="font-family: monospace; font-size: 10px; color: rgba(255, 255, 255, 0.4);">
+                                    <div style="color: rgba(150, 200, 255, 0.6);">const</div>
+                                    <div>  issue = <span style="color: rgba(200, 150, 255, 0.6);">linear</span></div>
+                                    <div>    .<span style="color: rgba(150, 255, 200, 0.6);">createIssue</span>({</div>
+                                    <div>      title: <span style="color: rgba(255, 200, 150, 0.6);">"..."</span></div>
+                                    <div>    })</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Built for developers</h3>
+                        <p class="card-description">Build your own add-ons with the Linear API</p>
+                        <div class="card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="nav-button" id="prevBtn" disabled aria-label="Previous slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button class="nav-button" id="nextBtn" aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const cardWidth = 296; // 280px card + 16px gap
+
+        function updateButtons() {
+            prevBtn.disabled = track.scrollLeft <= 0;
+            nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 10;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+        });
+
+        track.addEventListener('scroll', updateButtons);
+        updateButtons();
+    </script>
+</body>
+</html>

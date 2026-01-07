@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made for modern product teams - Linear Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0b;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 70px;
+            gap: 80px;
+        }
+
+        .heading {
+            font-size: 68px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            max-width: 580px;
+        }
+
+        .description-block {
+            max-width: 380px;
+            padding-top: 10px;
+        }
+
+        .description {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+        }
+
+        .make-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .make-switch:hover {
+            opacity: 0.8;
+        }
+
+        .make-switch svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-image {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .card-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Placeholder illustrations */
+        .card:nth-child(1) .card-image {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+        }
+
+        .card:nth-child(2) .card-image {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+        }
+
+        .card:nth-child(3) .card-image {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+        }
+
+        .card-content {
+            padding: 20px 24px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.3;
+            color: #ffffff;
+            max-width: 240px;
+        }
+
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon svg {
+            width: 14px;
+            height: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Illustration 1: Stacked cards/windows */
+        .illustration-1 {
+            width: 260px;
+            height: 200px;
+            position: relative;
+            transform: perspective(800px) rotateY(-12deg) rotateX(5deg);
+        }
+
+        .illustration-1 .card-stack {
+            position: absolute;
+            width: 140px;
+            height: 170px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .illustration-1 .card-stack::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            height: 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+        }
+
+        .illustration-1 .card-stack::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 12px;
+            width: 60%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+        }
+
+        .illustration-1 .card-stack:nth-child(1) {
+            left: 0;
+            top: 30px;
+            opacity: 0.35;
+        }
+
+        .illustration-1 .card-stack:nth-child(2) {
+            left: 25px;
+            top: 20px;
+            opacity: 0.5;
+        }
+
+        .illustration-1 .card-stack:nth-child(3) {
+            left: 50px;
+            top: 10px;
+            opacity: 0.7;
+        }
+
+        .illustration-1 .card-stack:nth-child(4) {
+            left: 75px;
+            top: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .illustration-1 .floating-element {
+            position: absolute;
+            right: 20px;
+            bottom: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(80,80,80,0.6) 0%, rgba(60,60,60,0.4) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Illustration 2: Speed/50ms */
+        .illustration-2 {
+            width: 240px;
+            height: 140px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .illustration-2 .speed-text {
+            font-size: 32px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+        }
+
+        .illustration-2 .speed-lines {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 40px;
+        }
+
+        .illustration-2 .speed-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 1px;
+        }
+
+        .illustration-2 .speed-line:nth-child(1) { width: 180px; top: 0; }
+        .illustration-2 .speed-line:nth-child(2) { width: 160px; top: 8px; left: 10px; opacity: 0.8; }
+        .illustration-2 .speed-line:nth-child(3) { width: 140px; top: 16px; left: 20px; opacity: 0.6; }
+        .illustration-2 .speed-line:nth-child(4) { width: 120px; top: 24px; left: 30px; opacity: 0.4; }
+        .illustration-2 .speed-line:nth-child(5) { width: 100px; top: 32px; left: 40px; opacity: 0.2; }
+
+        /* Illustration 3: Diamond grid with Create text */
+        .illustration-3 {
+            width: 260px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-3 .grid-bg {
+            position: absolute;
+            width: 300%;
+            height: 300%;
+            left: -100%;
+            top: -50%;
+            background-image:
+                linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.08) 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.08) 55%, transparent 55%);
+            background-size: 40px 40px;
+        }
+
+        .illustration-3 .create-label {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.35);
+            font-style: italic;
+            font-weight: 300;
+            transform: rotate(-35deg);
+            letter-spacing: 0.02em;
+        }
+
+        .illustration-3 .cursor-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 28px;
+            border: 2px solid rgba(255,255,255,0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .illustration-3 .cursor-icon::before {
+            content: '+';
+            color: rgba(255,255,255,0.5);
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .illustration-3 .dot {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.35);
+            border-radius: 50%;
+        }
+
+        .illustration-3 .dot:nth-of-type(1) {
+            bottom: 55px;
+            left: 70px;
+        }
+
+        .illustration-3 .dot:nth-of-type(2) {
+            bottom: 75px;
+            right: 60px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="header-row">
+            <h1 class="heading">Made for modern product teams</h1>
+            <div class="description-block">
+                <p class="description">Linear is shaped by the practices and principles that distinguish world-class product teams from the rest: relentless focus, fast execution, and a commitment to the quality of craft.</p>
+                <a href="#" class="make-switch">
+                    Make the switch
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="cards-row">
+            <div class="card">
+                <div class="card-image">
+                    <div class="illustration-1">
+                        <div class="card-stack"></div>
+                        <div class="card-stack"></div>
+                        <div class="card-stack"></div>
+                        <div class="card-stack"></div>
+                        <div class="floating-element"></div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Purpose-built for product development</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <div class="illustration-2">
+                        <span class="speed-text">50ms</span>
+                        <div class="speed-lines">
+                            <div class="speed-line"></div>
+                            <div class="speed-line"></div>
+                            <div class="speed-line"></div>
+                            <div class="speed-line"></div>
+                            <div class="speed-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Designed to move fast</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <div class="illustration-3">
+                        <div class="grid-bg"></div>
+                        <span class="create-label">Create</span>
+                        <div class="cursor-icon"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Crafted to perfection</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

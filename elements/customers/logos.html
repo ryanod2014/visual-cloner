@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .logo-openai {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-size: 24px;
+    }
+    .logo-cashapp .icon {
+      width: 26px;
+      height: 26px;
+      background: #00D632;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+    }
+    .logo-cashapp span:last-child {
+      font-weight: 600;
+    }
+    .logo-scale {
+      letter-spacing: 0.02em;
+      font-weight: 500;
+    }
+    .logo-ramp {
+      font-weight: 500;
+    }
+    .logo-ramp svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logos">
+    <div class="logo-item logo-openai">OpenAI</div>
+    <div class="logo-item logo-cashapp">
+      <span class="icon">$</span>
+      <span>Cash App</span>
+    </div>
+    <div class="logo-item logo-scale">scale</div>
+    <div class="logo-item logo-ramp">
+      ramp
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 16L16 8"/>
+        <path d="M10 8H16V14"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

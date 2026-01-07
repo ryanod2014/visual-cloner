@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Clone - Assembled from Elements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      color: #fff;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* === HEADER === */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 56px;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* === ELEMENT STYLES === */
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .logo svg {
+      width: 20px;
+      height: 20px;
+    }
+  
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-ghost {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: -0.01em;
+    }
+    .btn-signup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 13px;
+      background: #ffffff;
+      color: #111111;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      letter-spacing: -0.01em;
+    }
+  
+
+    /* === HERO === */
+    .hero {
+      padding-top: 130px;
+      padding-bottom: 40px;
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1 {
+      font-size: 58px;
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      max-width: 920px;
+      font-feature-settings: 'ss01' on, 'cv01' on;
+      text-rendering: optimizeLegibility;
+    }
+  
+    .hero h1 { margin-bottom: 24px; }
+
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 480px;
+    }
+  
+    .hero p { margin-bottom: 32px; }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 17px;
+      background: #ffffff;
+      color: #101010;
+      border: none;
+      border-radius: 7px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+  
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      padding: 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: -0.01em;
+    }
+    .btn-secondary svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2;
+    }
+  
+
+    .hero-image {
+      max-width: 1400px;
+      margin: 48px auto 0;
+      padding: 0 24px;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="logo">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5E6AD2"/>
+          <stop offset="100%" stop-color="#8A7FF7"/>
+        </linearGradient>
+      </defs>
+      <rect width="20" height="20" rx="4" fill="url(#logoGradient)"/>
+      <path d="M6 10.5L8.5 13L14 6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Linear
+  </a>
+      <div class="nav-links">
+    <a href="#" class="nav-link">Product</a>
+    <a href="#" class="nav-link">Resources</a>
+    <a href="#" class="nav-link">Pricing</a>
+    <a href="#" class="nav-link">Customers</a>
+    <a href="#" class="nav-link">Now</a>
+    <a href="#" class="nav-link">Contact</a>
+  </div>
+      <div class="nav-actions">
+    <a href="#" class="btn-ghost">Log in</a>
+    <a href="#" class="btn-signup">Sign up</a>
+  </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Linear is a purpose-built tool for planning and building products</h1>
+        <p>Meet the system for modern software development. Streamline issues, projects, and product roadmaps.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Start building</a>
+          <a href="#" class="btn-secondary">
+    New: Linear agent for Slack
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/93514696-592a-4764-aa98-b6101349a100/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Linear app">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

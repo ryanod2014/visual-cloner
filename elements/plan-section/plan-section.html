@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Section - Linear Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0b;
+            color: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .plan-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 24px;
+        }
+
+        /* Header Section */
+        .plan-header {
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #a1a1aa;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        .badge-arrow {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .plan-title {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .plan-description {
+            font-size: 18px;
+            color: #71717a;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .plan-description strong {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Roadmap Screenshot */
+        .roadmap-container {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(180deg, #18181b 0%, #0f0f10 100%);
+            border-radius: 16px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .roadmap-timeline {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 60px;
+            font-size: 12px;
+            color: #52525b;
+        }
+
+        .roadmap-bar {
+            position: absolute;
+            height: 32px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .roadmap-bar-1 {
+            top: 120px;
+            left: 100px;
+            width: 350px;
+        }
+
+        .roadmap-bar-2 {
+            top: 180px;
+            left: 200px;
+            width: 280px;
+            background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
+        }
+
+        .roadmap-date-marker {
+            position: absolute;
+            top: 100px;
+            padding: 4px 10px;
+            background: #27272a;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #a1a1aa;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .cards-grid > div:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Project Overview Card */
+        .project-card {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 48px 40px;
+        }
+
+        .card-header {
+            margin-bottom: 32px;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .card-description {
+            font-size: 16px;
+            color: #71717a;
+            line-height: 1.6;
+            max-width: 380px;
+        }
+
+        /* Project Overview Widget */
+        .project-widget {
+            background: #1c1c1f;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .widget-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #e4e4e7;
+        }
+
+        .widget-row {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .widget-label {
+            width: 100px;
+            font-size: 13px;
+            color: #52525b;
+            flex-shrink: 0;
+        }
+
+        .widget-value {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 12px;
+            color: #a1a1aa;
+        }
+
+        .tag-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-progress {
+            background: #facc15;
+        }
+
+        .avatar-stack {
+            display: flex;
+        }
+
+        .avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border: 2px solid #1c1c1f;
+            margin-left: -8px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+        .milestone-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .milestone-diamond {
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            border-radius: 1px;
+        }
+
+        .milestone-complete {
+            background: #22c55e;
+        }
+
+        .milestone-complete-purple {
+            background: #a855f7;
+        }
+
+        .milestone-partial {
+            background: transparent;
+            border: 2px solid #06b6d4;
+        }
+
+        .milestone-text {
+            font-size: 12px;
+            color: #a1a1aa;
+        }
+
+        /* Project Updates Card */
+        .updates-card {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 48px 40px;
+        }
+
+        .status-cards {
+            position: relative;
+            height: 280px;
+            margin-top: 20px;
+        }
+
+        .status-card {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #1a1a1d;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .status-card-1 {
+            top: 0;
+            opacity: 0.4;
+            transform: scale(0.94);
+            z-index: 1;
+        }
+
+        .status-card-2 {
+            top: 40px;
+            opacity: 0.6;
+            transform: scale(0.97);
+            z-index: 2;
+        }
+
+        .status-card-3 {
+            top: 80px;
+            opacity: 1;
+            transform: scale(1);
+            z-index: 3;
+            background: linear-gradient(180deg, #1f1f23 0%, #1a1a1d 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .status-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-icon-off-track {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .status-icon-at-risk {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .status-icon-on-track {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .status-off-track {
+            background: #ef4444;
+        }
+
+        .status-at-risk {
+            background: #f59e0b;
+        }
+
+        .status-on-track {
+            background: #22c55e;
+        }
+
+        .status-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-label-off-track {
+            color: #ef4444;
+        }
+
+        .status-label-at-risk {
+            color: #f59e0b;
+        }
+
+        .status-label-on-track {
+            color: #22c55e;
+        }
+
+        .status-text {
+            font-size: 14px;
+            color: #a1a1aa;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .status-date {
+            font-size: 12px;
+            color: #52525b;
+        }
+
+        /* Document Editor Section */
+        .editor-section {
+            margin-bottom: 60px;
+        }
+
+        .editor-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .editor-tab {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: #52525b;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .editor-tab.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .editor-widget {
+            background: linear-gradient(180deg, #18181b 0%, #141416 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            min-height: 300px;
+        }
+
+        .editor-header-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .editor-icon {
+            width: 20px;
+            height: 20px;
+            background: #7c3aed;
+            border-radius: 4px;
+        }
+
+        .editor-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .editor-cursor {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: #3b82f6;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+
+        .editor-content {
+            font-size: 15px;
+            color: #a1a1aa;
+            line-height: 1.8;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .feature-item {
+            background: linear-gradient(180deg, #18181b 0%, #141416 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .feature-icon-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        .feature-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #e4e4e7;
+        }
+
+        .feature-description {
+            font-size: 13px;
+            color: #52525b;
+            line-height: 1.5;
+        }
+
+        /* SVG Icons */
+        .icon {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <section class="plan-section">
+        <!-- Header -->
+        <div class="plan-header">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                <span>Project and long-term planning</span>
+                <svg class="badge-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </div>
+            <h2 class="plan-title">Set the product direction</h2>
+            <p class="plan-description">
+                <strong>Align your team around a unified product timeline.</strong> Plan, manage, and track all product initiatives with Linear's visual planning tools.
+            </p>
+        </div>
+
+        <!-- Roadmap Screenshot -->
+        <div class="roadmap-container">
+            <div class="roadmap-timeline">
+                <span>30</span>
+                <span>AUG 3</span>
+                <span>10</span>
+                <span>17</span>
+                <span>24</span>
+                <span>SEP</span>
+            </div>
+            <div class="roadmap-date-marker" style="left: 450px;">AUG 22</div>
+            <div class="roadmap-bar roadmap-bar-1">Mobile App Redesign</div>
+            <div class="roadmap-bar roadmap-bar-2">API Infrastructure</div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+            <!-- Manage Projects Card -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3 class="card-title">Manage projects end-to-end</h3>
+                    <p class="card-description">Consolidate specs, milestones, tasks, and other documentation in one centralized location.</p>
+                </div>
+                <div class="project-widget">
+                    <h4 class="widget-title">Project Overview</h4>
+                    <div class="widget-row">
+                        <span class="widget-label">Properties</span>
+                        <div class="widget-value">
+                            <span class="tag">
+                                <span class="status-dot status-progress"></span>
+                                In Progress
+                            </span>
+                            <span class="tag">
+                                <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                </svg>
+                                ENG
+                            </span>
+                            <div class="avatar-stack">
+                                <div class="avatar"></div>
+                                <div class="avatar" style="background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);"></div>
+                                <div class="avatar" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);"></div>
+                                <div class="avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-row">
+                        <span class="widget-label">Resources</span>
+                        <div class="widget-value">
+                            <span class="tag" style="background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.3);">
+                                <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                    <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                                </svg>
+                                <span style="color: #f9a8d4;">Exploration</span>
+                            </span>
+                            <span class="tag" style="background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3);">
+                                <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                                </svg>
+                                <span style="color: #fcd34d;">User interviews</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="widget-row">
+                        <span class="widget-label">Milestones</span>
+                        <div class="widget-value" style="flex-direction: column; gap: 4px;">
+                            <div class="milestone-item">
+                                <div class="milestone-icon">
+                                    <div class="milestone-diamond milestone-complete"></div>
+                                </div>
+                                <span class="milestone-text">Design Review 100%</span>
+                            </div>
+                            <div class="milestone-item">
+                                <div class="milestone-icon">
+                                    <div class="milestone-diamond milestone-complete-purple"></div>
+                                </div>
+                                <span class="milestone-text">Internal Alpha 100% of 10</span>
+                            </div>
+                            <div class="milestone-item">
+                                <div class="milestone-icon">
+                                    <div class="milestone-diamond milestone-partial"></div>
+                                </div>
+                                <span class="milestone-text">GA 25% of 53</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Updates Card -->
+            <div class="updates-card">
+                <div class="card-header">
+                    <h3 class="card-title">Project updates</h3>
+                    <p class="card-description">Communicate progress and project health with built-in project updates.</p>
+                </div>
+                <div class="status-cards">
+                    <div class="status-card status-card-1">
+                        <div class="status-header">
+                            <span class="status-icon status-icon-off-track">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                            </span>
+                            <span class="status-label status-label-off-track">Off track</span>
+                        </div>
+                        <p class="status-text">Unexpected roadblocks forced us to take a different...</p>
+                        <span class="status-date">Oct 27</span>
+                    </div>
+                    <div class="status-card status-card-2">
+                        <div class="status-header">
+                            <span class="status-icon status-icon-at-risk">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M12 9v4M12 17h.01"/>
+                                </svg>
+                            </span>
+                            <span class="status-label status-label-at-risk">At risk</span>
+                        </div>
+                        <p class="status-text">Progress slowed down last week because...</p>
+                        <span class="status-date">Oct 27</span>
+                    </div>
+                    <div class="status-card status-card-3">
+                        <div class="status-header">
+                            <span class="status-icon status-icon-on-track">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </span>
+                            <span class="status-label status-label-on-track">On track</span>
+                        </div>
+                        <p class="status-text">We are ready to launch next Thursday</p>
+                        <span class="status-date">Sep 8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editor Section -->
+        <div class="editor-section">
+            <div class="card-header">
+                <h3 class="card-title">Ideate and specify what to build next</h3>
+            </div>
+            <div class="editor-tabs">
+                <button class="editor-tab active">Collaborative documents</button>
+                <button class="editor-tab">Inline comments</button>
+                <button class="editor-tab">Text-to-issue commands</button>
+            </div>
+            <div class="editor-widget">
+                <div class="editor-header-row">
+                    <div class="editor-icon"></div>
+                    <span class="editor-title">Collaborate on<span class="editor-cursor">zoe</span> ideas</span>
+                </div>
+                <p class="editor-content">
+                    Write down product ideas and work together on feature specs in realtime, multiplayer project<span class="editor-cursor" style="background: #22c55e;">quinn</span> documents. Add <strong style="color: #fff;">**style**</strong> and <strong style="color: #fff;">##structure</strong> with rich-text formatting options.
+                </p>
+            </div>
+        </div>
+
+        <!-- Feature Grid -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    <span class="feature-name">Initiatives</span>
+                </div>
+                <p class="feature-description">Coordinate strategic product efforts.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                    <span class="feature-name">Cross-team projects</span>
+                </div>
+                <p class="feature-description">Collaborate across teams and departments.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                        <line x1="4" y1="22" x2="4" y2="15"/>
+                    </svg>
+                    <span class="feature-name">Milestones</span>
+                </div>
+                <p class="feature-description">Break projects down into concrete phases.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-wrapper">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                    <span class="feature-name">Progress insights</span>
+                </div>
+                <p class="feature-description">Track scope, velocity, and progress over time.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
