@@ -58,10 +58,16 @@ function extractBodyContent(html) {
     return bodyMatch[1].trim();
   }
 
-  // If no body tag, try to extract content after </head> or just return everything
+  // If no body tag, try to extract content after </head>
   const headEndMatch = html.match(/<\/head>\s*([\s\S]*?)$/i);
   if (headEndMatch) {
     return headEndMatch[1].replace(/<\/?html[^>]*>/gi, '').trim();
+  }
+
+  // If no head tag, try to extract content after </style>
+  const styleEndMatch = html.match(/<\/style>\s*([\s\S]*?)$/i);
+  if (styleEndMatch) {
+    return styleEndMatch[1].trim();
   }
 
   return '';
