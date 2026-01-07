@@ -1,0 +1,32 @@
+{
+  "source": "craftwork.design/curated/websites",
+  "extractedAt": "2026-01-07",
+  "totalSites": 1934,
+  "categories": {
+    "Services": {
+      "Agency": "/curated/websites/agency",
+      "Assets": "/curated/websites/assets",
+      "Portfolio": "/curated/websites/portfolio"
+    },
+    "Tech": {
+      "Web3": "/curated/websites/web3",
+      "Tech": "/curated/websites/tech",
+      "Artificial Intelligence": "/curated/websites/artificial-intelligence"
+    },
+    "Tools": {
+      "Marketing": "/curated/websites/marketing",
+      "Design Tools": "/curated/websites/design-tools",
+      "Development Tools": "/curated/websites/development-tools"
+    },
+    "Money": {
+      "E-commerce": "/curated/websites/e-commerce",
+      "Finance": "/curated/websites/finance"
+    },
+    "Apps": {
+      "Productivity": "/curated/websites/productivity",
+      "Desktop Apps": "/curated/websites/desktop-apps",
+      "Web Apps": "/curated/websites/web-apps",
+      "Mobile Apps": "/curated/websites/mobile-apps"
+    }
+  }
+}
