@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-header-hero === */
+.header-hero {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+}
+
+.header-hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.header-hero-nav-left {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-hero-nav-left a {
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.header-hero-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-hero-nav-right {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-hero-nav-right a {
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.header-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.header-hero-left {
+  background-color: rgb(93, 107, 89);
+  padding: 120px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-hero-title {
+  font-size: 72px;
+  font-weight: 400;
+  color: rgb(250, 246, 237);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-top: 80px;
+}
+
+.header-hero-description {
+  color: rgb(250, 246, 237);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.header-hero-product {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 10;
+}
+
+.header-hero-product-bag {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.header-hero-product-label {
+  background: white;
+  padding: 8px 16px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.header-hero-right {
+  background: linear-gradient(180deg, rgba(200,210,200,0.3) 0%, rgba(100,140,100,0.5) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(180,190,180,0.4) 0%,
+    rgba(80,120,80,0.3) 30%,
+    rgba(60,100,60,0.4) 70%,
+    rgba(40,80,40,0.3) 100%
+  );
+}
+
+.header-hero-buy-btn {
+  position: absolute;
+  bottom: 120px;
+  right: 40px;
+  background: rgb(250, 246, 237);
+  color: rgb(76, 67, 65);
+  padding: 16px 48px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+}
+
+/* === Section: 01-selected-coffees === */
+.selected-coffees {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+  padding: 80px 40px;
+}
+
+.selected-coffees-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.selected-coffees-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.selected-coffees-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-coffees-card-image {
+  aspect-ratio: 1;
+  background-color: rgb(240, 236, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.selected-coffees-card-bag {
+  width: 60%;
+  height: 70%;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20%;
+}
+
+.selected-coffees-card-bag.pink {
+  background: linear-gradient(180deg, #d4a5a5 0%, #c08080 100%);
+}
+
+.selected-coffees-card-bag.green {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 100%);
+}
+
+.selected-coffees-card-label {
+  background: white;
+  padding: 4px 8px;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selected-coffees-card-label.pink-label {
+  background: #b85a5a;
+  color: white;
+}
+
+.selected-coffees-card-label.green-label {
+  background: #5a7a5a;
+  color: white;
+}
+
+.selected-coffees-card-name {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.selected-coffees-card-price {
+  font-size: 12px;
+  color: rgb(120, 110, 105);
+}
+
+.selected-coffees-viewall {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.selected-coffees-viewall a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(76, 67, 65);
+  padding-bottom: 2px;
+}
+
+/* === Section: 02-subscription === */
+.subscription {
+  font-family: "NB International Pro", Inter, sans-serif;
+  background-color: rgb(93, 107, 89);
+  color: rgb(250, 246, 237);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.subscription-content {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subscription-title {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.subscription-list {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.subscription-list li {
+  font-size: 14px;
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+}
+
+.subscription-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: rgb(250, 246, 237);
+  border-radius: 50%;
+}
+
+.subscription-btn {
+  display: inline-block;
+  background: transparent;
+  color: rgb(250, 246, 237);
+  padding: 16px 32px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgb(250, 246, 237);
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.subscription-image {
+  background: linear-gradient(135deg,
+    rgba(200,180,160,0.8) 0%,
+    rgba(180,160,140,0.9) 50%,
+    rgba(160,140,120,0.8) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.subscription-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="20" fill="rgba(139,119,101,0.6)"/><circle cx="70" cy="60" r="15" fill="rgba(180,160,140,0.5)"/></svg>');
+  background-size: cover;
+}
+
+/* === Section: 03-equipment === */
+.equipment {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+  padding: 80px 40px;
+}
+
+.equipment-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.equipment-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.equipment-card-image {
+  aspect-ratio: 1;
+  background-color: rgb(240, 236, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.equipment-card-icon {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipment-card-icon.aeropress {
+  background: linear-gradient(180deg, transparent 0%, rgba(200,200,200,0.3) 100%);
+}
+
+.equipment-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-card-name {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.equipment-card-price {
+  font-size: 12px;
+  color: rgb(120, 110, 105);
+}
+
+.equipment-viewall {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.equipment-viewall a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(76, 67, 65);
+  padding-bottom: 2px;
+}
+
+.equipment-aeropress {
+  width: 80px;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(220,220,220,0.8) 0%, rgba(180,180,180,0.6) 100%);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.equipment-kalita {
+  width: 100px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(100,100,100,0.9) 0%, rgba(60,60,60,0.8) 100%);
+  border-radius: 0 0 50% 50%;
+  position: relative;
+}
+
+.equipment-flow-control {
+  width: 80px;
+  height: 60px;
+  background: rgba(40,40,40,0.9);
+  border-radius: 50%;
+}
+
+.equipment-filter {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(220,220,220,0.9) 0%, rgba(180,180,180,0.7) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(76,67,65,0.6);
+}
+
+/* === Section: 04-featured-product === */
+.featured-product {
+  font-family: "NB International Pro", Inter, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.featured-product-image {
+  background: linear-gradient(135deg,
+    rgb(60, 40, 50) 0%,
+    rgb(80, 50, 60) 30%,
+    rgb(100, 60, 70) 60%,
+    rgb(70, 45, 55) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-product-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(180, 80, 100, 0.4) 0%,
+    rgba(60, 40, 50, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.featured-product-content {
+  background-color: rgb(165, 105, 110);
+  color: rgb(250, 246, 237);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.featured-product-title {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.featured-product-arrow {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.featured-product-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-product-bag {
+  width: 180px;
+  height: 240px;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.featured-product-label {
+  background: #b85a5a;
+  color: white;
+  padding: 6px 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.featured-product-name {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.featured-product-price {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.featured-product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.featured-product-description {
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.featured-product-btn {
+  background: transparent;
+  color: rgb(250, 246, 237);
+  padding: 14px 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgb(250, 246, 237);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* === Section: 05-wholesale === */
+.wholesale {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.wholesale-title {
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 40px;
+}
+
+.wholesale-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.wholesale-list li {
+  font-size: 14px;
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+}
+
+.wholesale-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background-color: rgb(76, 67, 65);
+  border-radius: 50%;
+}
+
+.wholesale-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: rgb(100, 90, 85);
+}
+
+.wholesale-btn {
+  display: inline-block;
+  background: rgb(76, 67, 65);
+  color: rgb(250, 246, 237);
+  padding: 16px 32px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.wholesale-image {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg,
+    rgba(200,180,160,0.6) 0%,
+    rgba(180,160,140,0.7) 50%,
+    rgba(160,140,120,0.6) 100%
+  );
+  border-radius: 4px;
+}
+
+/* === Section: 06-footer === */
+.footer {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+}
+
+.footer-newsletter {
+  background-color: rgb(93, 107, 89);
+  color: rgb(250, 246, 237);
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.footer-newsletter-title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.footer-newsletter-description {
+  font-size: 14px;
+  max-width: 500px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+.footer-newsletter-btn {
+  background: transparent;
+  color: rgb(250, 246, 237);
+  padding: 14px 32px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgb(250, 246, 237);
+  cursor: pointer;
+}
+
+.footer-shops {
+  padding: 60px 40px;
+  border-bottom: 1px solid rgba(76, 67, 65, 0.2);
+}
+
+.footer-shops-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.footer-shops-list {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-shops-list a {
+  font-size: 14px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.footer-main {
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 40px;
+}
+
+.footer-logo {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-lang {
+  font-size: 12px;
+}
+
+.footer-column-title {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  font-size: 14px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.footer-bottom {
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(76, 67, 65, 0.2);
+}
+
+.footer-newsletter-form {
+  display: flex;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid rgba(76, 67, 65, 0.3);
+  background: transparent;
+  font-size: 14px;
+}
+
+.footer-newsletter-submit {
+  padding: 12px 24px;
+  background: rgb(76, 67, 65);
+  color: rgb(250, 246, 237);
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.footer-cvr {
+  font-size: 12px;
+  color: rgb(100, 90, 85);
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-header-hero -->
+  <div class="header-hero">
+  <nav class="header-hero-nav">
+    <div class="header-hero-nav-left">
+      <a href="#">Shop</a>
+      <a href="#">Subscriptions</a>
+      <a href="#">Courses</a>
+      <a href="#">Transparency</a>
+      <a href="#">About us</a>
+    </div>
+    <div class="header-hero-logo">COFFEE COLLECTIVE</div>
+    <div class="header-hero-nav-right">
+      <a href="#">Wholesale</a>
+      <a href="#">Log in</a>
+      <span>EN / DA</span>
+      <a href="#">Cart</a>
+    </div>
+  </nav>
+
+  <div class="header-hero-content">
+    <div class="header-hero-left">
+      <h1 class="header-hero-title">Vista<br>Hermosa</h1>
+      <p class="header-hero-description">Clean and balanced. Notes of light chocolate, vanilla, and pecan nuts</p>
+      <div class="header-hero-product">
+        <div class="header-hero-product-bag">
+          <div class="header-hero-product-label">VISTA HERMOSA</div>
+        </div>
+      </div>
+    </div>
+    <div class="header-hero-right">
+      <button class="header-hero-buy-btn">Buy</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 01-selected-coffees -->
+  <div class="selected-coffees">
+  <h2 class="selected-coffees-title">Selected coffees</h2>
+
+  <div class="selected-coffees-grid">
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag pink">
+          <div class="selected-coffees-card-label pink-label">BEKELE</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Bekele Anaerobic</div>
+      <div class="selected-coffees-card-price">140 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label green-label">BEKELE NATURAL</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Bekele Natural</div>
+      <div class="selected-coffees-card-price">122 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label green-label">VISTA HERMOSA</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Vista Hermosa</div>
+      <div class="selected-coffees-card-price">122 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label pink-label">AGA</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Aga</div>
+      <div class="selected-coffees-card-price">124 DKK</div>
+    </div>
+  </div>
+
+  <div class="selected-coffees-viewall">
+    <a href="#">View all</a>
+  </div>
+</div>
+
+  <!-- Section: 02-subscription -->
+  <div class="subscription">
+  <div class="subscription-content">
+    <h2 class="subscription-title">What you get with a Collective<br>coffee subscription</h2>
+    <ul class="subscription-list">
+      <li>A curated selection of coffees rotating on a monthly basis</li>
+      <li>Exclusive access to micro-lots and special roasts</li>
+      <li>Free shipping worldwide</li>
+      <li>Subscriber discounts and benefits</li>
+      <li>Flexibility to pause or cancel anytime</li>
+    </ul>
+    <a href="#" class="subscription-btn">Subscribe now</a>
+  </div>
+  <div class="subscription-image"></div>
+</div>
+
+  <!-- Section: 03-equipment -->
+  <div class="equipment">
+  <h2 class="equipment-title">Selected equipment</h2>
+
+  <div class="equipment-grid">
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-aeropress"></div>
+      </div>
+      <div class="equipment-card-name">AeroPress Clear</div>
+      <div class="equipment-card-price">279 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-kalita"></div>
+      </div>
+      <div class="equipment-card-name">Kalita Dripper 185</div>
+      <div class="equipment-card-price">248 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-flow-control"></div>
+      </div>
+      <div class="equipment-card-name">AeroPress Flow Control Cap</div>
+      <div class="equipment-card-price">151 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-filter">AeroPress</div>
+      </div>
+      <div class="equipment-card-name">AeroPress Stainless Steel Filter</div>
+      <div class="equipment-card-price">109 DKK</div>
+    </div>
+  </div>
+
+  <div class="equipment-viewall">
+    <a href="#">View all</a>
+  </div>
+</div>
+
+  <!-- Section: 04-featured-product -->
+  <div class="featured-product">
+  <div class="featured-product-image"></div>
+  <div class="featured-product-content">
+    <div class="featured-product-header">
+      <h2 class="featured-product-title">Fruity and sweet.</h2>
+      <span class="featured-product-arrow">&#9660;</span>
+    </div>
+
+    <div class="featured-product-center">
+      <div class="featured-product-bag">
+        <div class="featured-product-label">BEKELE NATURAL</div>
+      </div>
+      <div class="featured-product-name">Bekele Natural</div>
+      <div class="featured-product-price">122 DKK</div>
+    </div>
+
+    <div class="featured-product-footer">
+      <p class="featured-product-description">Notes of red strawberries, wine gums, melon, and bergamot.</p>
+      <a href="#" class="featured-product-btn">Buy</a>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 05-wholesale -->
+  <div class="wholesale">
+  <div class="wholesale-content">
+    <h2 class="wholesale-title">Become a wholesale partner</h2>
+    <ul class="wholesale-list">
+      <li>Access to wholesale exclusive coffees</li>
+      <li>Exceptional coffee quality across a carefully curated menu for all taste profiles</li>
+      <li>100% Directly traded coffee, supporting fairer farmer income</li>
+      <li>Transparency in sourcing and pricing</li>
+      <li>Free shipping on wholesale orders in Denmark and the EU</li>
+      <li>Long-term sustainability commitments, including our own forest project</li>
+    </ul>
+    <p class="wholesale-description">Interested in a tasting or learning more about our coffee solutions? Fill out the form and we'll get in touch.</p>
+    <a href="#" class="wholesale-btn">Get in touch</a>
+  </div>
+  <div class="wholesale-image"></div>
+</div>
+
+  <!-- Section: 06-footer -->
+  <div class="footer">
+  <div class="footer-newsletter">
+    <h3 class="footer-newsletter-title">Join our newsletter</h3>
+    <p class="footer-newsletter-description">Be the first to hear about new coffees, stories from our producers and inspiration for exploring flavour and brewing. Keep updated when something new happens, from events and courses to new ways of experiencing our coffee.</p>
+    <button class="footer-newsletter-btn">Sign up</button>
+  </div>
+
+  <div class="footer-shops">
+    <div class="footer-shops-title">Visit our shops</div>
+    <div class="footer-shops-list">
+      <a href="#">Bernikow</a>
+      <a href="#">Carlsberg Byen</a>
+      <a href="#">Godthabsvej</a>
+      <a href="#">Guldsmedgade</a>
+      <a href="#">Jaegersborggade</a>
+      <a href="#">Sankt Hans Torv</a>
+      <a href="#">Torvehallerne</a>
+      <a href="#">Collective Bakery</a>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo">COFFEE COLLECTIVE</div>
+      <div class="footer-lang">EN / DA</div>
+    </div>
+
+    <div class="footer-column">
+      <div class="footer-column-title">Company</div>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Transparency</a></li>
+        <li><a href="#">Inspection Reports</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <div class="footer-column-title">Customer Support</div>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Terms & conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <div class="footer-column-title">Wholesale</div>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <div class="footer-column-title">Coffee shops</div>
+      <ul>
+        <li><a href="#">Bernikow</a></li>
+        <li><a href="#">Carlsberg Byen</a></li>
+        <li><a href="#">Godthabsvej</a></li>
+        <li><a href="#">Guldsmedgade</a></li>
+        <li><a href="#">Jaegersborggade</a></li>
+        <li><a href="#">Sankt Hans Torv</a></li>
+        <li><a href="#">Torvehallerne</a></li>
+        <li><a href="#">Collective Bakery</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>
+      <div class="footer-column-title">Newsletter</div>
+      <p style="font-size: 12px; margin-bottom: 12px;">Receive insider coffee stories, tips and access to exclusive beans</p>
+      <div class="footer-newsletter-form">
+        <input type="email" placeholder="Your email" class="footer-newsletter-input">
+        <button class="footer-newsletter-submit">Sign Up</button>
+      </div>
+    </div>
+    <div class="footer-cvr">
+      <div class="footer-column-title">CVR</div>
+      <p>30706595</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

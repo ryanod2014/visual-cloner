@@ -1,0 +1,182 @@
+<style>
+.header-hero {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+}
+
+.header-hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.header-hero-nav-left {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-hero-nav-left a {
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.header-hero-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-hero-nav-right {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-hero-nav-right a {
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+}
+
+.header-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.header-hero-left {
+  background-color: rgb(93, 107, 89);
+  padding: 120px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-hero-title {
+  font-size: 72px;
+  font-weight: 400;
+  color: rgb(250, 246, 237);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-top: 80px;
+}
+
+.header-hero-description {
+  color: rgb(250, 246, 237);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.header-hero-product {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 10;
+}
+
+.header-hero-product-bag {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.header-hero-product-label {
+  background: white;
+  padding: 8px 16px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.header-hero-right {
+  background: linear-gradient(180deg, rgba(200,210,200,0.3) 0%, rgba(100,140,100,0.5) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(180,190,180,0.4) 0%,
+    rgba(80,120,80,0.3) 30%,
+    rgba(60,100,60,0.4) 70%,
+    rgba(40,80,40,0.3) 100%
+  );
+}
+
+.header-hero-buy-btn {
+  position: absolute;
+  bottom: 120px;
+  right: 40px;
+  background: rgb(250, 246, 237);
+  color: rgb(76, 67, 65);
+  padding: 16px 48px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+}
+</style>
+<div class="header-hero">
+  <nav class="header-hero-nav">
+    <div class="header-hero-nav-left">
+      <a href="#">Shop</a>
+      <a href="#">Subscriptions</a>
+      <a href="#">Courses</a>
+      <a href="#">Transparency</a>
+      <a href="#">About us</a>
+    </div>
+    <div class="header-hero-logo">COFFEE COLLECTIVE</div>
+    <div class="header-hero-nav-right">
+      <a href="#">Wholesale</a>
+      <a href="#">Log in</a>
+      <span>EN / DA</span>
+      <a href="#">Cart</a>
+    </div>
+  </nav>
+
+  <div class="header-hero-content">
+    <div class="header-hero-left">
+      <h1 class="header-hero-title">Vista<br>Hermosa</h1>
+      <p class="header-hero-description">Clean and balanced. Notes of light chocolate, vanilla, and pecan nuts</p>
+      <div class="header-hero-product">
+        <div class="header-hero-product-bag">
+          <div class="header-hero-product-label">VISTA HERMOSA</div>
+        </div>
+      </div>
+    </div>
+    <div class="header-hero-right">
+      <button class="header-hero-buy-btn">Buy</button>
+    </div>
+  </div>
+</div>

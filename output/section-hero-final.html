@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Clone - Hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 56px;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .logo svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-ghost {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-ghost:hover {
+      color: #fff;
+    }
+
+    .btn-signup {
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 12px;
+      background: #fff;
+      color: #0a0a0b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 130px;
+      padding-bottom: 40px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: #fff;
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 20px;
+      background: #fff;
+      color: #0a0a0b;
+      border-radius: 8px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .btn-secondary svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hero Image */
+    .hero-image {
+      max-width: 1400px;
+      margin: 48px auto 0;
+      padding: 0 24px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <rect width="20" height="20" rx="4" fill="currentColor"/>
+          <path d="M5.5 10L8.5 13L14.5 7" stroke="#0a0a0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        Linear
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link">Product</a>
+        <a href="#" class="nav-link">Resources</a>
+        <a href="#" class="nav-link">Pricing</a>
+        <a href="#" class="nav-link">Customers</a>
+        <a href="#" class="nav-link">Now</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#" class="btn-ghost">Log in</a>
+        <a href="#" class="btn-signup">Sign up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Linear is a purpose-built tool for planning and building products</h1>
+        <p class="hero-subtitle">Meet the system for modern software development. Streamline issues, projects, and product roadmaps.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Start building</a>
+          <a href="#" class="btn-secondary">
+            New: Linear agent for Slack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/93514696-592a-4764-aa98-b6101349a100/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Linear app">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

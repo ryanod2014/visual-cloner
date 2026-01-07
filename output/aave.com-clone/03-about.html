@@ -1,0 +1,271 @@
+<style>
+  .aave-about-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    padding: 40px 0 60px;
+    max-width: 100%;
+  }
+
+  .aave-about-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .aave-about-tagline {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: #303030;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-about-graphic-container {
+    background-color: #f5f5f7;
+    border-radius: 16px;
+    padding: 60px 40px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aave-about-circles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    width: 560px;
+    height: 280px;
+    position: relative;
+  }
+
+  .aave-about-circle-cell {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: -20px;
+  }
+
+  .aave-about-circle {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  /* Row 1 - Light cyan circles with half-fill variations */
+  .aave-about-circle-1 {
+    background: linear-gradient(to bottom, #7dd8fc 50%, #00d4ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-2 {
+    background: linear-gradient(to bottom, #7dd8fc 50%, #00d4ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-3 {
+    background: linear-gradient(to bottom, #b8ebfc 50%, #4de0fc 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-4 {
+    background: linear-gradient(to bottom, #b8ebfc 50%, #4de0fc 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  /* Row 2 */
+  .aave-about-circle-5 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #00bfff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-6 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #00bfff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-7 {
+    background: linear-gradient(to bottom, #7dd8fc 50%, #00d4ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-8 {
+    background: linear-gradient(to bottom, #7dd8fc 50%, #00d4ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  /* Row 3 */
+  .aave-about-circle-9 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #0099ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-10 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #0099ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-11 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #0099ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  .aave-about-circle-12 {
+    background: linear-gradient(to bottom, #00d4ff 50%, #0099ff 50%);
+    top: 10px;
+    left: 30px;
+  }
+
+  /* Redesigned circles grid for proper overlap effect */
+  .aave-about-graphic-wrapper {
+    position: relative;
+    width: 680px;
+    height: 320px;
+  }
+
+  .aave-about-circle-item {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  /* Light cyan top / medium cyan bottom - Row 1 */
+  .aave-about-c1 { left: 0; top: 0; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); }
+  .aave-about-c2 { left: 110px; top: 0; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); }
+  .aave-about-c3 { left: 280px; top: 0; background: linear-gradient(to bottom, #c5f0ff 50%, #5ce5ff 50%); }
+  .aave-about-c4 { left: 390px; top: 0; background: linear-gradient(to bottom, #c5f0ff 50%, #5ce5ff 50%); }
+  .aave-about-c5 { left: 500px; top: 0; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); }
+  .aave-about-c6 { left: 610px; top: -20px; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); opacity: 0.7; }
+
+  /* Row 2 */
+  .aave-about-c7 { left: -30px; top: 85px; background: linear-gradient(to bottom, #00e0ff 50%, #00bfff 50%); }
+  .aave-about-c8 { left: 55px; top: 85px; background: linear-gradient(to bottom, #00e0ff 50%, #00bfff 50%); }
+  .aave-about-c9 { left: 170px; top: 85px; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); }
+  .aave-about-c10 { left: 335px; top: 85px; background: linear-gradient(to bottom, #7de8ff 50%, #00d4ff 50%); }
+  .aave-about-c11 { left: 445px; top: 85px; background: linear-gradient(to bottom, #c5f0ff 50%, #5ce5ff 50%); }
+  .aave-about-c12 { left: 555px; top: 85px; background: linear-gradient(to bottom, #c5f0ff 50%, #5ce5ff 50%); }
+
+  /* Row 3 */
+  .aave-about-c13 { left: -30px; top: 170px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); }
+  .aave-about-c14 { left: 110px; top: 170px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); }
+  .aave-about-c15 { left: 280px; top: 170px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); }
+  .aave-about-c16 { left: 390px; top: 170px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); }
+  .aave-about-c17 { left: 500px; top: 170px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); }
+  .aave-about-c18 { left: 610px; top: 190px; background: linear-gradient(to bottom, #00e0ff 50%, #009cff 50%); opacity: 0.7; }
+
+  .aave-about-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+  }
+
+  .aave-about-tab {
+    flex: 1;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: none;
+    position: relative;
+    text-align: left;
+  }
+
+  .aave-about-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .aave-about-tab-active {
+    color: #2772db;
+  }
+
+  .aave-about-tab-active::before {
+    background-color: #2772db;
+  }
+
+  .aave-about-tab-inactive {
+    color: #9ca3af;
+  }
+
+  .aave-about-tab-inactive::before {
+    background-color: #e5e7eb;
+  }
+
+  .aave-about-description {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+
+  .aave-about-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin-top: 60px;
+  }
+</style>
+
+<section class="aave-about-section">
+  <div class="aave-about-container">
+    <p class="aave-about-tagline">Earn interest. Borrow when you need. 24/7.</p>
+
+    <div class="aave-about-graphic-container">
+      <div class="aave-about-graphic-wrapper">
+        <!-- Row 1 circles -->
+        <div class="aave-about-circle-item aave-about-c1"></div>
+        <div class="aave-about-circle-item aave-about-c2"></div>
+        <div class="aave-about-circle-item aave-about-c3"></div>
+        <div class="aave-about-circle-item aave-about-c4"></div>
+        <div class="aave-about-circle-item aave-about-c5"></div>
+        <!-- Row 2 circles -->
+        <div class="aave-about-circle-item aave-about-c7"></div>
+        <div class="aave-about-circle-item aave-about-c8"></div>
+        <div class="aave-about-circle-item aave-about-c9"></div>
+        <div class="aave-about-circle-item aave-about-c10"></div>
+        <div class="aave-about-circle-item aave-about-c11"></div>
+        <div class="aave-about-circle-item aave-about-c12"></div>
+        <!-- Row 3 circles -->
+        <div class="aave-about-circle-item aave-about-c13"></div>
+        <div class="aave-about-circle-item aave-about-c14"></div>
+        <div class="aave-about-circle-item aave-about-c15"></div>
+        <div class="aave-about-circle-item aave-about-c16"></div>
+        <div class="aave-about-circle-item aave-about-c17"></div>
+      </div>
+    </div>
+
+    <div class="aave-about-tabs">
+      <button class="aave-about-tab aave-about-tab-active">Supply</button>
+      <button class="aave-about-tab aave-about-tab-inactive">Borrow</button>
+    </div>
+
+    <p class="aave-about-description">Earn interest by supplying assets to the lending network.</p>
+
+    <div class="aave-about-divider"></div>
+  </div>
+</section>

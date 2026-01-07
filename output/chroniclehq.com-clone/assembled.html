@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-header === */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-nav-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #211d1d;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.header-nav-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+}
+
+.header-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  border-radius: 8px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-login {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #211d1d;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.header-login:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-cta {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.header-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === Section: 01-hero === */
+.hero {
+  min-height: 100vh;
+  padding: 120px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.hero-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: #201d1d;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subheadline {
+  font-size: 20px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn-secondary {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  background: transparent;
+  border: 2px solid #e5e5e5;
+  border-radius: 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  border-color: #000;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.hero-showcase {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+.hero-cards {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.hero-card {
+  flex: 0 0 320px;
+  height: 200px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s;
+}
+
+.hero-card:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); }
+.hero-card:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.hero-card:nth-child(3) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.hero-card:nth-child(4) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.hero-card:nth-child(5) { background: linear-gradient(135deg, #fa709a, #fee140); }
+.hero-card:nth-child(6) { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+
+.hero-card:hover {
+  transform: translateY(-8px);
+}
+
+.hero-categories {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.hero-category {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-category:hover,
+.hero-category.active {
+  background: #000;
+  color: #fff;
+}
+
+/* === Section: 02-logos === */
+.logos {
+  padding: 48px 24px;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logos-tagline {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  margin: 0 0 32px;
+}
+
+.logos-marquee {
+  display: flex;
+  gap: 48px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logos-track {
+  display: flex;
+  gap: 48px;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logos-item {
+  flex-shrink: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #aaa;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.logos-item:hover {
+  opacity: 1;
+}
+
+/* === Section: 03-ai-demo === */
+.ai-demo {
+  padding: 120px 48px;
+  background: #fafafa;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.ai-demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.ai-demo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ai-demo-step {
+  max-width: 400px;
+}
+
+.ai-demo-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #201d1d;
+  margin: 0 0 16px;
+}
+
+.ai-demo-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ai-demo-visual {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 24px;
+  min-height: 500px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(102, 126, 234, 0.3);
+}
+
+.ai-demo-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.ai-demo-slides {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ai-demo-slide {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ai-demo-slide:nth-child(1) { animation-delay: 0.1s; }
+.ai-demo-slide:nth-child(2) { animation-delay: 0.3s; }
+.ai-demo-slide:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-demo-slide-bar {
+  height: 8px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.ai-demo-slide-bar.short { width: 60%; }
+.ai-demo-slide-bar.medium { width: 80%; }
+.ai-demo-slide-bar.long { width: 100%; }
+
+.ai-demo-slide-content {
+  display: flex;
+  gap: 12px;
+}
+
+.ai-demo-slide-box {
+  flex: 1;
+  height: 40px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* === Section: 04-features === */
+.features {
+  padding: 120px 48px;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.features-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+}
+
+.features-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #201d1d;
+  margin: 0 0 24px;
+}
+
+.features-subheadline {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.features-card {
+  background: #fafafa;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.features-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.features-card.large {
+  grid-row: span 2;
+}
+
+.features-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.features-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.features-card:nth-child(1) .features-card-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
+.features-card:nth-child(2) .features-card-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.features-card:nth-child(3) .features-card-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.features-card:nth-child(4) .features-card-icon { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.features-card:nth-child(5) .features-card-icon { background: linear-gradient(135deg, #fa709a, #fee140); }
+.features-card:nth-child(6) .features-card-icon { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+
+.features-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #201d1d;
+  margin: 0;
+}
+
+.features-card-description {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.features-card-visual {
+  flex: 1;
+  min-height: 120px;
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  border-radius: 16px;
+  margin-top: auto;
+}
+
+.features-small-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.features-small-card {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.features-small-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.features-small-card .features-card-icon {
+  margin-bottom: 16px;
+}
+
+/* === Section: 05-widgets === */
+.widgets {
+  padding: 120px 48px;
+  background: #0a0a0a;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.widgets-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.widgets-label {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.widgets-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+}
+
+.widgets-headline strong {
+  background: linear-gradient(90deg, #667eea, #f093fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.widgets-carousel {
+  position: relative;
+  margin: 0 -48px 48px;
+}
+
+.widgets-track {
+  display: flex;
+  gap: 24px;
+  animation: widgetScroll 40s linear infinite;
+}
+
+@keyframes widgetScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.widgets-item {
+  flex-shrink: 0;
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.widgets-item:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.widgets-item-inner {
+  width: 80%;
+  height: 80%;
+  border-radius: 12px;
+}
+
+.widgets-item:nth-child(1) .widgets-item-inner { background: linear-gradient(135deg, #667eea, #764ba2); }
+.widgets-item:nth-child(2) .widgets-item-inner { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.widgets-item:nth-child(3) .widgets-item-inner { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.widgets-item:nth-child(4) .widgets-item-inner { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.widgets-item:nth-child(5) .widgets-item-inner { background: linear-gradient(135deg, #fa709a, #fee140); }
+.widgets-item:nth-child(6) .widgets-item-inner { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+.widgets-item:nth-child(7) .widgets-item-inner { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.widgets-item:nth-child(8) .widgets-item-inner { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+
+.widgets-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.widgets-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widgets-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.widgets-description {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  margin: 0;
+}
+
+/* === Section: 06-testimonials === */
+.testimonials {
+  padding: 120px 48px;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.testimonials-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #201d1d;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.testimonials-grid {
+  display: flex;
+  gap: 24px;
+  margin: 0 -48px;
+}
+
+.testimonials-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.testimonials-column:nth-child(1) {
+  animation: scrollUp 60s linear infinite;
+}
+
+.testimonials-column:nth-child(2) {
+  animation: scrollDown 60s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+.testimonial-card {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-quote {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 20px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.testimonial-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #201d1d;
+  margin: 0;
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.testimonial-card.featured {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.testimonial-card.featured .testimonial-quote {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.testimonial-card.featured .testimonial-name {
+  color: #fff;
+}
+
+.testimonial-card.featured .testimonial-role {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* === Section: 07-templates === */
+.templates {
+  padding: 120px 48px;
+  background: #fafafa;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.templates-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #201d1d;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.templates-carousel {
+  margin: 0 -48px 48px;
+  position: relative;
+}
+
+.templates-track {
+  display: flex;
+  gap: 24px;
+  animation: templateScroll 50s linear infinite;
+}
+
+@keyframes templateScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.template-card {
+  flex-shrink: 0;
+  width: 280px;
+  height: 380px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.template-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+.template-preview {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.template-card:nth-child(1) .template-preview { background: linear-gradient(135deg, #667eea, #764ba2); }
+.template-card:nth-child(2) .template-preview { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.template-card:nth-child(3) .template-preview { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.template-card:nth-child(4) .template-preview { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.template-card:nth-child(5) .template-preview { background: linear-gradient(135deg, #fa709a, #fee140); }
+.template-card:nth-child(6) .template-preview { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+.template-card:nth-child(7) .template-preview { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.template-card:nth-child(8) .template-preview { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+.template-card:nth-child(9) .template-preview { background: linear-gradient(135deg, #d299c2, #fef9d7); }
+
+.template-info {
+  padding: 20px 24px;
+}
+
+.template-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.template-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+}
+
+.template-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #201d1d;
+  margin: 0;
+}
+
+.template-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.templates-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.templates-info-box {
+  text-align: center;
+}
+
+.templates-info-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  margin: 0 0 4px;
+}
+
+.templates-info-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #201d1d;
+  margin: 0 0 8px;
+}
+
+.templates-info-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  max-width: 300px;
+}
+
+.templates-nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.templates-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.templates-nav-btn:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+/* === Section: 08-footer === */
+.footer {
+  padding: 80px 48px;
+  background: #000;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #fff;
+}
+
+.footer-cta {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.footer-cta-btn {
+  display: inline-block;
+  padding: 20px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  background: #fff;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+}
+
+.footer-brand {
+  font-family: 'FT Regola Neue', system-ui, sans-serif;
+  font-size: 120px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 80px;
+  opacity: 0.1;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  border-radius: 12px;
+}
+
+.footer-company {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-header -->
+  <header class="header">
+  <nav class="header-nav">
+    <a href="#" class="header-nav-item">Product</a>
+    <a href="#" class="header-nav-item">Resources</a>
+    <a href="#" class="header-nav-item">Solutions</a>
+    <a href="#" class="header-nav-item">Templates</a>
+    <a href="#" class="header-nav-item">Enterprise</a>
+    <a href="#" class="header-nav-item">Pricing</a>
+  </nav>
+
+  <a href="#" class="header-logo">
+    <div class="header-logo-icon"></div>
+    Chronicle
+  </a>
+
+  <div class="header-actions">
+    <a href="#" class="header-login">Login</a>
+    <a href="#" class="header-cta">Try for free</a>
+  </div>
+</header>
+
+  <!-- Section: 01-hero -->
+  <section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-headline">Every great presentation starts with a Chronicle</h1>
+    <p class="hero-subheadline">Create stunning presentations. No design skills required.</p>
+    <div class="hero-buttons">
+      <a href="#" class="hero-btn-primary">Start for free</a>
+      <a href="#" class="hero-btn-secondary">Watch video</a>
+    </div>
+  </div>
+
+  <div class="hero-showcase">
+    <div class="hero-cards">
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+    </div>
+
+    <div class="hero-categories">
+      <button class="hero-category active">Product showcase</button>
+      <button class="hero-category">Sales proposal</button>
+      <button class="hero-category">Pitch deck</button>
+      <button class="hero-category">Portfolio</button>
+      <button class="hero-category">Business update</button>
+      <button class="hero-category">Project plan</button>
+      <button class="hero-category">Research report</button>
+      <button class="hero-category">Marketing campaign</button>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-logos -->
+  <section class="logos">
+  <p class="logos-tagline">Used by 5000+ teams who value storytelling</p>
+
+  <div class="logos-marquee">
+    <div class="logos-track">
+      <span class="logos-item">Accel</span>
+      <span class="logos-item">Berkeley</span>
+      <span class="logos-item">Atlassian</span>
+      <span class="logos-item">OpenAI</span>
+      <span class="logos-item">Deel</span>
+      <span class="logos-item">Binance</span>
+      <span class="logos-item">HubSpot</span>
+      <span class="logos-item">Figma</span>
+      <span class="logos-item">Stanford</span>
+      <span class="logos-item">Plaid</span>
+      <span class="logos-item">Accenture</span>
+      <span class="logos-item">TikTok</span>
+      <span class="logos-item">Descript</span>
+      <span class="logos-item">Vercel</span>
+      <span class="logos-item">Ramp</span>
+      <!-- Duplicated for seamless loop -->
+      <span class="logos-item">Accel</span>
+      <span class="logos-item">Berkeley</span>
+      <span class="logos-item">Atlassian</span>
+      <span class="logos-item">OpenAI</span>
+      <span class="logos-item">Deel</span>
+      <span class="logos-item">Binance</span>
+      <span class="logos-item">HubSpot</span>
+      <span class="logos-item">Figma</span>
+      <span class="logos-item">Stanford</span>
+      <span class="logos-item">Plaid</span>
+      <span class="logos-item">Accenture</span>
+      <span class="logos-item">TikTok</span>
+      <span class="logos-item">Descript</span>
+      <span class="logos-item">Vercel</span>
+      <span class="logos-item">Ramp</span>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-ai-demo -->
+  <section class="ai-demo">
+  <div class="ai-demo-container">
+    <div class="ai-demo-text">
+      <div class="ai-demo-step">
+        <h3 class="ai-demo-headline">Start with your raw thoughts and ideas.</h3>
+        <p class="ai-demo-description">Choose a template, paste in a rough outline, or import existing content.</p>
+      </div>
+
+      <div class="ai-demo-step">
+        <h3 class="ai-demo-headline">Watch Chronicle bring your story to life.</h3>
+        <p class="ai-demo-description">Generate a well crafted presentation, with beautiful layouts that you can refine, share and present.</p>
+      </div>
+    </div>
+
+    <div class="ai-demo-visual">
+      <div class="ai-demo-slides">
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar long"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar medium"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar short"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-features -->
+  <section class="features">
+  <div class="features-header">
+    <h2 class="features-headline">Built for business. Feels like play.</h2>
+    <p class="features-subheadline">Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="features-card large">
+      <div class="features-card-header">
+        <div class="features-card-icon"></div>
+        <h5 class="features-card-title">Smart templates</h5>
+      </div>
+      <p class="features-card-description">Save your own templates that your team can insert or use to generate content.</p>
+      <div class="features-card-visual"></div>
+    </div>
+
+    <div class="features-card large">
+      <div class="features-card-header">
+        <div class="features-card-icon"></div>
+        <h5 class="features-card-title">Social and PDF export</h5>
+      </div>
+      <p class="features-card-description">Share your Chronicle as a high quality PDF or beautiful animated GIF.</p>
+      <div class="features-card-visual"></div>
+    </div>
+  </div>
+
+  <div class="features-small-grid">
+    <div class="features-small-card">
+      <div class="features-card-icon"></div>
+      <h5 class="features-card-title">Themes & branding</h5>
+      <p class="features-card-description">Add your logo, and switch up colors, fonts and backgrounds to match your style.</p>
+    </div>
+
+    <div class="features-small-card">
+      <div class="features-card-icon"></div>
+      <h5 class="features-card-title">Smart canvas</h5>
+      <p class="features-card-description">Drag widgets in a freeform canvas, then tidy up to snap elements into neat layouts.</p>
+    </div>
+
+    <div class="features-small-card">
+      <div class="features-card-icon"></div>
+      <h5 class="features-card-title">Real-time collaboration</h5>
+      <p class="features-card-description">Work together live with shared editing, cursors, and team workspaces.</p>
+    </div>
+
+    <div class="features-small-card">
+      <div class="features-card-icon"></div>
+      <h5 class="features-card-title">Publish to web</h5>
+      <p class="features-card-description">Turn your Chronicle into a shareable link and track engagement and views.</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 05-widgets -->
+  <section class="widgets">
+  <div class="widgets-header">
+    <span class="widgets-label">Widgets</span>
+    <h2 class="widgets-headline"><strong>Build polished outputs with widgets that come with</strong> pixel perfect design, interactivity and motion out of the box.</h2>
+  </div>
+
+  <div class="widgets-carousel">
+    <div class="widgets-track">
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <!-- Duplicated for seamless loop -->
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+    </div>
+  </div>
+
+  <div class="widgets-nav">
+    <button class="widgets-nav-btn">&#8592;</button>
+    <button class="widgets-nav-btn">&#8594;</button>
+  </div>
+
+  <p class="widgets-description">Zoom in, highlight, or isolate key elements and never lose your audience's attention.</p>
+</section>
+
+  <!-- Section: 06-testimonials -->
+  <section class="testimonials">
+  <h2 class="testimonials-headline">Loved by world-class founders, strategists, designers and teams.</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonials-column">
+      <div class="testimonial-card featured">
+        <p class="testimonial-quote">Remarkable.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Guillermo Rauch</p>
+            <p class="testimonial-role">Vercel</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Ravi Mehta</p>
+            <p class="testimonial-role">Ex-CPO at Tinder</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Ridd</p>
+            <p class="testimonial-role">Dive Club</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Gave my first presentation with Chronicle yesterday and the team (including myself) were absolutely floored. Now multiple pods are already using Chronicle (within 24 hrs!!)</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Karim Saleh</p>
+            <p class="testimonial-role">Senior Product Designer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-column">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">You know a product is great when your gut reaction is I won't tell anyone about this it will be my unfair advantage (but then you tell everyone it's @Chronicle_HQ)</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Yadin Soffer</p>
+            <p class="testimonial-role">via Twitter</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Juan Alzugaray</p>
+            <p class="testimonial-role">COO, Flai (YC S25)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Chronicle's changed the way we approach case studies at Product Marketing Alliance (and we do a lot!). Anything I avoid starting because the formatting is a pain, I use Chronicle.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Richard King</p>
+            <p class="testimonial-role">Product Marketing Alliance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Playing with @Chronicle_HQ right now and I'm very impressed. I think I just found the "Cursor for slides".</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-info">
+            <p class="testimonial-name">Ridd</p>
+            <p class="testimonial-role">Dive Club</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 07-templates -->
+  <section class="templates">
+  <h2 class="templates-headline">Templates from the world's best storytellers.</h2>
+
+  <div class="templates-carousel">
+    <div class="templates-track">
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Pitch deck</h5>
+          </div>
+          <p class="template-description">Win over investors with a compelling story.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Sales proposal</h5>
+          </div>
+          <p class="template-description">Close deals with professional proposals.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Product showcase</h5>
+          </div>
+          <p class="template-description">Launch your product in style.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Business update</h5>
+          </div>
+          <p class="template-description">Keep stakeholders informed.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Research report</h5>
+          </div>
+          <p class="template-description">Present findings professionally.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Marketing campaign</h5>
+          </div>
+          <p class="template-description">Launch campaigns that convert.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Portfolio</h5>
+          </div>
+          <p class="template-description">Showcase your best work.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Project plan</h5>
+          </div>
+          <p class="template-description">Plan and execute with clarity.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Annual report</h5>
+          </div>
+          <p class="template-description">Share your yearly achievements.</p>
+        </div>
+      </div>
+      <!-- Duplicated for seamless loop -->
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Pitch deck</h5>
+          </div>
+          <p class="template-description">Win over investors with a compelling story.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Sales proposal</h5>
+          </div>
+          <p class="template-description">Close deals with professional proposals.</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <div class="template-preview"></div>
+        <div class="template-info">
+          <div class="template-info-header">
+            <h5 class="template-title">Product showcase</h5>
+          </div>
+          <p class="template-description">Launch your product in style.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="templates-nav">
+    <div class="templates-info-box">
+      <p class="templates-info-number">01. Pitch deck</p>
+      <p class="templates-info-description">Win over investors with a clear, compelling story of your vision.</p>
+    </div>
+    <div class="templates-nav-buttons">
+      <button class="templates-nav-btn">&#8592;</button>
+      <button class="templates-nav-btn">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 08-footer -->
+  <footer class="footer">
+  <div class="footer-cta">
+    <a href="#" class="footer-cta-btn">Start creating</a>
+  </div>
+
+  <div class="footer-brand">Chronicle</div>
+
+  <div class="footer-content">
+    <div class="footer-logo">
+      <div class="footer-logo-icon"></div>
+      <p class="footer-company">ChronicleHQ Inc.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4 class="footer-section-title">Resources</h4>
+      <nav class="footer-links">
+        <a href="#" class="footer-link">Getting Started</a>
+        <a href="#" class="footer-link">AI Presentation Maker</a>
+        <a href="#" class="footer-link">Pricing</a>
+        <a href="#" class="footer-link">PowerPoint Alternatives</a>
+        <a href="#" class="footer-link">Chronicle vs. Gamma</a>
+        <a href="#" class="footer-link">Solutions</a>
+        <a href="#" class="footer-link">Integrations</a>
+        <a href="#" class="footer-link">API</a>
+        <a href="#" class="footer-link">Templates</a>
+      </nav>
+    </div>
+
+    <div class="footer-section">
+      <h4 class="footer-section-title">Company</h4>
+      <nav class="footer-links">
+        <a href="#" class="footer-link">Join our Community</a>
+        <a href="#" class="footer-link">Academy</a>
+        <a href="#" class="footer-link">Become an Affiliate</a>
+        <a href="#" class="footer-link">Partner Network</a>
+        <a href="#" class="footer-link">Enterprise</a>
+        <a href="#" class="footer-link">Chronicle Studio</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Contact Us</a>
+      </nav>
+    </div>
+
+    <div class="footer-section">
+      <h4 class="footer-section-title">Social</h4>
+      <nav class="footer-links">
+        <a href="#" class="footer-link">Instagram</a>
+        <a href="#" class="footer-link">Twitter</a>
+        <a href="#" class="footer-link">LinkedIn</a>
+        <a href="#" class="footer-link">YouTube</a>
+        <a href="#" class="footer-link">Chronicle 101</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

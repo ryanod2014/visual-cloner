@@ -1,0 +1,154 @@
+<style>
+.equipment {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+  padding: 80px 40px;
+}
+
+.equipment-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.equipment-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.equipment-card-image {
+  aspect-ratio: 1;
+  background-color: rgb(240, 236, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.equipment-card-icon {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipment-card-icon.aeropress {
+  background: linear-gradient(180deg, transparent 0%, rgba(200,200,200,0.3) 100%);
+}
+
+.equipment-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-card-name {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.equipment-card-price {
+  font-size: 12px;
+  color: rgb(120, 110, 105);
+}
+
+.equipment-viewall {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.equipment-viewall a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(76, 67, 65);
+  padding-bottom: 2px;
+}
+
+.equipment-aeropress {
+  width: 80px;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(220,220,220,0.8) 0%, rgba(180,180,180,0.6) 100%);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.equipment-kalita {
+  width: 100px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(100,100,100,0.9) 0%, rgba(60,60,60,0.8) 100%);
+  border-radius: 0 0 50% 50%;
+  position: relative;
+}
+
+.equipment-flow-control {
+  width: 80px;
+  height: 60px;
+  background: rgba(40,40,40,0.9);
+  border-radius: 50%;
+}
+
+.equipment-filter {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(220,220,220,0.9) 0%, rgba(180,180,180,0.7) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(76,67,65,0.6);
+}
+</style>
+<div class="equipment">
+  <h2 class="equipment-title">Selected equipment</h2>
+
+  <div class="equipment-grid">
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-aeropress"></div>
+      </div>
+      <div class="equipment-card-name">AeroPress Clear</div>
+      <div class="equipment-card-price">279 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-kalita"></div>
+      </div>
+      <div class="equipment-card-name">Kalita Dripper 185</div>
+      <div class="equipment-card-price">248 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-flow-control"></div>
+      </div>
+      <div class="equipment-card-name">AeroPress Flow Control Cap</div>
+      <div class="equipment-card-price">151 DKK</div>
+    </div>
+
+    <div class="equipment-card">
+      <div class="equipment-card-image">
+        <div class="equipment-filter">AeroPress</div>
+      </div>
+      <div class="equipment-card-name">AeroPress Stainless Steel Filter</div>
+      <div class="equipment-card-price">109 DKK</div>
+    </div>
+  </div>
+
+  <div class="equipment-viewall">
+    <a href="#">View all</a>
+  </div>
+</div>

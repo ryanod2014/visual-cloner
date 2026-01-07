@@ -1,0 +1,187 @@
+<style>
+.footer {
+  background: rgb(8, 9, 10);
+  color: rgb(247, 248, 248);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 0;
+  width: 100%;
+}
+
+.footer-cta-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 80px 120px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-cta-heading {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.footer-cta-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.footer-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgb(247, 248, 248);
+}
+
+.footer-btn-primary {
+  background: rgb(247, 248, 248);
+  color: rgb(8, 9, 10);
+}
+
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 80px;
+}
+
+.footer-links-section {
+  display: flex;
+  padding: 60px 80px 80px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+}
+
+.footer-logo {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-right: 40px;
+}
+
+.footer-logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-columns {
+  display: flex;
+  flex: 1;
+  gap: 80px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 140px;
+}
+
+.footer-column-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+  margin-bottom: 8px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: rgb(247, 248, 248);
+}
+</style>
+
+<div class="footer">
+  <div class="footer-cta-section">
+    <h2 class="footer-cta-heading">Plan the present. Build the future.</h2>
+    <div class="footer-cta-buttons">
+      <button class="footer-btn footer-btn-secondary">Contact sales</button>
+      <button class="footer-btn footer-btn-primary">Get started</button>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-links-section">
+    <div class="footer-logo">
+      <svg class="footer-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.27 9.22L9.22 3.27C9.5 2.99 9.5 2.54 9.22 2.27L8.16 1.21C7.88 0.93 7.43 0.93 7.16 1.21L1.21 7.16C0.93 7.43 0.93 7.88 1.21 8.16L2.27 9.22C2.54 9.5 2.99 9.5 3.27 9.22Z" fill="white"/>
+        <path d="M6.44 12.39L12.39 6.44C12.67 6.16 12.67 5.71 12.39 5.44L11.33 4.38C11.05 4.1 10.6 4.1 10.33 4.38L4.38 10.33C4.1 10.6 4.1 11.05 4.38 11.33L5.44 12.39C5.71 12.67 6.16 12.67 6.44 12.39Z" fill="white"/>
+        <path d="M9.61 15.56L15.56 9.61C15.84 9.33 15.84 8.88 15.56 8.61L14.5 7.55C14.22 7.27 13.77 7.27 13.5 7.55L7.55 13.5C7.27 13.77 7.27 14.22 7.55 14.5L8.61 15.56C8.88 15.84 9.33 15.84 9.61 15.56Z" fill="white"/>
+        <path d="M12.78 18.73L18.73 12.78C19.01 12.5 19.01 12.05 18.73 11.78L17.67 10.72C17.39 10.44 16.94 10.44 16.67 10.72L10.72 16.67C10.44 16.94 10.44 17.39 10.72 17.67L11.78 18.73C12.05 19.01 12.5 19.01 12.78 18.73Z" fill="white"/>
+        <path d="M15.95 21.9L21.9 15.95C22.18 15.67 22.18 15.22 21.9 14.95L20.84 13.89C20.56 13.61 20.11 13.61 19.84 13.89L13.89 19.84C13.61 20.11 13.61 20.56 13.89 20.84L14.95 21.9C15.22 22.18 15.67 22.18 15.95 21.9Z" fill="white"/>
+      </svg>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <span class="footer-column-title">Features</span>
+        <a href="#" class="footer-link">Plan</a>
+        <a href="#" class="footer-link">Build</a>
+        <a href="#" class="footer-link">Insights</a>
+        <a href="#" class="footer-link">Customer Requests</a>
+        <a href="#" class="footer-link">Linear Asks</a>
+        <a href="#" class="footer-link">Security</a>
+        <a href="#" class="footer-link">Mobile</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Product</span>
+        <a href="#" class="footer-link">Pricing</a>
+        <a href="#" class="footer-link">Method</a>
+        <a href="#" class="footer-link">Integrations</a>
+        <a href="#" class="footer-link">Changelog</a>
+        <a href="#" class="footer-link">Documentation</a>
+        <a href="#" class="footer-link">Download</a>
+        <a href="#" class="footer-link">Switch</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Company</span>
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Customers</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Now</a>
+        <a href="#" class="footer-link">README</a>
+        <a href="#" class="footer-link">Quality</a>
+        <a href="#" class="footer-link">Brand</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Resources</span>
+        <a href="#" class="footer-link">Developers</a>
+        <a href="#" class="footer-link">Status</a>
+        <a href="#" class="footer-link">Startups</a>
+        <a href="#" class="footer-link">Report vulnerability</a>
+        <a href="#" class="footer-link">DPA</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-column-title">Connect</span>
+        <a href="#" class="footer-link">Contact us</a>
+        <a href="#" class="footer-link">Community</a>
+        <a href="#" class="footer-link">X (Twitter)</a>
+        <a href="#" class="footer-link">GitHub</a>
+        <a href="#" class="footer-link">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>

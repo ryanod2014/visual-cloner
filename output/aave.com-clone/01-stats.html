@@ -1,0 +1,211 @@
+<style>
+  .aave-stats-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .aave-stats-heading {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 48px 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .aave-stats-card {
+    background-color: #f8f8fa;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+  }
+
+  .aave-stats-card:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .aave-stats-value {
+    font-size: 64px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 8px 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-stats-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6b6b7b;
+    margin: 0;
+  }
+
+  .aave-stats-icon {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Percentage icon for card 1 */
+  .aave-stats-icon-percent {
+    font-size: 120px;
+    font-weight: 300;
+    color: #c4b5fd;
+    opacity: 0.6;
+    line-height: 1;
+  }
+
+  /* Bar chart icon for card 3 */
+  .aave-stats-icon-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+  }
+
+  .aave-stats-bar {
+    width: 24px;
+    background-color: #c4b5fd;
+    border-radius: 6px;
+    opacity: 0.7;
+  }
+
+  .aave-stats-bar:nth-child(1) {
+    height: 40%;
+  }
+
+  .aave-stats-bar:nth-child(2) {
+    height: 60%;
+  }
+
+  .aave-stats-bar:nth-child(3) {
+    height: 80%;
+  }
+
+  .aave-stats-bar:nth-child(4) {
+    height: 100%;
+  }
+
+  /* Circle pyramid for card 2 */
+  .aave-stats-icon-circles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .aave-stats-circle-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .aave-stats-circle {
+    width: 28px;
+    height: 28px;
+    background-color: #c4b5fd;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .aave-stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .aave-stats-card:nth-child(3) {
+      grid-column: 1;
+    }
+
+    .aave-stats-heading {
+      font-size: 32px;
+    }
+
+    .aave-stats-value {
+      font-size: 48px;
+    }
+
+    .aave-stats-icon {
+      display: none;
+    }
+  }
+</style>
+
+<section class="aave-stats-section">
+  <h2 class="aave-stats-heading">DeFi's largest lending network.</h2>
+
+  <div class="aave-stats-grid">
+    <!-- Card 1: Total Interest Paid -->
+    <div class="aave-stats-card">
+      <p class="aave-stats-value">$1B</p>
+      <p class="aave-stats-label">Total interest paid.</p>
+      <div class="aave-stats-icon">
+        <span class="aave-stats-icon-percent">%</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Cumulative Deposits -->
+    <div class="aave-stats-card">
+      <p class="aave-stats-value">$3.23T</p>
+      <p class="aave-stats-label">Cumulative deposits.</p>
+      <div class="aave-stats-icon aave-stats-icon-circles">
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+        </div>
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+        </div>
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+        </div>
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+        </div>
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+        </div>
+        <div class="aave-stats-circle-row">
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+          <div class="aave-stats-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Total Originated Loan Volume -->
+    <div class="aave-stats-card">
+      <p class="aave-stats-value">$919B</p>
+      <p class="aave-stats-label">Total originated loan volume.</p>
+      <div class="aave-stats-icon aave-stats-icon-bars">
+        <div class="aave-stats-bar"></div>
+        <div class="aave-stats-bar"></div>
+        <div class="aave-stats-bar"></div>
+        <div class="aave-stats-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>

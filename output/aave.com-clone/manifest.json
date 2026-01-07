@@ -1,0 +1,89 @@
+{
+  "url": "https://aave.com/",
+  "domain": "aave.com",
+  "timestamp": "2026-01-07T03:58:00.000Z",
+  "sections": [
+    {
+      "id": "header",
+      "order": 0,
+      "description": "Header with Aave logo and navigation",
+      "bounds": { "top": 0, "height": 80 },
+      "screenshot": "screenshots/00-header.png"
+    },
+    {
+      "id": "hero",
+      "order": 1,
+      "description": "Say hello to Aave App - Hero section with 9% savings",
+      "bounds": { "top": 80, "height": 600 },
+      "screenshot": "screenshots/01-hero.png"
+    },
+    {
+      "id": "stats",
+      "order": 2,
+      "description": "DeFi's largest lending network - Stats section",
+      "bounds": { "top": 680, "height": 400 },
+      "screenshot": "screenshots/02-stats.png"
+    },
+    {
+      "id": "builders",
+      "order": 3,
+      "description": "The best build with Aave - Testimonials section",
+      "bounds": { "top": 1080, "height": 800 },
+      "screenshot": "screenshots/03-builders.png"
+    },
+    {
+      "id": "about",
+      "order": 4,
+      "description": "About Aave - Supply and Borrow section",
+      "bounds": { "top": 1880, "height": 600 },
+      "screenshot": "screenshots/04-about.png"
+    },
+    {
+      "id": "why-aave",
+      "order": 5,
+      "description": "Why choose Aave - Stats with network deposits",
+      "bounds": { "top": 2480, "height": 500 },
+      "screenshot": "screenshots/05-why-aave.png"
+    },
+    {
+      "id": "features",
+      "order": 6,
+      "description": "Your money, your choice - Earn, Swap, Save, Health Factor",
+      "bounds": { "top": 2980, "height": 600 },
+      "screenshot": "screenshots/06-features.png"
+    },
+    {
+      "id": "security",
+      "order": 7,
+      "description": "Serious security - Audits, Bug Bounty, Shortfall",
+      "bounds": { "top": 3580, "height": 700 },
+      "screenshot": "screenshots/07-security.png"
+    },
+    {
+      "id": "gho",
+      "order": 8,
+      "description": "GHO - Decentralized stablecoin powered by Aave",
+      "bounds": { "top": 4280, "height": 400 },
+      "screenshot": "screenshots/08-gho.png"
+    },
+    {
+      "id": "footer",
+      "order": 9,
+      "description": "Footer with links and social media",
+      "bounds": { "top": 4680, "height": 400 },
+      "screenshot": "screenshots/09-footer.png"
+    }
+  ],
+  "tokens": {
+    "colors": {
+      "background": "rgb(12, 12, 12)",
+      "text": "rgb(255, 255, 255)",
+      "heading": "rgb(255, 255, 255)",
+      "accent": "rgb(180, 128, 255)"
+    },
+    "fonts": {
+      "body": "Inter, sans-serif",
+      "heading": "FT Regola Neue, Inter, sans-serif"
+    }
+  }
+}

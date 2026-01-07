@@ -1,0 +1,72 @@
+{
+  "url": "https://cursor.com/",
+  "domain": "cursor.com",
+  "timestamp": "2025-01-07T03:55:00Z",
+  "sections": [
+    {
+      "id": "hero",
+      "order": "00",
+      "description": "Hero section with headline, CTA button, and interactive IDE/CLI demo",
+      "screenshot": "screenshots/cursor-00-hero.png",
+      "bounds": { "top": 0, "height": 1000 }
+    },
+    {
+      "id": "trusted-by",
+      "order": "01",
+      "description": "Trusted by millions of developers tagline",
+      "screenshot": "screenshots/cursor-section-01.png",
+      "bounds": { "top": 1000, "height": 200 }
+    },
+    {
+      "id": "features",
+      "order": "02",
+      "description": "Feature cards: Agent, Tab autocomplete, Ecosystem",
+      "screenshot": "screenshots/cursor-section-02.png",
+      "bounds": { "top": 1200, "height": 1500 }
+    },
+    {
+      "id": "testimonials",
+      "order": "03",
+      "description": "The new way to build software - Testimonials carousel",
+      "screenshot": "screenshots/cursor-section-03.png",
+      "bounds": { "top": 2700, "height": 600 }
+    },
+    {
+      "id": "frontier",
+      "order": "04",
+      "description": "Stay on the frontier - Models, codebase understanding, enterprise",
+      "screenshot": "screenshots/cursor-section-04.png",
+      "bounds": { "top": 3300, "height": 800 }
+    },
+    {
+      "id": "changelog",
+      "order": "05",
+      "description": "Changelog section with recent updates",
+      "screenshot": "screenshots/cursor-section-05.png",
+      "bounds": { "top": 4100, "height": 600 }
+    },
+    {
+      "id": "cta-footer",
+      "order": "06",
+      "description": "Careers CTA, blog highlights, download CTA, and footer",
+      "screenshot": "screenshots/cursor-section-06.png",
+      "bounds": { "top": 4700, "height": 1500 }
+    }
+  ],
+  "designTokens": {
+    "colors": {
+      "background": "rgb(247, 247, 244)",
+      "text": "rgb(38, 37, 30)",
+      "heading": "rgb(38, 37, 30)",
+      "accent": "rgb(38, 37, 30)"
+    },
+    "fonts": {
+      "body": "CursorGothic, ui-sans-serif, system-ui, sans-serif",
+      "heading": "CursorGothic, ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  "pageInfo": {
+    "title": "Cursor",
+    "height": 8321
+  }
+}

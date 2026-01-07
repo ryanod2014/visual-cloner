@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Clone - Customers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0b;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Customers Section */
+    .customers {
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .customers-text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .logo-item svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* OpenAI logo styling */
+    .logo-openai {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Cash App styling */
+    .logo-cashapp {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-cashapp .icon {
+      width: 28px;
+      height: 28px;
+      background: #00D64F;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* Scale logo */
+    .logo-scale {
+      letter-spacing: 0.02em;
+    }
+
+    /* Ramp logo */
+    .logo-ramp {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-ramp svg {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section class="customers">
+    <p class="customers-text">Powering the world's best product teams.<br>From next-gen startups to established enterprises.</p>
+
+    <div class="logos">
+      <div class="logo-item logo-openai">OpenAI</div>
+
+      <div class="logo-item logo-cashapp">
+        <span class="icon">$</span>
+        <span>Cash App</span>
+      </div>
+
+      <div class="logo-item logo-scale">scale</div>
+
+      <div class="logo-item logo-ramp">
+        <span>ramp</span>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

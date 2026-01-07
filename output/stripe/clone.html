@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe - Financial Infrastructure to grow your revenue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a svg {
+            width: 10px;
+            height: 10px;
+            opacity: 0.7;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-right a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-right a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #fff !important;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Gradient Mesh Background */
+        .gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(120, 0, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 10% 80%, rgba(255, 80, 120, 0.6) 0%, transparent 40%),
+                radial-gradient(ellipse 50% 30% at 30% 20%, rgba(255, 140, 50, 0.7) 0%, transparent 35%),
+                radial-gradient(ellipse 70% 50% at 50% 60%, rgba(255, 100, 150, 0.5) 0%, transparent 45%),
+                radial-gradient(ellipse 80% 60% at 0% 50%, rgba(180, 50, 255, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 50% at 40% 30%, rgba(255, 180, 50, 0.5) 0%, transparent 40%),
+                linear-gradient(135deg, #1a0533 0%, #2d1b4e 30%, #4a1942 50%, #6b2548 70%, #fff 100%);
+            z-index: 0;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, transparent 50%, rgba(255,255,255,0.3) 60%, #fff 75%);
+            z-index: 1;
+        }
+
+        /* Animated gradient blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            mix-blend-mode: screen;
+            animation: blobMove 8s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 120, 50, 0.8) 0%, transparent 70%);
+            top: -10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(200, 50, 255, 0.7) 0%, transparent 70%);
+            top: 30%;
+            left: -10%;
+            animation-delay: -2s;
+        }
+
+        .blob-3 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 80, 150, 0.8) 0%, transparent 70%);
+            top: 60%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        .blob-4 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.6) 0%, transparent 70%);
+            top: 10%;
+            left: 35%;
+            animation-delay: -6s;
+        }
+
+        @keyframes blobMove {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, -30px) scale(1.05);
+            }
+            50% {
+                transform: translate(-10px, 20px) scale(0.95);
+            }
+            75% {
+                transform: translate(30px, 10px) scale(1.02);
+            }
+        }
+
+        /* Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            width: 100%;
+            padding: 140px 48px 60px;
+        }
+
+        .hero-left {
+            flex: 1;
+            max-width: 600px;
+            padding-right: 40px;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-left: 40px;
+        }
+
+        /* Banner */
+        .banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .banner-tag {
+            background: linear-gradient(135deg, #ff7a5c, #ff5f6d);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .banner-text {
+            font-weight: 500;
+        }
+
+        .banner-arrow {
+            margin-left: 4px;
+        }
+
+        /* Headline */
+        .headline {
+            font-size: 66px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+        }
+
+        .headline-dark {
+            color: #0a2540;
+        }
+
+        .headline-gradient {
+            background: linear-gradient(90deg, #ff7a5c 0%, #ff5f6d 25%, #a855f7 50%, #6366f1 75%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Subtext */
+        .subtext {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #425466;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        /* CTA Form */
+        .cta-form {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .email-input {
+            flex: 1;
+            max-width: 280px;
+            padding: 14px 18px;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .email-input:focus {
+            border-color: #635bff;
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.1);
+        }
+
+        .email-input::placeholder {
+            color: #8898aa;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #635bff 0%, #5851ea 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 91, 255, 0.4);
+        }
+
+        .start-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Right Side - Product Mockups */
+        .mockup-container {
+            position: relative;
+            width: 100%;
+            max-width: 580px;
+        }
+
+        .payment-card {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.08);
+            padding: 24px;
+            z-index: 2;
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .payment-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #635bff, #a855f7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+        }
+
+        .payment-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 2px;
+        }
+
+        .payment-info p {
+            font-size: 13px;
+            color: #8898aa;
+        }
+
+        .apple-pay-btn {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .pay-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #8898aa;
+            font-size: 13px;
+        }
+
+        .pay-divider::before,
+        .pay-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e6ed;
+        }
+
+        .form-field {
+            margin-bottom: 12px;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 12px;
+            color: #8898aa;
+            margin-bottom: 6px;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e6ed;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .card-row input {
+            flex: 1;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .card-icon {
+            width: 28px;
+            height: 18px;
+            background: #f6f9fc;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 600;
+            color: #8898aa;
+        }
+
+        .card-icon.visa {
+            background: #1a1f71;
+            color: #fff;
+        }
+
+        .card-icon.mc {
+            background: #eb001b;
+        }
+
+        .card-icon.amex {
+            background: #006fcf;
+            color: #fff;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e6ed;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+            color: #0a2540;
+        }
+
+        .pay-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #635bff 0%, #5851ea 100%);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 16px;
+            cursor: pointer;
+        }
+
+        /* Dashboard Card */
+        .dashboard-card {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.08);
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .dashboard-tab {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #635bff;
+            font-weight: 500;
+        }
+
+        .dashboard-search {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #f6f9fc;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #8898aa;
+        }
+
+        .dashboard-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-title h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a2540;
+        }
+
+        .dashboard-title span {
+            font-size: 12px;
+            color: #8898aa;
+        }
+
+        .dashboard-amount {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-amount h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a2540;
+        }
+
+        .dashboard-amount .change {
+            font-size: 13px;
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        .dashboard-subtitle {
+            font-size: 12px;
+            color: #8898aa;
+            margin-bottom: 20px;
+        }
+
+        .chart-placeholder {
+            height: 80px;
+            background: linear-gradient(90deg, transparent, rgba(99, 91, 255, 0.1), transparent);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(180deg, rgba(99, 91, 255, 0.2) 0%, transparent 100%);
+            clip-path: polygon(0% 100%, 5% 80%, 15% 70%, 25% 75%, 35% 40%, 45% 45%, 55% 30%, 65% 35%, 75% 20%, 85% 25%, 95% 10%, 100% 15%, 100% 100%);
+        }
+
+        .chart-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #635bff;
+            clip-path: polygon(0% 100%, 5% 80%, 15% 70%, 25% 75%, 35% 40%, 45% 45%, 55% 30%, 65% 35%, 75% 20%, 85% 25%, 95% 10%, 100% 15%);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #8898aa;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-label .positive {
+            color: #10b981;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2540;
+        }
+
+        .stat-subvalue {
+            font-size: 11px;
+            color: #8898aa;
+        }
+
+        .mini-chart {
+            height: 40px;
+            margin-top: 8px;
+            background: linear-gradient(180deg, rgba(99, 91, 255, 0.1) 0%, transparent 100%);
+            border-radius: 4px;
+        }
+
+        .updated-time {
+            font-size: 11px;
+            color: #8898aa;
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                flex-direction: column;
+                padding: 120px 32px 40px;
+            }
+
+            .hero-left {
+                max-width: 100%;
+                padding-right: 0;
+                margin-bottom: 60px;
+            }
+
+            .hero-right {
+                justify-content: center;
+                padding-left: 0;
+            }
+
+            .headline {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .headline {
+                font-size: 36px;
+                letter-spacing: -1px;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .email-input {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .mockup-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <a href="#" class="logo">stripe</a>
+            <div class="nav-links">
+                <a href="#">Products <svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+                <a href="#">Solutions <svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+                <a href="#">Developers <svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+                <a href="#">Resources <svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+                <a href="#">Pricing</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#">Support <svg viewBox="0 0 10 10" width="10" height="10"><path d="M3 4L5 6L7 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+            <a href="#">Sign in <svg viewBox="0 0 10 10" width="10" height="10"><path d="M3 5H7M5 3L7 5L5 7" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+            <a href="#" class="contact-btn">Contact sales <svg viewBox="0 0 10 10" width="10" height="10"><path d="M3 5H7M5 3L7 5L5 7" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Animated Gradient Background -->
+        <div class="gradient-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+            <div class="blob blob-4"></div>
+        </div>
+        <div class="gradient-overlay"></div>
+
+        <!-- Content -->
+        <div class="hero-content">
+            <div class="hero-left">
+                <!-- Banner -->
+                <div class="banner">
+                    <span class="banner-tag">Sessions 2026</span>
+                    <span class="banner-text">Early-bird registration now open</span>
+                    <span class="banner-arrow">></span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="headline">
+                    <span class="headline-dark">Financial<br>infrastructure<br></span>
+                    <span class="headline-gradient">to grow your<br>revenue</span>
+                </h1>
+
+                <!-- Subtext -->
+                <p class="subtext">
+                    Join the millions of companies that use Stripe to accept payments online and in person, embed financial services, power custom revenue models, and build a more profitable business.
+                </p>
+
+                <!-- CTA Form -->
+                <form class="cta-form">
+                    <input type="email" class="email-input" placeholder="Email address">
+                    <button type="submit" class="start-btn">
+                        Start now
+                        <svg viewBox="0 0 14 14" fill="none">
+                            <path d="M3 7H11M8 4L11 7L8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="hero-right">
+                <div class="mockup-container">
+                    <!-- Payment Form Card -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div class="payment-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="6" width="18" height="12" rx="2"/>
+                                    <path d="M3 10h18"/>
+                                </svg>
+                            </div>
+                            <div class="payment-info">
+                                <h4>Abstraction Magazine</h4>
+                                <p>$10 per month</p>
+                            </div>
+                        </div>
+
+                        <button class="apple-pay-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                            </svg>
+                            Pay
+                        </button>
+
+                        <div class="pay-divider">Or pay with card</div>
+
+                        <div class="form-field">
+                            <label>Email</label>
+                            <input type="email" value="">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Card information</label>
+                            <input type="text" placeholder="Number">
+                            <div class="card-row" style="margin-top: 8px;">
+                                <input type="text" placeholder="MM / YY">
+                                <input type="text" placeholder="CVC">
+                            </div>
+                            <div class="card-icons">
+                                <div class="card-icon visa">VISA</div>
+                                <div class="card-icon mc"></div>
+                                <div class="card-icon amex">AMEX</div>
+                                <div class="card-icon">...</div>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label>Country or region</label>
+                            <select class="form-select">
+                                <option>United States</option>
+                            </select>
+                            <input type="text" placeholder="Zip" style="margin-top: 8px;">
+                        </div>
+
+                        <button class="pay-btn">Pay</button>
+                    </div>
+
+                    <!-- Dashboard Card -->
+                    <div class="dashboard-card">
+                        <div class="dashboard-header">
+                            <div class="dashboard-tab">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                                </svg>
+                                ROCKET RIDES
+                            </div>
+                            <div class="dashboard-search">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                                Search
+                            </div>
+                        </div>
+
+                        <div class="dashboard-title">
+                            <h3>Today</h3>
+                            <span>Yesterday</span>
+                        </div>
+
+                        <div class="dashboard-amount">
+                            <div>
+                                <div style="font-size: 12px; color: #8898aa; margin-bottom: 4px;">Net volume</div>
+                                <h2>$3,528,198.72</h2>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="change" style="margin-bottom: 4px;">+</div>
+                                <span style="font-size: 14px; color: #8898aa;">$2,301,006.34</span>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-subtitle">2:00 PM</div>
+
+                        <div class="chart-placeholder">
+                            <div class="chart-line"></div>
+                        </div>
+
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <div class="stat-label">Net volume from sales <span class="positive">+32.8%</span></div>
+                                <div class="stat-value">$39,274.29</div>
+                                <div class="stat-subvalue">$29,075.54</div>
+                                <div class="mini-chart"></div>
+                                <div class="updated-time">Updated today 7:00 AM</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">New customers</div>
+                                <div class="stat-value">37</div>
+                                <div class="stat-subvalue">26</div>
+                                <div class="mini-chart"></div>
+                                <div class="updated-time">Updated today 7:18</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

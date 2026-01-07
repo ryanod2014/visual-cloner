@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hume AI - Hero Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Hero Section Container */
+        .hume-hero-section {
+            background: linear-gradient(180deg, #f5d6c6 0%, #f8e4d9 50%, #faf0ea 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Navigation */
+        .hume-hero-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .hume-hero-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .hume-hero-logo-icon {
+            display: grid;
+            grid-template-columns: repeat(3, 8px);
+            grid-template-rows: repeat(3, 8px);
+            gap: 3px;
+        }
+
+        .hume-hero-logo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #1a1a1a;
+        }
+
+        .hume-hero-logo-dot:nth-child(1) { opacity: 0.3; }
+        .hume-hero-logo-dot:nth-child(2) { opacity: 0.5; }
+        .hume-hero-logo-dot:nth-child(3) { opacity: 0.7; }
+        .hume-hero-logo-dot:nth-child(4) { opacity: 0.5; }
+        .hume-hero-logo-dot:nth-child(5) { opacity: 0.7; }
+        .hume-hero-logo-dot:nth-child(6) { opacity: 0.9; }
+        .hume-hero-logo-dot:nth-child(7) { opacity: 0.7; }
+        .hume-hero-logo-dot:nth-child(8) { opacity: 0.9; }
+        .hume-hero-logo-dot:nth-child(9) { opacity: 1; }
+
+        .hume-hero-logo-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .hume-hero-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hume-hero-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .hume-hero-nav-item:hover {
+            opacity: 0.7;
+        }
+
+        .hume-hero-nav-chevron {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hume-hero-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hume-hero-btn-contact {
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            background: transparent;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .hume-hero-btn-contact:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .hume-hero-btn-login {
+            padding: 10px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            background: #1a1a1a;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .hume-hero-btn-login:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        /* Announcement Banner */
+        .hume-hero-announcement {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .hume-hero-announcement-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 20px 8px 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .hume-hero-announcement-pill:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .hume-hero-announcement-badge {
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a1a;
+            background: #fff;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hume-hero-announcement-text {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        /* Main Headline */
+        .hume-hero-content {
+            text-align: center;
+            padding: 48px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hume-hero-headline {
+            font-family: 'DM Sans', Georgia, serif;
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 1.1;
+            color: #1a1a1a;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .hume-hero-subheadline {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #3d3d3d;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Tab Buttons */
+        .hume-hero-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .hume-hero-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a1a;
+            background: transparent;
+            border: 1.5px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: all 0.2s;
+        }
+
+        .hume-hero-tab:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hume-hero-tab.hume-hero-tab-active {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        .hume-hero-tab-icon {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Demo Card */
+        .hume-hero-demo {
+            max-width: 860px;
+            margin: 32px auto 0;
+            padding: 0 20px;
+        }
+
+        .hume-hero-demo-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .hume-hero-demo-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 28px 0;
+        }
+
+        .hume-hero-demo-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .hume-hero-demo-info {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #999;
+            cursor: help;
+        }
+
+        .hume-hero-demo-textarea {
+            width: 100%;
+            padding: 16px 28px 80px;
+            font-family: 'DM Sans', Georgia, serif;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #1a1a1a;
+            border: none;
+            outline: none;
+            resize: none;
+            background: transparent;
+        }
+
+        .hume-hero-demo-textarea::placeholder {
+            color: #999;
+        }
+
+        /* Demo Actions */
+        .hume-hero-demo-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hume-hero-demo-create {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a1a;
+            background: transparent;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .hume-hero-demo-create:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .hume-hero-demo-create-icon {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hume-hero-demo-counter {
+            font-size: 13px;
+            font-weight: 500;
+            color: #999;
+        }
+
+        /* Demo Controls */
+        .hume-hero-demo-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 28px 20px;
+        }
+
+        .hume-hero-demo-selectors {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hume-hero-demo-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .hume-hero-demo-selector:hover {
+            border-color: #ccc;
+        }
+
+        .hume-hero-demo-flag {
+            width: 32px;
+            height: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hume-hero-demo-flag-stripe {
+            flex: 1;
+        }
+
+        .hume-hero-demo-flag-stripe.hume-hero-flag-red {
+            background: #b22234;
+        }
+
+        .hume-hero-demo-flag-stripe.hume-hero-flag-white {
+            background: #fff;
+        }
+
+        .hume-hero-demo-selector-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hume-hero-demo-selector-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hume-hero-demo-selector-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .hume-hero-demo-voice-icon {
+            width: 28px;
+            height: 28px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hume-hero-demo-voice-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: #666;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hume-hero-demo-play {
+            width: 56px;
+            height: 56px;
+            background: #1a1a1a;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .hume-hero-demo-play:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+
+        .hume-hero-demo-play svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+            margin-left: 3px;
+        }
+
+        /* CTA Section */
+        .hume-hero-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 40px 20px 60px;
+        }
+
+        .hume-hero-cta-text {
+            font-size: 18px;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .hume-hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            background: #1a1a1a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+
+        .hume-hero-cta-btn:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <section class="hume-hero-section">
+        <!-- Navigation -->
+        <nav class="hume-hero-nav">
+            <a href="#" class="hume-hero-logo">
+                <div class="hume-hero-logo-icon">
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                    <span class="hume-hero-logo-dot"></span>
+                </div>
+                <span class="hume-hero-logo-text">hume</span>
+            </a>
+
+            <div class="hume-hero-nav-links">
+                <div class="hume-hero-nav-item">
+                    PRODUCTS
+                    <svg class="hume-hero-nav-chevron" viewBox="0 0 12 12">
+                        <path d="M3 4.5L6 7.5L9 4.5" />
+                    </svg>
+                </div>
+                <div class="hume-hero-nav-item">
+                    DEVELOPERS
+                    <svg class="hume-hero-nav-chevron" viewBox="0 0 12 12">
+                        <path d="M3 4.5L6 7.5L9 4.5" />
+                    </svg>
+                </div>
+                <a href="#" class="hume-hero-nav-item">PRICING</a>
+                <div class="hume-hero-nav-item">
+                    RESOURCES
+                    <svg class="hume-hero-nav-chevron" viewBox="0 0 12 12">
+                        <path d="M3 4.5L6 7.5L9 4.5" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="hume-hero-nav-actions">
+                <button class="hume-hero-btn-contact">CONTACT SALES</button>
+                <button class="hume-hero-btn-login">LOGIN</button>
+            </div>
+        </nav>
+
+        <!-- Announcement Banner -->
+        <div class="hume-hero-announcement">
+            <div class="hume-hero-announcement-pill">
+                <span class="hume-hero-announcement-badge">NEW</span>
+                <span class="hume-hero-announcement-text">READ THE OCTAVE 2 ANNOUNCEMENT BLOG</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="hume-hero-content">
+            <h1 class="hume-hero-headline">The world's most realistic<br>& expressive voice AI</h1>
+            <p class="hume-hero-subheadline">Voice AI models powered by emotional intelligence for creators, developers, and enterprises. Create audio books, podcasts, conversational agents and more</p>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="hume-hero-tabs">
+            <button class="hume-hero-tab hume-hero-tab-active">
+                <svg class="hume-hero-tab-icon" viewBox="0 0 24 24">
+                    <path d="M12 3v18M8 8v8M4 10v4M16 8v8M20 10v4" stroke-linecap="round"/>
+                </svg>
+                TEXT-TO-SPEECH
+            </button>
+            <button class="hume-hero-tab">
+                <svg class="hume-hero-tab-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+                VOICE DESIGN
+            </button>
+            <button class="hume-hero-tab">
+                <svg class="hume-hero-tab-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="9" rx="1"/>
+                    <rect x="14" y="3" width="7" height="9" rx="1"/>
+                    <path d="M7 12v4a2 2 0 002 2h6a2 2 0 002-2v-4"/>
+                </svg>
+                VOICE CLONING
+            </button>
+            <button class="hume-hero-tab">
+                <svg class="hume-hero-tab-icon" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/>
+                </svg>
+                CONVERSATIONAL AI
+            </button>
+        </div>
+
+        <!-- Demo Card -->
+        <div class="hume-hero-demo">
+            <div class="hume-hero-demo-card">
+                <div class="hume-hero-demo-header">
+                    <span class="hume-hero-demo-title">Text-to-speech</span>
+                    <span class="hume-hero-demo-info">?</span>
+                </div>
+                <textarea class="hume-hero-demo-textarea" readonly>I'm your host, Alex Tran, and today—strap in—we're talking about... robot chickens. Yeah, you heard me. Robot. Chickens. Now before your mind runs off to late-night cartoons or mad science labs, let me paint a picture. Imagine a fluffy, feathery bird—but under that? A network of sensors, tiny actuators, and maybe—just maybe—a Wi-Fi module. Welcome to the poultry revolution.</textarea>
+
+                <div class="hume-hero-demo-actions">
+                    <button class="hume-hero-demo-create">
+                        <svg class="hume-hero-demo-create-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                        CREATE A PODCAST
+                    </button>
+                    <span class="hume-hero-demo-counter">376/500</span>
+                </div>
+
+                <div class="hume-hero-demo-controls">
+                    <div class="hume-hero-demo-selectors">
+                        <div class="hume-hero-demo-selector">
+                            <div class="hume-hero-demo-flag">
+                                <div class="hume-hero-demo-flag-stripe hume-hero-flag-red"></div>
+                                <div class="hume-hero-demo-flag-stripe hume-hero-flag-white"></div>
+                                <div class="hume-hero-demo-flag-stripe hume-hero-flag-red"></div>
+                                <div class="hume-hero-demo-flag-stripe hume-hero-flag-white"></div>
+                                <div class="hume-hero-demo-flag-stripe hume-hero-flag-red"></div>
+                            </div>
+                            <div class="hume-hero-demo-selector-content">
+                                <span class="hume-hero-demo-selector-label">LANGUAGE</span>
+                                <span class="hume-hero-demo-selector-value">English</span>
+                            </div>
+                        </div>
+                        <div class="hume-hero-demo-selector">
+                            <div class="hume-hero-demo-voice-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18V5l12-2v13M9 9l12-2"/>
+                                    <circle cx="6" cy="18" r="3"/>
+                                    <circle cx="18" cy="16" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="hume-hero-demo-selector-content">
+                                <span class="hume-hero-demo-selector-label">VOICE</span>
+                                <span class="hume-hero-demo-selector-value">Podcast Host</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="hume-hero-demo-play">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="hume-hero-cta">
+            <span class="hume-hero-cta-text">Get started with the most expressive text-to-speech.</span>
+            <button class="hume-hero-cta-btn">SIGN UP FOR FREE</button>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hume - Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Base */
+    .hume-research-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 80px 0 100px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .hume-research-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Header area */
+    .hume-research-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .hume-research-title {
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: #1a1a1a;
+      max-width: 420px;
+      letter-spacing: -0.02em;
+    }
+
+    .hume-research-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+    }
+
+    .hume-research-link:hover {
+      opacity: 0.7;
+    }
+
+    .hume-research-link-arrow {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hume-research-link-arrow svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .hume-research-link:hover .hume-research-link-arrow svg {
+      transform: translateX(3px);
+    }
+
+    /* Cards grid */
+    .hume-research-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* Individual card */
+    .hume-research-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hume-research-card-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .hume-research-card-link:hover {
+      opacity: 0.7;
+    }
+
+    .hume-research-card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .hume-research-card-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    /* Octave TTS 2 card - Purple gradient */
+    .hume-research-card-image--octave {
+      background: linear-gradient(145deg, #c9a0dc 0%, #a78bfa 30%, #8b6fc0 60%, #7c5db5 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .hume-research-card-image--octave::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 100% 80% at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 80% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hume-research-octave-title {
+      font-size: 32px;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .hume-research-octave-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* EVI 3 card - Light pink/purple gradient */
+    .hume-research-card-image--evi {
+      background: linear-gradient(160deg, #fce7f3 0%, #f5d0e6 25%, #e8c5dc 50%, #dbb5d4 75%, #c9a0dc 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .hume-research-card-image--evi::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 100% 80% at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 70% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hume-research-evi-title {
+      font-size: 32px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.01em;
+    }
+
+    /* Semantic space card - Landscape painting */
+    .hume-research-card-image--semantic {
+      background: linear-gradient(180deg,
+        #8FBCD4 0%,
+        #A8C4D4 15%,
+        #C4D4C8 25%,
+        #D4C8A0 40%,
+        #E8B070 55%,
+        #D49050 70%,
+        #8B6040 100%
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hume-research-card-image--semantic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        /* Sky area */
+        linear-gradient(180deg,
+          rgba(143, 188, 212, 0.9) 0%,
+          rgba(200, 210, 220, 0.6) 20%,
+          transparent 35%
+        ),
+        /* Green vegetation on left */
+        radial-gradient(ellipse 40% 50% at 15% 50%, rgba(100, 140, 80, 0.8) 0%, transparent 70%),
+        /* Orange/coral middle ground */
+        radial-gradient(ellipse 60% 40% at 50% 65%, rgba(220, 140, 80, 0.7) 0%, transparent 60%),
+        /* Deep orange/rust tones */
+        radial-gradient(ellipse 50% 45% at 70% 55%, rgba(200, 100, 60, 0.6) 0%, transparent 55%);
+    }
+
+    .hume-research-card-image--semantic::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        /* Green trees/bushes on left edge */
+        radial-gradient(ellipse 25% 60% at 5% 45%, rgba(80, 120, 60, 0.9) 0%, transparent 70%),
+        /* Lighter green mid-left */
+        radial-gradient(ellipse 30% 40% at 25% 55%, rgba(120, 160, 90, 0.7) 0%, transparent 60%),
+        /* Warm highlights */
+        radial-gradient(ellipse 40% 30% at 60% 45%, rgba(240, 180, 120, 0.5) 0%, transparent 50%),
+        /* Dark foreground */
+        linear-gradient(180deg, transparent 75%, rgba(90, 60, 40, 0.6) 100%);
+    }
+
+    /* Painting texture overlays */
+    .hume-research-semantic-paint {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hume-research-semantic-paint::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 0;
+      width: 35%;
+      height: 55%;
+      background: linear-gradient(160deg,
+        rgba(90, 130, 70, 0.8) 0%,
+        rgba(70, 110, 50, 0.7) 40%,
+        rgba(60, 90, 45, 0.6) 100%
+      );
+      border-radius: 0 60% 40% 0;
+      filter: blur(12px);
+    }
+
+    .hume-research-semantic-paint::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      right: 0;
+      width: 45%;
+      height: 50%;
+      background: linear-gradient(200deg,
+        rgba(230, 160, 100, 0.7) 0%,
+        rgba(200, 120, 70, 0.6) 50%,
+        rgba(160, 90, 50, 0.5) 100%
+      );
+      border-radius: 40% 0 0 30%;
+      filter: blur(10px);
+    }
+
+    /* Card text content */
+    .hume-research-card-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .hume-research-card-date {
+      font-size: 14px;
+      font-weight: 400;
+      color: #6b7280;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hume-research-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hume-research-section {
+        padding: 60px 0 80px;
+      }
+
+      .hume-research-container {
+        padding: 0 24px;
+      }
+
+      .hume-research-title {
+        font-size: 28px;
+        max-width: 100%;
+      }
+
+      .hume-research-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hume-research-section">
+    <div class="hume-research-container">
+      <!-- Header -->
+      <div class="hume-research-header">
+        <h2 class="hume-research-title">We research foundation models and how to align them with human well-being</h2>
+        <a href="#" class="hume-research-link">
+          Learn more about our research
+          <span class="hume-research-link-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="hume-research-cards">
+        <!-- Octave TTS 2 Card -->
+        <article class="hume-research-card">
+          <a href="#" class="hume-research-card-link">
+            View article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="hume-research-card-image hume-research-card-image--octave">
+            <span class="hume-research-octave-title">Octave TTS 2</span>
+            <span class="hume-research-octave-subtitle">Multilingual and faster</span>
+          </div>
+          <h3 class="hume-research-card-title">Octave 2: next-generation multilingual voice AI</h3>
+          <span class="hume-research-card-date">October 1, 2025</span>
+        </article>
+
+        <!-- EVI 3 Card -->
+        <article class="hume-research-card">
+          <a href="#" class="hume-research-card-link">
+            View article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="hume-research-card-image hume-research-card-image--evi">
+            <span class="hume-research-evi-title">Introducing EVI 3</span>
+          </div>
+          <h3 class="hume-research-card-title">Introducing EVI 3: the world's most realistic and instructible speech-to-speech foundation model</h3>
+          <span class="hume-research-card-date">May 29, 2025</span>
+        </article>
+
+        <!-- Semantic Space Theory Card -->
+        <article class="hume-research-card">
+          <a href="#" class="hume-research-card-link">
+            View article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="hume-research-card-image hume-research-card-image--semantic">
+            <div class="hume-research-semantic-paint"></div>
+          </div>
+          <h3 class="hume-research-card-title">What is semantic space theory?</h3>
+          <span class="hume-research-card-date">February 21, 2024</span>
+        </article>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

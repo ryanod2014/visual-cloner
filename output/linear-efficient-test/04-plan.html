@@ -1,0 +1,461 @@
+<style>
+.plan {
+  background: rgb(8, 9, 10);
+  color: rgb(247, 248, 248);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+.plan-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.plan-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.7);
+  margin-bottom: 20px;
+}
+
+.plan-label-dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.plan-label-arrow {
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.plan-title {
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 32px;
+  max-width: 800px;
+}
+
+.plan-description {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 480px;
+  color: rgba(247, 248, 248, 0.7);
+}
+
+.plan-description strong {
+  color: rgb(247, 248, 248);
+  font-weight: 500;
+}
+
+/* Timeline Visualization */
+.plan-timeline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-40%);
+  width: 1000px;
+  height: 500px;
+  perspective: 1000px;
+}
+
+.plan-timeline-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(55deg) rotateZ(-25deg);
+  transform-style: preserve-3d;
+}
+
+/* Grid lines */
+.plan-grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.plan-grid-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.plan-grid-line:nth-child(1) { top: 10%; }
+.plan-grid-line:nth-child(2) { top: 20%; }
+.plan-grid-line:nth-child(3) { top: 30%; }
+.plan-grid-line:nth-child(4) { top: 40%; }
+.plan-grid-line:nth-child(5) { top: 50%; }
+.plan-grid-line:nth-child(6) { top: 60%; }
+.plan-grid-line:nth-child(7) { top: 70%; }
+.plan-grid-line:nth-child(8) { top: 80%; }
+.plan-grid-line:nth-child(9) { top: 90%; }
+
+.plan-grid-line-vertical {
+  position: absolute;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  height: 100%;
+}
+
+.plan-grid-line-vertical:nth-child(10) { left: 10%; }
+.plan-grid-line-vertical:nth-child(11) { left: 20%; }
+.plan-grid-line-vertical:nth-child(12) { left: 30%; }
+.plan-grid-line-vertical:nth-child(13) { left: 40%; }
+.plan-grid-line-vertical:nth-child(14) { left: 50%; }
+.plan-grid-line-vertical:nth-child(15) { left: 60%; }
+.plan-grid-line-vertical:nth-child(16) { left: 70%; }
+.plan-grid-line-vertical:nth-child(17) { left: 80%; }
+.plan-grid-line-vertical:nth-child(18) { left: 90%; }
+
+/* Timeline bars */
+.plan-bar {
+  position: absolute;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(40, 44, 52, 0.9) 0%, rgba(30, 32, 38, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.8);
+  backdrop-filter: blur(10px);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.plan-bar-1 {
+  width: 280px;
+  bottom: 180px;
+  left: 80px;
+}
+
+.plan-bar-2 {
+  width: 200px;
+  bottom: 120px;
+  left: 160px;
+}
+
+.plan-bar-3 {
+  width: 320px;
+  bottom: 60px;
+  left: 280px;
+}
+
+.plan-bar-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  opacity: 0.6;
+}
+
+.plan-bar-icon-diamond {
+  width: 16px;
+  height: 16px;
+  background: #22c55e;
+  transform: rotate(45deg);
+  margin-right: 12px;
+}
+
+.plan-bar-icon-linear {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  position: relative;
+}
+
+.plan-bar-icon-linear::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(94, 106, 210, 0.8), rgba(94, 106, 210, 0.4));
+  border-radius: 4px;
+  transform: rotate(45deg) scale(0.7);
+}
+
+/* Date markers */
+.plan-date {
+  position: absolute;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.4);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.plan-date-aug3 {
+  bottom: 260px;
+  left: 180px;
+}
+
+.plan-date-10 {
+  bottom: 300px;
+  left: 320px;
+}
+
+.plan-date-17 {
+  bottom: 340px;
+  left: 460px;
+}
+
+.plan-date-aug22 {
+  bottom: 380px;
+  left: 520px;
+  background: rgba(40, 44, 52, 0.9);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plan-date-24 {
+  bottom: 360px;
+  left: 640px;
+}
+
+.plan-date-30 {
+  bottom: 280px;
+  left: 40px;
+}
+
+.plan-date-sep {
+  bottom: 400px;
+  right: 180px;
+  font-size: 16px;
+}
+
+/* 3D Effect Container */
+.plan-visual {
+  position: absolute;
+  bottom: -50px;
+  right: -100px;
+  width: 900px;
+  height: 600px;
+  transform: perspective(1200px) rotateX(50deg) rotateZ(-30deg);
+  transform-style: preserve-3d;
+}
+
+.plan-visual-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.plan-visual-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.plan-visual-line-h {
+  width: 100%;
+  height: 1px;
+}
+
+.plan-visual-line-v {
+  width: 1px;
+  height: 100%;
+}
+
+/* Task bars in 3D space */
+.plan-task {
+  position: absolute;
+  height: 44px;
+  background: linear-gradient(180deg, rgba(35, 38, 45, 0.95) 0%, rgba(25, 28, 32, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 13px;
+  color: rgba(247, 248, 248, 0.75);
+  font-style: italic;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.plan-task-realtime {
+  width: 260px;
+  bottom: 220px;
+  left: 120px;
+}
+
+.plan-task-prototype {
+  width: 160px;
+  bottom: 160px;
+  left: 180px;
+}
+
+.plan-task-beta {
+  width: 140px;
+  bottom: 180px;
+  left: 400px;
+}
+
+.plan-task-rlhf {
+  width: 240px;
+  bottom: 100px;
+  left: 360px;
+}
+
+.plan-task-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  opacity: 0.5;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+
+.plan-task-icon-green {
+  background: #22c55e;
+  opacity: 1;
+}
+
+.plan-task-icon-multi {
+  display: flex;
+  gap: 2px;
+  margin-right: 10px;
+}
+
+.plan-task-icon-multi span {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+/* Highlight line */
+.plan-highlight-line {
+  position: absolute;
+  width: 2px;
+  height: 400px;
+  background: linear-gradient(180deg, rgba(94, 106, 210, 0.6) 0%, transparent 100%);
+  bottom: 150px;
+  left: 520px;
+  transform: rotate(-30deg);
+  transform-origin: bottom center;
+}
+</style>
+
+<div class="plan">
+  <div class="plan-container">
+    <div class="plan-label">
+      <span class="plan-label-dot"></span>
+      Project and long-term planning
+      <span class="plan-label-arrow">></span>
+    </div>
+    <h2 class="plan-title">Set the product direction</h2>
+    <p class="plan-description">
+      <strong>Align your team around a unified product timeline.</strong> Plan, manage, and track all product initiatives with Linear's visual planning tools.
+    </p>
+  </div>
+
+  <!-- Timeline Visualization -->
+  <svg class="plan-timeline-svg" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 550px; pointer-events: none;">
+    <!-- Grid pattern -->
+    <defs>
+      <pattern id="plan-grid" width="60" height="40" patternUnits="userSpaceOnUse" patternTransform="skewY(-20) skewX(-10)">
+        <path d="M 60 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="plan-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgb(8,9,10);stop-opacity:1" />
+        <stop offset="30%" style="stop-color:rgb(8,9,10);stop-opacity:0" />
+      </linearGradient>
+      <linearGradient id="plan-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgba(94,106,210,0);stop-opacity:0" />
+        <stop offset="50%" style="stop-color:rgba(94,106,210,0.5);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgba(94,106,210,0);stop-opacity:0" />
+      </linearGradient>
+    </defs>
+
+    <!-- Background grid -->
+    <rect x="0" y="100" width="100%" height="450" fill="url(#plan-grid)" opacity="0.8"/>
+
+    <!-- Vertical grid lines with perspective -->
+    <g transform="translate(200, 100)">
+      <!-- Vertical lines -->
+      <line x1="0" y1="0" x2="100" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="100" y1="0" x2="200" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="200" y1="0" x2="300" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="300" y1="0" x2="400" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="500" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="500" y1="0" x2="600" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="600" y1="0" x2="700" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="700" y1="0" x2="800" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="800" y1="0" x2="900" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+      <!-- Horizontal lines -->
+      <line x1="-100" y1="80" x2="1000" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="-80" y1="160" x2="1020" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="-60" y1="240" x2="1040" y2="240" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="-40" y1="320" x2="1060" y2="320" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="-20" y1="400" x2="1080" y2="400" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </g>
+
+    <!-- Highlight line -->
+    <line x1="720" y1="80" x2="820" y2="520" stroke="url(#plan-line-grad)" stroke-width="2"/>
+
+    <!-- Date labels -->
+    <text x="230" y="380" fill="rgba(247,248,248,0.35)" font-size="18" font-family="Inter Variable, sans-serif" font-weight="400">30</text>
+    <text x="340" y="330" fill="rgba(247,248,248,0.4)" font-size="16" font-family="Inter Variable, sans-serif" font-weight="400" font-style="italic">AUG 3</text>
+    <text x="500" y="280" fill="rgba(247,248,248,0.35)" font-size="18" font-family="Inter Variable, sans-serif" font-weight="400">10</text>
+    <text x="640" y="230" fill="rgba(247,248,248,0.35)" font-size="18" font-family="Inter Variable, sans-serif" font-weight="400">17</text>
+    <text x="800" y="200" fill="rgba(247,248,248,0.35)" font-size="18" font-family="Inter Variable, sans-serif" font-weight="400">24</text>
+    <text x="1000" y="160" fill="rgba(247,248,248,0.35)" font-size="18" font-family="Inter Variable, sans-serif" font-weight="400">SEP</text>
+
+    <!-- AUG 22 badge -->
+    <rect x="700" y="145" width="90" height="32" rx="6" fill="rgba(35,38,45,0.9)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <text x="745" y="167" fill="rgba(247,248,248,0.8)" font-size="14" font-family="Inter Variable, sans-serif" font-weight="500" text-anchor="middle">AUG 22</text>
+
+    <!-- Task bars -->
+    <!-- Realtime inference bar -->
+    <g transform="translate(280, 340)">
+      <rect x="0" y="0" width="280" height="52" rx="10" fill="rgba(30,33,40,0.95)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="16" y="18" width="16" height="16" rx="3" fill="rgba(255,255,255,0.2)" transform="rotate(45, 24, 26)"/>
+      <text x="50" y="32" fill="rgba(247,248,248,0.7)" font-size="15" font-family="Inter Variable, sans-serif" font-style="italic">Realtime inference</text>
+    </g>
+
+    <!-- Prototype bar -->
+    <g transform="translate(340, 415)">
+      <rect x="0" y="0" width="160" height="48" rx="10" fill="rgba(30,33,40,0.95)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <text x="20" y="30" fill="rgba(247,248,248,0.6)" font-size="14" font-family="Inter Variable, sans-serif" font-style="italic">Prototype</text>
+    </g>
+
+    <!-- Beta bar with green diamond -->
+    <g transform="translate(520, 340)">
+      <rect x="0" y="0" width="160" height="52" rx="10" fill="rgba(30,33,40,0.95)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="16" y="18" width="14" height="14" rx="2" fill="#22c55e" transform="rotate(45, 23, 25)"/>
+      <text x="50" y="32" fill="rgba(247,248,248,0.7)" font-size="15" font-family="Inter Variable, sans-serif" font-style="italic">Beta</text>
+    </g>
+
+    <!-- RLHF fine tuning bar -->
+    <g transform="translate(560, 430)">
+      <rect x="0" y="0" width="260" height="52" rx="10" fill="rgba(30,33,40,0.95)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="16" y="18" width="14" height="14" rx="2" fill="rgba(255,255,255,0.2)" transform="rotate(45, 23, 25)"/>
+      <text x="50" y="32" fill="rgba(247,248,248,0.7)" font-size="15" font-family="Inter Variable, sans-serif" font-style="italic">RLHF fine tuning</text>
+      <!-- Multi icon on right -->
+      <g transform="translate(210, 16)">
+        <rect x="0" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="12" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="0" y="12" width="10" height="10" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="12" y="12" width="10" height="10" rx="2" fill="rgba(255,255,255,0.25)"/>
+      </g>
+    </g>
+
+    <!-- Top fade overlay -->
+    <rect x="0" y="0" width="100%" height="150" fill="url(#plan-fade)"/>
+  </svg>
+</div>

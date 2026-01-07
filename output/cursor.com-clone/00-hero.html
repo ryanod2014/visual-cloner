@@ -1,0 +1,428 @@
+<style>
+.hero {
+  background-color: rgb(247, 247, 244);
+  min-height: 100vh;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.hero-logo-icon {
+  width: 24px;
+  height: 24px;
+  background: rgb(38, 37, 30);
+  border-radius: 4px;
+}
+
+.hero-nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.hero-nav-links a {
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.hero-nav-links a:hover {
+  opacity: 1;
+}
+
+.hero-nav-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-signin {
+  font-size: 14px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+}
+
+.hero-download-btn {
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.hero-headline {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  font-weight: 400;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-cta-icon {
+  font-size: 18px;
+}
+
+.hero-demo-container {
+  margin-top: 48px;
+  background: linear-gradient(180deg, rgba(200, 180, 150, 0.3) 0%, rgba(180, 160, 140, 0.5) 100%);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  min-height: 500px;
+}
+
+.hero-demo-ide {
+  flex: 2;
+  background: rgb(250, 250, 248);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.hero-demo-titlebar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgb(250, 250, 248);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-demo-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-demo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hero-demo-title {
+  margin-left: auto;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.hero-demo-content {
+  display: flex;
+  height: 400px;
+}
+
+.hero-demo-sidebar {
+  width: 220px;
+  background: rgb(248, 248, 246);
+  padding: 16px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-demo-sidebar-header {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.5;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.hero-demo-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hero-demo-task:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.hero-demo-task-icon {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.hero-demo-task-text {
+  line-height: 1.4;
+}
+
+.hero-demo-task-status {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.hero-demo-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-demo-tabs {
+  display: flex;
+  background: rgb(248, 248, 246);
+  padding: 8px 8px 0;
+}
+
+.hero-demo-tab {
+  padding: 8px 16px;
+  font-size: 12px;
+  background: rgb(250, 250, 248);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+.hero-demo-code {
+  flex: 1;
+  background: rgb(250, 250, 248);
+  padding: 16px;
+  font-family: 'Berkeley Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+.hero-demo-code-line {
+  white-space: pre;
+}
+
+.hero-demo-code-added {
+  background: rgba(34, 197, 94, 0.1);
+  color: rgb(22, 163, 74);
+}
+
+.hero-demo-code-removed {
+  background: rgba(239, 68, 68, 0.1);
+  color: rgb(220, 38, 38);
+}
+
+.hero-demo-chat {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgb(248, 248, 246);
+}
+
+.hero-demo-chat-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.hero-demo-chat-desc {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.hero-demo-chat-input {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.hero-demo-chat-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+}
+
+.hero-demo-cli {
+  flex: 1;
+  background: rgb(35, 35, 35);
+  border-radius: 12px;
+  padding: 16px;
+  color: rgb(220, 220, 220);
+  font-family: 'Berkeley Mono', monospace;
+  font-size: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero-demo-cli-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-demo-cli-title {
+  opacity: 0.7;
+}
+
+.hero-demo-cli-line {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.hero-demo-cli-prompt {
+  color: rgb(74, 222, 128);
+}
+
+.hero-demo-cli-path {
+  color: rgb(96, 165, 250);
+}
+
+.hero-demo-cli-muted {
+  opacity: 0.5;
+}
+</style>
+
+<div class="hero">
+  <nav class="hero-nav">
+    <div class="hero-logo">
+      <div class="hero-logo-icon"></div>
+      <span>Cursor</span>
+    </div>
+    <ul class="hero-nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Enterprise</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Resources</a></li>
+    </ul>
+    <div class="hero-nav-actions">
+      <a href="#" class="hero-signin">Sign in</a>
+      <a href="#" class="hero-download-btn">Download</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1 class="hero-headline">Built to make you extraordinarily productive, Cursor is the best way to code with AI.</h1>
+    <a href="#" class="hero-cta">
+      Download for macOS
+      <span class="hero-cta-icon">&#x2913;</span>
+    </a>
+
+    <div class="hero-demo-container">
+      <div class="hero-demo-ide">
+        <div class="hero-demo-titlebar">
+          <div class="hero-demo-dots">
+            <div class="hero-demo-dot"></div>
+            <div class="hero-demo-dot"></div>
+            <div class="hero-demo-dot"></div>
+          </div>
+          <div class="hero-demo-title">Cursor</div>
+        </div>
+        <div class="hero-demo-content">
+          <div class="hero-demo-sidebar">
+            <div class="hero-demo-sidebar-header">In Progress 3</div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">Enterprise Order Management...</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">Analyze Tab vs Agent Usage...</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">PyTorch MNIST Experiments</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-sidebar-header" style="margin-top: 16px;">Ready for Review 2</div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);"></div>
+              <div>
+                <div class="hero-demo-task-text">Set up Cursor Rules for Dashboard</div>
+                <div class="hero-demo-task-status">+37 -0</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-demo-editor">
+            <div class="hero-demo-tabs">
+              <div class="hero-demo-tab">train_model.py</div>
+            </div>
+            <div class="hero-demo-code">
+              <div class="hero-demo-code-line">import torch</div>
+              <div class="hero-demo-code-line">import torch.nn as nn</div>
+              <div class="hero-demo-code-line">from torch.utils.data import DataLoader</div>
+              <div class="hero-demo-code-line">from torchvision import datasets</div>
+              <div class="hero-demo-code-line"></div>
+              <div class="hero-demo-code-line">def get_dataloaders(batch_size=64):</div>
+              <div class="hero-demo-code-line">    transform = transforms.Compose([transforms.ToTensor()])</div>
+              <div class="hero-demo-code-line hero-demo-code-added">+ # Seed for reproducibility</div>
+              <div class="hero-demo-code-line hero-demo-code-added">+ torch.manual_seed(42)</div>
+            </div>
+            <div class="hero-demo-chat">
+              <div class="hero-demo-chat-title">PyTorch MNIST Experiments</div>
+              <div class="hero-demo-chat-desc">Add mixed precision training, learning rate scheduling, and proper validation.</div>
+              <div class="hero-demo-chat-input">
+                <input type="text" placeholder="Plan, search, build anything...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-demo-cli">
+        <div class="hero-demo-cli-header">
+          <span class="hero-demo-cli-title">cursor-agent</span>
+        </div>
+        <div class="hero-demo-cli-line"><span class="hero-demo-cli-prompt">Cursor Agent</span></div>
+        <div class="hero-demo-cli-line"><span class="hero-demo-cli-path">~/Repos/ml-research-notebook</span></div>
+        <div class="hero-demo-cli-line">PyTorch MNIST Experiments</div>
+        <div class="hero-demo-cli-line hero-demo-cli-muted">Add mixed precision training, learning rate scheduling...</div>
+        <div class="hero-demo-cli-line" style="margin-top: 12px;"><span class="hero-demo-cli-prompt">-></span> <input type="text" placeholder="Add a follow-up" style="background: transparent; border: none; color: inherit; outline: none;"></div>
+        <div class="hero-demo-cli-line hero-demo-cli-muted" style="margin-top: 8px;">GPT-5.2 / for commands</div>
+      </div>
+    </div>
+  </div>
+</div>

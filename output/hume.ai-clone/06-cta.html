@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hume.ai - CTA & Newsletter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* CTA Section */
+        .hume-cta-section {
+            position: relative;
+            padding: 0 0 80px 0;
+            overflow: hidden;
+        }
+
+        .hume-cta-gradient-bg {
+            position: relative;
+            background: linear-gradient(180deg, #f5e6f5 0%, #e8d4f0 30%, #dcc8e8 60%, #f0e0f5 100%);
+            padding: 60px 24px 100px;
+            border-radius: 0 0 40px 40px;
+            margin: 0 152px;
+        }
+
+        .hume-cta-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hume-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hume-cta-button:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        /* Newsletter Section */
+        .hume-cta-newsletter {
+            background-color: #f5f5f5;
+            border-radius: 24px;
+            margin: 40px 152px 0;
+            padding: 56px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hume-cta-newsletter-text {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.45;
+            color: #1a1a1a;
+            max-width: 400px;
+            flex-shrink: 0;
+        }
+
+        .hume-cta-newsletter-form {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            max-width: 500px;
+            background-color: #ffffff;
+            border-radius: 50px;
+            padding: 6px 6px 6px 24px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .hume-cta-newsletter-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #1a1a1a;
+            background: transparent;
+            padding: 12px 0;
+        }
+
+        .hume-cta-newsletter-input::placeholder {
+            color: #888888;
+        }
+
+        .hume-cta-newsletter-submit {
+            background-color: #e8e8e8;
+            color: #1a1a1a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .hume-cta-newsletter-submit:hover {
+            background-color: #d8d8d8;
+        }
+
+        /* Footer */
+        .hume-cta-footer {
+            padding: 60px 152px 40px;
+            background-color: #ffffff;
+        }
+
+        .hume-cta-footer-main {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 60px;
+        }
+
+        .hume-cta-footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hume-cta-footer-logo-dots {
+            display: grid;
+            grid-template-columns: repeat(3, 8px);
+            grid-template-rows: repeat(2, 8px);
+            gap: 4px;
+        }
+
+        .hume-cta-footer-logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+        }
+
+        .hume-cta-footer-logo-dot:nth-child(1),
+        .hume-cta-footer-logo-dot:nth-child(3) {
+            visibility: hidden;
+        }
+
+        .hume-cta-footer-logo-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .hume-cta-footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .hume-cta-footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hume-cta-footer-column-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .hume-cta-footer-link {
+            font-size: 14px;
+            color: #555555;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .hume-cta-footer-link:hover {
+            color: #1a1a1a;
+        }
+
+        /* Footer Social & Actions */
+        .hume-cta-footer-social-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .hume-cta-footer-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hume-cta-footer-app-store {
+            display: flex;
+            align-items: center;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            gap: 8px;
+        }
+
+        .hume-cta-footer-app-store-icon {
+            width: 20px;
+            height: 24px;
+        }
+
+        .hume-cta-footer-app-store-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hume-cta-footer-app-store-label {
+            font-size: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .hume-cta-footer-app-store-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .hume-cta-footer-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid #e0e0e0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hume-cta-footer-social-btn:hover {
+            background-color: #f5f5f5;
+            border-color: #d0d0d0;
+        }
+
+        .hume-cta-footer-social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #1a1a1a;
+        }
+
+        .hume-cta-footer-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .hume-cta-footer-action-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hume-cta-footer-action-btn--primary {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+        }
+
+        .hume-cta-footer-action-btn--primary:hover {
+            background-color: #333333;
+        }
+
+        .hume-cta-footer-action-btn--secondary {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+        }
+
+        .hume-cta-footer-action-btn--secondary:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Footer Bottom */
+        .hume-cta-footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+        }
+
+        .hume-cta-footer-copyright {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #666666;
+            letter-spacing: 0.04em;
+        }
+
+        .hume-cta-footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hume-cta-footer-legal-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #666666;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .hume-cta-footer-legal-link:hover {
+            color: #1a1a1a;
+        }
+
+        .hume-cta-footer-legal-divider {
+            color: #cccccc;
+            font-size: 11px;
+        }
+
+        .hume-cta-footer-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #666666;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            background-color: #ffffff;
+        }
+
+        .hume-cta-footer-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00d26a;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hume-cta-gradient-bg,
+            .hume-cta-newsletter,
+            .hume-cta-footer {
+                margin-left: 40px;
+                margin-right: 40px;
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .hume-cta-footer-links {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hume-cta-newsletter {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px;
+            }
+
+            .hume-cta-newsletter-text {
+                max-width: none;
+            }
+
+            .hume-cta-newsletter-form {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .hume-cta-footer-main {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .hume-cta-footer-links {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .hume-cta-footer-social-row {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hume-cta-gradient-bg,
+            .hume-cta-newsletter,
+            .hume-cta-footer {
+                margin-left: 16px;
+                margin-right: 16px;
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .hume-cta-footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .hume-cta-footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CTA Section -->
+    <section class="hume-cta-section">
+        <div class="hume-cta-gradient-bg">
+            <div class="hume-cta-content">
+                <a href="#" class="hume-cta-button">GET STARTED FOR FREE TODAY</a>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="hume-cta-newsletter">
+            <p class="hume-cta-newsletter-text">Sign up for our newsletter to hear our latest scientific and product updates</p>
+            <form class="hume-cta-newsletter-form" action="#" method="POST">
+                <input type="email" class="hume-cta-newsletter-input" placeholder="Enter email for updates*" required>
+                <button type="submit" class="hume-cta-newsletter-submit">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="hume-cta-footer">
+        <div class="hume-cta-footer-main">
+            <div class="hume-cta-footer-logo">
+                <div class="hume-cta-footer-logo-dots">
+                    <span class="hume-cta-footer-logo-dot"></span>
+                    <span class="hume-cta-footer-logo-dot"></span>
+                    <span class="hume-cta-footer-logo-dot"></span>
+                    <span class="hume-cta-footer-logo-dot"></span>
+                    <span class="hume-cta-footer-logo-dot"></span>
+                    <span class="hume-cta-footer-logo-dot"></span>
+                </div>
+                <span class="hume-cta-footer-logo-text">hume</span>
+            </div>
+
+            <nav class="hume-cta-footer-links">
+                <div class="hume-cta-footer-column">
+                    <span class="hume-cta-footer-column-title">Products</span>
+                    <a href="#" class="hume-cta-footer-link">Octave - Text To Speech</a>
+                    <a href="#" class="hume-cta-footer-link">EVI - Speech To Speech</a>
+                    <a href="#" class="hume-cta-footer-link">Expression Measurement</a>
+                    <a href="#" class="hume-cta-footer-link">Conversational Voice</a>
+                    <a href="#" class="hume-cta-footer-link">TTS Creator Studio</a>
+                </div>
+                <div class="hume-cta-footer-column">
+                    <span class="hume-cta-footer-column-title">Explore</span>
+                    <a href="#" class="hume-cta-footer-link">Blog</a>
+                    <a href="#" class="hume-cta-footer-link">Research</a>
+                    <a href="#" class="hume-cta-footer-link">Publications</a>
+                    <a href="#" class="hume-cta-footer-link">Customers</a>
+                </div>
+                <div class="hume-cta-footer-column">
+                    <span class="hume-cta-footer-column-title">Company</span>
+                    <a href="#" class="hume-cta-footer-link">About</a>
+                    <a href="#" class="hume-cta-footer-link">Careers</a>
+                    <a href="#" class="hume-cta-footer-link">The Hume Initiative</a>
+                    <a href="#" class="hume-cta-footer-link">Contact</a>
+                </div>
+                <div class="hume-cta-footer-column">
+                    <span class="hume-cta-footer-column-title">Other</span>
+                    <a href="#" class="hume-cta-footer-link">API Documentation</a>
+                    <a href="#" class="hume-cta-footer-link">Expressive TTS Arena</a>
+                    <a href="#" class="hume-cta-footer-link">Pricing</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hume-cta-footer-social-row">
+            <div class="hume-cta-footer-social-icons">
+                <a href="#" class="hume-cta-footer-app-store">
+                    <svg class="hume-cta-footer-app-store-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="hume-cta-footer-app-store-text">
+                        <span class="hume-cta-footer-app-store-label">Download on the</span>
+                        <span class="hume-cta-footer-app-store-title">App Store</span>
+                    </div>
+                </a>
+                <button class="hume-cta-footer-social-btn" aria-label="Discord">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                </button>
+                <button class="hume-cta-footer-social-btn" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </button>
+                <button class="hume-cta-footer-social-btn" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="hume-cta-footer-actions">
+                <a href="#" class="hume-cta-footer-action-btn hume-cta-footer-action-btn--primary">SIGN UP</a>
+                <a href="#" class="hume-cta-footer-action-btn hume-cta-footer-action-btn--secondary">CONTACT US</a>
+            </div>
+        </div>
+
+        <div class="hume-cta-footer-bottom">
+            <span class="hume-cta-footer-copyright">&copy; 2025, HUME AI INC. ALL RIGHTS RESERVED.</span>
+            <div class="hume-cta-footer-legal">
+                <a href="#" class="hume-cta-footer-legal-link">TERMS OF USE</a>
+                <span class="hume-cta-footer-legal-divider">|</span>
+                <a href="#" class="hume-cta-footer-legal-link">PRIVACY POLICY</a>
+                <div class="hume-cta-footer-status">
+                    <span class="hume-cta-footer-status-dot"></span>
+                    <span>SYSTEM STATUS</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

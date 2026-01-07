@@ -1,0 +1,140 @@
+<style>
+.featured-product {
+  font-family: "NB International Pro", Inter, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.featured-product-image {
+  background: linear-gradient(135deg,
+    rgb(60, 40, 50) 0%,
+    rgb(80, 50, 60) 30%,
+    rgb(100, 60, 70) 60%,
+    rgb(70, 45, 55) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-product-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(180, 80, 100, 0.4) 0%,
+    rgba(60, 40, 50, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.featured-product-content {
+  background-color: rgb(165, 105, 110);
+  color: rgb(250, 246, 237);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.featured-product-title {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.featured-product-arrow {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.featured-product-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-product-bag {
+  width: 180px;
+  height: 240px;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.featured-product-label {
+  background: #b85a5a;
+  color: white;
+  padding: 6px 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.featured-product-name {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.featured-product-price {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.featured-product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.featured-product-description {
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.featured-product-btn {
+  background: transparent;
+  color: rgb(250, 246, 237);
+  padding: 14px 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgb(250, 246, 237);
+  cursor: pointer;
+  text-decoration: none;
+}
+</style>
+<div class="featured-product">
+  <div class="featured-product-image"></div>
+  <div class="featured-product-content">
+    <div class="featured-product-header">
+      <h2 class="featured-product-title">Fruity and sweet.</h2>
+      <span class="featured-product-arrow">&#9660;</span>
+    </div>
+
+    <div class="featured-product-center">
+      <div class="featured-product-bag">
+        <div class="featured-product-label">BEKELE NATURAL</div>
+      </div>
+      <div class="featured-product-name">Bekele Natural</div>
+      <div class="featured-product-price">122 DKK</div>
+    </div>
+
+    <div class="featured-product-footer">
+      <p class="featured-product-description">Notes of red strawberries, wine gums, melon, and bergamot.</p>
+      <a href="#" class="featured-product-btn">Buy</a>
+    </div>
+  </div>
+</div>

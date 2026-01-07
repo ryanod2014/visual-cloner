@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear - Footer Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0A0A0B;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* CTA Section */
+        .footer-cta {
+            padding: 80px 0 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-cta-heading {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .footer-cta-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .footer-btn-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .footer-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-btn-primary {
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            color: #0A0A0B;
+        }
+
+        .footer-btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer Main */
+        .footer-main {
+            padding: 64px 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        /* Footer Logo */
+        .footer-logo {
+            flex-shrink: 0;
+        }
+
+        .footer-logo-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-logo-svg {
+            width: 24px;
+            height: 24px;
+            color: #ffffff;
+        }
+
+        /* Footer Columns */
+        .footer-columns {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column {
+            min-width: 140px;
+        }
+
+        .footer-column-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.15s ease;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-main {
+                padding: 48px 40px 60px;
+            }
+
+            .footer-columns {
+                gap: 48px;
+            }
+
+            .footer-column {
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-cta {
+                padding: 60px 20px 80px;
+            }
+
+            .footer-cta-heading {
+                font-size: 24px;
+            }
+
+            .footer-main {
+                padding: 40px 24px 60px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-columns {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .footer-column {
+                min-width: calc(50% - 16px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CTA Section -->
+    <section class="footer-cta">
+        <h3 class="footer-cta-heading">Plan the present. Build the future.</h3>
+        <div class="footer-cta-buttons">
+            <a href="/contact/sales" class="footer-btn footer-btn-secondary">Contact sales</a>
+            <a href="/signup" class="footer-btn footer-btn-primary">Get started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+        <div class="footer-container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <a href="/" class="footer-logo-link" aria-label="Linear Logo">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.842l39.3342 39.3342c.7039.6889.1065 1.8189-.842 1.5765C21.0312 97.5765 2.7386 79.2839 1.22541 61.5228z" fill="currentColor"/>
+                        <path d="M.00189135 46.8891c-.01764375.2833.00610012.5765.0713422.8619l10.8520964 46.2195c.0577.2459.1462.4714.2611.6732l44.0965-44.0965c.201-.201.3121-.4643.3121-.7431V1.77553c0-.508516-.5688-.818756-.9806-.5305L2.14824 42.5929c-.24927.1746-.46614.4123-.63033.6998-.16419.2875-.26792.6017-.30248.9212-.02517.2326-.03727.47-.03527.7108-.00043.2199.00534.4394.02053.6476-.0053.1132-.00799.225-.00799.3357l.00002.1009c.00016.1027.00338.2036.00959.303z" fill="currentColor"/>
+                        <path d="M18.7718 99.3626c-1.9778-.6428-3.89731-1.4349-5.74401-2.3686l80.49641-80.4964c.9337 1.8467 1.7258 3.7662 2.3686 5.7439z" fill="currentColor"/>
+                        <path d="M26.2624 102.042c-1.6702-.3792-3.3072-.8627-4.9025-1.4444L96.5979 25.3598c.5817 1.5953 1.0651 3.2322 1.4443 4.9024z" fill="currentColor"/>
+                        <path d="M35.3698 103.462c-1.562-.1684-3.1004-.4205-4.61-.7556L99.7869 33.6797c.3352 1.5097.5873 3.0481.7557 4.6101z" fill="currentColor"/>
+                        <path d="M46.0818 103.629c-1.4697.0507-2.9489.0203-4.4313-.0893L103.539 41.6506c.11 1.4824.14 2.9616.0893 4.4313z" fill="currentColor"/>
+                        <path d="M58.2558 101.943c-1.3956.3166-2.8078.5549-4.2311.7144L101.228 55.4541c-.1595 1.4232-.3978 2.8355-.7144 4.2311z" fill="currentColor"/>
+                        <path d="M69.5348 97.7292c-1.232.5454-2.4892 1.0197-3.7666 1.4231L98.1523 66.7681c-.4034 1.2774-.8777 2.5347-1.4231 3.7666z" fill="currentColor"/>
+                        <path d="M79.0055 91.2354c-1.0035.7697-2.0404 1.4874-3.1064 2.1507l14.4848-14.4849c-.6633 1.0661-1.381 2.103-2.1508 3.1065z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Link Columns -->
+            <div class="footer-columns">
+                <!-- Features -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="/plan" class="footer-link">Plan</a></li>
+                        <li><a href="/build" class="footer-link">Build</a></li>
+                        <li><a href="/insights" class="footer-link">Insights</a></li>
+                        <li><a href="/customer-requests" class="footer-link">Customer Requests</a></li>
+                        <li><a href="/asks" class="footer-link">Linear Asks</a></li>
+                        <li><a href="/security" class="footer-link">Security</a></li>
+                        <li><a href="/mobile" class="footer-link">Mobile</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Product -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="/pricing" class="footer-link">Pricing</a></li>
+                        <li><a href="/method" class="footer-link">Method</a></li>
+                        <li><a href="/integrations" class="footer-link">Integrations</a></li>
+                        <li><a href="/changelog" class="footer-link">Changelog</a></li>
+                        <li><a href="/docs" class="footer-link">Documentation</a></li>
+                        <li><a href="/download" class="footer-link">Download</a></li>
+                        <li><a href="/switch" class="footer-link">Switch</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Company -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="/about" class="footer-link">About</a></li>
+                        <li><a href="/customers" class="footer-link">Customers</a></li>
+                        <li><a href="/careers" class="footer-link">Careers</a></li>
+                        <li><a href="/now" class="footer-link">Now</a></li>
+                        <li><a href="/readme" class="footer-link">README</a></li>
+                        <li><a href="/quality" class="footer-link">Quality</a></li>
+                        <li><a href="/brand" class="footer-link">Brand</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Resources -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="/developers" class="footer-link">Developers</a></li>
+                        <li><a href="https://linearstatus.com" class="footer-link">Status</a></li>
+                        <li><a href="/startups" class="footer-link">Startups</a></li>
+                        <li><a href="/security/vulnerability" class="footer-link">Report vulnerability</a></li>
+                        <li><a href="/dpa" class="footer-link">DPA</a></li>
+                        <li><a href="/privacy" class="footer-link">Privacy</a></li>
+                        <li><a href="/terms" class="footer-link">Terms</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Connect -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="/contact" class="footer-link">Contact us</a></li>
+                        <li><a href="https://linear.app/join-slack" class="footer-link">Community</a></li>
+                        <li><a href="https://x.com/linear" class="footer-link">X (Twitter)</a></li>
+                        <li><a href="https://github.com/linear" class="footer-link">GitHub</a></li>
+                        <li><a href="https://www.youtube.com/@linear" class="footer-link">YouTube</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

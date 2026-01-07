@@ -1,0 +1,91 @@
+<style>
+.logos {
+  padding: 48px 24px;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logos-tagline {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  margin: 0 0 32px;
+}
+
+.logos-marquee {
+  display: flex;
+  gap: 48px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logos-track {
+  display: flex;
+  gap: 48px;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logos-item {
+  flex-shrink: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #aaa;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.logos-item:hover {
+  opacity: 1;
+}
+</style>
+
+<section class="logos">
+  <p class="logos-tagline">Used by 5000+ teams who value storytelling</p>
+
+  <div class="logos-marquee">
+    <div class="logos-track">
+      <span class="logos-item">Accel</span>
+      <span class="logos-item">Berkeley</span>
+      <span class="logos-item">Atlassian</span>
+      <span class="logos-item">OpenAI</span>
+      <span class="logos-item">Deel</span>
+      <span class="logos-item">Binance</span>
+      <span class="logos-item">HubSpot</span>
+      <span class="logos-item">Figma</span>
+      <span class="logos-item">Stanford</span>
+      <span class="logos-item">Plaid</span>
+      <span class="logos-item">Accenture</span>
+      <span class="logos-item">TikTok</span>
+      <span class="logos-item">Descript</span>
+      <span class="logos-item">Vercel</span>
+      <span class="logos-item">Ramp</span>
+      <!-- Duplicated for seamless loop -->
+      <span class="logos-item">Accel</span>
+      <span class="logos-item">Berkeley</span>
+      <span class="logos-item">Atlassian</span>
+      <span class="logos-item">OpenAI</span>
+      <span class="logos-item">Deel</span>
+      <span class="logos-item">Binance</span>
+      <span class="logos-item">HubSpot</span>
+      <span class="logos-item">Figma</span>
+      <span class="logos-item">Stanford</span>
+      <span class="logos-item">Plaid</span>
+      <span class="logos-item">Accenture</span>
+      <span class="logos-item">TikTok</span>
+      <span class="logos-item">Descript</span>
+      <span class="logos-item">Vercel</span>
+      <span class="logos-item">Ramp</span>
+    </div>
+  </div>
+</section>

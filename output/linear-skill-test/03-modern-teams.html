@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Made for modern product teams - Linear Clone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;510;538;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: rgb(8, 9, 10);
+      font-family: "Inter", "SF Pro Display", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Section container */
+    .modern-section {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Grid layout */
+    .modern-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+
+    /* Text column - spans first 5 columns */
+    .modern-text-column {
+      grid-column: 1 / 6;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Main heading */
+    .modern-heading {
+      color: rgb(247, 248, 248);
+      font-size: 56px;
+      font-weight: 538;
+      line-height: 1.1;
+      letter-spacing: -1.82px;
+      margin: 0;
+    }
+
+    /* Description paragraph */
+    .modern-description {
+      color: rgb(138, 143, 152);
+      font-size: 15px;
+      font-weight: 510;
+      line-height: 24px;
+      letter-spacing: -0.165px;
+      margin-top: 8px;
+    }
+
+    /* Link styling */
+    .modern-link {
+      color: rgb(247, 248, 248);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 15px;
+      font-weight: 510;
+      transition: opacity 0.2s ease;
+    }
+
+    .modern-link:hover {
+      opacity: 0.8;
+    }
+
+    .modern-link-icon {
+      width: 16px;
+      height: 16px;
+      fill: rgb(247, 248, 248);
+    }
+
+    /* Buttons/Cards container */
+    .modern-cards-container {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    /* Card button styling */
+    .modern-card {
+      width: 336px;
+      height: 360px;
+      background-color: rgb(20, 21, 22);
+      border: none;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, background-color 0.2s ease;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-4px);
+      background-color: rgb(28, 29, 31);
+    }
+
+    /* Card image area */
+    .modern-card-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modern-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Card content area */
+    .modern-card-content {
+      padding: 0 24px 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 1;
+    }
+
+    /* Card text */
+    .modern-card-text {
+      color: rgb(247, 248, 248);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: left;
+      max-width: 232px;
+    }
+
+    /* Card icon button */
+    .modern-card-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .modern-card:hover .modern-card-icon {
+      border-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .modern-card-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: rgb(156, 157, 161);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .modern-cards-container {
+        flex-wrap: wrap;
+      }
+
+      .modern-card {
+        width: calc(50% - 4px);
+        min-width: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .modern-heading {
+        font-size: 40px;
+        letter-spacing: -1.2px;
+      }
+
+      .modern-text-column {
+        grid-column: 1 / -1;
+      }
+
+      .modern-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="modern-section">
+    <div class="modern-grid">
+      <!-- Text Column -->
+      <div class="modern-text-column">
+        <h2 class="modern-heading">Made for modern product teams</h2>
+        <p class="modern-description">
+          Linear is shaped by the practices and principles that distinguish world-class product teams from the rest: relentless focus, fast execution, and a commitment to the quality of craft.
+          <a href="/switch" class="modern-link">
+            Make the switch
+            <svg class="modern-link-icon" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z"></path>
+            </svg>
+          </a>
+        </p>
+      </div>
+
+      <!-- Cards Container -->
+      <div class="modern-cards-container">
+        <!-- Card 1: Purpose-built -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/93514696-592a-4764-aa98-b6101349a100/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Purpose-built for product development">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Purpose-built for product development</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 2: Designed to move fast -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/5a4ff140-41a2-42dd-0723-e14cccc3e300/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Designed to move fast">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Designed to move fast</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 3: Crafted to perfection -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/0068f657-fe3f-47e9-6819-0ba9e6533900/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Crafted to perfection">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Crafted to perfection</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

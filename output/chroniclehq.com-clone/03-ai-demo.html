@@ -1,0 +1,154 @@
+<style>
+.ai-demo {
+  padding: 120px 48px;
+  background: #fafafa;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.ai-demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.ai-demo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ai-demo-step {
+  max-width: 400px;
+}
+
+.ai-demo-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #201d1d;
+  margin: 0 0 16px;
+}
+
+.ai-demo-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ai-demo-visual {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 24px;
+  min-height: 500px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(102, 126, 234, 0.3);
+}
+
+.ai-demo-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.ai-demo-slides {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ai-demo-slide {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ai-demo-slide:nth-child(1) { animation-delay: 0.1s; }
+.ai-demo-slide:nth-child(2) { animation-delay: 0.3s; }
+.ai-demo-slide:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-demo-slide-bar {
+  height: 8px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.ai-demo-slide-bar.short { width: 60%; }
+.ai-demo-slide-bar.medium { width: 80%; }
+.ai-demo-slide-bar.long { width: 100%; }
+
+.ai-demo-slide-content {
+  display: flex;
+  gap: 12px;
+}
+
+.ai-demo-slide-box {
+  flex: 1;
+  height: 40px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+</style>
+
+<section class="ai-demo">
+  <div class="ai-demo-container">
+    <div class="ai-demo-text">
+      <div class="ai-demo-step">
+        <h3 class="ai-demo-headline">Start with your raw thoughts and ideas.</h3>
+        <p class="ai-demo-description">Choose a template, paste in a rough outline, or import existing content.</p>
+      </div>
+
+      <div class="ai-demo-step">
+        <h3 class="ai-demo-headline">Watch Chronicle bring your story to life.</h3>
+        <p class="ai-demo-description">Generate a well crafted presentation, with beautiful layouts that you can refine, share and present.</p>
+      </div>
+    </div>
+
+    <div class="ai-demo-visual">
+      <div class="ai-demo-slides">
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar long"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar medium"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+        <div class="ai-demo-slide">
+          <div class="ai-demo-slide-bar short"></div>
+          <div class="ai-demo-slide-content">
+            <div class="ai-demo-slide-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

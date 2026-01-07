@@ -1,0 +1,440 @@
+<style>
+.aave-governance-section {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a2e;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.aave-governance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background: #ffffff;
+}
+
+.aave-governance-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-decoration: none;
+}
+
+.aave-governance-logo-icon {
+  width: 32px;
+  height: 20px;
+}
+
+.aave-governance-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.aave-governance-nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.aave-governance-nav-link:hover {
+  color: #2ebac6;
+}
+
+.aave-governance-nav-link.aave-governance-has-indicator::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -8px;
+  width: 6px;
+  height: 6px;
+  background: #2ebac6;
+  border-radius: 50%;
+}
+
+.aave-governance-cta-btn {
+  background: #1a1a2e;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.aave-governance-cta-btn:hover {
+  background: #2d2d4a;
+  transform: translateY(-1px);
+}
+
+.aave-governance-main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  padding: 0 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aave-governance-illustration {
+  background: linear-gradient(135deg, #f8f9fa 0%, #f0f4f8 100%);
+  border-radius: 24px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.aave-governance-ghost-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aave-governance-ghost {
+  position: relative;
+  z-index: 2;
+}
+
+.aave-governance-ghost svg {
+  width: 180px;
+  height: 180px;
+}
+
+.aave-governance-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: #3ee8a5;
+}
+
+.aave-governance-circle-1 {
+  width: 60px;
+  height: 60px;
+  top: 10%;
+  left: 5%;
+  opacity: 0.9;
+}
+
+.aave-governance-circle-2 {
+  width: 30px;
+  height: 30px;
+  top: 5%;
+  left: 25%;
+  opacity: 0.7;
+}
+
+.aave-governance-circle-3 {
+  width: 45px;
+  height: 45px;
+  top: 15%;
+  left: 35%;
+  opacity: 0.8;
+}
+
+.aave-governance-circle-4 {
+  width: 12px;
+  height: 12px;
+  top: 20%;
+  left: 50%;
+  opacity: 0.9;
+}
+
+.aave-governance-circle-5 {
+  width: 55px;
+  height: 55px;
+  top: 5%;
+  right: 25%;
+  opacity: 0.85;
+}
+
+.aave-governance-circle-6 {
+  width: 40px;
+  height: 40px;
+  top: 10%;
+  right: 10%;
+  opacity: 0.75;
+}
+
+.aave-governance-circle-7 {
+  width: 8px;
+  height: 8px;
+  top: 25%;
+  right: 20%;
+  opacity: 0.9;
+}
+
+.aave-governance-circle-8 {
+  width: 50px;
+  height: 50px;
+  top: 40%;
+  left: 8%;
+  opacity: 0.6;
+}
+
+.aave-governance-circle-9 {
+  width: 18px;
+  height: 18px;
+  top: 55%;
+  left: 20%;
+  opacity: 0.8;
+}
+
+.aave-governance-circle-10 {
+  width: 14px;
+  height: 14px;
+  top: 35%;
+  right: 30%;
+  opacity: 0.85;
+}
+
+.aave-governance-circle-11 {
+  width: 10px;
+  height: 10px;
+  top: 45%;
+  right: 15%;
+  opacity: 0.7;
+}
+
+.aave-governance-circle-12 {
+  width: 60px;
+  height: 60px;
+  bottom: 15%;
+  right: 18%;
+  opacity: 0.75;
+}
+
+.aave-governance-circle-13 {
+  width: 45px;
+  height: 45px;
+  bottom: 5%;
+  left: 30%;
+  opacity: 0.65;
+}
+
+.aave-governance-circle-14 {
+  width: 65px;
+  height: 65px;
+  bottom: 25%;
+  left: 2%;
+  opacity: 0.5;
+}
+
+.aave-governance-circle-15 {
+  width: 20px;
+  height: 20px;
+  bottom: 40%;
+  left: 25%;
+  opacity: 0.8;
+}
+
+.aave-governance-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aave-governance-stat-card {
+  background: #ffffff;
+  border: 1px solid #e8e8ee;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.aave-governance-stat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.aave-governance-stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b6b80;
+}
+
+.aave-governance-stat-period {
+  font-size: 14px;
+  color: #9999aa;
+}
+
+.aave-governance-stat-period::before {
+  content: '\00B7';
+  margin-right: 8px;
+}
+
+.aave-governance-gauge-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.aave-governance-gauge {
+  width: 200px;
+  height: 100px;
+  position: relative;
+}
+
+.aave-governance-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.aave-governance-chart-container {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 20px;
+}
+
+.aave-governance-chart {
+  width: 100%;
+  height: 60px;
+}
+
+.aave-governance-everywhere {
+  padding: 80px 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aave-governance-everywhere-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.aave-governance-everywhere-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: #6b6b80;
+  margin: 0;
+}
+</style>
+
+<section class="aave-governance-section">
+  <!-- Header -->
+  <header class="aave-governance-header">
+    <a href="#" class="aave-governance-logo">
+      <svg class="aave-governance-logo-icon" viewBox="0 0 32 20" fill="none">
+        <path d="M10.5 2C6.5 2 3 5.5 3 10s3.5 8 7.5 8c2.5 0 4.7-1.3 6-3.2 1.3 1.9 3.5 3.2 6 3.2 4 0 7.5-3.5 7.5-8S26.5 2 22.5 2c-2.5 0-4.7 1.3-6 3.2C15.2 3.3 13 2 10.5 2z" fill="#1a1a2e"/>
+      </svg>
+      aave
+    </a>
+    <nav class="aave-governance-nav">
+      <a href="#" class="aave-governance-nav-link aave-governance-has-indicator">Products</a>
+      <a href="#" class="aave-governance-nav-link">Resources</a>
+      <a href="#" class="aave-governance-nav-link">Developers</a>
+      <a href="#" class="aave-governance-cta-btn">Aave for Web</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="aave-governance-main">
+    <!-- Illustration Area -->
+    <div class="aave-governance-illustration">
+      <div class="aave-governance-ghost-container">
+        <!-- Decorative circles -->
+        <div class="aave-governance-circle aave-governance-circle-1"></div>
+        <div class="aave-governance-circle aave-governance-circle-2"></div>
+        <div class="aave-governance-circle aave-governance-circle-3"></div>
+        <div class="aave-governance-circle aave-governance-circle-4"></div>
+        <div class="aave-governance-circle aave-governance-circle-5"></div>
+        <div class="aave-governance-circle aave-governance-circle-6"></div>
+        <div class="aave-governance-circle aave-governance-circle-7"></div>
+        <div class="aave-governance-circle aave-governance-circle-8"></div>
+        <div class="aave-governance-circle aave-governance-circle-9"></div>
+        <div class="aave-governance-circle aave-governance-circle-10"></div>
+        <div class="aave-governance-circle aave-governance-circle-11"></div>
+        <div class="aave-governance-circle aave-governance-circle-12"></div>
+        <div class="aave-governance-circle aave-governance-circle-13"></div>
+        <div class="aave-governance-circle aave-governance-circle-14"></div>
+        <div class="aave-governance-circle aave-governance-circle-15"></div>
+
+        <!-- Ghost mascot -->
+        <div class="aave-governance-ghost">
+          <svg viewBox="0 0 180 180" fill="none">
+            <!-- Outer circle with gap -->
+            <circle cx="90" cy="90" r="75" stroke="#3ee8a5" stroke-width="8" stroke-dasharray="400 70" stroke-linecap="round" fill="none"/>
+            <!-- Arrow indicator -->
+            <path d="M155 55 L165 45 L160 60 Z" fill="#3ee8a5"/>
+            <!-- Ghost body -->
+            <ellipse cx="90" cy="95" rx="45" ry="50" fill="#3ee8a5"/>
+            <!-- Ghost bottom waves -->
+            <path d="M45 110 Q55 130 65 110 Q75 130 85 110 Q95 130 105 110 Q115 130 125 110 Q135 130 135 110 L135 95 Q135 140 90 140 Q45 140 45 95 Z" fill="#3ee8a5"/>
+            <!-- Eyes -->
+            <circle cx="75" cy="85" r="8" fill="#ffffff"/>
+            <circle cx="105" cy="85" r="8" fill="#ffffff"/>
+            <circle cx="77" cy="87" r="3" fill="#1a1a2e"/>
+            <circle cx="107" cy="87" r="3" fill="#1a1a2e"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="aave-governance-stats">
+      <!-- Collateralisation Card -->
+      <div class="aave-governance-stat-card">
+        <div class="aave-governance-stat-header">
+          <span class="aave-governance-stat-label">Collateralisation</span>
+          <span class="aave-governance-stat-period">30 Day Avg</span>
+        </div>
+        <div class="aave-governance-gauge-container">
+          <svg class="aave-governance-gauge" viewBox="0 0 200 100">
+            <!-- Background arc -->
+            <path d="M20 90 A70 70 0 0 1 180 90" stroke="#e8e8ee" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <!-- Green progress arc (showing ~75%) -->
+            <path d="M20 90 A70 70 0 0 1 155 40" stroke="#3ee8a5" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <!-- End indicator -->
+            <circle cx="155" cy="40" r="8" fill="#ffffff" stroke="#3ee8a5" stroke-width="4"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- GHO Minted Card -->
+      <div class="aave-governance-stat-card">
+        <div class="aave-governance-stat-header">
+          <span class="aave-governance-stat-label">GHO Minted</span>
+          <span class="aave-governance-stat-period">1 Yr</span>
+        </div>
+        <div class="aave-governance-stat-value">+339,753,363</div>
+        <div class="aave-governance-chart-container">
+          <svg class="aave-governance-chart" viewBox="0 0 280 60" preserveAspectRatio="none">
+            <!-- Line chart showing growth -->
+            <path d="M0 55 Q30 54 60 50 Q90 45 120 42 Q150 38 180 30 Q210 20 240 12 Q260 6 280 2"
+                  stroke="#3ee8a5" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- End dot -->
+            <circle cx="275" cy="4" r="5" fill="#3ee8a5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aave Everywhere Section -->
+  <div class="aave-governance-everywhere">
+    <h2 class="aave-governance-everywhere-title">Aave everywhere.</h2>
+    <p class="aave-governance-everywhere-subtitle">Join Aave's growing constellation of builders.</p>
+  </div>
+</section>

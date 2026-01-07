@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Plan Section Clone</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    .plan-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0b;
+      color: #ffffff;
+      padding: 120px 0;
+      min-height: 100vh;
+    }
+
+    .plan-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header section */
+    .plan-header {
+      margin-bottom: 80px;
+    }
+
+    .plan-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #22c55e;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .plan-label-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+
+    .plan-label-arrow {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    .plan-title {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .plan-description {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #a1a1aa;
+      max-width: 600px;
+    }
+
+    /* Roadmap visualization */
+    .plan-roadmap {
+      position: relative;
+      background: linear-gradient(135deg, #111113 0%, #0d0d0e 100%);
+      border-radius: 16px;
+      padding: 60px 40px;
+      margin-bottom: 60px;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .plan-roadmap-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .plan-roadmap-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Timeline dates */
+    .plan-timeline-dates {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    .plan-date {
+      font-size: 14px;
+      color: #52525b;
+      font-weight: 500;
+    }
+
+    .plan-date-highlight {
+      color: #a1a1aa;
+      background: rgba(255,255,255,0.05);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    /* Project bars */
+    .plan-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transform: perspective(1000px) rotateX(15deg) rotateY(-5deg);
+      transform-origin: center center;
+    }
+
+    .plan-project-bar {
+      background: linear-gradient(90deg, rgba(30,30,35,0.9) 0%, rgba(40,40,45,0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .plan-project-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+      border-radius: 8px;
+    }
+
+    .plan-project-bar:nth-child(1) {
+      width: 70%;
+      margin-left: 5%;
+    }
+
+    .plan-project-bar:nth-child(2) {
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    .plan-project-bar:nth-child(3) {
+      width: 60%;
+      margin-left: 35%;
+    }
+
+    .plan-project-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plan-project-icon-green {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    }
+
+    .plan-project-icon-gray {
+      background: linear-gradient(135deg, #52525b 0%, #3f3f46 100%);
+    }
+
+    .plan-project-icon-purple {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .plan-project-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #e4e4e7;
+      font-style: italic;
+    }
+
+    .plan-project-phase {
+      font-size: 13px;
+      color: #71717a;
+      margin-left: auto;
+    }
+
+    /* Content grid */
+    .plan-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    /* Project Overview Card */
+    .plan-card {
+      background: linear-gradient(135deg, #18181b 0%, #131315 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    .plan-card-header {
+      margin-bottom: 24px;
+    }
+
+    .plan-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .plan-card-description {
+      font-size: 15px;
+      color: #a1a1aa;
+      line-height: 1.5;
+    }
+
+    /* Project Overview Mockup */
+    .plan-project-overview {
+      background: #111113;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .plan-overview-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 16px;
+      font-weight: 600;
+      color: #fafafa;
+    }
+
+    .plan-overview-content {
+      padding: 20px;
+    }
+
+    .plan-property-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .plan-property-row:last-child {
+      border-bottom: none;
+    }
+
+    .plan-property-label {
+      width: 100px;
+      font-size: 13px;
+      color: #71717a;
+      flex-shrink: 0;
+    }
+
+    .plan-property-value {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .plan-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      font-size: 12px;
+      color: #d4d4d8;
+    }
+
+    .plan-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .plan-tag-dot-yellow {
+      background: #eab308;
+    }
+
+    .plan-tag-dot-purple {
+      background: #8b5cf6;
+    }
+
+    .plan-avatar-group {
+      display: flex;
+    }
+
+    .plan-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #111113;
+      margin-left: -8px;
+    }
+
+    .plan-avatar:first-child {
+      margin-left: 0;
+    }
+
+    .plan-avatar-1 { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .plan-avatar-2 { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+    .plan-avatar-3 { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+    .plan-avatar-4 { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+
+    .plan-resource-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+    }
+
+    .plan-resource-icon {
+      width: 16px;
+      height: 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .plan-resource-name {
+      font-size: 13px;
+      color: #a1a1aa;
+    }
+
+    .plan-milestone-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+    }
+
+    .plan-milestone-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid;
+      position: relative;
+    }
+
+    .plan-milestone-complete {
+      border-color: #22c55e;
+      background: #22c55e;
+    }
+
+    .plan-milestone-partial {
+      border-color: #3b82f6;
+      background: conic-gradient(#3b82f6 0deg 90deg, transparent 90deg);
+    }
+
+    .plan-milestone-text {
+      font-size: 13px;
+      color: #a1a1aa;
+    }
+
+    .plan-milestone-percent {
+      color: #71717a;
+      font-size: 12px;
+    }
+
+    /* Project Updates Card */
+    .plan-updates-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plan-update-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .plan-update-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .plan-update-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .plan-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .plan-status-off-track .plan-status-dot { background: #ef4444; }
+    .plan-status-off-track { color: #ef4444; }
+
+    .plan-status-at-risk .plan-status-dot { background: #f59e0b; }
+    .plan-status-at-risk { color: #f59e0b; }
+
+    .plan-status-on-track .plan-status-dot { background: #22c55e; }
+    .plan-status-on-track { color: #22c55e; }
+
+    .plan-update-date {
+      font-size: 12px;
+      color: #52525b;
+    }
+
+    .plan-update-text {
+      font-size: 13px;
+      color: #a1a1aa;
+      line-height: 1.4;
+    }
+
+    /* Document Editor Mockup */
+    .plan-document-card {
+      grid-column: span 2;
+    }
+
+    .plan-document-mockup {
+      background: #111113;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .plan-document-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .plan-tab {
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #71717a;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .plan-tab-active {
+      background: rgba(255,255,255,0.08);
+      color: #fafafa;
+    }
+
+    .plan-document-content {
+      padding: 32px;
+    }
+
+    .plan-document-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-cursor {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      background: #3b82f6;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: white;
+      margin-left: 4px;
+    }
+
+    .plan-cursor-green {
+      background: #22c55e;
+    }
+
+    .plan-document-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+
+    .plan-document-body strong {
+      color: #fafafa;
+      font-weight: 600;
+    }
+
+    /* Features row */
+    .plan-features-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .plan-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+
+    .plan-feature-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(124,58,237,0.1) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .plan-feature-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #8b5cf6;
+    }
+
+    .plan-feature-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fafafa;
+      margin-bottom: 4px;
+    }
+
+    .plan-feature-content p {
+      font-size: 13px;
+      color: #71717a;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <section class="plan-section">
+    <div class="plan-container">
+      <!-- Header -->
+      <div class="plan-header">
+        <div class="plan-label">
+          <span class="plan-label-dot"></span>
+          <span>Project and long-term planning</span>
+          <svg class="plan-label-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </div>
+        <h2 class="plan-title">Set the product direction</h2>
+        <p class="plan-description">Align your team around a unified product timeline. Plan, manage, and track all product initiatives with Linear's visual planning tools.</p>
+      </div>
+
+      <!-- Roadmap Visualization -->
+      <div class="plan-roadmap">
+        <div class="plan-roadmap-grid"></div>
+        <div class="plan-roadmap-content">
+          <div class="plan-timeline-dates">
+            <span class="plan-date">30</span>
+            <span class="plan-date">AUG 3</span>
+            <span class="plan-date">10</span>
+            <span class="plan-date">17</span>
+            <span class="plan-date plan-date-highlight">AUG 22</span>
+            <span class="plan-date">24</span>
+            <span class="plan-date">SEP</span>
+          </div>
+          <div class="plan-projects">
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-green">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">Realtime inference</span>
+              <span class="plan-project-phase">Beta</span>
+            </div>
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-gray">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">Prototype</span>
+            </div>
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-purple">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2v20M2 12h20"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">RLHF fine tuning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="plan-content-grid">
+        <!-- Project Overview Card -->
+        <div class="plan-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Manage projects end-to-end</h3>
+            <p class="plan-card-description">Consolidate specs, milestones, tasks, and other documentation in one centralized location.</p>
+          </div>
+          <div class="plan-project-overview">
+            <div class="plan-overview-header">Project Overview</div>
+            <div class="plan-overview-content">
+              <div class="plan-property-row">
+                <span class="plan-property-label">Properties</span>
+                <div class="plan-property-value">
+                  <span class="plan-tag">
+                    <span class="plan-tag-dot plan-tag-dot-yellow"></span>
+                    In Progress
+                  </span>
+                  <span class="plan-tag">
+                    <span class="plan-tag-dot plan-tag-dot-purple"></span>
+                    ENG
+                  </span>
+                  <div class="plan-avatar-group">
+                    <div class="plan-avatar plan-avatar-1"></div>
+                    <div class="plan-avatar plan-avatar-2"></div>
+                    <div class="plan-avatar plan-avatar-3"></div>
+                    <div class="plan-avatar plan-avatar-4"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-property-row">
+                <span class="plan-property-label">Resources</span>
+                <div class="plan-property-value" style="flex-direction: column; gap: 4px;">
+                  <div class="plan-resource-item">
+                    <div class="plan-resource-icon"></div>
+                    <span class="plan-resource-name">Exploration</span>
+                  </div>
+                  <div class="plan-resource-item">
+                    <div class="plan-resource-icon"></div>
+                    <span class="plan-resource-name">User interviews</span>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-property-row">
+                <span class="plan-property-label">Milestones</span>
+                <div class="plan-property-value" style="flex-direction: column; gap: 4px;">
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-complete"></div>
+                    <span class="plan-milestone-text">Design Review</span>
+                    <span class="plan-milestone-percent">100%</span>
+                  </div>
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-complete"></div>
+                    <span class="plan-milestone-text">Internal Alpha</span>
+                    <span class="plan-milestone-percent">100% of 10</span>
+                  </div>
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-partial"></div>
+                    <span class="plan-milestone-text">GA</span>
+                    <span class="plan-milestone-percent">25% of 53</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Updates Card -->
+        <div class="plan-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Project updates</h3>
+            <p class="plan-card-description">Communicate progress and project health with built-in project updates.</p>
+          </div>
+          <div class="plan-updates-list">
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-off-track">
+                  <span class="plan-status-dot"></span>
+                  Off track
+                </span>
+                <span class="plan-update-date">Oct 27</span>
+              </div>
+              <p class="plan-update-text">Unexpected roadblocks forced us to take a different...</p>
+            </div>
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-at-risk">
+                  <span class="plan-status-dot"></span>
+                  At risk
+                </span>
+                <span class="plan-update-date">Oct 27</span>
+              </div>
+              <p class="plan-update-text">Progress slowed down last week because...</p>
+            </div>
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-on-track">
+                  <span class="plan-status-dot"></span>
+                  On track
+                </span>
+                <span class="plan-update-date">Sep 8</span>
+              </div>
+              <p class="plan-update-text">We are ready to launch next Thursday</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Editor Card -->
+        <div class="plan-card plan-document-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Ideate and specify what to build next</h3>
+          </div>
+          <div class="plan-document-tabs">
+            <span class="plan-tab plan-tab-active">Collaborative documents</span>
+            <span class="plan-tab">Inline comments</span>
+            <span class="plan-tab">Text-to-issue commands</span>
+          </div>
+          <div class="plan-document-mockup">
+            <div class="plan-document-content">
+              <h3 class="plan-document-title">
+                Collaborate on
+                <span class="plan-cursor">zoe</span>
+                ideas
+              </h3>
+              <p class="plan-document-body">
+                Write down product ideas and work together on feature specs in realtime, multiplayer project
+                <span class="plan-cursor plan-cursor-green">quinn</span>
+                documents. Add <strong>style</strong> and <strong>##structure</strong> with rich-text formatting options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Row -->
+      <div class="plan-features-row">
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Initiatives</h4>
+            <p>Coordinate strategic product efforts.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Cross-team projects</h4>
+            <p>Collaborate across teams and departments.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Milestones</h4>
+            <p>Break projects down into concrete phases.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Progress insights</h4>
+            <p>Track scope, velocity, and progress over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

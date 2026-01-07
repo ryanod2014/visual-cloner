@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hume - For Creators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .hume-creators-section {
+            padding: 80px 0 100px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
+        .hume-creators-label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: #888888;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hume-creators-headline {
+            font-size: 42px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #1a1a1a;
+            max-width: 520px;
+            margin-bottom: 48px;
+            letter-spacing: -0.02em;
+        }
+
+        .hume-creators-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .hume-creators-sidebar {
+            flex: 0 0 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .hume-creators-tab {
+            padding: 24px 28px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            position: relative;
+        }
+
+        .hume-creators-tab:hover {
+            background-color: #f5f5f5;
+        }
+
+        .hume-creators-tab.hume-creators-tab-active {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .hume-creators-tab.hume-creators-tab-active:hover {
+            background-color: #2a2a2a;
+        }
+
+        .hume-creators-tab-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .hume-creators-tab-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: inherit;
+        }
+
+        .hume-creators-tab.hume-creators-tab-active .hume-creators-tab-title {
+            color: #ffffff;
+        }
+
+        .hume-creators-tab:not(.hume-creators-tab-active) .hume-creators-tab-title {
+            color: #666666;
+        }
+
+        .hume-creators-tab-arrow {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hume-creators-tab-arrow svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hume-creators-tab.hume-creators-tab-active .hume-creators-tab-arrow {
+            color: #ffffff;
+        }
+
+        .hume-creators-tab:not(.hume-creators-tab-active) .hume-creators-tab-arrow {
+            display: none;
+        }
+
+        .hume-creators-tab-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #999999;
+        }
+
+        .hume-creators-tab.hume-creators-tab-active .hume-creators-tab-description {
+            color: #b0b0b0;
+        }
+
+        .hume-creators-audio-display {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hume-creators-audio-cards {
+            position: relative;
+            width: 100%;
+            height: 380px;
+        }
+
+        .hume-creators-audio-card {
+            position: absolute;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .hume-creators-card-back-left {
+            width: 180px;
+            height: 200px;
+            background-color: #f8f4f0;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .hume-creators-card-back-right {
+            width: 180px;
+            height: 200px;
+            background-color: #fdf0e8;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .hume-creators-card-main {
+            width: 380px;
+            min-height: 320px;
+            background: linear-gradient(135deg, #c9b8f0 0%, #d4c4f5 50%, #e0d4fa 100%);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hume-creators-card-text {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.45;
+            color: #1a1a1a;
+            flex: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .hume-creators-card-play {
+            width: 56px;
+            height: 56px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            align-self: flex-start;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hume-creators-card-play:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hume-creators-card-play svg {
+            width: 20px;
+            height: 20px;
+            fill: #1a1a1a;
+            margin-left: 3px;
+        }
+
+        .hume-creators-back-card-text {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #666666;
+        }
+
+        .hume-creators-back-card-play {
+            width: 44px;
+            height: 44px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .hume-creators-back-card-play:hover {
+            transform: scale(1.05);
+        }
+
+        .hume-creators-back-card-play svg {
+            width: 14px;
+            height: 14px;
+            fill: #888888;
+            margin-left: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .hume-creators-content {
+                flex-direction: column;
+            }
+
+            .hume-creators-sidebar {
+                flex: none;
+                width: 100%;
+            }
+
+            .hume-creators-audio-display {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hume-creators-section {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .hume-creators-headline {
+                font-size: 32px;
+            }
+
+            .hume-creators-audio-cards {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hume-creators-section">
+        <div class="hume-creators-label">FOR CREATORS</div>
+        <h2 class="hume-creators-headline">Generate life-like AI audio for your content creation needs</h2>
+
+        <div class="hume-creators-content">
+            <div class="hume-creators-sidebar">
+                <div class="hume-creators-tab hume-creators-tab-active">
+                    <div class="hume-creators-tab-header">
+                        <span class="hume-creators-tab-title">Audiobooks</span>
+                        <span class="hume-creators-tab-arrow">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <p class="hume-creators-tab-description">Create high-quality multi-character audiobooks. Upload your PDF, select your characters, direct delivery and publish.</p>
+                </div>
+
+                <div class="hume-creators-tab">
+                    <div class="hume-creators-tab-header">
+                        <span class="hume-creators-tab-title">Video voiceovers</span>
+                        <span class="hume-creators-tab-arrow">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <p class="hume-creators-tab-description">Choose the perfect voice for your video or clone your own voice. Then generate high-quality voiceovers for ads, shorts, or feature-length films.</p>
+                </div>
+
+                <div class="hume-creators-tab">
+                    <div class="hume-creators-tab-header">
+                        <span class="hume-creators-tab-title">Podcasts</span>
+                        <span class="hume-creators-tab-arrow">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <p class="hume-creators-tab-description">Create multi-speaker podcasts that sound like real, studio quality dialogue. Select your voices, generate audio, and download.</p>
+                </div>
+            </div>
+
+            <div class="hume-creators-audio-display">
+                <div class="hume-creators-audio-cards">
+                    <!-- Back left card -->
+                    <div class="hume-creators-audio-card hume-creators-card-back-left">
+                        <p class="hume-creators-back-card-text">So he, uh, he's this crazy rat hole fixer. It's 1954. He's sitting on the back and yells at the t...</p>
+                        <div class="hume-creators-back-card-play">
+                            <svg viewBox="0 0 24 24">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Main center card -->
+                    <div class="hume-creators-audio-card hume-creators-card-main">
+                        <p class="hume-creators-card-text">'Twas the night before Christmas, when all through the house. Not a creature was stirring, not even a mouse. The stockings were hung by the chimney with care. In hopes that St Nicholas soon would be there.</p>
+                        <div class="hume-creators-card-play">
+                            <svg viewBox="0 0 24 24">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Back right card -->
+                    <div class="hume-creators-audio-card hume-creators-card-back-right">
+                        <p class="hume-creators-back-card-text">...ally Like, day?</p>
+                        <div class="hume-creators-back-card-play">
+                            <svg viewBox="0 0 24 24">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

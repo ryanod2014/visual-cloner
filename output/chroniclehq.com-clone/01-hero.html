@@ -1,0 +1,170 @@
+<style>
+.hero {
+  min-height: 100vh;
+  padding: 120px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.hero-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: #201d1d;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subheadline {
+  font-size: 20px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn-secondary {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  background: transparent;
+  border: 2px solid #e5e5e5;
+  border-radius: 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  border-color: #000;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.hero-showcase {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+.hero-cards {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.hero-card {
+  flex: 0 0 320px;
+  height: 200px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s;
+}
+
+.hero-card:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); }
+.hero-card:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.hero-card:nth-child(3) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.hero-card:nth-child(4) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.hero-card:nth-child(5) { background: linear-gradient(135deg, #fa709a, #fee140); }
+.hero-card:nth-child(6) { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+
+.hero-card:hover {
+  transform: translateY(-8px);
+}
+
+.hero-categories {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.hero-category {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-category:hover,
+.hero-category.active {
+  background: #000;
+  color: #fff;
+}
+</style>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-headline">Every great presentation starts with a Chronicle</h1>
+    <p class="hero-subheadline">Create stunning presentations. No design skills required.</p>
+    <div class="hero-buttons">
+      <a href="#" class="hero-btn-primary">Start for free</a>
+      <a href="#" class="hero-btn-secondary">Watch video</a>
+    </div>
+  </div>
+
+  <div class="hero-showcase">
+    <div class="hero-cards">
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+      <div class="hero-card"></div>
+    </div>
+
+    <div class="hero-categories">
+      <button class="hero-category active">Product showcase</button>
+      <button class="hero-category">Sales proposal</button>
+      <button class="hero-category">Pitch deck</button>
+      <button class="hero-category">Portfolio</button>
+      <button class="hero-category">Business update</button>
+      <button class="hero-category">Project plan</button>
+      <button class="hero-category">Research report</button>
+      <button class="hero-category">Marketing campaign</button>
+    </div>
+  </div>
+</section>

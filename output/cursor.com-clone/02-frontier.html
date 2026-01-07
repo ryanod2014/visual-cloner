@@ -1,0 +1,225 @@
+<style>
+.frontier {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.frontier-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.frontier-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.frontier-card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.frontier-card-header {
+  margin-bottom: 16px;
+}
+
+.frontier-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.frontier-card-description {
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.frontier-card-link {
+  color: #ea580c;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.frontier-card-link:hover {
+  text-decoration: underline;
+}
+
+.frontier-card-visual {
+  background: rgb(220, 215, 205);
+  border-radius: 12px;
+  height: 280px;
+  margin-top: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.frontier-model-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  min-width: 200px;
+}
+
+.frontier-model-item {
+  padding: 10px 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.frontier-model-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.frontier-model-item-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.frontier-model-item-badge {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.frontier-model-item-check {
+  color: rgb(38, 37, 30);
+}
+
+.frontier-search-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 280px;
+}
+
+.frontier-search-input {
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  color: rgb(38, 37, 30);
+}
+
+.frontier-search-label {
+  font-size: 12px;
+  opacity: 0.5;
+  margin-top: 8px;
+}
+
+.frontier-enterprise-visual {
+  background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a2e%22 width=%22400%22 height=%22300%22/><text x=%2220%22 y=%2240%22 fill=%22%2322c55e%22 font-family=%22monospace%22 font-size=%2210%22>const enterprise = true;</text><text x=%2220%22 y=%2260%22 fill=%22%2260a5fa%22 font-family=%22monospace%22 font-size=%2210%22>import { security } from</text><text x=%2220%22 y=%2280%22 fill=%22%23f97316%22 font-family=%22monospace%22 font-size=%2210%22>function deploy() {</text></svg>') center/cover;
+  position: relative;
+}
+
+.frontier-enterprise-blur {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.6) 0%, rgba(239, 68, 68, 0.4) 100%);
+  filter: blur(40px);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .frontier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="frontier">
+  <div class="frontier-container">
+    <h2 class="frontier-title">Stay on the frontier</h2>
+
+    <div class="frontier-grid">
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Access the best models</h3>
+          <p class="frontier-card-description">Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, and xAI.</p>
+          <a href="#" class="frontier-card-link">Explore models <span>&#x2197;</span></a>
+        </div>
+        <div class="frontier-card-visual">
+          <div class="frontier-model-menu">
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Auto <span class="frontier-model-item-badge">Suggested</span></span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Composer 1</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">GPT-5 <span class="frontier-model-item-badge">High Fast</span></span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Claude Sonnet 4.5</span>
+              <span class="frontier-model-item-check">&#x2713;</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Claude Opus 4.5</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Gemini 3 Pro</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Grok Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Complete codebase understanding</h3>
+          <p class="frontier-card-description">Cursor learns how your codebase works, no matter the scale or complexity.</p>
+          <a href="#" class="frontier-card-link">Learn about codebase indexing <span>&#x2197;</span></a>
+        </div>
+        <div class="frontier-card-visual">
+          <div class="frontier-search-box">
+            <input type="text" class="frontier-search-input" value="Where are these menu label colors defined?" readonly>
+            <div class="frontier-search-label">Grepping...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Develop enduring software</h3>
+          <p class="frontier-card-description">Trusted by over half of the Fortune 500 to accelerate development, securely and at scale.</p>
+          <a href="#" class="frontier-card-link">Explore enterprise <span>&#x2192;</span></a>
+        </div>
+        <div class="frontier-card-visual frontier-enterprise-visual">
+          <div class="frontier-enterprise-blur"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

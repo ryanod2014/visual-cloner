@@ -1,0 +1,147 @@
+<style>
+.selected-coffees {
+  font-family: "NB International Pro", Inter, sans-serif;
+  color: rgb(76, 67, 65);
+  background-color: rgb(250, 246, 237);
+  padding: 80px 40px;
+}
+
+.selected-coffees-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.selected-coffees-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.selected-coffees-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-coffees-card-image {
+  aspect-ratio: 1;
+  background-color: rgb(240, 236, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.selected-coffees-card-bag {
+  width: 60%;
+  height: 70%;
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 50%, #e8e4dc 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20%;
+}
+
+.selected-coffees-card-bag.pink {
+  background: linear-gradient(180deg, #d4a5a5 0%, #c08080 100%);
+}
+
+.selected-coffees-card-bag.green {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4d0c8 100%);
+}
+
+.selected-coffees-card-label {
+  background: white;
+  padding: 4px 8px;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selected-coffees-card-label.pink-label {
+  background: #b85a5a;
+  color: white;
+}
+
+.selected-coffees-card-label.green-label {
+  background: #5a7a5a;
+  color: white;
+}
+
+.selected-coffees-card-name {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.selected-coffees-card-price {
+  font-size: 12px;
+  color: rgb(120, 110, 105);
+}
+
+.selected-coffees-viewall {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.selected-coffees-viewall a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(76, 67, 65);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(76, 67, 65);
+  padding-bottom: 2px;
+}
+</style>
+<div class="selected-coffees">
+  <h2 class="selected-coffees-title">Selected coffees</h2>
+
+  <div class="selected-coffees-grid">
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag pink">
+          <div class="selected-coffees-card-label pink-label">BEKELE</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Bekele Anaerobic</div>
+      <div class="selected-coffees-card-price">140 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label green-label">BEKELE NATURAL</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Bekele Natural</div>
+      <div class="selected-coffees-card-price">122 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label green-label">VISTA HERMOSA</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Vista Hermosa</div>
+      <div class="selected-coffees-card-price">122 DKK</div>
+    </div>
+
+    <div class="selected-coffees-card">
+      <div class="selected-coffees-card-image">
+        <div class="selected-coffees-card-bag">
+          <div class="selected-coffees-card-label pink-label">AGA</div>
+        </div>
+      </div>
+      <div class="selected-coffees-card-name">Aga</div>
+      <div class="selected-coffees-card-price">124 DKK</div>
+    </div>
+  </div>
+
+  <div class="selected-coffees-viewall">
+    <a href="#">View all</a>
+  </div>
+</div>

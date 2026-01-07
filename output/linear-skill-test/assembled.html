@@ -1,0 +1,3797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear - Customers Section (Assembled)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;510;538;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 02-customers === */
+/* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Section container */
+        .customers-section {
+            background-color: #0A0A0B;
+            padding: 64px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 380px;
+        }
+
+        /* Header text */
+        .customers-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .customers-title {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #6B6F76;
+            max-width: 560px;
+        }
+
+        .customers-title-highlight {
+            color: #D1D5DB;
+        }
+
+        /* Logos container - clickable link */
+        .customers-logos-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Logo grid */
+        .customers-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 72px;
+            margin-bottom: 48px;
+            max-width: 860px;
+        }
+
+        /* Individual logo placeholder */
+        .customers-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+            min-width: 100px;
+            color: #6B6F76;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-logo {
+            color: #8A8F98;
+        }
+
+        /* Logo with icon prefix */
+        .customers-logo-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Specific logo styles to match visual appearance */
+        .customers-logo-openai {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .customers-logo-cashapp {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .customers-logo-scale {
+            font-weight: 400;
+            font-size: 20px;
+            letter-spacing: 0.12em;
+            text-transform: lowercase;
+        }
+
+        .customers-logo-ramp {
+            font-weight: 500;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .customers-logo-vercel {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .customers-logo-coinbase {
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .customers-logo-boom {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .customers-logo-cursor {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Meet our customers link */
+        .customers-cta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #EDEDED;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-cta {
+            color: #FFFFFF;
+        }
+
+        .customers-cta-arrow {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-cta-arrow {
+            transform: translateX(3px);
+        }
+
+        .customers-cta-arrow svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Vercel triangle icon */
+        .customers-icon-triangle {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 12px solid currentColor;
+        }
+
+        /* Cash App square icon */
+        .customers-icon-square {
+            width: 20px;
+            height: 20px;
+            background-color: currentColor;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .customers-icon-square::after {
+            content: "$";
+            color: #0A0A0B;
+            font-size: 13px;
+            font-weight: 700;
+            position: absolute;
+        }
+
+        /* Ramp arrow SVG styling */
+        .customers-logo-ramp svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            margin-left: 2px;
+        }
+
+        /* Boom star SVG styling */
+        .customers-logo-boom svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Cursor frame SVG styling */
+        .customers-logo-cursor svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+
+/* === Section: 03-modern-teams === */
+/* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: rgb(8, 9, 10);
+      font-family: "Inter", "SF Pro Display", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Section container */
+    .modern-section {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Grid layout */
+    .modern-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+
+    /* Text column - spans first 5 columns */
+    .modern-text-column {
+      grid-column: 1 / 6;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Main heading */
+    .modern-heading {
+      color: rgb(247, 248, 248);
+      font-size: 56px;
+      font-weight: 538;
+      line-height: 1.1;
+      letter-spacing: -1.82px;
+      margin: 0;
+    }
+
+    /* Description paragraph */
+    .modern-description {
+      color: rgb(138, 143, 152);
+      font-size: 15px;
+      font-weight: 510;
+      line-height: 24px;
+      letter-spacing: -0.165px;
+      margin-top: 8px;
+    }
+
+    /* Link styling */
+    .modern-link {
+      color: rgb(247, 248, 248);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 15px;
+      font-weight: 510;
+      transition: opacity 0.2s ease;
+    }
+
+    .modern-link:hover {
+      opacity: 0.8;
+    }
+
+    .modern-link-icon {
+      width: 16px;
+      height: 16px;
+      fill: rgb(247, 248, 248);
+    }
+
+    /* Buttons/Cards container */
+    .modern-cards-container {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    /* Card button styling */
+    .modern-card {
+      width: 336px;
+      height: 360px;
+      background-color: rgb(20, 21, 22);
+      border: none;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, background-color 0.2s ease;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-4px);
+      background-color: rgb(28, 29, 31);
+    }
+
+    /* Card image area */
+    .modern-card-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modern-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Card content area */
+    .modern-card-content {
+      padding: 0 24px 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 1;
+    }
+
+    /* Card text */
+    .modern-card-text {
+      color: rgb(247, 248, 248);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: left;
+      max-width: 232px;
+    }
+
+    /* Card icon button */
+    .modern-card-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .modern-card:hover .modern-card-icon {
+      border-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .modern-card-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: rgb(156, 157, 161);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .modern-cards-container {
+        flex-wrap: wrap;
+      }
+
+      .modern-card {
+        width: calc(50% - 4px);
+        min-width: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .modern-heading {
+        font-size: 40px;
+        letter-spacing: -1.2px;
+      }
+
+      .modern-text-column {
+        grid-column: 1 / -1;
+      }
+
+      .modern-card {
+        width: 100%;
+      }
+    }
+
+/* === Section: 04-ai === */
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0b;
+            color: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .ai-section {
+            min-height: 100vh;
+            padding: 80px 0;
+            background: linear-gradient(180deg, #0a0a0b 0%, #0d0d0f 100%);
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top section - Header and Agent Assignment */
+        .ai-top-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .ai-header {
+            padding-top: 20px;
+        }
+
+        .ai-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #8b8b8d;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .ai-label-dot {
+            width: 8px;
+            height: 8px;
+            background: #00d4aa;
+            border-radius: 50%;
+        }
+
+        .ai-label-arrow {
+            width: 0;
+            height: 0;
+            border-left: 5px solid #8b8b8d;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            margin-left: 4px;
+        }
+
+        .ai-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        .ai-description {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #8b8b8d;
+            margin-bottom: 24px;
+            max-width: 480px;
+        }
+
+        .ai-description strong {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .ai-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .ai-learn-more:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .ai-learn-more-arrow {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-learn-more-arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #ffffff;
+            border-top: 2px solid #ffffff;
+            transform: translate(-60%, -50%) rotate(45deg);
+        }
+
+        /* Agent Assignment Card */
+        .ai-agent-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .ai-assign-input {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-assign-input-text {
+            color: #6b6b6d;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .ai-assign-input-text::before {
+            content: '|';
+            color: #00d4aa;
+            margin-right: 2px;
+        }
+
+        .ai-agent-list {
+            padding: 8px 0;
+        }
+
+        .ai-agent-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            transition: background 0.15s ease;
+        }
+
+        .ai-agent-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .ai-agent-item.ai-agent-selected {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .ai-agent-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .ai-agent-avatar.ai-cursor {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-cursor::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E") center/contain no-repeat;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
+
+        .ai-agent-avatar.ai-github {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-sentry {
+            background: linear-gradient(135deg, #362d59 0%, #4a3d75 100%);
+        }
+
+        .ai-agent-avatar.ai-leela {
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-agent-avatar.ai-codex {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2a4a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-conor {
+            background: linear-gradient(135deg, #3a3a4a 0%, #4a4a5a 100%);
+            border-radius: 50%;
+        }
+
+        .ai-agent-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-agent-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            font-size: 11px;
+            color: #8b8b8d;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .ai-agent-check {
+            margin-left: auto;
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-agent-check::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(-45deg);
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid #8b8b8d;
+            border-bottom: 2px solid #8b8b8d;
+        }
+
+        /* Fading effect at bottom */
+        .ai-agent-item.ai-faded {
+            opacity: 0.5;
+        }
+
+        .ai-agent-item.ai-more-faded {
+            opacity: 0.3;
+        }
+
+        /* Bottom section - Triage Intelligence */
+        .ai-bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        .ai-triage-header {
+            padding-top: 20px;
+        }
+
+        .ai-triage-title {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .ai-triage-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #8b8b8d;
+            max-width: 400px;
+        }
+
+        /* Triage Card */
+        .ai-triage-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .ai-triage-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-triage-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 4px;
+        }
+
+        .ai-triage-card-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-triage-suggestions {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-triage-suggestions-label {
+            font-size: 12px;
+            color: #6b6b6d;
+            margin-bottom: 10px;
+        }
+
+        .ai-triage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .ai-triage-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        .ai-triage-tag-avatar {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-triage-tag-icon {
+            width: 14px;
+            height: 14px;
+            background: #6366f1;
+            border-radius: 3px;
+        }
+
+        .ai-triage-tag-label {
+            padding: 4px 8px;
+            background: rgba(138, 79, 255, 0.2);
+            border-radius: 4px;
+            font-size: 12px;
+            color: #a78bfa;
+        }
+
+        .ai-triage-relation {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .ai-triage-relation:last-child {
+            border-bottom: none;
+        }
+
+        .ai-triage-relation-label {
+            font-size: 12px;
+            color: #6b6b6d;
+            min-width: 80px;
+            padding-top: 2px;
+        }
+
+        .ai-triage-relation-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .ai-triage-relation-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #f59e0b;
+            flex-shrink: 0;
+        }
+
+        .ai-triage-relation-id {
+            font-size: 13px;
+            color: #8b8b8d;
+            font-weight: 500;
+        }
+
+        .ai-triage-relation-text {
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        /* Explanation Panel */
+        .ai-explanation-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .ai-explanation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .ai-explanation-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ai-explanation-avatar {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-explanation-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-explanation-label {
+            font-size: 11px;
+            color: #6b6b6d;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .ai-explanation-text {
+            font-size: 13px;
+            color: #8b8b8d;
+            line-height: 1.5;
+        }
+
+        .ai-explanation-alternatives {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ai-explanation-alt {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 4px;
+        }
+
+        .ai-explanation-alt-avatar {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #3a6a3a 0%, #4a8a4a 100%);
+            border-radius: 50%;
+        }
+
+        .ai-explanation-alt-name {
+            font-size: 12px;
+            color: #8b8b8d;
+        }
+
+        .ai-accept-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .ai-accept-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-accept-icon {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-accept-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(-45deg);
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid #00d4aa;
+            border-bottom: 2px solid #00d4aa;
+        }
+
+        /* Linear MCP section */
+        .ai-mcp-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-mcp-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .ai-mcp-description {
+            font-size: 15px;
+            color: #8b8b8d;
+            max-width: 400px;
+        }
+
+        @media (max-width: 1024px) {
+            .ai-top-row,
+            .ai-bottom-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ai-title {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ai-section {
+                padding: 40px 0;
+            }
+
+            .ai-title {
+                font-size: 32px;
+            }
+
+            .ai-triage-title {
+                font-size: 24px;
+            }
+        }
+
+/* === Section: 05-plan === */
+/* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    .plan-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0b;
+      color: #ffffff;
+      padding: 120px 0;
+      min-height: 100vh;
+    }
+
+    .plan-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header section */
+    .plan-header {
+      margin-bottom: 80px;
+    }
+
+    .plan-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #22c55e;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .plan-label-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+
+    .plan-label-arrow {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    .plan-title {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .plan-description {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #a1a1aa;
+      max-width: 600px;
+    }
+
+    /* Roadmap visualization */
+    .plan-roadmap {
+      position: relative;
+      background: linear-gradient(135deg, #111113 0%, #0d0d0e 100%);
+      border-radius: 16px;
+      padding: 60px 40px;
+      margin-bottom: 60px;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .plan-roadmap-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .plan-roadmap-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Timeline dates */
+    .plan-timeline-dates {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    .plan-date {
+      font-size: 14px;
+      color: #52525b;
+      font-weight: 500;
+    }
+
+    .plan-date-highlight {
+      color: #a1a1aa;
+      background: rgba(255,255,255,0.05);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    /* Project bars */
+    .plan-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transform: perspective(1000px) rotateX(15deg) rotateY(-5deg);
+      transform-origin: center center;
+    }
+
+    .plan-project-bar {
+      background: linear-gradient(90deg, rgba(30,30,35,0.9) 0%, rgba(40,40,45,0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .plan-project-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+      border-radius: 8px;
+    }
+
+    .plan-project-bar:nth-child(1) {
+      width: 70%;
+      margin-left: 5%;
+    }
+
+    .plan-project-bar:nth-child(2) {
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    .plan-project-bar:nth-child(3) {
+      width: 60%;
+      margin-left: 35%;
+    }
+
+    .plan-project-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plan-project-icon-green {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    }
+
+    .plan-project-icon-gray {
+      background: linear-gradient(135deg, #52525b 0%, #3f3f46 100%);
+    }
+
+    .plan-project-icon-purple {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .plan-project-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #e4e4e7;
+      font-style: italic;
+    }
+
+    .plan-project-phase {
+      font-size: 13px;
+      color: #71717a;
+      margin-left: auto;
+    }
+
+    /* Content grid */
+    .plan-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    /* Project Overview Card */
+    .plan-card {
+      background: linear-gradient(135deg, #18181b 0%, #131315 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    .plan-card-header {
+      margin-bottom: 24px;
+    }
+
+    .plan-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .plan-card-description {
+      font-size: 15px;
+      color: #a1a1aa;
+      line-height: 1.5;
+    }
+
+    /* Project Overview Mockup */
+    .plan-project-overview {
+      background: #111113;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .plan-overview-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 16px;
+      font-weight: 600;
+      color: #fafafa;
+    }
+
+    .plan-overview-content {
+      padding: 20px;
+    }
+
+    .plan-property-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .plan-property-row:last-child {
+      border-bottom: none;
+    }
+
+    .plan-property-label {
+      width: 100px;
+      font-size: 13px;
+      color: #71717a;
+      flex-shrink: 0;
+    }
+
+    .plan-property-value {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .plan-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      font-size: 12px;
+      color: #d4d4d8;
+    }
+
+    .plan-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .plan-tag-dot-yellow {
+      background: #eab308;
+    }
+
+    .plan-tag-dot-purple {
+      background: #8b5cf6;
+    }
+
+    .plan-avatar-group {
+      display: flex;
+    }
+
+    .plan-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #111113;
+      margin-left: -8px;
+    }
+
+    .plan-avatar:first-child {
+      margin-left: 0;
+    }
+
+    .plan-avatar-1 { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .plan-avatar-2 { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+    .plan-avatar-3 { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+    .plan-avatar-4 { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+
+    .plan-resource-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+    }
+
+    .plan-resource-icon {
+      width: 16px;
+      height: 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .plan-resource-name {
+      font-size: 13px;
+      color: #a1a1aa;
+    }
+
+    .plan-milestone-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+    }
+
+    .plan-milestone-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid;
+      position: relative;
+    }
+
+    .plan-milestone-complete {
+      border-color: #22c55e;
+      background: #22c55e;
+    }
+
+    .plan-milestone-partial {
+      border-color: #3b82f6;
+      background: conic-gradient(#3b82f6 0deg 90deg, transparent 90deg);
+    }
+
+    .plan-milestone-text {
+      font-size: 13px;
+      color: #a1a1aa;
+    }
+
+    .plan-milestone-percent {
+      color: #71717a;
+      font-size: 12px;
+    }
+
+    /* Project Updates Card */
+    .plan-updates-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plan-update-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .plan-update-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .plan-update-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .plan-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .plan-status-off-track .plan-status-dot { background: #ef4444; }
+    .plan-status-off-track { color: #ef4444; }
+
+    .plan-status-at-risk .plan-status-dot { background: #f59e0b; }
+    .plan-status-at-risk { color: #f59e0b; }
+
+    .plan-status-on-track .plan-status-dot { background: #22c55e; }
+    .plan-status-on-track { color: #22c55e; }
+
+    .plan-update-date {
+      font-size: 12px;
+      color: #52525b;
+    }
+
+    .plan-update-text {
+      font-size: 13px;
+      color: #a1a1aa;
+      line-height: 1.4;
+    }
+
+    /* Document Editor Mockup */
+    .plan-document-card {
+      grid-column: span 2;
+    }
+
+    .plan-document-mockup {
+      background: #111113;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .plan-document-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .plan-tab {
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #71717a;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .plan-tab-active {
+      background: rgba(255,255,255,0.08);
+      color: #fafafa;
+    }
+
+    .plan-document-content {
+      padding: 32px;
+    }
+
+    .plan-document-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-cursor {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      background: #3b82f6;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: white;
+      margin-left: 4px;
+    }
+
+    .plan-cursor-green {
+      background: #22c55e;
+    }
+
+    .plan-document-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+
+    .plan-document-body strong {
+      color: #fafafa;
+      font-weight: 600;
+    }
+
+    /* Features row */
+    .plan-features-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .plan-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+
+    .plan-feature-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(124,58,237,0.1) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .plan-feature-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #8b5cf6;
+    }
+
+    .plan-feature-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fafafa;
+      margin-bottom: 4px;
+    }
+
+    .plan-feature-content p {
+      font-size: 13px;
+      color: #71717a;
+      line-height: 1.4;
+    }
+
+/* === Section: 06-build === */
+/* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .build-section {
+            background: linear-gradient(180deg, #0a0a0c 0%, #111113 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            padding: 120px 0;
+            min-height: 100vh;
+        }
+
+        .build-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Section */
+        .build-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .build-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8b8b9e;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+
+        .build-label-arrow {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .build-title {
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .build-description {
+            font-size: 18px;
+            color: #8b8b9e;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* Hero Screenshot Placeholder */
+        .build-hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a1f 0%, #0d0d10 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .build-hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+        }
+
+        .build-hero-placeholder {
+            color: #4a4a5a;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        /* Content Grid */
+        .build-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Card Styles */
+        .build-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .build-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+        }
+
+        .build-card-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .build-card-text {
+            font-size: 15px;
+            color: #8b8b9e;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Cycles Card */
+        .build-cycles-card {
+            grid-column: 1;
+        }
+
+        .build-cycles-chart {
+            background: #0d0d10;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .build-cycles-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .build-cycles-title-row {
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .build-cycles-legend {
+            display: flex;
+            gap: 16px;
+        }
+
+        .build-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6b6b7b;
+        }
+
+        .build-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .build-legend-dot-scope {
+            background: #4f46e5;
+        }
+
+        .build-legend-dot-started {
+            background: #f59e0b;
+        }
+
+        .build-legend-dot-completed {
+            background: #10b981;
+        }
+
+        .build-chart-area {
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .build-chart-bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .build-chart-bar {
+            width: 100%;
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        .build-chart-bar-scope {
+            background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+        }
+
+        .build-chart-bar-started {
+            background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        .build-chart-bar-completed {
+            background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+        }
+
+        /* Triage Card */
+        .build-triage-card {
+            grid-column: 2;
+        }
+
+        .build-triage-ui {
+            background: #0d0d10;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+        }
+
+        .build-triage-header {
+            padding: 16px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .build-triage-list {
+            padding: 8px 0;
+        }
+
+        .build-triage-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            transition: background 0.15s ease;
+        }
+
+        .build-triage-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .build-triage-item-selected {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .build-triage-item-text {
+            font-size: 13px;
+            color: #d0d0da;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 16px;
+        }
+
+        .build-triage-item-user {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6b6b7b;
+        }
+
+        .build-triage-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        .build-triage-menu {
+            position: absolute;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1a1a1f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 8px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            min-width: 180px;
+        }
+
+        .build-triage-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #d0d0da;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .build-triage-menu-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .build-triage-menu-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .build-triage-menu-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .build-menu-accept {
+            color: #10b981;
+        }
+
+        .build-menu-duplicate {
+            color: #f59e0b;
+        }
+
+        .build-menu-decline {
+            color: #ef4444;
+        }
+
+        /* Insights Card - Full Width */
+        .build-insights-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 32px;
+        }
+
+        .build-insights-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .build-insights-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #6366f1;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .build-insights-link:hover {
+            color: #818cf8;
+        }
+
+        .build-insights-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .build-insights-chart {
+            background: #0d0d10;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            height: 220px;
+            position: relative;
+        }
+
+        .build-insights-chart-title {
+            font-size: 13px;
+            color: #6b6b7b;
+            margin-bottom: 16px;
+        }
+
+        .build-line-chart {
+            position: relative;
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .build-line-chart-grid {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .build-line-chart-gridline {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .build-line-chart-path {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .build-line-chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .build-chart-line {
+            fill: none;
+            stroke: #6366f1;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .build-chart-area-fill {
+            fill: url(#build-gradient);
+        }
+
+        /* Feature Grid */
+        .build-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .build-feature-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .build-feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+        }
+
+        .build-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #818cf8;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .build-feature-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .build-feature-text {
+            font-size: 13px;
+            color: #6b6b7b;
+            line-height: 1.5;
+        }
+
+        /* Triage UI Container for relative positioning */
+        .build-triage-container {
+            position: relative;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .build-content {
+                grid-template-columns: 1fr;
+            }
+
+            .build-cycles-card,
+            .build-triage-card {
+                grid-column: 1;
+            }
+
+            .build-insights-card {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+
+            .build-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .build-title {
+                font-size: 32px;
+            }
+
+            .build-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+/* === Section: 07-integrations === */
+/* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Fonts - Linear uses Inter */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    /* Section Container */
+    .integrations-section {
+      background-color: #0A0A0B;
+      padding: 120px 0 140px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    .integrations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .integrations-header {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .integrations-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #8A8F98;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-label-dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #5E6AD2 0%, #8A8F98 100%);
+      border-radius: 50%;
+    }
+
+    .integrations-title {
+      font-size: 48px;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .integrations-description {
+      font-size: 17px;
+      font-weight: 400;
+      color: #8A8F98;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    }
+
+    /* Carousel Container */
+    .integrations-carousel-wrapper {
+      position: relative;
+    }
+
+    .integrations-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 8px;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .integrations-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Cards */
+    .integrations-card {
+      flex: 0 0 280px;
+      min-width: 280px;
+      height: 340px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .integrations-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    }
+
+    .integrations-card-content {
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .integrations-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-card-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: #8A8F98;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-card-icon {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+    }
+
+    /* Individual card icons - CSS-only graphics */
+
+    /* Customer Requests - speech bubbles */
+    .integrations-icon-requests {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-requests::before {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      right: 20px;
+      width: 80px;
+      height: 60px;
+      background: linear-gradient(135deg, #5E6AD2 0%, #4B55B0 100%);
+      border-radius: 12px 12px 4px 12px;
+    }
+
+    .integrations-icon-requests::after {
+      content: '';
+      position: absolute;
+      bottom: 50px;
+      right: 60px;
+      width: 60px;
+      height: 45px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+      border-radius: 12px 12px 12px 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Git workflows - branch icon */
+    .integrations-icon-git {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-git::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      border: 3px solid #F78166;
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .integrations-icon-git::after {
+      content: '';
+      position: absolute;
+      bottom: 80px;
+      right: 60px;
+      width: 3px;
+      height: 40px;
+      background: linear-gradient(180deg, #8A8F98 0%, #F78166 100%);
+    }
+
+    .integrations-icon-git-branch {
+      position: absolute;
+      bottom: 100px;
+      right: 35px;
+      width: 25px;
+      height: 3px;
+      background: #8A8F98;
+      transform: rotate(-45deg);
+    }
+
+    .integrations-icon-git-dot {
+      position: absolute;
+      bottom: 108px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: #8A8F98;
+      border-radius: 50%;
+    }
+
+    /* Mobile - phone icon */
+    .integrations-icon-mobile {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-mobile::before {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      right: 35px;
+      width: 65px;
+      height: 110px;
+      background: linear-gradient(180deg, #1A1A1D 0%, #0D0D0F 100%);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+    }
+
+    .integrations-icon-mobile::after {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      right: 45px;
+      width: 45px;
+      height: 80px;
+      background: linear-gradient(180deg, #5E6AD2 0%, #3D4694 100%);
+      border-radius: 4px;
+    }
+
+    .integrations-icon-mobile-notch {
+      position: absolute;
+      bottom: 115px;
+      right: 55px;
+      width: 25px;
+      height: 5px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+    }
+
+    /* Asks - Slack-like icon */
+    .integrations-icon-asks {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-asks::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #36C5F0 25%, transparent 25%),
+                  linear-gradient(225deg, #2EB67D 25%, transparent 25%),
+                  linear-gradient(315deg, #ECB22E 25%, transparent 25%),
+                  linear-gradient(45deg, #E01E5A 25%, transparent 25%);
+      background-size: 50% 50%;
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      border-radius: 16px;
+    }
+
+    /* Integrations - grid of apps */
+    .integrations-icon-apps {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      padding: 30px;
+    }
+
+    .integrations-icon-apps-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+
+    .integrations-icon-apps-item:nth-child(1) { background: linear-gradient(135deg, #5E6AD2 0%, #4B55B0 100%); border: none; }
+    .integrations-icon-apps-item:nth-child(5) { background: linear-gradient(135deg, #F24E1E 0%, #FF7262 100%); border: none; }
+    .integrations-icon-apps-item:nth-child(9) { background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%); border: none; }
+
+    /* Figma - Figma logo style */
+    .integrations-icon-figma {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-figma-container {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      width: 50px;
+      height: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .integrations-icon-figma-piece {
+      border-radius: 50%;
+    }
+
+    .integrations-icon-figma-piece:nth-child(1) { background: #F24E1E; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(2) { background: #FF7262; border-radius: 0 50% 50% 0; }
+    .integrations-icon-figma-piece:nth-child(3) { background: #A259FF; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(4) { background: #1ABCFE; border-radius: 50%; }
+    .integrations-icon-figma-piece:nth-child(5) { background: #0ACF83; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(6) { background: transparent; }
+
+    /* Developers - code brackets */
+    .integrations-icon-dev {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-dev::before {
+      content: '</>';
+      position: absolute;
+      bottom: 40px;
+      right: 25px;
+      font-size: 48px;
+      font-weight: 600;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+      color: #5E6AD2;
+      letter-spacing: -0.05em;
+    }
+
+    .integrations-icon-dev::after {
+      content: '';
+      position: absolute;
+      bottom: 35px;
+      right: 20px;
+      width: 90px;
+      height: 60px;
+      background: linear-gradient(180deg, transparent 0%, rgba(94, 106, 210, 0.1) 100%);
+      border-radius: 8px;
+    }
+
+    /* Navigation Buttons */
+    .integrations-nav {
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+      justify-content: flex-start;
+    }
+
+    .integrations-nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .integrations-nav-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .integrations-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .integrations-nav-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .integrations-section {
+        padding: 80px 0 100px;
+      }
+
+      .integrations-title {
+        font-size: 32px;
+      }
+
+      .integrations-description {
+        font-size: 15px;
+      }
+
+      .integrations-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+        height: 300px;
+      }
+    }
+
+/* === Section: 08-footer === */
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0A0A0B;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* CTA Section */
+        .footer-cta {
+            padding: 80px 0 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-cta-heading {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .footer-cta-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .footer-btn-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .footer-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-btn-primary {
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            color: #0A0A0B;
+        }
+
+        .footer-btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer Main */
+        .footer-main {
+            padding: 64px 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        /* Footer Logo */
+        .footer-logo {
+            flex-shrink: 0;
+        }
+
+        .footer-logo-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-logo-svg {
+            width: 24px;
+            height: 24px;
+            color: #ffffff;
+        }
+
+        /* Footer Columns */
+        .footer-columns {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column {
+            min-width: 140px;
+        }
+
+        .footer-column-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.15s ease;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-main {
+                padding: 48px 40px 60px;
+            }
+
+            .footer-columns {
+                gap: 48px;
+            }
+
+            .footer-column {
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-cta {
+                padding: 60px 20px 80px;
+            }
+
+            .footer-cta-heading {
+                font-size: 24px;
+            }
+
+            .footer-main {
+                padding: 40px 24px 60px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-columns {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .footer-column {
+                min-width: calc(50% - 16px);
+            }
+        }
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 02-customers -->
+  <section class="customers-section">
+        <div class="customers-header">
+            <p class="customers-title">
+                <span class="customers-title-highlight">Powering the world's best product teams.</span><br>
+                From next-gen startups to established enterprises.
+            </p>
+        </div>
+
+        <a href="/customers" class="customers-logos-link">
+            <div class="customers-logos-grid">
+                <!-- Row 1 -->
+                <div class="customers-logo customers-logo-openai">OpenAI</div>
+                <div class="customers-logo customers-logo-cashapp customers-logo-with-icon">
+                    <span class="customers-icon-square"></span>
+                    <span>Cash App</span>
+                </div>
+                <div class="customers-logo customers-logo-scale">scale</div>
+                <div class="customers-logo customers-logo-ramp customers-logo-with-icon">
+                    <span>ramp</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                        <path d="M7 17L17 7M17 7H10M17 7V14"/>
+                    </svg>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="customers-logo customers-logo-vercel customers-logo-with-icon">
+                    <span class="customers-icon-triangle"></span>
+                    <span>Vercel</span>
+                </div>
+                <div class="customers-logo customers-logo-coinbase">coinbase</div>
+                <div class="customers-logo customers-logo-boom customers-logo-with-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5Z"/>
+                    </svg>
+                    <span>BOOM</span>
+                </div>
+                <div class="customers-logo customers-logo-cursor customers-logo-with-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <span>CURSOR</span>
+                </div>
+            </div>
+
+            <div class="customers-cta">
+                <span>Meet our customers</span>
+                <span class="customers-cta-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </span>
+            </div>
+        </a>
+    </section>
+
+  <!-- Section: 03-modern-teams -->
+  <section class="modern-section">
+    <div class="modern-grid">
+      <!-- Text Column -->
+      <div class="modern-text-column">
+        <h2 class="modern-heading">Made for modern product teams</h2>
+        <p class="modern-description">
+          Linear is shaped by the practices and principles that distinguish world-class product teams from the rest: relentless focus, fast execution, and a commitment to the quality of craft.
+          <a href="/switch" class="modern-link">
+            Make the switch
+            <svg class="modern-link-icon" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.46967 11.4697C5.17678 11.7626 5.17678 12.2374 5.46967 12.5303C5.76256 12.8232 6.23744 12.8232 6.53033 12.5303L10.5303 8.53033C10.8207 8.23999 10.8236 7.77014 10.5368 7.47624L6.63419 3.47624C6.34492 3.17976 5.87009 3.17391 5.57361 3.46318C5.27713 3.75244 5.27128 4.22728 5.56054 4.52376L8.94583 7.99351L5.46967 11.4697Z"></path>
+            </svg>
+          </a>
+        </p>
+      </div>
+
+      <!-- Cards Container -->
+      <div class="modern-cards-container">
+        <!-- Card 1: Purpose-built -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/93514696-592a-4764-aa98-b6101349a100/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Purpose-built for product development">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Purpose-built for product development</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 2: Designed to move fast -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/5a4ff140-41a2-42dd-0723-e14cccc3e300/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Designed to move fast">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Designed to move fast</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 3: Crafted to perfection -->
+        <button class="modern-card">
+          <div class="modern-card-image">
+            <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/0068f657-fe3f-47e9-6819-0ba9e6533900/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Crafted to perfection">
+          </div>
+          <div class="modern-card-content">
+            <span class="modern-card-text">Crafted to perfection</span>
+            <div class="modern-card-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.75 4C8.75 3.58579 8.41421 3.25 8 3.25C7.58579 3.25 7.25 3.58579 7.25 4V7.25H4C3.58579 7.25 3.25 7.58579 3.25 8C3.25 8.41421 3.58579 8.75 4 8.75H7.25V12C7.25 12.4142 7.58579 12.75 8 12.75C8.41421 12.75 8.75 12.4142 8.75 12V8.75H12C12.4142 8.75 12.75 8.41421 12.75 8C12.75 7.58579 12.4142 7.25 12 7.25H8.75V4Z"></path>
+              </svg>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 04-ai -->
+  <section class="ai-section">
+        <div class="ai-container">
+            <!-- Top Row: Header + Agent Assignment -->
+            <div class="ai-top-row">
+                <div class="ai-header">
+                    <div class="ai-label">
+                        <span class="ai-label-dot"></span>
+                        <span>Artificial intelligence</span>
+                        <span class="ai-label-arrow"></span>
+                    </div>
+                    <h2 class="ai-title">AI-assisted product development</h2>
+                    <p class="ai-description">
+                        <strong>Linear for Agents.</strong> Choose from a variety of AI agents and start delegating work, from code generation to other technical tasks.
+                    </p>
+                    <a href="#" class="ai-learn-more">
+                        Learn more
+                        <span class="ai-learn-more-arrow"></span>
+                    </a>
+                </div>
+
+                <div class="ai-agent-card">
+                    <div class="ai-assign-input">
+                        <span class="ai-assign-input-text">Assign to...</span>
+                    </div>
+                    <div class="ai-agent-list">
+                        <div class="ai-agent-item ai-agent-selected">
+                            <div class="ai-agent-avatar ai-cursor"></div>
+                            <span class="ai-agent-name">Cursor</span>
+                            <span class="ai-agent-badge">Agent</span>
+                            <span class="ai-agent-check"></span>
+                        </div>
+                        <div class="ai-agent-item">
+                            <div class="ai-agent-avatar ai-github">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">GitHub Copilot</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item">
+                            <div class="ai-agent-avatar ai-sentry">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2L2 19h20L12 2z"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">Sentry</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item ai-faded">
+                            <div class="ai-agent-avatar ai-leela"></div>
+                            <span class="ai-agent-name">Leela</span>
+                        </div>
+                        <div class="ai-agent-item ai-faded">
+                            <div class="ai-agent-avatar ai-codex">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                    <circle cx="12" cy="12" r="8"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">Codex</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item ai-more-faded">
+                            <div class="ai-agent-avatar ai-conor"></div>
+                            <span class="ai-agent-name">Conor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Triage Intelligence -->
+            <div class="ai-bottom-row">
+                <div class="ai-triage-header">
+                    <h3 class="ai-triage-title">Self-driving product operations</h3>
+                    <p class="ai-triage-description">
+                        Streamline your product development workflows with AI assistance for routine, manual tasks.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="ai-triage-card">
+                        <div class="ai-triage-card-header">
+                            <div class="ai-triage-icon"></div>
+                            <span class="ai-triage-card-title">Triage Intelligence</span>
+                        </div>
+                        <div class="ai-triage-suggestions">
+                            <div class="ai-triage-suggestions-label">Suggestions</div>
+                            <div class="ai-triage-tags">
+                                <div class="ai-triage-tag">
+                                    <div class="ai-triage-tag-avatar"></div>
+                                    <span>nan</span>
+                                </div>
+                                <div class="ai-triage-tag">
+                                    <div class="ai-triage-tag-icon"></div>
+                                    <span>Mobile App Refactor</span>
+                                </div>
+                                <div class="ai-triage-tag">
+                                    <span class="ai-triage-tag-label">Slack</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-triage-relation">
+                            <span class="ai-triage-relation-label">Duplicate of</span>
+                            <div class="ai-triage-relation-content">
+                                <div class="ai-triage-relation-icon"></div>
+                                <span class="ai-triage-relation-id">ENG-1419</span>
+                                <span class="ai-triage-relation-text">Loading spinner keeps running on startup</span>
+                            </div>
+                        </div>
+                        <div class="ai-triage-relation">
+                            <span class="ai-triage-relation-label">Related to</span>
+                            <div class="ai-triage-relation-content">
+                                <div class="ai-triage-relation-icon"></div>
+                                <span class="ai-triage-relation-id">ENG-1820</span>
+                                <span class="ai-triage-relation-text">Mobile app takes a long time to open</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-explanation-panel">
+                        <div class="ai-explanation-card">
+                            <div class="ai-explanation-header">
+                                <div class="ai-explanation-avatar"></div>
+                                <span class="ai-explanation-name">nan</span>
+                            </div>
+                            <div class="ai-explanation-label">Why this assignee was suggested</div>
+                            <p class="ai-explanation-text">
+                                This person was the assignee on previous issues related to performance problems in the mobile app launch flow
+                            </p>
+                            <div class="ai-explanation-label" style="margin-top: 12px;">Alternatives</div>
+                            <div class="ai-explanation-alternatives">
+                                <div class="ai-explanation-alt">
+                                    <div class="ai-explanation-alt-avatar"></div>
+                                    <span class="ai-explanation-alt-name">yann</span>
+                                </div>
+                                <div class="ai-explanation-alt">
+                                    <div class="ai-explanation-alt-avatar" style="background: linear-gradient(135deg, #6a3a3a 0%, #8a4a4a 100%);"></div>
+                                    <span class="ai-explanation-alt-name">erin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="ai-accept-btn">
+                        <span class="ai-accept-icon"></span>
+                        Accept suggestion
+                    </button>
+                </div>
+            </div>
+
+            <!-- Linear MCP Section -->
+            <div class="ai-mcp-section">
+                <h3 class="ai-mcp-title">Linear MCP</h3>
+                <p class="ai-mcp-description">
+                    Connect Linear to your favorite tools including Cursor, Claude, ChatGPT, and more.
+                </p>
+            </div>
+        </div>
+    </section>
+
+  <!-- Section: 05-plan -->
+  <section class="plan-section">
+    <div class="plan-container">
+      <!-- Header -->
+      <div class="plan-header">
+        <div class="plan-label">
+          <span class="plan-label-dot"></span>
+          <span>Project and long-term planning</span>
+          <svg class="plan-label-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </div>
+        <h2 class="plan-title">Set the product direction</h2>
+        <p class="plan-description">Align your team around a unified product timeline. Plan, manage, and track all product initiatives with Linear's visual planning tools.</p>
+      </div>
+
+      <!-- Roadmap Visualization -->
+      <div class="plan-roadmap">
+        <div class="plan-roadmap-grid"></div>
+        <div class="plan-roadmap-content">
+          <div class="plan-timeline-dates">
+            <span class="plan-date">30</span>
+            <span class="plan-date">AUG 3</span>
+            <span class="plan-date">10</span>
+            <span class="plan-date">17</span>
+            <span class="plan-date plan-date-highlight">AUG 22</span>
+            <span class="plan-date">24</span>
+            <span class="plan-date">SEP</span>
+          </div>
+          <div class="plan-projects">
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-green">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">Realtime inference</span>
+              <span class="plan-project-phase">Beta</span>
+            </div>
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-gray">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">Prototype</span>
+            </div>
+            <div class="plan-project-bar">
+              <div class="plan-project-icon plan-project-icon-purple">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2v20M2 12h20"/>
+                </svg>
+              </div>
+              <span class="plan-project-name">RLHF fine tuning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="plan-content-grid">
+        <!-- Project Overview Card -->
+        <div class="plan-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Manage projects end-to-end</h3>
+            <p class="plan-card-description">Consolidate specs, milestones, tasks, and other documentation in one centralized location.</p>
+          </div>
+          <div class="plan-project-overview">
+            <div class="plan-overview-header">Project Overview</div>
+            <div class="plan-overview-content">
+              <div class="plan-property-row">
+                <span class="plan-property-label">Properties</span>
+                <div class="plan-property-value">
+                  <span class="plan-tag">
+                    <span class="plan-tag-dot plan-tag-dot-yellow"></span>
+                    In Progress
+                  </span>
+                  <span class="plan-tag">
+                    <span class="plan-tag-dot plan-tag-dot-purple"></span>
+                    ENG
+                  </span>
+                  <div class="plan-avatar-group">
+                    <div class="plan-avatar plan-avatar-1"></div>
+                    <div class="plan-avatar plan-avatar-2"></div>
+                    <div class="plan-avatar plan-avatar-3"></div>
+                    <div class="plan-avatar plan-avatar-4"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-property-row">
+                <span class="plan-property-label">Resources</span>
+                <div class="plan-property-value" style="flex-direction: column; gap: 4px;">
+                  <div class="plan-resource-item">
+                    <div class="plan-resource-icon"></div>
+                    <span class="plan-resource-name">Exploration</span>
+                  </div>
+                  <div class="plan-resource-item">
+                    <div class="plan-resource-icon"></div>
+                    <span class="plan-resource-name">User interviews</span>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-property-row">
+                <span class="plan-property-label">Milestones</span>
+                <div class="plan-property-value" style="flex-direction: column; gap: 4px;">
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-complete"></div>
+                    <span class="plan-milestone-text">Design Review</span>
+                    <span class="plan-milestone-percent">100%</span>
+                  </div>
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-complete"></div>
+                    <span class="plan-milestone-text">Internal Alpha</span>
+                    <span class="plan-milestone-percent">100% of 10</span>
+                  </div>
+                  <div class="plan-milestone-item">
+                    <div class="plan-milestone-icon plan-milestone-partial"></div>
+                    <span class="plan-milestone-text">GA</span>
+                    <span class="plan-milestone-percent">25% of 53</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Updates Card -->
+        <div class="plan-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Project updates</h3>
+            <p class="plan-card-description">Communicate progress and project health with built-in project updates.</p>
+          </div>
+          <div class="plan-updates-list">
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-off-track">
+                  <span class="plan-status-dot"></span>
+                  Off track
+                </span>
+                <span class="plan-update-date">Oct 27</span>
+              </div>
+              <p class="plan-update-text">Unexpected roadblocks forced us to take a different...</p>
+            </div>
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-at-risk">
+                  <span class="plan-status-dot"></span>
+                  At risk
+                </span>
+                <span class="plan-update-date">Oct 27</span>
+              </div>
+              <p class="plan-update-text">Progress slowed down last week because...</p>
+            </div>
+            <div class="plan-update-item">
+              <div class="plan-update-header">
+                <span class="plan-update-status plan-status-on-track">
+                  <span class="plan-status-dot"></span>
+                  On track
+                </span>
+                <span class="plan-update-date">Sep 8</span>
+              </div>
+              <p class="plan-update-text">We are ready to launch next Thursday</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Editor Card -->
+        <div class="plan-card plan-document-card">
+          <div class="plan-card-header">
+            <h3 class="plan-card-title">Ideate and specify what to build next</h3>
+          </div>
+          <div class="plan-document-tabs">
+            <span class="plan-tab plan-tab-active">Collaborative documents</span>
+            <span class="plan-tab">Inline comments</span>
+            <span class="plan-tab">Text-to-issue commands</span>
+          </div>
+          <div class="plan-document-mockup">
+            <div class="plan-document-content">
+              <h3 class="plan-document-title">
+                Collaborate on
+                <span class="plan-cursor">zoe</span>
+                ideas
+              </h3>
+              <p class="plan-document-body">
+                Write down product ideas and work together on feature specs in realtime, multiplayer project
+                <span class="plan-cursor plan-cursor-green">quinn</span>
+                documents. Add <strong>style</strong> and <strong>##structure</strong> with rich-text formatting options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Row -->
+      <div class="plan-features-row">
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Initiatives</h4>
+            <p>Coordinate strategic product efforts.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Cross-team projects</h4>
+            <p>Collaborate across teams and departments.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Milestones</h4>
+            <p>Break projects down into concrete phases.</p>
+          </div>
+        </div>
+        <div class="plan-feature-item">
+          <div class="plan-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <div class="plan-feature-content">
+            <h4>Progress insights</h4>
+            <p>Track scope, velocity, and progress over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 06-build -->
+  <section class="build-section">
+        <div class="build-container">
+            <!-- Header -->
+            <header class="build-header">
+                <div class="build-label">
+                    Task tracking and sprint planning
+                    <svg class="build-label-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </div>
+                <h2 class="build-title">Issue tracking you'll enjoy using</h2>
+                <p class="build-description">Optimized for speed and efficiency. Create tasks in seconds, discuss issues in context, and breeze through your work in views tailored to you and your team.</p>
+            </header>
+
+            <!-- Hero Screenshot Placeholder -->
+            <div class="build-hero-image">
+                <span class="build-hero-placeholder">Issue Board View</span>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="build-content">
+                <!-- Cycles Card -->
+                <div class="build-card build-cycles-card">
+                    <h3 class="build-card-title">Build momentum with Cycles</h3>
+                    <p class="build-card-text">Create healthy routines and focus your team on what work should happen next.</p>
+
+                    <div class="build-cycles-chart">
+                        <div class="build-cycles-header">
+                            <span class="build-cycles-title-row">Cycle 55</span>
+                            <div class="build-cycles-legend">
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-scope"></div>
+                                    <span>Scope</span>
+                                </div>
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-started"></div>
+                                    <span>Started</span>
+                                </div>
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-completed"></div>
+                                    <span>Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="build-chart-area">
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 40px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 20px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 10px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 50px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 30px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 15px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 55px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 40px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 25px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 60px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 50px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 35px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 70px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 55px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 45px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 75px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 65px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 55px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 80px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 70px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 60px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 85px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 75px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 70px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 90px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 80px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 75px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 95px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 85px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 80px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 100px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 90px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 85px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 105px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 95px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 90px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Triage Card -->
+                <div class="build-card build-triage-card">
+                    <h3 class="build-card-title">Manage incoming work with Triage</h3>
+                    <p class="build-card-text">Review and assign incoming bug reports, feature requests, and other unplanned work.</p>
+
+                    <div class="build-triage-container">
+                        <div class="build-triage-ui">
+                            <div class="build-triage-header">Triage</div>
+                            <div class="build-triage-list">
+                                <div class="build-triage-item build-triage-item-selected">
+                                    <span class="build-triage-item-text">Users report unexpected rate limiting</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar"></div>
+                                        <span>tom</span>
+                                    </div>
+                                </div>
+                                <div class="build-triage-item">
+                                    <span class="build-triage-item-text">RangeError: Index 0 out of range</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"></div>
+                                        <span>romain</span>
+                                    </div>
+                                </div>
+                                <div class="build-triage-item">
+                                    <span class="build-triage-item-text">Pressing "Enter" quickly when logging in via email generates multiple emails</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);"></div>
+                                        <span>tuomas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown Menu -->
+                        <div class="build-triage-menu">
+                            <div class="build-triage-menu-item build-menu-accept">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M5 12l5 5L20 7"/>
+                                    </svg>
+                                </span>
+                                <span>Accept</span>
+                            </div>
+                            <div class="build-triage-menu-item build-menu-duplicate">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                    </svg>
+                                </span>
+                                <span>Mark as duplicate</span>
+                            </div>
+                            <div class="build-triage-menu-item build-menu-decline">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M18 6L6 18M6 6l12 12"/>
+                                    </svg>
+                                </span>
+                                <span>Decline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights Card -->
+                <div class="build-card build-insights-card">
+                    <div class="build-insights-info">
+                        <h3 class="build-card-title">Linear Insights</h3>
+                        <p class="build-card-text">Take the guesswork out of product planning with realtime analytics and reporting dashboards.</p>
+                        <a href="#" class="build-insights-link">
+                            Learn more
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="build-insights-chart">
+                        <div class="build-insights-chart-title">Cycle time</div>
+                        <div class="build-line-chart">
+                            <div class="build-line-chart-grid">
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                            </div>
+                            <div class="build-line-chart-path">
+                                <svg class="build-line-chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="build-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color: rgba(99, 102, 241, 0.3)"/>
+                                            <stop offset="100%" style="stop-color: rgba(99, 102, 241, 0)"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path class="build-chart-area-fill" d="M0,150 L0,100 Q20,95 40,90 T80,85 T120,70 T160,75 T200,60 T240,55 T280,40 T320,45 T360,30 T400,25 L400,150 Z"/>
+                                    <path class="build-chart-line" d="M0,100 Q20,95 40,90 T80,85 T120,70 T160,75 T200,60 T240,55 T280,40 T320,45 T360,30 T400,25"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Grid -->
+            <div class="build-features">
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-6h18m-18 0v6"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Tailored workflows</h4>
+                    <p class="build-feature-text">Track progress across custom issue flows for your team.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Custom views</h4>
+                    <p class="build-feature-text">Switch between list and board. Group issues with swimlanes.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Filters</h4>
+                    <p class="build-feature-text">Refine issue lists down to what's most relevant to you.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">SLAs</h4>
+                    <p class="build-feature-text">Automatically apply deadlines to time-sensitive tasks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Section: 07-integrations -->
+  <section class="integrations-section">
+    <div class="integrations-container">
+      <!-- Header -->
+      <div class="integrations-header">
+        <div class="integrations-label">
+          <span class="integrations-label-dot"></span>
+          Workflows and integrations
+        </div>
+        <h2 class="integrations-title">Collaborate across tools and teams</h2>
+        <p class="integrations-description">Expand the capabilities of the Linear system with a wide variety of integrations that keep everyone in your organization aligned and focused.</p>
+      </div>
+
+      <!-- Carousel -->
+      <div class="integrations-carousel-wrapper">
+        <div class="integrations-carousel" id="integrationsCarousel">
+          <!-- Card 1: Customer Requests -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Customer Requests</h3>
+              <p class="integrations-card-subtitle">Build what customers actually want</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-requests"></div>
+            </div>
+          </a>
+
+          <!-- Card 2: Git workflows -->
+          <div class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Powerful git workflows</h3>
+              <p class="integrations-card-subtitle">Automate pull requests and commit workflows</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-git">
+                <div class="integrations-icon-git-branch"></div>
+                <div class="integrations-icon-git-dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Linear Mobile -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear Mobile</h3>
+              <p class="integrations-card-subtitle">Move product work forward from anywhere</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-mobile">
+                <div class="integrations-icon-mobile-notch"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: Linear Asks -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear Asks</h3>
+              <p class="integrations-card-subtitle">Turn workplace requests into actionable issues</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-asks"></div>
+            </div>
+          </a>
+
+          <!-- Card 5: Linear integrations -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear integrations</h3>
+              <p class="integrations-card-subtitle">100+ ways to enhance your Linear experience</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-apps">
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 6: Figma integration -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Figma integration</h3>
+              <p class="integrations-card-subtitle">Bridge the gap between engineering and design</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-figma">
+                <div class="integrations-icon-figma-container">
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 7: Built for developers -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Built for developers</h3>
+              <p class="integrations-card-subtitle">Build your own add-ons with the Linear API</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-dev"></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <div class="integrations-nav">
+          <button class="integrations-nav-btn" id="prevBtn" disabled aria-label="Previous slide">
+            <svg viewBox="0 0 24 24">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="integrations-nav-btn" id="nextBtn" aria-label="Next slide">
+            <svg viewBox="0 0 24 24">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple carousel navigation
+    const carousel = document.getElementById('integrationsCarousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const cardWidth = 296; // card width + gap
+
+    function updateButtons() {
+      prevBtn.disabled = carousel.scrollLeft <= 0;
+      nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+      setTimeout(updateButtons, 400);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+      setTimeout(updateButtons, 400);
+    });
+
+    carousel.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+
+  <!-- Section: 08-footer -->
+  <!-- CTA Section -->
+    <section class="footer-cta">
+        <h3 class="footer-cta-heading">Plan the present. Build the future.</h3>
+        <div class="footer-cta-buttons">
+            <a href="/contact/sales" class="footer-btn footer-btn-secondary">Contact sales</a>
+            <a href="/signup" class="footer-btn footer-btn-primary">Get started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-main">
+        <div class="footer-container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <a href="/" class="footer-logo-link" aria-label="Linear Logo">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.842l39.3342 39.3342c.7039.6889.1065 1.8189-.842 1.5765C21.0312 97.5765 2.7386 79.2839 1.22541 61.5228z" fill="currentColor"/>
+                        <path d="M.00189135 46.8891c-.01764375.2833.00610012.5765.0713422.8619l10.8520964 46.2195c.0577.2459.1462.4714.2611.6732l44.0965-44.0965c.201-.201.3121-.4643.3121-.7431V1.77553c0-.508516-.5688-.818756-.9806-.5305L2.14824 42.5929c-.24927.1746-.46614.4123-.63033.6998-.16419.2875-.26792.6017-.30248.9212-.02517.2326-.03727.47-.03527.7108-.00043.2199.00534.4394.02053.6476-.0053.1132-.00799.225-.00799.3357l.00002.1009c.00016.1027.00338.2036.00959.303z" fill="currentColor"/>
+                        <path d="M18.7718 99.3626c-1.9778-.6428-3.89731-1.4349-5.74401-2.3686l80.49641-80.4964c.9337 1.8467 1.7258 3.7662 2.3686 5.7439z" fill="currentColor"/>
+                        <path d="M26.2624 102.042c-1.6702-.3792-3.3072-.8627-4.9025-1.4444L96.5979 25.3598c.5817 1.5953 1.0651 3.2322 1.4443 4.9024z" fill="currentColor"/>
+                        <path d="M35.3698 103.462c-1.562-.1684-3.1004-.4205-4.61-.7556L99.7869 33.6797c.3352 1.5097.5873 3.0481.7557 4.6101z" fill="currentColor"/>
+                        <path d="M46.0818 103.629c-1.4697.0507-2.9489.0203-4.4313-.0893L103.539 41.6506c.11 1.4824.14 2.9616.0893 4.4313z" fill="currentColor"/>
+                        <path d="M58.2558 101.943c-1.3956.3166-2.8078.5549-4.2311.7144L101.228 55.4541c-.1595 1.4232-.3978 2.8355-.7144 4.2311z" fill="currentColor"/>
+                        <path d="M69.5348 97.7292c-1.232.5454-2.4892 1.0197-3.7666 1.4231L98.1523 66.7681c-.4034 1.2774-.8777 2.5347-1.4231 3.7666z" fill="currentColor"/>
+                        <path d="M79.0055 91.2354c-1.0035.7697-2.0404 1.4874-3.1064 2.1507l14.4848-14.4849c-.6633 1.0661-1.381 2.103-2.1508 3.1065z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Link Columns -->
+            <div class="footer-columns">
+                <!-- Features -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="/plan" class="footer-link">Plan</a></li>
+                        <li><a href="/build" class="footer-link">Build</a></li>
+                        <li><a href="/insights" class="footer-link">Insights</a></li>
+                        <li><a href="/customer-requests" class="footer-link">Customer Requests</a></li>
+                        <li><a href="/asks" class="footer-link">Linear Asks</a></li>
+                        <li><a href="/security" class="footer-link">Security</a></li>
+                        <li><a href="/mobile" class="footer-link">Mobile</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Product -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="/pricing" class="footer-link">Pricing</a></li>
+                        <li><a href="/method" class="footer-link">Method</a></li>
+                        <li><a href="/integrations" class="footer-link">Integrations</a></li>
+                        <li><a href="/changelog" class="footer-link">Changelog</a></li>
+                        <li><a href="/docs" class="footer-link">Documentation</a></li>
+                        <li><a href="/download" class="footer-link">Download</a></li>
+                        <li><a href="/switch" class="footer-link">Switch</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Company -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="/about" class="footer-link">About</a></li>
+                        <li><a href="/customers" class="footer-link">Customers</a></li>
+                        <li><a href="/careers" class="footer-link">Careers</a></li>
+                        <li><a href="/now" class="footer-link">Now</a></li>
+                        <li><a href="/readme" class="footer-link">README</a></li>
+                        <li><a href="/quality" class="footer-link">Quality</a></li>
+                        <li><a href="/brand" class="footer-link">Brand</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Resources -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="/developers" class="footer-link">Developers</a></li>
+                        <li><a href="https://linearstatus.com" class="footer-link">Status</a></li>
+                        <li><a href="/startups" class="footer-link">Startups</a></li>
+                        <li><a href="/security/vulnerability" class="footer-link">Report vulnerability</a></li>
+                        <li><a href="/dpa" class="footer-link">DPA</a></li>
+                        <li><a href="/privacy" class="footer-link">Privacy</a></li>
+                        <li><a href="/terms" class="footer-link">Terms</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Connect -->
+                <nav class="footer-column">
+                    <h3 class="footer-column-title">Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="/contact" class="footer-link">Contact us</a></li>
+                        <li><a href="https://linear.app/join-slack" class="footer-link">Community</a></li>
+                        <li><a href="https://x.com/linear" class="footer-link">X (Twitter)</a></li>
+                        <li><a href="https://github.com/linear" class="footer-link">GitHub</a></li>
+                        <li><a href="https://www.youtube.com/@linear" class="footer-link">YouTube</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

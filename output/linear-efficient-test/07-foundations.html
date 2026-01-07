@@ -1,0 +1,495 @@
+<style>
+.foundations {
+  background: rgb(8, 9, 10);
+  color: rgb(247, 248, 248);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 80px 0 100px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.foundations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.foundations-content {
+  max-width: 520px;
+}
+
+.foundations-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.7);
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+}
+
+.foundations-label-icon {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(247, 248, 248, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foundations-label-icon::before {
+  content: "";
+  width: 6px;
+  height: 1.5px;
+  background: rgba(247, 248, 248, 0.5);
+}
+
+.foundations-title {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 32px 0;
+}
+
+.foundations-description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(247, 248, 248, 0.6);
+  margin: 0 0 48px 0;
+  max-width: 440px;
+}
+
+.foundations-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(247, 248, 248, 0.1);
+}
+
+.foundations-feature {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(247, 248, 248, 0.1);
+}
+
+.foundations-feature-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.foundations-feature-title-arrow {
+  color: rgba(247, 248, 248, 0.5);
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.foundations-feature:hover .foundations-feature-title-arrow {
+  transform: translateX(3px);
+}
+
+.foundations-feature-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(247, 248, 248, 0.55);
+  margin: 0;
+}
+
+.foundations-visual {
+  position: relative;
+  background: linear-gradient(180deg, rgba(30, 32, 35, 0.4) 0%, rgba(20, 22, 24, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-height: 580px;
+  overflow: hidden;
+}
+
+.foundations-visual-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+}
+
+/* Linear Sync Engine Card */
+.foundations-sync-card {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 160px;
+  background: rgba(25, 27, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.foundations-sync-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foundations-sync-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: rgba(247, 248, 248, 0.7);
+  fill: none;
+}
+
+.foundations-sync-label {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: rgba(247, 248, 248, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.foundations-sync-title {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: rgba(247, 248, 248, 0.7);
+  text-transform: uppercase;
+}
+
+/* Workspace Members Counter */
+.foundations-counter {
+  position: absolute;
+  top: 160px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.foundations-counter-box {
+  background: rgba(25, 27, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.foundations-counter-btn {
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.4);
+  line-height: 1;
+}
+
+.foundations-counter-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+  font-family: "SF Mono", "Monaco", monospace;
+}
+
+.foundations-counter-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(247, 248, 248, 0.4);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+/* Security Controls */
+.foundations-security {
+  position: absolute;
+  top: 320px;
+  left: 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.foundations-security-icon {
+  width: 40px;
+  height: 50px;
+  background: rgba(25, 27, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+}
+
+.foundations-security-shield {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(247, 248, 248, 0.5);
+  border-radius: 2px 2px 8px 8px;
+  position: relative;
+}
+
+.foundations-security-shield::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.5);
+}
+
+.foundations-security-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.foundations-security-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(247, 248, 248, 0.4);
+  border-radius: 1px;
+}
+
+.foundations-security-dot:first-child {
+  background: rgba(247, 248, 248, 0.6);
+}
+
+.foundations-security-labels {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(247, 248, 248, 0.35);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  line-height: 1.6;
+}
+
+/* API Grid */
+.foundations-api {
+  position: absolute;
+  top: 320px;
+  right: 30px;
+  width: 180px;
+}
+
+.foundations-api-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.foundations-api-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+}
+
+.foundations-api-label {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(247, 248, 248, 0.5);
+  text-transform: uppercase;
+}
+
+.foundations-api-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+.foundations-api-cell {
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(247, 248, 248, 0.2);
+  border-radius: 50%;
+}
+
+.foundations-api-cell.filled {
+  background: rgba(247, 248, 248, 0.3);
+  border-color: rgba(247, 248, 248, 0.3);
+}
+
+/* Bottom Card */
+.foundations-embed {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  background: rgba(25, 27, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px 20px;
+  min-width: 180px;
+}
+
+.foundations-embed-dot {
+  width: 6px;
+  height: 6px;
+  background: #ef4444;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.foundations-embed-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(247, 248, 248, 0.4);
+  text-transform: uppercase;
+}
+
+/* Vertical Label */
+.foundations-vertical-label {
+  position: absolute;
+  bottom: 80px;
+  right: 210px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(247, 248, 248, 0.3);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+</style>
+
+<div class="foundations">
+  <div class="foundations-container">
+    <div class="foundations-content">
+      <div class="foundations-label">
+        <span class="foundations-label-icon"></span>
+        Under the hood
+      </div>
+      <h2 class="foundations-title">Built on strong<br>foundations</h2>
+      <p class="foundations-description">Linear is so simple to use, it's easy to overlook the wealth of complex technologies packed under the hood that keep Linear robust, safe, and blazing fast.</p>
+
+      <div class="foundations-features">
+        <div class="foundations-feature">
+          <div class="foundations-feature-title">Linear Sync Engine</div>
+          <p class="foundations-feature-text">Built with a high-performance architecture and an obsessive focus on speed.</p>
+        </div>
+        <div class="foundations-feature">
+          <div class="foundations-feature-title">Enterprise-ready security <span class="foundations-feature-title-arrow">&#8250;</span></div>
+          <p class="foundations-feature-text">Best-in-class security practices keep your work safe and secure at every layer.</p>
+        </div>
+        <div class="foundations-feature">
+          <div class="foundations-feature-title">Engineered for scale</div>
+          <p class="foundations-feature-text">Built for teams of all sizes. From early-stage startups to global enterprises.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="foundations-visual">
+      <div class="foundations-visual-inner">
+        <!-- Sync Engine Card -->
+        <div class="foundations-sync-card">
+          <div class="foundations-sync-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5">
+              <path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/>
+            </svg>
+          </div>
+          <div class="foundations-sync-label">LINEAR</div>
+          <div class="foundations-sync-title">SYNC ENGINE</div>
+        </div>
+
+        <!-- Counter -->
+        <div class="foundations-counter">
+          <div class="foundations-counter-box">
+            <span class="foundations-counter-btn">+</span>
+            <span class="foundations-counter-value">5,000</span>
+            <span class="foundations-counter-btn">-</span>
+          </div>
+          <span class="foundations-counter-label">WORKSPACE MEMBERS</span>
+        </div>
+
+        <!-- Security -->
+        <div class="foundations-security">
+          <div class="foundations-security-icon">
+            <div class="foundations-security-shield"></div>
+            <div class="foundations-security-dots">
+              <span class="foundations-security-dot"></span>
+              <span class="foundations-security-dot"></span>
+            </div>
+          </div>
+          <div class="foundations-security-labels">
+            SOC 2 COMPLIANT<br>
+            SAML SSO<br>
+            ADVANCED ADMIN CONTROLS
+          </div>
+        </div>
+
+        <!-- API Grid -->
+        <div class="foundations-api">
+          <div class="foundations-api-header">
+            <span class="foundations-api-dot"></span>
+            <span class="foundations-api-label">API</span>
+          </div>
+          <div class="foundations-api-grid">
+            <span class="foundations-api-cell filled"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+            <span class="foundations-api-cell"></span>
+          </div>
+        </div>
+
+        <!-- Embed Card -->
+        <div class="foundations-embed">
+          <div class="foundations-embed-dot"></div>
+          <div class="foundations-embed-label">NATURALLY EMBEDDED</div>
+        </div>
+
+        <div class="foundations-vertical-label">WEB WORKERS</div>
+      </div>
+    </div>
+  </div>
+</div>

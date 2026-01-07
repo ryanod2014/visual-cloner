@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion - One workspace. Zero busywork.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #37352f;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            max-width: 100%;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 100;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notion-logo {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notion-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-link {
+            padding: 6px 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #37352f;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(55, 53, 47, 0.08);
+        }
+
+        .nav-link svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-login {
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #37352f;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-login:hover {
+            background-color: rgba(55, 53, 47, 0.08);
+        }
+
+        .btn-primary {
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            background-color: #0a85d1;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0077be;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 24px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Character Illustration */
+        .hero-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 32px;
+            gap: 0;
+        }
+
+        .character {
+            position: relative;
+        }
+
+        /* SVG Character Illustrations */
+        .characters-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 160px;
+            margin-bottom: 24px;
+        }
+
+        .characters-svg {
+            width: 700px;
+            height: 160px;
+        }
+
+        .hero-headline {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 72px;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.1;
+            color: #37352f;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subheadline {
+            font-size: 20px;
+            color: #6b6b6b;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .btn-hero-primary {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            background-color: #0a85d1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-hero-primary:hover {
+            background-color: #0077be;
+        }
+
+        .btn-hero-secondary {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #37352f;
+            background-color: transparent;
+            border: 1px solid rgba(55, 53, 47, 0.16);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn-hero-secondary:hover {
+            background-color: rgba(55, 53, 47, 0.04);
+            border-color: rgba(55, 53, 47, 0.3);
+        }
+
+        /* Product Preview */
+        .product-preview {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 0 0 1px rgba(55, 53, 47, 0.09),
+                        0 4px 16px rgba(55, 53, 47, 0.08),
+                        0 8px 32px rgba(55, 53, 47, 0.06);
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #f7f6f3;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+            gap: 12px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d9d9d9;
+        }
+
+        .window-dot.red { background: #ec6a5e; }
+        .window-dot.yellow { background: #f4bf4f; }
+        .window-dot.green { background: #61c554; }
+
+        .nav-arrows {
+            display: flex;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .nav-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0afa9;
+            font-size: 18px;
+        }
+
+        .tab-bar {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+        }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #ffffff;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #37352f;
+        }
+
+        .tab-icon {
+            font-size: 14px;
+        }
+
+        .tab-add {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9b9a97;
+            font-size: 18px;
+        }
+
+        .preview-content {
+            display: flex;
+            min-height: 320px;
+        }
+
+        .preview-main {
+            flex: 1;
+            padding: 16px 24px;
+            border-right: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .preview-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #37352f;
+        }
+
+        .breadcrumb-icon {
+            font-size: 16px;
+        }
+
+        .preview-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .preview-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #6b6b6b;
+        }
+
+        .avatar-stack {
+            display: flex;
+        }
+
+        .avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e9e9e9;
+            border: 2px solid #ffffff;
+            margin-left: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .preview-page-content {
+            padding: 20px 40px;
+        }
+
+        .page-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #37352f;
+            opacity: 0.3;
+        }
+
+        .preview-sidebar {
+            width: 320px;
+            background: #fbfbfa;
+            padding: 16px;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #37352f;
+        }
+
+        .sidebar-title svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .sidebar-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .sidebar-action {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9b9a97;
+            border-radius: 4px;
+        }
+
+        .sidebar-action:hover {
+            background: rgba(55, 53, 47, 0.08);
+        }
+
+        .chat-date {
+            font-size: 12px;
+            color: #9b9a97;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .chat-message {
+            background: #ffffff;
+            border: 1px solid rgba(55, 53, 47, 0.09);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #37352f;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .chat-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #6b6b6b;
+        }
+
+        .chat-search-icon {
+            width: 16px;
+            height: 16px;
+            color: #9b9a97;
+        }
+
+        .search-results {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .result-icon {
+            font-size: 12px;
+        }
+
+        /* Trusted By Section */
+        .trusted-by {
+            padding: 48px 24px;
+            border-top: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
+        .trusted-by-label {
+            font-size: 14px;
+            color: #9b9a97;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 24px;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #37352f;
+            opacity: 0.7;
+        }
+
+        .logo svg {
+            height: 24px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-headline {
+                font-size: 48px;
+            }
+
+            .hero-subheadline {
+                font-size: 18px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .preview-sidebar {
+                display: none;
+            }
+
+            .logos {
+                gap: 32px;
+            }
+
+            .characters-svg {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-left">
+            <a href="#" class="notion-logo">
+                <svg viewBox="0 0 120 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.6927 10.5765C26.3917 14.7153 28.7005 14.3386 39.8171 13.5765L104.329 9.05388C106.641 9.05388 104.705 6.74447 103.953 6.36774L91.3218 -2.71959C87.882 -5.40479 83.3072 -8.46902 74.9088 -7.71347L13.2585 -3.0963C9.44207 -2.71959 8.68976 -0.789216 10.2477 0.765422L20.6927 10.5765ZM26.7684 31.0422V108.632C26.7684 112.771 28.7005 114.326 33.2752 114.326L103.577 109.776C108.153 109.399 108.905 106.34 108.905 102.955V26.1192C108.905 22.7383 107.346 20.8079 104.329 21.1846L31.0197 26.1192C27.9567 26.4959 26.7684 28.4263 26.7684 31.0422ZM95.1786 35.5579C95.5552 37.4883 95.1786 39.4186 93.243 39.7954L89.4266 40.5509V99.574C86.033 101.504 82.7935 102.578 80.1079 102.578C75.9098 102.578 74.728 101.128 71.6585 97.3667L49.8824 63.5348V96.1891L57.9041 97.9903C57.9041 97.9903 57.9041 102.578 51.8219 102.578L34.451 103.706C34.0744 101.776 34.451 99.197 36.3857 98.4414L40.9539 97.3093V54.2134L34.4545 53.6341C34.078 51.7037 35.259 48.6453 38.6791 48.2686L57.1573 46.9602L79.7278 81.1819V51.0764L72.8401 50.3209C72.4635 47.6357 74.3981 45.7053 76.7101 45.3286L95.1786 35.5579ZM7.17635 -14.3903L71.2818 -19.3842C83.3138 -20.5163 86.0059 -19.7607 93.6509 -14.0136L117.68 3.48319C122.631 7.24556 124.187 8.37768 124.187 13.2431V109.022C124.187 117.039 121.495 121.554 108.152 122.687L29.8334 128.058C19.8207 128.81 15.2461 127.679 10.2478 121.178L-7.8786 97.7376C-13.5842 90.5581 -15.8897 85.3166 -15.8897 79.1929V-0.410211C-15.8897 -8.0876 -13.2043 -13.6346 7.17635 -14.3903Z" transform="translate(16 19)" fill="#000"/>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">
+                    Notion
+                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 6l3.5 4 3.5-4H4.5z"/></svg>
+                </a>
+                <a href="#" class="nav-link">Mail</a>
+                <a href="#" class="nav-link">Calendar</a>
+                <a href="#" class="nav-link">AI</a>
+                <a href="#" class="nav-link">Enterprise</a>
+                <a href="#" class="nav-link">Pricing</a>
+                <a href="#" class="nav-link">
+                    Explore
+                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 6l3.5 4 3.5-4H4.5z"/></svg>
+                </a>
+                <a href="#" class="nav-link">Request a demo</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="btn-login">Log in</a>
+            <a href="#" class="btn-primary">Get Notion free</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Character Illustrations -->
+        <div class="characters-wrapper">
+            <svg class="characters-svg" viewBox="0 0 700 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Character 1 - Diamond head with lightbulb -->
+                <g transform="translate(20, 20)">
+                    <path d="M40 100 L60 60 L80 100 L60 140 Z" fill="#e6e6e6" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="60" cy="75" r="12" fill="#ffd93d" stroke="#37352f" stroke-width="2"/>
+                    <path d="M55 80 L60 90 L65 80" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 2 - Round face with glasses -->
+                <g transform="translate(90, 30)">
+                    <circle cx="50" cy="80" r="40" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="38" cy="75" r="10" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="62" cy="75" r="10" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <path d="M48 75 L52 75" stroke="#37352f" stroke-width="2"/>
+                    <ellipse cx="50" cy="95" rx="8" ry="4" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 3 - Square with curly hair -->
+                <g transform="translate(170, 20)">
+                    <rect x="30" y="50" width="60" height="70" rx="4" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <path d="M35 50 Q30 30 45 35 Q50 20 60 30 Q70 20 75 35 Q90 30 85 50" fill="#37352f"/>
+                    <circle cx="48" cy="75" r="4" fill="#37352f"/>
+                    <circle cx="72" cy="75" r="4" fill="#37352f"/>
+                    <path d="M50 95 Q60 105 70 95" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 4 - Orange circle (prominent) -->
+                <g transform="translate(250, 10)">
+                    <circle cx="55" cy="75" r="50" fill="#ff6b35" stroke="#37352f" stroke-width="2"/>
+                    <rect x="35" y="55" width="15" height="20" rx="2" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <rect x="55" y="55" width="15" height="20" rx="2" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="42" cy="65" r="3" fill="#37352f"/>
+                    <circle cx="62" cy="65" r="3" fill="#37352f"/>
+                    <path d="M42 95 L68 95" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 5 - Yellow hard hat (construction) -->
+                <g transform="translate(340, 0)">
+                    <ellipse cx="50" cy="90" rx="35" ry="45" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <path d="M15 70 Q50 30 85 70" fill="#ffcc00" stroke="#37352f" stroke-width="2"/>
+                    <rect x="10" y="65" width="80" height="10" rx="2" fill="#ffcc00" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="38" cy="90" r="4" fill="#37352f"/>
+                    <circle cx="62" cy="90" r="4" fill="#37352f"/>
+                    <path d="M40 110 Q50 120 60 110" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 6 - Long hair character -->
+                <g transform="translate(420, 20)">
+                    <ellipse cx="50" cy="80" rx="30" ry="40" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <path d="M20 60 Q10 100 25 140" fill="#37352f"/>
+                    <path d="M80 60 Q90 100 75 140" fill="#37352f"/>
+                    <path d="M20 50 Q50 20 80 50" fill="#37352f"/>
+                    <circle cx="40" cy="75" r="3" fill="#37352f"/>
+                    <circle cx="60" cy="75" r="3" fill="#37352f"/>
+                    <ellipse cx="50" cy="95" rx="6" ry="3" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+
+                <!-- Character 7 - Face with blue dot -->
+                <g transform="translate(490, 25)">
+                    <ellipse cx="50" cy="75" rx="32" ry="38" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <path d="M18 55 Q50 25 82 55" fill="#37352f"/>
+                    <circle cx="40" cy="70" r="4" fill="#37352f"/>
+                    <circle cx="60" cy="70" r="4" fill="#37352f"/>
+                    <path d="M40 90 Q50 100 60 90" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <circle cx="75" cy="90" r="12" fill="#0a85d1"/>
+                </g>
+
+                <!-- Character 8 - Spiky hair with square -->
+                <g transform="translate(560, 20)">
+                    <rect x="25" y="55" width="55" height="65" rx="4" fill="#f5f5f5" stroke="#37352f" stroke-width="2"/>
+                    <path d="M30 55 L35 30 L45 50 L52 25 L60 50 L70 35 L75 55" fill="#37352f"/>
+                    <rect x="35" y="70" width="12" height="8" rx="1" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <rect x="58" y="70" width="12" height="8" rx="1" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <path d="M41 70 L41 78" stroke="#37352f" stroke-width="1.5"/>
+                    <path d="M64 70 L64 78" stroke="#37352f" stroke-width="1.5"/>
+                    <path d="M52 90 L52 100" stroke="#37352f" stroke-width="2"/>
+                    <!-- Checkbox icon -->
+                    <rect x="45" y="95" width="15" height="15" rx="2" fill="none" stroke="#37352f" stroke-width="2"/>
+                    <path d="M48 103 L52 107 L58 98" fill="none" stroke="#37352f" stroke-width="2"/>
+                </g>
+            </svg>
+        </div>
+
+        <h1 class="hero-headline">One workspace.<br>Zero busywork.</h1>
+
+        <p class="hero-subheadline">
+            Notion is where your teams and AI agents capture knowledge, find answers, and automate projects. Now a team of 7 feels like 70.
+        </p>
+
+        <div class="hero-cta">
+            <a href="#" class="btn-hero-primary">Get Notion free</a>
+            <a href="#" class="btn-hero-secondary">Request a demo</a>
+        </div>
+
+        <!-- Product Preview -->
+        <div class="product-preview">
+            <div class="preview-header">
+                <div class="window-controls">
+                    <div class="window-dot"></div>
+                    <div class="window-dot"></div>
+                    <div class="window-dot"></div>
+                </div>
+                <div class="nav-arrows">
+                    <span class="nav-arrow">&lt;</span>
+                    <span class="nav-arrow">&gt;</span>
+                </div>
+                <div class="tab-bar">
+                    <div class="tab">
+                        <span class="tab-icon">&#127942;</span>
+                        Acme Inc.
+                    </div>
+                    <span class="tab-add">+</span>
+                </div>
+            </div>
+            <div class="preview-content">
+                <div class="preview-main">
+                    <div class="preview-toolbar">
+                        <div class="preview-breadcrumb">
+                            <span class="breadcrumb-icon">&#127942;</span>
+                            Acme Inc.
+                        </div>
+                        <div class="preview-actions">
+                            <div class="avatar-stack">
+                                <div class="avatar" style="background: #e9e9e9;"></div>
+                                <div class="avatar" style="background: #ffd93d;"></div>
+                                <div class="avatar" style="background: #98d8aa;"></div>
+                            </div>
+                            <span class="preview-action">Share</span>
+                            <span class="preview-action">&#128172;</span>
+                            <span class="preview-action">&#9734;</span>
+                            <span class="preview-action">&#8943;</span>
+                        </div>
+                    </div>
+                    <div class="preview-page-content">
+                        <div class="page-icon">&#129681;</div>
+                        <div class="page-title">Acme Inc.</div>
+                    </div>
+                </div>
+                <div class="preview-sidebar">
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            New AI chat
+                            <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12"><path d="M4.5 6l3.5 4 3.5-4H4.5z"/></svg>
+                        </div>
+                        <div class="sidebar-actions">
+                            <span class="sidebar-action">&#9998;</span>
+                            <span class="sidebar-action">&#9744;</span>
+                            <span class="sidebar-action">&raquo;</span>
+                        </div>
+                    </div>
+                    <div class="chat-date">Thursday, May 29</div>
+                    <div class="chat-message">
+                        Turn this page into a hub of key company pages, our roadmap, and company priorities
+                    </div>
+                    <div class="chat-search">
+                        <svg class="chat-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        96 search results
+                        <div class="search-results">
+                            <span class="result-icon">&#128196;</span>
+                            <span class="result-icon">&#127891;</span>
+                            <span class="result-icon">&#127828;</span>
+                            &gt;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by">
+        <p class="trusted-by-label">Trusted by top teams</p>
+        <div class="logos">
+            <div class="logo">
+                <span class="logo-text" style="font-weight: 700;">OpenAI</span>
+            </div>
+            <div class="logo">
+                <svg width="70" height="24" viewBox="0 0 70 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.5c-3.584 0-6.5-2.916-6.5-6.5s2.916-6.5 6.5-6.5 6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5z" transform="scale(0.8)"/>
+                    <text x="22" y="17" font-family="Inter, sans-serif" font-size="14" font-weight="600">Figma</text>
+                </svg>
+            </div>
+            <div class="logo">
+                <span class="logo-text" style="font-weight: 700;">ramp</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-left: 2px;">
+                    <path d="M5 15 L15 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px;">
+                    <rect x="4" y="4" width="16" height="16" rx="3" fill="currentColor"/>
+                    <rect x="7" y="10" width="4" height="7" fill="white"/>
+                </svg>
+                <span class="logo-text" style="font-weight: 700; letter-spacing: 0.05em;">CURSOR</span>
+            </div>
+            <div class="logo">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 4px;">
+                    <polygon points="10,0 20,20 0,20"/>
+                </svg>
+                <span class="logo-text" style="font-weight: 600;">Vercel</span>
+            </div>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px;">
+                    <path d="M0 12 L6 0 L12 12 L6 24 Z"/>
+                    <path d="M12 12 L18 0 L24 12 L18 24 Z"/>
+                </svg>
+                <span class="logo-text" style="font-weight: 700;">NVIDIA</span>
+            </div>
+            <div class="logo">
+                <span class="logo-text" style="font-weight: 400; letter-spacing: 0.3em; font-size: 14px;">VOLVO</span>
+            </div>
+            <div class="logo">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 4px;">
+                    <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M6 10 L14 10 M10 6 L10 14 M7 7 L13 13 M13 7 L7 13" stroke="currentColor" stroke-width="1"/>
+                </svg>
+                <span class="logo-text" style="font-weight: 500;">perplexity</span>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

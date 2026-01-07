@@ -1,0 +1,129 @@
+{
+  "url": "https://chroniclehq.com/",
+  "title": "Chronicle: The AI Presentation Tool for Stories Worth Telling",
+  "timestamp": "2025-01-07T03:56:00.000Z",
+  "tokens": {
+    "colors": {
+      "background": "#ffffff",
+      "text": "#211d1d",
+      "heading": "#201d1d",
+      "accent": "#000000"
+    },
+    "fonts": {
+      "body": "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+      "heading": "'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+    }
+  },
+  "sections": [
+    {
+      "id": "header",
+      "order": 0,
+      "description": "Navigation header with logo and menu",
+      "screenshot": "screenshots/00-hero.png",
+      "content": {
+        "logo": "Chronicle",
+        "navItems": ["Product", "Resources", "Solutions", "Templates", "Enterprise", "Pricing"],
+        "cta": "Try for free"
+      }
+    },
+    {
+      "id": "hero",
+      "order": 1,
+      "description": "Hero section with headline and presentation showcase",
+      "screenshot": "screenshots/00-hero.png",
+      "content": {
+        "headline": "Every great presentation starts with a Chronicle",
+        "subheadline": "Create stunning presentations. No design skills required.",
+        "primaryCta": "Start for free",
+        "secondaryCta": "Watch video",
+        "categories": ["Product showcase", "Sales proposal", "Pitch deck", "Portfolio", "Business update", "Project plan", "Research report", "Marketing campaign"]
+      }
+    },
+    {
+      "id": "logos",
+      "order": 2,
+      "description": "Customer logos section",
+      "screenshot": "screenshots/01-logos.png",
+      "content": {
+        "tagline": "Used by 5000+ teams who value storytelling",
+        "logos": ["Accel", "Berkeley", "Atlassian", "OpenAI", "Deel", "Binance", "HubSpot", "Figma", "Stanford", "Plaid", "Accenture", "TikTok", "Descript", "Vercel", "Ramp"]
+      }
+    },
+    {
+      "id": "ai-demo",
+      "order": 3,
+      "description": "AI generation demo section",
+      "content": {
+        "leftHeadline": "Start with your raw thoughts and ideas.",
+        "leftDescription": "Choose a template, paste in a rough outline, or import existing content.",
+        "rightHeadline": "Watch Chronicle bring your story to life.",
+        "rightDescription": "Generate a well crafted presentation, with beautiful layouts that you can refine, share and present."
+      }
+    },
+    {
+      "id": "features",
+      "order": 4,
+      "description": "Features section - Built for business",
+      "content": {
+        "headline": "Built for business. Feels like play.",
+        "subheadline": "Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.",
+        "features": [
+          {"title": "Smart templates", "description": "Save your own templates that your team can insert or use to generate content."},
+          {"title": "Social and PDF export", "description": "Share your Chronicle as a high quality PDF or beautiful animated GIF."},
+          {"title": "Themes & branding", "description": "Add your logo, and switch up colors, fonts and backgrounds to match your style."},
+          {"title": "Smart canvas", "description": "Drag widgets in a freeform canvas, then tidy up to snap elements into neat layouts."},
+          {"title": "Real-time collaboration", "description": "Work together live with shared editing, cursors, and team workspaces."},
+          {"title": "Publish to web", "description": "Turn your Chronicle into a shareable link and track engagement and views."}
+        ]
+      }
+    },
+    {
+      "id": "widgets",
+      "order": 5,
+      "description": "Widgets showcase section",
+      "content": {
+        "label": "Widgets",
+        "headline": "Build polished outputs with widgets that come with pixel perfect design, interactivity and motion out of the box.",
+        "description": "Zoom in, highlight, or isolate key elements and never lose your audience's attention."
+      }
+    },
+    {
+      "id": "testimonials",
+      "order": 6,
+      "description": "Testimonials section",
+      "content": {
+        "headline": "Loved by world-class founders, strategists, designers and teams.",
+        "testimonials": [
+          {"quote": "Remarkable.", "author": "Guillermo Rauch", "role": "Vercel"},
+          {"quote": "I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.", "author": "Ravi Mehta", "role": "Ex-CPO at Tinder"},
+          {"quote": "Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.", "author": "Ridd", "role": "Dive Club"},
+          {"quote": "No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.", "author": "Juan Alzugaray", "role": "COO, Flai (YC S25)"}
+        ]
+      }
+    },
+    {
+      "id": "templates",
+      "order": 7,
+      "description": "Templates gallery section",
+      "content": {
+        "headline": "Templates from the world's best storytellers.",
+        "categories": ["Pitch deck", "Sales proposal", "Product showcase", "Business update"]
+      }
+    },
+    {
+      "id": "footer",
+      "order": 8,
+      "description": "Footer with CTA and links",
+      "content": {
+        "cta": "Start creating",
+        "brand": "Chronicle",
+        "company": "ChronicleHQ Inc.",
+        "sections": {
+          "Resources": ["Getting Started", "AI Presentation Maker", "Pricing", "PowerPoint Alternatives", "Chronicle vs. Gamma", "Solutions", "Integrations", "API", "Templates"],
+          "Company": ["Join our Community", "Academy", "Become an Affiliate", "Partner Network", "Enterprise", "Chronicle Studio", "Privacy Policy", "Terms of Service", "Careers", "Contact Us"],
+          "Social": ["Instagram", "Twitter", "LinkedIn", "YouTube", "Chronicle 101"]
+        }
+      }
+    }
+  ]
+}

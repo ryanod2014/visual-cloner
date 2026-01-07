@@ -1,0 +1,194 @@
+<style>
+  .aave-why-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    padding: 80px 0 100px;
+    color: #1a1a2e;
+  }
+
+  .aave-why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .aave-why-content {
+    padding-top: 40px;
+  }
+
+  .aave-why-heading {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-why-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 400px;
+  }
+
+  .aave-why-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .aave-why-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aave-why-card-graphic {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Purple card with geometric pattern */
+  .aave-why-graphic-purple {
+    background: #b8b4f0;
+  }
+
+  .aave-why-graphic-purple svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Teal card with geometric pattern */
+  .aave-why-graphic-teal {
+    background: #1a9e96;
+  }
+
+  .aave-why-graphic-teal svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Light blue card */
+  .aave-why-graphic-lightblue {
+    background: #c5eef5;
+  }
+
+  .aave-why-card-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .aave-why-stat-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a2e;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-why-stat-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  @media (max-width: 900px) {
+    .aave-why-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .aave-why-content {
+      padding-top: 0;
+    }
+
+    .aave-why-heading {
+      font-size: 36px;
+    }
+  }
+</style>
+
+<section class="aave-why-section">
+  <div class="aave-why-container">
+    <div class="aave-why-content">
+      <h2 class="aave-why-heading">Why choose Aave?</h2>
+      <p class="aave-why-subtitle">Aave handles tens of billions of dollars across 12+ networks.</p>
+    </div>
+
+    <div class="aave-why-cards">
+      <!-- Card 1: Net Deposits - Purple -->
+      <div class="aave-why-card">
+        <div class="aave-why-card-graphic aave-why-graphic-purple">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect fill="#b8b4f0" width="400" height="220"/>
+            <!-- Row 1 -->
+            <circle cx="50" cy="0" r="50" fill="#9d97e8"/>
+            <circle cx="150" cy="0" r="50" fill="#d4d1f7"/>
+            <circle cx="250" cy="0" r="50" fill="#9d97e8"/>
+            <circle cx="350" cy="0" r="50" fill="#d4d1f7"/>
+            <!-- Row 2 -->
+            <circle cx="100" cy="110" r="50" fill="#d4d1f7"/>
+            <circle cx="200" cy="110" r="50" fill="#9d97e8"/>
+            <circle cx="300" cy="110" r="50" fill="#d4d1f7"/>
+            <!-- Row 3 -->
+            <circle cx="50" cy="220" r="50" fill="#9d97e8"/>
+            <circle cx="150" cy="220" r="50" fill="#d4d1f7"/>
+            <circle cx="250" cy="220" r="50" fill="#9d97e8"/>
+            <circle cx="350" cy="220" r="50" fill="#d4d1f7"/>
+          </svg>
+        </div>
+        <div class="aave-why-card-stats">
+          <span class="aave-why-stat-value">$58.81B</span>
+          <span class="aave-why-stat-label">Net deposits supplied across 12+ networks.</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Volume - Teal -->
+      <div class="aave-why-card">
+        <div class="aave-why-card-graphic aave-why-graphic-teal">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect fill="#1a9e96" width="400" height="220"/>
+            <!-- Semi-circles and circles pattern -->
+            <circle cx="60" cy="50" r="45" fill="#147a74"/>
+            <circle cx="60" cy="170" r="45" fill="#147a74"/>
+            <!-- Center circles -->
+            <path d="M140 50 A45 45 0 0 1 140 140 L140 50" fill="#7dd3d0"/>
+            <circle cx="200" cy="95" r="45" fill="#147a74"/>
+            <path d="M260 50 A45 45 0 0 0 260 140 L260 50" fill="#7dd3d0"/>
+            <!-- Right side -->
+            <circle cx="320" cy="50" r="45" fill="#7dd3d0"/>
+            <path d="M320 125 A45 45 0 0 1 320 215" fill="#7dd3d0"/>
+            <circle cx="380" cy="170" r="45" fill="#147a74"/>
+          </svg>
+        </div>
+        <div class="aave-why-card-stats">
+          <span class="aave-why-stat-value">$92.53B</span>
+          <span class="aave-why-stat-label">Volume, past 30 days.</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Light Blue (partial) -->
+      <div class="aave-why-card">
+        <div class="aave-why-card-graphic aave-why-graphic-lightblue">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+            <rect fill="#c5eef5" width="400" height="220"/>
+          </svg>
+        </div>
+        <div class="aave-why-card-stats">
+          <span class="aave-why-stat-value">12+</span>
+          <span class="aave-why-stat-label">Networks supported.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

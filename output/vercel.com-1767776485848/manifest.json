@@ -1,0 +1,1386 @@
+{
+  "url": "https://vercel.com/",
+  "title": "Vercel: Build and deploy the best web experiences with the AI Cloud",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullHeight": 5974,
+  "sections": [
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "selector": ".header-module__6nzVrW__header",
+      "description": "ProductsAI Cloudv0Build applications with AIAI SDKThe AI Toolkit for TypeScript AI GatewayOne e",
+      "order": 0
+    },
+    {
+      "id": "main",
+      "type": "semantic",
+      "bounds": {
+        "top": 64,
+        "left": 0,
+        "width": 1440,
+        "height": 5208.5625
+      },
+      "selector": "main",
+      "description": "Build and deploy on the AI Cloud. | Build and deploy on the AI Cloud.",
+      "order": 1
+    },
+    {
+      "id": "block-2",
+      "type": "visual-block",
+      "bounds": {
+        "top": 64,
+        "left": 0,
+        "width": 1440,
+        "height": 784.328125
+      },
+      "selector": ".stack-module__UbbKhW__stack",
+      "description": "Build and deploy on the AI Cloud. | Build and deploy on the AI Cloud.",
+      "order": 2
+    },
+    {
+      "id": "section-1",
+      "type": "section",
+      "bounds": {
+        "top": 129,
+        "left": 181,
+        "width": 1079,
+        "height": 719.328125
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Build and deploy on the AI Cloud.",
+      "order": 3
+    },
+    {
+      "id": "block-3",
+      "type": "visual-block",
+      "bounds": {
+        "top": 847.328125,
+        "left": 0,
+        "width": 1440,
+        "height": 398
+      },
+      "selector": ".stack-module__UbbKhW__stack",
+      "description": "build times went from 7m to 40s. saw a 95% reduction in page load times. saw 24x faster builds.AI A",
+      "order": 4
+    },
+    {
+      "id": "section-2",
+      "type": "section",
+      "bounds": {
+        "top": 890.328125,
+        "left": 181,
+        "width": 1079,
+        "height": 313
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "build times went from 7m to 40s. saw a 95% reduction in page load times. saw 24x faster builds.AI A",
+      "order": 5
+    },
+    {
+      "id": "block-4",
+      "type": "visual-block",
+      "bounds": {
+        "top": 1244.328125,
+        "left": 0,
+        "width": 1440,
+        "height": 897.5
+      },
+      "selector": ".stack-module__UbbKhW__stack",
+      "description": "Your product, delivered. | Agents",
+      "order": 6
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 1245.328125,
+        "left": 540.6640625,
+        "width": 358.6640625,
+        "height": 176
+      },
+      "selector": ".p-6",
+      "description": "Agents",
+      "order": 7
+    },
+    {
+      "id": "section-3",
+      "type": "section",
+      "bounds": {
+        "top": 1245.328125,
+        "left": 181,
+        "width": 1079,
+        "height": 611
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Your product, delivered. | Agents",
+      "order": 8
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 1550.328125,
+        "left": 181,
+        "width": 358.6640625,
+        "height": 176
+      },
+      "selector": ".p-6",
+      "description": "Web Apps",
+      "order": 9
+    },
+    {
+      "id": "section-4",
+      "type": "section",
+      "bounds": {
+        "top": 1855.328125,
+        "left": 181,
+        "width": 1079,
+        "height": 286.5
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Framework-Defined Infrastructure",
+      "order": 10
+    },
+    {
+      "id": "section-5",
+      "type": "section",
+      "bounds": {
+        "top": 2141.828125,
+        "left": 181,
+        "width": 1079,
+        "height": 138
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Scale your | without compromising",
+      "order": 11
+    },
+    {
+      "id": "block-6",
+      "type": "visual-block",
+      "bounds": {
+        "top": 2294.828125,
+        "left": 0,
+        "width": 1440,
+        "height": 1944.21875
+      },
+      "selector": ".stack-module__UbbKhW__stack",
+      "description": "Deploy once, deliver everywhere. | Fluid Compute",
+      "order": 12
+    },
+    {
+      "id": "section-6",
+      "type": "section",
+      "bounds": {
+        "top": 2387.828125,
+        "left": 181,
+        "width": 1079,
+        "height": 821.21875
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Deploy once, deliver everywhere.",
+      "order": 13
+    },
+    {
+      "id": "section-7",
+      "type": "section",
+      "bounds": {
+        "top": 3159.046875,
+        "left": 181,
+        "width": 1079,
+        "height": 422
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Fluid Compute",
+      "order": 14
+    },
+    {
+      "id": "section-8",
+      "type": "section",
+      "bounds": {
+        "top": 3581.046875,
+        "left": 181,
+        "width": 1079,
+        "height": 642
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "AI Gateway",
+      "order": 15
+    },
+    {
+      "id": "block-7",
+      "type": "visual-block",
+      "bounds": {
+        "top": 4238.046875,
+        "left": 0,
+        "width": 1440,
+        "height": 1034.515625
+      },
+      "selector": ".stack-module__UbbKhW__stack",
+      "description": "Deploy your first app in seconds. | Start Deploying",
+      "order": 16
+    },
+    {
+      "id": "section-9",
+      "type": "section",
+      "bounds": {
+        "top": 4239.046875,
+        "left": 181,
+        "width": 1079,
+        "height": 710.515625
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Deploy your first app in seconds.",
+      "order": 17
+    },
+    {
+      "id": "section-10",
+      "type": "section",
+      "bounds": {
+        "top": 4949.5625,
+        "left": 181,
+        "width": 1079,
+        "height": 323
+      },
+      "selector": ".grid-module__4pDFEa__grid",
+      "description": "Start Deploying",
+      "order": 18
+    },
+    {
+      "id": "footer",
+      "type": "semantic",
+      "bounds": {
+        "top": 5362.5625,
+        "left": 0,
+        "width": 1440,
+        "height": 612
+      },
+      "selector": ".geist-footer-module__5I6hjG__footer",
+      "description": "Products | Resources",
+      "order": 19
+    },
+    {
+      "id": "nav",
+      "type": "semantic",
+      "bounds": {
+        "top": 5362.5625,
+        "left": 180,
+        "width": 1080,
+        "height": 522
+      },
+      "selector": "nav",
+      "description": "Products | Resources",
+      "order": 20
+    }
+  ],
+  "interactive": [
+    {
+      "id": "interactive-1",
+      "tag": "button",
+      "text": "Products",
+      "bounds": {
+        "top": 17,
+        "left": 147,
+        "width": 101.375,
+        "height": 30
+      },
+      "selector": "#radix-_r_6_-trigger-features",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-2",
+      "tag": "a",
+      "text": "AI Cloud",
+      "bounds": {
+        "top": 35,
+        "left": 167,
+        "width": 53.8359375,
+        "height": 20
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-3",
+      "tag": "a",
+      "text": "v0Build applications with AI",
+      "bounds": {
+        "top": 55,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".navigation-menu-module__AENi4G__menuSubLink",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-4",
+      "tag": "a",
+      "text": "AI SDKThe AI Toolkit for TypeS",
+      "bounds": {
+        "top": 117,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".navigation-menu-module__AENi4G__menuSubLink",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-5",
+      "tag": "a",
+      "text": "AI GatewayOne endpoint, all yo",
+      "bounds": {
+        "top": 179,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-6",
+      "tag": "a",
+      "text": "Vercel AgentAn agent that know",
+      "bounds": {
+        "top": 241,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-7",
+      "tag": "a",
+      "text": "SandboxAI workflows in live en",
+      "bounds": {
+        "top": 303,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-8",
+      "tag": "a",
+      "text": "CI/CDHelping teams ship 6× fas",
+      "bounds": {
+        "top": 55,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-9",
+      "tag": "a",
+      "text": "Content DeliveryFast, scalable",
+      "bounds": {
+        "top": 117,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-10",
+      "tag": "a",
+      "text": "Fluid ComputeServers, in serve",
+      "bounds": {
+        "top": 179,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-11",
+      "tag": "a",
+      "text": "ObservabilityTrace every step",
+      "bounds": {
+        "top": 241,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-12",
+      "tag": "a",
+      "text": "Security",
+      "bounds": {
+        "top": 35,
+        "left": 663,
+        "width": 53.0390625,
+        "height": 20
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-13",
+      "tag": "a",
+      "text": "Bot ManagementScalable bot pro",
+      "bounds": {
+        "top": 55,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-14",
+      "tag": "a",
+      "text": "BotIDInvisible CAPTCHA",
+      "bounds": {
+        "top": 117,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-15",
+      "tag": "a",
+      "text": "Platform SecurityDDoS Protecti",
+      "bounds": {
+        "top": 179,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-16",
+      "tag": "a",
+      "text": "Web Application FirewallGranul",
+      "bounds": {
+        "top": 241,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-17",
+      "tag": "button",
+      "text": "Resources",
+      "bounds": {
+        "top": 17,
+        "left": 248.375,
+        "width": 111.3828125,
+        "height": 30
+      },
+      "selector": "#radix-_r_6_-trigger-resources",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-18",
+      "tag": "a",
+      "text": "CustomersTrusted by the best t",
+      "bounds": {
+        "top": 55,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-19",
+      "tag": "a",
+      "text": "BlogThe latest posts and chang",
+      "bounds": {
+        "top": 117,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-20",
+      "tag": "a",
+      "text": "ChangelogSee what shipped",
+      "bounds": {
+        "top": 179,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-21",
+      "tag": "a",
+      "text": "PressRead the latest news",
+      "bounds": {
+        "top": 241,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-22",
+      "tag": "a",
+      "text": "EventsJoin us at an event",
+      "bounds": {
+        "top": 303,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-23",
+      "tag": "a",
+      "text": "DocsVercel documentation",
+      "bounds": {
+        "top": 55,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-24",
+      "tag": "a",
+      "text": "AcademyLinear courses to level",
+      "bounds": {
+        "top": 117,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-25",
+      "tag": "a",
+      "text": "Knowledge BaseFind help quickl",
+      "bounds": {
+        "top": 179,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-26",
+      "tag": "a",
+      "text": "CommunityJoin the conversation",
+      "bounds": {
+        "top": 241,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-27",
+      "tag": "a",
+      "text": "Next.jsThe native Next.js plat",
+      "bounds": {
+        "top": 55,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-28",
+      "tag": "a",
+      "text": "NuxtThe progressive web framew",
+      "bounds": {
+        "top": 117,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".navigation-menu-module__AENi4G__menuSubLink",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-29",
+      "tag": "a",
+      "text": "SvelteThe web’s efficient UI f",
+      "bounds": {
+        "top": 179,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".navigation-menu-module__AENi4G__menuSubLink",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-30",
+      "tag": "a",
+      "text": "TurborepoSpeed with Enterprise",
+      "bounds": {
+        "top": 241,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-31",
+      "tag": "button",
+      "text": "Solutions",
+      "bounds": {
+        "top": 17,
+        "left": 359.7578125,
+        "width": 104.234375,
+        "height": 30
+      },
+      "selector": "#radix-_r_6_-trigger-solutions",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-32",
+      "tag": "a",
+      "text": "AI AppsDeploy at the speed of ",
+      "bounds": {
+        "top": 55,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-33",
+      "tag": "a",
+      "text": "Composable CommercePower store",
+      "bounds": {
+        "top": 117,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-34",
+      "tag": "a",
+      "text": "Marketing SitesLaunch campaign",
+      "bounds": {
+        "top": 179,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-35",
+      "tag": "a",
+      "text": "Multi-tenant PlatformsScale ap",
+      "bounds": {
+        "top": 241,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-36",
+      "tag": "a",
+      "text": "Web AppsShip features, not inf",
+      "bounds": {
+        "top": 303,
+        "left": 155,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-37",
+      "tag": "a",
+      "text": "MarketplaceExtend and automate",
+      "bounds": {
+        "top": 55,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-38",
+      "tag": "a",
+      "text": "TemplatesJumpstart app develop",
+      "bounds": {
+        "top": 117,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-39",
+      "tag": "a",
+      "text": "Partner FinderGet help from so",
+      "bounds": {
+        "top": 179,
+        "left": 403,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-40",
+      "tag": "a",
+      "text": "Platform EngineersAutomate awa",
+      "bounds": {
+        "top": 55,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-41",
+      "tag": "a",
+      "text": "Design EngineersDeploy for eve",
+      "bounds": {
+        "top": 117,
+        "left": 651,
+        "width": 248,
+        "height": 62
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-42",
+      "tag": "a",
+      "text": "Enterprise",
+      "bounds": {
+        "top": 17,
+        "left": 463.9921875,
+        "width": 89.1484375,
+        "height": 30
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-43",
+      "tag": "a",
+      "text": "Pricing",
+      "bounds": {
+        "top": 17,
+        "left": 553.140625,
+        "width": 68.46875,
+        "height": 30
+      },
+      "selector": ".link-module__Q1NRQq__link",
+      "defaultStyles": {
+        "color": "rgb(102, 102, 102)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(102, 102, 102)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-44",
+      "tag": "a",
+      "text": "Log In",
+      "bounds": {
+        "top": 16,
+        "left": 1176.890625,
+        "width": 63.9765625,
+        "height": 32
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "rgb(235, 235, 235) 0px 0px 0px 1px",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-45",
+      "tag": "a",
+      "text": "Contact",
+      "bounds": {
+        "top": 16,
+        "left": 1252.8671875,
+        "width": 76.3359375,
+        "height": 32
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "rgb(235, 235, 235) 0px 0px 0px 1px",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-46",
+      "tag": "a",
+      "text": "Sign Up",
+      "bounds": {
+        "top": 16,
+        "left": 1341.203125,
+        "width": 74.796875,
+        "height": 32
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(23, 23, 23)",
+        "background": "rgb(23, 23, 23) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-47",
+      "tag": "a",
+      "text": "Sign Up",
+      "bounds": {
+        "top": 16,
+        "left": 1341.203125,
+        "width": 74.796875,
+        "height": 32
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(23, 23, 23)",
+        "background": "rgb(23, 23, 23) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-51",
+      "tag": "a",
+      "text": "DeployStart Deploying",
+      "bounds": {
+        "top": 462.2421875,
+        "left": 526.984375,
+        "width": 181,
+        "height": 48
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(23, 23, 23)",
+        "background": "rgb(23, 23, 23) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-52",
+      "tag": "a",
+      "text": "Get a Demo",
+      "bounds": {
+        "top": 462.2421875,
+        "left": 731.984375,
+        "width": 181,
+        "height": 48
+      },
+      "selector": ".button-module__QyrFCa__base",
+      "defaultStyles": {
+        "color": "rgb(23, 23, 23)",
+        "background-color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(23, 23, 23)",
+        "box-shadow": "rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-53",
+      "tag": "button",
+      "text": "AI AppsAI Apps",
+      "bounds": {
+        "top": 1115.328125,
+        "left": 229,
+        "width": 82.3203125,
+        "height": 40
+      },
+      "selector": "#_R_clr59bsnpfiv9faqaivb_",
+      "defaultStyles": {
+        "color": "rgb(0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(0, 0, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    }
+  ]
+}

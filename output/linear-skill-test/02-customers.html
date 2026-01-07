@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear - Customers Section</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Section container */
+        .customers-section {
+            background-color: #0A0A0B;
+            padding: 64px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 380px;
+        }
+
+        /* Header text */
+        .customers-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .customers-title {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #6B6F76;
+            max-width: 560px;
+        }
+
+        .customers-title-highlight {
+            color: #D1D5DB;
+        }
+
+        /* Logos container - clickable link */
+        .customers-logos-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Logo grid */
+        .customers-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 72px;
+            margin-bottom: 48px;
+            max-width: 860px;
+        }
+
+        /* Individual logo placeholder */
+        .customers-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+            min-width: 100px;
+            color: #6B6F76;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-logo {
+            color: #8A8F98;
+        }
+
+        /* Logo with icon prefix */
+        .customers-logo-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Specific logo styles to match visual appearance */
+        .customers-logo-openai {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .customers-logo-cashapp {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .customers-logo-scale {
+            font-weight: 400;
+            font-size: 20px;
+            letter-spacing: 0.12em;
+            text-transform: lowercase;
+        }
+
+        .customers-logo-ramp {
+            font-weight: 500;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .customers-logo-vercel {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .customers-logo-coinbase {
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .customers-logo-boom {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .customers-logo-cursor {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Meet our customers link */
+        .customers-cta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #EDEDED;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-cta {
+            color: #FFFFFF;
+        }
+
+        .customers-cta-arrow {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .customers-logos-link:hover .customers-cta-arrow {
+            transform: translateX(3px);
+        }
+
+        .customers-cta-arrow svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Vercel triangle icon */
+        .customers-icon-triangle {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 12px solid currentColor;
+        }
+
+        /* Cash App square icon */
+        .customers-icon-square {
+            width: 20px;
+            height: 20px;
+            background-color: currentColor;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .customers-icon-square::after {
+            content: "$";
+            color: #0A0A0B;
+            font-size: 13px;
+            font-weight: 700;
+            position: absolute;
+        }
+
+        /* Ramp arrow SVG styling */
+        .customers-logo-ramp svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            margin-left: 2px;
+        }
+
+        /* Boom star SVG styling */
+        .customers-logo-boom svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Cursor frame SVG styling */
+        .customers-logo-cursor svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <section class="customers-section">
+        <div class="customers-header">
+            <p class="customers-title">
+                <span class="customers-title-highlight">Powering the world's best product teams.</span><br>
+                From next-gen startups to established enterprises.
+            </p>
+        </div>
+
+        <a href="/customers" class="customers-logos-link">
+            <div class="customers-logos-grid">
+                <!-- Row 1 -->
+                <div class="customers-logo customers-logo-openai">OpenAI</div>
+                <div class="customers-logo customers-logo-cashapp customers-logo-with-icon">
+                    <span class="customers-icon-square"></span>
+                    <span>Cash App</span>
+                </div>
+                <div class="customers-logo customers-logo-scale">scale</div>
+                <div class="customers-logo customers-logo-ramp customers-logo-with-icon">
+                    <span>ramp</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                        <path d="M7 17L17 7M17 7H10M17 7V14"/>
+                    </svg>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="customers-logo customers-logo-vercel customers-logo-with-icon">
+                    <span class="customers-icon-triangle"></span>
+                    <span>Vercel</span>
+                </div>
+                <div class="customers-logo customers-logo-coinbase">coinbase</div>
+                <div class="customers-logo customers-logo-boom customers-logo-with-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5Z"/>
+                    </svg>
+                    <span>BOOM</span>
+                </div>
+                <div class="customers-logo customers-logo-cursor customers-logo-with-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <span>CURSOR</span>
+                </div>
+            </div>
+
+            <div class="customers-cta">
+                <span>Meet our customers</span>
+                <span class="customers-cta-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </span>
+            </div>
+        </a>
+    </section>
+</body>
+</html>

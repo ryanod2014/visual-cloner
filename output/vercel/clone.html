@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vercel: Build and deploy on the AI Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+            color: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo svg {
+            width: 22px;
+            height: 20px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-item:hover {
+            color: #000;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-link {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: color 0.15s;
+        }
+
+        .header-link:hover {
+            color: #000;
+        }
+
+        .btn-signup {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            background: #000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .btn-signup:hover {
+            background: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 140px;
+            overflow: hidden;
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 200px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .grid-line {
+            stroke: #e5e5e5;
+            stroke-width: 1;
+            fill: none;
+        }
+
+        .grid-corner {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+        }
+
+        .grid-corner::before,
+        .grid-corner::after {
+            content: '';
+            position: absolute;
+            background: #ccc;
+        }
+
+        .grid-corner::before {
+            width: 12px;
+            height: 1px;
+            top: 50%;
+        }
+
+        .grid-corner::after {
+            width: 1px;
+            height: 12px;
+            left: 50%;
+        }
+
+        .corner-tl { top: 90px; left: calc(50% - 280px); }
+        .corner-tr { top: 90px; right: calc(50% - 280px); }
+        .corner-bl { top: 200px; left: calc(50% - 180px); }
+        .corner-br { top: 200px; right: calc(50% - 180px); }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            color: #000;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 560px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background: #000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary svg {
+            width: 16px;
+            height: 14px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s, transform 0.15s;
+        }
+
+        .btn-secondary:hover {
+            background: #fafafa;
+            border-color: #ccc;
+            transform: translateY(-1px);
+        }
+
+        /* Triangle with Rainbow Rays */
+        .triangle-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .rainbow-rays {
+            position: absolute;
+            width: 800px;
+            height: 500px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Animated rainbow gradient rays */
+        .ray-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .rainbow-gradient {
+            position: absolute;
+            width: 700px;
+            height: 400px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background:
+                radial-gradient(ellipse 80% 60% at 30% 80%, rgba(255, 100, 100, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 50% at 40% 75%, rgba(255, 180, 50, 0.7) 0%, transparent 45%),
+                radial-gradient(ellipse 60% 45% at 50% 70%, rgba(255, 230, 100, 0.6) 0%, transparent 40%),
+                radial-gradient(ellipse 50% 40% at 60% 75%, rgba(150, 255, 150, 0.5) 0%, transparent 40%),
+                radial-gradient(ellipse 60% 50% at 70% 80%, rgba(100, 200, 255, 0.5) 0%, transparent 45%);
+            filter: blur(30px);
+            opacity: 0.9;
+        }
+
+        /* Curved lines emanating from triangle */
+        .curved-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .curved-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ray-line {
+            fill: none;
+            stroke-width: 0.5;
+            opacity: 0.6;
+        }
+
+        /* Main triangle */
+        .main-triangle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            width: 140px;
+            height: 140px;
+            z-index: 5;
+        }
+
+        .main-triangle svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Framework Section */
+        .framework-section {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 80px 24px;
+            background: #fff;
+        }
+
+        .framework-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .framework-card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .framework-card:hover {
+            border-color: #ccc;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .framework-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .framework-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .framework-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-item {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .framework-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#" class="logo">
+                    <svg viewBox="0 0 76 65" fill="none">
+                        <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#000"/>
+                    </svg>
+                    <span>Vercel</span>
+                </a>
+                <nav>
+                    <a href="#" class="nav-item">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-item">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-item">
+                        Solutions
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-item">Enterprise</a>
+                    <a href="#" class="nav-item">Pricing</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <a href="#" class="header-link">Log In</a>
+                <a href="#" class="header-link">Contact</a>
+                <button class="btn-signup">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Grid Pattern Decorations -->
+        <div class="grid-corner corner-tl"></div>
+        <div class="grid-corner corner-tr"></div>
+        <div class="grid-corner corner-bl"></div>
+        <div class="grid-corner corner-br"></div>
+
+        <!-- SVG Grid Lines -->
+        <svg class="grid-pattern" viewBox="0 0 600 200">
+            <!-- Horizontal lines -->
+            <line class="grid-line" x1="60" y1="20" x2="540" y2="20"/>
+            <line class="grid-line" x1="120" y1="60" x2="480" y2="60"/>
+            <line class="grid-line" x1="160" y1="100" x2="440" y2="100"/>
+            <!-- Vertical lines -->
+            <line class="grid-line" x1="120" y1="20" x2="120" y2="100"/>
+            <line class="grid-line" x1="200" y1="20" x2="200" y2="100"/>
+            <line class="grid-line" x1="300" y1="20" x2="300" y2="100"/>
+            <line class="grid-line" x1="400" y1="20" x2="400" y2="100"/>
+            <line class="grid-line" x1="480" y1="20" x2="480" y2="100"/>
+        </svg>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">Build and deploy on the AI Cloud.</h1>
+            <p class="hero-subtitle">
+                Vercel provides the developer tools and cloud infrastructure
+                to build, scale, and secure a faster, more personalized web.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">
+                    <svg viewBox="0 0 76 65" fill="currentColor">
+                        <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+                    </svg>
+                    Start Deploying
+                </a>
+                <a href="#" class="btn-secondary">Get a Demo</a>
+            </div>
+        </div>
+
+        <!-- Triangle with Rainbow Rays -->
+        <div class="triangle-container">
+            <!-- Rainbow gradient background -->
+            <div class="rainbow-gradient"></div>
+
+            <!-- Curved emanating lines -->
+            <svg class="curved-lines" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+                <!-- Red/Pink rays (left side) -->
+                <g>
+                    <!-- Outer rays -->
+                    <path class="ray-line" stroke="#ff6b6b" d="M400,320 Q300,280 100,380" />
+                    <path class="ray-line" stroke="#ff6b6b" d="M400,320 Q280,270 80,350" />
+                    <path class="ray-line" stroke="#ff8080" d="M400,320 Q260,260 60,320" />
+                    <path class="ray-line" stroke="#ff9090" d="M400,320 Q240,250 50,290" />
+                    <path class="ray-line" stroke="#ffa0a0" d="M400,320 Q220,240 40,260" />
+
+                    <!-- Additional density -->
+                    <path class="ray-line" stroke="#ff7070" d="M400,320 Q290,275 90,365" />
+                    <path class="ray-line" stroke="#ff7575" d="M400,320 Q270,265 70,335" />
+                    <path class="ray-line" stroke="#ff8585" d="M400,320 Q250,255 55,305" />
+                </g>
+
+                <!-- Orange rays -->
+                <g>
+                    <path class="ray-line" stroke="#ffaa50" d="M400,320 Q340,240 150,300" />
+                    <path class="ray-line" stroke="#ffb060" d="M400,320 Q330,235 140,280" />
+                    <path class="ray-line" stroke="#ffb570" d="M400,320 Q320,230 130,260" />
+                    <path class="ray-line" stroke="#ffba80" d="M400,320 Q310,225 120,240" />
+                    <path class="ray-line" stroke="#ffc090" d="M400,320 Q300,220 110,220" />
+
+                    <path class="ray-line" stroke="#ffad58" d="M400,320 Q335,238 145,290" />
+                    <path class="ray-line" stroke="#ffb268" d="M400,320 Q325,233 135,270" />
+                </g>
+
+                <!-- Yellow rays -->
+                <g>
+                    <path class="ray-line" stroke="#ffe066" d="M400,320 Q380,230 200,250" />
+                    <path class="ray-line" stroke="#ffe570" d="M400,320 Q375,225 210,235" />
+                    <path class="ray-line" stroke="#ffea80" d="M400,320 Q370,220 220,220" />
+                    <path class="ray-line" stroke="#ffef90" d="M400,320 Q365,215 230,205" />
+                    <path class="ray-line" stroke="#fff4a0" d="M400,320 Q360,210 240,190" />
+
+                    <path class="ray-line" stroke="#ffe268" d="M400,320 Q378,228 205,243" />
+                    <path class="ray-line" stroke="#ffe778" d="M400,320 Q373,223 215,228" />
+                </g>
+
+                <!-- Yellow-green transition -->
+                <g>
+                    <path class="ray-line" stroke="#d4e866" d="M400,320 Q390,210 280,180" />
+                    <path class="ray-line" stroke="#c8e670" d="M400,320 Q395,205 300,170" />
+                    <path class="ray-line" stroke="#bce480" d="M400,320 Q400,200 320,160" />
+                </g>
+
+                <!-- Green rays (center-right) -->
+                <g>
+                    <path class="ray-line" stroke="#90ee90" d="M400,320 Q410,200 350,150" />
+                    <path class="ray-line" stroke="#80e880" d="M400,320 Q420,195 380,145" />
+                    <path class="ray-line" stroke="#70e270" d="M400,320 Q430,190 410,140" />
+                    <path class="ray-line" stroke="#60dc60" d="M400,320 Q440,185 440,135" />
+
+                    <path class="ray-line" stroke="#88eb88" d="M400,320 Q415,198 365,148" />
+                    <path class="ray-line" stroke="#78e578" d="M400,320 Q425,193 395,143" />
+                </g>
+
+                <!-- Cyan/Teal rays -->
+                <g>
+                    <path class="ray-line" stroke="#50d6d6" d="M400,320 Q450,190 470,140" />
+                    <path class="ray-line" stroke="#40d0d0" d="M400,320 Q460,195 500,150" />
+                    <path class="ray-line" stroke="#30caca" d="M400,320 Q470,200 530,160" />
+                    <path class="ray-line" stroke="#20c4c4" d="M400,320 Q480,205 560,170" />
+
+                    <path class="ray-line" stroke="#48d3d3" d="M400,320 Q455,193 485,145" />
+                    <path class="ray-line" stroke="#38cdcd" d="M400,320 Q465,198 515,155" />
+                </g>
+
+                <!-- Blue rays (right side) -->
+                <g>
+                    <path class="ray-line" stroke="#60a0ff" d="M400,320 Q490,215 590,190" />
+                    <path class="ray-line" stroke="#50a5ff" d="M400,320 Q500,220 620,210" />
+                    <path class="ray-line" stroke="#40aaff" d="M400,320 Q510,230 650,230" />
+                    <path class="ray-line" stroke="#30afff" d="M400,320 Q520,240 680,250" />
+                    <path class="ray-line" stroke="#20b4ff" d="M400,320 Q530,250 700,280" />
+
+                    <path class="ray-line" stroke="#58a3ff" d="M400,320 Q495,218 605,200" />
+                    <path class="ray-line" stroke="#48a8ff" d="M400,320 Q505,225 635,220" />
+                </g>
+
+                <!-- Light blue/purple rays -->
+                <g>
+                    <path class="ray-line" stroke="#70b0ff" d="M400,320 Q540,260 720,310" />
+                    <path class="ray-line" stroke="#80b8ff" d="M400,320 Q550,270 740,340" />
+                    <path class="ray-line" stroke="#90c0ff" d="M400,320 Q560,280 750,370" />
+
+                    <path class="ray-line" stroke="#78b4ff" d="M400,320 Q545,265 730,325" />
+                    <path class="ray-line" stroke="#88bcff" d="M400,320 Q555,275 745,355" />
+                </g>
+
+                <!-- Additional fine lines for density -->
+                <g opacity="0.4">
+                    <path class="ray-line" stroke="#ff6060" d="M400,320 Q285,273 95,358" />
+                    <path class="ray-line" stroke="#ffaa55" d="M400,320 Q338,237 148,285" />
+                    <path class="ray-line" stroke="#ffe065" d="M400,320 Q376,226 208,238" />
+                    <path class="ray-line" stroke="#90ee88" d="M400,320 Q418,196 368,146" />
+                    <path class="ray-line" stroke="#50d4d4" d="M400,320 Q458,192 490,148" />
+                    <path class="ray-line" stroke="#60a2ff" d="M400,320 Q498,217 610,198" />
+                    <path class="ray-line" stroke="#78b2ff" d="M400,320 Q543,263 728,318" />
+                </g>
+            </svg>
+
+            <!-- Main Triangle -->
+            <div class="main-triangle">
+                <svg viewBox="0 0 76 65" fill="none">
+                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#000"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section class="framework-section">
+        <div class="framework-container">
+            <p class="section-label">Framework-Defined Infrastructure</p>
+            <h2 class="section-title">Works with your favorite frameworks</h2>
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M12 2L2 19.5h20L12 2z" fill="#000"/>
+                        </svg>
+                    </div>
+                    <h3 class="framework-name">Next.js</h3>
+                    <p class="framework-desc">The React framework for production</p>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48">
+                            <circle cx="12" cy="12" r="10" fill="#61dafb"/>
+                            <circle cx="12" cy="12" r="2" fill="#000"/>
+                        </svg>
+                    </div>
+                    <h3 class="framework-name">React</h3>
+                    <p class="framework-desc">A JavaScript library for building UIs</p>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#42b883" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="framework-name">Vue.js</h3>
+                    <p class="framework-desc">The progressive JavaScript framework</p>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#000"/>
+                        </svg>
+                    </div>
+                    <h3 class="framework-name">SvelteKit</h3>
+                    <p class="framework-desc">The fastest way to build Svelte apps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

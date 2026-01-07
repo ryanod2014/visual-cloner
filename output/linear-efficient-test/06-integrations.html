@@ -1,0 +1,680 @@
+<style>
+.integrations {
+  background: rgb(8, 9, 10);
+  color: rgb(247, 248, 248);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 80px 0 100px;
+  min-height: 100vh;
+}
+
+.integrations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.integrations-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+  align-items: start;
+}
+
+.integrations-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.7);
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+}
+
+.integrations-label-dot {
+  width: 8px;
+  height: 8px;
+  background: rgb(94, 106, 210);
+  border-radius: 50%;
+}
+
+.integrations-title {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: rgb(247, 248, 248);
+}
+
+.integrations-description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(247, 248, 248, 0.7);
+  margin: 0;
+  max-width: 420px;
+  padding-top: 12px;
+}
+
+.integrations-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.integrations-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.integrations-card-preview {
+  height: 280px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.integrations-card-preview::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgb(8, 9, 10));
+  pointer-events: none;
+}
+
+/* Card 1 - Intercom style */
+.integrations-preview-item {
+  background: rgba(30, 32, 35, 0.9);
+  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.integrations-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.integrations-preview-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.integrations-preview-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: rgba(247, 248, 248, 0.7);
+}
+
+.integrations-preview-brand {
+  font-size: 13px;
+  color: rgba(247, 248, 248, 0.9);
+  font-weight: 500;
+}
+
+.integrations-preview-email {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.5);
+}
+
+.integrations-preview-text {
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.8);
+  line-height: 1.4;
+}
+
+.integrations-preview-slack {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.integrations-preview-slack-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(40, 42, 46, 0.9);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.integrations-preview-slack-icon::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: rgb(46, 160, 67);
+  border-radius: 50%;
+  border: 2px solid rgb(30, 32, 35);
+}
+
+.integrations-preview-slack-content {
+  flex: 1;
+}
+
+.integrations-preview-slack-brand {
+  font-size: 13px;
+  color: rgba(247, 248, 248, 0.9);
+  font-weight: 500;
+}
+
+.integrations-preview-slack-tag {
+  display: inline-block;
+  background: rgb(46, 160, 67);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.integrations-preview-slack-text {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.5);
+  margin-top: 2px;
+}
+
+.integrations-preview-linear {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.integrations-preview-linear-icon {
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.integrations-preview-linear-label {
+  font-size: 13px;
+  color: rgb(94, 106, 210);
+  font-weight: 500;
+}
+
+.integrations-preview-linear-text {
+  font-size: 13px;
+  color: rgba(247, 248, 248, 0.7);
+}
+
+.integrations-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.integrations-preview-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.5);
+}
+
+.integrations-preview-meta-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+
+/* Card 2 - GitHub style */
+.integrations-github-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.integrations-github-item:last-child {
+  border-bottom: none;
+}
+
+.integrations-github-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.integrations-github-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: rgba(247, 248, 248, 0.6);
+}
+
+.integrations-github-icon.purple svg {
+  fill: rgb(163, 113, 247);
+}
+
+.integrations-github-icon.green svg {
+  fill: rgb(46, 160, 67);
+}
+
+.integrations-github-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.integrations-github-title {
+  font-size: 13px;
+  color: rgba(247, 248, 248, 0.9);
+}
+
+.integrations-github-title span {
+  color: rgb(94, 106, 210);
+}
+
+.integrations-github-title .number {
+  color: rgba(247, 248, 248, 0.5);
+}
+
+.integrations-github-meta {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.5);
+  margin-top: 2px;
+}
+
+.integrations-github-user {
+  color: rgba(247, 248, 248, 0.7);
+}
+
+.integrations-github-branch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.integrations-github-branch svg {
+  width: 12px;
+  height: 12px;
+  fill: rgba(247, 248, 248, 0.5);
+}
+
+/* Card 3 - Mobile style */
+.integrations-mobile-preview {
+  position: relative;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.integrations-mobile-device {
+  width: 160px;
+  height: 320px;
+  background: linear-gradient(145deg, rgba(40, 42, 46, 1) 0%, rgba(25, 27, 30, 1) 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  position: relative;
+  transform: perspective(800px) rotateY(-8deg) rotateX(2deg);
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.integrations-mobile-screen {
+  width: 100%;
+  height: 100%;
+  background: rgb(18, 19, 21);
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.integrations-mobile-status {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.7);
+  margin-bottom: 8px;
+}
+
+.integrations-mobile-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(247, 248, 248);
+  margin-bottom: 12px;
+}
+
+.integrations-mobile-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 6px;
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.7);
+}
+
+.integrations-mobile-item-title {
+  color: rgb(247, 248, 248);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* Card 4 - Asks style */
+.integrations-asks-preview {
+  position: relative;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(30, 32, 35, 0.5) 0%, transparent 100%);
+}
+
+.integrations-asks-circles {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.integrations-asks-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.integrations-asks-circle-1 {
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+}
+
+.integrations-asks-circle-2 {
+  width: 150px;
+  height: 150px;
+  top: 25px;
+  left: 25px;
+}
+
+.integrations-asks-circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  left: 50px;
+}
+
+.integrations-asks-avatars {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 8px;
+}
+
+.integrations-asks-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100, 100, 100, 1) 0%, rgba(60, 60, 60, 1) 100%);
+  border: 2px solid rgb(8, 9, 10);
+}
+
+.integrations-card-content {
+  padding: 20px 24px 24px;
+  margin-top: auto;
+}
+
+.integrations-card-label {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.5);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.integrations-card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.integrations-card-action {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.integrations-card-action:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.integrations-card-action svg {
+  width: 16px;
+  height: 16px;
+  fill: rgba(247, 248, 248, 0.8);
+}
+
+.integrations-card-action.plus svg {
+  width: 14px;
+  height: 14px;
+}
+</style>
+
+<div class="integrations">
+  <div class="integrations-container">
+    <div class="integrations-header">
+      <div class="integrations-header-left">
+        <div class="integrations-label">
+          <span class="integrations-label-dot"></span>
+          <span>Workflows and integrations</span>
+        </div>
+        <h2 class="integrations-title">Collaborate across<br>tools and teams</h2>
+      </div>
+      <div class="integrations-header-right">
+        <p class="integrations-description">Expand the capabilities of the Linear system with a wide variety of integrations that keep everyone in your organization aligned and focused.</p>
+      </div>
+    </div>
+
+    <div class="integrations-cards">
+      <!-- Card 1: Customer Requests -->
+      <div class="integrations-card">
+        <div class="integrations-card-preview">
+          <div class="integrations-preview-item">
+            <div class="integrations-preview-header">
+              <div class="integrations-preview-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              </div>
+              <span class="integrations-preview-brand">Intercom</span>
+              <span class="integrations-preview-email">&#183; zoe@acme.inc</span>
+            </div>
+            <div class="integrations-preview-text">We need a cost breakdown across a...</div>
+          </div>
+
+          <div class="integrations-preview-item">
+            <div class="integrations-preview-slack">
+              <div class="integrations-preview-slack-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="rgba(247,248,248,0.6)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="integrations-preview-slack-content">
+                <div>
+                  <span class="integrations-preview-slack-brand">ACME</span>
+                  <span class="integrations-preview-slack-tag">New</span>
+                </div>
+                <div class="integrations-preview-slack-text">request</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="integrations-preview-item">
+            <div class="integrations-preview-linear">
+              <div class="integrations-preview-linear-icon"></div>
+              <span class="integrations-preview-linear-label">Multi-cloud cost</span>
+              <span class="integrations-preview-linear-text">dashboard</span>
+            </div>
+            <div class="integrations-preview-meta">
+              <div class="integrations-preview-meta-item">
+                <svg class="integrations-preview-meta-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                Planning
+              </div>
+              <div class="integrations-preview-meta-item">
+                <svg class="integrations-preview-meta-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>
+                Q4 2025
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="integrations-card-content">
+          <div class="integrations-card-label">Customer Requests</div>
+          <h3 class="integrations-card-title">Build what customers actually want</h3>
+        </div>
+        <div class="integrations-card-action">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Git Workflows -->
+      <div class="integrations-card">
+        <div class="integrations-card-preview" style="padding: 20px;">
+          <div class="integrations-github-item">
+            <div class="integrations-github-icon purple">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div class="integrations-github-content">
+              <div class="integrations-github-title"><span class="number">#20319</span> <span>igor/lin</span> 15287 add sourc...</div>
+            </div>
+          </div>
+
+          <div class="integrations-github-item">
+            <div class="integrations-github-icon">
+              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/></svg>
+            </div>
+            <div class="integrations-github-content">
+              <div class="integrations-github-title"><span class="integrations-github-user">Igor</span> linked <span class="integrations-github-branch"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg> igor/lin</span> 15287 add sourc...</div>
+            </div>
+          </div>
+
+          <div class="integrations-github-item">
+            <div class="integrations-github-icon green">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div class="integrations-github-content">
+              <div class="integrations-github-title"><span class="integrations-github-user">igor</span> changed status from In Progres...</div>
+            </div>
+          </div>
+
+          <div class="integrations-github-item">
+            <div class="integrations-github-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+            </div>
+            <div class="integrations-github-content">
+              <div class="integrations-github-title"><span class="integrations-github-user">GitHub</span> changed status from In Revie...</div>
+            </div>
+          </div>
+
+          <div class="integrations-github-item">
+            <div class="integrations-github-icon green">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div class="integrations-github-content">
+              <div class="integrations-github-title"><span class="integrations-github-user">igor</span> changed status from Ready to M...</div>
+            </div>
+          </div>
+        </div>
+        <div class="integrations-card-content">
+          <div class="integrations-card-label">Powerful git workflows</div>
+          <h3 class="integrations-card-title">Automate pull requests and commit workflows</h3>
+        </div>
+        <div class="integrations-card-action plus">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 3: Linear Mobile -->
+      <div class="integrations-card">
+        <div class="integrations-mobile-preview">
+          <div class="integrations-mobile-device">
+            <div class="integrations-mobile-screen">
+              <div class="integrations-mobile-status">9:41</div>
+              <div class="integrations-mobile-header">Inbox</div>
+              <div class="integrations-mobile-item">
+                <div class="integrations-mobile-item-title">Change button c...</div>
+                <div>Issue assigned</div>
+              </div>
+              <div class="integrations-mobile-item">
+                <div class="integrations-mobile-item-title">Error handling...</div>
+                <div>Comment mention</div>
+              </div>
+              <div class="integrations-mobile-item">
+                <div class="integrations-mobile-item-title">Performance opt...</div>
+                <div>Status changed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="integrations-card-content">
+          <div class="integrations-card-label">Linear Mobile</div>
+          <h3 class="integrations-card-title">Move product work forward from anywhere</h3>
+        </div>
+        <div class="integrations-card-action">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 4: Linear Asks -->
+      <div class="integrations-card">
+        <div class="integrations-asks-preview">
+          <div class="integrations-asks-circles">
+            <div class="integrations-asks-circle integrations-asks-circle-1"></div>
+            <div class="integrations-asks-circle integrations-asks-circle-2"></div>
+            <div class="integrations-asks-circle integrations-asks-circle-3"></div>
+            <div class="integrations-asks-avatars">
+              <div class="integrations-asks-avatar"></div>
+              <div class="integrations-asks-avatar" style="margin-left: -12px;"></div>
+              <div class="integrations-asks-avatar" style="margin-left: -12px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="integrations-card-content">
+          <div class="integrations-card-label">Linear Asks</div>
+          <h3 class="integrations-card-title">Turn workplace requests into actionable issues</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

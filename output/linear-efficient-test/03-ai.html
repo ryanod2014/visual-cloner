@@ -1,0 +1,306 @@
+<style>
+.ai {
+  background: rgb(8, 9, 10);
+  color: rgb(247, 248, 248);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 80px 0 60px;
+  min-height: 700px;
+}
+
+.ai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.ai-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(247, 248, 248, 0.7);
+  margin-bottom: 16px;
+}
+
+.ai-label-dot {
+  width: 8px;
+  height: 8px;
+  background: rgb(94, 106, 210);
+  border-radius: 50%;
+}
+
+.ai-label-arrow {
+  font-size: 12px;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+.ai-heading {
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 28px 0;
+  color: rgb(247, 248, 248);
+}
+
+.ai-description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(247, 248, 248, 0.6);
+  max-width: 460px;
+  margin: 0 0 24px 0;
+}
+
+.ai-description-highlight {
+  color: rgb(247, 248, 248);
+}
+
+.ai-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: rgb(247, 248, 248);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ai-learn-more:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ai-learn-more-arrow {
+  font-size: 12px;
+}
+
+.ai-card-container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.ai-card {
+  width: 100%;
+  max-width: 820px;
+  background: linear-gradient(180deg, rgba(40, 42, 48, 0.8) 0%, rgba(20, 21, 24, 0.9) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: rotateX(10deg) rotateY(0deg);
+  transform-style: preserve-3d;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+
+.ai-card-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ai-card-title {
+  font-size: 15px;
+  color: rgba(247, 248, 248, 0.5);
+  margin: 0;
+  font-weight: 400;
+}
+
+.ai-card-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ai-card-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 12px;
+  transition: background 0.15s;
+}
+
+.ai-card-item-selected {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ai-card-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ai-icon-cursor {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ai-icon-cursor::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.ai-icon-github {
+  background: linear-gradient(135deg, #2d333b 0%, #22272e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-icon-github::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at center, transparent 4px, white 4px, white 6px, transparent 6px),
+              radial-gradient(ellipse at 50% 85%, white 0%, white 4px, transparent 4px);
+  border-radius: 50%;
+}
+
+.ai-icon-sentry {
+  background: linear-gradient(135deg, #362d59 0%, #1f1633 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-icon-sentry::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-left: 3px solid #f5b945;
+  border-bottom: 3px solid #f5b945;
+  border-radius: 0 0 0 8px;
+}
+
+.ai-icon-leela {
+  background: linear-gradient(135deg, #8b5a2b 0%, #5d3a1a 100%);
+  border-radius: 50%;
+}
+
+.ai-icon-leela::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #d4a574 30%, #8b5a2b 100%);
+  border-radius: 50%;
+}
+
+.ai-icon-codex {
+  background: linear-gradient(135deg, #1e3a2f 0%, #0d1f17 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.ai-icon-codex::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #10a37f;
+  border-radius: 50%;
+}
+
+.ai-icon-conor {
+  background: linear-gradient(135deg, #3a5a8c 0%, #1e3050 100%);
+  border-radius: 50%;
+}
+
+.ai-icon-conor::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #6b8bb8 30%, #3a5a8c 100%);
+  border-radius: 50%;
+}
+
+.ai-card-name {
+  font-size: 15px;
+  color: rgb(247, 248, 248);
+  font-weight: 500;
+}
+
+.ai-card-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: rgba(247, 248, 248, 0.6);
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.ai-card-check {
+  margin-left: auto;
+  color: rgb(247, 248, 248);
+  font-size: 16px;
+}
+
+.ai-card-item-faded {
+  opacity: 0.5;
+}
+</style>
+<div class="ai">
+  <div class="ai-container">
+    <div class="ai-label">
+      <span class="ai-label-dot"></span>
+      Artificial intelligence
+      <span class="ai-label-arrow">&#8250;</span>
+    </div>
+
+    <h1 class="ai-heading">AI-assisted product development</h1>
+
+    <p class="ai-description">
+      <span class="ai-description-highlight">Linear for Agents.</span> Choose from a variety of AI agents and start delegating work, from code generation to other technical tasks.
+    </p>
+
+    <button class="ai-learn-more">
+      Learn more
+      <span class="ai-learn-more-arrow">&#8250;</span>
+    </button>
+
+    <div class="ai-card-container">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <p class="ai-card-title">Assign to...</p>
+        </div>
+        <ul class="ai-card-list">
+          <li class="ai-card-item ai-card-item-selected">
+            <div class="ai-card-icon ai-icon-cursor"></div>
+            <span class="ai-card-name">Cursor</span>
+            <span class="ai-card-badge">Agent</span>
+            <span class="ai-card-check">&#10003;</span>
+          </li>
+          <li class="ai-card-item">
+            <div class="ai-card-icon ai-icon-github"></div>
+            <span class="ai-card-name">GitHub Copilot</span>
+            <span class="ai-card-badge">Agent</span>
+          </li>
+          <li class="ai-card-item">
+            <div class="ai-card-icon ai-icon-sentry"></div>
+            <span class="ai-card-name">Sentry</span>
+            <span class="ai-card-badge">Agent</span>
+          </li>
+          <li class="ai-card-item ai-card-item-faded">
+            <div class="ai-card-icon ai-icon-leela"></div>
+            <span class="ai-card-name">Leela</span>
+          </li>
+          <li class="ai-card-item ai-card-item-faded">
+            <div class="ai-card-icon ai-icon-codex"></div>
+            <span class="ai-card-name">Codex</span>
+            <span class="ai-card-badge">Agent</span>
+          </li>
+          <li class="ai-card-item ai-card-item-faded">
+            <div class="ai-card-icon ai-icon-conor"></div>
+            <span class="ai-card-name">Conor</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

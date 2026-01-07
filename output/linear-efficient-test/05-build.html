@@ -1,0 +1,453 @@
+<style>
+.build {
+  background: rgb(8, 9, 10);
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: rgb(247, 248, 248);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.build-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.build-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(247, 248, 248);
+  text-decoration: none;
+}
+
+.build-logo-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.build-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.build-nav-link {
+  color: rgb(180, 182, 185);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.build-nav-link:hover {
+  color: rgb(247, 248, 248);
+}
+
+.build-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.build-login {
+  color: rgb(180, 182, 185);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.build-signup {
+  background: rgb(247, 248, 248);
+  color: rgb(8, 9, 10);
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.build-content {
+  padding: 80px 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.build-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgb(180, 182, 185);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.build-label-icon {
+  width: 16px;
+  height: 16px;
+  background: rgb(245, 166, 35);
+  border-radius: 50%;
+}
+
+.build-label-arrow {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.build-headline {
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 40px;
+  max-width: 700px;
+}
+
+.build-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(180, 182, 185);
+  max-width: 520px;
+  margin: 0;
+}
+
+.build-cards-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-30%);
+  width: 1000px;
+  height: 500px;
+  perspective: 1500px;
+}
+
+.build-card {
+  position: absolute;
+  background: rgba(30, 32, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.build-card-1 {
+  width: 480px;
+  bottom: 180px;
+  left: 100px;
+  transform: rotateX(15deg) rotateY(-15deg) rotateZ(-2deg);
+  z-index: 3;
+}
+
+.build-card-2 {
+  width: 520px;
+  bottom: 40px;
+  left: 180px;
+  transform: rotateX(20deg) rotateY(-10deg) rotateZ(-1deg);
+  z-index: 4;
+}
+
+.build-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.build-card-priority {
+  font-size: 11px;
+  color: rgb(180, 182, 185);
+  opacity: 0.7;
+}
+
+.build-card-id {
+  font-size: 12px;
+  color: rgb(130, 132, 135);
+  font-family: monospace;
+}
+
+.build-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.build-card-status {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgb(245, 166, 35);
+  flex-shrink: 0;
+}
+
+.build-card-status-blue {
+  border-color: rgb(94, 106, 210);
+  background: rgb(94, 106, 210);
+}
+
+.build-card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+}
+
+.build-card-tags {
+  display: flex;
+  gap: 8px;
+  padding-left: 30px;
+}
+
+.build-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(60, 62, 68, 0.6);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: rgb(180, 182, 185);
+}
+
+.build-card-tag-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-floating-items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.build-float-item {
+  position: absolute;
+  background: rgba(30, 32, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: rgb(180, 182, 185);
+  backdrop-filter: blur(10px);
+}
+
+.build-float-urgent {
+  top: 120px;
+  right: 180px;
+  color: rgb(247, 248, 248);
+  font-style: italic;
+}
+
+.build-float-eng1 {
+  top: 160px;
+  right: 140px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.build-float-task1 {
+  top: 200px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.build-float-task1-circle {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.build-float-security {
+  top: 240px;
+  right: 100px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.build-float-security-icon {
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.build-float-eng2 {
+  bottom: 180px;
+  right: 100px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.build-float-remove {
+  bottom: 140px;
+  right: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.build-float-remove-dot {
+  width: 10px;
+  height: 10px;
+  background: rgb(245, 166, 35);
+  border-radius: 50%;
+}
+
+.build-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgb(8, 9, 10) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 6;
+}
+</style>
+<div class="build">
+  <nav class="build-nav">
+    <a href="#" class="build-logo">
+      <span class="build-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/>
+        </svg>
+      </span>
+      Linear
+    </a>
+    <div class="build-nav-links">
+      <a href="#" class="build-nav-link">Product</a>
+      <a href="#" class="build-nav-link">Resources</a>
+      <a href="#" class="build-nav-link">Pricing</a>
+      <a href="#" class="build-nav-link">Customers</a>
+      <a href="#" class="build-nav-link">Now</a>
+      <a href="#" class="build-nav-link">Contact</a>
+    </div>
+    <div class="build-nav-actions">
+      <a href="#" class="build-login">Log in</a>
+      <a href="#" class="build-signup">Sign up</a>
+    </div>
+  </nav>
+
+  <div class="build-content">
+    <div class="build-label">
+      <span class="build-label-icon"></span>
+      Task tracking and sprint planning
+      <span class="build-label-arrow">›</span>
+    </div>
+    <h1 class="build-headline">Issue tracking<br>you'll enjoy using</h1>
+    <p class="build-description">
+      Optimized for speed and efficiency.<br>
+      Create tasks in seconds, discuss issues<br>
+      in context, and breeze through your work<br>
+      in views tailored to you and your team.
+    </p>
+  </div>
+
+  <div class="build-cards-container">
+    <div class="build-card build-card-1">
+      <div class="build-card-header">
+        <span class="build-card-priority">High Priority</span>
+        <span class="build-card-id">ENG-1025</span>
+      </div>
+      <div class="build-card-title-row">
+        <div class="build-card-status"></div>
+        <span class="build-card-title">Improve keyboard shortcuts</span>
+      </div>
+      <div class="build-card-tags">
+        <span class="build-card-tag">
+          <span class="build-card-tag-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <rect x="1" y="8" width="2" height="3" rx="0.5"/>
+              <rect x="5" y="5" width="2" height="6" rx="0.5"/>
+              <rect x="9" y="2" width="2" height="9" rx="0.5"/>
+            </svg>
+          </span>
+        </span>
+        <span class="build-card-tag">
+          <span class="build-card-tag-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 1L7.5 4.5L11 5.5L8.5 8L9 11.5L6 10L3 11.5L3.5 8L1 5.5L4.5 4.5L6 1Z"/>
+            </svg>
+          </span>
+          UI Refresh
+        </span>
+      </div>
+    </div>
+
+    <div class="build-card build-card-2">
+      <div class="build-card-header">
+        <span class="build-card-id">ENG-1012</span>
+      </div>
+      <div class="build-card-title-row">
+        <div class="build-card-status build-card-status-blue"></div>
+        <span class="build-card-title">Update payment gateway integration</span>
+      </div>
+      <div class="build-card-tags">
+        <span class="build-card-tag">
+          <span class="build-card-tag-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <rect x="1" y="8" width="2" height="3" rx="0.5"/>
+              <rect x="5" y="5" width="2" height="6" rx="0.5"/>
+              <rect x="9" y="2" width="2" height="9" rx="0.5"/>
+            </svg>
+          </span>
+        </span>
+        <span class="build-card-tag">
+          <span class="build-card-tag-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1" fill="none"/>
+            </svg>
+          </span>
+          PSD2 Regulation
+        </span>
+      </div>
+    </div>
+
+    <div class="build-floating-items">
+      <div class="build-float-item build-float-urgent">Urgent</div>
+      <div class="build-float-item build-float-eng1">ENG-1018</div>
+      <div class="build-float-item build-float-task1">
+        <span class="build-float-task1-circle"></span>
+        Implement AES-...
+      </div>
+      <div class="build-float-item build-float-security">
+        <span class="build-float-security-icon"></span>
+        Security ...
+      </div>
+      <div class="build-float-item build-float-eng2">ENG-902</div>
+      <div class="build-float-item build-float-remove">
+        <span class="build-float-remove-dot"></span>
+        Remove d...
+      </div>
+    </div>
+  </div>
+
+  <div class="build-gradient-overlay"></div>
+</div>

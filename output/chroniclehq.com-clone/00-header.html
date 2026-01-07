@@ -1,0 +1,113 @@
+<style>
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-nav-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #211d1d;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.header-nav-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+}
+
+.header-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  border-radius: 8px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-login {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #211d1d;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.header-login:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-cta {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.header-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<header class="header">
+  <nav class="header-nav">
+    <a href="#" class="header-nav-item">Product</a>
+    <a href="#" class="header-nav-item">Resources</a>
+    <a href="#" class="header-nav-item">Solutions</a>
+    <a href="#" class="header-nav-item">Templates</a>
+    <a href="#" class="header-nav-item">Enterprise</a>
+    <a href="#" class="header-nav-item">Pricing</a>
+  </nav>
+
+  <a href="#" class="header-logo">
+    <div class="header-logo-icon"></div>
+    Chronicle
+  </a>
+
+  <div class="header-actions">
+    <a href="#" class="header-login">Login</a>
+    <a href="#" class="header-cta">Try for free</a>
+  </div>
+</header>

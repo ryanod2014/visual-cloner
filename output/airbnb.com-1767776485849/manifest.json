@@ -1,0 +1,1152 @@
+{
+  "url": "https://www.airbnb.com/",
+  "title": "Airbnb | Vacation rentals, cabins, beach houses, & more",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullHeight": 1753,
+  "sections": [
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 96
+      },
+      "selector": ".c1ftp51f",
+      "description": "HomesHomesNEWNEWExperiencesExperiences, newNEWNEWServicesServices, newStart your searchLocationAnywh",
+      "order": 0
+    },
+    {
+      "id": "block-4",
+      "type": "visual-block",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 1648.203125
+      },
+      "selector": "#react-application",
+      "description": "Airbnb homepage | Popular homes in Flagstaff",
+      "order": 1
+    },
+    {
+      "id": "main",
+      "type": "semantic",
+      "bounds": {
+        "top": 201,
+        "left": 0,
+        "width": 1440,
+        "height": 1503.203125
+      },
+      "selector": "#site-content",
+      "description": "Popular homes in Flagstaff | Featured hotels in Los Angeles",
+      "order": 2
+    }
+  ],
+  "interactive": [
+    {
+      "id": "interactive-1",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 8,
+        "left": 48,
+        "width": 102,
+        "height": 80
+      },
+      "selector": ".c13cw3wj",
+      "defaultStyles": {
+        "color": "rgb(255, 56, 92)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 56, 92)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-2",
+      "tag": "a",
+      "text": "HomesHomes",
+      "bounds": {
+        "top": -51,
+        "left": 515.65625,
+        "width": 103.8984375,
+        "height": 36
+      },
+      "selector": "#search-block-tab-STAYS",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-3",
+      "tag": "a",
+      "text": "NEWNEWExperiencesExperiences, ",
+      "bounds": {
+        "top": -51,
+        "left": 654.5546875,
+        "width": 125.4921875,
+        "height": 36
+      },
+      "selector": "#search-block-tab-EXPERIENCES",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-4",
+      "tag": "a",
+      "text": "NEWNEWServicesServices, new",
+      "bounds": {
+        "top": -51,
+        "left": 813.046875,
+        "width": 106.2890625,
+        "height": 36
+      },
+      "selector": "#search-block-tab-SERVICES",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-5",
+      "tag": "button",
+      "text": "LocationAnywhere",
+      "bounds": {
+        "top": 24,
+        "left": 531.09375,
+        "width": 141.328125,
+        "height": 48
+      },
+      "selector": ".fqgd72r",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-6",
+      "tag": "button",
+      "text": "Check in / Check outAnytime",
+      "bounds": {
+        "top": 24,
+        "left": 671.421875,
+        "width": 90.375,
+        "height": 48
+      },
+      "selector": ".fqgd72r",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-7",
+      "tag": "button",
+      "text": "GuestsAdd guests",
+      "bounds": {
+        "top": 24,
+        "left": 760.796875,
+        "width": 109.109375,
+        "height": 48
+      },
+      "selector": ".fqgd72r",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-8",
+      "tag": "button",
+      "text": "Become a host",
+      "bounds": {
+        "top": 28,
+        "left": 1166.734375,
+        "width": 121.265625,
+        "height": 40
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-9",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 28,
+        "left": 1300,
+        "width": 40,
+        "height": 40
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-10",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 28,
+        "left": 1352,
+        "width": 40,
+        "height": 40
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-11",
+      "tag": "a",
+      "text": "Popular homes in Flagstaff",
+      "bounds": {
+        "top": 234.9921875,
+        "left": 50,
+        "width": 1342,
+        "height": 24.015625
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-12",
+      "tag": "button",
+      "text": "_",
+      "bounds": {
+        "top": 233,
+        "left": 1332,
+        "width": 28,
+        "height": 28
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(193, 193, 193)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(193, 193, 193)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.5",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-13",
+      "tag": "button",
+      "text": "_",
+      "bounds": {
+        "top": 233,
+        "left": 1364,
+        "width": 28,
+        "height": 28
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-14",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 48,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-15",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 190.5703125,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-16",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 241.5703125,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-17",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 384.140625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-18",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 435.140625,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-19",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 577.7109375,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-20",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 628.7109375,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-21",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 771.28125,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-22",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 822.28125,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-23",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 964.8515625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-24",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 1015.8515625,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-25",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 1158.421875,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-26",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 1209.421875,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-27",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 1351.9921875,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-28",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 277,
+        "left": 1402.9921875,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-29",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 285,
+        "left": 1545.5625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-30",
+      "tag": "a",
+      "text": "Featured hotels in Los Angeles",
+      "bounds": {
+        "top": 524.4375,
+        "left": 50,
+        "width": 1342,
+        "height": 24.015625
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-31",
+      "tag": "button",
+      "text": "_",
+      "bounds": {
+        "top": 524.4375,
+        "left": 1332,
+        "width": 28,
+        "height": 28
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(193, 193, 193)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(193, 193, 193)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.5",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-32",
+      "tag": "button",
+      "text": "_",
+      "bounds": {
+        "top": 524.4375,
+        "left": 1364,
+        "width": 28,
+        "height": 28
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-33",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 48,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-34",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 190.5703125,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-35",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 241.5703125,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-36",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 384.140625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-37",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 435.140625,
+        "width": 182.5703125,
+        "height": 231.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-38",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 577.7109375,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-39",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 628.7109375,
+        "width": 182.5703125,
+        "height": 231.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-40",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 771.28125,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-41",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 822.28125,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-42",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 964.8515625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-43",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 1015.8515625,
+        "width": 182.5703125,
+        "height": 231.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-44",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 1158.421875,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-45",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 1209.421875,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-46",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 1351.9921875,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-47",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 582.453125,
+        "left": 1402.9921875,
+        "width": 182.5703125,
+        "height": 215.4375
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-48",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 590.453125,
+        "left": 1545.5625,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-49",
+      "tag": "a",
+      "text": "Available in Sedona this weeke",
+      "bounds": {
+        "top": 847.8828125,
+        "left": 50,
+        "width": 1342,
+        "height": 24.015625
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(34, 34, 34)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(34, 34, 34)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-50",
+      "tag": "button",
+      "text": "_",
+      "bounds": {
+        "top": 845.890625,
+        "left": 1332,
+        "width": 28,
+        "height": 28
+      },
+      "selector": ".l1ovpqvx",
+      "defaultStyles": {
+        "color": "rgb(193, 193, 193)",
+        "background-color": "rgb(242, 242, 242)",
+        "background": "rgb(242, 242, 242) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(193, 193, 193)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.5",
+        "text-decoration": "none"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1256 @@
+{
+  "url": "https://open.spotify.com/",
+  "title": "Spotify - Web Player: Music for everyone",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullHeight": 900,
+  "sections": [
+    {
+      "id": "block-3",
+      "type": "visual-block",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "selector": "#main",
+      "description": "Your Library | Home",
+      "order": 0
+    },
+    {
+      "id": "nav",
+      "type": "semantic",
+      "bounds": {
+        "top": 64,
+        "left": 8,
+        "width": 331,
+        "height": 754
+      },
+      "selector": ".F2o99ns3FQFoDThE7QiV",
+      "description": "Your Library",
+      "order": 1
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 64,
+        "left": 8,
+        "width": 331,
+        "height": 59
+      },
+      "selector": ".tyMY5Nyfm8lQMRQ3NF8c",
+      "description": "Your Library",
+      "order": 2
+    },
+    {
+      "id": "section-2",
+      "type": "section",
+      "bounds": {
+        "top": 64,
+        "left": 347,
+        "width": 1085,
+        "height": 1082.5625
+      },
+      "selector": ".YmVXBsnJ0PvZVHgQzQnS",
+      "description": "Home | Trending songs",
+      "order": 3
+    },
+    {
+      "id": "section-3",
+      "type": "section",
+      "bounds": {
+        "top": 68,
+        "left": 387,
+        "width": 1005,
+        "height": 348.5625
+      },
+      "selector": ".DdLPf9k7MzrDYi1Iuz7w",
+      "description": "Trending songs",
+      "order": 4
+    },
+    {
+      "id": "section-0",
+      "type": "section",
+      "bounds": {
+        "top": 155,
+        "left": 16,
+        "width": 315,
+        "height": 133
+      },
+      "selector": ".eXXs5tKEDVXhq_6NzKdQ",
+      "description": "Create your first playlistIt's easy, we'll help youCreate playlist",
+      "order": 5
+    },
+    {
+      "id": "section-1",
+      "type": "section",
+      "bounds": {
+        "top": 312,
+        "left": 16,
+        "width": 315,
+        "height": 133
+      },
+      "selector": ".eXXs5tKEDVXhq_6NzKdQ",
+      "description": "Let's find some podcasts to followWe'll keep you updated on new episodesBrowse podcasts",
+      "order": 6
+    },
+    {
+      "id": "section-4",
+      "type": "section",
+      "bounds": {
+        "top": 440.5625,
+        "left": 387,
+        "width": 1005,
+        "height": 304.5
+      },
+      "selector": ".DdLPf9k7MzrDYi1Iuz7w",
+      "description": "Popular artists",
+      "order": 7
+    },
+    {
+      "id": "section-5",
+      "type": "section",
+      "bounds": {
+        "top": 769.0625,
+        "left": 387,
+        "width": 1005,
+        "height": 345.5
+      },
+      "selector": ".DdLPf9k7MzrDYi1Iuz7w",
+      "description": "Popular albums and singles",
+      "order": 8
+    },
+    {
+      "id": "block-5",
+      "type": "visual-block",
+      "bounds": {
+        "top": 1146.5625,
+        "left": 347,
+        "width": 1085,
+        "height": 471
+      },
+      "selector": ".main-view-container__mh-footer-container",
+      "description": "CompanyAboutJobsFor the RecordCommunitiesFor ArtistsDevelopersAdvertisingInvestorsVendorsUseful link",
+      "order": 9
+    },
+    {
+      "id": "nav",
+      "type": "semantic",
+      "bounds": {
+        "top": 1235.5625,
+        "left": 347,
+        "width": 1085,
+        "height": 382
+      },
+      "selector": ".sc-jxOSlx",
+      "description": "CompanyAboutJobsFor the RecordCommunitiesFor ArtistsDevelopersAdvertisingInvestorsVendorsUseful link",
+      "order": 10
+    }
+  ],
+  "interactive": [
+    {
+      "id": "interactive-1",
+      "tag": "a",
+      "text": "Spotify",
+      "bounds": {
+        "top": 16,
+        "left": 28,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".XkJKUsFLQrqnS2jNdVe4",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-2",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 8,
+        "left": 88,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(31, 31, 31)",
+        "background": "rgb(31, 31, 31) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-3",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 8,
+        "left": 144,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-5",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 20.26953125,
+        "left": 578,
+        "width": 24,
+        "height": 24
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-6",
+      "tag": "button",
+      "text": "Premium",
+      "bounds": {
+        "top": 8,
+        "left": 851.953125,
+        "width": 67.015625,
+        "height": 48
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-7",
+      "tag": "button",
+      "text": "Support",
+      "bounds": {
+        "top": 8,
+        "left": 926.96875,
+        "width": 61.4140625,
+        "height": 48
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-8",
+      "tag": "button",
+      "text": "Download",
+      "bounds": {
+        "top": 8,
+        "left": 996.3828125,
+        "width": 76.6796875,
+        "height": 48
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-9",
+      "tag": "a",
+      "text": "Install App",
+      "bounds": {
+        "top": 16,
+        "left": 1122.0625,
+        "width": 121.34375,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-10",
+      "tag": "button",
+      "text": "Sign up",
+      "bounds": {
+        "top": 16,
+        "left": 1251.40625,
+        "width": 72.3046875,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-11",
+      "tag": "button",
+      "text": "Log in",
+      "bounds": {
+        "top": 8,
+        "left": 1323.7109375,
+        "width": 108.2890625,
+        "height": 48
+      },
+      "selector": ".encore-text-body-medium-bold",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-12",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 80,
+        "left": 288,
+        "width": 35,
+        "height": 35
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-13",
+      "tag": "button",
+      "text": "Create playlist",
+      "bounds": {
+        "top": 240,
+        "left": 36,
+        "width": 125.5390625,
+        "height": 32
+      },
+      "selector": ".encore-text-body-small-bold",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-14",
+      "tag": "a",
+      "text": "Browse podcasts",
+      "bounds": {
+        "top": 397,
+        "left": 36,
+        "width": 142.390625,
+        "height": 32
+      },
+      "selector": ".encore-text-body-small-bold",
+      "defaultStyles": {
+        "color": "rgb(0, 0, 238)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(0, 0, 238)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-22",
+      "tag": "button",
+      "text": "Your Privacy Choices",
+      "bounds": {
+        "top": 672,
+        "left": 145.5390625,
+        "width": 101.8203125,
+        "height": 24
+      },
+      "selector": "#ot-sdk-btn",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgb(70, 130, 84)",
+        "background": "rgb(70, 130, 84) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-23",
+      "tag": "a",
+      "text": "Cookies",
+      "bounds": {
+        "top": 700,
+        "left": 32,
+        "width": 60.0234375,
+        "height": 22
+      },
+      "selector": ".u718uzqdcpnx60Mzh8wA",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-24",
+      "tag": "button",
+      "text": "English",
+      "bounds": {
+        "top": 754,
+        "left": 32,
+        "width": 100.984375,
+        "height": 32
+      },
+      "selector": ".Button-sc-y0gtbx-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(124, 124, 124)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-25",
+      "tag": "button",
+      "text": "Sign up free",
+      "bounds": {
+        "top": 837,
+        "left": 1255.0234375,
+        "width": 152.9765625,
+        "height": 48
+      },
+      "selector": ".encore-text-body-medium-bold",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-26",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 863.75,
+        "left": 616,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0.3",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-27",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 863.75,
+        "left": 656,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0.3",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-28",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 863.75,
+        "left": 704,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-29",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 863.75,
+        "left": 752,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0.3",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-30",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 863.75,
+        "left": 792,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0.3",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-31",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 876,
+        "left": 1267,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "0.3",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-32",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 876,
+        "left": 1299,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".Button-sc-1dqy6lx-0",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-33",
+      "tag": "a",
+      "text": "Trending songs",
+      "bounds": {
+        "top": 87,
+        "left": 387,
+        "width": 168.1015625,
+        "height": 29
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-34",
+      "tag": "a",
+      "text": "Show all",
+      "bounds": {
+        "top": 69,
+        "left": 1329.953125,
+        "width": 54.046875,
+        "height": 48
+      },
+      "selector": ".aNW1Eyl3YoZRIPtOlqLB",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-35",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 375,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-36",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 502.5,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-37",
+      "tag": "a",
+      "text": "End of Beginning",
+      "bounds": {
+        "top": 315.5,
+        "left": 387,
+        "width": 122.5,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-39",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 570.5,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-40",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 698,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-41",
+      "tag": "a",
+      "text": "Purple Rain",
+      "bounds": {
+        "top": 315.5,
+        "left": 582.5,
+        "width": 82.0546875,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-43",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 766,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-44",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 893.5,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-45",
+      "tag": "a",
+      "text": "Internet Girl",
+      "bounds": {
+        "top": 315.5,
+        "left": 778,
+        "width": 88.0234375,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-47",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 961.5,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-48",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 1089,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-49",
+      "tag": "a",
+      "text": "What You Saying",
+      "bounds": {
+        "top": 315.5,
+        "left": 973.5,
+        "width": 121.3984375,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-51",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 1157,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-52",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 1284.5,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-53",
+      "tag": "a",
+      "text": "Punk Rocky",
+      "bounds": {
+        "top": 315.5,
+        "left": 1169,
+        "width": 83.4765625,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-55",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 1352.5,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-56",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 1480,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-57",
+      "tag": "a",
+      "text": "Landslide",
+      "bounds": {
+        "top": 315.5,
+        "left": 1364.5,
+        "width": 70.453125,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-59",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 1548,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-60",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 1675.5,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-61",
+      "tag": "a",
+      "text": "You Stole The Show",
+      "bounds": {
+        "top": 315.5,
+        "left": 1560,
+        "width": 141.203125,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-63",
+      "tag": "div",
+      "text": "",
+      "bounds": {
+        "top": 124,
+        "left": 1743.5,
+        "width": 195.5,
+        "height": 250.03125
+      },
+      "selector": ".CardButton-sc-g9vf2u-0",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-64",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 259.5,
+        "left": 1871,
+        "width": 48,
+        "height": 48
+      },
+      "selector": ".e-91000-button-primary",
+      "defaultStyles": {
+        "color": "rgb(179, 179, 179)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(179, 179, 179)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-65",
+      "tag": "a",
+      "text": "So Easy (To Fall In Love)",
+      "bounds": {
+        "top": 315.5,
+        "left": 1755.5,
+        "width": 165.859375,
+        "height": 22
+      },
+      "selector": ".Szfh3AX4vGXxz0BQw5Uw",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    }
+  ]
+}

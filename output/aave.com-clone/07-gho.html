@@ -1,0 +1,336 @@
+<style>
+.aave-gho-section {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  padding: 0 80px 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.aave-gho-section-header {
+  font-size: 32px;
+  font-weight: 400;
+  color: #9ca3af;
+  margin-bottom: 40px;
+  padding-left: 20px;
+}
+
+.aave-gho-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.aave-gho-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.aave-gho-card-graphic {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.aave-gho-card-content {
+  background-color: #fafafa;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aave-gho-card-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 24px 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.aave-gho-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+}
+
+.aave-gho-card-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 4px;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+}
+
+.aave-gho-card-link:hover {
+  opacity: 0.7;
+}
+
+.aave-gho-card-link-arrow {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.aave-gho-card-link:hover .aave-gho-card-link-arrow {
+  transform: translateX(4px);
+}
+
+/* Extensive Audits - Abstract bars/pills graphic */
+.aave-gho-bars-graphic {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.aave-gho-bars-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aave-gho-bar {
+  height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%);
+}
+
+.aave-gho-bar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.aave-gho-bar-circle-half {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #14b8a6 50%, #e8f5f4 50%);
+}
+
+/* Row 1 */
+.aave-gho-bar-1 { width: 140px; }
+.aave-gho-bar-2 { width: 160px; }
+.aave-gho-bar-3 { width: 80px; }
+
+/* Row 2 */
+.aave-gho-bar-4 { width: 160px; }
+.aave-gho-bar-5 { width: 130px; }
+.aave-gho-bar-6 { width: 50px; }
+
+/* Row 3 */
+.aave-gho-bar-7 { width: 180px; }
+.aave-gho-bar-8 { width: 100px; }
+
+/* Bug Bounty - Pyramid of circles */
+.aave-gho-pyramid-graphic {
+  position: relative;
+  width: 220px;
+  height: 200px;
+}
+
+.aave-gho-pyramid-circle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%);
+}
+
+.aave-gho-pyramid-circle-split {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5eead4 0%, #2dd4bf 100%);
+  overflow: hidden;
+}
+
+.aave-gho-pyramid-circle-split::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+}
+
+/* Pyramid row 1 (top) - 1 circle */
+.aave-gho-pyramid-r1-c1 { top: 0; left: 86px; }
+
+/* Pyramid row 2 - 2 circles */
+.aave-gho-pyramid-r2-c1 { top: 38px; left: 62px; }
+.aave-gho-pyramid-r2-c2 { top: 38px; left: 110px; }
+
+/* Pyramid row 3 - 3 circles */
+.aave-gho-pyramid-r3-c1 { top: 76px; left: 38px; }
+.aave-gho-pyramid-r3-c2 { top: 76px; left: 86px; }
+.aave-gho-pyramid-r3-c3 { top: 76px; left: 134px; }
+
+/* Pyramid row 4 - 4 circles */
+.aave-gho-pyramid-r4-c1 { top: 114px; left: 14px; }
+.aave-gho-pyramid-r4-c2 { top: 114px; left: 62px; }
+.aave-gho-pyramid-r4-c3 { top: 114px; left: 110px; }
+.aave-gho-pyramid-r4-c4 { top: 114px; left: 158px; }
+
+/* Pyramid row 5 - 5 circles (partial visible) */
+.aave-gho-pyramid-r5-c1 { top: 152px; left: -10px; }
+.aave-gho-pyramid-r5-c2 { top: 152px; left: 38px; }
+.aave-gho-pyramid-r5-c3 { top: 152px; left: 86px; }
+.aave-gho-pyramid-r5-c4 { top: 152px; left: 134px; }
+.aave-gho-pyramid-r5-c5 { top: 152px; left: 182px; }
+
+/* Shortfall Secured section start */
+.aave-gho-shortfall-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 120px;
+  margin-top: 40px;
+}
+
+.aave-gho-shortfall-graphic {
+  background-color: #f5f5f5;
+  padding: 40px;
+}
+
+.aave-gho-shortfall-content {
+  background-color: #fafafa;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.aave-gho-shortfall-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Bug Bounty card - reversed layout */
+.aave-gho-card-reversed .aave-gho-card-content {
+  order: -1;
+}
+
+@media (max-width: 900px) {
+  .aave-gho-section {
+    padding: 0 24px 40px;
+  }
+
+  .aave-gho-card,
+  .aave-gho-shortfall-card {
+    grid-template-columns: 1fr;
+  }
+
+  .aave-gho-card-reversed .aave-gho-card-content {
+    order: 1;
+  }
+
+  .aave-gho-card-graphic {
+    min-height: 200px;
+  }
+}
+</style>
+
+<section class="aave-gho-section">
+  <p class="aave-gho-section-header">Peace of mind by design.</p>
+
+  <div class="aave-gho-cards-container">
+    <!-- Extensive Audits Card -->
+    <div class="aave-gho-card">
+      <div class="aave-gho-card-graphic">
+        <div class="aave-gho-bars-graphic">
+          <div class="aave-gho-bars-row">
+            <div class="aave-gho-bar aave-gho-bar-1"></div>
+            <div class="aave-gho-bar-circle-half"></div>
+            <div class="aave-gho-bar aave-gho-bar-2"></div>
+            <div class="aave-gho-bar aave-gho-bar-3"></div>
+          </div>
+          <div class="aave-gho-bars-row">
+            <div class="aave-gho-bar aave-gho-bar-4"></div>
+            <div class="aave-gho-bar aave-gho-bar-5"></div>
+            <div class="aave-gho-bar-circle"></div>
+            <div class="aave-gho-bar aave-gho-bar-6"></div>
+          </div>
+          <div class="aave-gho-bars-row">
+            <div class="aave-gho-bar-circle-half"></div>
+            <div class="aave-gho-bar aave-gho-bar-7"></div>
+            <div class="aave-gho-bar aave-gho-bar-8"></div>
+          </div>
+        </div>
+      </div>
+      <div class="aave-gho-card-content">
+        <h3 class="aave-gho-card-title">Extensive Audits</h3>
+        <p class="aave-gho-card-description">Peace of mind supported by multiple audits by the world's leading security firms.</p>
+        <a href="#" class="aave-gho-card-link">
+          Learn More <span class="aave-gho-card-link-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bug Bounty Card -->
+    <div class="aave-gho-card aave-gho-card-reversed">
+      <div class="aave-gho-card-content">
+        <h3 class="aave-gho-card-title">Bug Bounty</h3>
+        <p class="aave-gho-card-description">Security is a top priority. Report vulnerabilities or bugs responsibly and get rewarded.</p>
+        <a href="#" class="aave-gho-card-link">
+          Learn More <span class="aave-gho-card-link-arrow">&rarr;</span>
+        </a>
+      </div>
+      <div class="aave-gho-card-graphic">
+        <div class="aave-gho-pyramid-graphic">
+          <!-- Row 1 -->
+          <div class="aave-gho-pyramid-circle-split aave-gho-pyramid-r1-c1"></div>
+          <!-- Row 2 -->
+          <div class="aave-gho-pyramid-circle-split aave-gho-pyramid-r2-c1"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r2-c2"></div>
+          <!-- Row 3 -->
+          <div class="aave-gho-pyramid-circle-split aave-gho-pyramid-r3-c1"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r3-c2"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r3-c3"></div>
+          <!-- Row 4 -->
+          <div class="aave-gho-pyramid-circle-split aave-gho-pyramid-r4-c1"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r4-c2"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r4-c3"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r4-c4"></div>
+          <!-- Row 5 -->
+          <div class="aave-gho-pyramid-circle-split aave-gho-pyramid-r5-c1"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r5-c2"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r5-c3"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r5-c4"></div>
+          <div class="aave-gho-pyramid-circle aave-gho-pyramid-r5-c5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shortfall Secured Section Start -->
+    <div class="aave-gho-shortfall-card">
+      <div class="aave-gho-shortfall-graphic"></div>
+      <div class="aave-gho-shortfall-content">
+        <h3 class="aave-gho-shortfall-title">Shortfall Secured</h3>
+      </div>
+    </div>
+  </div>
+</section>

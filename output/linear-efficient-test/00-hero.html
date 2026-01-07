@@ -1,0 +1,558 @@
+<style>
+.hero {
+  background: rgb(8, 9, 10);
+  min-height: 100vh;
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: rgb(247, 248, 248);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(247, 248, 248);
+  text-decoration: none;
+}
+
+.hero-logo-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-nav-link {
+  color: rgba(247, 248, 248, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.hero-nav-link:hover {
+  color: rgb(247, 248, 248);
+}
+
+.hero-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-nav-login {
+  color: rgba(247, 248, 248, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.hero-nav-login:hover {
+  color: rgb(247, 248, 248);
+}
+
+.hero-nav-signup {
+  background: rgb(247, 248, 248);
+  color: rgb(8, 9, 10);
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.hero-nav-signup:hover {
+  opacity: 0.9;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 40px 60px;
+  text-align: left;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-headline {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+  color: rgb(247, 248, 248);
+}
+
+.hero-headline-highlight {
+  background: linear-gradient(90deg, rgb(247, 248, 248) 0%, rgba(247, 248, 248, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subheadline {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(247, 248, 248, 0.6);
+  margin: 0 0 32px;
+  max-width: 560px;
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-cta-button {
+  background: rgb(247, 248, 248);
+  color: rgb(8, 9, 10);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.hero-cta-button:hover {
+  opacity: 0.9;
+}
+
+.hero-cta-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(247, 248, 248, 0.8);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.hero-cta-secondary:hover {
+  color: rgb(247, 248, 248);
+}
+
+.hero-cta-new {
+  color: rgb(94, 106, 210);
+  font-weight: 500;
+}
+
+.hero-cta-arrow {
+  margin-left: 4px;
+}
+
+.hero-product-preview {
+  position: relative;
+  margin-top: 40px;
+  padding: 0 40px;
+  z-index: 1;
+}
+
+.hero-product-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.hero-product-window {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(30, 32, 35, 0.9) 0%, rgba(20, 22, 24, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 50px 100px -20px rgba(0, 0, 0, 0.7),
+    0 30px 60px -30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: perspective(1000px) rotateX(5deg);
+  transform-origin: center top;
+}
+
+.hero-product-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(20, 22, 24, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 16px;
+}
+
+.hero-product-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-product-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-product-tabs {
+  display: flex;
+  gap: 8px;
+  margin-left: 20px;
+}
+
+.hero-product-tab {
+  padding: 4px 12px;
+  font-size: 11px;
+  color: rgba(247, 248, 248, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.hero-product-tab-active {
+  color: rgba(247, 248, 248, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-product-body {
+  display: flex;
+  min-height: 320px;
+}
+
+.hero-product-sidebar {
+  width: 180px;
+  background: rgba(15, 17, 19, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 0;
+}
+
+.hero-sidebar-section {
+  padding: 8px 16px;
+}
+
+.hero-sidebar-label {
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.hero-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.6);
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.hero-sidebar-item-active {
+  background: rgba(94, 106, 210, 0.2);
+  color: rgb(247, 248, 248);
+}
+
+.hero-sidebar-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-sidebar-icon-inbox {
+  background: rgba(94, 106, 210, 0.5);
+}
+
+.hero-sidebar-icon-issues {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+.hero-product-main {
+  flex: 1;
+  display: flex;
+}
+
+.hero-product-list {
+  width: 280px;
+  background: rgba(18, 20, 22, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+}
+
+.hero-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.hero-list-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(247, 248, 248, 0.9);
+}
+
+.hero-list-item {
+  padding: 10px 8px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.hero-list-item-active {
+  background: rgba(94, 106, 210, 0.15);
+  border-color: rgba(94, 106, 210, 0.3);
+}
+
+.hero-list-item-title {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.85);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-list-item-id {
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.4);
+  font-family: monospace;
+}
+
+.hero-list-item-meta {
+  font-size: 10px;
+  color: rgba(247, 248, 248, 0.4);
+}
+
+.hero-product-detail {
+  flex: 1;
+  padding: 16px 20px;
+  background: rgba(12, 14, 16, 0.95);
+}
+
+.hero-detail-header {
+  margin-bottom: 16px;
+}
+
+.hero-detail-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(247, 248, 248);
+  margin-bottom: 8px;
+}
+
+.hero-detail-meta {
+  font-size: 11px;
+  color: rgba(247, 248, 248, 0.4);
+}
+
+.hero-detail-content {
+  font-size: 12px;
+  color: rgba(247, 248, 248, 0.6);
+  line-height: 1.6;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hero-code-comment {
+  color: rgba(247, 248, 248, 0.35);
+}
+
+.hero-code-keyword {
+  color: rgb(168, 85, 247);
+}
+
+.hero-code-string {
+  color: rgb(74, 222, 128);
+}
+
+.hero-code-property {
+  color: rgb(94, 106, 210);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgb(8, 9, 10) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+</style>
+<div class="hero">
+  <nav class="hero-nav">
+    <a href="#" class="hero-logo">
+      <span class="hero-logo-icon">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.08 50.776L49.224 85.92C28.424 83.472 12.528 67.576 14.08 50.776Z" fill="currentColor"/>
+          <path d="M14.08 35.88L64.12 85.92C41.72 87.672 21.928 73.576 14.08 35.88Z" fill="currentColor"/>
+          <path d="M17.832 23.232L76.768 82.168C60.968 90.616 40.168 87.064 17.832 23.232Z" fill="currentColor"/>
+          <path d="M26.28 14.184L85.816 73.72C77.968 86.568 60.368 91.22 26.28 14.184Z" fill="currentColor"/>
+          <path d="M38.128 9.832L90.168 61.872C86.016 72.12 76.168 79.368 38.128 9.832Z" fill="currentColor"/>
+          <path d="M52.424 9.232L90.768 47.576C89.016 57.024 82.968 64.872 52.424 9.232Z" fill="currentColor"/>
+          <path d="M68.52 12.384L87.616 31.48C86.168 38.728 81.616 44.776 68.52 12.384Z" fill="currentColor"/>
+        </svg>
+      </span>
+      Linear
+    </a>
+    <div class="hero-nav-links">
+      <a href="#" class="hero-nav-link">Product</a>
+      <a href="#" class="hero-nav-link">Resources</a>
+      <a href="#" class="hero-nav-link">Pricing</a>
+      <a href="#" class="hero-nav-link">Customers</a>
+      <a href="#" class="hero-nav-link">Now</a>
+      <a href="#" class="hero-nav-link">Contact</a>
+    </div>
+    <div class="hero-nav-actions">
+      <a href="#" class="hero-nav-login">Log in</a>
+      <a href="#" class="hero-nav-signup">Sign up</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1 class="hero-headline">
+      Linear is a purpose-built tool for planning and building products
+    </h1>
+    <p class="hero-subheadline">
+      Meet the system for modern software development. Streamline issues, projects, and product roadmaps.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#" class="hero-cta-button">Start building</a>
+      <a href="#" class="hero-cta-secondary">
+        <span class="hero-cta-new">New:</span> Linear agent for Slack
+        <span class="hero-cta-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-product-preview">
+    <div class="hero-product-container">
+      <div class="hero-product-window">
+        <div class="hero-product-header">
+          <div class="hero-product-dots">
+            <div class="hero-product-dot"></div>
+            <div class="hero-product-dot"></div>
+            <div class="hero-product-dot"></div>
+          </div>
+          <div class="hero-product-tabs">
+            <div class="hero-product-tab">Engineering</div>
+            <div class="hero-product-tab">Spice harvester</div>
+            <div class="hero-product-tab hero-product-tab-active">ENG-125</div>
+          </div>
+        </div>
+        <div class="hero-product-body">
+          <div class="hero-product-sidebar">
+            <div class="hero-sidebar-section">
+              <div class="hero-sidebar-item hero-sidebar-item-active">
+                <div class="hero-sidebar-icon hero-sidebar-icon-inbox"></div>
+                Inbox
+              </div>
+              <div class="hero-sidebar-item">
+                <div class="hero-sidebar-icon hero-sidebar-icon-issues"></div>
+                My Issues
+              </div>
+            </div>
+            <div class="hero-sidebar-section">
+              <div class="hero-sidebar-label">Workspace</div>
+              <div class="hero-sidebar-item">
+                <div class="hero-sidebar-icon"></div>
+                Initiatives
+              </div>
+              <div class="hero-sidebar-item">
+                <div class="hero-sidebar-icon"></div>
+                Projects
+              </div>
+              <div class="hero-sidebar-item">
+                <div class="hero-sidebar-icon"></div>
+                Views
+              </div>
+            </div>
+          </div>
+          <div class="hero-product-main">
+            <div class="hero-product-list">
+              <div class="hero-list-header">
+                <span class="hero-list-title">Inbox</span>
+              </div>
+              <div class="hero-list-item hero-list-item-active">
+                <div class="hero-list-item-title">
+                  <span class="hero-list-item-id">ENG-125</span>
+                  Refactor sonic crawler
+                </div>
+                <div class="hero-list-item-meta">ryan assigned you</div>
+              </div>
+              <div class="hero-list-item">
+                <div class="hero-list-item-title">
+                  <span class="hero-list-item-id">LLM</span>
+                  Chatbot
+                </div>
+                <div class="hero-list-item-meta">New project update by Ryan</div>
+              </div>
+              <div class="hero-list-item">
+                <div class="hero-list-item-title">
+                  <span class="hero-list-item-id">ENG-159</span>
+                  Error uploading images via API
+                </div>
+                <div class="hero-list-item-meta">SLA breached</div>
+              </div>
+              <div class="hero-list-item">
+                <div class="hero-list-item-title">
+                  <span class="hero-list-item-id">DES-498</span>
+                  Redesign users settings...
+                </div>
+                <div class="hero-list-item-meta">ryan mentioned you</div>
+              </div>
+            </div>
+            <div class="hero-product-detail">
+              <div class="hero-detail-header">
+                <div class="hero-detail-title">Refactor sonic crawler</div>
+                <div class="hero-detail-meta">Comment.documentContent. Is defined wrongly. It should be a LazyPrimaryValue relation.</div>
+              </div>
+              <div class="hero-detail-content">
+                <span class="hero-code-comment">// The document_content, that this comment is associated with</span><br>
+                <span class="hero-code-keyword">@ManyToOne</span>(() => <span class="hero-code-property">DocumentContent</span>)<br>
+                <span class="hero-code-property">documentContent</span>?: <span class="hero-code-property">DocumentContent</span>;<br><br>
+                <span class="hero-code-comment">// We would be accessing .CacheHerePainable.documentContents[…, then, and document content would be hyp-</span><br>
+                <span class="hero-code-property">property</span> touch.<br><br>
+                <span class="hero-code-property">comment</span>.<span class="hero-code-property">documentContent</span>.<span class="hero-code-property">value</span> would still be undefined until hydrated, so we'd have to app-
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-gradient-overlay"></div>
+    </div>
+  </div>
+</div>

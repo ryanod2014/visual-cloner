@@ -1,0 +1,243 @@
+<style>
+  .aave-faq-section {
+    background-color: #ffffff;
+    padding: 80px 24px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  .aave-faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  .aave-faq-heading {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .aave-faq-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .aave-faq-item {
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .aave-faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .aave-faq-question:hover {
+    background-color: #f0f0f0;
+  }
+
+  .aave-faq-question-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .aave-faq-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .aave-faq-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #2ebac6;
+    stroke-width: 2;
+  }
+
+  .aave-faq-answer {
+    padding: 0 28px 24px 28px;
+    display: none;
+  }
+
+  .aave-faq-answer p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .aave-faq-item.aave-faq-expanded .aave-faq-answer {
+    display: block;
+  }
+
+  .aave-faq-item.aave-faq-expanded .aave-faq-icon-plus {
+    display: none;
+  }
+
+  .aave-faq-item .aave-faq-icon-minus {
+    display: none;
+  }
+
+  .aave-faq-item.aave-faq-expanded .aave-faq-icon-minus {
+    display: block;
+  }
+
+  .aave-faq-see-more {
+    margin-top: 32px;
+  }
+
+  .aave-faq-see-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2ebac6;
+    text-decoration: none;
+    border-bottom: 1px solid #2ebac6;
+    padding-bottom: 4px;
+    transition: opacity 0.2s ease;
+  }
+
+  .aave-faq-see-more-link:hover {
+    opacity: 0.8;
+  }
+
+  .aave-faq-see-more-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  @media (max-width: 768px) {
+    .aave-faq-container {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .aave-faq-heading {
+      font-size: 36px;
+    }
+
+    .aave-faq-question-text {
+      font-size: 18px;
+    }
+
+    .aave-faq-question {
+      padding: 20px 24px;
+    }
+
+    .aave-faq-answer {
+      padding: 0 24px 20px 24px;
+    }
+  }
+</style>
+
+<section class="aave-faq-section">
+  <div class="aave-faq-container">
+    <h2 class="aave-faq-heading">FAQs</h2>
+
+    <div class="aave-faq-list">
+      <div class="aave-faq-item">
+        <button class="aave-faq-question" onclick="this.parentElement.classList.toggle('aave-faq-expanded')">
+          <h3 class="aave-faq-question-text">What is Aave?</h3>
+          <span class="aave-faq-icon">
+            <svg class="aave-faq-icon-plus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="aave-faq-icon-minus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="aave-faq-answer">
+          <p>Aave is a decentralised non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market while earning interest, and borrowers can access liquidity by providing collateral that exceeds the borrowed amount.</p>
+        </div>
+      </div>
+
+      <div class="aave-faq-item">
+        <button class="aave-faq-question" onclick="this.parentElement.classList.toggle('aave-faq-expanded')">
+          <h3 class="aave-faq-question-text">Where are supplied tokens stored?</h3>
+          <span class="aave-faq-icon">
+            <svg class="aave-faq-icon-plus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="aave-faq-icon-minus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="aave-faq-answer">
+          <p>Supplied tokens are stored in publicly accessible smart contracts that enable overcollateralised borrowing according to governance-approved parameters. The Aave Protocol smart contracts have been audited and formally verified by third parties.</p>
+        </div>
+      </div>
+
+      <div class="aave-faq-item">
+        <button class="aave-faq-question" onclick="this.parentElement.classList.toggle('aave-faq-expanded')">
+          <h3 class="aave-faq-question-text">Does Aave have risks?</h3>
+          <span class="aave-faq-icon">
+            <svg class="aave-faq-icon-plus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="aave-faq-icon-minus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="aave-faq-answer">
+          <p>No protocol can be considered entirely risk free, but extensive steps have been taken to minimize these risks as much as possible - the Aave Protocol code is publicly available and auditable by anyone, and has been audited by multiple smart contract auditors. Any code changes must be executed through the onchain governance processes. Additionally, there is an ongoing bug bounty campaign and service providers specializing in technical reviews and risk mitigation.</p>
+        </div>
+      </div>
+
+      <div class="aave-faq-item">
+        <button class="aave-faq-question" onclick="this.parentElement.classList.toggle('aave-faq-expanded')">
+          <h3 class="aave-faq-question-text">What is the Aave token?</h3>
+          <span class="aave-faq-icon">
+            <svg class="aave-faq-icon-plus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="aave-faq-icon-minus" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <div class="aave-faq-answer">
+          <p>AAVE is used as the centre of gravity of Aave Protocol governance. AAVE is used to vote and decide on the outcome of Aave Improvement Proposals (AIPs). Apart from this, AAVE can be staked within the protocol Safety Module to provide a backstop in the case of a shortfall event, and earn incentives for doing so.</p>
+        </div>
+      </div>
+
+      <div class="aave-faq-see-more">
+        <a href="/faq" class="aave-faq-see-more-link">
+          See More
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

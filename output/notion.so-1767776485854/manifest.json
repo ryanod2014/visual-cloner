@@ -1,0 +1,1425 @@
+{
+  "url": "https://www.notion.com/",
+  "title": "The AI workspace that works for you. | Notion",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullHeight": 7128,
+  "sections": [
+    {
+      "id": "block-0",
+      "type": "visual-block",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 7128.4453125
+      },
+      "selector": "#__next",
+      "description": "Features | Notion AI",
+      "order": 0
+    },
+    {
+      "id": "main",
+      "type": "semantic",
+      "bounds": {
+        "top": 66,
+        "left": 0,
+        "width": 1440,
+        "height": 6611.4453125
+      },
+      "selector": ".layout_main__LAl4b",
+      "description": "One workspace. Zero busywork. | Notion is where your teams and AI agents capture k",
+      "order": 1
+    },
+    {
+      "id": "section-0",
+      "type": "section",
+      "bounds": {
+        "top": 66,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 1263.953125
+      },
+      "selector": ".HomepageHeroMWN_hero__F92yv",
+      "description": "One workspace. Zero busywork. | Notion is where your teams and AI agents capture k",
+      "order": 2
+    },
+    {
+      "id": "block-2",
+      "type": "visual-block",
+      "bounds": {
+        "top": 66,
+        "left": 0,
+        "width": 1440,
+        "height": 1397.78125
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "One workspace. Zero busywork. | Notion is where your teams and AI agents capture k",
+      "order": 3
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 269.1953125,
+        "left": 246.3203125,
+        "width": 947.359375,
+        "height": 260
+      },
+      "selector": ".HomepageHeroMWN_header__w5Dgv",
+      "description": "One workspace. Zero busywork. | Notion is where your teams and AI agents capture k",
+      "order": 4
+    },
+    {
+      "id": "block-3",
+      "type": "visual-block",
+      "bounds": {
+        "top": 1463.78125,
+        "left": 0,
+        "width": 1440,
+        "height": 2169.0390625
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "Introducing Notion 3.0 | Notion AgentNew",
+      "order": 5
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 1615.78125,
+        "left": 105.59375,
+        "width": 409.6015625,
+        "height": 223.2734375
+      },
+      "selector": ".bentoHeader_header__vF0Xh",
+      "description": "Notion AgentNew",
+      "order": 6
+    },
+    {
+      "id": "section-1",
+      "type": "section",
+      "bounds": {
+        "top": 1615.78125,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 566.546875
+      },
+      "selector": "#:R1l9abm:",
+      "description": "Notion AgentNew",
+      "order": 7
+    },
+    {
+      "id": "section-2",
+      "type": "section",
+      "bounds": {
+        "top": 2206.328125,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 1207.9921875
+      },
+      "selector": "#:RbmH1:",
+      "description": "Custom Agents | Automate repetitive tasks.",
+      "order": 8
+    },
+    {
+      "id": "section-3",
+      "type": "section",
+      "bounds": {
+        "top": 2206.328125,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 323.1328125
+      },
+      "selector": ".bento_bentoBoxItem__2dIxx",
+      "description": "Custom Agents | Automate repetitive tasks.",
+      "order": 9
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 2230.328125,
+        "left": 129.59375,
+        "width": 361.6015625,
+        "height": 275.1328125
+      },
+      "selector": ".bento_bentoHeader__NeiRu",
+      "description": "Custom Agents | Automate repetitive tasks.",
+      "order": 10
+    },
+    {
+      "id": "section-4",
+      "type": "section",
+      "bounds": {
+        "top": 2553.4609375,
+        "left": 105.59375,
+        "width": 602.40625,
+        "height": 513.953125
+      },
+      "selector": ".bento_bentoBoxItem__2dIxx",
+      "description": "Enterprise Search | One search for everything.",
+      "order": 11
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 2577.4609375,
+        "left": 129.59375,
+        "width": 554.40625,
+        "height": 64
+      },
+      "selector": ".bento_bentoHeader__NeiRu",
+      "description": "Enterprise Search | One search for everything.",
+      "order": 12
+    },
+    {
+      "id": "nav",
+      "type": "semantic",
+      "bounds": {
+        "top": 2999,
+        "left": 0,
+        "width": 1440,
+        "height": 66
+      },
+      "selector": ".globalNavigation_isScrolled__FEBpp",
+      "description": "Features | Notion AI",
+      "order": 13
+    },
+    {
+      "id": "section-6",
+      "type": "section",
+      "bounds": {
+        "top": 3091.4140625,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 322.90625
+      },
+      "selector": ".bento_bentoBoxItem__2dIxx",
+      "description": "Flexible workflows | Manage any project, big or small.",
+      "order": 14
+    },
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 3115.4140625,
+        "left": 129.59375,
+        "width": 361.6015625,
+        "height": 274.90625
+      },
+      "selector": ".bento_bentoHeader__NeiRu",
+      "description": "Flexible workflows | Manage any project, big or small.",
+      "order": 15
+    },
+    {
+      "id": "block-4",
+      "type": "visual-block",
+      "bounds": {
+        "top": 3632.8203125,
+        "left": 0,
+        "width": 1440,
+        "height": 692
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "More productivity. Fewer tools.",
+      "order": 16
+    },
+    {
+      "id": "block-5",
+      "type": "visual-block",
+      "bounds": {
+        "top": 4324.8203125,
+        "left": 0,
+        "width": 1440,
+        "height": 890.9609375
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "Trusted by teams that ship.",
+      "order": 17
+    },
+    {
+      "id": "section-7",
+      "type": "section",
+      "bounds": {
+        "top": 4388.8203125,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 762.9609375
+      },
+      "selector": "section",
+      "description": "Trusted by teams that ship.",
+      "order": 18
+    },
+    {
+      "id": "section-8",
+      "type": "section",
+      "bounds": {
+        "top": 4500.8203125,
+        "left": 129.59375,
+        "width": 771.203125,
+        "height": 232.9609375
+      },
+      "selector": ".quoteBlock_article__pky9t",
+      "description": "There’s power in a single platform where you can do all your work. Notion is that single place.Read ",
+      "order": 19
+    },
+    {
+      "id": "block-6",
+      "type": "visual-block",
+      "bounds": {
+        "top": 5215.78125,
+        "left": 0,
+        "width": 1440,
+        "height": 596
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "Let Notion AI handle the busywork.",
+      "order": 20
+    },
+    {
+      "id": "block-7",
+      "type": "visual-block",
+      "bounds": {
+        "top": 5811.78125,
+        "left": 0,
+        "width": 1440,
+        "height": 865.6640625
+      },
+      "selector": ".fall_main__WJMKI",
+      "description": "Try for free. | Get started on Notion",
+      "order": 21
+    },
+    {
+      "id": "section-9",
+      "type": "section",
+      "bounds": {
+        "top": 5875.78125,
+        "left": 105.59375,
+        "width": 1228.8125,
+        "height": 737.6640625
+      },
+      "selector": "#:RbmH3:",
+      "description": "Try for free. | Get started on Notion",
+      "order": 22
+    },
+    {
+      "id": "footer",
+      "type": "semantic",
+      "bounds": {
+        "top": 6677.4453125,
+        "left": 0,
+        "width": 1440,
+        "height": 451
+      },
+      "selector": ".footer_footerOuter__kubGm",
+      "description": "English (US)English (US)English (US)English (UK)English (UK)العربيةArabicFrançais (France)French (Fr",
+      "order": 23
+    }
+  ],
+  "interactive": [
+    {
+      "id": "interactive-0",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 3017,
+        "left": 25,
+        "width": 29,
+        "height": 30
+      },
+      "selector": ".globalNavigation_logo__i44_w",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-1",
+      "tag": "button",
+      "text": "Notion",
+      "bounds": {
+        "top": 3017,
+        "left": 394.375,
+        "width": 83.5234375,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-2",
+      "tag": "a",
+      "text": "Notion AIBuild, write, automat",
+      "bounds": {
+        "top": 3087,
+        "left": 87,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-3",
+      "tag": "a",
+      "text": "AgentsNewHandles manual tasks",
+      "bounds": {
+        "top": 3147,
+        "left": 87,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-4",
+      "tag": "a",
+      "text": "Enterprise SearchFind answers ",
+      "bounds": {
+        "top": 3207,
+        "left": 87,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-5",
+      "tag": "a",
+      "text": "AI Meeting NotesPerfectly writ",
+      "bounds": {
+        "top": 3267,
+        "left": 87,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-6",
+      "tag": "a",
+      "text": "DocsSimple & powerful",
+      "bounds": {
+        "top": 3087,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-7",
+      "tag": "a",
+      "text": "Knowledge BaseCentralize your ",
+      "bounds": {
+        "top": 3147,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-8",
+      "tag": "a",
+      "text": "ProjectsManage any project",
+      "bounds": {
+        "top": 3207,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-9",
+      "tag": "a",
+      "text": "SitesPublish anything, fast",
+      "bounds": {
+        "top": 3267,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 60
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-10",
+      "tag": "a",
+      "text": "Explore AI use casesNewSee wha",
+      "bounds": {
+        "top": 3087,
+        "left": 732,
+        "width": 290.5,
+        "height": 54
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-11",
+      "tag": "a",
+      "text": "Browse marketplaceTemplates fo",
+      "bounds": {
+        "top": 3141,
+        "left": 732,
+        "width": 290.5,
+        "height": 54
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-12",
+      "tag": "a",
+      "text": "View integrationsConnect your ",
+      "bounds": {
+        "top": 3195,
+        "left": 732,
+        "width": 290.5,
+        "height": 54
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-13",
+      "tag": "a",
+      "text": "Download web clipperSave from ",
+      "bounds": {
+        "top": 3249,
+        "left": 732,
+        "width": 290.5,
+        "height": 54
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-14",
+      "tag": "a",
+      "text": "Download app",
+      "bounds": {
+        "top": 3139,
+        "left": 1074.5,
+        "width": 139.5078125,
+        "height": 36
+      },
+      "selector": ".button_button__atjat",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(0, 117, 222)",
+        "background": "rgb(0, 117, 222) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-15",
+      "tag": "a",
+      "text": "Mail",
+      "bounds": {
+        "top": 3017,
+        "left": 481.8984375,
+        "width": 48.0078125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-16",
+      "tag": "a",
+      "text": "Calendar",
+      "bounds": {
+        "top": 3017,
+        "left": 533.90625,
+        "width": 81.4453125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-17",
+      "tag": "a",
+      "text": "AI",
+      "bounds": {
+        "top": 3017,
+        "left": 619.3515625,
+        "width": 33.828125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-18",
+      "tag": "a",
+      "text": "Enterprise",
+      "bounds": {
+        "top": 3017,
+        "left": 657.1796875,
+        "width": 90.015625,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-19",
+      "tag": "a",
+      "text": "Pricing",
+      "bounds": {
+        "top": 3017,
+        "left": 751.1953125,
+        "width": 67.1328125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-20",
+      "tag": "button",
+      "text": "Explore",
+      "bounds": {
+        "top": 3017,
+        "left": 822.328125,
+        "width": 89.3125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-21",
+      "tag": "a",
+      "text": "Eng & Product",
+      "bounds": {
+        "top": 3087,
+        "left": 87,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-22",
+      "tag": "a",
+      "text": "Design",
+      "bounds": {
+        "top": 3127,
+        "left": 87,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-23",
+      "tag": "a",
+      "text": "Marketing",
+      "bounds": {
+        "top": 3167,
+        "left": 87,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-24",
+      "tag": "a",
+      "text": "IT",
+      "bounds": {
+        "top": 3207,
+        "left": 87,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-25",
+      "tag": "a",
+      "text": "Startups",
+      "bounds": {
+        "top": 3087,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-26",
+      "tag": "a",
+      "text": "SMBs",
+      "bounds": {
+        "top": 3127,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-27",
+      "tag": "a",
+      "text": "Enterprise",
+      "bounds": {
+        "top": 3167,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-28",
+      "tag": "a",
+      "text": "Education",
+      "bounds": {
+        "top": 3207,
+        "left": 409.5,
+        "width": 290.5,
+        "height": 40
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-29",
+      "tag": "a",
+      "text": "Help center",
+      "bounds": {
+        "top": 3087,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-30",
+      "tag": "a",
+      "text": "Notion Academy",
+      "bounds": {
+        "top": 3113,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-31",
+      "tag": "a",
+      "text": "Customer stories",
+      "bounds": {
+        "top": 3139,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-32",
+      "tag": "a",
+      "text": "Blog",
+      "bounds": {
+        "top": 3165,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-33",
+      "tag": "a",
+      "text": "Community",
+      "bounds": {
+        "top": 3191,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-34",
+      "tag": "a",
+      "text": "Partner programs",
+      "bounds": {
+        "top": 3217,
+        "left": 732,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-35",
+      "tag": "a",
+      "text": "API",
+      "bounds": {
+        "top": 3087,
+        "left": 1054.5,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-36",
+      "tag": "a",
+      "text": "Templates",
+      "bounds": {
+        "top": 3113,
+        "left": 1054.5,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-37",
+      "tag": "a",
+      "text": "Security",
+      "bounds": {
+        "top": 3139,
+        "left": 1054.5,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-38",
+      "tag": "a",
+      "text": "Consultants",
+      "bounds": {
+        "top": 3165,
+        "left": 1054.5,
+        "width": 290.5,
+        "height": 26
+      },
+      "selector": "a",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-39",
+      "tag": "a",
+      "text": "Request a demo",
+      "bounds": {
+        "top": 3017,
+        "left": 915.640625,
+        "width": 129.9765625,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-40",
+      "tag": "a",
+      "text": "Log in",
+      "bounds": {
+        "top": 3017,
+        "left": 1203.421875,
+        "width": 61.28125,
+        "height": 30
+      },
+      "selector": ".globalNavigation_link__ofzIw",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-41",
+      "tag": "a",
+      "text": "Get Notion free",
+      "bounds": {
+        "top": 3014,
+        "left": 1280.703125,
+        "width": 134.296875,
+        "height": 36
+      },
+      "selector": ".button_button__atjat",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(0, 117, 222)",
+        "background": "rgb(0, 117, 222) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-43",
+      "tag": "a",
+      "text": "Get Notion free",
+      "bounds": {
+        "top": 481.1953125,
+        "left": 549.6328125,
+        "width": 159.046875,
+        "height": 48
+      },
+      "selector": ".button_button__atjat",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(0, 117, 222)",
+        "background": "rgb(0, 117, 222) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-44",
+      "tag": "a",
+      "text": "Request a demo",
+      "bounds": {
+        "top": 481.1953125,
+        "left": 724.6796875,
+        "width": 165.6875,
+        "height": 48
+      },
+      "selector": ".button_button__atjat",
+      "defaultStyles": {
+        "color": "rgb(0, 91, 171)",
+        "background-color": "rgb(230, 243, 254)",
+        "background": "rgb(230, 243, 254) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-45",
+      "tag": "button",
+      "text": "Pause",
+      "bounds": {
+        "top": 1284.953125,
+        "left": 118.59375,
+        "width": 32,
+        "height": 32
+      },
+      "selector": ".HomepageHeroMWN_playPauseController__q7a1p",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0.05)",
+        "background": "rgba(0, 0, 0, 0.05) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-46",
+      "tag": "a",
+      "text": "Notion AgentNewYou assign the ",
+      "bounds": {
+        "top": 1639.78125,
+        "left": 129.59375,
+        "width": 361.6015625,
+        "height": 132
+      },
+      "selector": ".bentoHeader_headingLink__bmWJK",
+      "defaultStyles": {
+        "color": "rgb(25, 25, 24)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(25, 25, 24)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-47",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 1639.78125,
+        "left": 539.1953125,
+        "width": 398.6015625,
+        "height": 543.546875
+      },
+      "selector": ".carouselPreviousNextButton_button__KERn9",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-48",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 1639.78125,
+        "left": 937.796875,
+        "width": 398.609375,
+        "height": 543.546875
+      },
+      "selector": ".carouselPreviousNextButton_button__KERn9",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-49",
+      "tag": "button",
+      "text": "Hand off your busyworkWhat use",
+      "bounds": {
+        "top": 1905.328125,
+        "left": 113.59375,
+        "width": 393.6015625,
+        "height": 104
+      },
+      "selector": ".bentoCarouselTabAccordion_tab__lHPc1",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-50",
+      "tag": "button",
+      "text": "Collaborates with your teamIt'",
+      "bounds": {
+        "top": 2008.328125,
+        "left": 113.59375,
+        "width": 393.6015625,
+        "height": 56
+      },
+      "selector": ".bentoCarouselTabAccordion_tab__lHPc1",
+      "defaultStyles": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(0, 0, 0, 0.9)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    }
+  ]
+}

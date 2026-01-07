@@ -1,0 +1,219 @@
+<style>
+  .aave-money-section {
+    background-color: #ffffff;
+    padding: 80px 24px 100px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .aave-money-divider {
+    height: 1px;
+    background-color: #e5e5e5;
+    margin-bottom: 80px;
+  }
+
+  .aave-money-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .aave-money-content {
+    max-width: 500px;
+  }
+
+  .aave-money-heading {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.15;
+    margin: 0 0 24px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .aave-money-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #6b6b6b;
+    margin: 0 0 32px 0;
+  }
+
+  .aave-money-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .aave-money-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .aave-money-feature-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .aave-money-feature-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .aave-money-feature-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4a4a4a;
+  }
+
+  .aave-money-feature-highlight {
+    color: #1a1a1a;
+    font-weight: 500;
+  }
+
+  .aave-money-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aave-money-graphic {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .aave-money-circle-outer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #00d4ff 0%, #0891b2 50%, #06b6d4 100%);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aave-money-circle-inner {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .aave-money-shield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+  }
+
+  .aave-money-shield svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .aave-money-container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .aave-money-heading {
+      font-size: 36px;
+    }
+
+    .aave-money-graphic {
+      max-width: 320px;
+    }
+
+    .aave-money-visual {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .aave-money-section {
+      padding: 60px 20px 80px;
+    }
+
+    .aave-money-heading {
+      font-size: 32px;
+    }
+
+    .aave-money-description {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="aave-money-section">
+  <div class="aave-money-divider"></div>
+
+  <div class="aave-money-container">
+    <div class="aave-money-content">
+      <h2 class="aave-money-heading">Your money, your choice.</h2>
+      <p class="aave-money-description">
+        With Aave, you maintain full custody and control of your assets. No intermediaries, no permission needed - just direct access to decentralized finance.
+      </p>
+
+      <div class="aave-money-features">
+        <div class="aave-money-feature">
+          <div class="aave-money-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="aave-money-feature-text">
+            <span class="aave-money-feature-highlight">Non-custodial</span> - Your keys, your crypto
+          </span>
+        </div>
+
+        <div class="aave-money-feature">
+          <div class="aave-money-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="aave-money-feature-text">
+            <span class="aave-money-feature-highlight">Permissionless</span> - Access anytime, anywhere
+          </span>
+        </div>
+
+        <div class="aave-money-feature">
+          <div class="aave-money-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="aave-money-feature-text">
+            <span class="aave-money-feature-highlight">Transparent</span> - Open source and audited
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="aave-money-visual">
+      <div class="aave-money-graphic">
+        <div class="aave-money-circle-outer">
+          <div class="aave-money-circle-inner"></div>
+          <div class="aave-money-shield">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="#ffffff" fill-opacity="0.9"/>
+              <path d="M9 12L11 14L15 10" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

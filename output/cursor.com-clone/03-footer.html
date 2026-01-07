@@ -1,0 +1,238 @@
+<style>
+.footer-cta {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  text-align: center;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.footer-cta-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.footer-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer {
+  background-color: rgb(247, 247, 244);
+  padding: 60px 40px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-column-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-external-icon {
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.footer-copyright {
+  font-size: 13px;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-soc2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+}
+
+.footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-theme-toggle {
+  display: flex;
+  background: rgba(38, 37, 30, 0.05);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.footer-theme-btn {
+  padding: 6px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.footer-theme-btn:hover {
+  opacity: 1;
+}
+
+.footer-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid rgba(38, 37, 30, 0.1);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<div class="footer-cta">
+  <h2 class="footer-cta-title">Try Cursor now.</h2>
+  <a href="#" class="footer-cta-button">
+    Download for macOS
+    <span>&#x2913;</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3 class="footer-column-title">Product</h3>
+        <ul class="footer-links">
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Enterprise</a></li>
+          <li><a href="#">Web Agents</a></li>
+          <li><a href="#">Bugbot</a></li>
+          <li><a href="#">CLI</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="#">Download</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Docs <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Learn <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Forum <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Status <span class="footer-external-icon">&#x2197;</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Students</a></li>
+          <li><a href="#">Brand</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Data Use</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#">X <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">LinkedIn <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">YouTube <span class="footer-external-icon">&#x2197;</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <span>&copy; 2026 Cursor</span>
+        <a href="#" class="footer-soc2">&#x1F6E1; SOC 2 Certified</a>
+      </div>
+      <div class="footer-controls">
+        <div class="footer-theme-toggle">
+          <button class="footer-theme-btn">&#x1F5A5;</button>
+          <button class="footer-theme-btn">&#x2600;</button>
+          <button class="footer-theme-btn">&#x263E;</button>
+        </div>
+        <button class="footer-lang-btn">
+          &#x1F310; English <span>&#x2193;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>

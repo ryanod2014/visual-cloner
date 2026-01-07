@@ -1,0 +1,93 @@
+<style>
+.subscription {
+  font-family: "NB International Pro", Inter, sans-serif;
+  background-color: rgb(93, 107, 89);
+  color: rgb(250, 246, 237);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.subscription-content {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subscription-title {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.subscription-list {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.subscription-list li {
+  font-size: 14px;
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+}
+
+.subscription-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: rgb(250, 246, 237);
+  border-radius: 50%;
+}
+
+.subscription-btn {
+  display: inline-block;
+  background: transparent;
+  color: rgb(250, 246, 237);
+  padding: 16px 32px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgb(250, 246, 237);
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.subscription-image {
+  background: linear-gradient(135deg,
+    rgba(200,180,160,0.8) 0%,
+    rgba(180,160,140,0.9) 50%,
+    rgba(160,140,120,0.8) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.subscription-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="20" fill="rgba(139,119,101,0.6)"/><circle cx="70" cy="60" r="15" fill="rgba(180,160,140,0.5)"/></svg>');
+  background-size: cover;
+}
+</style>
+<div class="subscription">
+  <div class="subscription-content">
+    <h2 class="subscription-title">What you get with a Collective<br>coffee subscription</h2>
+    <ul class="subscription-list">
+      <li>A curated selection of coffees rotating on a monthly basis</li>
+      <li>Exclusive access to micro-lots and special roasts</li>
+      <li>Free shipping worldwide</li>
+      <li>Subscriber discounts and benefits</li>
+      <li>Flexibility to pause or cancel anytime</li>
+    </ul>
+    <a href="#" class="subscription-btn">Subscribe now</a>
+  </div>
+  <div class="subscription-image"></div>
+</div>

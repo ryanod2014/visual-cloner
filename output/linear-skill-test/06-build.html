@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Build Section Clone</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .build-section {
+            background: linear-gradient(180deg, #0a0a0c 0%, #111113 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            padding: 120px 0;
+            min-height: 100vh;
+        }
+
+        .build-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Section */
+        .build-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .build-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8b8b9e;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+
+        .build-label-arrow {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .build-title {
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .build-description {
+            font-size: 18px;
+            color: #8b8b9e;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* Hero Screenshot Placeholder */
+        .build-hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a1f 0%, #0d0d10 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .build-hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+        }
+
+        .build-hero-placeholder {
+            color: #4a4a5a;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        /* Content Grid */
+        .build-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Card Styles */
+        .build-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .build-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+        }
+
+        .build-card-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .build-card-text {
+            font-size: 15px;
+            color: #8b8b9e;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Cycles Card */
+        .build-cycles-card {
+            grid-column: 1;
+        }
+
+        .build-cycles-chart {
+            background: #0d0d10;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .build-cycles-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .build-cycles-title-row {
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .build-cycles-legend {
+            display: flex;
+            gap: 16px;
+        }
+
+        .build-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6b6b7b;
+        }
+
+        .build-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .build-legend-dot-scope {
+            background: #4f46e5;
+        }
+
+        .build-legend-dot-started {
+            background: #f59e0b;
+        }
+
+        .build-legend-dot-completed {
+            background: #10b981;
+        }
+
+        .build-chart-area {
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .build-chart-bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .build-chart-bar {
+            width: 100%;
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        .build-chart-bar-scope {
+            background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+        }
+
+        .build-chart-bar-started {
+            background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        .build-chart-bar-completed {
+            background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+        }
+
+        /* Triage Card */
+        .build-triage-card {
+            grid-column: 2;
+        }
+
+        .build-triage-ui {
+            background: #0d0d10;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+        }
+
+        .build-triage-header {
+            padding: 16px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .build-triage-list {
+            padding: 8px 0;
+        }
+
+        .build-triage-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            transition: background 0.15s ease;
+        }
+
+        .build-triage-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .build-triage-item-selected {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .build-triage-item-text {
+            font-size: 13px;
+            color: #d0d0da;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 16px;
+        }
+
+        .build-triage-item-user {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #6b6b7b;
+        }
+
+        .build-triage-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        .build-triage-menu {
+            position: absolute;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1a1a1f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 8px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            min-width: 180px;
+        }
+
+        .build-triage-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #d0d0da;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .build-triage-menu-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .build-triage-menu-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .build-triage-menu-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .build-menu-accept {
+            color: #10b981;
+        }
+
+        .build-menu-duplicate {
+            color: #f59e0b;
+        }
+
+        .build-menu-decline {
+            color: #ef4444;
+        }
+
+        /* Insights Card - Full Width */
+        .build-insights-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 32px;
+        }
+
+        .build-insights-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .build-insights-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #6366f1;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .build-insights-link:hover {
+            color: #818cf8;
+        }
+
+        .build-insights-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .build-insights-chart {
+            background: #0d0d10;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            height: 220px;
+            position: relative;
+        }
+
+        .build-insights-chart-title {
+            font-size: 13px;
+            color: #6b6b7b;
+            margin-bottom: 16px;
+        }
+
+        .build-line-chart {
+            position: relative;
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .build-line-chart-grid {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .build-line-chart-gridline {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .build-line-chart-path {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .build-line-chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .build-chart-line {
+            fill: none;
+            stroke: #6366f1;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .build-chart-area-fill {
+            fill: url(#build-gradient);
+        }
+
+        /* Feature Grid */
+        .build-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .build-feature-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .build-feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+        }
+
+        .build-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #818cf8;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .build-feature-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .build-feature-text {
+            font-size: 13px;
+            color: #6b6b7b;
+            line-height: 1.5;
+        }
+
+        /* Triage UI Container for relative positioning */
+        .build-triage-container {
+            position: relative;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .build-content {
+                grid-template-columns: 1fr;
+            }
+
+            .build-cycles-card,
+            .build-triage-card {
+                grid-column: 1;
+            }
+
+            .build-insights-card {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+
+            .build-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .build-title {
+                font-size: 32px;
+            }
+
+            .build-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="build-section">
+        <div class="build-container">
+            <!-- Header -->
+            <header class="build-header">
+                <div class="build-label">
+                    Task tracking and sprint planning
+                    <svg class="build-label-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </div>
+                <h2 class="build-title">Issue tracking you'll enjoy using</h2>
+                <p class="build-description">Optimized for speed and efficiency. Create tasks in seconds, discuss issues in context, and breeze through your work in views tailored to you and your team.</p>
+            </header>
+
+            <!-- Hero Screenshot Placeholder -->
+            <div class="build-hero-image">
+                <span class="build-hero-placeholder">Issue Board View</span>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="build-content">
+                <!-- Cycles Card -->
+                <div class="build-card build-cycles-card">
+                    <h3 class="build-card-title">Build momentum with Cycles</h3>
+                    <p class="build-card-text">Create healthy routines and focus your team on what work should happen next.</p>
+
+                    <div class="build-cycles-chart">
+                        <div class="build-cycles-header">
+                            <span class="build-cycles-title-row">Cycle 55</span>
+                            <div class="build-cycles-legend">
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-scope"></div>
+                                    <span>Scope</span>
+                                </div>
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-started"></div>
+                                    <span>Started</span>
+                                </div>
+                                <div class="build-legend-item">
+                                    <div class="build-legend-dot build-legend-dot-completed"></div>
+                                    <span>Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="build-chart-area">
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 40px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 20px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 10px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 50px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 30px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 15px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 55px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 40px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 25px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 60px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 50px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 35px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 70px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 55px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 45px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 75px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 65px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 55px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 80px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 70px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 60px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 85px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 75px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 70px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 90px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 80px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 75px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 95px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 85px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 80px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 100px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 90px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 85px;"></div>
+                            </div>
+                            <div class="build-chart-bar-group">
+                                <div class="build-chart-bar build-chart-bar-scope" style="height: 105px;"></div>
+                                <div class="build-chart-bar build-chart-bar-started" style="height: 95px;"></div>
+                                <div class="build-chart-bar build-chart-bar-completed" style="height: 90px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Triage Card -->
+                <div class="build-card build-triage-card">
+                    <h3 class="build-card-title">Manage incoming work with Triage</h3>
+                    <p class="build-card-text">Review and assign incoming bug reports, feature requests, and other unplanned work.</p>
+
+                    <div class="build-triage-container">
+                        <div class="build-triage-ui">
+                            <div class="build-triage-header">Triage</div>
+                            <div class="build-triage-list">
+                                <div class="build-triage-item build-triage-item-selected">
+                                    <span class="build-triage-item-text">Users report unexpected rate limiting</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar"></div>
+                                        <span>tom</span>
+                                    </div>
+                                </div>
+                                <div class="build-triage-item">
+                                    <span class="build-triage-item-text">RangeError: Index 0 out of range</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"></div>
+                                        <span>romain</span>
+                                    </div>
+                                </div>
+                                <div class="build-triage-item">
+                                    <span class="build-triage-item-text">Pressing "Enter" quickly when logging in via email generates multiple emails</span>
+                                    <div class="build-triage-item-user">
+                                        <div class="build-triage-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);"></div>
+                                        <span>tuomas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown Menu -->
+                        <div class="build-triage-menu">
+                            <div class="build-triage-menu-item build-menu-accept">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M5 12l5 5L20 7"/>
+                                    </svg>
+                                </span>
+                                <span>Accept</span>
+                            </div>
+                            <div class="build-triage-menu-item build-menu-duplicate">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                    </svg>
+                                </span>
+                                <span>Mark as duplicate</span>
+                            </div>
+                            <div class="build-triage-menu-item build-menu-decline">
+                                <span class="build-triage-menu-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M18 6L6 18M6 6l12 12"/>
+                                    </svg>
+                                </span>
+                                <span>Decline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights Card -->
+                <div class="build-card build-insights-card">
+                    <div class="build-insights-info">
+                        <h3 class="build-card-title">Linear Insights</h3>
+                        <p class="build-card-text">Take the guesswork out of product planning with realtime analytics and reporting dashboards.</p>
+                        <a href="#" class="build-insights-link">
+                            Learn more
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="build-insights-chart">
+                        <div class="build-insights-chart-title">Cycle time</div>
+                        <div class="build-line-chart">
+                            <div class="build-line-chart-grid">
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                                <div class="build-line-chart-gridline"></div>
+                            </div>
+                            <div class="build-line-chart-path">
+                                <svg class="build-line-chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="build-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color: rgba(99, 102, 241, 0.3)"/>
+                                            <stop offset="100%" style="stop-color: rgba(99, 102, 241, 0)"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path class="build-chart-area-fill" d="M0,150 L0,100 Q20,95 40,90 T80,85 T120,70 T160,75 T200,60 T240,55 T280,40 T320,45 T360,30 T400,25 L400,150 Z"/>
+                                    <path class="build-chart-line" d="M0,100 Q20,95 40,90 T80,85 T120,70 T160,75 T200,60 T240,55 T280,40 T320,45 T360,30 T400,25"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Grid -->
+            <div class="build-features">
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0-6h18m-18 0v6"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Tailored workflows</h4>
+                    <p class="build-feature-text">Track progress across custom issue flows for your team.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Custom views</h4>
+                    <p class="build-feature-text">Switch between list and board. Group issues with swimlanes.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">Filters</h4>
+                    <p class="build-feature-text">Refine issue lists down to what's most relevant to you.</p>
+                </div>
+
+                <div class="build-feature-card">
+                    <div class="build-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h4 class="build-feature-title">SLAs</h4>
+                    <p class="build-feature-text">Automatically apply deadlines to time-sensitive tasks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

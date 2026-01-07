@@ -1,0 +1,105 @@
+<style>
+.testimonials {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: transparent;
+  padding: 24px 0;
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-author-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.testimonial-author-title {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.testimonial-quote {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="testimonials">
+  <div class="testimonials-container">
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/></svg>') center/cover;"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Patrick Collison</span>
+            <span class="testimonial-author-title">Co-Founder & CEO, Stripe</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">Cursor quickly grew from hundreds to thousands of extremely enthusiastic Stripe employees. We spend more on R&D and software creation than any other undertaking, and there's significant economic outcomes when making that process more efficient and productive.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">ThePrimeagen</span>
+            <span class="testimonial-author-title">@ThePrimeagen</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">It's official.<br><br>I hate vibe coding.<br>I love Cursor tab coding.<br><br>It's wild.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Greg Brockman</span>
+            <span class="testimonial-author-title">President, OpenAI</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">It's definitely becoming more fun to be a programmer. It's less about digging through pages and more about what you want to happen. We are at the 1% of what's possible, and it's in interactive experiences like Cursor where models like GPT-5 shine brightest.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1295 @@
+{
+  "url": "https://linear.app/",
+  "title": "Linear – Plan and build products",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullHeight": 12100,
+  "sections": [
+    {
+      "id": "header",
+      "type": "semantic",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 65
+      },
+      "selector": ".Header-module__PXV_2W__header",
+      "description": "ProductProductResourcesResourcesPricingCustomersNowContactDocsOpen appLog inSign up",
+      "order": 0
+    },
+    {
+      "id": "main",
+      "type": "semantic",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 11695.953125
+      },
+      "selector": ".Layout-module__8SDqbq__content",
+      "description": "Linear is a purpose-built tool for planning and bu | Made for modern product teams",
+      "order": 1
+    },
+    {
+      "id": "block-1",
+      "type": "visual-block",
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 1440,
+        "height": 12100.453125
+      },
+      "selector": ".Layout-module__8SDqbq__container",
+      "description": "Linear is a purpose-built tool for planning and bu | Made for modern product teams",
+      "order": 2
+    },
+    {
+      "id": "block-3",
+      "type": "visual-block",
+      "bounds": {
+        "top": 64,
+        "left": 208,
+        "width": 1024,
+        "height": 392.0625
+      },
+      "selector": ".Hero-module__QQJnga__homepageHero",
+      "description": "Linear is a purpose-built tool for planning and bu",
+      "order": 3
+    },
+    {
+      "id": "section-1",
+      "type": "section",
+      "bounds": {
+        "top": 392.0625,
+        "left": 0,
+        "width": 1440,
+        "height": 832
+      },
+      "selector": ".Hero-module__QQJnga__sectionHero",
+      "description": "",
+      "order": 4
+    },
+    {
+      "id": "section-2",
+      "type": "section",
+      "bounds": {
+        "top": 1224.0625,
+        "left": 0,
+        "width": 1440,
+        "height": 379.40625
+      },
+      "selector": ".page-module__x5b50W__sectionCustomers",
+      "description": "Powering the world’s best product teams. From next-gen startups to established enterprises.Powering ",
+      "order": 5
+    },
+    {
+      "id": "section-3",
+      "type": "section",
+      "bounds": {
+        "top": 1603.46875,
+        "left": 0,
+        "width": 1440,
+        "height": 859.1875
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "Made for modern product teams",
+      "order": 6
+    },
+    {
+      "id": "section-4",
+      "type": "section",
+      "bounds": {
+        "top": 2462.65625,
+        "left": 0,
+        "width": 1440,
+        "height": 1683.4765625
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "AI-assisted product development | Self-driving product operations",
+      "order": 7
+    },
+    {
+      "id": "section-5",
+      "type": "section",
+      "bounds": {
+        "top": 4146.1328125,
+        "left": 0,
+        "width": 1440,
+        "height": 2432.7734375
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "Set the product direction | Manage projects end-to-end",
+      "order": 8
+    },
+    {
+      "id": "section-6",
+      "type": "section",
+      "bounds": {
+        "top": 6578.90625,
+        "left": 0,
+        "width": 1440,
+        "height": 2581.671875
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "Issue tracking you’ll enjoy using | Build momentum with Cycles",
+      "order": 9
+    },
+    {
+      "id": "section-7",
+      "type": "section",
+      "bounds": {
+        "top": 9160.578125,
+        "left": 0,
+        "width": 1440,
+        "height": 1092.6875
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "Collaborate across tools and teams | Customer Requests",
+      "order": 10
+    },
+    {
+      "id": "section-8",
+      "type": "section",
+      "bounds": {
+        "top": 10253.265625,
+        "left": 0,
+        "width": 1440,
+        "height": 1206.6875
+      },
+      "selector": ".page-module__x5b50W__section",
+      "description": "Built on strong foundations",
+      "order": 11
+    },
+    {
+      "id": "section-9",
+      "type": "section",
+      "bounds": {
+        "top": 11459.953125,
+        "left": 0,
+        "width": 1440,
+        "height": 236
+      },
+      "selector": ".CTA-module__MsS1gq__sectionPrefooter",
+      "description": "Plan the present. Build the future.",
+      "order": 12
+    },
+    {
+      "id": "footer",
+      "type": "semantic",
+      "bounds": {
+        "top": 11695.953125,
+        "left": 0,
+        "width": 1440,
+        "height": 404.5
+      },
+      "selector": ".Footer-module__Cy4DCa__footer",
+      "description": "Features | Product",
+      "order": 13
+    }
+  ],
+  "interactive": [
+    {
+      "id": "interactive-1",
+      "tag": "a",
+      "text": "",
+      "bounds": {
+        "top": 16,
+        "left": 224,
+        "width": 96,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__logoLink",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-3",
+      "tag": "a",
+      "text": "Product",
+      "bounds": {
+        "top": 16,
+        "left": 476.484375,
+        "width": 72.828125,
+        "height": 32
+      },
+      "selector": "#radix-_R_nanpfcqlb_-trigger-product",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-5",
+      "tag": "a",
+      "text": "Resources",
+      "bounds": {
+        "top": 16,
+        "left": 557.3125,
+        "width": 89.5625,
+        "height": 32
+      },
+      "selector": "#radix-_R_nanpfcqlb_-trigger-resources",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-6",
+      "tag": "a",
+      "text": "Pricing",
+      "bounds": {
+        "top": 16,
+        "left": 654.875,
+        "width": 67.46875,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__anchor",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-7",
+      "tag": "a",
+      "text": "Customers",
+      "bounds": {
+        "top": 16,
+        "left": 730.34375,
+        "width": 91.828125,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__anchor",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-8",
+      "tag": "a",
+      "text": "Now",
+      "bounds": {
+        "top": 16,
+        "left": 830.171875,
+        "width": 52.2734375,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__anchor",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-9",
+      "tag": "a",
+      "text": "Contact",
+      "bounds": {
+        "top": 16,
+        "left": 890.4453125,
+        "width": 73.078125,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__anchor",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-12",
+      "tag": "a",
+      "text": "Log in",
+      "bounds": {
+        "top": 16,
+        "left": 1065.2578125,
+        "width": 61.8359375,
+        "height": 32
+      },
+      "selector": ".Header-module__PXV_2W__anchor",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-13",
+      "tag": "a",
+      "text": "Sign up",
+      "bounds": {
+        "top": 16,
+        "left": 1135.09375,
+        "width": 72.9140625,
+        "height": 32
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(8, 9, 10)",
+        "background-color": "rgb(230, 230, 230)",
+        "background": "rgb(230, 230, 230) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(230, 230, 230)",
+        "box-shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-15",
+      "tag": "a",
+      "text": "Start building",
+      "bounds": {
+        "top": 416.0625,
+        "left": 232,
+        "width": 129.5390625,
+        "height": 40
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(8, 9, 10)",
+        "background-color": "rgb(230, 230, 230)",
+        "background": "rgb(230, 230, 230) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(230, 230, 230)",
+        "box-shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-17",
+      "tag": "a",
+      "text": "New: Linear agent for Slack",
+      "bounds": {
+        "top": 416.0625,
+        "left": 377.5390625,
+        "width": 252.6875,
+        "height": 40
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(138, 143, 152)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(138, 143, 152)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-20",
+      "tag": "a",
+      "text": "Meet our customers",
+      "bounds": {
+        "top": 1375.921875,
+        "left": 232,
+        "width": 976,
+        "height": 163.546875
+      },
+      "selector": ".hide-tablet",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-23",
+      "tag": "button",
+      "text": "Purpose-built for product deve",
+      "bounds": {
+        "top": 1938.65625,
+        "left": 208,
+        "width": 336,
+        "height": 360
+      },
+      "selector": ".DifferentCard-module__ZPfTEW__differentCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(20, 21, 22)",
+        "background": "rgb(20, 21, 22) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-24",
+      "tag": "button",
+      "text": "Designed to move fast",
+      "bounds": {
+        "top": 1938.65625,
+        "left": 552,
+        "width": 336,
+        "height": 360
+      },
+      "selector": ".DifferentCard-module__ZPfTEW__differentCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(20, 21, 22)",
+        "background": "rgb(20, 21, 22) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-25",
+      "tag": "button",
+      "text": "Crafted to perfection",
+      "bounds": {
+        "top": 1938.65625,
+        "left": 896,
+        "width": 336,
+        "height": 360
+      },
+      "selector": ".DifferentCard-module__ZPfTEW__differentCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(20, 21, 22)",
+        "background": "rgb(20, 21, 22) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-26",
+      "tag": "a",
+      "text": "Artificial intelligenceAI-assi",
+      "bounds": {
+        "top": 2622.65625,
+        "left": 232,
+        "width": 862.6640625,
+        "height": 97.09375
+      },
+      "selector": ".Link-module__TqD7sG__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-27",
+      "tag": "a",
+      "text": "Learn more",
+      "bounds": {
+        "top": 2849.25,
+        "left": 232,
+        "width": 120.84375,
+        "height": 32
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(40, 40, 44)",
+        "background": "rgb(40, 40, 44) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-28",
+      "tag": "button",
+      "text": "nan",
+      "bounds": {
+        "top": 3629.75,
+        "left": 337,
+        "width": 56.6640625,
+        "height": 24
+      },
+      "selector": ".page-module__QbE8ja__suggestionButton",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-29",
+      "tag": "button",
+      "text": "Mobile App Refactor",
+      "bounds": {
+        "top": 3629.75,
+        "left": 399.6640625,
+        "width": 158.4765625,
+        "height": 24
+      },
+      "selector": ".page-module__QbE8ja__suggestionButton",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-30",
+      "tag": "button",
+      "text": "Slack",
+      "bounds": {
+        "top": 3629.75,
+        "left": 564.140625,
+        "width": 67.2265625,
+        "height": 24
+      },
+      "selector": ".page-module__QbE8ja__suggestionButton",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-31",
+      "tag": "button",
+      "text": "yann",
+      "bounds": {
+        "top": 3834.25,
+        "left": 348,
+        "width": 61.640625,
+        "height": 24
+      },
+      "selector": ".page-module__QbE8ja__suggestionButton",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-32",
+      "tag": "button",
+      "text": "erin",
+      "bounds": {
+        "top": 3834.25,
+        "left": 415.640625,
+        "width": 55.5859375,
+        "height": 24
+      },
+      "selector": ".page-module__QbE8ja__suggestionButton",
+      "defaultStyles": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-33",
+      "tag": "button",
+      "text": "Accept suggestion",
+      "bounds": {
+        "top": 3870.25,
+        "left": 348,
+        "width": 294,
+        "height": 32
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(24, 26, 26)",
+        "background": "rgb(24, 26, 26) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(38, 39, 40)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-34",
+      "tag": "a",
+      "text": "Project and long-term planning",
+      "bounds": {
+        "top": 4306.1328125,
+        "left": 232,
+        "width": 618.6640625,
+        "height": 97.09375
+      },
+      "selector": ".Link-module__TqD7sG__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-35",
+      "tag": "div",
+      "text": "Exploration",
+      "bounds": {
+        "top": 5458.265625,
+        "left": 372,
+        "width": 104.1875,
+        "height": 25
+      },
+      "selector": ".ProjectOverview-module__C0ELRa__btn",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(35, 35, 38)",
+        "background": "rgb(35, 35, 38) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-36",
+      "tag": "div",
+      "text": "User interviews",
+      "bounds": {
+        "top": 5458.265625,
+        "left": 480.1875,
+        "width": 132.2265625,
+        "height": 25
+      },
+      "selector": ".ProjectOverview-module__C0ELRa__btn",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(35, 35, 38)",
+        "background": "rgb(35, 35, 38) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-37",
+      "tag": "div",
+      "text": "Off trackUnexpected roadblocks",
+      "bounds": {
+        "top": 5331.3359375,
+        "left": 784,
+        "width": 424,
+        "height": 314.0703125
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__cards",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-38",
+      "tag": "div",
+      "text": "Off trackUnexpected roadblocks",
+      "bounds": {
+        "top": 5343.54248046875,
+        "left": 806.4512329101562,
+        "width": 431.84185791015625,
+        "height": 176.65869140625
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__card",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(40, 40, 40, 0.2)",
+        "background": "rgba(40, 40, 40, 0.2) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0.1)",
+        "box-shadow": "none",
+        "transform": "matrix3d(0.939693, -0.148452, -0.331861, 0, 0, 0.970296, -0.241922, 0, 0.34202, 0.203416, 0.91178, 0, -0.483605, -64.6028, -181.119, 1)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-39",
+      "tag": "div",
+      "text": "Off trackUnexpected roadblocks",
+      "bounds": {
+        "top": 5360.36962890625,
+        "left": 822.6021728515625,
+        "width": 401.6390380859375,
+        "height": 141.8232421875
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__cardInner",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.2",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-40",
+      "tag": "div",
+      "text": "At riskProgress slowed down la",
+      "bounds": {
+        "top": 5369.119140625,
+        "left": 839.3092651367188,
+        "width": 464.33209228515625,
+        "height": 193.8046875
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__card",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(40, 40, 40, 0.2)",
+        "background": "rgba(40, 40, 40, 0.2) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0.1)",
+        "box-shadow": "none",
+        "transform": "matrix3d(0.939693, -0.148452, -0.331861, 0, 0, 0.970296, -0.241922, 0, 0.34202, 0.203416, 0.91178, 0, 46.9846, -25.7612, -12.0207, 1)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-41",
+      "tag": "div",
+      "text": "At riskProgress slowed down la",
+      "bounds": {
+        "top": 5387.33447265625,
+        "left": 856.7133178710938,
+        "width": 431.78082275390625,
+        "height": 155.98291015625
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__cardInner",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.2",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-42",
+      "tag": "div",
+      "text": "On trackWe are ready to launch",
+      "bounds": {
+        "top": 5399.22314453125,
+        "left": 878.5364379882812,
+        "width": 502.02032470703125,
+        "height": 214.56298828125
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__card",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(40, 40, 40, 0.4)",
+        "background": "rgba(40, 40, 40, 0.4) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgba(255, 255, 255, 0.1)",
+        "box-shadow": "none",
+        "transform": "matrix3d(0.939693, -0.148452, -0.331861, 0, 0, 0.970296, -0.241922, 0, 0.34202, 0.203416, 0.91178, 0, 94.4529, 13.0804, 157.078, 1)",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-43",
+      "tag": "div",
+      "text": "On trackWe are ready to launch",
+      "bounds": {
+        "top": 5419.07568359375,
+        "left": 897.3998413085938,
+        "width": 466.72967529296875,
+        "height": 173.19384765625
+      },
+      "selector": ".NotificationAsset-module__d0iS0a__cardInner",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-44",
+      "tag": "button",
+      "text": "Collaborative documents",
+      "bounds": {
+        "top": 5911.234375,
+        "left": 232,
+        "width": 304,
+        "height": 25
+      },
+      "selector": ".Editor-module__8mxfpG__button",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-45",
+      "tag": "button",
+      "text": "Inline comments",
+      "bounds": {
+        "top": 5944.234375,
+        "left": 232,
+        "width": 304,
+        "height": 25
+      },
+      "selector": ".Editor-module__8mxfpG__button",
+      "defaultStyles": {
+        "color": "rgb(98, 102, 109)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(98, 102, 109)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-46",
+      "tag": "button",
+      "text": "Text-to-issue commands",
+      "bounds": {
+        "top": 5977.234375,
+        "left": 232,
+        "width": 304,
+        "height": 25
+      },
+      "selector": ".Editor-module__8mxfpG__button",
+      "defaultStyles": {
+        "color": "rgb(98, 102, 109)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+        "border-color": "rgb(98, 102, 109)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-47",
+      "tag": "a",
+      "text": "Task tracking and sprint plann",
+      "bounds": {
+        "top": 6738.90625,
+        "left": 232,
+        "width": 618.6640625,
+        "height": 158.6875
+      },
+      "selector": ".Link-module__TqD7sG__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-48",
+      "tag": "a",
+      "text": "Learn more",
+      "bounds": {
+        "top": 8437.6015625,
+        "left": 232,
+        "width": 120.84375,
+        "height": 32
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(40, 40, 44)",
+        "background": "rgb(40, 40, 44) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-49",
+      "tag": "a",
+      "text": "Customer RequestsBuild what cu",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 208,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-50",
+      "tag": "button",
+      "text": "Powerful git workflowsAutomate",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 552,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-51",
+      "tag": "a",
+      "text": "Linear MobileMove product work",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 896,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-52",
+      "tag": "a",
+      "text": "Linear AsksTurn workplace requ",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 1240,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-53",
+      "tag": "a",
+      "text": "Linear integrations100+ ways t",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 1584,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-54",
+      "tag": "a",
+      "text": "Figma integrationBridge the ga",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 1928,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-55",
+      "tag": "a",
+      "text": "Built for developersBuild your",
+      "bounds": {
+        "top": 9531.265625,
+        "left": 2272,
+        "width": 336,
+        "height": 469
+      },
+      "selector": ".HomepageCarousel-module__U2qd5W__workflowCard",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(15, 16, 17)",
+        "background": "rgb(15, 16, 17) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-56",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 10053.265625,
+        "left": 676,
+        "width": 40,
+        "height": 40
+      },
+      "selector": ".IconButton-module__JkbYSq__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(40, 40, 44)",
+        "background": "rgb(40, 40, 44) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "0.5",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-57",
+      "tag": "button",
+      "text": "",
+      "bounds": {
+        "top": 10053.265625,
+        "left": 724,
+        "width": 40,
+        "height": 40
+      },
+      "selector": ".IconButton-module__JkbYSq__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(40, 40, 44)",
+        "background": "rgb(40, 40, 44) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-58",
+      "tag": "a",
+      "text": "Enterprise-ready security",
+      "bounds": {
+        "top": 10885.953125,
+        "left": 232,
+        "width": 187.4140625,
+        "height": 21
+      },
+      "selector": ".Link-module__TqD7sG__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(247, 248, 248)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-59",
+      "tag": "a",
+      "text": "Contact sales",
+      "bounds": {
+        "top": 11557.953125,
+        "left": 954.59375,
+        "width": 131.5703125,
+        "height": 40
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(247, 248, 248)",
+        "background-color": "rgb(40, 40, 44)",
+        "background": "rgb(40, 40, 44) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(62, 62, 68)",
+        "box-shadow": "none",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    },
+    {
+      "id": "interactive-60",
+      "tag": "a",
+      "text": "Get started",
+      "bounds": {
+        "top": 11557.953125,
+        "left": 1094.1640625,
+        "width": 113.8359375,
+        "height": 40
+      },
+      "selector": ".Button-module__bZ-sGa__root",
+      "defaultStyles": {
+        "color": "rgb(8, 9, 10)",
+        "background-color": "rgb(230, 230, 230)",
+        "background": "rgb(230, 230, 230) none repeat scroll 0% 0% / auto padding-box border-box",
+        "border-color": "rgb(230, 230, 230)",
+        "box-shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+        "transform": "none",
+        "opacity": "1",
+        "text-decoration": "none"
+      }
+    }
+  ]
+}

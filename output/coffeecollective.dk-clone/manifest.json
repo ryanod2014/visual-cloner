@@ -1,0 +1,60 @@
+{
+  "url": "https://coffeecollective.dk/",
+  "timestamp": "2025-01-07T03:53:00Z",
+  "tokens": {
+    "colors": {
+      "background": "rgb(250, 246, 237)",
+      "text": "rgb(76, 67, 65)",
+      "heading": "rgb(76, 67, 65)",
+      "accent": "rgb(76, 67, 65)"
+    },
+    "fonts": {
+      "body": "\"NB International Pro\", Inter, sans-serif",
+      "heading": "\"NB International Pro\", Inter, sans-serif"
+    }
+  },
+  "sections": [
+    {
+      "id": "header-hero",
+      "order": 0,
+      "screenshot": "screenshots/coffee-section-00.png",
+      "description": "Header with navigation and hero section featuring Vista Hermosa coffee"
+    },
+    {
+      "id": "selected-coffees",
+      "order": 1,
+      "screenshot": "screenshots/coffee-section-01.png",
+      "description": "Selected coffees product carousel with Bekele Anaerobic, Bekele Natural, etc."
+    },
+    {
+      "id": "subscription",
+      "order": 2,
+      "screenshot": "screenshots/coffee-section-02.png",
+      "description": "Coffee subscription benefits section"
+    },
+    {
+      "id": "equipment",
+      "order": 3,
+      "screenshot": "screenshots/coffee-section-03.png",
+      "description": "Selected equipment carousel with AeroPress, Kalita, etc."
+    },
+    {
+      "id": "featured-product",
+      "order": 4,
+      "screenshot": "screenshots/coffee-section-04.png",
+      "description": "Featured product - Bekele Natural with fruity and sweet description"
+    },
+    {
+      "id": "wholesale",
+      "order": 5,
+      "screenshot": "screenshots/coffee-section-05.png",
+      "description": "Wholesale partner section with benefits list"
+    },
+    {
+      "id": "footer",
+      "order": 6,
+      "screenshot": "screenshots/coffee-section-06.png",
+      "description": "Footer with newsletter signup, coffee shop locations, and links"
+    }
+  ]
+}

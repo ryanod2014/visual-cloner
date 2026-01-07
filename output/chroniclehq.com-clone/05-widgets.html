@@ -1,0 +1,161 @@
+<style>
+.widgets {
+  padding: 120px 48px;
+  background: #0a0a0a;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.widgets-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.widgets-label {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.widgets-headline {
+  font-family: 'FT Regola Neue', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+}
+
+.widgets-headline strong {
+  background: linear-gradient(90deg, #667eea, #f093fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.widgets-carousel {
+  position: relative;
+  margin: 0 -48px 48px;
+}
+
+.widgets-track {
+  display: flex;
+  gap: 24px;
+  animation: widgetScroll 40s linear infinite;
+}
+
+@keyframes widgetScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.widgets-item {
+  flex-shrink: 0;
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.widgets-item:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.widgets-item-inner {
+  width: 80%;
+  height: 80%;
+  border-radius: 12px;
+}
+
+.widgets-item:nth-child(1) .widgets-item-inner { background: linear-gradient(135deg, #667eea, #764ba2); }
+.widgets-item:nth-child(2) .widgets-item-inner { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.widgets-item:nth-child(3) .widgets-item-inner { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.widgets-item:nth-child(4) .widgets-item-inner { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.widgets-item:nth-child(5) .widgets-item-inner { background: linear-gradient(135deg, #fa709a, #fee140); }
+.widgets-item:nth-child(6) .widgets-item-inner { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+.widgets-item:nth-child(7) .widgets-item-inner { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.widgets-item:nth-child(8) .widgets-item-inner { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+
+.widgets-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.widgets-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widgets-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.widgets-description {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  margin: 0;
+}
+</style>
+
+<section class="widgets">
+  <div class="widgets-header">
+    <span class="widgets-label">Widgets</span>
+    <h2 class="widgets-headline"><strong>Build polished outputs with widgets that come with</strong> pixel perfect design, interactivity and motion out of the box.</h2>
+  </div>
+
+  <div class="widgets-carousel">
+    <div class="widgets-track">
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <!-- Duplicated for seamless loop -->
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+      <div class="widgets-item"><div class="widgets-item-inner"></div></div>
+    </div>
+  </div>
+
+  <div class="widgets-nav">
+    <button class="widgets-nav-btn">&#8592;</button>
+    <button class="widgets-nav-btn">&#8594;</button>
+  </div>
+
+  <p class="widgets-description">Zoom in, highlight, or isolate key elements and never lose your audience's attention.</p>
+</section>

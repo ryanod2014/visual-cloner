@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear - AI-assisted Product Development Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0b;
+            color: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .ai-section {
+            min-height: 100vh;
+            padding: 80px 0;
+            background: linear-gradient(180deg, #0a0a0b 0%, #0d0d0f 100%);
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top section - Header and Agent Assignment */
+        .ai-top-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .ai-header {
+            padding-top: 20px;
+        }
+
+        .ai-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #8b8b8d;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .ai-label-dot {
+            width: 8px;
+            height: 8px;
+            background: #00d4aa;
+            border-radius: 50%;
+        }
+
+        .ai-label-arrow {
+            width: 0;
+            height: 0;
+            border-left: 5px solid #8b8b8d;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            margin-left: 4px;
+        }
+
+        .ai-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        .ai-description {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #8b8b8d;
+            margin-bottom: 24px;
+            max-width: 480px;
+        }
+
+        .ai-description strong {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .ai-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .ai-learn-more:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .ai-learn-more-arrow {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-learn-more-arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #ffffff;
+            border-top: 2px solid #ffffff;
+            transform: translate(-60%, -50%) rotate(45deg);
+        }
+
+        /* Agent Assignment Card */
+        .ai-agent-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .ai-assign-input {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-assign-input-text {
+            color: #6b6b6d;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .ai-assign-input-text::before {
+            content: '|';
+            color: #00d4aa;
+            margin-right: 2px;
+        }
+
+        .ai-agent-list {
+            padding: 8px 0;
+        }
+
+        .ai-agent-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            transition: background 0.15s ease;
+        }
+
+        .ai-agent-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .ai-agent-item.ai-agent-selected {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .ai-agent-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .ai-agent-avatar.ai-cursor {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-cursor::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E") center/contain no-repeat;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
+
+        .ai-agent-avatar.ai-github {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-sentry {
+            background: linear-gradient(135deg, #362d59 0%, #4a3d75 100%);
+        }
+
+        .ai-agent-avatar.ai-leela {
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-agent-avatar.ai-codex {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2a4a2a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-agent-avatar.ai-conor {
+            background: linear-gradient(135deg, #3a3a4a 0%, #4a4a5a 100%);
+            border-radius: 50%;
+        }
+
+        .ai-agent-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-agent-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            font-size: 11px;
+            color: #8b8b8d;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .ai-agent-check {
+            margin-left: auto;
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-agent-check::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(-45deg);
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid #8b8b8d;
+            border-bottom: 2px solid #8b8b8d;
+        }
+
+        /* Fading effect at bottom */
+        .ai-agent-item.ai-faded {
+            opacity: 0.5;
+        }
+
+        .ai-agent-item.ai-more-faded {
+            opacity: 0.3;
+        }
+
+        /* Bottom section - Triage Intelligence */
+        .ai-bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        .ai-triage-header {
+            padding-top: 20px;
+        }
+
+        .ai-triage-title {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .ai-triage-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #8b8b8d;
+            max-width: 400px;
+        }
+
+        /* Triage Card */
+        .ai-triage-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .ai-triage-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-triage-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 4px;
+        }
+
+        .ai-triage-card-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-triage-suggestions {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-triage-suggestions-label {
+            font-size: 12px;
+            color: #6b6b6d;
+            margin-bottom: 10px;
+        }
+
+        .ai-triage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .ai-triage-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        .ai-triage-tag-avatar {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-triage-tag-icon {
+            width: 14px;
+            height: 14px;
+            background: #6366f1;
+            border-radius: 3px;
+        }
+
+        .ai-triage-tag-label {
+            padding: 4px 8px;
+            background: rgba(138, 79, 255, 0.2);
+            border-radius: 4px;
+            font-size: 12px;
+            color: #a78bfa;
+        }
+
+        .ai-triage-relation {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .ai-triage-relation:last-child {
+            border-bottom: none;
+        }
+
+        .ai-triage-relation-label {
+            font-size: 12px;
+            color: #6b6b6d;
+            min-width: 80px;
+            padding-top: 2px;
+        }
+
+        .ai-triage-relation-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .ai-triage-relation-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #f59e0b;
+            flex-shrink: 0;
+        }
+
+        .ai-triage-relation-id {
+            font-size: 13px;
+            color: #8b8b8d;
+            font-weight: 500;
+        }
+
+        .ai-triage-relation-text {
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        /* Explanation Panel */
+        .ai-explanation-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .ai-explanation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .ai-explanation-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ai-explanation-avatar {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            border-radius: 50%;
+        }
+
+        .ai-explanation-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .ai-explanation-label {
+            font-size: 11px;
+            color: #6b6b6d;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .ai-explanation-text {
+            font-size: 13px;
+            color: #8b8b8d;
+            line-height: 1.5;
+        }
+
+        .ai-explanation-alternatives {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ai-explanation-alt {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 4px;
+        }
+
+        .ai-explanation-alt-avatar {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #3a6a3a 0%, #4a8a4a 100%);
+            border-radius: 50%;
+        }
+
+        .ai-explanation-alt-name {
+            font-size: 12px;
+            color: #8b8b8d;
+        }
+
+        .ai-accept-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .ai-accept-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-accept-icon {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+
+        .ai-accept-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(-45deg);
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid #00d4aa;
+            border-bottom: 2px solid #00d4aa;
+        }
+
+        /* Linear MCP section */
+        .ai-mcp-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ai-mcp-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .ai-mcp-description {
+            font-size: 15px;
+            color: #8b8b8d;
+            max-width: 400px;
+        }
+
+        @media (max-width: 1024px) {
+            .ai-top-row,
+            .ai-bottom-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ai-title {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ai-section {
+                padding: 40px 0;
+            }
+
+            .ai-title {
+                font-size: 32px;
+            }
+
+            .ai-triage-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="ai-section">
+        <div class="ai-container">
+            <!-- Top Row: Header + Agent Assignment -->
+            <div class="ai-top-row">
+                <div class="ai-header">
+                    <div class="ai-label">
+                        <span class="ai-label-dot"></span>
+                        <span>Artificial intelligence</span>
+                        <span class="ai-label-arrow"></span>
+                    </div>
+                    <h2 class="ai-title">AI-assisted product development</h2>
+                    <p class="ai-description">
+                        <strong>Linear for Agents.</strong> Choose from a variety of AI agents and start delegating work, from code generation to other technical tasks.
+                    </p>
+                    <a href="#" class="ai-learn-more">
+                        Learn more
+                        <span class="ai-learn-more-arrow"></span>
+                    </a>
+                </div>
+
+                <div class="ai-agent-card">
+                    <div class="ai-assign-input">
+                        <span class="ai-assign-input-text">Assign to...</span>
+                    </div>
+                    <div class="ai-agent-list">
+                        <div class="ai-agent-item ai-agent-selected">
+                            <div class="ai-agent-avatar ai-cursor"></div>
+                            <span class="ai-agent-name">Cursor</span>
+                            <span class="ai-agent-badge">Agent</span>
+                            <span class="ai-agent-check"></span>
+                        </div>
+                        <div class="ai-agent-item">
+                            <div class="ai-agent-avatar ai-github">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">GitHub Copilot</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item">
+                            <div class="ai-agent-avatar ai-sentry">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2L2 19h20L12 2z"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">Sentry</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item ai-faded">
+                            <div class="ai-agent-avatar ai-leela"></div>
+                            <span class="ai-agent-name">Leela</span>
+                        </div>
+                        <div class="ai-agent-item ai-faded">
+                            <div class="ai-agent-avatar ai-codex">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                    <circle cx="12" cy="12" r="8"/>
+                                </svg>
+                            </div>
+                            <span class="ai-agent-name">Codex</span>
+                            <span class="ai-agent-badge">Agent</span>
+                        </div>
+                        <div class="ai-agent-item ai-more-faded">
+                            <div class="ai-agent-avatar ai-conor"></div>
+                            <span class="ai-agent-name">Conor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Triage Intelligence -->
+            <div class="ai-bottom-row">
+                <div class="ai-triage-header">
+                    <h3 class="ai-triage-title">Self-driving product operations</h3>
+                    <p class="ai-triage-description">
+                        Streamline your product development workflows with AI assistance for routine, manual tasks.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="ai-triage-card">
+                        <div class="ai-triage-card-header">
+                            <div class="ai-triage-icon"></div>
+                            <span class="ai-triage-card-title">Triage Intelligence</span>
+                        </div>
+                        <div class="ai-triage-suggestions">
+                            <div class="ai-triage-suggestions-label">Suggestions</div>
+                            <div class="ai-triage-tags">
+                                <div class="ai-triage-tag">
+                                    <div class="ai-triage-tag-avatar"></div>
+                                    <span>nan</span>
+                                </div>
+                                <div class="ai-triage-tag">
+                                    <div class="ai-triage-tag-icon"></div>
+                                    <span>Mobile App Refactor</span>
+                                </div>
+                                <div class="ai-triage-tag">
+                                    <span class="ai-triage-tag-label">Slack</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-triage-relation">
+                            <span class="ai-triage-relation-label">Duplicate of</span>
+                            <div class="ai-triage-relation-content">
+                                <div class="ai-triage-relation-icon"></div>
+                                <span class="ai-triage-relation-id">ENG-1419</span>
+                                <span class="ai-triage-relation-text">Loading spinner keeps running on startup</span>
+                            </div>
+                        </div>
+                        <div class="ai-triage-relation">
+                            <span class="ai-triage-relation-label">Related to</span>
+                            <div class="ai-triage-relation-content">
+                                <div class="ai-triage-relation-icon"></div>
+                                <span class="ai-triage-relation-id">ENG-1820</span>
+                                <span class="ai-triage-relation-text">Mobile app takes a long time to open</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-explanation-panel">
+                        <div class="ai-explanation-card">
+                            <div class="ai-explanation-header">
+                                <div class="ai-explanation-avatar"></div>
+                                <span class="ai-explanation-name">nan</span>
+                            </div>
+                            <div class="ai-explanation-label">Why this assignee was suggested</div>
+                            <p class="ai-explanation-text">
+                                This person was the assignee on previous issues related to performance problems in the mobile app launch flow
+                            </p>
+                            <div class="ai-explanation-label" style="margin-top: 12px;">Alternatives</div>
+                            <div class="ai-explanation-alternatives">
+                                <div class="ai-explanation-alt">
+                                    <div class="ai-explanation-alt-avatar"></div>
+                                    <span class="ai-explanation-alt-name">yann</span>
+                                </div>
+                                <div class="ai-explanation-alt">
+                                    <div class="ai-explanation-alt-avatar" style="background: linear-gradient(135deg, #6a3a3a 0%, #8a4a4a 100%);"></div>
+                                    <span class="ai-explanation-alt-name">erin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="ai-accept-btn">
+                        <span class="ai-accept-icon"></span>
+                        Accept suggestion
+                    </button>
+                </div>
+            </div>
+
+            <!-- Linear MCP Section -->
+            <div class="ai-mcp-section">
+                <h3 class="ai-mcp-title">Linear MCP</h3>
+                <p class="ai-mcp-description">
+                    Connect Linear to your favorite tools including Cursor, Claude, ChatGPT, and more.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

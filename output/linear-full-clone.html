@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Clone - Full Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === GLOBAL RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0b; color: #fff; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+
+    /* === HEADER === */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 56px; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 16px; }
+    .logo svg { width: 20px; height: 20px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-link { font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.7); transition: color 0.15s ease; }
+    .nav-link:hover { color: rgb(247, 248, 248); }
+    .nav-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-ghost { font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.7); }
+    .btn-signup { font-size: 14px; font-weight: 500; padding: 6px 13px; background: #fff; color: #111; border-radius: 6px; transition: background-color 0.15s ease; }
+    .btn-signup:hover { background-color: rgb(240, 240, 240); }
+
+    /* === HERO === */
+    .hero { padding: 130px 0 40px; }
+    .hero-content { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .hero h1 { font-size: 58px; font-weight: 500; line-height: 1.04; letter-spacing: -0.02em; max-width: 920px; margin-bottom: 24px; }
+    .hero p { font-size: 17px; line-height: 1.55; color: rgba(255, 255, 255, 0.5); max-width: 480px; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 20px; align-items: center; }
+    .btn-primary { font-size: 15px; font-weight: 500; padding: 10px 17px; background: #fff; color: #101010; border-radius: 7px; display: inline-flex; align-items: center; transition: background-color 0.15s ease; }
+    .btn-primary:hover { background-color: rgb(230, 230, 230); }
+    .btn-secondary { font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.55); display: inline-flex; align-items: center; gap: 6px; }
+    .btn-secondary svg { width: 12px; height: 12px; }
+    .hero-image { max-width: 1400px; margin: 48px auto 0; padding: 0 24px; }
+    .hero-image img { width: 100%; border-radius: 12px; }
+
+    /* === CUSTOMERS === */
+    .customers { padding: 80px 24px; text-align: center; }
+    .customers-tagline { font-size: 23px; font-weight: 400; line-height: 1.48; color: rgba(255, 255, 255, 0.52); max-width: 660px; margin: 0 auto 48px; }
+    .customer-logos { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .logo-item { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 600; }
+    .logo-openai { font-weight: 700; font-size: 24px; }
+    .logo-cashapp .icon { width: 26px; height: 26px; background: #00D632; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; }
+
+    /* === MODERN TEAMS === */
+    .modern-teams { padding: 120px 40px 80px; max-width: 1200px; margin: 0 auto; }
+    .modern-header { display: flex; justify-content: space-between; gap: 80px; margin-bottom: 70px; }
+    .modern-heading { font-size: 68px; font-weight: 400; line-height: 1.05; letter-spacing: -0.025em; max-width: 580px; }
+    .modern-desc-block { max-width: 380px; padding-top: 10px; }
+    .modern-desc-block p { font-size: 17px; line-height: 1.65; color: rgba(255, 255, 255, 0.6); margin-bottom: 20px; }
+    .make-switch { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; transition: color 0.15s ease; }
+    .make-switch:hover { color: rgb(255, 255, 255); }
+    .make-switch svg { width: 16px; height: 16px; }
+    .cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .principle-card { background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; transition: border-color 0.2s ease; }
+    .principle-card:hover { border-color: rgba(255, 255, 255, 0.14); }
+    .card-image { height: 280px; display: flex; align-items: center; justify-content: center; padding: 40px; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%); }
+    .card-content { padding: 20px 24px 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .card-title { font-size: 20px; font-weight: 500; max-width: 240px; }
+    .card-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; }
+    .card-icon svg { width: 14px; height: 14px; color: rgba(255,255,255,0.5); }
+
+    /* Card illustrations */
+    .illustration-1 { width: 260px; height: 200px; position: relative; transform: perspective(800px) rotateY(-12deg) rotateX(5deg); }
+    .illustration-1 .card-stack { position: absolute; width: 140px; height: 170px; border-radius: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.08); }
+    .illustration-1 .card-stack::before { content: ''; position: absolute; top: 12px; left: 12px; right: 12px; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; }
+    .illustration-1 .card-stack:nth-child(1) { left: 0; top: 30px; opacity: 0.35; }
+    .illustration-1 .card-stack:nth-child(2) { left: 25px; top: 20px; opacity: 0.5; }
+    .illustration-1 .card-stack:nth-child(3) { left: 50px; top: 10px; opacity: 0.7; }
+    .illustration-1 .card-stack:nth-child(4) { left: 75px; top: 0; background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%); border: 1px solid rgba(255,255,255,0.1); }
+    .illustration-2 { width: 240px; height: 140px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .illustration-2 .speed-text { font-size: 32px; font-weight: 300; color: rgba(255, 255, 255, 0.5); }
+    .illustration-2 .speed-lines { position: absolute; bottom: 20px; width: 180px; height: 40px; }
+    .illustration-2 .speed-line { position: absolute; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 100%); }
+    .illustration-2 .speed-line:nth-child(1) { width: 180px; top: 0; }
+    .illustration-2 .speed-line:nth-child(2) { width: 160px; top: 8px; left: 10px; opacity: 0.8; }
+    .illustration-2 .speed-line:nth-child(3) { width: 140px; top: 16px; left: 20px; opacity: 0.6; }
+    .illustration-2 .speed-line:nth-child(4) { width: 120px; top: 24px; left: 30px; opacity: 0.4; }
+    .illustration-3 { width: 260px; height: 200px; position: relative; overflow: hidden; }
+    .illustration-3 .grid-bg { position: absolute; width: 300%; height: 300%; left: -100%; top: -50%; background-image: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.08) 55%, transparent 55%), linear-gradient(-45deg, transparent 45%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.08) 55%, transparent 55%); background-size: 40px 40px; }
+    .illustration-3 .create-label { position: absolute; top: 30px; right: 20px; font-size: 16px; color: rgba(255, 255, 255, 0.35); font-style: italic; font-weight: 300; transform: rotate(-35deg); }
+    .illustration-3 .cursor-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); }
+    .illustration-3 .cursor-icon::before { content: '+'; color: rgba(255,255,255,0.5); font-size: 16px; font-weight: 300; }
+
+    /* === BUILD SECTION === */
+    .build-section { max-width: 1200px; margin: 0 auto; padding: 120px 48px; }
+    .build-section .section-header { margin-bottom: 64px; }
+    .build-section .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; }
+    .build-section .badge-icon { width: 10px; height: 10px; background: #f5bf4f; border-radius: 50%; }
+    .build-section .badge-arrow { width: 12px; height: 12px; opacity: 0.5; stroke: currentColor; }
+    .build-section .section-title { font-size: 52px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 24px; }
+    .build-section .section-description { font-size: 17px; color: rgba(255, 255, 255, 0.5); max-width: 560px; line-height: 1.6; }
+    .build-section .section-description strong { color: rgba(255, 255, 255, 0.9); font-weight: 500; }
+    .screenshot-container { margin-bottom: 64px; border-radius: 16px; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .screenshot-placeholder { height: 400px; background: linear-gradient(135deg, #1a1a1c 0%, #0f0f10 100%); display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.3); font-size: 14px; }
+    .subsections-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+    .subsection-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 32px; transition: border-color 0.2s ease; }
+    .subsection-card:hover { border-color: rgba(255, 255, 255, 0.12); }
+    .subsection-title { font-size: 20px; font-weight: 500; margin-bottom: 12px; }
+    .subsection-description { font-size: 15px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; margin-bottom: 24px; }
+
+    /* Cycle Chart */
+    .cycle-chart { background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.06); }
+    .cycle-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .cycle-title { font-size: 14px; font-weight: 500; }
+    .cycle-legend { display: flex; gap: 16px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .legend-dot.scope { background: #6366f1; }
+    .legend-dot.started { background: #f59e0b; }
+    .legend-dot.completed { background: #10b981; }
+    .chart-area { height: 120px; display: flex; align-items: flex-end; gap: 2px; }
+    .chart-bar { flex: 1; background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%); border-radius: 2px 2px 0 0; min-height: 20px; }
+
+    /* Triage Demo */
+    .triage-demo { background: rgba(0, 0, 0, 0.3); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06); overflow: hidden; }
+    .triage-header { padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.7); }
+    .triage-list { padding: 8px 0; }
+    .triage-item { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .triage-item:last-child { border-bottom: none; }
+    .triage-item-content { font-size: 13px; color: rgba(255, 255, 255, 0.8); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 280px; }
+    .triage-item-user { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+    .user-avatar { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+    .triage-menu { display: flex; flex-direction: column; padding: 8px; background: rgba(30, 30, 32, 0.95); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; margin: 8px 16px 16px; }
+    .triage-menu-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; font-size: 13px; color: rgba(255, 255, 255, 0.8); border-radius: 6px; cursor: pointer; transition: background-color 0.15s ease; }
+    .triage-menu-item:hover { background: rgba(255, 255, 255, 0.06); }
+    .triage-menu-icon { width: 16px; height: 16px; opacity: 0.6; }
+
+    /* Insights */
+    .insights-card { grid-column: span 2; }
+    .insights-card .subsection-card { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .insights-content { display: flex; flex-direction: column; justify-content: center; }
+    .learn-more-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 16px; transition: color 0.15s ease; }
+    .learn-more-link:hover { color: #ffffff; }
+    .learn-more-link svg { width: 14px; height: 14px; }
+    .insights-chart { background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 24px; border: 1px solid rgba(255, 255, 255, 0.06); height: 200px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.3); }
+
+    /* Feature Grid */
+    .build-section .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+    .build-section .feature-item { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 20px; transition: border-color 0.2s ease; }
+    .build-section .feature-item:hover { border-color: rgba(255, 255, 255, 0.12); }
+    .feature-icon-wrapper { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .feature-icon { width: 18px; height: 18px; opacity: 0.5; }
+    .feature-title { font-size: 14px; font-weight: 500; }
+    .feature-description { font-size: 13px; color: rgba(255, 255, 255, 0.45); line-height: 1.5; }
+
+    /* === INTEGRATIONS === */
+    .integrations-section { max-width: 1200px; margin: 0 auto; padding: 100px 24px; }
+    .integrations-section .section-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; gap: 60px; }
+    .integrations-section .header-left { max-width: 580px; }
+    .integrations-section .header-right { max-width: 380px; padding-top: 60px; }
+    .int-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255, 255, 255, 0.5); margin-bottom: 20px; }
+    .int-badge::before { content: ''; width: 8px; height: 8px; background: #666; border-radius: 50%; }
+    .int-title { font-size: 64px; font-weight: 500; line-height: 1.05; letter-spacing: -0.035em; }
+    .int-description { font-size: 18px; line-height: 1.65; color: rgba(255, 255, 255, 0.5); }
+
+    /* Carousel */
+    .carousel-track { display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 32px; -ms-overflow-style: none; scrollbar-width: none; }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .int-card { flex: 0 0 280px; height: 420px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%); border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 16px; display: flex; flex-direction: column; cursor: pointer; transition: border-color 0.2s ease; overflow: hidden; }
+    .int-card:hover { border-color: rgba(255, 255, 255, 0.14); }
+    .card-image-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .card-image-placeholder { width: 100%; height: 100%; border-radius: 8px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .int-card .card-content { padding: 0 20px 20px; position: relative; }
+    .int-card .card-title { font-size: 14px; font-weight: 400; margin-bottom: 4px; color: rgba(255, 255, 255, 0.5); }
+    .int-card .card-description { font-size: 16px; font-weight: 500; line-height: 1.4; }
+    .card-arrow { position: absolute; right: 0; bottom: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; }
+    .card-arrow svg { width: 14px; height: 14px; color: rgba(255, 255, 255, 0.7); }
+
+    /* Mock UI */
+    .mock-ui { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 8px; padding: 12px; font-size: 11px; }
+    .mock-header { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.4); }
+    .mock-icon { width: 16px; height: 16px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+    .mock-line { height: 8px; background: rgba(255, 255, 255, 0.08); border-radius: 4px; }
+    .mock-line--short { width: 60%; }
+    .mock-line--medium { width: 80%; }
+    .mock-line--full { width: 100%; }
+    .mock-content { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .mock-row { display: flex; align-items: center; gap: 8px; }
+    .mock-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+    .mock-text { flex: 1; height: 6px; background: rgba(255, 255, 255, 0.06); border-radius: 3px; }
+    .mobile-mockup { width: 80px; height: 160px; background: #1a1a1e; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.1); padding: 8px 4px; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-header { height: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 2px; }
+    .mobile-content { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+    .mobile-item { height: 16px; background: rgba(255, 255, 255, 0.04); border-radius: 2px; }
+
+    /* Carousel Nav */
+    .carousel-nav { display: flex; gap: 8px; }
+    .nav-button { width: 36px; height: 36px; border-radius: 50%; background: transparent; border: 1px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; color: rgba(255, 255, 255, 0.5); }
+    .nav-button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.8); }
+    .nav-button:disabled { opacity: 0.35; cursor: not-allowed; }
+    .nav-button svg { width: 16px; height: 16px; }
+
+    /* === FOUNDATIONS === */
+    .foundations-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .foundations-section .section-badge { display: block; font-size: 13px; font-weight: 500; color: #8a8f98; margin-bottom: 16px; }
+    .foundations-section .section-heading { font-size: 56px; font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; }
+    .foundations-section .section-description { font-size: 18px; font-style: italic; line-height: 1.6; color: #8a8f98; max-width: 480px; }
+    .features-list { display: flex; flex-direction: column; margin: 56px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .feature-row { display: flex; padding: 32px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .feature-term { flex: 0 0 260px; font-size: 16px; font-weight: 500; }
+    .feature-term a { display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s ease; }
+    .feature-term a:hover { color: #b4b9c1; }
+    .feature-term .arrow-icon { width: 14px; height: 14px; opacity: 0.7; }
+    .feature-def { font-size: 16px; line-height: 1.55; color: #8a8f98; }
+    .certifications { display: flex; gap: 24px; }
+    .cert-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #8a8f98; }
+    .cert-badge .checkmark { width: 18px; height: 18px; color: #3d8c40; }
+
+    /* === CTA === */
+    .cta-section { padding: 32px 0; }
+    .cta-wrapper { max-width: 1140px; margin: 0 auto; padding: 28px 24px 0; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: center; }
+    .cta-headline { font-size: 24px; font-weight: 500; }
+    .cta-buttons { display: flex; gap: 8px; }
+    .cta-btn { height: 36px; padding: 0 14px; font-size: 14px; font-weight: 500; border-radius: 8px; display: inline-flex; align-items: center; transition: all 0.15s ease; }
+    .cta-ghost { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.18); color: #fff; }
+    .cta-ghost:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.25); }
+    .cta-primary { background: #fff; color: #000; border: none; }
+    .cta-primary:hover { background-color: rgb(230, 230, 230); }
+
+    /* === FOOTER === */
+    .footer-wrapper { border-top: 1px solid rgba(255,255,255,0.08); padding: 64px 80px; }
+    .footer { display: grid; grid-template-columns: 160px repeat(4, 1fr); gap: 48px; max-width: 1100px; margin: 0 auto; }
+    .footer-logo { color: rgba(255,255,255,0.45); font-size: 14px; display: flex; align-items: flex-start; gap: 8px; }
+    .footer-logo svg { width: 16px; height: 16px; }
+    .footer-column h4 { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.15s ease; }
+    .footer-link:hover { color: rgba(255, 255, 255, 0.85); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .modern-header, .integrations-section .section-header { flex-direction: column; gap: 40px; }
+      .modern-heading, .int-title { font-size: 48px; }
+      .cards-row, .subsections-grid { grid-template-columns: 1fr; }
+      .build-section .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .insights-card { grid-column: span 1; }
+      .insights-card .subsection-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 36px; }
+      .modern-heading, .int-title { font-size: 36px; }
+      .build-section .feature-grid { grid-template-columns: 1fr; }
+      .footer { grid-template-columns: 1fr; }
+      .cta-wrapper { flex-direction: column; gap: 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 20 20" fill="none"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5E6AD2"/><stop offset="100%" stop-color="#8A7FF7"/></linearGradient></defs><rect width="20" height="20" rx="4" fill="url(#g)"/><path d="M6 10.5L8.5 13L14 6.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Linear
+      </a>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Product</a>
+        <a href="#" class="nav-link">Resources</a>
+        <a href="#" class="nav-link">Pricing</a>
+        <a href="#" class="nav-link">Customers</a>
+        <a href="#" class="nav-link">Now</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#" class="btn-ghost">Log in</a>
+        <a href="#" class="btn-signup">Sign up</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Linear is a purpose-built tool for planning and building products</h1>
+        <p>Meet the system for modern software development. Streamline issues, projects, and product roadmaps.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Start building</a>
+          <a href="#" class="btn-secondary">New: Linear agent for Slack <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/93514696-592a-4764-aa98-b6101349a100/f=auto,dpr=2,q=95,fit=scale-down,metadata=none" alt="Linear app">
+      </div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section class="customers">
+      <p class="customers-tagline">Powering the world's best product teams.<br>From next-gen startups to established enterprises.</p>
+      <div class="customer-logos">
+        <div class="logo-item logo-openai">OpenAI</div>
+        <div class="logo-item logo-cashapp"><span class="icon">$</span><span>Cash App</span></div>
+        <div class="logo-item">scale</div>
+        <div class="logo-item">ramp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 16L16 8"/><path d="M10 8H16V14"/></svg></div>
+      </div>
+    </section>
+
+    <!-- MODERN TEAMS -->
+    <section class="modern-teams">
+      <div class="modern-header">
+        <h2 class="modern-heading">Made for modern product teams</h2>
+        <div class="modern-desc-block">
+          <p>Linear is shaped by the practices and principles that distinguish world-class product teams from the rest: relentless focus, fast execution, and a commitment to the quality of craft.</p>
+          <a href="#" class="make-switch">Make the switch <svg viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="cards-row">
+        <div class="principle-card">
+          <div class="card-image"><div class="illustration-1"><div class="card-stack"></div><div class="card-stack"></div><div class="card-stack"></div><div class="card-stack"></div></div></div>
+          <div class="card-content"><h3 class="card-title">Purpose-built for product development</h3><div class="card-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        </div>
+        <div class="principle-card">
+          <div class="card-image"><div class="illustration-2"><span class="speed-text">50ms</span><div class="speed-lines"><div class="speed-line"></div><div class="speed-line"></div><div class="speed-line"></div><div class="speed-line"></div></div></div></div>
+          <div class="card-content"><h3 class="card-title">Designed to move fast</h3><div class="card-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        </div>
+        <div class="principle-card">
+          <div class="card-image"><div class="illustration-3"><div class="grid-bg"></div><span class="create-label">Create</span><div class="cursor-icon"></div></div></div>
+          <div class="card-content"><h3 class="card-title">Crafted to perfection</h3><div class="card-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILD SECTION -->
+    <section class="build-section">
+      <div class="section-header">
+        <a href="#" class="badge"><span class="badge-icon"></span><span>Task tracking and sprint planning</span><svg class="badge-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
+        <h2 class="section-title">Issue tracking<br>you'll enjoy using</h2>
+        <p class="section-description"><strong>Optimized for speed and efficiency.</strong> Create tasks in seconds, discuss issues in context, and breeze through your work in views tailored to you and your team.</p>
+      </div>
+      <div class="screenshot-container"><div class="screenshot-placeholder">[Issue Board Screenshot]</div></div>
+      <div class="subsections-grid">
+        <div class="subsection-card">
+          <h3 class="subsection-title">Build momentum with Cycles</h3>
+          <p class="subsection-description">Create healthy routines and focus your team on what work should happen next.</p>
+          <div class="cycle-chart">
+            <div class="cycle-header"><span class="cycle-title">Cycle 55</span><div class="cycle-legend"><div class="legend-item"><span class="legend-dot scope"></span><span>Scope</span></div><div class="legend-item"><span class="legend-dot started"></span><span>Started</span></div><div class="legend-item"><span class="legend-dot completed"></span><span>Completed</span></div></div></div>
+            <div class="chart-area"><div class="chart-bar" style="height:30%"></div><div class="chart-bar" style="height:45%"></div><div class="chart-bar" style="height:55%"></div><div class="chart-bar" style="height:60%"></div><div class="chart-bar" style="height:70%"></div><div class="chart-bar" style="height:75%"></div><div class="chart-bar" style="height:80%"></div><div class="chart-bar" style="height:85%"></div><div class="chart-bar" style="height:90%"></div><div class="chart-bar" style="height:95%"></div><div class="chart-bar" style="height:100%"></div><div class="chart-bar" style="height:100%"></div></div>
+          </div>
+        </div>
+        <div class="subsection-card">
+          <h3 class="subsection-title">Manage incoming work with Triage</h3>
+          <p class="subsection-description">Review and assign incoming bug reports, feature requests, and other unplanned work.</p>
+          <div class="triage-demo">
+            <div class="triage-header">Triage</div>
+            <div class="triage-list">
+              <div class="triage-item"><span class="triage-item-content">Users report unexpected rate limiting</span><div class="triage-item-user"><div class="user-avatar"></div><span>tom</span></div></div>
+              <div class="triage-item"><span class="triage-item-content">RangeError: Index 0 out of range</span><div class="triage-item-user"><div class="user-avatar"></div><span>romain</span></div></div>
+              <div class="triage-item"><span class="triage-item-content">Pressing "Enter" quickly when logging in...</span><div class="triage-item-user"><div class="user-avatar"></div><span>tuomas</span></div></div>
+            </div>
+            <div class="triage-menu">
+              <div class="triage-menu-item"><svg class="triage-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Accept</span></div>
+              <div class="triage-menu-item"><svg class="triage-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg><span>Mark as duplicate</span></div>
+              <div class="triage-menu-item"><svg class="triage-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Decline</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="insights-card">
+          <div class="subsection-card">
+            <div class="insights-content"><h3 class="subsection-title">Linear Insights</h3><p class="subsection-description">Take the guesswork out of product planning with realtime analytics and reporting dashboards.</p><a href="#" class="learn-more-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a></div>
+            <div class="insights-chart">[Cycle time chart]</div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h4 class="feature-title">Tailored workflows</h4></div><p class="feature-description">Track progress across custom issue flows for your team.</p></div>
+        <div class="feature-item"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg><h4 class="feature-title">Custom views</h4></div><p class="feature-description">Switch between list and board. Group issues with swimlanes.</p></div>
+        <div class="feature-item"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><h4 class="feature-title">Filters</h4></div><p class="feature-description">Refine issue lists down to what's most relevant to you.</p></div>
+        <div class="feature-item"><div class="feature-icon-wrapper"><svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><h4 class="feature-title">SLAs</h4></div><p class="feature-description">Automatically apply deadlines to time-sensitive tasks.</p></div>
+      </div>
+    </section>
+
+    <!-- INTEGRATIONS -->
+    <section class="integrations-section">
+      <div class="section-header">
+        <div class="header-left"><span class="int-badge">Workflows and integrations</span><h2 class="int-title">Collaborate across<br>tools and teams</h2></div>
+        <div class="header-right"><p class="int-description">Expand the capabilities of the Linear system with a wide variety of integrations that keep everyone in your organization aligned and focused.</p></div>
+      </div>
+      <div class="carousel-track" id="carouselTrack">
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div class="mock-header"><div class="mock-icon"></div><span>Intercom</span></div><div class="mock-content"><div class="mock-line mock-line--medium"></div><div class="mock-line mock-line--short"></div><div style="margin-top:auto"><div class="mock-row"><div class="mock-dot"></div><div class="mock-text"></div></div><div class="mock-row"><div class="mock-dot" style="background:rgba(100,200,100,0.4)"></div><div class="mock-text"></div></div></div></div></div></div></div><div class="card-content"><h3 class="card-title">Customer Requests</h3><p class="card-description">Build what customers actually want</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+        <div class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div class="mock-header"><span style="color:rgba(255,255,255,0.3)">#20319</span><span style="color:rgba(100,180,255,0.6)">igor/lin</span></div><div class="mock-content"><div class="mock-row"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/></svg><span style="color:rgba(255,255,255,0.3);font-size:10px">igor linked</span></div><div class="mock-row"><div class="mock-dot" style="background:rgba(150,100,255,0.4)"></div><div class="mock-text" style="width:70%"></div></div><div class="mock-row"><div class="mock-dot" style="background:rgba(100,200,100,0.4)"></div><div class="mock-text" style="width:85%"></div></div></div></div></div></div><div class="card-content"><h3 class="card-title">Powerful git workflows</h3><p class="card-description">Automate pull requests and commit workflows</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4.5v15m7.5-7.5h-15"/></svg></div></div></div>
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mobile-mockup"><div class="mobile-header"></div><div class="mobile-content"><div class="mobile-item"></div><div class="mobile-item"></div><div class="mobile-item"></div><div class="mobile-item"></div><div class="mobile-item"></div></div></div></div></div><div class="card-content"><h3 class="card-title">Linear Mobile</h3><p class="card-description">Move product work forward from anywhere</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div class="mock-header"><div class="mock-icon" style="background:rgba(255,200,100,0.2)"></div><span>Slack request</span></div><div class="mock-content"><div class="mock-line mock-line--full"></div><div class="mock-line mock-line--medium"></div><div style="margin-top:12px"><div class="mock-row"><div style="width:20px;height:20px;background:rgba(100,180,255,0.15);border-radius:50%"></div><div class="mock-text" style="width:50%"></div></div></div></div></div></div></div><div class="card-content"><h3 class="card-title">Linear Asks</h3><p class="card-description">Turn workplace requests into actionable issues</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px"><div style="width:32px;height:32px;background:rgba(255,100,100,0.15);border-radius:8px"></div><div style="width:32px;height:32px;background:rgba(100,200,255,0.15);border-radius:8px"></div><div style="width:32px;height:32px;background:rgba(200,100,255,0.15);border-radius:8px"></div><div style="width:32px;height:32px;background:rgba(100,255,200,0.15);border-radius:8px"></div><div style="width:32px;height:32px;background:rgba(255,200,100,0.15);border-radius:8px"></div><div style="width:32px;height:32px;background:rgba(255,255,255,0.08);border-radius:8px"></div></div></div></div></div><div class="card-content"><h3 class="card-title">Linear integrations</h3><p class="card-description">100+ ways to enhance your Linear experience</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="rgba(100,200,100,0.5)"/><path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="rgba(150,100,255,0.5)"/><path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="rgba(255,150,100,0.5)"/><path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="rgba(255,100,150,0.5)"/><path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="rgba(100,180,255,0.5)"/></svg><span style="color:rgba(255,255,255,0.4);font-size:11px">Figma</span></div><div class="mock-content"><div class="mock-line mock-line--medium"></div><div class="mock-line mock-line--short"></div></div></div></div></div><div class="card-content"><h3 class="card-title">Figma integration</h3><p class="card-description">Bridge the gap between engineering and design</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+        <a href="#" class="int-card"><div class="card-image-area"><div class="card-image-placeholder"><div class="mock-ui"><div style="font-family:monospace;font-size:10px;color:rgba(255,255,255,0.4)"><div style="color:rgba(150,200,255,0.6)">const</div><div>  issue = <span style="color:rgba(200,150,255,0.6)">linear</span></div><div>    .<span style="color:rgba(150,255,200,0.6)">createIssue</span>({</div><div>      title: <span style="color:rgba(255,200,150,0.6)">"..."</span></div><div>    })</div></div></div></div></div><div class="card-content"><h3 class="card-title">Built for developers</h3><p class="card-description">Build your own add-ons with the Linear API</p><div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div></div></a>
+      </div>
+      <div class="carousel-nav"><button class="nav-button" id="prevBtn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button><button class="nav-button" id="nextBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></button></div>
+    </section>
+
+    <!-- FOUNDATIONS -->
+    <section class="foundations-section">
+      <span class="section-badge">Under the hood</span>
+      <h2 class="section-heading">Built on strong foundations</h2>
+      <p class="section-description">Linear is so simple to use, it's easy to overlook the wealth of complex technologies packed under the hood that keep Linear robust, safe, and blazing fast.</p>
+      <dl class="features-list">
+        <div class="feature-row"><dt class="feature-term">Linear Sync Engine</dt><dd class="feature-def">Built with a high-performance architecture and an obsessive focus on speed.</dd></div>
+        <div class="feature-row"><dt class="feature-term"><a href="#">Enterprise-ready security <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></dt><dd class="feature-def">Best-in-class security practices keep your work safe and secure at every layer.</dd></div>
+        <div class="feature-row"><dt class="feature-term">Engineered for scale</dt><dd class="feature-def">Built for teams of all sizes. From early-stage startups to global enterprises.</dd></div>
+      </dl>
+      <div class="certifications">
+        <div class="cert-badge"><span>SOC 2</span><svg class="checkmark" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cert-badge"><span>GDPR</span><svg class="checkmark" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cert-badge"><span>HIPAA</span><svg class="checkmark" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-wrapper">
+        <h2 class="cta-headline">Plan the present. Build the future.</h2>
+        <div class="cta-buttons"><a href="#" class="cta-btn cta-ghost">Contact sales</a><a href="#" class="cta-btn cta-primary">Get started</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div class="footer-wrapper">
+    <footer class="footer">
+      <a href="#" class="footer-logo"><svg viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="rgba(255,255,255,0.25)"/><path d="M6 10.5L8.5 13L14 6.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Linear</a>
+      <div class="footer-column"><h4>Features</h4><div class="footer-links"><a href="#" class="footer-link">Plan</a><a href="#" class="footer-link">Build</a><a href="#" class="footer-link">Insights</a><a href="#" class="footer-link">Customer Requests</a><a href="#" class="footer-link">Security</a><a href="#" class="footer-link">Mobile</a></div></div>
+      <div class="footer-column"><h4>Product</h4><div class="footer-links"><a href="#" class="footer-link">Pricing</a><a href="#" class="footer-link">Method</a><a href="#" class="footer-link">Integrations</a><a href="#" class="footer-link">Changelog</a><a href="#" class="footer-link">Documentation</a><a href="#" class="footer-link">Download</a></div></div>
+      <div class="footer-column"><h4>Company</h4><div class="footer-links"><a href="#" class="footer-link">About</a><a href="#" class="footer-link">Customers</a><a href="#" class="footer-link">Careers</a><a href="#" class="footer-link">Now</a><a href="#" class="footer-link">Quality</a><a href="#" class="footer-link">Brand</a></div></div>
+      <div class="footer-column"><h4>Resources</h4><div class="footer-links"><a href="#" class="footer-link">Developers</a><a href="#" class="footer-link">Status</a><a href="#" class="footer-link">Startups</a><a href="#" class="footer-link">DPA</a><a href="#" class="footer-link">Privacy</a><a href="#" class="footer-link">Terms</a></div></div>
+    </footer>
+  </div>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    function updateButtons() {
+      prevBtn.disabled = track.scrollLeft <= 0;
+      nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 10;
+    }
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -592, behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: 592, behavior: 'smooth' }));
+    track.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+</body>
+</html>

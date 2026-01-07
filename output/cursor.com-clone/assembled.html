@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero === */
+.hero {
+  background-color: rgb(247, 247, 244);
+  min-height: 100vh;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.hero-logo-icon {
+  width: 24px;
+  height: 24px;
+  background: rgb(38, 37, 30);
+  border-radius: 4px;
+}
+
+.hero-nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.hero-nav-links a {
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.hero-nav-links a:hover {
+  opacity: 1;
+}
+
+.hero-nav-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-signin {
+  font-size: 14px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+}
+
+.hero-download-btn {
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.hero-headline {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  font-weight: 400;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-cta-icon {
+  font-size: 18px;
+}
+
+.hero-demo-container {
+  margin-top: 48px;
+  background: linear-gradient(180deg, rgba(200, 180, 150, 0.3) 0%, rgba(180, 160, 140, 0.5) 100%);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  min-height: 500px;
+}
+
+.hero-demo-ide {
+  flex: 2;
+  background: rgb(250, 250, 248);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.hero-demo-titlebar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgb(250, 250, 248);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-demo-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-demo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hero-demo-title {
+  margin-left: auto;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.hero-demo-content {
+  display: flex;
+  height: 400px;
+}
+
+.hero-demo-sidebar {
+  width: 220px;
+  background: rgb(248, 248, 246);
+  padding: 16px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-demo-sidebar-header {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.5;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.hero-demo-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hero-demo-task:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.hero-demo-task-icon {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.hero-demo-task-text {
+  line-height: 1.4;
+}
+
+.hero-demo-task-status {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.hero-demo-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-demo-tabs {
+  display: flex;
+  background: rgb(248, 248, 246);
+  padding: 8px 8px 0;
+}
+
+.hero-demo-tab {
+  padding: 8px 16px;
+  font-size: 12px;
+  background: rgb(250, 250, 248);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+.hero-demo-code {
+  flex: 1;
+  background: rgb(250, 250, 248);
+  padding: 16px;
+  font-family: 'Berkeley Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+.hero-demo-code-line {
+  white-space: pre;
+}
+
+.hero-demo-code-added {
+  background: rgba(34, 197, 94, 0.1);
+  color: rgb(22, 163, 74);
+}
+
+.hero-demo-code-removed {
+  background: rgba(239, 68, 68, 0.1);
+  color: rgb(220, 38, 38);
+}
+
+.hero-demo-chat {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgb(248, 248, 246);
+}
+
+.hero-demo-chat-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.hero-demo-chat-desc {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.hero-demo-chat-input {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.hero-demo-chat-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+}
+
+.hero-demo-cli {
+  flex: 1;
+  background: rgb(35, 35, 35);
+  border-radius: 12px;
+  padding: 16px;
+  color: rgb(220, 220, 220);
+  font-family: 'Berkeley Mono', monospace;
+  font-size: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero-demo-cli-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-demo-cli-title {
+  opacity: 0.7;
+}
+
+.hero-demo-cli-line {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.hero-demo-cli-prompt {
+  color: rgb(74, 222, 128);
+}
+
+.hero-demo-cli-path {
+  color: rgb(96, 165, 250);
+}
+
+.hero-demo-cli-muted {
+  opacity: 0.5;
+}
+
+/* === Section: 01-testimonials === */
+.testimonials {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: transparent;
+  padding: 24px 0;
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-author-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.testimonial-author-title {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.testimonial-quote {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Section: 02-frontier === */
+.frontier {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.frontier-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.frontier-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.frontier-card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.frontier-card-header {
+  margin-bottom: 16px;
+}
+
+.frontier-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.frontier-card-description {
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.frontier-card-link {
+  color: #ea580c;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.frontier-card-link:hover {
+  text-decoration: underline;
+}
+
+.frontier-card-visual {
+  background: rgb(220, 215, 205);
+  border-radius: 12px;
+  height: 280px;
+  margin-top: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.frontier-model-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  min-width: 200px;
+}
+
+.frontier-model-item {
+  padding: 10px 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.frontier-model-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.frontier-model-item-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.frontier-model-item-badge {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.frontier-model-item-check {
+  color: rgb(38, 37, 30);
+}
+
+.frontier-search-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 280px;
+}
+
+.frontier-search-input {
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  color: rgb(38, 37, 30);
+}
+
+.frontier-search-label {
+  font-size: 12px;
+  opacity: 0.5;
+  margin-top: 8px;
+}
+
+.frontier-enterprise-visual {
+  background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a2e%22 width=%22400%22 height=%22300%22/><text x=%2220%22 y=%2240%22 fill=%22%2322c55e%22 font-family=%22monospace%22 font-size=%2210%22>const enterprise = true;</text><text x=%2220%22 y=%2260%22 fill=%22%2260a5fa%22 font-family=%22monospace%22 font-size=%2210%22>import { security } from</text><text x=%2220%22 y=%2280%22 fill=%22%23f97316%22 font-family=%22monospace%22 font-size=%2210%22>function deploy() {</text></svg>') center/cover;
+  position: relative;
+}
+
+.frontier-enterprise-blur {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.6) 0%, rgba(239, 68, 68, 0.4) 100%);
+  filter: blur(40px);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .frontier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Section: 03-footer === */
+.footer-cta {
+  background-color: rgb(247, 247, 244);
+  padding: 80px 40px;
+  text-align: center;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+}
+
+.footer-cta-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.footer-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(38, 37, 30);
+  color: rgb(247, 247, 244);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer {
+  background-color: rgb(247, 247, 244);
+  padding: 60px 40px 40px;
+  font-family: CursorGothic, ui-sans-serif, system-ui, sans-serif;
+  color: rgb(38, 37, 30);
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-column-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-external-icon {
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(38, 37, 30, 0.1);
+}
+
+.footer-copyright {
+  font-size: 13px;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-soc2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgb(38, 37, 30);
+  text-decoration: none;
+}
+
+.footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-theme-toggle {
+  display: flex;
+  background: rgba(38, 37, 30, 0.05);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.footer-theme-btn {
+  padding: 6px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.footer-theme-btn:hover {
+  opacity: 1;
+}
+
+.footer-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid rgba(38, 37, 30, 0.1);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero -->
+  <div class="hero">
+  <nav class="hero-nav">
+    <div class="hero-logo">
+      <div class="hero-logo-icon"></div>
+      <span>Cursor</span>
+    </div>
+    <ul class="hero-nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Enterprise</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Resources</a></li>
+    </ul>
+    <div class="hero-nav-actions">
+      <a href="#" class="hero-signin">Sign in</a>
+      <a href="#" class="hero-download-btn">Download</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1 class="hero-headline">Built to make you extraordinarily productive, Cursor is the best way to code with AI.</h1>
+    <a href="#" class="hero-cta">
+      Download for macOS
+      <span class="hero-cta-icon">&#x2913;</span>
+    </a>
+
+    <div class="hero-demo-container">
+      <div class="hero-demo-ide">
+        <div class="hero-demo-titlebar">
+          <div class="hero-demo-dots">
+            <div class="hero-demo-dot"></div>
+            <div class="hero-demo-dot"></div>
+            <div class="hero-demo-dot"></div>
+          </div>
+          <div class="hero-demo-title">Cursor</div>
+        </div>
+        <div class="hero-demo-content">
+          <div class="hero-demo-sidebar">
+            <div class="hero-demo-sidebar-header">In Progress 3</div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">Enterprise Order Management...</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">Analyze Tab vs Agent Usage...</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon"></div>
+              <div>
+                <div class="hero-demo-task-text">PyTorch MNIST Experiments</div>
+                <div class="hero-demo-task-status">Generating</div>
+              </div>
+            </div>
+            <div class="hero-demo-sidebar-header" style="margin-top: 16px;">Ready for Review 2</div>
+            <div class="hero-demo-task">
+              <div class="hero-demo-task-icon" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);"></div>
+              <div>
+                <div class="hero-demo-task-text">Set up Cursor Rules for Dashboard</div>
+                <div class="hero-demo-task-status">+37 -0</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-demo-editor">
+            <div class="hero-demo-tabs">
+              <div class="hero-demo-tab">train_model.py</div>
+            </div>
+            <div class="hero-demo-code">
+              <div class="hero-demo-code-line">import torch</div>
+              <div class="hero-demo-code-line">import torch.nn as nn</div>
+              <div class="hero-demo-code-line">from torch.utils.data import DataLoader</div>
+              <div class="hero-demo-code-line">from torchvision import datasets</div>
+              <div class="hero-demo-code-line"></div>
+              <div class="hero-demo-code-line">def get_dataloaders(batch_size=64):</div>
+              <div class="hero-demo-code-line">    transform = transforms.Compose([transforms.ToTensor()])</div>
+              <div class="hero-demo-code-line hero-demo-code-added">+ # Seed for reproducibility</div>
+              <div class="hero-demo-code-line hero-demo-code-added">+ torch.manual_seed(42)</div>
+            </div>
+            <div class="hero-demo-chat">
+              <div class="hero-demo-chat-title">PyTorch MNIST Experiments</div>
+              <div class="hero-demo-chat-desc">Add mixed precision training, learning rate scheduling, and proper validation.</div>
+              <div class="hero-demo-chat-input">
+                <input type="text" placeholder="Plan, search, build anything...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-demo-cli">
+        <div class="hero-demo-cli-header">
+          <span class="hero-demo-cli-title">cursor-agent</span>
+        </div>
+        <div class="hero-demo-cli-line"><span class="hero-demo-cli-prompt">Cursor Agent</span></div>
+        <div class="hero-demo-cli-line"><span class="hero-demo-cli-path">~/Repos/ml-research-notebook</span></div>
+        <div class="hero-demo-cli-line">PyTorch MNIST Experiments</div>
+        <div class="hero-demo-cli-line hero-demo-cli-muted">Add mixed precision training, learning rate scheduling...</div>
+        <div class="hero-demo-cli-line" style="margin-top: 12px;"><span class="hero-demo-cli-prompt">-></span> <input type="text" placeholder="Add a follow-up" style="background: transparent; border: none; color: inherit; outline: none;"></div>
+        <div class="hero-demo-cli-line hero-demo-cli-muted" style="margin-top: 8px;">GPT-5.2 / for commands</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 01-testimonials -->
+  <div class="testimonials">
+  <div class="testimonials-container">
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/></svg>') center/cover;"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Patrick Collison</span>
+            <span class="testimonial-author-title">Co-Founder & CEO, Stripe</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">Cursor quickly grew from hundreds to thousands of extremely enthusiastic Stripe employees. We spend more on R&D and software creation than any other undertaking, and there's significant economic outcomes when making that process more efficient and productive.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">ThePrimeagen</span>
+            <span class="testimonial-author-title">@ThePrimeagen</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">It's official.<br><br>I hate vibe coding.<br>I love Cursor tab coding.<br><br>It's wild.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Greg Brockman</span>
+            <span class="testimonial-author-title">President, OpenAI</span>
+          </div>
+        </div>
+        <p class="testimonial-quote">It's definitely becoming more fun to be a programmer. It's less about digging through pages and more about what you want to happen. We are at the 1% of what's possible, and it's in interactive experiences like Cursor where models like GPT-5 shine brightest.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 02-frontier -->
+  <div class="frontier">
+  <div class="frontier-container">
+    <h2 class="frontier-title">Stay on the frontier</h2>
+
+    <div class="frontier-grid">
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Access the best models</h3>
+          <p class="frontier-card-description">Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, and xAI.</p>
+          <a href="#" class="frontier-card-link">Explore models <span>&#x2197;</span></a>
+        </div>
+        <div class="frontier-card-visual">
+          <div class="frontier-model-menu">
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Auto <span class="frontier-model-item-badge">Suggested</span></span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Composer 1</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">GPT-5 <span class="frontier-model-item-badge">High Fast</span></span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Claude Sonnet 4.5</span>
+              <span class="frontier-model-item-check">&#x2713;</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Claude Opus 4.5</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Gemini 3 Pro</span>
+            </div>
+            <div class="frontier-model-item">
+              <span class="frontier-model-item-label">Grok Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Complete codebase understanding</h3>
+          <p class="frontier-card-description">Cursor learns how your codebase works, no matter the scale or complexity.</p>
+          <a href="#" class="frontier-card-link">Learn about codebase indexing <span>&#x2197;</span></a>
+        </div>
+        <div class="frontier-card-visual">
+          <div class="frontier-search-box">
+            <input type="text" class="frontier-search-input" value="Where are these menu label colors defined?" readonly>
+            <div class="frontier-search-label">Grepping...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frontier-card">
+        <div class="frontier-card-header">
+          <h3 class="frontier-card-title">Develop enduring software</h3>
+          <p class="frontier-card-description">Trusted by over half of the Fortune 500 to accelerate development, securely and at scale.</p>
+          <a href="#" class="frontier-card-link">Explore enterprise <span>&#x2192;</span></a>
+        </div>
+        <div class="frontier-card-visual frontier-enterprise-visual">
+          <div class="frontier-enterprise-blur"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 03-footer -->
+  <div class="footer-cta">
+  <h2 class="footer-cta-title">Try Cursor now.</h2>
+  <a href="#" class="footer-cta-button">
+    Download for macOS
+    <span>&#x2913;</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3 class="footer-column-title">Product</h3>
+        <ul class="footer-links">
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Enterprise</a></li>
+          <li><a href="#">Web Agents</a></li>
+          <li><a href="#">Bugbot</a></li>
+          <li><a href="#">CLI</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="#">Download</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Docs <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Learn <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Forum <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">Status <span class="footer-external-icon">&#x2197;</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Students</a></li>
+          <li><a href="#">Brand</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Data Use</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#">X <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">LinkedIn <span class="footer-external-icon">&#x2197;</span></a></li>
+          <li><a href="#">YouTube <span class="footer-external-icon">&#x2197;</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <span>&copy; 2026 Cursor</span>
+        <a href="#" class="footer-soc2">&#x1F6E1; SOC 2 Certified</a>
+      </div>
+      <div class="footer-controls">
+        <div class="footer-theme-toggle">
+          <button class="footer-theme-btn">&#x1F5A5;</button>
+          <button class="footer-theme-btn">&#x2600;</button>
+          <button class="footer-theme-btn">&#x263E;</button>
+        </div>
+        <button class="footer-lang-btn">
+          &#x1F310; English <span>&#x2193;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

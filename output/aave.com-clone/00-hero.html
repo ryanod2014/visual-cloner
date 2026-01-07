@@ -1,0 +1,600 @@
+<style>
+/* Aave Hero Section Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.aave-hero-section {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
+.aave-hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.aave-hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.aave-hero-logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.aave-hero-logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.aave-hero-logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.aave-hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.aave-hero-nav-link {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.aave-hero-nav-link:hover {
+  color: #666;
+}
+
+.aave-hero-nav-link--with-dot::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -10px;
+  width: 6px;
+  height: 6px;
+  background-color: #7c3aed;
+  border-radius: 50%;
+}
+
+.aave-hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+}
+
+.aave-hero-cta-button:hover {
+  background-color: #333;
+}
+
+/* Hero Content Styles */
+.aave-hero-content {
+  text-align: center;
+  padding: 60px 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aave-hero-headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.aave-hero-app-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.aave-hero-new-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #7c3aed;
+  letter-spacing: 0.5px;
+}
+
+.aave-hero-app-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #9f7aea 0%, #7c3aed 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aave-hero-app-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: #ffffff;
+}
+
+.aave-hero-subheadline {
+  font-size: 22px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aave-hero-highlight {
+  color: #00c8ff;
+  text-decoration: underline;
+  text-decoration-color: #00c8ff;
+  text-underline-offset: 4px;
+}
+
+.aave-hero-get-access-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #9f7aea 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aave-hero-get-access-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+}
+
+.aave-hero-get-access-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Phone Mockups Section */
+.aave-hero-phones {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: 40px 24px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.aave-hero-phone {
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.aave-hero-phone--left {
+  width: 280px;
+  height: 560px;
+  transform: translateX(40px);
+  z-index: 1;
+}
+
+.aave-hero-phone--center {
+  width: 300px;
+  height: 600px;
+  z-index: 3;
+}
+
+.aave-hero-phone--right {
+  width: 280px;
+  height: 560px;
+  transform: translateX(-40px);
+  z-index: 2;
+  background: linear-gradient(180deg, #2d1b4e 0%, #1a1040 100%);
+}
+
+.aave-hero-phone-notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 28px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.aave-hero-phone-status {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  z-index: 5;
+}
+
+.aave-hero-phone--right .aave-hero-phone-status {
+  color: #ffffff;
+}
+
+.aave-hero-phone-content {
+  padding: 60px 20px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.aave-hero-phone-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+}
+
+.aave-hero-phone--right .aave-hero-phone-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.aave-hero-phone-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.aave-hero-phone-earning-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.aave-hero-phone-earning-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: #7c3aed;
+}
+
+.aave-hero-phone--right .aave-hero-phone-earning-badge {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.aave-hero-phone-balance {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.aave-hero-phone-balance-cents {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.aave-hero-phone--right .aave-hero-phone-balance {
+  color: #00d4ff;
+  font-size: 32px;
+}
+
+.aave-hero-phone-earned {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.aave-hero-phone-earned-amount {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.aave-hero-phone--right .aave-hero-phone-earned {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.aave-hero-phone-chart {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.aave-hero-phone-chart-bar {
+  width: 24px;
+  background: linear-gradient(180deg, #e0e7ff 0%, #c7d2fe 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+.aave-hero-phone-chart-bar--active {
+  background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+}
+
+.aave-hero-phone--right .aave-hero-phone-chart-bar {
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.4) 0%, rgba(124, 58, 237, 0.6) 100%);
+}
+
+.aave-hero-phone--right .aave-hero-phone-chart-bar--active {
+  background: linear-gradient(180deg, #7c3aed 0%, #5b21b6 100%);
+}
+
+/* Left phone specific - Bank connection UI */
+.aave-hero-phone-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 20px 0 16px;
+  align-self: flex-start;
+}
+
+.aave-hero-phone-bank-option {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aave-hero-phone-bank-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aave-hero-phone-bank-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.aave-hero-phone-bank-limit {
+  font-size: 12px;
+  color: #888;
+}
+
+.aave-hero-phone-suggested-badge {
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Right phone - projection view */
+.aave-hero-phone-apy-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+}
+
+.aave-hero-phone-apy-badge span {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.aave-hero-phone-projection {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+}
+
+.aave-hero-phone-projection-years {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+</style>
+
+<section class="aave-hero-section">
+  <!-- Header -->
+  <header class="aave-hero-header">
+    <a href="#" class="aave-hero-logo">
+      <div class="aave-hero-logo-icon">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4zm-3 8c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm6 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm-9 6h12c0 3.3-2.7 6-6 6s-6-2.7-6-6z" fill="#1a1a1a"/>
+        </svg>
+      </div>
+      <span class="aave-hero-logo-text">aave</span>
+    </a>
+
+    <nav class="aave-hero-nav">
+      <a href="#" class="aave-hero-nav-link aave-hero-nav-link--with-dot">Products</a>
+      <a href="#" class="aave-hero-nav-link">Resources</a>
+      <a href="#" class="aave-hero-nav-link">Developers</a>
+    </nav>
+
+    <a href="#" class="aave-hero-cta-button">Aave for Web</a>
+  </header>
+
+  <!-- Hero Content -->
+  <div class="aave-hero-content">
+    <h1 class="aave-hero-headline">
+      Say hello to
+      <span class="aave-hero-app-icon-wrapper">
+        <span class="aave-hero-new-badge">New</span>
+        <span class="aave-hero-app-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8h16v4H8V8zm0 6h16v14H8V14zm6-10h4v4h-4V4z" fill="#ffffff"/>
+            <circle cx="12" cy="20" r="2" fill="#ffffff"/>
+            <circle cx="20" cy="20" r="2" fill="#ffffff"/>
+          </svg>
+        </span>
+      </span>
+      Aave App
+    </h1>
+
+    <p class="aave-hero-subheadline">
+      Earn up to <span class="aave-hero-highlight">9.00%</span> on your savings with industry-leading interest rates and balance protection up to $1M.
+    </p>
+
+    <a href="#" class="aave-hero-get-access-btn">
+      Get Early Access
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Phone Mockups -->
+  <div class="aave-hero-phones">
+    <!-- Left Phone - Bank Connection UI -->
+    <div class="aave-hero-phone aave-hero-phone--left">
+      <div class="aave-hero-phone-notch"></div>
+      <div class="aave-hero-phone-status">
+        <span>9:41</span>
+        <span><!-- signal icons placeholder --></span>
+      </div>
+      <div class="aave-hero-phone-content">
+        <div class="aave-hero-phone-placeholder">
+          <div class="aave-hero-phone-avatar"></div>
+          <div class="aave-hero-phone-earning-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Earning 9.00%
+          </div>
+          <div class="aave-hero-phone-balance">$9,326<span class="aave-hero-phone-balance-cents">.45</span></div>
+
+          <div class="aave-hero-phone-section-title">Add Money From</div>
+
+          <div class="aave-hero-phone-bank-option">
+            <div class="aave-hero-phone-bank-info">
+              <span class="aave-hero-phone-bank-name">Bank Account</span>
+              <span class="aave-hero-phone-bank-limit">$10,000 Limit</span>
+            </div>
+            <span class="aave-hero-phone-suggested-badge">Suggested</span>
+          </div>
+
+          <div class="aave-hero-phone-bank-option">
+            <div class="aave-hero-phone-bank-info">
+              <span class="aave-hero-phone-bank-name">Debit Card</span>
+              <span class="aave-hero-phone-bank-limit">$2,000 Limit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Phone - Main Dashboard -->
+    <div class="aave-hero-phone aave-hero-phone--center">
+      <div class="aave-hero-phone-notch"></div>
+      <div class="aave-hero-phone-status">
+        <span>9:41</span>
+        <span><!-- signal icons placeholder --></span>
+      </div>
+      <div class="aave-hero-phone-content">
+        <div class="aave-hero-phone-placeholder">
+          <div class="aave-hero-phone-avatar"></div>
+          <div class="aave-hero-phone-earning-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Earning 9.00%
+          </div>
+          <div class="aave-hero-phone-balance">$9,326<span class="aave-hero-phone-balance-cents">.45</span></div>
+          <div class="aave-hero-phone-earned">
+            <span style="color: #22c55e;">●</span>
+            <span class="aave-hero-phone-earned-amount">$17.41 Earned</span>
+            <span>This Week</span>
+          </div>
+
+          <div class="aave-hero-phone-chart">
+            <div class="aave-hero-phone-chart-bar" style="height: 60px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 80px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 100px;"></div>
+            <div class="aave-hero-phone-chart-bar aave-hero-phone-chart-bar--active" style="height: 140px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 120px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 90px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 110px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 130px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Phone - Projection View (Dark) -->
+    <div class="aave-hero-phone aave-hero-phone--right">
+      <div class="aave-hero-phone-notch"></div>
+      <div class="aave-hero-phone-status">
+        <span>9:41</span>
+        <span><!-- signal icons placeholder --></span>
+      </div>
+      <div class="aave-hero-phone-content">
+        <div class="aave-hero-phone-placeholder">
+          <div class="aave-hero-phone-apy-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="#22c55e"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>9.00%</span> APY
+          </div>
+          <div class="aave-hero-phone-balance">$906,242</div>
+          <div class="aave-hero-phone-projection">$725,127 Earned</div>
+          <div class="aave-hero-phone-projection-years">in 30 Years</div>
+
+          <div class="aave-hero-phone-chart" style="margin-top: 40px;">
+            <div class="aave-hero-phone-chart-bar" style="height: 30px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 40px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 50px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 65px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 80px;"></div>
+            <div class="aave-hero-phone-chart-bar" style="height: 100px;"></div>
+            <div class="aave-hero-phone-chart-bar aave-hero-phone-chart-bar--active" style="height: 120px;"></div>
+            <div class="aave-hero-phone-chart-bar aave-hero-phone-chart-bar--active" style="height: 145px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

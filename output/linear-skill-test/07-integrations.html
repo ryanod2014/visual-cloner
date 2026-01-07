@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear - Integrations Section Clone</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Fonts - Linear uses Inter */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    /* Section Container */
+    .integrations-section {
+      background-color: #0A0A0B;
+      padding: 120px 0 140px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    .integrations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .integrations-header {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .integrations-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #8A8F98;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-label-dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #5E6AD2 0%, #8A8F98 100%);
+      border-radius: 50%;
+    }
+
+    .integrations-title {
+      font-size: 48px;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .integrations-description {
+      font-size: 17px;
+      font-weight: 400;
+      color: #8A8F98;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    }
+
+    /* Carousel Container */
+    .integrations-carousel-wrapper {
+      position: relative;
+    }
+
+    .integrations-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 8px;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .integrations-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Cards */
+    .integrations-card {
+      flex: 0 0 280px;
+      min-width: 280px;
+      height: 340px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .integrations-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    }
+
+    .integrations-card-content {
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .integrations-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-card-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: #8A8F98;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    .integrations-card-icon {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+    }
+
+    /* Individual card icons - CSS-only graphics */
+
+    /* Customer Requests - speech bubbles */
+    .integrations-icon-requests {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-requests::before {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      right: 20px;
+      width: 80px;
+      height: 60px;
+      background: linear-gradient(135deg, #5E6AD2 0%, #4B55B0 100%);
+      border-radius: 12px 12px 4px 12px;
+    }
+
+    .integrations-icon-requests::after {
+      content: '';
+      position: absolute;
+      bottom: 50px;
+      right: 60px;
+      width: 60px;
+      height: 45px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+      border-radius: 12px 12px 12px 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Git workflows - branch icon */
+    .integrations-icon-git {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-git::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      border: 3px solid #F78166;
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .integrations-icon-git::after {
+      content: '';
+      position: absolute;
+      bottom: 80px;
+      right: 60px;
+      width: 3px;
+      height: 40px;
+      background: linear-gradient(180deg, #8A8F98 0%, #F78166 100%);
+    }
+
+    .integrations-icon-git-branch {
+      position: absolute;
+      bottom: 100px;
+      right: 35px;
+      width: 25px;
+      height: 3px;
+      background: #8A8F98;
+      transform: rotate(-45deg);
+    }
+
+    .integrations-icon-git-dot {
+      position: absolute;
+      bottom: 108px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: #8A8F98;
+      border-radius: 50%;
+    }
+
+    /* Mobile - phone icon */
+    .integrations-icon-mobile {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-mobile::before {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      right: 35px;
+      width: 65px;
+      height: 110px;
+      background: linear-gradient(180deg, #1A1A1D 0%, #0D0D0F 100%);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+    }
+
+    .integrations-icon-mobile::after {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      right: 45px;
+      width: 45px;
+      height: 80px;
+      background: linear-gradient(180deg, #5E6AD2 0%, #3D4694 100%);
+      border-radius: 4px;
+    }
+
+    .integrations-icon-mobile-notch {
+      position: absolute;
+      bottom: 115px;
+      right: 55px;
+      width: 25px;
+      height: 5px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+    }
+
+    /* Asks - Slack-like icon */
+    .integrations-icon-asks {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-asks::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #36C5F0 25%, transparent 25%),
+                  linear-gradient(225deg, #2EB67D 25%, transparent 25%),
+                  linear-gradient(315deg, #ECB22E 25%, transparent 25%),
+                  linear-gradient(45deg, #E01E5A 25%, transparent 25%);
+      background-size: 50% 50%;
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      border-radius: 16px;
+    }
+
+    /* Integrations - grid of apps */
+    .integrations-icon-apps {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      padding: 30px;
+    }
+
+    .integrations-icon-apps-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+
+    .integrations-icon-apps-item:nth-child(1) { background: linear-gradient(135deg, #5E6AD2 0%, #4B55B0 100%); border: none; }
+    .integrations-icon-apps-item:nth-child(5) { background: linear-gradient(135deg, #F24E1E 0%, #FF7262 100%); border: none; }
+    .integrations-icon-apps-item:nth-child(9) { background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%); border: none; }
+
+    /* Figma - Figma logo style */
+    .integrations-icon-figma {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-figma-container {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      width: 50px;
+      height: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .integrations-icon-figma-piece {
+      border-radius: 50%;
+    }
+
+    .integrations-icon-figma-piece:nth-child(1) { background: #F24E1E; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(2) { background: #FF7262; border-radius: 0 50% 50% 0; }
+    .integrations-icon-figma-piece:nth-child(3) { background: #A259FF; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(4) { background: #1ABCFE; border-radius: 50%; }
+    .integrations-icon-figma-piece:nth-child(5) { background: #0ACF83; border-radius: 50% 0 0 50%; }
+    .integrations-icon-figma-piece:nth-child(6) { background: transparent; }
+
+    /* Developers - code brackets */
+    .integrations-icon-dev {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .integrations-icon-dev::before {
+      content: '</>';
+      position: absolute;
+      bottom: 40px;
+      right: 25px;
+      font-size: 48px;
+      font-weight: 600;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+      color: #5E6AD2;
+      letter-spacing: -0.05em;
+    }
+
+    .integrations-icon-dev::after {
+      content: '';
+      position: absolute;
+      bottom: 35px;
+      right: 20px;
+      width: 90px;
+      height: 60px;
+      background: linear-gradient(180deg, transparent 0%, rgba(94, 106, 210, 0.1) 100%);
+      border-radius: 8px;
+    }
+
+    /* Navigation Buttons */
+    .integrations-nav {
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+      justify-content: flex-start;
+    }
+
+    .integrations-nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .integrations-nav-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .integrations-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .integrations-nav-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .integrations-section {
+        padding: 80px 0 100px;
+      }
+
+      .integrations-title {
+        font-size: 32px;
+      }
+
+      .integrations-description {
+        font-size: 15px;
+      }
+
+      .integrations-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="integrations-section">
+    <div class="integrations-container">
+      <!-- Header -->
+      <div class="integrations-header">
+        <div class="integrations-label">
+          <span class="integrations-label-dot"></span>
+          Workflows and integrations
+        </div>
+        <h2 class="integrations-title">Collaborate across tools and teams</h2>
+        <p class="integrations-description">Expand the capabilities of the Linear system with a wide variety of integrations that keep everyone in your organization aligned and focused.</p>
+      </div>
+
+      <!-- Carousel -->
+      <div class="integrations-carousel-wrapper">
+        <div class="integrations-carousel" id="integrationsCarousel">
+          <!-- Card 1: Customer Requests -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Customer Requests</h3>
+              <p class="integrations-card-subtitle">Build what customers actually want</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-requests"></div>
+            </div>
+          </a>
+
+          <!-- Card 2: Git workflows -->
+          <div class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Powerful git workflows</h3>
+              <p class="integrations-card-subtitle">Automate pull requests and commit workflows</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-git">
+                <div class="integrations-icon-git-branch"></div>
+                <div class="integrations-icon-git-dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Linear Mobile -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear Mobile</h3>
+              <p class="integrations-card-subtitle">Move product work forward from anywhere</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-mobile">
+                <div class="integrations-icon-mobile-notch"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: Linear Asks -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear Asks</h3>
+              <p class="integrations-card-subtitle">Turn workplace requests into actionable issues</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-asks"></div>
+            </div>
+          </a>
+
+          <!-- Card 5: Linear integrations -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Linear integrations</h3>
+              <p class="integrations-card-subtitle">100+ ways to enhance your Linear experience</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-apps">
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+                <div class="integrations-icon-apps-item"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 6: Figma integration -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Figma integration</h3>
+              <p class="integrations-card-subtitle">Bridge the gap between engineering and design</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-figma">
+                <div class="integrations-icon-figma-container">
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                  <div class="integrations-icon-figma-piece"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 7: Built for developers -->
+          <a href="#" class="integrations-card">
+            <div class="integrations-card-content">
+              <h3 class="integrations-card-title">Built for developers</h3>
+              <p class="integrations-card-subtitle">Build your own add-ons with the Linear API</p>
+            </div>
+            <div class="integrations-card-icon">
+              <div class="integrations-icon-dev"></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <div class="integrations-nav">
+          <button class="integrations-nav-btn" id="prevBtn" disabled aria-label="Previous slide">
+            <svg viewBox="0 0 24 24">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="integrations-nav-btn" id="nextBtn" aria-label="Next slide">
+            <svg viewBox="0 0 24 24">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple carousel navigation
+    const carousel = document.getElementById('integrationsCarousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const cardWidth = 296; // card width + gap
+
+    function updateButtons() {
+      prevBtn.disabled = carousel.scrollLeft <= 0;
+      nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+      setTimeout(updateButtons, 400);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+      setTimeout(updateButtons, 400);
+    });
+
+    carousel.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+</body>
+</html>

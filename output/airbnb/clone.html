@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #222222;
+            line-height: 1.4;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid #ebebeb;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FF5A5F;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo svg {
+            width: 30px;
+            height: 32px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+            text-decoration: none;
+            color: #222222;
+        }
+
+        .nav-tab:hover {
+            background-color: #f7f7f7;
+        }
+
+        .nav-tab.active {
+            background-color: transparent;
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background-color: #222222;
+            border-radius: 1px;
+        }
+
+        .nav-tab-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .nav-tab-label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .nav-tab .new-badge {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            background-color: #FF5A5F;
+            color: white;
+            font-size: 8px;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .become-host {
+            font-size: 14px;
+            font-weight: 600;
+            color: #222222;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 24px;
+            transition: background-color 0.2s;
+        }
+
+        .become-host:hover {
+            background-color: #f7f7f7;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #dddddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+        .icon-btn:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 5px 5px 12px;
+            border-radius: 24px;
+            border: 1px solid #dddddd;
+            background: white;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+        .profile-btn:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #717171;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            padding: 16px 24px 20px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #dddddd;
+            border-radius: 40px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 850px;
+            width: 100%;
+        }
+
+        .search-section {
+            flex: 1;
+            padding: 14px 24px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+
+        .search-section:hover {
+            background-color: #f7f7f7;
+        }
+
+        .search-section:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 32px;
+            width: 1px;
+            background-color: #dddddd;
+        }
+
+        .search-section.where {
+            flex: 1.3;
+        }
+
+        .search-section.who {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 8px;
+        }
+
+        .search-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 2px;
+        }
+
+        .search-placeholder {
+            font-size: 14px;
+            color: #717171;
+        }
+
+        .search-button {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(to right, #E61E4D, #E31C5F, #D70466);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .search-button:hover {
+            transform: scale(1.04);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 24px;
+            max-width: 1760px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #222222;
+        }
+
+        .section-title-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .section-title-link:hover {
+            text-decoration: underline;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #717171;
+            margin-top: 4px;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #222222;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .nav-arrow:hover {
+            background-color: #f7f7f7;
+        }
+
+        .nav-arrow:active {
+            transform: scale(0.96);
+        }
+
+        .nav-arrow.disabled {
+            border-color: #dddddd;
+            color: #dddddd;
+            cursor: not-allowed;
+        }
+
+        /* Property Cards Grid */
+        .properties-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 8px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .properties-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .property-card {
+            flex: 0 0 auto;
+            width: 240px;
+            cursor: pointer;
+        }
+
+        .property-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .property-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 50%, #e8e8e8 100%);
+        }
+
+        .guest-favorite-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart-btn svg {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .property-carousel-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+        }
+
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.6;
+        }
+
+        .carousel-dot.active {
+            opacity: 1;
+        }
+
+        .property-info {
+            padding: 0 2px;
+        }
+
+        .property-type {
+            font-size: 15px;
+            font-weight: 600;
+            color: #222222;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .property-price-rating {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .property-price {
+            color: #717171;
+        }
+
+        .property-price strong {
+            color: #222222;
+            font-weight: 600;
+        }
+
+        .property-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .star-icon {
+            color: #222222;
+        }
+
+        .rating-value {
+            font-weight: 600;
+        }
+
+        /* Featured Hotels Section */
+        .featured-section .section-title-container {
+            margin-bottom: 4px;
+        }
+
+        /* Tooltip */
+        .tooltip-container {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222222;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .tooltip-container::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #222222;
+        }
+
+        /* Property Images - Placeholder gradients to simulate real photos */
+        .property-card:nth-child(1) .property-image {
+            background: linear-gradient(135deg, #c4a77d 0%, #8b7355 50%, #a08060 100%);
+        }
+        .property-card:nth-child(2) .property-image {
+            background: linear-gradient(135deg, #87ceeb 0%, #4a90a4 50%, #6bb3c9 100%);
+        }
+        .property-card:nth-child(3) .property-image {
+            background: linear-gradient(135deg, #90ee90 0%, #228b22 50%, #32cd32 100%);
+        }
+        .property-card:nth-child(4) .property-image {
+            background: linear-gradient(135deg, #deb887 0%, #d2691e 50%, #cd853f 100%);
+        }
+        .property-card:nth-child(5) .property-image {
+            background: linear-gradient(135deg, #ffa07a 0%, #cd5c5c 50%, #f08080 100%);
+        }
+        .property-card:nth-child(6) .property-image {
+            background: linear-gradient(135deg, #b8860b 0%, #8b6914 50%, #daa520 100%);
+        }
+        .property-card:nth-child(7) .property-image {
+            background: linear-gradient(135deg, #778899 0%, #4a5568 50%, #708090 100%);
+        }
+        .property-card:nth-child(8) .property-image {
+            background: linear-gradient(135deg, #9370db 0%, #6a5acd 50%, #7b68ee 100%);
+        }
+
+        /* Hotels section different colors */
+        .hotels-scroll .property-card:nth-child(1) .property-image {
+            background: linear-gradient(135deg, #87ceeb 0%, #1e90ff 50%, #4169e1 100%);
+        }
+        .hotels-scroll .property-card:nth-child(2) .property-image {
+            background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ff8c00 100%);
+        }
+        .hotels-scroll .property-card:nth-child(3) .property-image {
+            background: linear-gradient(135deg, #f5deb3 0%, #d2b48c 50%, #deb887 100%);
+        }
+        .hotels-scroll .property-card:nth-child(4) .property-image {
+            background: linear-gradient(135deg, #40e0d0 0%, #00ced1 50%, #20b2aa 100%);
+        }
+        .hotels-scroll .property-card:nth-child(5) .property-image {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #db7093 100%);
+        }
+        .hotels-scroll .property-card:nth-child(6) .property-image {
+            background: linear-gradient(135deg, #98fb98 0%, #00fa9a 50%, #3cb371 100%);
+        }
+        .hotels-scroll .property-card:nth-child(7) .property-image {
+            background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 50%, #dda0dd 100%);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 16px;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                border-radius: 24px;
+            }
+
+            .search-section {
+                border-bottom: 1px solid #ebebeb;
+            }
+
+            .search-section::after {
+                display: none;
+            }
+
+            .property-card {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.96 3.396l.01.415.001.228c0 4.062-2.877 6.478-6.357 6.478-2.224 0-4.556-1.258-6.709-3.386l-.257-.26-.172-.179h-.212l-.172.179-.257.26c-2.153 2.128-4.485 3.386-6.709 3.386C5.377 31 2.5 28.584 2.5 24.522l.001-.228.01-.415c.05-.924.293-1.805.96-3.396l.145-.353c.986-2.296 5.146-11.005 7.1-14.836l.533-1.025C12.537 1.963 13.992 1 16 1zm0 2c-1.239 0-2.053.539-2.987 2.21l-.523 1.008c-1.926 3.776-6.06 12.43-7.031 14.692l-.345.836c-.427 1.071-.573 1.655-.605 2.24l-.009.33v.206c0 2.329 1.278 4.478 4.357 4.478 1.573 0 3.362-.864 5.138-2.554l.436-.422.318-.323h1.502l.318.323.436.422c1.776 1.69 3.565 2.554 5.138 2.554 3.079 0 4.357-2.149 4.357-4.478v-.206l-.009-.33c-.032-.585-.178-1.169-.605-2.24l-.345-.836c-.971-2.262-5.105-10.916-7.031-14.692l-.523-1.008C18.053 3.539 17.239 3 16 3z"/>
+            </svg>
+            <span>airbnb</span>
+        </a>
+
+        <nav class="nav-tabs">
+            <a href="#" class="nav-tab active">
+                <svg class="nav-tab-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 3L3 14v15h10v-9h6v9h10V14L16 3z"/>
+                </svg>
+                <span class="nav-tab-label">Homes</span>
+            </a>
+            <a href="#" class="nav-tab">
+                <svg class="nav-tab-icon" viewBox="0 0 32 32" fill="none" stroke="#FF5A5F" stroke-width="2">
+                    <path d="M16 4c-3.3 0-6 2.7-6 6 0 2.5 1.5 4.6 3.7 5.5L16 28l2.3-12.5c2.2-.9 3.7-3 3.7-5.5 0-3.3-2.7-6-6-6z"/>
+                    <circle cx="16" cy="10" r="2"/>
+                </svg>
+                <span class="nav-tab-label">Experiences</span>
+            </a>
+            <a href="#" class="nav-tab">
+                <span class="new-badge">NEW</span>
+                <svg class="nav-tab-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="8" width="20" height="18" rx="2"/>
+                    <path d="M10 8V6a6 6 0 0112 0v2"/>
+                </svg>
+                <span class="nav-tab-label">Services</span>
+            </a>
+        </nav>
+
+        <div class="header-right">
+            <a href="#" class="become-host">Become a host</a>
+            <div class="header-icons">
+                <button class="icon-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 3a.75.75 0 01.75.75v3.5h3.5a.75.75 0 010 1.5h-3.5v3.5a.75.75 0 01-1.5 0v-3.5h-3.5a.75.75 0 010-1.5h3.5v-3.5A.75.75 0 018 3z"/>
+                    </svg>
+                </button>
+                <button class="profile-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M2 4h12v1.5H2V4zm0 5h12v1.5H2V9zm0 5h12v1.5H2V14z"/>
+                    </svg>
+                    <div class="profile-avatar">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                            <path d="M8 8a3 3 0 100-6 3 3 0 000 6zm0 2c-3.3 0-6 1.8-6 4v1h12v-1c0-2.2-2.7-4-6-4z"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-bar">
+            <div class="search-section where">
+                <div class="search-label">Where</div>
+                <div class="search-placeholder">Search destinations</div>
+            </div>
+            <div class="search-section">
+                <div class="search-label">When</div>
+                <div class="search-placeholder">Add dates</div>
+            </div>
+            <div class="search-section who">
+                <div>
+                    <div class="search-label">Who</div>
+                    <div class="search-placeholder">Add guests</div>
+                </div>
+                <button class="search-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                        <path d="M11.7 10.3l4 4-1.4 1.4-4-4c-1.1.9-2.5 1.3-4 1.3-3.6 0-6.3-2.7-6.3-6.3S2.7.4 6.3.4s6.4 2.9 6.4 6.4c0 1.4-.4 2.7-1 3.9v-.4zm-5.4.4c2.5 0 4.7-2 4.7-4.7 0-2.5-2-4.7-4.7-4.7S1.6 3.5 1.6 6s2.2 4.7 4.7 4.7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Popular homes in Flagstaff -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-title-link">
+                    <h2 class="section-title">Popular homes in Flagstaff</h2>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M5.3 2.3l5.7 5.7-5.7 5.7 1.4 1.4 7.1-7.1-7.1-7.1z"/>
+                    </svg>
+                </div>
+                <div class="nav-arrows">
+                    <button class="nav-arrow disabled">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M8 10L4 6l4-4"/>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M4 2l4 4-4 4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="properties-scroll">
+                <!-- Property Card 1 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Apartment in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$164</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.85</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Guest suite in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$200</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.96</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Home in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$351</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.94</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 4 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Condo in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$280</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.98</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 5 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Guest suite in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$427</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.99</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 6 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Guesthouse in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$209</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.86</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 7 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <span class="guest-favorite-badge">Guest favorite</span>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Apartment in Flagstaff</div>
+                        <div class="property-price-rating">
+                            <span class="property-price"><strong>$337</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.99</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured hotels in Los Angeles -->
+        <section class="section featured-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title-link">
+                        <h2 class="section-title">Featured hotels in Los Angeles</h2>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M5.3 2.3l5.7 5.7-5.7 5.7 1.4 1.4 7.1-7.1-7.1-7.1z"/>
+                        </svg>
+                    </div>
+                    <p class="section-subtitle">A collection of independent and handpicked hotels</p>
+                </div>
+                <div class="nav-arrows">
+                    <button class="nav-arrow disabled">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M8 10L4 6l4-4"/>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M4 2l4 4-4 4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="properties-scroll hotels-scroll">
+                <!-- Hotel Card 1 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Inn at Venice Beach</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$286</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.84</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 2 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Marina del Rey Hotel</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$373</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.79</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 3 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Chamberlain West Hollywood</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$503</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.8</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 4 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Pasadena Hotel and Pool</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$372</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.88</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 5 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">The Hoxton Downtown Los Angeles</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$346</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.75</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 6 -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <div class="property-image"></div>
+                        <button class="heart-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                        <div class="property-carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">The LINE Hotel</div>
+                        <div class="property-price-rating">
+                            <span class="property-price">From <strong>$429</strong> for 2 nights</span>
+                            <span class="property-rating">
+                                <svg class="star-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M6 0l1.8 3.7 4.2.6-3 2.9.7 4.2L6 9.2l-3.7 2.2.7-4.2-3-2.9 4.2-.6z"/>
+                                </svg>
+                                <span class="rating-value">4.77</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Available in Sedona this weekend -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-title-link">
+                    <h2 class="section-title">Available in Sedona this weekend</h2>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M5.3 2.3l5.7 5.7-5.7 5.7 1.4 1.4 7.1-7.1-7.1-7.1z"/>
+                    </svg>
+                </div>
+                <div class="nav-arrows">
+                    <button class="nav-arrow disabled">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M8 10L4 6l4-4"/>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M4 2l4 4-4 4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="properties-scroll">
+                <!-- Sedona Property Cards would go here - similar structure -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>
