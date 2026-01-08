@@ -28,9 +28,11 @@ Clone the website at **$ARGUMENTS** pixel-perfect, then automatically templatize
 | Problem | Cause | Solution |
 |---------|-------|----------|
 | Duplicate nav bars | Each screenshot shows fixed nav, each agent includes it | Only section 0 should include nav bar |
-| Missing sections | JS analysis doesn't find all sections | Scroll viewport-by-viewport through entire page |
+| Duplicate content | Scroll-based screenshots overlap | Use element-based screenshots (one per section) |
+| Missing sections | JS analysis doesn't find all sections | Check snapshot for marked elements, adjust selector query |
 | Wrong colors | Agent guesses instead of reading screenshot | Main agent reads screenshots first, passes color notes to sub-agents |
 | Purple instead of blue | Agent makes assumptions | Explicitly tell agents the exact hex colors from analysis |
+| Light mode appearing | UI mockups inside dark page captured as-is | Tell agents the PAGE background is dark, inner mockups may differ |
 
 ## Architecture
 
@@ -71,7 +73,7 @@ PHASE 6: Main Agent - Final Output
 
 ## Process
 
-### Phase 1: Setup & Centralized Screenshot Capture
+### Phase 1: Setup & Element-Based Screenshot Capture
 
 1. Navigate to the URL using `mcp__playwright__browser_navigate`
 
@@ -79,69 +81,109 @@ PHASE 6: Main Agent - Final Output
 
 3. Create screenshots subdirectory: `output/<domain>-<timestamp>/screenshots/`
 
-4. Run this script via `mcp__playwright__browser_evaluate` to analyze page structure:
+4. **DETECT SECTIONS** - Run this script via `mcp__playwright__browser_evaluate` to find and mark all sections:
 
 ```javascript
 () => {
   const sections = [];
-  const seenBounds = new Set();
+  const seenTops = new Set();
 
-  function boundsKey(rect) {
-    return Math.round(rect.top / 100) + '-' + Math.round(rect.height / 100);
-  }
+  // Find all section-like elements
+  const candidates = document.querySelectorAll('header, nav, main > *, section, footer, [class*="hero"], [class*="section"], [class*="container"] > div');
 
-  function getDescription(el) {
-    const h = el.querySelector('h1, h2, h3');
-    return h ? h.textContent.trim().substring(0, 50) : el.textContent.trim().substring(0, 50);
-  }
-
-  // Find semantic sections
-  document.querySelectorAll('header, nav, main, section, footer, [class*="hero"], [class*="section"]').forEach((el, i) => {
+  candidates.forEach((el, i) => {
     const rect = el.getBoundingClientRect();
-    if (rect.height < 100) return;
+    if (rect.height < 100 || rect.width < 200) return; // Skip tiny elements
 
-    const key = boundsKey(rect);
-    if (seenBounds.has(key)) return;
-    seenBounds.add(key);
+    // Dedupe by top position (rounded to 50px)
+    const topKey = Math.round((rect.top + window.scrollY) / 50);
+    if (seenTops.has(topKey)) return;
+    seenTops.add(topKey);
+
+    // Mark element for screenshot
+    const sectionId = `clone-section-${sections.length}`;
+    el.setAttribute('data-clone-section', sectionId);
+
+    // Get description from headings
+    const heading = el.querySelector('h1, h2, h3');
+    const description = heading?.textContent?.trim().substring(0, 40) || `section-${sections.length}`;
 
     sections.push({
-      id: el.id || el.className?.split(' ')[0] || `section-${i}`,
-      selector: el.id ? `#${el.id}` : el.className ? `.${el.className.split(' ')[0]}` : `section:nth-of-type(${i+1})`,
-      bounds: { top: rect.top + window.scrollY, height: rect.height },
-      description: getDescription(el)
+      index: sections.length,
+      sectionId: sectionId,
+      selector: `[data-clone-section="${sectionId}"]`,
+      top: rect.top + window.scrollY,
+      height: rect.height,
+      description: description.replace(/[^a-zA-Z0-9\s]/g, '').trim().toLowerCase().replace(/\s+/g, '-')
     });
   });
 
-  return sections.slice(0, 10); // Limit to 10 sections
+  // Sort by vertical position
+  sections.sort((a, b) => a.top - b.top);
+
+  // Re-index after sorting
+  return sections.slice(0, 12).map((s, i) => ({ ...s, index: i }));
 }
 ```
 
-5. **CAPTURE ALL SCREENSHOTS** (Main agent does this, NOT sub-agents):
+5. **CAPTURE ELEMENT SCREENSHOTS** (Main agent does this, NOT sub-agents):
 
-   **IMPORTANT**: Don't rely solely on the JS analysis. Scroll through the ENTIRE page viewport-by-viewport:
+   For each section detected, use `mcp__playwright__browser_take_screenshot` with the `ref` parameter to screenshot that specific element:
 
    ```javascript
-   // Get total page height
-   mcp__playwright__browser_evaluate({
-     function: `() => ({ height: document.body.scrollHeight, viewport: window.innerHeight })`
-   })
-   ```
+   // First, get a snapshot to get element refs
+   mcp__playwright__browser_snapshot()
 
-   Then capture screenshots by scrolling in ~800px increments:
-   ```javascript
-   // For each viewport position (0, 800, 1600, etc.):
-   mcp__playwright__browser_evaluate({
-     function: `() => window.scrollTo(0, ${scrollPosition})`
-   })
-
-   mcp__playwright__browser_wait_for({ time: 0.5 })
+   // Then for each section, find its ref in the snapshot and screenshot it
+   // The ref will be in the snapshot output for elements with data-clone-section attribute
 
    mcp__playwright__browser_take_screenshot({
-     filename: `${sectionNumber}-${sectionName}.png`  // e.g., "00-nav-hero.png", "01-logos.png"
+     ref: "<ref from snapshot>",
+     element: "Section: <description>",
+     filename: `${index}-${description}.png`  // e.g., "00-nav-hero.png", "01-features.png"
    })
    ```
 
-   Name sections descriptively based on what's visible in each viewport (hero, logos, features, testimonials, footer, etc.).
+   **ALTERNATIVE**: If element refs are hard to match, use `mcp__playwright__browser_run_code` to screenshot elements directly:
+
+   ```javascript
+   mcp__playwright__browser_run_code({
+     code: `async (page) => {
+       const sections = await page.$$('[data-clone-section]');
+       const results = [];
+       for (let i = 0; i < sections.length; i++) {
+         const section = sections[i];
+         const id = await section.getAttribute('data-clone-section');
+         const buffer = await section.screenshot();
+         // Save screenshot - you'll need to handle this via file system
+         results.push({ index: i, id, captured: true });
+       }
+       return results;
+     }`
+   })
+   ```
+
+   **SIMPLEST APPROACH**: After marking sections, scroll each into view and take a viewport screenshot with clipping:
+
+   ```javascript
+   // For each section:
+   mcp__playwright__browser_evaluate({
+     function: `() => {
+       const el = document.querySelector('[data-clone-section="clone-section-${index}"]');
+       el.scrollIntoView({ block: 'start' });
+       const rect = el.getBoundingClientRect();
+       return { top: rect.top, height: Math.min(rect.height, 1200) }; // Cap height at 1200px
+     }`
+   })
+
+   mcp__playwright__browser_wait_for({ time: 0.3 })
+
+   mcp__playwright__browser_take_screenshot({
+     filename: `${index}-${description}.png`
+   })
+   ```
+
+   **KEY DIFFERENCE FROM BEFORE**: Each screenshot corresponds to exactly ONE section element. No overlapping content. If a section is very tall (>1200px), it will be cropped - that's OK, agents can infer the pattern.
 
 6. Extract design tokens via `mcp__playwright__browser_evaluate`:
 ```javascript
@@ -217,6 +259,61 @@ This prevents duplicate nav bars in the final assembled page!
 - Match the exact colors, fonts, and spacing from the screenshot
 - Use the design tokens provided for consistency
 - DO NOT include nav bar unless this is section 0
+
+=== VISUAL DETAILS - CRITICAL ===
+Pay close attention to these commonly-missed details:
+
+**Corner Radius:**
+- Some buttons may be fully rounded (border-radius: 9999px), others square (border-radius: 0)
+- Cards may have rounded corners or sharp edges - check each element individually
+- Don't assume all similar elements share the same radius
+
+**Letter Spacing:**
+- Headlines often have TIGHT negative letter-spacing (-0.02em, -1px)
+- Body text usually has normal (0) letter-spacing
+- Check if text looks tightly or loosely spaced
+
+**Text Transform:**
+- If text appears in ALL CAPS, use `text-transform: uppercase` (don't just type capitals)
+- Check for lowercase transforms too
+
+**Borders:**
+- Note which sides have borders: all sides vs bottom-only vs none
+- Border width matters: 1px (thin) vs 2px (medium) vs thicker
+- Solid vs dashed vs dotted
+
+**Shadows:**
+- Some elements are FLAT (no shadow) - don't add shadows that aren't there
+- Note subtle shadows vs prominent ones
+- Check for inset shadows
+
+**Text Opacity:**
+- Secondary text often uses rgba with opacity, not solid gray
+- Example: `rgba(255,255,255,0.7)` for muted text on dark bg
+- Preserves the color relationship with the background
+
+**Font Weight:**
+- Look for medium (500) and semibold (600), not just normal (400) and bold (700)
+- Headlines may use 500 or 600, not always 700
+
+**Max Width:**
+- Text containers often have max-width limits (600px, 800px)
+- Prevents text from spanning too wide on large screens
+- Check if content is constrained or full-width
+
+**Alignment:**
+- Don't assume center - check if content is left, center, or right aligned
+- Hero sections vary: some centered, some left-aligned
+- Check each section individually
+
+**Spacing:**
+- Use consistent gap values in flex/grid containers
+- Note asymmetric padding (more vertical than horizontal, or vice versa)
+- Check spacing between specific elements
+
+**Backdrop Effects:**
+- Look for glassmorphism: `backdrop-filter: blur(10px)` with semi-transparent bg
+- Common on navbars, modals, cards over images
 
 === OUTPUT FORMAT ===
 <style>
@@ -399,7 +496,7 @@ Write the tokens in this **EXACT STRUCTURE** (required for token switching to wo
   "meta": {
     "name": "<Template Name from domain>",
     "type": "<dark|light>",
-    "source": "<original URL>"
+    "description": "<Brief description of the template style>"
   },
 
   "colors": {
@@ -430,7 +527,8 @@ Write the tokens in this **EXACT STRUCTURE** (required for token switching to wo
 
   "typography": {
     "fonts": {
-      "primary": "<extracted font family>"
+      "primary": "<extracted font family>",
+      "heading": "<heading font family or same as primary>"
     },
     "sizes": {
       "h1": "<extracted>",
@@ -450,10 +548,15 @@ Write the tokens in this **EXACT STRUCTURE** (required for token switching to wo
       "bold": "700"
     },
     "lineHeights": {
-      "tight": "1.1",
-      "snug": "1.25",
+      "tight": "1.08",
+      "snug": "1.2",
       "normal": "1.5",
       "relaxed": "1.6"
+    },
+    "letterSpacing": {
+      "tight": "-1px",
+      "snug": "-0.5px",
+      "normal": "0"
     }
   },
 
@@ -470,6 +573,7 @@ Write the tokens in this **EXACT STRUCTURE** (required for token switching to wo
 
   "borders": {
     "radius": {
+      "none": "0",
       "xs": "4px",
       "sm": "6px",
       "md": "8px",
@@ -477,85 +581,155 @@ Write the tokens in this **EXACT STRUCTURE** (required for token switching to wo
       "xl": "16px",
       "xxl": "24px",
       "full": "9999px"
+    },
+    "width": {
+      "thin": "1px",
+      "medium": "2px",
+      "thick": "4px"
     }
   },
 
   "shadows": {
-    "xs": "<appropriate for theme type>",
-    "sm": "<appropriate for theme type>",
-    "md": "<appropriate for theme type>",
-    "lg": "<appropriate for theme type>",
-    "xl": "<appropriate for theme type>"
+    "xs": "0 1px 2px rgba(0,0,0,<0.3 dark | 0.05 light>)",
+    "sm": "0 1px 3px rgba(0,0,0,<0.4 dark | 0.1 light>)",
+    "md": "0 4px 12px rgba(0,0,0,<0.5 dark | 0.15 light>)",
+    "lg": "0 8px 24px rgba(0,0,0,<0.6 dark | 0.2 light>)",
+    "xl": "0 16px 48px rgba(0,0,0,<0.7 dark | 0.25 light>)"
+  },
+
+  "gradients": {
+    "primary": "<extracted primary gradient or generate from accent>",
+    "subtle": "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)",
+    "overlay": "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%)"
+  },
+
+  "transitions": {
+    "fast": "150ms",
+    "normal": "250ms",
+    "slow": "400ms",
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+
+  "zIndex": {
+    "dropdown": "100",
+    "sticky": "200",
+    "modal": "300",
+    "toast": "400"
+  },
+
+  "focus": {
+    "ringColor": "<accent color>",
+    "ringWidth": "2px",
+    "ringOffset": "2px"
+  },
+
+  "opacity": {
+    "disabled": "0.5",
+    "hover": "0.8",
+    "muted": "0.6"
+  },
+
+  "overlay": {
+    "backdrop": "rgba(0,0,0,0.5)",
+    "blur": "4px"
+  },
+
+  "scrollbar": {
+    "width": "8px",
+    "track": "<card background>",
+    "thumb": "<border color>"
+  },
+
+  "selection": {
+    "background": "<accent color>",
+    "color": "#ffffff"
+  },
+
+  "divider": {
+    "color": "<border light color>",
+    "thickness": "1px"
+  },
+
+  "skeleton": {
+    "base": "rgba(255,255,255,0.05)",
+    "shimmer": "rgba(255,255,255,0.1)"
+  },
+
+  "icons": {
+    "xs": "12px",
+    "sm": "16px",
+    "md": "20px",
+    "lg": "24px",
+    "xl": "32px"
+  },
+
+  "componentHeights": {
+    "inputSm": "32px",
+    "inputMd": "40px",
+    "inputLg": "48px",
+    "buttonSm": "32px",
+    "buttonMd": "40px",
+    "buttonLg": "48px",
+    "nav": "56px"
   }
 }
 ```
 
 **Shadow opacity by theme type:**
-- Dark themes: higher opacity (0.3-0.7) - e.g., `"0 4px 12px rgba(0, 0, 0, 0.5)"`
-- Light themes: lower opacity (0.05-0.2) - e.g., `"0 4px 12px rgba(0, 0, 0, 0.1)"`
+- Dark themes: higher opacity (0.3-0.7)
+- Light themes: lower opacity (0.05-0.25)
 
 #### 5.4: Write theme.css
 
-Generate behavioral overrides based on theme type:
+Behavioral overrides that can't be expressed as simple token values. Only include what's necessary:
 
-**For DARK templates** (`meta.type === "dark"`):
+**For DARK templates:**
 
 ```css
-/* theme.css - DARK TEMPLATE */
+/* === DARK THEME OVERRIDES === */
 
-/* Borders need to be subtle on dark backgrounds */
-.card, .panel, .modal, [class*="card"] {
-  border-color: rgba(255, 255, 255, 0.1);
+/* Subtle borders on dark backgrounds */
+.card, .task-card, .kanban-card {
+  border-color: rgba(255,255,255,0.08);
 }
 
-/* Inputs need visible backgrounds */
-input, textarea, select, .input {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+/* Dashed borders need adjustment */
+[style*="dashed"] {
+  border-color: rgba(255,255,255,0.1);
 }
 
-input:focus, textarea:focus, .input:focus {
-  border-color: var(--color-accent);
-}
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar { width: var(--scrollbar-width); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: var(--radius-full); }
 
-/* Buttons often invert on dark themes */
-.btn-primary, .btn--primary, [class*="btn-primary"] {
-  background: var(--color-primary);
-  color: var(--color-background-page);
-}
-
-/* Dashed elements (drop zones, etc) */
-[style*="dashed"], .dropzone, [class*="drop"] {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Dividers/separators */
-hr, .divider, [class*="divider"] {
-  border-color: rgba(255, 255, 255, 0.1);
+/* Text selection */
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
 }
 ```
 
-**For LIGHT templates** (`meta.type === "light"`):
+**For LIGHT templates:**
 
 ```css
-/* theme.css - LIGHT TEMPLATE */
+/* === LIGHT THEME OVERRIDES === */
 
-/* Borders can be solid on light backgrounds */
-.card, .panel, .modal, [class*="card"] {
-  border-color: var(--color-border-default);
+/* Solid borders on light backgrounds */
+.card, .task-card, .kanban-card {
+  border-color: var(--border-default);
   box-shadow: var(--shadow-sm);
 }
 
-/* Inputs with standard styling */
-input, textarea, select, .input {
-  background: var(--color-background-card);
-  border-color: var(--color-border-default);
-}
+/* Custom scrollbar for light mode */
+::-webkit-scrollbar { width: var(--scrollbar-width); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: var(--radius-full); }
 
-/* Standard button colors */
-.btn-primary, .btn--primary, [class*="btn-primary"] {
-  background: var(--color-accent);
-  color: white;
+/* Text selection */
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
 }
 ```
 
