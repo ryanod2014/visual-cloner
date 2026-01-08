@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Usage Example - Your SaaS</title>
+
+  <!-- Include the template CSS -->
+  <link rel="stylesheet" href="stripe-template.css">
+
+  <!-- Optional: Custom gradient config -->
+  <script>
+    // Customize the gradient colors (or omit to use Stripe defaults)
+    window.GRADIENT_CONFIG = {
+      baseColor: [0.2, 0.3, 0.8],      // Blue base
+      wave0Color: [0.9, 0.2, 0.5],     // Pink
+      wave1Color: [0.3, 0.9, 0.7],     // Teal
+      wave2Color: [1.0, 0.6, 0.2],     // Orange
+      speed: 1.2,
+      amplitude: 350
+    };
+  </script>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero__gradient">
+      <canvas class="Gradient__canvas"></canvas>
+    </div>
+    <div class="hero__content">
+      <span class="badge mb-lg">Now Available</span>
+      <h1 class="hero__title">Build faster with our platform</h1>
+      <p class="hero__subtitle">
+        The all-in-one solution for modern teams. Ship products faster,
+        collaborate better, and scale effortlessly.
+      </p>
+      <div class="hero__cta">
+        <a href="#" class="btn btn-white">
+          Get Started
+          <svg class="arrow" width="10" height="10" viewBox="0 0 10 10">
+            <path d="M0 5h7M4 2l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </a>
+        <a href="#" class="btn btn-link text-white">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FEATURES SECTION -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-xl" data-animate="slideUp">
+        <h2 class="headline-lg">Everything you need</h2>
+        <p class="text-lg text-muted mt-md">
+          Powerful features to help you ship faster and scale better.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card" data-animate="slideUp" data-delay="0.1">
+          <div class="card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="12" fill="rgba(99,91,255,0.1)"/>
+              <path d="M24 14v20M14 24h20" stroke="#635bff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card__title">Fast Setup</h3>
+          <p class="card__description">
+            Get started in minutes with our intuitive onboarding process.
+            No complex configuration required.
+          </p>
+        </div>
+
+        <div class="card" data-animate="slideUp" data-delay="0.2">
+          <div class="card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="12" fill="rgba(99,91,255,0.1)"/>
+              <path d="M16 24h16M16 18h16M16 30h10" stroke="#635bff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card__title">Powerful APIs</h3>
+          <p class="card__description">
+            Build custom integrations with our comprehensive API.
+            REST and GraphQL supported.
+          </p>
+        </div>
+
+        <div class="card" data-animate="slideUp" data-delay="0.3">
+          <div class="card__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="12" fill="rgba(99,91,255,0.1)"/>
+              <circle cx="24" cy="24" r="8" stroke="#635bff" stroke-width="2.5"/>
+              <path d="M24 16v-2M24 34v-2M32 24h2M14 24h2" stroke="#635bff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="card__title">Real-time Analytics</h3>
+          <p class="card__description">
+            Track performance with real-time dashboards and
+            detailed insights into your data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATS SECTION -->
+  <section class="section bg-dark text-white">
+    <div class="container">
+      <div class="grid grid-4 text-center">
+        <div data-animate="fadeIn" data-delay="0">
+          <div class="headline-xl" data-counter data-target="99.9" data-suffix="%" data-decimals="1">0</div>
+          <p class="text-muted mt-sm">Uptime SLA</p>
+        </div>
+        <div data-animate="fadeIn" data-delay="0.1">
+          <div class="headline-xl" data-counter data-target="50" data-suffix="M+">0</div>
+          <p class="text-muted mt-sm">API calls/day</p>
+        </div>
+        <div data-animate="fadeIn" data-delay="0.2">
+          <div class="headline-xl" data-counter data-target="10000" data-suffix="+">0</div>
+          <p class="text-muted mt-sm">Customers</p>
+        </div>
+        <div data-animate="fadeIn" data-delay="0.3">
+          <div class="headline-xl" data-counter data-target="45" data-prefix="<" data-suffix="ms">0</div>
+          <p class="text-muted mt-sm">Avg latency</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA SECTION -->
+  <section class="section bg-white">
+    <div class="container text-center">
+      <div data-animate="slideUp">
+        <h2 class="headline-lg">Ready to get started?</h2>
+        <p class="text-lg text-muted mt-md mb-xl">
+          Join thousands of teams already using our platform.
+        </p>
+        <div class="flex-center" style="gap: 16px;">
+          <a href="#" class="btn btn-primary">Start free trial</a>
+          <a href="#" class="btn btn-secondary">Contact sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="section bg-dark text-white" style="padding: 64px 0;">
+    <div class="container">
+      <div class="flex-between">
+        <div>
+          <strong>YourSaaS</strong>
+          <p class="text-sm text-muted mt-sm">&copy; 2024 YourSaaS Inc. All rights reserved.</p>
+        </div>
+        <div class="flex" style="gap: 24px;">
+          <a href="#" class="text-muted">Privacy</a>
+          <a href="#" class="text-muted">Terms</a>
+          <a href="#" class="text-muted">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Include the template JS (shader + animations) -->
+  <script src="stripe-template.js"></script>
+
+</body>
+</html>
