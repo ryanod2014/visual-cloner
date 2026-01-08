@@ -308,24 +308,266 @@ Output file: <template_dir>/{filename}
 node tools/assemble.js <template_dir>/
 ```
 
-### Phase 5: Extract Design Tokens
+### Phase 5: Extract Design Tokens & Generate Theme Files
 
-Generate `design-tokens.json` for coding agents:
+Generate the complete template package with exact structure required by coding agents.
 
-1. Read the assembled.html from the template directory
-2. Parse all `<style>` blocks to extract CSS rules
-3. Organize into categories:
-   - **Colors**: primary, secondary, accent, background, text, border, status
-   - **Typography**: fonts, sizes, weights, line heights, letter spacing
-   - **Buttons**: primary, secondary, nav styles with hover states
-   - **Spacing**: section padding, card padding, gaps, margins
-   - **Borders**: radius values, colors, widths
-   - **Shadows**: box shadow values
-   - **Layout**: max-width, container padding
-   - **Components**: card, badge, input, select presets
-   - **Breakpoints**: mobile, tablet, desktop, wide
+#### 5.1: Determine Theme Type
 
-4. Write `design-tokens.json` to the template directory
+First, analyze the page to determine if it's a dark or light theme:
+
+```javascript
+() => {
+  const bg = getComputedStyle(document.body).backgroundColor;
+  const rgb = bg.match(/\d+/g)?.map(Number) || [255, 255, 255];
+  const luminance = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+  return luminance < 0.5 ? 'dark' : 'light';
+}
+```
+
+#### 5.2: Extract Comprehensive Design Tokens
+
+Run this extraction script via `mcp__playwright__browser_evaluate`:
+
+```javascript
+() => {
+  const getStyle = (sel) => {
+    const el = document.querySelector(sel);
+    return el ? getComputedStyle(el) : null;
+  };
+
+  const body = getComputedStyle(document.body);
+  const h1 = getStyle('h1');
+  const h2 = getStyle('h2');
+  const h3 = getStyle('h3');
+  const h4 = getStyle('h4');
+  const btn = getStyle('button, [class*="btn"], a[class*="button"]');
+  const card = getStyle('[class*="card"], [class*="panel"]');
+  const input = getStyle('input, [class*="input"]');
+  const small = getStyle('small, [class*="small"], [class*="muted"]');
+
+  // Determine theme type
+  const bgRgb = body.backgroundColor.match(/\d+/g)?.map(Number) || [255,255,255];
+  const luminance = (0.299*bgRgb[0] + 0.587*bgRgb[1] + 0.114*bgRgb[2]) / 255;
+  const themeType = luminance < 0.5 ? 'dark' : 'light';
+
+  return {
+    themeType,
+    colors: {
+      background: body.backgroundColor,
+      text: body.color,
+      heading: h1?.color || body.color,
+      accent: btn?.backgroundColor || '#6366f1',
+      cardBg: card?.backgroundColor || 'transparent',
+      border: card?.borderColor || input?.borderColor || '#333',
+      muted: small?.color || 'rgba(128,128,128,0.7)'
+    },
+    typography: {
+      fontFamily: body.fontFamily,
+      headingFamily: h1?.fontFamily || body.fontFamily,
+      h1Size: h1?.fontSize || '48px',
+      h2Size: h2?.fontSize || '36px',
+      h3Size: h3?.fontSize || '24px',
+      h4Size: h4?.fontSize || '18px',
+      bodySize: body.fontSize || '16px',
+      smallSize: small?.fontSize || '14px',
+      lineHeight: body.lineHeight
+    },
+    spacing: {
+      sectionPadding: '60px',
+      cardPadding: card?.padding || '24px',
+      gap: '16px'
+    },
+    borders: {
+      radius: card?.borderRadius || btn?.borderRadius || '8px',
+      inputRadius: input?.borderRadius || '6px'
+    },
+    shadows: {
+      card: card?.boxShadow || 'none',
+      button: btn?.boxShadow || 'none'
+    }
+  };
+}
+```
+
+#### 5.3: Write design-tokens.json
+
+Write the tokens in this **EXACT STRUCTURE** (required for token switching to work):
+
+```json
+{
+  "meta": {
+    "name": "<Template Name from domain>",
+    "type": "<dark|light>",
+    "source": "<original URL>"
+  },
+
+  "colors": {
+    "primary": "<extracted heading/primary color>",
+    "secondary": "<extracted secondary color>",
+    "accent": "<extracted accent/button color>",
+    "background": {
+      "page": "<body background>",
+      "card": "<card/panel background>",
+      "hover": "<hover state background>"
+    },
+    "text": {
+      "primary": "<main text color>",
+      "secondary": "<secondary text color>",
+      "muted": "<muted/subtle text>",
+      "inverse": "<inverse text for buttons>"
+    },
+    "border": {
+      "default": "<default border color>",
+      "light": "<subtle border color>"
+    },
+    "status": {
+      "success": "#00b67a",
+      "warning": "#ff6b35",
+      "error": "#ea4335"
+    }
+  },
+
+  "typography": {
+    "fonts": {
+      "primary": "<extracted font family>"
+    },
+    "sizes": {
+      "h1": "<extracted>",
+      "h2": "<extracted>",
+      "h3": "<extracted>",
+      "h4": "<extracted>",
+      "body": "<extracted>",
+      "bodySmall": "<body - 2px>",
+      "small": "<extracted>",
+      "xsmall": "<small - 1px>",
+      "xxsmall": "<small - 2px>"
+    },
+    "weights": {
+      "normal": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    },
+    "lineHeights": {
+      "tight": "1.1",
+      "snug": "1.25",
+      "normal": "1.5",
+      "relaxed": "1.6"
+    }
+  },
+
+  "spacing": {
+    "xxs": "4px",
+    "xs": "8px",
+    "sm": "12px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px",
+    "xxl": "40px",
+    "section": "<extracted section padding>"
+  },
+
+  "borders": {
+    "radius": {
+      "xs": "4px",
+      "sm": "6px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px",
+      "xxl": "24px",
+      "full": "9999px"
+    }
+  },
+
+  "shadows": {
+    "xs": "<appropriate for theme type>",
+    "sm": "<appropriate for theme type>",
+    "md": "<appropriate for theme type>",
+    "lg": "<appropriate for theme type>",
+    "xl": "<appropriate for theme type>"
+  }
+}
+```
+
+**Shadow opacity by theme type:**
+- Dark themes: higher opacity (0.3-0.7) - e.g., `"0 4px 12px rgba(0, 0, 0, 0.5)"`
+- Light themes: lower opacity (0.05-0.2) - e.g., `"0 4px 12px rgba(0, 0, 0, 0.1)"`
+
+#### 5.4: Write theme.css
+
+Generate behavioral overrides based on theme type:
+
+**For DARK templates** (`meta.type === "dark"`):
+
+```css
+/* theme.css - DARK TEMPLATE */
+
+/* Borders need to be subtle on dark backgrounds */
+.card, .panel, .modal, [class*="card"] {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Inputs need visible backgrounds */
+input, textarea, select, .input {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+input:focus, textarea:focus, .input:focus {
+  border-color: var(--color-accent);
+}
+
+/* Buttons often invert on dark themes */
+.btn-primary, .btn--primary, [class*="btn-primary"] {
+  background: var(--color-primary);
+  color: var(--color-background-page);
+}
+
+/* Dashed elements (drop zones, etc) */
+[style*="dashed"], .dropzone, [class*="drop"] {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dividers/separators */
+hr, .divider, [class*="divider"] {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+```
+
+**For LIGHT templates** (`meta.type === "light"`):
+
+```css
+/* theme.css - LIGHT TEMPLATE */
+
+/* Borders can be solid on light backgrounds */
+.card, .panel, .modal, [class*="card"] {
+  border-color: var(--color-border-default);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Inputs with standard styling */
+input, textarea, select, .input {
+  background: var(--color-background-card);
+  border-color: var(--color-border-default);
+}
+
+/* Standard button colors */
+.btn-primary, .btn--primary, [class*="btn-primary"] {
+  background: var(--color-accent);
+  color: white;
+}
+```
+
+#### 5.5: Validation Checklist
+
+Before completing Phase 5, verify:
+
+- [ ] All required keys exist in design-tokens.json
+- [ ] `meta.type` is set to "dark" or "light"
+- [ ] `theme.css` exists with appropriate overrides
+- [ ] Shadow opacities match theme type
+- [ ] Border colors work on the background color
 
 ### Phase 6: Open Result
 
@@ -338,13 +580,22 @@ Report to user:
 ```
 Clone complete!
 
+=== OUTPUT FILES ===
 Exact clone: output/<domain>-<timestamp>/assembled.html
-Template: output/<domain>-<timestamp>-template/assembled.html
-Design tokens: output/<domain>-<timestamp>-template/design-tokens.json
+Template:    output/<domain>-<timestamp>-template/
 
-For coding agents, provide:
-- Visual reference: <template_dir>/assembled.html
-- Tokens: <template_dir>/design-tokens.json
+=== TEMPLATE PACKAGE ===
+<template_dir>/
+├── design-tokens.json    # All design values (EXACT structure)
+├── theme.css             # Dark/light behavioral overrides
+├── assembled.html        # Visual reference page
+└── [section files]       # Individual section HTML
+
+=== FOR CODING AGENTS ===
+Provide these files:
+1. Visual reference: <template_dir>/assembled.html
+2. Design tokens:    <template_dir>/design-tokens.json
+3. Theme overrides:  <template_dir>/theme.css
 ```
 
 ## Token Budget
@@ -362,7 +613,7 @@ For coding agents, provide:
 
 ## Key Points
 
-- **Full pipeline**: Clone → Templatize → Extract Tokens in one command
+- **Full pipeline**: Clone → Templatize → Extract Tokens → Generate Theme in one command
 - **Centralized screenshots**: Main agent captures ALL screenshots before spawning sub-agents
 - **Sub-agents are constrained**: They only have Read + Write tools, no Playwright
 - **Predictable token usage**: Each sub-agent reads ONE file, processes, writes, exits
@@ -370,4 +621,37 @@ For coding agents, provide:
 - **Resilient**: Assembler merges whatever sections completed
 - **CSS namespacing**: Prevents conflicts between sections
 - **Copyright-safe templates**: Generic text, no real company names or claims
-- **Coding agent ready**: Design tokens JSON for easy reference
+- **Coding agent ready**: Exact token structure for seamless integration
+- **Theme-aware**: Auto-detects dark/light and generates appropriate theme.css
+
+## Template Output Structure
+
+Every template MUST include these files:
+
+```
+<template_dir>/
+├── design-tokens.json    # REQUIRED - exact structure for token switching
+├── theme.css             # REQUIRED - dark/light behavioral overrides
+├── assembled.html        # REQUIRED - visual reference page
+├── 00-section.html       # Section files
+├── 01-section.html
+└── ...
+```
+
+### design-tokens.json Requirements
+
+All tokens must use the EXACT structure specified in Phase 5.3. Missing keys will break token switching in coding agents. Key requirements:
+
+1. `meta.type` must be "dark" or "light"
+2. All color paths must exist: `colors.background.page`, `colors.text.primary`, etc.
+3. All typography paths must exist: `typography.sizes.h1`, `typography.weights.bold`, etc.
+4. Shadows must have appropriate opacity for theme type
+
+### theme.css Requirements
+
+Behavioral overrides that can't be fixed by swapping token values:
+
+- Border colors (rgba for dark, solid for light)
+- Input backgrounds
+- Button color inversions
+- Divider/separator styling
