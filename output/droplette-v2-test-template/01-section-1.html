@@ -1,0 +1,198 @@
+<style>
+.clone-section-1 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clone-section-1-preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 48px;
+}
+
+.clone-section-1-sidebar {
+  width: 280px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.clone-section-1-sidebar-item {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.clone-section-1-palette-card {
+  width: 320px;
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.clone-section-1-palette-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-1-palette-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-1-palette-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-1-palette-colors {
+  display: flex;
+  height: 350px;
+}
+
+.clone-section-1-palette-stripe {
+  flex: 1;
+}
+
+.clone-section-1-palette-stripe:nth-child(1) { background: linear-gradient(to bottom, #ff3d00, #ff6e40); }
+.clone-section-1-palette-stripe:nth-child(2) { background: linear-gradient(to bottom, #ff9100, #ffab40); }
+.clone-section-1-palette-stripe:nth-child(3) { background: linear-gradient(to bottom, #ffc400, #ffd740); }
+.clone-section-1-palette-stripe:nth-child(4) { background: linear-gradient(to bottom, #c6ff00, #eeff41); }
+.clone-section-1-palette-stripe:nth-child(5) { background: linear-gradient(to bottom, #76ff03, #b2ff59); }
+.clone-section-1-palette-stripe:nth-child(6) { background: linear-gradient(to bottom, #00e5ff, #18ffff); }
+.clone-section-1-palette-stripe:nth-child(7) { background: linear-gradient(to bottom, #00b0ff, #40c4ff); }
+.clone-section-1-palette-stripe:nth-child(8) { background: linear-gradient(to bottom, #651fff, #7c4dff); }
+.clone-section-1-palette-stripe:nth-child(9) { background: linear-gradient(to bottom, #d500f9, #e040fb); }
+
+.clone-section-1-palette-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-1-back-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-1-insert-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.clone-section-1-action-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.clone-section-1-action-icon {
+  width: 24px;
+  height: 24px;
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-1-toolbar {
+  display: flex;
+  gap: 16px;
+  background: rgba(40, 40, 40, 0.9);
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-top: 32px;
+}
+
+.clone-section-1-tool {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.clone-section-1-tool.active {
+  opacity: 1;
+  background: #2196f3;
+}
+</style>
+
+<div class="clone-section-1">
+  <div class="clone-section-1-preview-container">
+    <div class="clone-section-1-sidebar">
+      <div class="clone-section-1-sidebar-item" style="width: 60%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 40%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 70%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 50%;"></div>
+    </div>
+
+    <div class="clone-section-1-palette-card">
+      <div class="clone-section-1-palette-header">
+        <div class="clone-section-1-palette-icon"></div>
+        <span class="clone-section-1-palette-title">Droplette</span>
+      </div>
+      <div class="clone-section-1-palette-colors">
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+      </div>
+      <div class="clone-section-1-palette-footer">
+        <div class="clone-section-1-back-btn">&larr;</div>
+        <button class="clone-section-1-insert-btn">Insert</button>
+        <div class="clone-section-1-action-icons">
+          <div class="clone-section-1-action-icon"></div>
+          <div class="clone-section-1-action-icon"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-1-sidebar">
+      <div class="clone-section-1-sidebar-item" style="width: 50%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 65%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 45%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 55%;"></div>
+    </div>
+  </div>
+
+  <div class="clone-section-1-toolbar">
+    <div class="clone-section-1-tool active"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+  </div>
+</div>

@@ -1,0 +1,416 @@
+<style>
+.resend-devexp {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 0 60px;
+  min-height: 100vh;
+}
+
+.resend-devexp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.resend-devexp-title {
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 40px;
+  letter-spacing: -0.02em;
+}
+
+.resend-devexp-title-line {
+  display: block;
+}
+
+.resend-devexp-description {
+  font-size: 22px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 60px;
+  max-width: 700px;
+}
+
+.resend-devexp-description em {
+  font-style: italic;
+}
+
+.resend-devexp-panels {
+  display: flex;
+  gap: 24px;
+}
+
+.resend-devexp-panel-left {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-devexp-email-bar {
+  display: flex;
+  align-items: center;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 40px;
+  gap: 12px;
+}
+
+.resend-devexp-badge {
+  background: #10b981;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.resend-devexp-email-address {
+  color: #f0f0f0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resend-devexp-dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.resend-devexp-send-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f0f0f0;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.resend-devexp-send-icon {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  position: relative;
+}
+
+.resend-devexp-send-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.resend-devexp-http-logs {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.resend-devexp-http-line {
+  display: flex;
+  gap: 8px;
+}
+
+.resend-devexp-http-status {
+  color: #10b981;
+}
+
+.resend-devexp-http-bracket {
+  color: #f0f0f0;
+}
+
+.resend-devexp-http-key {
+  color: #60a5fa;
+}
+
+.resend-devexp-http-value {
+  color: #fbbf24;
+}
+
+.resend-devexp-panel-right {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 340px;
+}
+
+.resend-devexp-event-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resend-devexp-event-item:last-child {
+  border-bottom: none;
+}
+
+.resend-devexp-event-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resend-devexp-play-icon {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.7);
+  margin-left: 2px;
+}
+
+.resend-devexp-event-content {
+  flex: 1;
+}
+
+.resend-devexp-event-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.resend-devexp-event-badge {
+  background: #10b981;
+  color: #000;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.resend-devexp-event-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.resend-devexp-clock-icon {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: relative;
+}
+
+.resend-devexp-clock-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.5);
+  transform-origin: left center;
+  transform: translateY(-50%);
+}
+
+.resend-devexp-clock-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  transform-origin: center bottom;
+  transform: translate(-50%, -100%);
+}
+
+.resend-devexp-event-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.resend-devexp-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resend-devexp-value-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: #f0f0f0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resend-devexp-gmail-icon {
+  width: 16px;
+  height: 12px;
+  position: relative;
+}
+
+.resend-devexp-gmail-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ea4335 25%, #fbbc05 25%, #fbbc05 50%, #34a853 50%, #34a853 75%, #4285f4 75%);
+  border-radius: 2px;
+}
+
+.resend-devexp-windows-icon {
+  width: 14px;
+  height: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+}
+
+.resend-devexp-windows-icon span {
+  background: #00a4ef;
+}
+</style>
+<section class="resend-devexp">
+  <div class="resend-devexp-container">
+    <h2 class="resend-devexp-title">
+      <span class="resend-devexp-title-line">First-class</span>
+      <span class="resend-devexp-title-line">developer experience</span>
+    </h2>
+
+    <p class="resend-devexp-description">
+      We are a team of engineers who love building tools for other engineers.<br>
+      Our goal is to create the email platform we've always wished we had — one that <em>just works</em>.
+    </p>
+
+    <div class="resend-devexp-panels">
+      <div class="resend-devexp-panel-left">
+        <div class="resend-devexp-email-bar">
+          <span class="resend-devexp-badge">Delivered</span>
+          <span class="resend-devexp-email-address">
+            delivered@resend.dev
+            <span class="resend-devexp-dropdown-arrow"></span>
+          </span>
+          <button class="resend-devexp-send-btn">
+            <span class="resend-devexp-send-icon"></span>
+            Send
+          </button>
+        </div>
+
+        <div class="resend-devexp-http-logs">
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"16b639b3-46b9-4149-83a7-2b540fdcb1c2"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"ba1bc919-b715-44d0-839a-551f2c7cb2b6"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"6e5451aa-1795-4614-86c0-b6d217e8767a"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="resend-devexp-panel-right">
+        <div class="resend-devexp-event-item">
+          <div class="resend-devexp-event-icon">
+            <span class="resend-devexp-play-icon"></span>
+          </div>
+          <div class="resend-devexp-event-content">
+            <div class="resend-devexp-event-header">
+              <span class="resend-devexp-event-badge">Clicked</span>
+              <span class="resend-devexp-event-time">
+                <span class="resend-devexp-clock-icon"></span>
+                Jan 07 01:39:42
+              </span>
+            </div>
+            <div class="resend-devexp-event-details">
+              <span class="resend-devexp-label">from</span>
+              <span class="resend-devexp-value-box">noah@gmail.com</span>
+              <span class="resend-devexp-label">on</span>
+              <span class="resend-devexp-value-box">Get Started</span>
+            </div>
+            <div class="resend-devexp-event-details" style="margin-top: 8px;">
+              <span class="resend-devexp-label">on agent</span>
+              <span class="resend-devexp-value-box">
+                <span class="resend-devexp-gmail-icon"></span>
+                Gmail
+              </span>
+              <span class="resend-devexp-label">running on</span>
+              <span class="resend-devexp-value-box">
+                <span class="resend-devexp-windows-icon">
+                  <span></span><span></span><span></span><span></span>
+                </span>
+                Windows
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resend-devexp-event-item">
+          <div class="resend-devexp-event-icon">
+            <span class="resend-devexp-play-icon"></span>
+          </div>
+          <div class="resend-devexp-event-content">
+            <div class="resend-devexp-event-header">
+              <span class="resend-devexp-event-badge">Clicked</span>
+              <span class="resend-devexp-event-time">
+                <span class="resend-devexp-clock-icon"></span>
+                Jan 07 01:39:39
+              </span>
+            </div>
+            <div class="resend-devexp-event-details">
+              <span class="resend-devexp-label">from</span>
+              <span class="resend-devexp-value-box">liam@verox.com</span>
+              <span class="resend-devexp-label">on</span>
+              <span class="resend-devexp-value-box">Hello world</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

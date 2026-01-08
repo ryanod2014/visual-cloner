@@ -1,0 +1,286 @@
+<style>
+.clone-section-2 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.clone-section-2-headline {
+  font-family: Ein, -apple-system, "system-ui", sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgb(255, 255, 255);
+  margin: 0 0 24px;
+}
+
+.clone-section-2-subheadline {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.clone-section-2-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-2-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+}
+
+.clone-section-2-card-title {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin: 0 0 12px;
+}
+
+.clone-section-2-card-desc {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 24px;
+}
+
+.clone-section-2-card-preview {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-2-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-2-preview-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-2-preview-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-2-preview-body {
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.clone-section-2-preview-text {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 32px;
+}
+
+.clone-section-2-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.clone-section-2-color-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.clone-section-2-color-dot:nth-child(1) { background: #9c27b0; }
+.clone-section-2-color-dot:nth-child(2) { background: #00bcd4; }
+.clone-section-2-color-dot:nth-child(3) { background: #8bc34a; }
+.clone-section-2-color-dot:nth-child(4) { background: #ffeb3b; }
+.clone-section-2-color-dot:nth-child(5) { background: #ff9800; }
+.clone-section-2-color-dot:nth-child(6) { background: #f44336; }
+.clone-section-2-color-dot:nth-child(7) { background: #e91e63; }
+.clone-section-2-color-dot:nth-child(8) { background: #9c27b0; }
+.clone-section-2-color-dot:nth-child(9) { background: #ff5722; }
+
+.clone-section-2-preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-2-preview-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+
+/* White card variant */
+.clone-section-2-card-white {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.clone-section-2-card-white .clone-section-2-preview-body {
+  background: rgb(255, 255, 255);
+}
+
+.clone-section-2-modal {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.clone-section-2-modal-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #9c27b0, #e91e63);
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.clone-section-2-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.clone-section-2-modal-desc {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.clone-section-2-modal-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.clone-section-2-status-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.clone-section-2-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.clone-section-2-status-dot:nth-child(1) { background: #4caf50; }
+.clone-section-2-status-dot:nth-child(2) { background: #f44336; }
+
+.clone-section-2-status-text {
+  font-size: 14px;
+  color: rgba(0,0,0,0.7);
+}
+
+.clone-section-2-modal-btn {
+  background: rgb(60, 60, 60);
+  color: rgb(255, 255, 255);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+</style>
+
+<div class="clone-section-2">
+  <h2 class="clone-section-2-headline">Simple to setup.</h2>
+  <p class="clone-section-2-subheadline">Select the colors you want to work with, or hook up your styles and go.</p>
+
+  <div class="clone-section-2-cards">
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Select from your frames</h3>
+      <p class="clone-section-2-card-desc">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="clone-section-2-card-preview">
+        <div class="clone-section-2-preview-header">
+          <div class="clone-section-2-preview-icon"></div>
+          <span class="clone-section-2-preview-title">Droplette</span>
+        </div>
+        <div class="clone-section-2-preview-body">
+          <p class="clone-section-2-preview-text">A summer rainbow</p>
+          <div class="clone-section-2-color-dots">
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+          </div>
+        </div>
+        <div class="clone-section-2-preview-footer">
+          <span></span>
+          <button class="clone-section-2-preview-btn">Create</button>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-2-card clone-section-2-card-white">
+      <h3 class="clone-section-2-card-title" style="color: rgb(0,0,0);">Sync with your styles</h3>
+      <p class="clone-section-2-card-desc" style="color: rgba(0,0,0,0.6);">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="clone-section-2-card-preview" style="background: rgb(250, 250, 250); border: 1px solid rgba(0,0,0,0.1);">
+        <div class="clone-section-2-preview-header" style="background: rgb(250, 250, 250); border-bottom: 1px solid rgba(0,0,0,0.1);">
+          <div class="clone-section-2-preview-icon" style="border-color: rgba(0,0,0,0.3);"></div>
+          <span class="clone-section-2-preview-title" style="color: rgb(0,0,0);">Droplette</span>
+        </div>
+        <div class="clone-section-2-preview-body" style="padding: 24px;">
+          <div class="clone-section-2-modal">
+            <div class="clone-section-2-modal-icon"></div>
+            <h4 class="clone-section-2-modal-title">Add your colors</h4>
+            <p class="clone-section-2-modal-desc">Navigate to the file containing your color styles to sync with Droplette.</p>
+            <div class="clone-section-2-modal-status">
+              <div class="clone-section-2-status-dots">
+                <div class="clone-section-2-status-dot"></div>
+                <div class="clone-section-2-status-dot"></div>
+              </div>
+              <span class="clone-section-2-status-text">160 colors synced</span>
+              <button class="clone-section-2-modal-btn">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

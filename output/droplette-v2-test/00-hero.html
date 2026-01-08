@@ -1,0 +1,402 @@
+<style>
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(255,255,255,0.05);
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+  --font-heading: Ein, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+  --text-h1: 69px;
+  --text-h2: 48px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clone-section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.clone-section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.clone-section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.clone-section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: var(--color-background);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.clone-section-0-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-foreground);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.clone-section-0-figma-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.clone-section-0-hero {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clone-section-0-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.clone-section-0-subtitle strong {
+  color: var(--color-foreground);
+  font-weight: var(--weight-medium);
+}
+
+/* Color dots background */
+.clone-section-0-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clone-section-0-dot {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.clone-section-0-dot.teal-1 { background: #00bcd4; top: 15%; left: 5%; }
+.clone-section-0-dot.teal-2 { background: #00bcd4; top: 15%; left: 15%; opacity: 0.5; }
+.clone-section-0-dot.teal-3 { background: #00bcd4; top: 15%; left: 25%; opacity: 0.3; }
+.clone-section-0-dot.blue-1 { background: #2196f3; top: 15%; left: 35%; }
+.clone-section-0-dot.purple { background: #d500f9; top: 15%; left: 45%; }
+.clone-section-0-dot.orange { background: #ff3d00; top: 15%; left: 55%; }
+.clone-section-0-dot.gold { background: #ffb300; top: 15%; left: 65%; }
+.clone-section-0-dot.yellow { background: #ffd54f; top: 15%; left: 75%; }
+.clone-section-0-dot.lime { background: #aeea00; top: 15%; left: 85%; }
+.clone-section-0-dot.cyan { background: #00bcd4; top: 15%; left: 95%; }
+
+.clone-section-0-dot.row2-teal { background: #00bcd4; top: 45%; left: 3%; }
+.clone-section-0-dot.row2-orange { background: #ff5722; top: 45%; left: 13%; }
+.clone-section-0-dot.row2-blue { background: #2196f3; top: 45%; left: 23%; }
+.clone-section-0-dot.row2-purple { background: #9c27b0; top: 45%; left: 38%; }
+.clone-section-0-dot.row2-red { background: #ff3d00; top: 45%; left: 48%; }
+.clone-section-0-dot.row2-amber { background: #ffb300; top: 45%; left: 58%; }
+.clone-section-0-dot.row2-yellow { background: #ffd54f; top: 45%; left: 68%; }
+.clone-section-0-dot.row2-lime { background: #aeea00; top: 45%; left: 78%; }
+.clone-section-0-dot.row2-cyan { background: #4fc3f7; top: 45%; left: 88%; }
+.clone-section-0-dot.row2-teal2 { background: #00bcd4; top: 45%; left: 98%; }
+
+/* Mockup section */
+.clone-section-0-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-panel {
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  min-width: 200px;
+  border: 1px solid var(--color-border);
+}
+
+.clone-section-0-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.clone-section-0-panel-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.clone-section-0-panel-row {
+  height: 12px;
+  background: var(--color-border);
+  border-radius: 4px;
+  margin-bottom: var(--space-xs);
+}
+
+.clone-section-0-panel-row.short { width: 60%; }
+.clone-section-0-panel-row.medium { width: 80%; }
+
+.clone-section-0-color-picker {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  min-width: 280px;
+  border: 1px solid var(--color-border);
+}
+
+.clone-section-0-picker-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-0-picker-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-0-color-bars {
+  display: flex;
+  gap: 2px;
+  height: 300px;
+}
+
+.clone-section-0-color-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.clone-section-0-color-bar:nth-child(1) { background: linear-gradient(to bottom, #ff5722, #ff3d00); }
+.clone-section-0-color-bar:nth-child(2) { background: linear-gradient(to bottom, #ff9800, #ff5722); }
+.clone-section-0-color-bar:nth-child(3) { background: linear-gradient(to bottom, #ffeb3b, #ff9800); }
+.clone-section-0-color-bar:nth-child(4) { background: linear-gradient(to bottom, #cddc39, #ffeb3b); }
+.clone-section-0-color-bar:nth-child(5) { background: linear-gradient(to bottom, #8bc34a, #cddc39); }
+.clone-section-0-color-bar:nth-child(6) { background: linear-gradient(to bottom, #4caf50, #8bc34a); }
+.clone-section-0-color-bar:nth-child(7) { background: linear-gradient(to bottom, #00bcd4, #4caf50); }
+.clone-section-0-color-bar:nth-child(8) { background: linear-gradient(to bottom, #2196f3, #00bcd4); }
+.clone-section-0-color-bar:nth-child(9) { background: linear-gradient(to bottom, #9c27b0, #2196f3); }
+.clone-section-0-color-bar:nth-child(10) { background: linear-gradient(to bottom, #e91e63, #9c27b0); }
+
+/* Rainbow glow effect */
+.clone-section-0::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(ellipse at center top, 
+    rgba(255, 0, 0, 0.15) 0%, 
+    rgba(255, 165, 0, 0.1) 20%,
+    rgba(0, 255, 0, 0.08) 40%,
+    rgba(0, 0, 255, 0.05) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
+
+<div class="clone-section-0">
+  <div class="clone-section-0-dots">
+    <div class="clone-section-0-dot teal-1"></div>
+    <div class="clone-section-0-dot teal-2"></div>
+    <div class="clone-section-0-dot teal-3"></div>
+    <div class="clone-section-0-dot blue-1"></div>
+    <div class="clone-section-0-dot purple"></div>
+    <div class="clone-section-0-dot orange"></div>
+    <div class="clone-section-0-dot gold"></div>
+    <div class="clone-section-0-dot yellow"></div>
+    <div class="clone-section-0-dot lime"></div>
+    <div class="clone-section-0-dot cyan"></div>
+    <div class="clone-section-0-dot row2-teal"></div>
+    <div class="clone-section-0-dot row2-orange"></div>
+    <div class="clone-section-0-dot row2-blue"></div>
+    <div class="clone-section-0-dot row2-purple"></div>
+    <div class="clone-section-0-dot row2-red"></div>
+    <div class="clone-section-0-dot row2-amber"></div>
+    <div class="clone-section-0-dot row2-yellow"></div>
+    <div class="clone-section-0-dot row2-lime"></div>
+    <div class="clone-section-0-dot row2-cyan"></div>
+    <div class="clone-section-0-dot row2-teal2"></div>
+  </div>
+  
+  <nav class="clone-section-0-nav">
+    <div class="clone-section-0-logo"></div>
+    <a href="#" class="clone-section-0-cta-btn">
+      <svg class="clone-section-0-figma-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+        <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+        <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+      </svg>
+      Try in Figma
+    </a>
+  </nav>
+
+  <div class="clone-section-0-hero">
+    <h1 class="clone-section-0-title">An AI tool made to enhance designers.</h1>
+    <p class="clone-section-0-subtitle">
+      Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong>
+    </p>
+  </div>
+
+  <div class="clone-section-0-mockup">
+    <div class="clone-section-0-panel">
+      <div class="clone-section-0-panel-header">
+        <svg class="clone-section-0-panel-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+        </svg>
+        <svg class="clone-section-0-panel-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+          <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="clone-section-0-panel-row medium"></div>
+      <div class="clone-section-0-panel-row short"></div>
+      <div class="clone-section-0-panel-row medium"></div>
+      <div class="clone-section-0-panel-row short"></div>
+    </div>
+
+    <div class="clone-section-0-color-picker">
+      <div class="clone-section-0-picker-header">
+        <div class="clone-section-0-picker-icon"></div>
+        <span>Droplette</span>
+      </div>
+      <div class="clone-section-0-color-bars">
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-0-panel">
+      <div class="clone-section-0-panel-header">
+        <div style="width: 24px; height: 24px; background: #ff5722; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center;">S</div>
+        <svg class="clone-section-0-panel-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </div>
+      <div class="clone-section-0-panel-row medium"></div>
+      <div class="clone-section-0-panel-row short"></div>
+      <div class="clone-section-0-panel-row medium"></div>
+      <div class="clone-section-0-panel-row short"></div>
+    </div>
+  </div>
+</div>

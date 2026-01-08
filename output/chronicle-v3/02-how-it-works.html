@@ -1,0 +1,169 @@
+<style>
+.chronicle-how-section {
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 64px;
+  box-sizing: border-box;
+}
+
+.chronicle-how-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.chronicle-how-content {
+  max-width: 480px;
+}
+
+.chronicle-how-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.chronicle-how-description {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #888888;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.chronicle-how-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.chronicle-how-glow {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(80, 60, 40, 0.4) 0%, rgba(60, 40, 30, 0.2) 40%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.chronicle-how-input-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 380px;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-how-input-icon {
+  width: 20px;
+  height: 20px;
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.chronicle-how-input-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  flex: 1;
+}
+
+.chronicle-how-input-button {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chronicle-how-input-button svg {
+  width: 16px;
+  height: 16px;
+  color: #0a0a0a;
+}
+
+@media (max-width: 1024px) {
+  .chronicle-how-section {
+    padding: 60px 40px;
+  }
+
+  .chronicle-how-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .chronicle-how-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .chronicle-how-heading {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .chronicle-how-section {
+    padding: 48px 24px;
+  }
+
+  .chronicle-how-heading {
+    font-size: 32px;
+  }
+
+  .chronicle-how-description {
+    font-size: 16px;
+  }
+
+  .chronicle-how-input-card {
+    min-width: 100%;
+  }
+}
+</style>
+
+<section class="chronicle-how-section">
+  <div class="chronicle-how-container">
+    <div class="chronicle-how-content">
+      <h2 class="chronicle-how-heading">Start with your raw thoughts and ideas.</h2>
+      <p class="chronicle-how-description">Choose a template, paste in a rough outline, or import existing content.</p>
+    </div>
+
+    <div class="chronicle-how-demo">
+      <div class="chronicle-how-glow"></div>
+      <div class="chronicle-how-input-card">
+        <svg class="chronicle-how-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h6v6"></path>
+          <path d="M10 14L21 3"></path>
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+        </svg>
+        <span class="chronicle-how-input-text">Series A pitch deck for a health app</span>
+        <div class="chronicle-how-input-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

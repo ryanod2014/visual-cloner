@@ -1,0 +1,151 @@
+<style>
+.product-demo {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.product-demo-toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.product-demo-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(40, 40, 40, 0.8);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.product-demo-toolbar-item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.product-demo-toolbar-item.active {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+  color: #3b82f6;
+}
+
+.product-demo-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.product-demo-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 20px;
+}
+
+.product-demo-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.product-demo-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-demo-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-demo-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-demo-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+}
+
+.product-demo-card.dark .product-demo-card-title {
+  color: #ffffff;
+}
+
+.product-demo-card-desc {
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.7);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 320px;
+}
+
+.product-demo-card.dark .product-demo-card-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.product-demo-card-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.product-demo-card.dark .product-demo-card-image {
+  background: rgba(40, 40, 40, 0.8);
+}
+</style>
+
+<div class="product-demo">
+  <div class="product-demo-toolbar">
+    <div class="product-demo-toolbar-inner">
+      <div class="product-demo-toolbar-item active">V</div>
+      <div class="product-demo-toolbar-item">#</div>
+      <div class="product-demo-toolbar-item">[]</div>
+      <div class="product-demo-toolbar-item">H</div>
+      <div class="product-demo-toolbar-item">T</div>
+      <div class="product-demo-toolbar-item">O</div>
+      <div class="product-demo-toolbar-item">*</div>
+      <div class="product-demo-toolbar-item">&lt;/&gt;</div>
+    </div>
+  </div>
+
+  <div class="product-demo-section-header">
+    <h2 class="product-demo-headline">Simple to setup.</h2>
+    <p class="product-demo-subheadline">Select the colors you want to work with, or hook up your styles and go.</p>
+  </div>
+
+  <div class="product-demo-cards">
+    <div class="product-demo-card">
+      <h3 class="product-demo-card-title">Select from your frames</h3>
+      <p class="product-demo-card-desc">Grab some frames and Droplette will extract colors. The AI will use these as a basis for creating your unique palettes.</p>
+      <div class="product-demo-card-image"></div>
+    </div>
+
+    <div class="product-demo-card dark">
+      <h3 class="product-demo-card-title">Sync with your styles</h3>
+      <p class="product-demo-card-desc">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="product-demo-card-image"></div>
+    </div>
+  </div>
+</div>

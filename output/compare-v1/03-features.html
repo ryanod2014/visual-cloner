@@ -1,0 +1,265 @@
+<style>
+.features {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-card {
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.features-card.white {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.features-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.features-plugin-preview {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.features-plugin-header {
+  padding: 12px 16px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+}
+
+.features-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 180px;
+}
+
+.features-palette-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-palette-cell {
+  flex: 1;
+}
+
+.features-slider-section {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.features-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 8px;
+}
+
+.features-slider {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  position: relative;
+}
+
+.features-slider-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  width: 92%;
+}
+
+.features-slider-thumb {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #1a1a1a;
+  border-radius: 50%;
+}
+
+.features-controls {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+}
+
+.features-control-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.features-control-btn.active {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.features-dark-preview {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-dark-header {
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.features-dark-palette {
+  display: flex;
+  height: 200px;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.features-dark-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.features-dark-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.features-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-redo-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+</style>
+
+<div class="features">
+  <div class="features-grid">
+    <div class="features-card white">
+      <div class="features-plugin-preview">
+        <div class="features-plugin-header">Impressionist sunflowers</div>
+        <div class="features-palette-grid">
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #8b6914;"></div>
+            <div class="features-palette-cell" style="background: #9a7516;"></div>
+            <div class="features-palette-cell" style="background: #a98218;"></div>
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #9a7516;"></div>
+            <div class="features-palette-cell" style="background: #a98218;"></div>
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+            <div class="features-palette-cell" style="background: #f9d024;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+            <div class="features-palette-cell" style="background: #f9d024;"></div>
+            <div class="features-palette-cell" style="background: #fade50;"></div>
+          </div>
+        </div>
+        <div class="features-slider-section">
+          <div class="features-slider-label">
+            <span>Saturation</span>
+            <span>+92</span>
+          </div>
+          <div class="features-slider">
+            <div class="features-slider-fill"></div>
+            <div class="features-slider-thumb"></div>
+          </div>
+        </div>
+        <div class="features-controls">
+          <button class="features-control-btn">&#8592;</button>
+          <button class="features-control-btn">&#9681;</button>
+          <button class="features-control-btn active">&#9711;</button>
+          <button class="features-control-btn">&#9788;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-card dark">
+      <div class="features-dark-preview">
+        <div class="features-dark-header">A summer rainbow</div>
+        <div class="features-dark-palette">
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #f97316, #c2410c);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #fb923c, #ea580c);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #facc15, #ca8a04);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #a3e635, #65a30d);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #22d3ee, #0891b2);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #a855f7, #7c3aed);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #ec4899, #be185d);"></div>
+        </div>
+        <div class="features-dark-footer">
+          <button class="features-control-btn" style="background: transparent; border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">&#8592;</button>
+          <div class="features-color-dots">
+            <div class="features-color-dot" style="background: #f97316;"></div>
+            <div class="features-color-dot" style="background: #22d3ee;"></div>
+            <div class="features-color-dot" style="background: #a855f7;"></div>
+          </div>
+          <button class="features-redo-btn">Redo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,324 @@
+<style>
+.clone-section-3 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 80px 24px;
+}
+
+.clone-section-3-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-3-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.clone-section-3-card-title {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin: 0 0 12px;
+}
+
+.clone-section-3-card-desc {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 24px;
+}
+
+/* Adjust card - white background */
+.clone-section-3-adjust-preview {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-3-adjust-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.clone-section-3-adjust-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.3);
+}
+
+.clone-section-3-adjust-title {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+}
+
+.clone-section-3-adjust-body {
+  padding: 16px;
+}
+
+.clone-section-3-palette-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  margin: 0 0 16px;
+}
+
+.clone-section-3-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-palette-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+}
+
+/* Orange/gold palette */
+.clone-section-3-palette-cell:nth-child(n) { background: #c65100; }
+.clone-section-3-palette-cell:nth-child(2n) { background: #d66800; }
+.clone-section-3-palette-cell:nth-child(3n) { background: #e68000; }
+.clone-section-3-palette-cell:nth-child(4n) { background: #f09800; }
+.clone-section-3-palette-cell:nth-child(5n) { background: #ffb000; }
+.clone-section-3-palette-cell:nth-child(6n) { background: #ffc000; }
+
+.clone-section-3-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 8px;
+}
+
+.clone-section-3-slider {
+  width: 100%;
+  height: 4px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-slider-thumb {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+}
+
+.clone-section-3-adjust-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.clone-section-3-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.clone-section-3-icon-btn.active {
+  border-color: #00bcd4;
+  color: #00bcd4;
+}
+
+/* Redo card - dark background */
+.clone-section-3-redo-preview {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-3-redo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-3-redo-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-3-redo-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-3-redo-body {
+  padding: 16px;
+}
+
+.clone-section-3-redo-palette-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  margin: 0 0 16px;
+}
+
+.clone-section-3-rainbow-bars {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-bar {
+  flex: 1;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.clone-section-3-bar:nth-child(1) { background: linear-gradient(to bottom, #ff5722, #ff8a65); }
+.clone-section-3-bar:nth-child(2) { background: linear-gradient(to bottom, #ff9800, #ffb74d); }
+.clone-section-3-bar:nth-child(3) { background: linear-gradient(to bottom, #ffeb3b, #fff176); }
+.clone-section-3-bar:nth-child(4) { background: linear-gradient(to bottom, #8bc34a, #aed581); }
+.clone-section-3-bar:nth-child(5) { background: linear-gradient(to bottom, #00bcd4, #4dd0e1); }
+.clone-section-3-bar:nth-child(6) { background: linear-gradient(to bottom, #2196f3, #64b5f6); }
+.clone-section-3-bar:nth-child(7) { background: linear-gradient(to bottom, #9c27b0, #ba68c8); }
+
+.clone-section-3-selected-colors {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.clone-section-3-selected-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.clone-section-3-selected-dot:nth-child(1) { background: #ffeb3b; }
+.clone-section-3-selected-dot:nth-child(2) { background: #00bcd4; }
+.clone-section-3-selected-dot:nth-child(3) { background: #e91e63; }
+
+.clone-section-3-redo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-3-back-arrow {
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-3-redo-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+</style>
+
+<div class="clone-section-3">
+  <div class="clone-section-3-cards">
+    <div class="clone-section-3-card">
+      <h3 class="clone-section-3-card-title">Adjust as you go</h3>
+      <p class="clone-section-3-card-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="clone-section-3-adjust-preview">
+        <div class="clone-section-3-adjust-header">
+          <div class="clone-section-3-adjust-icon"></div>
+          <span class="clone-section-3-adjust-title">Droplette</span>
+        </div>
+        <div class="clone-section-3-adjust-body">
+          <p class="clone-section-3-palette-name">Impressionist sunflowers</p>
+          <div class="clone-section-3-palette-grid">
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+          </div>
+          <div class="clone-section-3-slider-label">
+            <span>Saturation</span>
+            <span>+92</span>
+          </div>
+          <div class="clone-section-3-slider">
+            <div class="clone-section-3-slider-thumb"></div>
+          </div>
+        </div>
+        <div class="clone-section-3-adjust-footer">
+          <span class="clone-section-3-back-arrow">&larr;</span>
+          <button class="clone-section-3-icon-btn"></button>
+          <button class="clone-section-3-icon-btn active"></button>
+          <button class="clone-section-3-icon-btn"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-3-card">
+      <h3 class="clone-section-3-card-title">Redo with AI</h3>
+      <p class="clone-section-3-card-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="clone-section-3-redo-preview">
+        <div class="clone-section-3-redo-header">
+          <div class="clone-section-3-redo-icon"></div>
+          <span class="clone-section-3-redo-title">Droplette</span>
+        </div>
+        <div class="clone-section-3-redo-body">
+          <p class="clone-section-3-redo-palette-name">A summer rainbow</p>
+          <div class="clone-section-3-rainbow-bars">
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+          </div>
+          <div class="clone-section-3-selected-colors">
+            <div class="clone-section-3-selected-dot"></div>
+            <div class="clone-section-3-selected-dot"></div>
+            <div class="clone-section-3-selected-dot"></div>
+          </div>
+        </div>
+        <div class="clone-section-3-redo-footer">
+          <span class="clone-section-3-back-arrow">&larr;</span>
+          <button class="clone-section-3-redo-btn">Redo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

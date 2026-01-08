@@ -1,0 +1,383 @@
+<style>
+.resend-integrate {
+  background: #000000;
+  padding: 60px 20px 80px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #f0f0f0;
+}
+
+.resend-integrate-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.resend-integrate-title {
+  font-size: 56px;
+  font-weight: 600;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.resend-integrate-title-white {
+  color: #ffffff;
+}
+
+.resend-integrate-title-orange {
+  color: #f97316;
+}
+
+.resend-integrate-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #888888;
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+
+.resend-integrate-sdks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.resend-integrate-sdk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.resend-integrate-sdk-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid #333333;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888888;
+  transition: border-color 0.2s;
+}
+
+.resend-integrate-sdk-icon.resend-integrate-active {
+  border-color: #f97316;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, transparent 100%);
+}
+
+.resend-integrate-sdk-label {
+  font-size: 13px;
+  color: #666666;
+}
+
+.resend-integrate-code-container {
+  background: #0a0a0a;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.resend-integrate-tabs {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #222222;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.resend-integrate-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #666666;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.resend-integrate-tab.resend-integrate-tab-active {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.resend-integrate-tab-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.resend-integrate-copy-btn {
+  margin-left: auto;
+  padding: 6px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.resend-integrate-code {
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+
+.resend-integrate-code pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.resend-integrate-line {
+  display: flex;
+}
+
+.resend-integrate-line-number {
+  color: #444444;
+  width: 32px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 16px;
+  user-select: none;
+}
+
+.resend-integrate-line-content {
+  color: #888888;
+}
+
+.resend-integrate-keyword {
+  color: #888888;
+}
+
+.resend-integrate-variable {
+  color: #f0f0f0;
+}
+
+.resend-integrate-string {
+  color: #f97316;
+}
+
+.resend-integrate-function {
+  color: #f0f0f0;
+}
+
+.resend-integrate-property {
+  color: #888888;
+}
+
+.resend-integrate-punctuation {
+  color: #888888;
+}
+
+.resend-integrate-comment {
+  color: #555555;
+}
+</style>
+
+<section class="resend-integrate" id="resend-integrate">
+  <div class="resend-integrate-container">
+    <h2 class="resend-integrate-title">
+      <span class="resend-integrate-title-white">Integrate</span> <span class="resend-integrate-title-orange">this afternoon</span>
+    </h2>
+    <p class="resend-integrate-subtitle">
+      A simple, elegant interface so you can start sending emails in minutes. It fits right into your code with SDKs for your favorite programming languages.
+    </p>
+
+    <div class="resend-integrate-sdks">
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon resend-integrate-active">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Node.js</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Serverless</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Ruby</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="#666" stroke-width="1.5"/>
+            <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0l-2.83-2.83M9.76 9.76L6.93 6.93" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Python</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 12px; font-weight: 600;">PHP</span>
+        </div>
+        <span class="resend-integrate-sdk-label">PHP</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 12px; font-weight: 600;">GO</span>
+        </div>
+        <span class="resend-integrate-sdk-label">Go</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="#666" stroke-width="1.5"/>
+            <path d="M12 2a10 10 0 0110 10" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Rust</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Java</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M2 12h20" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="#666" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Elixir</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 11px; font-weight: 600;">.NET</span>
+        </div>
+        <span class="resend-integrate-sdk-label">.NET</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">REST</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 10px; font-weight: 600;">SMTP</span>
+        </div>
+        <span class="resend-integrate-sdk-label">SMTP</span>
+      </div>
+    </div>
+
+    <div class="resend-integrate-code-container">
+      <div class="resend-integrate-tabs">
+        <div class="resend-integrate-tab resend-integrate-tab-active">
+          <span class="resend-integrate-tab-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Node.js
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">N</span>
+          Next.js
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">R</span>
+          Remix
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 19h20L12 2z" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Nuxt
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">Ex</span>
+          Express
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Hono
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5"/>
+            </svg>
+          </span>
+          Redwood
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Bun
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5"/>
+            </svg>
+          </span>
+          Astro
+        </div>
+        <div class="resend-integrate-copy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="#666" stroke-width="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="#666" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="resend-integrate-code">
+        <pre><div class="resend-integrate-line"><span class="resend-integrate-line-number">1</span><span class="resend-integrate-line-content"><span class="resend-integrate-keyword">import</span> { <span class="resend-integrate-variable">Resend</span> } <span class="resend-integrate-keyword">from</span> <span class="resend-integrate-string">'resend'</span>;</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">2</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">3</span><span class="resend-integrate-line-content"><span class="resend-integrate-keyword">const</span> <span class="resend-integrate-variable">resend</span> = <span class="resend-integrate-keyword">new</span> <span class="resend-integrate-function">Resend</span>(<span class="resend-integrate-string">'re_xxxxxxxxx'</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">4</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">5</span><span class="resend-integrate-line-content">(<span class="resend-integrate-keyword">async function</span>() {</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">6</span><span class="resend-integrate-line-content">  <span class="resend-integrate-keyword">const</span> { <span class="resend-integrate-variable">data</span>, <span class="resend-integrate-variable">error</span> } = <span class="resend-integrate-keyword">await</span> <span class="resend-integrate-variable">resend</span>.<span class="resend-integrate-property">emails</span>.<span class="resend-integrate-function">send</span>({</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">7</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">from:</span> <span class="resend-integrate-string">'onboarding@resend.dev'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">8</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">to:</span> <span class="resend-integrate-string">'delivered@resend.dev'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">9</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">subject:</span> <span class="resend-integrate-string">'Hello World'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">10</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">html:</span> <span class="resend-integrate-string">'&lt;strong&gt;it works!&lt;/strong&gt;'</span></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">11</span><span class="resend-integrate-line-content">  });</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">12</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">13</span><span class="resend-integrate-line-content">  <span class="resend-integrate-keyword">if</span> (<span class="resend-integrate-variable">error</span>) {</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">14</span><span class="resend-integrate-line-content">    <span class="resend-integrate-keyword">return</span> <span class="resend-integrate-variable">console</span>.<span class="resend-integrate-function">log</span>(<span class="resend-integrate-variable">error</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">15</span><span class="resend-integrate-line-content">  }</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">16</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">17</span><span class="resend-integrate-line-content">  <span class="resend-integrate-variable">console</span>.<span class="resend-integrate-function">log</span>(<span class="resend-integrate-variable">data</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">18</span><span class="resend-integrate-line-content">})();</span></div></pre>
+      </div>
+    </div>
+  </div>
+</section>

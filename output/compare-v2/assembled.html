@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero-with-nav === */
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(0, 0, 0, 0);
+  --color-border: rgb(255, 255, 255);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-link: rgb(255, 255, 255);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-heading: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --text-h1: 69px;
+  --text-h2: 69px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: var(--color-background);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.section-0-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--easing);
+}
+
+.section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.section-0-figma-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-0-figma-icon span {
+  display: flex;
+  gap: 2px;
+}
+
+.section-0-figma-icon span div {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+.section-0-hero {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.section-0-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-0-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-0-subtitle strong {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-normal);
+}
+
+.section-0-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xxl);
+  padding: var(--space-xl) 0;
+  flex-wrap: wrap;
+}
+
+.section-0-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.section-0-mockup-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.section-0-mockup {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  min-width: 200px;
+}
+
+.section-0-mockup-main {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  width: 320px;
+}
+
+.section-0-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.section-0-mockup-icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-text-secondary);
+  border-radius: 50%;
+}
+
+.section-0-mockup-title {
+  font-size: var(--text-small);
+  color: var(--color-text-primary);
+}
+
+.section-0-palette {
+  display: flex;
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.section-0-palette-bar {
+  flex: 1;
+}
+
+/* Background glow effects */
+.section-0-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.section-0-glow-1 {
+  top: 0;
+  right: 20%;
+  background: linear-gradient(135deg, #ff6b00, #ffcc00);
+}
+
+.section-0-glow-2 {
+  top: 30%;
+  left: 10%;
+  background: linear-gradient(135deg, #00ccff, #0066ff);
+}
+
+.section-0-glow-3 {
+  bottom: 20%;
+  right: 30%;
+  background: linear-gradient(135deg, #cc00ff, #ff0066);
+}
+
+/* === Section: 01-simple-to-setup === */
+.section-1 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.section-1-header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+.section-1-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-md);
+}
+
+.section-1-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.section-1-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-1-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-1-card-left {
+  background: #ffffff;
+  color: #000000;
+}
+
+.section-1-card-right {
+  background: rgb(30, 30, 30);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.section-1-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-sm);
+}
+
+.section-1-card-left .section-1-card-title {
+  color: #000000;
+}
+
+.section-1-card-right .section-1-card-title {
+  color: #ffffff;
+}
+
+.section-1-card-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-1-card-left .section-1-card-desc {
+  color: rgba(0,0,0,0.6);
+}
+
+.section-1-card-right .section-1-card-desc {
+  color: var(--color-text-secondary);
+}
+
+.section-1-mockup {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: auto;
+}
+
+.section-1-mockup-light {
+  background: rgb(245, 245, 245);
+}
+
+.section-1-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-1-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.section-1-mockup-label {
+  font-size: 13px;
+}
+
+.section-1-mockup-light .section-1-mockup-label {
+  color: #000000;
+}
+
+.section-1-mockup .section-1-mockup-label {
+  color: #ffffff;
+}
+
+/* === Section: 02-features-1 === */
+.section-2 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.section-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-2-card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-2-card-light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.section-2-card-dark {
+  background: rgb(30, 30, 30);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-2-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-sm);
+}
+
+.section-2-card-light .section-2-card-title {
+  color: #000000;
+}
+
+.section-2-card-dark .section-2-card-title {
+  color: #ffffff;
+}
+
+.section-2-card-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-2-card-light .section-2-card-desc {
+  color: rgba(0,0,0,0.6);
+}
+
+.section-2-card-dark .section-2-card-desc {
+  color: var(--color-text-secondary);
+}
+
+.section-2-mockup {
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-2-mockup-light {
+  background: rgb(245, 245, 245);
+}
+
+.section-2-mockup-dark {
+  background: rgb(40, 40, 40);
+}
+
+.section-2-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-2-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.section-2-mockup-label {
+  font-size: 13px;
+}
+
+.section-2-palette-preview {
+  display: flex;
+  height: 200px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.section-2-palette-bar {
+  flex: 1;
+}
+
+.section-2-color-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.section-2-color-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.section-2-slider {
+  margin: var(--space-md) 0;
+}
+
+.section-2-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: var(--space-xs);
+}
+
+.section-2-slider-track {
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  position: relative;
+}
+
+.section-2-slider-thumb {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.section-2-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-md);
+}
+
+.section-2-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.section-2-icon-btn-active {
+  border-color: #2196f3;
+  color: #2196f3;
+}
+
+/* === Section: 03-features-2-faq === */
+.section-3 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.section-3-header {
+  text-align: left;
+  margin-bottom: var(--space-xxl);
+  max-width: 600px;
+}
+
+.section-3-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.section-3-faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-3-faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-lg) 0;
+}
+
+.section-3-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+.section-3-faq-text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  color: var(--color-text-secondary);
+}
+
+.section-3-faq-icon {
+  font-size: 24px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+/* === Section: 04-pricing === */
+.section-4 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+  position: relative;
+}
+
+.section-4-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xxl);
+  padding: var(--space-xl) 0;
+  flex-wrap: wrap;
+  opacity: 0.5;
+}
+
+.section-4-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.section-4-card {
+  max-width: 900px;
+  margin: var(--space-xxl) auto;
+  border: 1px solid rgba(128, 0, 128, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xxl);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(128, 0, 128, 0.05) 0%, transparent 100%);
+}
+
+.section-4-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-4-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-xl);
+}
+
+.section-4-highlight {
+  color: var(--color-text-primary);
+}
+
+.section-4-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.section-4-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--easing);
+}
+
+.section-4-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  border: none;
+}
+
+.section-4-btn-primary .section-4-price-old {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+
+.section-4-btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-light);
+}
+
+.section-4-btn:hover {
+  opacity: 0.9;
+}
+
+/* === Section: 05-footer === */
+.section-5 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-xxl) var(--space-section-x);
+  text-align: center;
+}
+
+.section-5-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.section-5-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.section-5-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.section-5-link {
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.section-5-link:hover {
+  text-decoration: underline;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero-with-nav -->
+  <section class="section-0">
+  <!-- Background glows -->
+  <div class="section-0-glow section-0-glow-1"></div>
+  <div class="section-0-glow section-0-glow-2"></div>
+  <div class="section-0-glow section-0-glow-3"></div>
+
+  <!-- Navigation -->
+  <nav class="section-0-nav">
+    <div class="section-0-logo"></div>
+    <a href="#" class="section-0-cta-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+        <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+        <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+      </svg>
+      Try in Figma
+    </a>
+  </nav>
+
+  <!-- Hero Content -->
+  <div class="section-0-hero">
+    <h1 class="section-0-title">An AI tool made to enhance designers.</h1>
+    <p class="section-0-subtitle">
+      Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong>
+    </p>
+  </div>
+
+  <!-- Color Dots Row -->
+  <div class="section-0-color-dots">
+    <div class="section-0-dot" style="background: #00bcd4;"></div>
+    <div class="section-0-dot" style="background: #e91e63;"></div>
+    <div class="section-0-dot" style="background: #2196f3;"></div>
+    <div class="section-0-dot" style="background: #9c27b0;"></div>
+    <div class="section-0-dot" style="background: #ff5722;"></div>
+    <div class="section-0-dot" style="background: #ffc107;"></div>
+    <div class="section-0-dot" style="background: #ffeb3b;"></div>
+    <div class="section-0-dot" style="background: #8bc34a;"></div>
+    <div class="section-0-dot" style="background: #e91e63;"></div>
+    <div class="section-0-dot" style="background: #00bcd4;"></div>
+  </div>
+
+  <!-- Mockup Container -->
+  <div class="section-0-mockup-container">
+    <!-- Left sidebar mockup -->
+    <div class="section-0-mockup" style="opacity: 0.6;">
+      <div style="background: rgb(60,60,60); height: 20px; width: 80px; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 60px; border-radius: 4px; margin-bottom: 16px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 100px; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 80px; border-radius: 4px;"></div>
+    </div>
+
+    <!-- Main Droplette mockup -->
+    <div class="section-0-mockup-main">
+      <div class="section-0-mockup-header">
+        <div class="section-0-mockup-icon"></div>
+        <span class="section-0-mockup-title">Droplette</span>
+      </div>
+      <div class="section-0-palette">
+        <div class="section-0-palette-bar" style="background: #ff5722;"></div>
+        <div class="section-0-palette-bar" style="background: #ff9800;"></div>
+        <div class="section-0-palette-bar" style="background: #ffc107;"></div>
+        <div class="section-0-palette-bar" style="background: #ffeb3b;"></div>
+        <div class="section-0-palette-bar" style="background: #cddc39;"></div>
+        <div class="section-0-palette-bar" style="background: #8bc34a;"></div>
+        <div class="section-0-palette-bar" style="background: #00bcd4;"></div>
+        <div class="section-0-palette-bar" style="background: #2196f3;"></div>
+        <div class="section-0-palette-bar" style="background: #9c27b0;"></div>
+      </div>
+    </div>
+
+    <!-- Right sidebar mockup -->
+    <div class="section-0-mockup" style="opacity: 0.6;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+        <div style="width: 24px; height: 24px; border-radius: 50%; background: #ff5722;"></div>
+        <div style="background: rgb(60,60,60); height: 16px; width: 60px; border-radius: 4px;"></div>
+      </div>
+      <div style="background: rgb(60,60,60); height: 12px; width: 100%; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 12px; width: 80%; border-radius: 4px;"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 01-simple-to-setup -->
+  <section class="section-1">
+  <div class="section-1-header">
+    <h2 class="section-1-title">Simple to setup.</h2>
+    <p class="section-1-subtitle">Select the colors you want to work with, or hook up your styles and go.</p>
+  </div>
+
+  <div class="section-1-grid">
+    <!-- Left Card - Select from frames -->
+    <div class="section-1-card section-1-card-left">
+      <h3 class="section-1-card-title">Select from your frames</h3>
+      <p class="section-1-card-desc">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="section-1-mockup section-1-mockup-light">
+        <div class="section-1-mockup-header">
+          <div class="section-1-mockup-icon" style="border-color: #000;"></div>
+          <span class="section-1-mockup-label">Droplette</span>
+        </div>
+        <div style="background: #e0e0e0; height: 120px; border-radius: 8px;"></div>
+      </div>
+    </div>
+
+    <!-- Right Card - Sync with styles -->
+    <div class="section-1-card section-1-card-right">
+      <h3 class="section-1-card-title">Sync with your styles</h3>
+      <p class="section-1-card-desc">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="section-1-mockup">
+        <div class="section-1-mockup-header">
+          <div class="section-1-mockup-icon" style="border-color: #fff;"></div>
+          <span class="section-1-mockup-label">Droplette</span>
+        </div>
+        <div style="background: rgb(60,60,60); height: 120px; border-radius: 8px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-features-1 -->
+  <section class="section-2">
+  <div class="section-2-grid">
+    <!-- Left Card - Adjust as you go (Light) -->
+    <div class="section-2-card section-2-card-light">
+      <h3 class="section-2-card-title">Adjust as you go</h3>
+      <p class="section-2-card-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="section-2-mockup section-2-mockup-light">
+        <div class="section-2-mockup-header">
+          <div class="section-2-mockup-icon" style="border-color: #000;"></div>
+          <span class="section-2-mockup-label" style="color: #000;">Droplette</span>
+        </div>
+        <div style="font-size: 14px; color: #000; margin-bottom: 12px;">Impressionist sunflowers</div>
+        <div class="section-2-palette-preview">
+          <div class="section-2-palette-bar" style="background: #5d4e37;"></div>
+          <div class="section-2-palette-bar" style="background: #8b7355;"></div>
+          <div class="section-2-palette-bar" style="background: #a08050;"></div>
+          <div class="section-2-palette-bar" style="background: #c4a035;"></div>
+          <div class="section-2-palette-bar" style="background: #d4b020;"></div>
+          <div class="section-2-palette-bar" style="background: #e8c41a;"></div>
+          <div class="section-2-palette-bar" style="background: #f0d020;"></div>
+          <div class="section-2-palette-bar" style="background: #f5da30;"></div>
+          <div class="section-2-palette-bar" style="background: #f8e040;"></div>
+          <div class="section-2-palette-bar" style="background: #fae550;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Card - Redo with AI (Dark) -->
+    <div class="section-2-card section-2-card-dark">
+      <h3 class="section-2-card-title">Redo with AI</h3>
+      <p class="section-2-card-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="section-2-mockup section-2-mockup-dark">
+        <div class="section-2-mockup-header">
+          <div class="section-2-mockup-icon" style="border-color: #fff;"></div>
+          <span class="section-2-mockup-label" style="color: #fff;">Droplette</span>
+        </div>
+        <div style="font-size: 14px; color: #fff; margin-bottom: 12px;">A summer rainbow</div>
+        <div class="section-2-palette-preview">
+          <div class="section-2-palette-bar" style="background: #ff5722;"></div>
+          <div class="section-2-palette-bar" style="background: #ff9800;"></div>
+          <div class="section-2-palette-bar" style="background: #ffc107;"></div>
+          <div class="section-2-palette-bar" style="background: #ffeb3b;"></div>
+          <div class="section-2-palette-bar" style="background: #8bc34a;"></div>
+          <div class="section-2-palette-bar" style="background: #00bcd4;"></div>
+          <div class="section-2-palette-bar" style="background: #2196f3;"></div>
+          <div class="section-2-palette-bar" style="background: #9c27b0;"></div>
+        </div>
+        <div class="section-2-color-row" style="margin-top: 16px;">
+          <div class="section-2-color-dot" style="background: #8bc34a;"></div>
+          <div class="section-2-color-dot" style="background: #e91e63;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-features-2-faq -->
+  <section class="section-3">
+  <div class="section-3-header">
+    <h2 class="section-3-title">Frequently asked questions.</h2>
+  </div>
+
+  <div class="section-3-faq">
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">Give me the elevator pitch for Droplette...</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">Is Droplette free to use?</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">What languages does Droplette support?</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">How accurate is Droplette?</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">How long does Droplette take to run?</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+
+    <div class="section-3-faq-item">
+      <button class="section-3-faq-question">
+        <span class="section-3-faq-text">How do I setup Droplette?</span>
+        <span class="section-3-faq-icon">+</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-pricing -->
+  <section class="section-4">
+  <!-- Decorative color dots -->
+  <div class="section-4-color-dots">
+    <div class="section-4-dot" style="background: #00bcd4;"></div>
+    <div class="section-4-dot" style="background: #9c27b0;"></div>
+    <div class="section-4-dot" style="background: #2196f3;"></div>
+    <div class="section-4-dot" style="background: #e91e63;"></div>
+    <div class="section-4-dot" style="background: #ff5722;"></div>
+    <div class="section-4-dot" style="background: #ffc107;"></div>
+    <div class="section-4-dot" style="background: #ffeb3b;"></div>
+    <div class="section-4-dot" style="background: #8bc34a;"></div>
+    <div class="section-4-dot" style="background: #9c27b0;"></div>
+    <div class="section-4-dot" style="background: #00bcd4;"></div>
+  </div>
+
+  <!-- Pricing Card -->
+  <div class="section-4-card">
+    <h2 class="section-4-title">One price.<br>No subscription.</h2>
+    <p class="section-4-subtitle">
+      Bring your own API key for OpenAI. Droplette is a single payment. <span class="section-4-highlight">Special launch price of $9</span>.
+    </p>
+    <div class="section-4-buttons">
+      <a href="#" class="section-4-btn section-4-btn-primary">
+        Buy license $9 <span class="section-4-price-old">$20</span>
+      </a>
+      <a href="#" class="section-4-btn section-4-btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+          <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+          <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+          <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+          <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+        </svg>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 05-footer -->
+  <footer class="section-5">
+  <div class="section-5-content">
+    <span class="section-5-text">Another Figma plugin crafted by</span>
+    <svg class="section-5-logo" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M8 12 L16 8 L14 16 L10 14 Z" fill="currentColor"/>
+    </svg>
+    <a href="https://relay.design" class="section-5-link">Relay</a>
+  </div>
+</footer>
+</body>
+</html>

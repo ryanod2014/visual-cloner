@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Droplette - Hero</title>
+  <style>
+    :root {
+      --color-bg: rgb(14,14,14);
+      --color-text: rgb(255,255,255);
+      --color-muted: rgba(255,255,255,0.7);
+      --font: ui-sans-serif, -apple-system, system-ui, sans-serif;
+      --h1-size: 69px;
+      --body-size: 16px;
+      --radius-button: 30px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .s0-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .s0-logo {
+      width: 44px;
+      height: 44px;
+      position: relative;
+    }
+
+    .s0-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .s0-nav-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-text);
+      color: var(--color-bg);
+      border: none;
+      border-radius: var(--radius-button);
+      padding: 12px 24px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .s0-nav-button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hero Section */
+    .s0-hero {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px 80px;
+      overflow: hidden;
+    }
+
+    /* Rainbow gradient glow at top */
+    .s0-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 500px;
+      background: radial-gradient(ellipse at center,
+        rgba(255,100,100,0.3) 0%,
+        rgba(255,200,50,0.2) 20%,
+        rgba(100,255,100,0.2) 35%,
+        rgba(50,200,255,0.2) 50%,
+        rgba(150,100,255,0.15) 65%,
+        transparent 80%
+      );
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .s0-hero-title {
+      font-size: var(--h1-size);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .s0-hero-subtitle {
+      font-size: 18px;
+      color: var(--color-muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .s0-hero-subtitle strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* Floating color dots background */
+    .s0-dots-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .s0-dot {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    /* UI Mockups */
+    .s0-mockups {
+      position: relative;
+      max-width: 1200px;
+      margin: 60px auto 0;
+      height: 420px;
+    }
+
+    .s0-panel {
+      position: absolute;
+      background: rgba(40, 40, 40, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* Left panel - Figma layers */
+    .s0-panel-left {
+      left: 0;
+      top: 20px;
+      width: 220px;
+      height: 420px;
+      padding: 16px;
+    }
+
+    .s0-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .s0-panel-icon {
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 4px;
+    }
+
+    .s0-panel-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .s0-panel-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+    }
+
+    /* Center panel - Droplette palette */
+    .s0-panel-center {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      width: 280px;
+      background: rgba(50, 50, 50, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .s0-droplette-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: rgba(60, 60, 60, 0.8);
+    }
+
+    .s0-droplette-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, #ff6b6b, #feca57, #48dbfb, #ff6b6b);
+    }
+
+    .s0-droplette-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .s0-color-palette {
+      display: flex;
+      height: 360px;
+    }
+
+    .s0-color-strip {
+      flex: 1;
+    }
+
+    /* Right panel - Figma properties */
+    .s0-panel-right {
+      right: 0;
+      top: 20px;
+      width: 230px;
+      height: 400px;
+      padding: 16px;
+    }
+
+    .s0-panel-right-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .s0-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .s0-play-btn {
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border: none;
+    }
+
+    .s0-share-btn {
+      margin-left: auto;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .s0-prop-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0;
+    }
+
+    .s0-prop-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+    }
+
+    .s0-prop-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+    }
+
+    /* Right side floating dots */
+    .s0-floating-dots {
+      position: absolute;
+      right: -60px;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+    }
+
+    .s0-float-dot {
+      position: absolute;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="s0-nav">
+    <div class="s0-logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" fill="url(#logoGradient)"/>
+        <circle cx="16" cy="22" r="8" fill="#FFD93D"/>
+        <circle cx="28" cy="16" r="6" fill="#6BCB77"/>
+        <circle cx="28" cy="28" r="6" fill="#4D96FF"/>
+        <defs>
+          <radialGradient id="logoGradient" cx="0.3" cy="0.3" r="0.8">
+            <stop offset="0%" stop-color="#FFD93D"/>
+            <stop offset="50%" stop-color="#6BCB77"/>
+            <stop offset="100%" stop-color="#4D96FF"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <a href="#" class="s0-nav-button">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 1L8 8M8 8L15 8M8 8L1 8M8 8L8 15" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="1" y="1" width="6" height="6" fill="currentColor"/>
+        <rect x="9" y="1" width="6" height="6" fill="currentColor"/>
+        <rect x="1" y="9" width="6" height="6" fill="currentColor"/>
+        <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+      </svg>
+      Try in Figma
+    </a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="s0-hero">
+    <!-- Floating dots background -->
+    <div class="s0-dots-container">
+      <!-- Row 1 -->
+      <div class="s0-dot" style="left: 5%; top: 8%; width: 24px; height: 24px; background: #8B9A46;"></div>
+      <div class="s0-dot" style="left: 10%; top: 14%; width: 28px; height: 28px; background: #C4D94A;"></div>
+      <div class="s0-dot" style="left: 18%; top: 6%; width: 32px; height: 32px; background: #5BC8E8;"></div>
+      <div class="s0-dot" style="left: 26%; top: 10%; width: 26px; height: 26px; background: #4A9BD9;"></div>
+      <div class="s0-dot" style="left: 34%; top: 5%; width: 28px; height: 28px; background: #6B5B95;"></div>
+      <div class="s0-dot" style="left: 42%; top: 12%; width: 30px; height: 30px; background: #8E7CC3;"></div>
+      <div class="s0-dot" style="left: 50%; top: 4%; width: 22px; height: 22px; background: #D4A5A5;"></div>
+      <div class="s0-dot" style="left: 58%; top: 10%; width: 26px; height: 26px; background: #7CB342;"></div>
+      <div class="s0-dot" style="left: 66%; top: 6%; width: 30px; height: 30px; background: #66BB6A;"></div>
+      <div class="s0-dot" style="left: 74%; top: 12%; width: 24px; height: 24px; background: #4DB6AC;"></div>
+      <div class="s0-dot" style="left: 82%; top: 5%; width: 28px; height: 28px; background: #5C6BC0;"></div>
+      <div class="s0-dot" style="left: 90%; top: 10%; width: 26px; height: 26px; background: #7986CB;"></div>
+
+      <!-- Row 2 -->
+      <div class="s0-dot" style="left: 2%; top: 28%; width: 30px; height: 30px; background: #AED581;"></div>
+      <div class="s0-dot" style="left: 14%; top: 32%; width: 34px; height: 34px; background: #29B6F6;"></div>
+      <div class="s0-dot" style="left: 26%; top: 28%; width: 28px; height: 28px; background: #4FC3F7;"></div>
+      <div class="s0-dot" style="left: 38%; top: 34%; width: 26px; height: 26px; background: #CE93D8;"></div>
+      <div class="s0-dot" style="left: 50%; top: 30%; width: 24px; height: 24px; background: #F48FB1;"></div>
+      <div class="s0-dot" style="left: 62%; top: 32%; width: 30px; height: 30px; background: #EF5350;"></div>
+      <div class="s0-dot" style="left: 74%; top: 28%; width: 28px; height: 28px; background: #FFB74D;"></div>
+      <div class="s0-dot" style="left: 86%; top: 34%; width: 26px; height: 26px; background: #FFF176;"></div>
+      <div class="s0-dot" style="left: 94%; top: 30%; width: 22px; height: 22px; background: #AED581;"></div>
+
+      <!-- Row 3 -->
+      <div class="s0-dot" style="left: 6%; top: 52%; width: 32px; height: 32px; background: #C5E1A5;"></div>
+      <div class="s0-dot" style="left: 92%; top: 50%; width: 34px; height: 34px; background: #42A5F5;"></div>
+      <div class="s0-dot" style="left: 94%; top: 62%; width: 30px; height: 30px; background: #5C6BC0;"></div>
+      <div class="s0-dot" style="left: 2%; top: 70%; width: 28px; height: 28px; background: #9CCC65;"></div>
+      <div class="s0-dot" style="left: 92%; top: 75%; width: 26px; height: 26px; background: #42A5F5;"></div>
+      <div class="s0-dot" style="left: 4%; top: 88%; width: 24px; height: 24px; background: #AED581;"></div>
+      <div class="s0-dot" style="left: 94%; top: 88%; width: 20px; height: 20px; background: #64B5F6;"></div>
+    </div>
+
+    <h1 class="s0-hero-title">An AI tool made to<br>enhance designers.</h1>
+    <p class="s0-hero-subtitle">Create palettes in Figma & FigJam based on your color styles<br>easily with <strong>Droplette, AI that works for you.</strong></p>
+
+    <!-- UI Mockups -->
+    <div class="s0-mockups">
+      <!-- Left Panel - Layers -->
+      <div class="s0-panel s0-panel-left">
+        <div class="s0-panel-header">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(255,255,255,0.5)">
+              <rect x="2" y="2" width="5" height="5" rx="1"/>
+              <rect x="9" y="2" width="5" height="5" rx="1"/>
+              <rect x="2" y="9" width="5" height="5" rx="1"/>
+              <rect x="9" y="9" width="5" height="5" rx="1"/>
+            </svg>
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+              <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+            </svg>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5">
+            <rect x="2" y="2" width="5" height="12" rx="1"/>
+            <rect x="9" y="2" width="5" height="12" rx="1"/>
+          </svg>
+        </div>
+
+        <div class="s0-panel-row">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+          <div class="s0-panel-bar" style="width: 70px;"></div>
+        </div>
+        <div class="s0-panel-row" style="padding-left: 16px;">
+          <div class="s0-panel-bar" style="width: 40px;"></div>
+        </div>
+        <div class="s0-panel-row" style="margin-top: 12px;">
+          <div class="s0-panel-bar" style="width: 20px; background: rgba(255,255,255,0.3);"></div>
+          <div class="s0-panel-bar" style="width: 40px;"></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <circle cx="7" cy="7" r="5"/>
+            <path d="M10 10L13 13"/>
+          </svg>
+        </div>
+        <div class="s0-panel-row">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+          <div class="s0-panel-bar" style="width: 50px;"></div>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <path d="M6 2V10M2 6H10"/>
+          </svg>
+        </div>
+        <div class="s0-panel-row">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+          <div class="s0-panel-bar" style="width: 35px;"></div>
+        </div>
+      </div>
+
+      <!-- Center Panel - Droplette -->
+      <div class="s0-panel-center">
+        <div class="s0-droplette-header">
+          <div class="s0-droplette-icon"></div>
+          <span class="s0-droplette-title">Droplette</span>
+        </div>
+        <div class="s0-color-palette">
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #FF6B6B, #E55A5A);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #FF8E53, #E67A45);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #FFB347, #E69D3D);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #C5E847, #A8C93D);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #7ED321, #6BB51C);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #4ECDC4, #42AEA6);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #45B7D1, #3A9AB1);"></div>
+          <div class="s0-color-strip" style="background: linear-gradient(to bottom, #9B59B6, #824A99);"></div>
+        </div>
+      </div>
+
+      <!-- Right Panel - Properties -->
+      <div class="s0-panel s0-panel-right">
+        <div class="s0-panel-right-header">
+          <div class="s0-avatar">S</div>
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,0.4)">
+            <path d="M5 3L11 8L5 13" stroke-width="1.5"/>
+          </svg>
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+          <div class="s0-share-btn">Share</div>
+        </div>
+
+        <div class="s0-prop-row">
+          <div class="s0-prop-bar" style="width: 50px;"></div>
+          <div class="s0-prop-bar" style="width: 40px;"></div>
+          <div class="s0-prop-bar" style="width: 50px;"></div>
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <path d="M2 3L4 5L6 3" stroke="rgba(255,255,255,0.5)" fill="none"/>
+          </svg>
+        </div>
+        <div class="s0-prop-row">
+          <div class="s0-prop-bar" style="width: 60px;"></div>
+          <span class="s0-prop-icon">@</span>
+        </div>
+        <div class="s0-prop-row">
+          <div style="width: 16px; height: 16px; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+          <div class="s0-prop-bar" style="width: 30px;"></div>
+          <div style="flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; position: relative;">
+            <div style="position: absolute; left: 30%; top: -3px; width: 10px; height: 10px; background: white; border-radius: 50%;"></div>
+          </div>
+          <div class="s0-prop-bar" style="width: 25px;"></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(255,255,255,0.4)">
+            <circle cx="7" cy="7" r="5"/>
+            <circle cx="7" cy="7" r="2" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+        <div class="s0-prop-row">
+          <div class="s0-prop-bar" style="width: 80px;"></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <path d="M3 7H11M7 3V11"/>
+          </svg>
+        </div>
+        <div class="s0-prop-row">
+          <div class="s0-prop-bar" style="width: 70px;"></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <path d="M2 5H12M2 9H12"/>
+          </svg>
+        </div>
+        <div class="s0-prop-row">
+          <div class="s0-prop-bar" style="width: 60px;"></div>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="rgba(255,255,255,0.3)" style="margin-left: auto;">
+            <path d="M6 2V10M2 6H10"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Floating dots on right -->
+      <div class="s0-floating-dots">
+        <div class="s0-float-dot" style="right: 20px; top: 30px; width: 30px; height: 30px; background: #42A5F5;"></div>
+        <div class="s0-float-dot" style="right: 10px; top: 140px; width: 34px; height: 34px; background: #5C6BC0;"></div>
+        <div class="s0-float-dot" style="right: 25px; top: 250px; width: 28px; height: 28px; background: #42A5F5;"></div>
+        <div class="s0-float-dot" style="right: 15px; top: 350px; width: 22px; height: 22px; background: #64B5F6;"></div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* === DARK THEME OVERRIDES (Droplette) === */
+
+/* Subtle borders on dark backgrounds */
+.card, .task-card, .kanban-card {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Dashed borders need adjustment */
+[style*="dashed"] {
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar { width: var(--scrollbar-width); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: var(--radius-full); }
+
+/* Text selection */
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+}

@@ -1,0 +1,206 @@
+<!-- Section 4: Pricing + Footer -->
+<style>
+  .clone-section-4-pricing-wrapper {
+    background-color: var(--color-background);
+    padding: 0 var(--space-section-x) var(--space-section-y);
+  }
+
+  .clone-section-4-pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 120px 40px 140px;
+    text-align: center;
+    background-color: rgba(20, 20, 20, 0.5);
+  }
+
+  .clone-section-4-headline {
+    font-family: var(--font-primary);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-normal);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin: 0 0 32px;
+  }
+
+  .clone-section-4-description {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: var(--weight-normal);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 auto 40px;
+    max-width: 500px;
+  }
+
+  .clone-section-4-highlight {
+    color: var(--color-text-primary);
+  }
+
+  .clone-section-4-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .clone-section-4-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .clone-section-4-btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .clone-section-4-strikethrough {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .clone-section-4-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .clone-section-4-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .clone-section-4-figma-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Footer */
+  .clone-section-4-footer {
+    background-color: var(--color-background);
+    padding: 60px var(--space-section-x) 40px;
+  }
+
+  .clone-section-4-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clone-section-4-footer-text {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clone-section-4-relay-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .clone-section-4-relay-logo:hover {
+    opacity: 0.8;
+  }
+
+  .clone-section-4-relay-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .clone-section-4-headline {
+      font-size: 42px;
+    }
+
+    .clone-section-4-pricing-container {
+      padding: 80px 24px 100px;
+    }
+
+    .clone-section-4-buttons {
+      flex-direction: column;
+    }
+
+    .clone-section-4-btn-primary,
+    .clone-section-4-btn-secondary {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+</style>
+
+<section class="clone-section-4-pricing-wrapper">
+  <div class="clone-section-4-pricing-container">
+    <h2 class="clone-section-4-headline">Simple pricing.<br>No hidden fees.</h2>
+
+    <p class="clone-section-4-description">
+      Connect your existing accounts and get started instantly. <span class="clone-section-4-highlight">Special introductory price of $9.</span>
+    </p>
+
+    <div class="clone-section-4-buttons">
+      <button class="clone-section-4-btn-primary">
+        Get Started $9 <span class="clone-section-4-strikethrough">$20</span>
+      </button>
+
+      <a href="#" class="clone-section-4-btn-secondary">
+        <svg class="clone-section-4-figma-icon" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+          <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+          <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+          <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+          <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+        </svg>
+        Try it Free
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="clone-section-4-footer">
+  <div class="clone-section-4-footer-content">
+    <span class="clone-section-4-footer-text">
+      Proudly built by
+      <a href="#" class="clone-section-4-relay-logo">
+        <svg class="clone-section-4-relay-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="currentColor"/>
+          <path d="M7 8h10M7 12h10M7 16h6" stroke="var(--color-accent-foreground)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        TechCorp
+      </a>
+    </span>
+  </div>
+</footer>

@@ -1,0 +1,239 @@
+<style>
+.chronicle-features-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+}
+
+.chronicle-features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-features-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.chronicle-features-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-features-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.chronicle-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chronicle-features-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.chronicle-features-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.chronicle-features-card-large {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.chronicle-features-card-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.chronicle-features-card-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #a855f7;
+}
+
+.chronicle-features-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.chronicle-features-card-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.chronicle-features-card-visual {
+  flex: 1;
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border-radius: 12px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chronicle-features-card-visual-placeholder {
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.chronicle-features-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.chronicle-features-card-small {
+  min-height: auto;
+  padding: 24px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-desc {
+  font-size: 13px;
+}
+</style>
+
+<section class="chronicle-features-section">
+  <div class="chronicle-features-container">
+    <div class="chronicle-features-header">
+      <h2 class="chronicle-features-title">Built for business.<br>Feels like play.</h2>
+      <p class="chronicle-features-subtitle">Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.</p>
+    </div>
+
+    <div class="chronicle-features-grid">
+      <div class="chronicle-features-card chronicle-features-card-large">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Smart templates</h5>
+        <p class="chronicle-features-card-desc">Save your own templates that your team can insert or use to generate content.</p>
+        <div class="chronicle-features-card-visual">
+          <div class="chronicle-features-card-visual-placeholder">Template Preview</div>
+        </div>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-large">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Social and PDF export</h5>
+        <p class="chronicle-features-card-desc">Share your Chronicle as a high quality PDF or beautiful animated GIF.</p>
+        <div class="chronicle-features-card-visual">
+          <div class="chronicle-features-card-visual-placeholder">Export Preview</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-features-row">
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Themes & branding</h5>
+        <p class="chronicle-features-card-desc">Add your logo, and switch up colors, fonts and backgrounds to match your style.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Smart canvas</h5>
+        <p class="chronicle-features-card-desc">Drag widgets in a freeform canvas, then tidy up to snap elements into neat layouts.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Real-time collaboration</h5>
+        <p class="chronicle-features-card-desc">Work together live with shared editing, cursors, and team workspaces.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Publish to web</h5>
+        <p class="chronicle-features-card-desc">Turn your Chronicle into a shareable link and track engagement and views.</p>
+      </div>
+    </div>
+  </div>
+</section>

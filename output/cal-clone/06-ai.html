@@ -1,0 +1,315 @@
+<!-- Section: cal-ai - Testimonials -->
+<section class="cal-ai-section" id="cal-ai">
+  <div class="cal-ai-container">
+    <!-- Testimonials Badge -->
+    <div class="cal-ai-badge">
+      <svg class="cal-ai-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <span>Testimonials</span>
+    </div>
+
+    <!-- Heading -->
+    <h2 class="cal-ai-heading">Don't just take our word for it</h2>
+
+    <!-- Subheading -->
+    <p class="cal-ai-subheading">Our users are our best ambassadors. Discover why we're the top choice for scheduling meetings.</p>
+
+    <!-- Testimonials Carousel -->
+    <div class="cal-ai-carousel">
+      <!-- Left Card (Faded) -->
+      <div class="cal-ai-card cal-ai-card-side cal-ai-card-left">
+        <p class="cal-ai-quote">go and it's definitely the ng I've ever scheduled!"</p>
+        <div class="cal-ai-author">
+          <div class="cal-ai-avatar cal-ai-avatar-placeholder"></div>
+          <div class="cal-ai-author-info">
+            <span class="cal-ai-author-name"></span>
+            <span class="cal-ai-author-title"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Card (Active) -->
+      <div class="cal-ai-card cal-ai-card-center">
+        <p class="cal-ai-quote">"I finally made the move to Cal.com after I couldn't find how to edit events in the Calendly dashboard."</p>
+        <div class="cal-ai-author">
+          <div class="cal-ai-avatar">
+            <img src="https://pbs.twimg.com/profile_images/1736391498389217280/Nq_K4u3L_400x400.jpg" alt="Ant Wilson" />
+          </div>
+          <div class="cal-ai-author-info">
+            <span class="cal-ai-author-name">Ant Wilson</span>
+            <span class="cal-ai-author-title">Co-Founder & CTO, Supabase</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card (Faded) -->
+      <div class="cal-ai-card cal-ai-card-side cal-ai-card-right">
+        <p class="cal-ai-quote">"At Navi, protecting person information is a non-negot choosing Cal.com for sche makes sense."</p>
+        <div class="cal-ai-author">
+          <div class="cal-ai-avatar">
+            <div class="cal-ai-avatar-navi">navi</div>
+          </div>
+          <div class="cal-ai-author-info">
+            <span class="cal-ai-author-name">Micah Friedland</span>
+            <span class="cal-ai-author-title">CEO & Founder, Navi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cal-ai-section {
+  background-color: #f4f4f4;
+  padding: 80px 20px 120px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.cal-ai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cal-ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 24px;
+}
+
+.cal-ai-badge-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.cal-ai-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cal-ai-subheading {
+  font-size: 18px;
+  color: #666;
+  margin: 0 auto 60px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.cal-ai-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.cal-ai-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+}
+
+.cal-ai-card-center {
+  width: 420px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.cal-ai-card-side {
+  width: 320px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.cal-ai-card-left {
+  margin-right: -40px;
+}
+
+.cal-ai-card-right {
+  margin-left: -40px;
+}
+
+/* Corner decorations */
+.cal-ai-card-side::before,
+.cal-ai-card-side::after {
+  content: '+';
+  position: absolute;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.cal-ai-card-side::before {
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cal-ai-card-side::after {
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cal-ai-card-center::before,
+.cal-ai-card-center::after {
+  content: '+';
+  position: absolute;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.cal-ai-card-center::before {
+  top: -20px;
+  left: -20px;
+}
+
+.cal-ai-card-center::after {
+  top: -20px;
+  right: -20px;
+}
+
+.cal-ai-quote {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 32px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.cal-ai-card-side .cal-ai-quote {
+  color: #666;
+}
+
+.cal-ai-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cal-ai-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e5e5;
+  flex-shrink: 0;
+}
+
+.cal-ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cal-ai-avatar-placeholder {
+  background: #ddd;
+}
+
+.cal-ai-avatar-navi {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: lowercase;
+}
+
+.cal-ai-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cal-ai-author-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.cal-ai-card-side .cal-ai-author-name {
+  color: #999;
+}
+
+.cal-ai-author-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.cal-ai-card-side .cal-ai-author-title {
+  color: #aaa;
+}
+
+/* Grid decoration lines */
+.cal-ai-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1080px;
+  height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 540px), #e5e5e5 calc(50% - 540px), #e5e5e5 calc(50% - 539px), transparent calc(50% - 539px)),
+    linear-gradient(90deg, transparent calc(50% + 539px), #e5e5e5 calc(50% + 539px), #e5e5e5 calc(50% + 540px), transparent calc(50% + 540px));
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .cal-ai-card-side {
+    display: none;
+  }
+
+  .cal-ai-card-center {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cal-ai-heading {
+    font-size: 32px;
+  }
+
+  .cal-ai-subheading {
+    font-size: 16px;
+  }
+
+  .cal-ai-quote {
+    font-size: 18px;
+  }
+}
+</style>

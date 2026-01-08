@@ -1,0 +1,391 @@
+<style>
+.chronicle-testimonials-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-testimonials-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-testimonials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chronicle-testimonials-row {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.chronicle-testimonials-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.chronicle-testimonials-track.scroll-left {
+  animation: chronicle-testimonials-scroll-left 40s linear infinite;
+}
+
+.chronicle-testimonials-track.scroll-right {
+  animation: chronicle-testimonials-scroll-right 40s linear infinite;
+}
+
+@keyframes chronicle-testimonials-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes chronicle-testimonials-scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.chronicle-testimonial-card {
+  min-width: 340px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.chronicle-testimonial-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.chronicle-testimonial-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px;
+}
+
+.chronicle-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chronicle-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(168, 85, 247, 0.3) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.chronicle-testimonial-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-testimonial-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chronicle-testimonial-role {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+</style>
+
+<section class="chronicle-testimonials-section">
+  <div class="chronicle-testimonials-container">
+    <h2 class="chronicle-testimonials-title">Loved by world-class founders,<br>strategists, designers and teams.</h2>
+
+    <div class="chronicle-testimonials-grid">
+      <div class="chronicle-testimonials-row">
+        <div class="chronicle-testimonials-track scroll-left">
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"New web apps on Mobbin this week. Featuring: @Chronicle_HQ"</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">M</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Mobbin</p>
+                <p class="chronicle-testimonial-role">mobbin.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ravi Mehta</p>
+                <p class="chronicle-testimonial-role">Ex-CPO at Tinder</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Remarkable.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">G</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Guillermo Rauch</p>
+                <p class="chronicle-testimonial-role">Vercel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Gave my first presentation with Chronicle yesterday and the team (including myself) were absolutely floored. Now multiple pods are already using Chronicle (within 24 hrs!!)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">K</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Karim Saleh</p>
+                <p class="chronicle-testimonial-role">Senior Product Designer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"New web apps on Mobbin this week. Featuring: @Chronicle_HQ"</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">M</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Mobbin</p>
+                <p class="chronicle-testimonial-role">mobbin.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ravi Mehta</p>
+                <p class="chronicle-testimonial-role">Ex-CPO at Tinder</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Remarkable.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">G</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Guillermo Rauch</p>
+                <p class="chronicle-testimonial-role">Vercel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Gave my first presentation with Chronicle yesterday and the team (including myself) were absolutely floored. Now multiple pods are already using Chronicle (within 24 hrs!!)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">K</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Karim Saleh</p>
+                <p class="chronicle-testimonial-role">Senior Product Designer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-row">
+        <div class="chronicle-testimonials-track scroll-right">
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">You know a product is great when your gut reaction is I won't tell anyone about this it will be my unfair advantage (but then you tell everyone it's @Chronicle_HQ)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">Y</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Yadin Soffer</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Chronicle's changed the way we approach case studies at Product Marketing Alliance (and we do a lot!). Anything I avoid starting because the formatting is a pain, I use Chronicle.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Richard King</p>
+                <p class="chronicle-testimonial-role">Product Marketing Alliance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">J</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Juan Alzugaray</p>
+                <p class="chronicle-testimonial-role">COO, Flai (YC S25)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"@Chronicle_HQ Insane product, I haven't been this blown away in a minute."</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">S</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Samudra</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with @Chronicle_HQ right now and I'm very impressed. I think I just found the "Cursor for slides".</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">just built a pitch deck using @Chronicle_HQ - and wow, the quality of layouts and designs it produces is simply mind-blowing. beautifully crafted, effortless creation, and instantly professional.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Raymond</p>
+                <p class="chronicle-testimonial-role">via LinkedIn</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">You know a product is great when your gut reaction is I won't tell anyone about this it will be my unfair advantage (but then you tell everyone it's @Chronicle_HQ)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">Y</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Yadin Soffer</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Chronicle's changed the way we approach case studies at Product Marketing Alliance (and we do a lot!). Anything I avoid starting because the formatting is a pain, I use Chronicle.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Richard King</p>
+                <p class="chronicle-testimonial-role">Product Marketing Alliance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">J</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Juan Alzugaray</p>
+                <p class="chronicle-testimonial-role">COO, Flai (YC S25)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"@Chronicle_HQ Insane product, I haven't been this blown away in a minute."</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">S</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Samudra</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with @Chronicle_HQ right now and I'm very impressed. I think I just found the "Cursor for slides".</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">just built a pitch deck using @Chronicle_HQ - and wow, the quality of layouts and designs it produces is simply mind-blowing. beautifully crafted, effortless creation, and instantly professional.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Raymond</p>
+                <p class="chronicle-testimonial-role">via LinkedIn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

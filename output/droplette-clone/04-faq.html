@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .faq-section {
+            padding: 120px 24px 140px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-headline {
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 80px;
+        }
+
+        .faq-headline-muted {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .faq-headline-white {
+            color: #ffffff;
+            display: block;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            cursor: pointer;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            color: #ffffff;
+            font-family: inherit;
+        }
+
+        .faq-question:hover {
+            opacity: 0.8;
+        }
+
+        .faq-question-text {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-left: 24px;
+        }
+
+        .faq-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-bottom: 28px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-icon svg {
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 80px 20px 100px;
+            }
+
+            .faq-headline {
+                font-size: 40px;
+                margin-bottom: 60px;
+            }
+
+            .faq-question-text {
+                font-size: 16px;
+            }
+
+            .faq-question {
+                padding: 24px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="faq-section">
+        <h2 class="faq-headline">
+            <span class="faq-headline-muted">Frequently asked</span>
+            <span class="faq-headline-white">questions.</span>
+        </h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Give me the elevator pitch for Droplette...</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Droplette is an AI-powered tool that helps you understand and analyze your codebase faster than ever before.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Is Droplette free to use?</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, Droplette offers a free tier with generous usage limits for individual developers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">What languages does Droplette support?</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Droplette supports all major programming languages including JavaScript, TypeScript, Python, Go, Rust, and many more.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">How accurate is Droplette?</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Droplette uses state-of-the-art AI models to provide highly accurate code analysis and suggestions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">How long does Droplette take to run?</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most analyses complete in under a minute, even for large codebases.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">How do I setup Droplette?</span>
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor"/>
+                            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Simply install our CLI tool or browser extension and connect it to your repository. Setup takes less than 5 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Open clicked item if it wasn't already active
+                if (!isActive) {
+                    item.classList.add('active');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

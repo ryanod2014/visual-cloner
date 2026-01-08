@@ -1,0 +1,362 @@
+<style>
+.chronicle-logos-section {
+  background-color: #000000;
+  padding: 0 0 80px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Feature Carousel Section */
+.chronicle-logos-carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.chronicle-logos-carousel {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.chronicle-logos-card {
+  width: 140px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.chronicle-logos-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chronicle-logos-card-1 {
+  background: linear-gradient(135deg, #4a6670 0%, #2d4a52 100%);
+}
+
+.chronicle-logos-card-2 {
+  background: #c8e64a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-logos-card-2 svg {
+  width: 60px;
+  height: 60px;
+}
+
+.chronicle-logos-card-3 {
+  background: #f5f5f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-logos-card-4 {
+  background: #e8e8e8;
+}
+
+.chronicle-logos-card-5 {
+  background: #1a1a1a;
+}
+
+.chronicle-logos-card-label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Carousel Controls */
+.chronicle-logos-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.chronicle-logos-control-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chronicle-logos-control-btn:hover {
+  background: #2a2a2a;
+}
+
+.chronicle-logos-control-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: #888888;
+}
+
+/* Category Tabs */
+.chronicle-logos-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  padding: 0 20px;
+}
+
+.chronicle-logos-tab {
+  color: #888888;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border: none;
+  background: transparent;
+  position: relative;
+}
+
+.chronicle-logos-tab:hover {
+  color: #ffffff;
+}
+
+.chronicle-logos-tab.chronicle-logos-tab-active {
+  color: #ffffff;
+}
+
+.chronicle-logos-tab.chronicle-logos-tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2px;
+  background: #c8e64a;
+  border-radius: 1px;
+}
+
+/* Logo Bar Section */
+.chronicle-logos-bar {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.chronicle-logos-headline {
+  color: #888888;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+}
+
+.chronicle-logos-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chronicle-logos-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.chronicle-logos-logo:hover {
+  opacity: 1;
+}
+
+.chronicle-logos-logo svg {
+  height: 28px;
+  width: auto;
+  fill: #ffffff;
+}
+
+.chronicle-logos-logo-stanford svg {
+  height: 36px;
+}
+
+.chronicle-logos-logo-tiktok svg {
+  height: 32px;
+}
+</style>
+
+<section class="chronicle-logos-section">
+  <!-- Feature Carousel -->
+  <div class="chronicle-logos-carousel-container">
+    <div class="chronicle-logos-carousel">
+      <!-- Card 1 - Image with person -->
+      <div class="chronicle-logos-card chronicle-logos-card-1">
+        <span class="chronicle-logos-card-label">Tinka</span>
+        <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #5a7a84 0%, #3d5a64 50%, #c4856a 100%);"></div>
+      </div>
+
+      <!-- Card 2 - Lime green with dots -->
+      <div class="chronicle-logos-card chronicle-logos-card-2">
+        <svg viewBox="0 0 100 100" fill="#000000">
+          <circle cx="30" cy="30" r="12"/>
+          <circle cx="70" cy="30" r="12"/>
+          <circle cx="30" cy="70" r="12"/>
+          <circle cx="70" cy="70" r="12"/>
+          <circle cx="50" cy="50" r="12"/>
+        </svg>
+      </div>
+
+      <!-- Card 3 - Racepoint -->
+      <div class="chronicle-logos-card chronicle-logos-card-3">
+        <span style="color: #000000; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;">RACEPOINT</span>
+      </div>
+
+      <!-- Card 4 - Desk/minimal -->
+      <div class="chronicle-logos-card chronicle-logos-card-4">
+        <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);"></div>
+      </div>
+
+      <!-- Card 5 - Dark with grid -->
+      <div class="chronicle-logos-card chronicle-logos-card-5">
+        <div style="width: 100%; height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 8px;">
+          <div style="background: #333; border-radius: 2px;"></div>
+          <div style="background: #333; border-radius: 2px;"></div>
+          <div style="background: #333; border-radius: 2px;"></div>
+          <div style="background: #333; border-radius: 2px;"></div>
+          <div style="background: #333; border-radius: 2px;"></div>
+          <div style="background: #333; border-radius: 2px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="chronicle-logos-carousel-controls">
+      <button class="chronicle-logos-control-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      </button>
+      <button class="chronicle-logos-control-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </button>
+      <button class="chronicle-logos-control-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <line x1="9" y1="3" x2="9" y2="21"/>
+        </svg>
+      </button>
+      <button class="chronicle-logos-control-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+        </svg>
+      </button>
+      <button class="chronicle-logos-control-btn">
+        <svg viewBox="0 0 24 24" fill="#888888">
+          <circle cx="6" cy="12" r="2"/>
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="18" cy="12" r="2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="chronicle-logos-tabs">
+    <button class="chronicle-logos-tab">Product showcase</button>
+    <button class="chronicle-logos-tab">Sales proposal</button>
+    <button class="chronicle-logos-tab">Pitch deck</button>
+    <button class="chronicle-logos-tab chronicle-logos-tab-active">Portfolio</button>
+    <button class="chronicle-logos-tab">Business update</button>
+    <button class="chronicle-logos-tab">Project plan</button>
+    <button class="chronicle-logos-tab">Research report</button>
+    <button class="chronicle-logos-tab">Marketing campaign</button>
+  </div>
+
+  <!-- Logo Bar -->
+  <div class="chronicle-logos-bar">
+    <p class="chronicle-logos-headline">Used by 5000+ teams who value storytelling</p>
+
+    <div class="chronicle-logos-grid">
+      <!-- Figma -->
+      <div class="chronicle-logos-logo">
+        <svg viewBox="0 0 200 60" fill="#ffffff">
+          <text x="0" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="36" font-weight="500">Figma</text>
+        </svg>
+      </div>
+
+      <!-- Stanford University -->
+      <div class="chronicle-logos-logo chronicle-logos-logo-stanford">
+        <svg viewBox="0 0 200 70" fill="#ffffff">
+          <text x="0" y="30" font-family="Georgia, serif" font-size="24" font-weight="400">Stanford</text>
+          <text x="0" y="55" font-family="Georgia, serif" font-size="18" font-weight="400">University</text>
+        </svg>
+      </div>
+
+      <!-- Plaid -->
+      <div class="chronicle-logos-logo">
+        <svg viewBox="0 0 140 40" fill="#ffffff">
+          <g transform="translate(0, 8)">
+            <rect x="0" y="0" width="6" height="6" rx="1"/>
+            <rect x="8" y="0" width="6" height="6" rx="1"/>
+            <rect x="0" y="8" width="6" height="6" rx="1"/>
+            <rect x="8" y="8" width="6" height="6" rx="1"/>
+            <rect x="16" y="4" width="6" height="6" rx="1"/>
+            <rect x="4" y="16" width="6" height="6" rx="1"/>
+          </g>
+          <text x="32" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700">PLAID</text>
+        </svg>
+      </div>
+
+      <!-- Accenture -->
+      <div class="chronicle-logos-logo">
+        <svg viewBox="0 0 160 40" fill="#ffffff">
+          <text x="0" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400">accenture</text>
+          <text x="133" y="16" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400">&gt;</text>
+        </svg>
+      </div>
+
+      <!-- TikTok -->
+      <div class="chronicle-logos-logo chronicle-logos-logo-tiktok">
+        <svg viewBox="0 0 160 40" fill="#ffffff">
+          <g transform="translate(0, 8)">
+            <path d="M8 2C8 2 8 18 8 20C8 24 5 26 2 26C-1 26 -2 24 -2 22" stroke="#ffffff" stroke-width="3" fill="none" transform="translate(10, 0)"/>
+            <circle cx="10" cy="22" r="6" fill="#ffffff"/>
+            <path d="M16 0C16 0 20 0 22 4" stroke="#ffffff" stroke-width="3" fill="none" transform="translate(2, 2)"/>
+          </g>
+          <text x="36" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700">TikTok</text>
+        </svg>
+      </div>
+
+      <!-- Dell (partial) -->
+      <div class="chronicle-logos-logo">
+        <svg viewBox="0 0 80 40" fill="#ffffff">
+          <circle cx="16" cy="20" r="12" fill="none" stroke="#ffffff" stroke-width="2"/>
+          <text x="8" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">D</text>
+          <text x="32" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400">de</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

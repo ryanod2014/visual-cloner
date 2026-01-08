@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero === */
+/* Shopify Editions Hero - Scoped Styles */
+.shopify-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a1a 0%, #2d3a2d 25%, #3d4a4a 50%, #4a5a6a 75%, #2a3a4a 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.shopify-hero-bg-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg,
+    #4a6a7a 0%,
+    #3a5a4a 30%,
+    #2a4a3a 50%,
+    #1a3a2a 70%,
+    #0a2a1a 100%
+  );
+  z-index: 0;
+}
+
+.shopify-hero-bg-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+/* Header */
+.shopify-hero-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.shopify-hero-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.shopify-hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.shopify-hero-logo-icon {
+  width: 24px;
+  height: 24px;
+  background: #95bf47;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopify-hero-logo-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.shopify-hero-logo-text {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shopify-hero-logo-editions {
+  opacity: 0.7;
+}
+
+.shopify-hero-logo-winter {
+  opacity: 0.7;
+}
+
+.shopify-hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shopify-hero-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shopify-hero-dropdown svg {
+  width: 12px;
+  height: 12px;
+  fill: #fff;
+}
+
+.shopify-hero-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shopify-hero-search svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.shopify-hero-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shopify-hero-link {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.shopify-hero-link:hover {
+  text-decoration: underline;
+}
+
+.shopify-hero-cta {
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.shopify-hero-cta:hover {
+  background: #f0f0f0;
+}
+
+/* Main Content */
+.shopify-hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+  padding: 40px 24px;
+}
+
+.shopify-hero-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* Central Panel */
+.shopify-hero-panel {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 40px 48px;
+  max-width: 380px;
+  border-radius: 2px;
+}
+
+.shopify-hero-title {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+}
+
+.shopify-hero-title-the {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  letter-spacing: 0;
+}
+
+.shopify-hero-title-main {
+  display: block;
+}
+
+.shopify-hero-title-ai {
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.shopify-hero-subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 32px 0;
+  opacity: 0.9;
+}
+
+/* Navigation List */
+.shopify-hero-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shopify-hero-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+
+.shopify-hero-nav-item:hover {
+  color: #ff1493;
+}
+
+.shopify-hero-nav-item-name {
+  font-weight: 500;
+}
+
+.shopify-hero-nav-item-numeral {
+  font-size: 12px;
+  opacity: 0.6;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+}
+
+/* Decorative Elements - Pink overlays */
+.shopify-hero-decor {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.shopify-hero-bag-left {
+  top: 15%;
+  left: 8%;
+  width: 60px;
+  height: 80px;
+}
+
+.shopify-hero-bag-right {
+  top: 35%;
+  right: 5%;
+  width: 100px;
+  height: 120px;
+}
+
+.shopify-hero-skateboard {
+  bottom: 8%;
+  left: 5%;
+  width: 200px;
+  height: 60px;
+}
+
+.shopify-hero-decor-bag {
+  fill: #ff1493;
+  opacity: 0.95;
+}
+
+.shopify-hero-decor-skateboard {
+  fill: #ff1493;
+}
+
+/* Pink shopping bag SVG styles */
+.shopify-hero-bag-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shopify-hero-header {
+    padding: 12px 16px;
+  }
+
+  .shopify-hero-header-left {
+    gap: 12px;
+  }
+
+  .shopify-hero-logo-text span:not(.shopify-hero-logo-editions) {
+    display: none;
+  }
+
+  .shopify-hero-panel {
+    padding: 24px 28px;
+    margin: 0 16px;
+  }
+
+  .shopify-hero-title {
+    font-size: 26px;
+  }
+
+  .shopify-hero-link {
+    display: none;
+  }
+}
+
+/* === Section: 01-features === */
+.shopify-features-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+
+  .shopify-features-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 100vh;
+    padding: 20px 16px;
+    background-color: #f5f5f0;
+    border-right: 1px solid #e5e5e0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  .shopify-features-logo {
+    margin-bottom: 24px;
+  }
+
+  .shopify-features-logo-text {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+  }
+
+  .shopify-features-edition-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .shopify-features-edition-title span {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .shopify-features-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .shopify-features-nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+
+  .shopify-features-nav-item:hover {
+    color: #1a1a1a;
+  }
+
+  .shopify-features-nav-item.shopify-features-active {
+    color: #1a1a1a;
+    font-weight: 500;
+  }
+
+  .shopify-features-nav-numeral {
+    font-size: 10px;
+    color: #999;
+    text-transform: lowercase;
+  }
+
+  .shopify-features-footer-links {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e0;
+  }
+
+  .shopify-features-footer-link {
+    display: block;
+    font-size: 10px;
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 4px;
+  }
+
+  .shopify-features-footer-link:hover {
+    color: #666;
+  }
+
+  .shopify-features-main {
+    flex: 1;
+    margin-left: 140px;
+    padding: 24px 32px;
+  }
+
+  .shopify-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+  }
+
+  .shopify-features-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shopify-features-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+
+  .shopify-features-card-description {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .shopify-features-card-link {
+    color: #0066cc;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+
+  .shopify-features-card-link:hover {
+    color: #004499;
+  }
+
+  .shopify-features-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+/* === Section: 02-footer === */
+.shopify-footer-container {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    padding: 60px 40px 40px;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .shopify-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .shopify-footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+    gap: 16px;
+  }
+
+  .shopify-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shopify-footer-logo svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .shopify-footer-logo-text {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .shopify-footer-edition-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.15) 0%, rgba(255, 20, 147, 0.05) 100%);
+    border: 1px solid rgba(255, 20, 147, 0.3);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff1493;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .shopify-footer-edition-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #ff1493;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff1493;
+  }
+
+  .shopify-footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    margin-bottom: 32px;
+  }
+
+  .shopify-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .shopify-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .shopify-footer-link {
+    color: #888888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .shopify-footer-link:hover {
+    color: #ffffff;
+  }
+
+  .shopify-footer-link-separator {
+    width: 4px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 50%;
+  }
+
+  .shopify-footer-copyright {
+    color: #666666;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .shopify-footer-small-text {
+    color: #444444;
+    font-size: 11px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .shopify-footer-container {
+      padding: 40px 20px 30px;
+    }
+
+    .shopify-footer-links {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .shopify-footer-link-separator {
+      display: none;
+    }
+  }
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero -->
+  <section class="shopify-hero-section">
+  <!-- Background Placeholder -->
+  <div class="shopify-hero-bg-placeholder">
+    <span class="shopify-hero-bg-label">[Renaissance Painting Background - Angels/Classical Figures in Clouds & Forest]</span>
+  </div>
+
+  <!-- Decorative Pink Elements -->
+  <div class="shopify-hero-decor shopify-hero-bag-left">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+      <path class="shopify-hero-decor-bag" d="M10 25 L10 70 Q10 75 15 75 L45 75 Q50 75 50 70 L50 25 L40 25 L40 15 Q40 5 30 5 Q20 5 20 15 L20 25 Z M24 15 Q24 10 30 10 Q36 10 36 15 L36 25 L24 25 Z"/>
+    </svg>
+  </div>
+
+  <div class="shopify-hero-decor shopify-hero-bag-right">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+      <path class="shopify-hero-decor-bag" d="M15 35 L15 105 Q15 115 25 115 L75 115 Q85 115 85 105 L85 35 L70 35 L70 20 Q70 5 50 5 Q30 5 30 20 L30 35 Z M38 20 Q38 12 50 12 Q62 12 62 20 L62 35 L38 35 Z" transform="rotate(-15 50 60)"/>
+      <path class="shopify-hero-decor-bag" d="M25 40 L25 100 Q25 108 33 108 L67 108 Q75 108 75 100 L75 40 L63 40 L63 28 Q63 18 50 18 Q37 18 37 28 L37 40 Z" transform="translate(10 5) rotate(10 50 60)" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <div class="shopify-hero-decor shopify-hero-skateboard">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="shopify-hero-decor-skateboard" cx="30" cy="45" rx="12" ry="12"/>
+      <ellipse class="shopify-hero-decor-skateboard" cx="170" cy="45" rx="12" ry="12"/>
+      <path class="shopify-hero-decor-skateboard" d="M15 30 Q5 30 5 25 L5 20 Q5 15 15 15 L185 15 Q195 15 195 20 L195 25 Q195 30 185 30 Z"/>
+      <text x="100" y="26" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">SHOPIFY</text>
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <header class="shopify-hero-header">
+    <div class="shopify-hero-header-left">
+      <a href="#" class="shopify-hero-logo">
+        <div class="shopify-hero-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 4.5c-.3 0-.5.2-.5.5v1h-2V5c0-.3-.2-.5-.5-.5s-.5.2-.5.5v1H10V5c0-.3-.2-.5-.5-.5s-.5.2-.5.5v1.3c-1.1.4-2 1.5-2 2.7v8c0 1.7 1.3 3 3 3h4c1.7 0 3-1.3 3-3V9c0-1.3-.8-2.3-2-2.7V5c0-.3-.2-.5-.5-.5zM12 8c.6 0 1 .4 1 1v1h-2V9c0-.6.4-1 1-1z"/>
+          </svg>
+        </div>
+        <span class="shopify-hero-logo-text">
+          <span>Shopify</span>
+          <span class="shopify-hero-logo-editions">Editions</span>
+          <span class="shopify-hero-logo-winter">Winter '26</span>
+        </span>
+      </a>
+      <nav class="shopify-hero-nav">
+        <button class="shopify-hero-dropdown">
+          Editions
+          <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </button>
+        <button class="shopify-hero-search">
+          Search
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <div class="shopify-hero-header-right">
+      <a href="#" class="shopify-hero-link">Shopify.com</a>
+      <a href="#" class="shopify-hero-cta">Start for free</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="shopify-hero-content">
+    <div class="shopify-hero-main">
+      <div class="shopify-hero-panel">
+        <h1 class="shopify-hero-title">
+          <span class="shopify-hero-title-the">The</span>
+          <span class="shopify-hero-title-main">Ren<span class="shopify-hero-title-ai">ai</span>ssance</span>
+          <span class="shopify-hero-title-main">Edition</span>
+        </h1>
+        <p class="shopify-hero-subtitle">
+          A new world of commerce.<br>
+          150+ product updates.
+        </p>
+        <ul class="shopify-hero-nav-list">
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Sidekick</span>
+            <span class="shopify-hero-nav-item-numeral">I</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Agentic</span>
+            <span class="shopify-hero-nav-item-numeral">II</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Online</span>
+            <span class="shopify-hero-nav-item-numeral">III</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Retail</span>
+            <span class="shopify-hero-nav-item-numeral">IV</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Marketing</span>
+            <span class="shopify-hero-nav-item-numeral">V</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Checkout</span>
+            <span class="shopify-hero-nav-item-numeral">VI</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Operations</span>
+            <span class="shopify-hero-nav-item-numeral">VII</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Shop app</span>
+            <span class="shopify-hero-nav-item-numeral">VIII</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">B2B</span>
+            <span class="shopify-hero-nav-item-numeral">IX</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Finance</span>
+            <span class="shopify-hero-nav-item-numeral">X</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Shipping</span>
+            <span class="shopify-hero-nav-item-numeral">XI</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Developer</span>
+            <span class="shopify-hero-nav-item-numeral">XII</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 01-features -->
+  <div class="shopify-features-container">
+  <aside class="shopify-features-sidebar">
+    <div class="shopify-features-logo">
+      <div class="shopify-features-logo-text">Shopify Editions</div>
+      <div class="shopify-features-logo-text" style="color: #666; font-size: 10px;">Winter '26</div>
+    </div>
+
+    <div class="shopify-features-edition-title">
+      The<br>Ren//aissance<br><span>Edition</span>
+    </div>
+
+    <ul class="shopify-features-nav">
+      <li class="shopify-features-nav-item">
+        <span>Sidekick</span>
+        <span class="shopify-features-nav-numeral">i</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Agentic</span>
+        <span class="shopify-features-nav-numeral">ii</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Online</span>
+        <span class="shopify-features-nav-numeral">iii</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Retail</span>
+        <span class="shopify-features-nav-numeral">iv</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Marketing</span>
+        <span class="shopify-features-nav-numeral">v</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Checkout</span>
+        <span class="shopify-features-nav-numeral">vi</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Operations</span>
+        <span class="shopify-features-nav-numeral">vii</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Shop app</span>
+        <span class="shopify-features-nav-numeral">viii</span>
+      </li>
+      <li class="shopify-features-nav-item shopify-features-active">
+        <span>B2B</span>
+        <span class="shopify-features-nav-numeral">ix</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Finance</span>
+        <span class="shopify-features-nav-numeral">x</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Shipping</span>
+        <span class="shopify-features-nav-numeral">xi</span>
+      </li>
+      <li class="shopify-features-nav-item">
+        <span>Developer</span>
+        <span class="shopify-features-nav-numeral">xii</span>
+      </li>
+    </ul>
+
+    <div class="shopify-features-footer-links">
+      <a href="#" class="shopify-features-footer-link">Shopify Inc.</a>
+      <a href="#" class="shopify-features-footer-link">Terms of Service</a>
+      <a href="#" class="shopify-features-footer-link">Privacy Policy</a>
+    </div>
+  </aside>
+
+  <main class="shopify-features-main">
+    <div class="shopify-features-grid">
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Nested cart lines</h3>
+        <p class="shopify-features-card-description">Build support for merchants to nest cart lines in cart, checkout, and post-purchase views for add-ons, such as extended warranties.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Native wallet buttons before checkout</h3>
+        <p class="shopify-features-card-description">Add Shop Pay and Apple Pay wallet buttons on PDP and Cart pages in mobile apps using the Checkout Kit.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">AI discovery for headless stores</h3>
+        <p class="shopify-features-card-description">Headless stores are now discoverable by AI assistants like ChatGPT and Perplexity <a href="#" class="shopify-features-card-link">Shopify.com</a>, being part of the Shopify Catalog.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Discount eligibility</h3>
+        <p class="shopify-features-card-description">Natively support targeted automatic discounts for customer segments, like VIP, without needing Shopify Scripts.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Payment requirement removed on subscriptions</h3>
+        <p class="shopify-features-card-description">Import existing subscribers via API, even if their payment method is missing or expired&mdash;just collect or update the details later.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Variant customization on POS</h3>
+        <p class="shopify-features-card-description">Sell customizable products in person by adding the same variant to the cart with different configurations, which you can see split into distinct lines.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">POS UI extensions for cart line items</h3>
+        <p class="shopify-features-card-description">Add contextual actions to an individual POS cart line item, such as dynamic bundles.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">More POS UI extension tools</h3>
+        <p class="shopify-features-card-description">Build POS UI extensions faster with stable hot reloading, clear in-app build error errors, QR deep links, and a new in-app dev console.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">POS UI extensions open native screens</h3>
+        <p class="shopify-features-card-description">Open native POS products, orders, customers, draft orders, and staff details in modals that respect staff permissions right in UI extensions.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Cart Transform Function API on POS</h3>
+        <p class="shopify-features-card-description">Use this API to let the POS dynamically expand, merge, or update cart lines for bundles, custom pricing, and rich cart experiences.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Customize subscriptions with POS UI Extensions</h3>
+        <p class="shopify-features-card-description">Add and manage subscriptions with detailed line item data using the Cart APIs in POS UI Extensions 2025-10.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Return APIs with payment reference</h3>
+        <p class="shopify-features-card-description">Simplify reconciliation for returns through a direct reference to the transaction with the Return API.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Transfers API</h3>
+        <p class="shopify-features-card-description">Model real-world transfers, including those from locations not tracked in Shopify, with the Transfers API.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Store credit refunds in returns API</h3>
+        <p class="shopify-features-card-description">Refund to store credit through the return and order cancellation APIs, even when store credit was not the original payment method.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Returns processing API</h3>
+        <p class="shopify-features-card-description">Control when return sales are recorded in Shopify using a new processing mutation.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Customer Account API supports third-party apps</h3>
+        <p class="shopify-features-card-description">Use Shopify customer authentication to give customers a unified sign-in experience and securely access customer data.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">ShopifyQL API for Shopify Analytics</h3>
+        <p class="shopify-features-card-description">Build analytics features faster by querying thousands of combinations of Shopify Analytics metrics and dimensions.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Inventory adjustments reference</h3>
+        <p class="shopify-features-card-description">Add referenceDocumentUri to adjustments to show your app in admin history, create audit-ready trails, and trace changes to its source.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Improved onboarding flows with App Bridge</h3>
+        <p class="shopify-features-card-description">Use shopify.app.extension() to check which of your checkout and customer account extensions are active.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Payment terms and deposit configurations</h3>
+        <p class="shopify-features-card-description">Use the paymentTermsSet operation in Shopify Payment Customization Functions to dynamically change payment terms and deposit requirements. Exclusive to Plus.</p>
+      </div>
+
+      <div class="shopify-features-card">
+        <h3 class="shopify-features-card-title">Order review operation in Shopify Functions</h3>
+        <p class="shopify-features-card-description">Determine which B2B orders require review based on specific conditions using the orderReviewAudit operation in payment customization. Exclusive to Plus.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+  <!-- Section: 02-footer -->
+  <footer class="shopify-footer-container">
+  <div class="shopify-footer-inner">
+    <div class="shopify-footer-top">
+      <div class="shopify-footer-logo">
+        <svg viewBox="0 0 109 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M95.8 23.4c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.8-.8-2.3-.5-2.9-.4-.1 0-1.6.5-4.1 1.2-2.4-7-6.7-13.4-14.2-13.4h-.7c-2.1-2.8-4.8-4-7-4C35.7-2.3 29.5 15.6 27.4 24c-5.5 1.7-9.4 2.9-9.9 3.1-3.1 1-3.2 1.1-3.6 4-.3 2.2-8.4 65-8.4 65l67.3 11.6 29-7.2S95.9 24 95.8 23.4zM67.6 16l-6.6 2c0-5.2-.7-12.5-3.2-18.5 7.9 1.5 11.8 10.4 9.8 16.5zm-11.5 3.5L44.5 23c2.1-8.1 6.2-12.1 9.7-13.6 2.3 4.7 1.9 11.5 1.9 10.1zm-7.9-17.7c.6 0 1.2.2 1.9.6-7.3 3.4-15.2 12.1-18.5 29.3-4.1 1.3-8.1 2.5-11.9 3.7C22.5 22.1 33.1 1.8 48.2 1.8z" fill="#95BF47"/>
+          <path d="M94.7 22.4c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.7-.4-1.1-.5l-4.1 84.8 29-7.2S95.8 24 95.8 23.4c-.1-.5-.6-.9-1.1-1z" fill="#5E8E3E"/>
+          <path d="M48.6 39.4l-4.4 13s-3.9-2.1-8.6-2.1c-7 0-7.3 4.4-7.3 5.5 0 6 15.7 8.3 15.7 22.4 0 11.1-7 18.2-16.5 18.2-11.3 0-17.1-7.1-17.1-7.1l3-10s5.9 5.1 10.9 5.1c3.3 0 4.6-2.6 4.6-4.5 0-7.9-12.9-8.2-12.9-21.1 0-10.9 7.8-21.4 23.5-21.4 6.1 0 9.1 1.8 9.1 1.8z" fill="#fff"/>
+        </svg>
+        <span class="shopify-footer-logo-text">Shopify</span>
+      </div>
+      <div class="shopify-footer-edition-badge">
+        The Renaissance Edition
+      </div>
+    </div>
+
+    <div class="shopify-footer-divider"></div>
+
+    <div class="shopify-footer-bottom">
+      <nav class="shopify-footer-links">
+        <a href="#" class="shopify-footer-link">Terms of Service</a>
+        <span class="shopify-footer-link-separator"></span>
+        <a href="#" class="shopify-footer-link">Privacy Policy</a>
+      </nav>
+
+      <p class="shopify-footer-copyright">&copy; Shopify Inc.</p>
+
+      <p class="shopify-footer-small-text">
+        Shopify Editions showcases the latest features and updates to help merchants build, grow, and scale their businesses.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

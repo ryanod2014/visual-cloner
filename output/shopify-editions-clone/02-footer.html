@@ -1,0 +1,167 @@
+<style>
+  .shopify-footer-container {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    padding: 60px 40px 40px;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .shopify-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .shopify-footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+    gap: 16px;
+  }
+
+  .shopify-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shopify-footer-logo svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .shopify-footer-logo-text {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .shopify-footer-edition-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.15) 0%, rgba(255, 20, 147, 0.05) 100%);
+    border: 1px solid rgba(255, 20, 147, 0.3);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff1493;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .shopify-footer-edition-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #ff1493;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff1493;
+  }
+
+  .shopify-footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    margin-bottom: 32px;
+  }
+
+  .shopify-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .shopify-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .shopify-footer-link {
+    color: #888888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .shopify-footer-link:hover {
+    color: #ffffff;
+  }
+
+  .shopify-footer-link-separator {
+    width: 4px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 50%;
+  }
+
+  .shopify-footer-copyright {
+    color: #666666;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .shopify-footer-small-text {
+    color: #444444;
+    font-size: 11px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .shopify-footer-container {
+      padding: 40px 20px 30px;
+    }
+
+    .shopify-footer-links {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .shopify-footer-link-separator {
+      display: none;
+    }
+  }
+</style>
+
+<footer class="shopify-footer-container">
+  <div class="shopify-footer-inner">
+    <div class="shopify-footer-top">
+      <div class="shopify-footer-logo">
+        <svg viewBox="0 0 109 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M95.8 23.4c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.8-.8-2.3-.5-2.9-.4-.1 0-1.6.5-4.1 1.2-2.4-7-6.7-13.4-14.2-13.4h-.7c-2.1-2.8-4.8-4-7-4C35.7-2.3 29.5 15.6 27.4 24c-5.5 1.7-9.4 2.9-9.9 3.1-3.1 1-3.2 1.1-3.6 4-.3 2.2-8.4 65-8.4 65l67.3 11.6 29-7.2S95.9 24 95.8 23.4zM67.6 16l-6.6 2c0-5.2-.7-12.5-3.2-18.5 7.9 1.5 11.8 10.4 9.8 16.5zm-11.5 3.5L44.5 23c2.1-8.1 6.2-12.1 9.7-13.6 2.3 4.7 1.9 11.5 1.9 10.1zm-7.9-17.7c.6 0 1.2.2 1.9.6-7.3 3.4-15.2 12.1-18.5 29.3-4.1 1.3-8.1 2.5-11.9 3.7C22.5 22.1 33.1 1.8 48.2 1.8z" fill="#95BF47"/>
+          <path d="M94.7 22.4c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.7-.4-1.1-.5l-4.1 84.8 29-7.2S95.8 24 95.8 23.4c-.1-.5-.6-.9-1.1-1z" fill="#5E8E3E"/>
+          <path d="M48.6 39.4l-4.4 13s-3.9-2.1-8.6-2.1c-7 0-7.3 4.4-7.3 5.5 0 6 15.7 8.3 15.7 22.4 0 11.1-7 18.2-16.5 18.2-11.3 0-17.1-7.1-17.1-7.1l3-10s5.9 5.1 10.9 5.1c3.3 0 4.6-2.6 4.6-4.5 0-7.9-12.9-8.2-12.9-21.1 0-10.9 7.8-21.4 23.5-21.4 6.1 0 9.1 1.8 9.1 1.8z" fill="#fff"/>
+        </svg>
+        <span class="shopify-footer-logo-text">Shopify</span>
+      </div>
+      <div class="shopify-footer-edition-badge">
+        The Renaissance Edition
+      </div>
+    </div>
+
+    <div class="shopify-footer-divider"></div>
+
+    <div class="shopify-footer-bottom">
+      <nav class="shopify-footer-links">
+        <a href="#" class="shopify-footer-link">Terms of Service</a>
+        <span class="shopify-footer-link-separator"></span>
+        <a href="#" class="shopify-footer-link">Privacy Policy</a>
+      </nav>
+
+      <p class="shopify-footer-copyright">&copy; Shopify Inc.</p>
+
+      <p class="shopify-footer-small-text">
+        Shopify Editions showcases the latest features and updates to help merchants build, grow, and scale their businesses.
+      </p>
+    </div>
+  </div>
+</footer>

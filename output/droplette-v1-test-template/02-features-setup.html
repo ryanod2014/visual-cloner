@@ -1,0 +1,184 @@
+<style>
+.features-setup {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-setup-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.features-setup-card-preview {
+  padding: 24px;
+}
+
+.features-setup-plugin {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-setup-palette-title {
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.features-setup-palette {
+  display: flex;
+  height: 200px;
+}
+
+.features-setup-palette-bar {
+  flex: 1;
+}
+
+.features-setup-palette-bar:nth-child(1) { background: #92400e; }
+.features-setup-palette-bar:nth-child(2) { background: #b45309; }
+.features-setup-palette-bar:nth-child(3) { background: #d97706; }
+.features-setup-palette-bar:nth-child(4) { background: #f59e0b; }
+.features-setup-palette-bar:nth-child(5) { background: #fbbf24; }
+.features-setup-palette-bar:nth-child(6) { background: #fcd34d; }
+.features-setup-palette-bar:nth-child(7) { background: #fde68a; }
+.features-setup-palette-bar:nth-child(8) { background: #fef3c7; }
+.features-setup-palette-bar:nth-child(9) { background: #fffbeb; }
+
+.features-setup-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-setup-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-setup-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-setup-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.features-setup-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.features-setup-modal-icon {
+  width: 48px;
+  height: 48px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+.features-setup-modal-title {
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.features-setup-modal-text {
+  color: rgba(14, 14, 14, 0.7);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.features-setup-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.features-setup-modal-badge {
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  font-size: 14px;
+  color: rgb(14, 14, 14);
+}
+
+.features-setup-modal-btn {
+  background: rgb(30, 30, 30);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+</style>
+<div class="features-setup">
+  <div class="features-setup-grid">
+    <div class="features-setup-card">
+      <div class="features-setup-card-preview">
+        <div class="features-setup-plugin">
+          <div class="features-setup-palette-title">Warm sunset tones</div>
+          <div class="features-setup-palette">
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+          </div>
+          <div class="features-setup-controls">
+            <div class="features-setup-color-dots">
+              <div class="features-setup-color-dot" style="background: #f97316;"></div>
+              <div class="features-setup-color-dot" style="background: #fbbf24;"></div>
+              <div class="features-setup-color-dot" style="background: #84cc16;"></div>
+            </div>
+            <span class="features-setup-btn">Generate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features-setup-card">
+      <div class="features-setup-card-preview">
+        <div class="features-setup-modal">
+          <div class="features-setup-modal-icon"></div>
+          <h3 class="features-setup-modal-title">Connect your assets</h3>
+          <p class="features-setup-modal-text">Navigate to the folder containing your assets to sync with Acme.</p>
+          <div class="features-setup-modal-actions">
+            <span class="features-setup-modal-badge">150 items synced</span>
+            <span class="features-setup-modal-btn">Done</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

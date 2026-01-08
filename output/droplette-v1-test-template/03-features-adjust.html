@@ -1,0 +1,281 @@
+<style>
+.features-adjust {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-adjust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-adjust-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.features-adjust-card-content {
+  padding: 32px;
+}
+
+.features-adjust-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.features-adjust-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.features-adjust-card-preview {
+  padding: 24px;
+}
+
+.features-adjust-plugin {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-adjust-plugin-dark {
+  background: rgb(40, 40, 40);
+}
+
+.features-adjust-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.features-adjust-plugin-header-dark {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-adjust-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.features-adjust-plugin-icon-dark {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.features-adjust-plugin-name {
+  color: rgb(14, 14, 14);
+  font-size: 14px;
+}
+
+.features-adjust-plugin-name-dark {
+  color: #fff;
+}
+
+.features-adjust-palette-title {
+  color: rgb(14, 14, 14);
+  font-size: 14px;
+  padding: 12px 16px 8px;
+  margin: 0;
+}
+
+.features-adjust-palette-title-dark {
+  color: #fff;
+}
+
+.features-adjust-palette {
+  display: flex;
+  height: 120px;
+  padding: 0 16px;
+  gap: 4px;
+}
+
+.features-adjust-palette-bar {
+  flex: 1;
+  border-radius: 4px;
+}
+
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(1) { background: #7c2d12; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(2) { background: #9a3412; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(3) { background: #c2410c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(4) { background: #ea580c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(5) { background: #f97316; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(6) { background: #fb923c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(7) { background: #fdba74; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(8) { background: #fed7aa; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(9) { background: #ffedd5; }
+
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(1) { background: #f97316; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(2) { background: #fbbf24; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(3) { background: #facc15; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(4) { background: #84cc16; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(5) { background: #22c55e; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(6) { background: #14b8a6; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(7) { background: #06b6d4; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(8) { background: #3b82f6; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(9) { background: #a855f7; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(10) { background: #ec4899; }
+
+.features-adjust-slider {
+  padding: 16px;
+}
+
+.features-adjust-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(0,0,0,0.6);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.features-adjust-slider-track {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  position: relative;
+}
+
+.features-adjust-slider-fill {
+  height: 100%;
+  background: #000;
+  border-radius: 2px;
+  width: 92%;
+}
+
+.features-adjust-slider-thumb {
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.features-adjust-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.features-adjust-controls-dark {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-adjust-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-adjust-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-adjust-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+</style>
+<div class="features-adjust">
+  <div class="features-adjust-grid">
+    <div class="features-adjust-card">
+      <div class="features-adjust-card-content">
+        <h3 class="features-adjust-card-title">Fine-tune your results</h3>
+        <p class="features-adjust-card-text">Love the output but want to refine it? Easily adjust your generated content to match your exact needs.</p>
+      </div>
+      <div class="features-adjust-card-preview">
+        <div class="features-adjust-plugin">
+          <div class="features-adjust-plugin-header">
+            <div class="features-adjust-plugin-icon"></div>
+            <span class="features-adjust-plugin-name">Acme</span>
+          </div>
+          <p class="features-adjust-palette-title">Golden autumn vibes</p>
+          <div class="features-adjust-palette features-adjust-palette-warm">
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+          </div>
+          <div class="features-adjust-slider">
+            <div class="features-adjust-slider-label">
+              <span>Intensity</span>
+              <span>+92</span>
+            </div>
+            <div class="features-adjust-slider-track">
+              <div class="features-adjust-slider-fill"></div>
+              <div class="features-adjust-slider-thumb"></div>
+            </div>
+          </div>
+          <div class="features-adjust-controls">
+            <span style="font-size: 20px; color: rgba(0,0,0,0.5);">&#8592;</span>
+            <div style="display: flex; gap: 8px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features-adjust-card">
+      <div class="features-adjust-card-content">
+        <h3 class="features-adjust-card-title">Regenerate with AI</h3>
+        <p class="features-adjust-card-text">Iterate as many times as you want. Select elements to keep or start fresh from the beginning.</p>
+      </div>
+      <div class="features-adjust-card-preview">
+        <div class="features-adjust-plugin features-adjust-plugin-dark">
+          <div class="features-adjust-plugin-header features-adjust-plugin-header-dark">
+            <div class="features-adjust-plugin-icon features-adjust-plugin-icon-dark"></div>
+            <span class="features-adjust-plugin-name features-adjust-plugin-name-dark">Acme</span>
+          </div>
+          <p class="features-adjust-palette-title features-adjust-palette-title-dark">Vibrant spectrum</p>
+          <div class="features-adjust-palette features-adjust-palette-rainbow">
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+          </div>
+          <div class="features-adjust-controls features-adjust-controls-dark">
+            <span style="font-size: 20px; color: rgba(255,255,255,0.5);">&#8592;</span>
+            <div class="features-adjust-color-dots">
+              <div class="features-adjust-color-dot" style="background: #fbbf24;"></div>
+              <div class="features-adjust-color-dot" style="background: #f97316;"></div>
+              <div class="features-adjust-color-dot" style="background: #ec4899;"></div>
+            </div>
+            <span class="features-adjust-btn">Regenerate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

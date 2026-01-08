@@ -1,0 +1,534 @@
+<!-- Section: setup -->
+<section id="setup" class="setup-section">
+  <style>
+    .setup-section {
+      background: rgb(14, 14, 14);
+      padding: 0 40px 80px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .setup-card {
+      background: linear-gradient(180deg, rgba(60, 60, 60, 0.4) 0%, rgba(30, 30, 30, 0.2) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .setup-card-large {
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .setup-card-small {
+      min-height: 200px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .setup-card-header {
+      padding: 32px 32px 0;
+    }
+
+    .setup-card-title {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .setup-card-description {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0;
+      line-height: 1.5;
+      max-width: 340px;
+    }
+
+    .setup-card-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* Dark App Mockup */
+    .setup-app-dark {
+      width: 320px;
+      background: #1c1c1c;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .setup-app-dark-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #262626;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .setup-app-dark-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, #a855f7, #ec4899, #f97316) border-box;
+      position: relative;
+    }
+
+    .setup-app-dark-logo::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #262626;
+      border-radius: 50%;
+    }
+
+    .setup-app-dark-name {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
+    .setup-app-dark-body {
+      padding: 60px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 280px;
+    }
+
+    .setup-app-dark-text {
+      font-size: 18px;
+      color: white;
+      font-weight: 500;
+      margin-bottom: 80px;
+    }
+
+    .setup-color-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+    }
+
+    .setup-color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin: 0 -4px;
+      border: 2px solid #1c1c1c;
+    }
+
+    .setup-color-1 { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+    .setup-color-2 { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+    .setup-color-3 { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+    .setup-color-4 { background: linear-gradient(135deg, #10b981, #059669); }
+    .setup-color-5 { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .setup-color-6 { background: linear-gradient(135deg, #84cc16, #65a30d); }
+    .setup-color-7 { background: linear-gradient(135deg, #eab308, #ca8a04); }
+    .setup-color-8 { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .setup-color-9 { background: linear-gradient(135deg, #fb923c, #f97316); }
+
+    .setup-app-dark-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .setup-picker-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3b82f6 50%, #f97316 50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .setup-picker-icon::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      position: absolute;
+    }
+
+    .setup-create-btn {
+      background: white;
+      color: black;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .setup-settings-icon {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Light App Mockup */
+    .setup-app-light {
+      width: 300px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .setup-app-light-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .setup-app-light-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, #a855f7, #ec4899, #f97316) border-box;
+      position: relative;
+    }
+
+    .setup-app-light-logo::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .setup-app-light-name {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.9);
+      font-weight: 500;
+    }
+
+    .setup-app-light-body {
+      padding: 24px;
+      min-height: 320px;
+      position: relative;
+    }
+
+    .setup-modal {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      padding: 40px 32px 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .setup-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 20px;
+      height: 20px;
+      color: rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    .setup-modal-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      background: rgba(147, 51, 234, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .setup-modal-icon::before {
+      content: '';
+      width: 20px;
+      height: 16px;
+      background: #9333ea;
+      border-radius: 3px;
+    }
+
+    .setup-modal-icon::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border: 2px solid #9333ea;
+      border-radius: 50%;
+      top: 8px;
+      right: 12px;
+    }
+
+    .setup-sparkles {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .setup-sparkle {
+      width: 4px;
+      height: 4px;
+      background: #c084fc;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .setup-sparkle:nth-child(1) { top: 0; left: -8px; }
+    .setup-sparkle:nth-child(2) { top: -4px; left: 0; }
+    .setup-sparkle:nth-child(3) { top: 0; left: 8px; }
+
+    .setup-modal-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: black;
+      margin: 0 0 8px;
+    }
+
+    .setup-modal-text {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 20px;
+      line-height: 1.5;
+    }
+
+    .setup-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .setup-synced-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .setup-synced-colors {
+      display: flex;
+      width: 20px;
+      height: 14px;
+    }
+
+    .setup-synced-color {
+      width: 10px;
+      height: 14px;
+    }
+
+    .setup-synced-color:first-child {
+      background: linear-gradient(180deg, #22c55e, #16a34a);
+      border-radius: 3px 0 0 3px;
+    }
+
+    .setup-synced-color:last-child {
+      background: linear-gradient(180deg, #f97316, #ea580c);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .setup-done-btn {
+      background: #1c1c1c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Small Cards */
+    .setup-small-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .setup-small-text {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0;
+      line-height: 1.55;
+      max-width: 320px;
+    }
+
+    .setup-card-left {
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6) 0%, rgba(20, 20, 20, 0.4) 100%);
+    }
+
+    .setup-card-right {
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(15, 15, 15, 0.4) 100%);
+    }
+
+    /* Try in Figma button */
+    .setup-figma-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .setup-figma-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .setup-wrapper {
+      position: relative;
+    }
+  </style>
+
+  <div class="setup-wrapper">
+    <a href="#" class="setup-figma-btn">
+      <svg class="setup-figma-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M8 24C10.2091 24 12 22.2091 12 20V16H8C5.79086 16 4 17.7909 4 20C4 22.2091 5.79086 24 8 24Z" fill="#0ACF83"/>
+        <path d="M4 12C4 9.79086 5.79086 8 8 8H12V16H8C5.79086 16 4 14.2091 4 12Z" fill="#A259FF"/>
+        <path d="M4 4C4 1.79086 5.79086 0 8 0H12V8H8C5.79086 8 4 6.20914 4 4Z" fill="#F24E1E"/>
+        <path d="M12 0H16C18.2091 0 20 1.79086 20 4C20 6.20914 18.2091 8 16 8H12V0Z" fill="#FF7262"/>
+        <path d="M20 12C20 14.2091 18.2091 16 16 16C13.7909 16 12 14.2091 12 12C12 9.79086 13.7909 8 16 8C18.2091 8 20 9.79086 20 12Z" fill="#1ABCFE"/>
+      </svg>
+      Try it Free
+    </a>
+
+    <div class="setup-grid">
+      <!-- Top Left Card -->
+      <div class="setup-card setup-card-large">
+        <div class="setup-card-header">
+          <h3 class="setup-card-title">Choose from your content</h3>
+          <p class="setup-card-description">Select some items and Acme will analyze them automatically. The smart engine will use these as a foundation for generating your custom results.</p>
+        </div>
+        <div class="setup-card-content">
+          <div class="setup-app-dark">
+            <div class="setup-app-dark-header">
+              <div class="setup-app-dark-logo"></div>
+              <span class="setup-app-dark-name">Acme</span>
+            </div>
+            <div class="setup-app-dark-body">
+              <div class="setup-app-dark-text">A vibrant collection</div>
+              <div class="setup-color-row">
+                <div class="setup-color-swatch setup-color-1"></div>
+                <div class="setup-color-swatch setup-color-2"></div>
+                <div class="setup-color-swatch setup-color-3"></div>
+                <div class="setup-color-swatch setup-color-4"></div>
+                <div class="setup-color-swatch setup-color-5"></div>
+                <div class="setup-color-swatch setup-color-6"></div>
+                <div class="setup-color-swatch setup-color-7"></div>
+                <div class="setup-color-swatch setup-color-8"></div>
+                <div class="setup-color-swatch setup-color-9"></div>
+              </div>
+            </div>
+            <div class="setup-app-dark-footer">
+              <div class="setup-picker-icon"></div>
+              <button class="setup-create-btn">Generate</button>
+              <svg class="setup-settings-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right Card -->
+      <div class="setup-card setup-card-large">
+        <div class="setup-card-header">
+          <h3 class="setup-card-title">Connect with your assets</h3>
+          <p class="setup-card-description">Link your existing assets with Acme to guide the smart engine on what resources it can use, helping you stay consistent and organized.</p>
+        </div>
+        <div class="setup-card-content">
+          <div class="setup-app-light">
+            <div class="setup-app-light-header">
+              <div class="setup-app-light-logo"></div>
+              <span class="setup-app-light-name">Acme</span>
+            </div>
+            <div class="setup-app-light-body">
+              <div class="setup-modal">
+                <svg class="setup-modal-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+                <div class="setup-modal-icon">
+                  <div class="setup-sparkles">
+                    <div class="setup-sparkle"></div>
+                    <div class="setup-sparkle"></div>
+                    <div class="setup-sparkle"></div>
+                  </div>
+                </div>
+                <h4 class="setup-modal-title">Import your items</h4>
+                <p class="setup-modal-text">Navigate to the location containing your saved items to connect with Acme.</p>
+                <div class="setup-modal-footer">
+                  <div class="setup-synced-badge">
+                    <div class="setup-synced-colors">
+                      <div class="setup-synced-color"></div>
+                      <div class="setup-synced-color"></div>
+                    </div>
+                    160 items connected
+                  </div>
+                  <button class="setup-done-btn">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Left Card -->
+      <div class="setup-card setup-card-small setup-card-left">
+        <h3 class="setup-small-title">Fine-tune anytime</h3>
+        <p class="setup-small-text">Happy with your results but want to refine them? No problem. Customize your generated output to match your exact needs with ease.</p>
+      </div>
+
+      <!-- Bottom Right Card -->
+      <div class="setup-card setup-card-small setup-card-right">
+        <h3 class="setup-small-title">Regenerate instantly</h3>
+        <p class="setup-small-text">Iterate on your results as much as you like. Select items to keep or start fresh from the beginning.</p>
+      </div>
+    </div>
+  </div>
+</section>

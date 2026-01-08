@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features 2</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .features2-section {
+      background-color: #0e0e0e;
+      min-height: 100vh;
+      padding: 40px 60px 100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      position: relative;
+    }
+
+    /* Logo in top left */
+    .features2-logo {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .features2-logo-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 180deg,
+        #ff00ff 0deg,
+        #ff0080 45deg,
+        #ff4040 90deg,
+        #ffcc00 135deg,
+        #80ff00 180deg,
+        #00ffcc 225deg,
+        #00ccff 270deg,
+        #8000ff 315deg,
+        #ff00ff 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .features2-logo-inner {
+      width: 24px;
+      height: 24px;
+      background: #0e0e0e;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .features2-logo-drop {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 16px;
+      background: linear-gradient(135deg, #00d4ff 0%, #7b68ee 100%);
+      border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    }
+
+    /* Cards container */
+    .features2-cards {
+      display: flex;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 0;
+    }
+
+    /* Left card - dark background with light UI */
+    .features2-card-left {
+      flex: 1;
+      background: #1a1a1a;
+      border-radius: 24px;
+      padding: 24px 24px 40px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* UI mockup inside left card */
+    .features2-ui-light {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features2-ui-title {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    /* Color gradient grid */
+    .features2-color-grid {
+      flex: 1;
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .features2-color-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features2-color-bar span {
+      flex: 1;
+    }
+
+    /* Saturation control */
+    .features2-saturation-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .features2-saturation-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .features2-saturation-value {
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Slider */
+    .features2-slider {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #e0e0e0 92%, #333 92%);
+      border-radius: 2px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .features2-slider-thumb {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: #333;
+      border-radius: 50%;
+    }
+
+    /* Bottom icons */
+    .features2-icons-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+    }
+
+    .features2-back-arrow {
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .features2-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .features2-icon-btn.features2-active {
+      border-color: #00a8ff;
+      border-width: 2px;
+    }
+
+    .features2-icon-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #666;
+      fill: none;
+    }
+
+    /* Right card - gradient background with dark UI */
+    .features2-card-right {
+      flex: 1;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #1a1a1a 50%, #1a1a1a 100%);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Try in Figma button */
+    .features2-figma-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: #ffffff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .features2-figma-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Rainbow bars UI - title area (light part) */
+    .features2-rainbow-title {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+      padding-right: 140px;
+    }
+
+    /* Rainbow bars */
+    .features2-rainbow-bars {
+      display: flex;
+      gap: 8px;
+      height: 240px;
+      margin-bottom: auto;
+    }
+
+    .features2-rainbow-bar {
+      flex: 1;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .features2-rainbow-bar:nth-child(1) { background: linear-gradient(to bottom, #f5a623 0%, #c17a1a 100%); height: 100%; }
+    .features2-rainbow-bar:nth-child(2) { background: linear-gradient(to bottom, #f5a623 0%, #d49a1e 100%); height: 95%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(3) { background: linear-gradient(to bottom, #f5d71a 0%, #c9b015 100%); height: 90%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(4) { background: linear-gradient(to bottom, #8bc34a 0%, #6a9a38 100%); height: 85%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(5) { background: linear-gradient(to bottom, #00bcd4 0%, #0097a7 100%); height: 80%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(6) { background: linear-gradient(to bottom, #03a9f4 0%, #0288d1 100%); height: 75%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(7) { background: linear-gradient(to bottom, #e040fb 0%, #aa00ff 100%); height: 70%; margin-top: auto; }
+
+    /* Dark UI bottom section */
+    .features2-dark-ui {
+      background: #2a2a2a;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: -60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Color dots */
+    .features2-color-dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .features2-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .features2-dot-orange { background: #f5a623; }
+    .features2-dot-yellow { background: #f5d71a; }
+    .features2-dot-purple { background: #e040fb; }
+
+    /* Redo row */
+    .features2-redo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .features2-dark-arrow {
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .features2-redo-btn {
+      background: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* FAQ Section */
+    .features2-faq {
+      max-width: 1200px;
+      margin: 120px auto 0;
+      text-align: center;
+    }
+
+    .features2-faq-title {
+      font-size: 72px;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.1;
+      font-style: italic;
+      letter-spacing: -2px;
+    }
+  </style>
+</head>
+<body>
+  <section class="features2-section">
+    <!-- Logo -->
+    <div class="features2-logo">
+      <div class="features2-logo-ring">
+        <div class="features2-logo-inner">
+          <div class="features2-logo-drop"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="features2-cards">
+      <!-- Left Card - Saturation UI -->
+      <div class="features2-card-left">
+        <div class="features2-ui-light">
+          <div class="features2-ui-title">Impressionist sunflowers</div>
+
+          <!-- Color gradient grid -->
+          <div class="features2-color-grid">
+            <div class="features2-color-bar">
+              <span style="background: #8b7355;"></span>
+              <span style="background: #9a7b4a;"></span>
+              <span style="background: #a88540;"></span>
+              <span style="background: #b58f35;"></span>
+              <span style="background: #8b6914;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #9a7b4a;"></span>
+              <span style="background: #ab8840;"></span>
+              <span style="background: #bc9535;"></span>
+              <span style="background: #cda22a;"></span>
+              <span style="background: #9a7314;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #ab8840;"></span>
+              <span style="background: #be9835;"></span>
+              <span style="background: #d1a82a;"></span>
+              <span style="background: #e4b81f;"></span>
+              <span style="background: #ab7d14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #be9835;"></span>
+              <span style="background: #d1a82a;"></span>
+              <span style="background: #e4b81f;"></span>
+              <span style="background: #f7c814;"></span>
+              <span style="background: #bc8714;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #cda22a;"></span>
+              <span style="background: #e0b21f;"></span>
+              <span style="background: #f3c214;"></span>
+              <span style="background: #ffd209;"></span>
+              <span style="background: #cd9114;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #d8ac25;"></span>
+              <span style="background: #ebbc1a;"></span>
+              <span style="background: #fecc0f;"></span>
+              <span style="background: #ffdc04;"></span>
+              <span style="background: #d89b14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #e4b61f;"></span>
+              <span style="background: #f7c614;"></span>
+              <span style="background: #ffd609;"></span>
+              <span style="background: #ffe600;"></span>
+              <span style="background: #e4a514;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #efc01a;"></span>
+              <span style="background: #ffd00f;"></span>
+              <span style="background: #ffe004;"></span>
+              <span style="background: #fff000;"></span>
+              <span style="background: #efaf14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #f5c618;"></span>
+              <span style="background: #ffd60d;"></span>
+              <span style="background: #ffe602;"></span>
+              <span style="background: #fff600;"></span>
+              <span style="background: #f5b514;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #f8ca16;"></span>
+              <span style="background: #ffda0b;"></span>
+              <span style="background: #ffea00;"></span>
+              <span style="background: #fffa00;"></span>
+              <span style="background: #f8b914;"></span>
+            </div>
+          </div>
+
+          <!-- Saturation control -->
+          <div class="features2-saturation-row">
+            <span class="features2-saturation-label">Saturation</span>
+            <span class="features2-saturation-value">+92</span>
+          </div>
+
+          <!-- Slider -->
+          <div class="features2-slider">
+            <div class="features2-slider-thumb"></div>
+          </div>
+
+          <!-- Bottom icons -->
+          <div class="features2-icons-row">
+            <span class="features2-back-arrow">&#8592;</span>
+            <button class="features2-icon-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="8" cy="12" r="5"></circle>
+                <circle cx="16" cy="12" r="5"></circle>
+              </svg>
+            </button>
+            <button class="features2-icon-btn features2-active">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <path d="M12 3 C7 3, 4 7, 4 12 C4 17, 7 21, 12 21 C17 21, 20 17, 20 12 C20 10, 19 8, 17 6"></path>
+              </svg>
+            </button>
+            <button class="features2-icon-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card - Rainbow UI -->
+      <div class="features2-card-right">
+        <!-- Figma button -->
+        <button class="features2-figma-btn">
+          <svg class="features2-figma-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="4" y="14" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="14" y="4" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="14" y="14" width="6" height="6" rx="1" fill="#333"/>
+          </svg>
+          Try in Figma
+        </button>
+
+        <div class="features2-rainbow-title">A summer rainbow</div>
+
+        <!-- Rainbow bars -->
+        <div class="features2-rainbow-bars">
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #e67e22 0%, #d35400 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #f39c12 0%, #e67e22 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #f1c40f 0%, #f39c12 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #2ecc71 0%, #27ae60 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #1abc9c 0%, #16a085 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #3498db 0%, #2980b9 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #9b59b6 0%, #8e44ad 100%);"></div>
+        </div>
+
+        <!-- Dark UI section -->
+        <div class="features2-dark-ui">
+          <div class="features2-color-dots">
+            <div class="features2-dot features2-dot-orange"></div>
+            <div class="features2-dot features2-dot-yellow"></div>
+            <div class="features2-dot features2-dot-purple"></div>
+          </div>
+          <div class="features2-redo-row">
+            <span class="features2-dark-arrow">&#8592;</span>
+            <button class="features2-redo-btn">Redo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="features2-faq">
+      <h2 class="features2-faq-title">Frequently asked<br>questions.</h2>
+    </div>
+  </section>
+</body>
+</html>

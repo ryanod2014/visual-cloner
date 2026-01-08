@@ -1,0 +1,211 @@
+{
+  "name": "stripe.com",
+  "version": "1.0.0",
+  "generatedAt": "2026-01-08T07:07:07.453Z",
+  "description": "Design system extracted from stripe.com",
+  "designTokens": {
+    "colors": {
+      "primary": {},
+      "accent": {},
+      "neutral": {},
+      "background": {}
+    },
+    "typography": {
+      "fontFamily": {
+        "primary": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Ubuntu, sans-serif",
+        "secondary": "sohne-var"
+      },
+      "fontWeight": {},
+      "fontSize": {
+        "xs": "10px",
+        "sm": "11px",
+        "base": "13px",
+        "lg": "15px",
+        "xl": "16px",
+        "2xl": "28px"
+      },
+      "lineHeight": {}
+    },
+    "spacing": {
+      "paddingTop": "160px",
+      "paddingBottom": "160px",
+      "columnPaddingNone": "0",
+      "columnPaddingSmall": "8px",
+      "columnPaddingNormal": "16px",
+      "columnPaddingMedium": "16px",
+      "columnPaddingLarge": "16px",
+      "columnPaddingXLarge": "16px",
+      "rowGapNormal": "8px",
+      "rowGapMedium": "24px",
+      "rowGapLarge": "32px",
+      "rowGapXLarge": "64px",
+      "rowGapXXLarge": "88px",
+      "rowGap": "var(--rowGapNormal)"
+    },
+    "borderRadius": {},
+    "shadows": {},
+    "transitions": {}
+  },
+  "gradientShader": {
+    "type": "webgl",
+    "canvasClass": "gradient-canvas",
+    "vertexShader": "#version 300 es\nprecision mediump sampler2DArray;\n#define attribute in\n#define varying out\n#define texture2D texture\nprecision highp float;\nprecision highp int;\n#define HIGH_PRECISION\n#define SHADER_NAME ShaderMaterial\n#define DOUBLE_SIDED\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat4 viewMatrix;\nuniform mat3 normalMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\n#ifdef USE_INSTANCING\n\tattribute mat4 instanceMatrix;\n#endif\n#ifdef USE_INSTANCING_COLOR\n\tattribute vec3 instanceColor;\n#endif\nattribute vec3 position;\nattribute vec3 normal;\nattribute vec2 uv;\n#ifdef USE_TANGENT\n\tattribute vec4 tangent;\n#endif\n#if defined( USE_COLOR_ALPHA )\n\tattribute vec4 color;\n#elif defined( USE_COLOR )\n\tattribute vec3 color;\n#endif\n#if ( defined( USE_MORPHTARGETS ) && ! defined( MORPHTARGETS_TEXTURE ) )\n\tattribute vec3 morphTarget0;\n\tattribute vec3 morphTarget1;\n\tattribute vec3 morphTarget2;\n\tattribute vec3 morphTarget3;\n\t#ifdef USE_MORPHNORMALS\n\t\tattribute vec3 morphNormal0;\n\t\tattribute vec3 morphNormal1;\n\t\tattribute vec3 morphNormal2;\n\t\tattribute vec3 morphNormal3;\n\t#else\n\t\tattribute vec3 morphTarget4;\n\t\tattribute vec3 morphTarget5;\n\t\tattribute vec3 morphTarget6;\n\t\tattribute vec3 morphTarget7;\n\t#endif\n#endif\n#ifdef USE_SKINNING\n\tattribute vec4 skinIndex;\n\tattribute vec4 skinWeight;\n#endif\n\n\n        uniform float u_time;\n        uniform float u_drag_time;\n        uniform vec2 u_resolution;\n        uniform float u_z_offset_factor;\n        attribute float rndId;\n        varying float vRndId;\n\n        varying float pct;\n\n        void main() {\n          vRndId = rndId;\n          vec2 st = position.xy/u_resolution;\n\n          pct = min(1.0, u_time / (1000. / max(0.2, 0.2 * sin(fract(rndId)))));\n          float vNormal = 1.0;\n          if (u_drag_time > 0.) {\n            vNormal -= ((sin(u_time / 400.0 * vRndId) + 1.0) * 0.02) * min(1., u_drag_time / 1200.0);\n          }\n          vNormal -= ((sin(u_time / 400.0 * vRndId) + 1.0) * 0.02) * u_z_offset_factor;\n          vec4 modelViewPosition = modelViewMatrix * vec4(position, vNormal);\n          gl_Position = projectionMatrix * modelViewPosition;\n        }\n    ",
+    "fragmentShader": "#version 300 es\n#define varying in\nlayout(location = 0) out highp vec4 pc_fragColor;\n#define gl_FragColor pc_fragColor\n#define gl_FragDepthEXT gl_FragDepth\n#define texture2D texture\n#define textureCube texture\n#define texture2DProj textureProj\n#define texture2DLodEXT textureLod\n#define texture2DProjLodEXT textureProjLod\n#define textureCubeLodEXT textureLod\n#define texture2DGradEXT textureGrad\n#define texture2DProjGradEXT textureProjGrad\n#define textureCubeGradEXT textureGrad\nprecision highp float;\nprecision highp int;\n#define HIGH_PRECISION\n#define SHADER_NAME ShaderMaterial\n#define DOUBLE_SIDED\n#define LEGACY_LIGHTS\nuniform mat4 viewMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\nvec4 LinearToLinear( in vec4 value ) {\n\treturn value;\n}\nvec4 LinearTosRGB( in vec4 value ) {\n\treturn vec4( mix( pow( value.rgb, vec3( 0.41666 ) ) * 1.055 - vec3( 0.055 ), value.rgb * 12.92, vec3( lessThanEqual( value.rgb, vec3( 0.0031308 ) ) ) ), value.a );\n}\nvec4 linearToOutputTexel( vec4 value ) { return LinearToLinear( value ); }\n\n\n        uniform bool u_dragging;\n        uniform float u_time;\n        uniform float u_drag_time;\n        uniform float u_r;\n        uniform float u_g;\n        uniform float u_b;\n        uniform float u_opacity_factor;\n        varying float vRndId;\n        varying float pct;\n\n        void main() {\n          float v = sin(u_time / 200.0 * vRndId);\n          float alpha = (pct * 0.7 + v * 0.2) * u_opacity_factor;\n          float dragDur = 1200.0;\n          vec3 color = vec3(u_r, u_g, u_b);\n          float rInc = min(1.0, u_drag_time / dragDur) * (sin(u_drag_time / (dragDur * 0.5) + 1.0) * 0.1);\n          float gInc = min(1.0, u_drag_time / dragDur) * (sin(u_drag_time / (dragDur * 0.75) - 1.0) * 0.1);\n          float bInc = min(1.0, u_drag_time / dragDur) * (sin(u_drag_time / dragDur) * 0.1);\n          if (u_dragging) {\n            color.r = u_r + rInc;\n            color.g = u_g + gInc;\n            color.b = u_b + bInc;\n          }\n\n          gl_FragColor = vec4(color, alpha);\n        }\n    ",
+    "uniforms": [
+      "modelMatrix",
+      "modelViewMatrix",
+      "projectionMatrix",
+      "viewMatrix",
+      "normalMatrix",
+      "cameraPosition",
+      "isOrthographic",
+      "u_time",
+      "u_drag_time",
+      "u_resolution",
+      "u_z_offset_factor",
+      "u_dragging",
+      "u_r",
+      "u_g",
+      "u_b",
+      "u_opacity_factor"
+    ],
+    "defaultValues": [
+      "projectionMatrix",
+      "modelViewMatrix",
+      "resolution",
+      "u_time",
+      "u_shadow_power",
+      "u_darken_top",
+      "u_active_colors",
+      "u_global.noiseFreq",
+      "u_global.noiseSpeed",
+      "u_vertDeform.incline",
+      "u_vertDeform.offsetTop",
+      "u_vertDeform.offsetBottom",
+      "u_vertDeform.noiseFreq",
+      "u_vertDeform.noiseAmp",
+      "u_vertDeform.noiseSpeed",
+      "u_vertDeform.noiseFlow",
+      "u_vertDeform.noiseSeed",
+      "u_baseColor",
+      "u_waveLayers[0].color",
+      "u_waveLayers[0].noiseFreq",
+      "u_waveLayers[0].noiseSpeed",
+      "u_waveLayers[0].noiseFlow",
+      "u_waveLayers[0].noiseSeed",
+      "u_waveLayers[0].noiseFloor",
+      "u_waveLayers[0].noiseCeil",
+      "u_waveLayers[1].color",
+      "u_waveLayers[1].noiseFreq",
+      "u_waveLayers[1].noiseSpeed",
+      "u_waveLayers[1].noiseFlow",
+      "u_waveLayers[1].noiseSeed",
+      "u_waveLayers[1].noiseFloor",
+      "u_waveLayers[1].noiseCeil",
+      "u_waveLayers[2].color",
+      "u_waveLayers[2].noiseFreq",
+      "u_waveLayers[2].noiseSpeed",
+      "u_waveLayers[2].noiseFlow",
+      "u_waveLayers[2].noiseSeed",
+      "u_waveLayers[2].noiseFloor",
+      "u_waveLayers[2].noiseCeil",
+      "u_drag_time",
+      "u_z_offset_factor",
+      "u_dragging",
+      "u_r",
+      "u_g",
+      "u_b",
+      "u_opacity_factor",
+      "isOrthographic",
+      "viewMatrix",
+      "normalMatrix",
+      "pointLights[0].position",
+      "pointLights[0].color",
+      "pointLights[0].distance",
+      "pointLights[0].decay",
+      "pointLights[1].position",
+      "pointLights[1].color",
+      "pointLights[1].distance",
+      "pointLights[1].decay",
+      "diffuse",
+      "emissive",
+      "opacity",
+      "ambientLightColor",
+      "lightProbe[0]"
+    ]
+  },
+  "animations": {
+    "css": {
+      "fadeIn": {
+        "keyframes": "@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }",
+        "usage": "animation: fadeIn 0.6s ease forwards;"
+      },
+      "slideUp": {
+        "keyframes": "@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }",
+        "usage": "animation: slideUp 0.6s ease forwards;"
+      },
+      "slideInRight": {
+        "keyframes": "@keyframes slideInRight { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }",
+        "usage": "animation: slideInRight 0.6s ease forwards;"
+      }
+    },
+    "js": {
+      "scrollReveal": {
+        "description": "Reveal elements as they scroll into view",
+        "trigger": "intersection",
+        "properties": [
+          "opacity",
+          "transform"
+        ],
+        "duration": 600
+      },
+      "numberCounter": {
+        "description": "Animate numbers counting up",
+        "trigger": "intersection",
+        "duration": 2000
+      }
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "background": "var(--color-primary, #635bff)",
+        "color": "#ffffff",
+        "padding": "12px 20px",
+        "borderRadius": "9999px",
+        "fontWeight": 600
+      },
+      "secondary": {
+        "background": "transparent",
+        "color": "var(--color-primary, #635bff)",
+        "border": "1px solid currentColor",
+        "padding": "12px 20px",
+        "borderRadius": "9999px"
+      }
+    },
+    "card": {
+      "default": {
+        "background": "#ffffff",
+        "borderRadius": "12px",
+        "padding": "24px",
+        "boxShadow": "0 4px 12px rgba(0,0,0,0.1)"
+      }
+    }
+  },
+  "layout": {
+    "container": {
+      "maxWidth": "1200px",
+      "padding": "0 24px"
+    },
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px"
+    }
+  },
+  "files": {
+    "css": "template.css",
+    "js": "template.js"
+  }
+}

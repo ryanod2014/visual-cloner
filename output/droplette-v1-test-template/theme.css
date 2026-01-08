@@ -1,0 +1,63 @@
+/* === DARK THEME OVERRIDES === */
+
+/* Subtle borders on dark backgrounds */
+.card, .task-card, .kanban-card {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Dashed borders need adjustment */
+[style*="dashed"] {
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar { width: var(--scrollbar-width, 8px); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track, rgb(30, 30, 30)); }
+::-webkit-scrollbar-thumb { 
+  background: var(--scrollbar-thumb, rgba(255, 255, 255, 0.2)); 
+  border-radius: var(--radius-full, 9999px); 
+}
+
+/* Text selection */
+::selection {
+  background: var(--selection-background, #f97316);
+  color: var(--selection-color, #ffffff);
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--focus-ring-color, #f97316);
+  outline-offset: 2px;
+}
+
+/* Button hover states */
+.btn-primary:hover,
+button[class*="primary"]:hover {
+  opacity: 0.9;
+}
+
+/* Card hover states */
+.card:hover,
+[class*="card"]:hover {
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Input focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+/* Link hover states */
+a:hover {
+  opacity: 0.8;
+}
+
+/* Disabled states */
+:disabled,
+[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,624 @@
+<style>
+/* Chronicle Nav Hero Section */
+.chronicle-nav-hero-section {
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Navigation */
+.chronicle-nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chronicle-nav-hero-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.chronicle-nav-hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-nav-hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.chronicle-nav-hero-nav-link {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.chronicle-nav-hero-nav-link:hover {
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.chronicle-nav-hero-login {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.chronicle-nav-hero-login:hover {
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-cta-nav {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.chronicle-nav-hero-cta-nav:hover {
+  opacity: 0.9;
+}
+
+/* Hero Section */
+.chronicle-nav-hero-hero {
+  padding-top: 120px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.chronicle-nav-hero-headline {
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 auto 24px;
+  max-width: 700px;
+  letter-spacing: -0.02em;
+}
+
+.chronicle-nav-hero-subheadline {
+  font-size: 18px;
+  color: #a0a0a0;
+  margin: 0 auto 40px;
+  max-width: 500px;
+  font-weight: 400;
+}
+
+.chronicle-nav-hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-cta-primary {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  border: 1px solid #ffffff;
+}
+
+.chronicle-nav-hero-cta-primary:hover {
+  opacity: 0.9;
+}
+
+.chronicle-nav-hero-cta-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.chronicle-nav-hero-cta-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Card Preview */
+.chronicle-nav-hero-card-preview {
+  max-width: 900px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+}
+
+.chronicle-nav-hero-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.chronicle-nav-hero-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.chronicle-nav-hero-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chronicle-nav-hero-card-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-nav-hero-card-title {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.chronicle-nav-hero-card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.chronicle-nav-hero-card-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  margin-left: -8px;
+}
+
+.chronicle-nav-hero-card-avatar:first-child {
+  margin-left: 0;
+}
+
+.chronicle-nav-hero-card-avatar-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chronicle-nav-hero-card-avatar-2 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.chronicle-nav-hero-card-avatar-3 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.chronicle-nav-hero-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-btn {
+  font-size: 12px;
+  color: #666666;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chronicle-nav-hero-card-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.chronicle-nav-hero-card-btn-present {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-card-btn-present:hover {
+  background-color: #1a1a1a;
+}
+
+.chronicle-nav-hero-card-more {
+  color: #999999;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chronicle-nav-hero-card-body {
+  padding: 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  min-height: 300px;
+}
+
+.chronicle-nav-hero-card-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.chronicle-nav-hero-card-main-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #0a0a0a;
+  line-height: 1.3;
+  margin: 0 0 32px;
+}
+
+.chronicle-nav-hero-card-main-title span {
+  color: #6b6b6b;
+}
+
+.chronicle-nav-hero-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.chronicle-nav-hero-card-item-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #e8e8e8;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chronicle-nav-hero-card-item-icon svg {
+  width: 16px;
+  height: 16px;
+  color: #666666;
+}
+
+.chronicle-nav-hero-card-item-content {
+  flex: 1;
+}
+
+.chronicle-nav-hero-card-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a0a0a;
+  margin: 0 0 2px;
+}
+
+.chronicle-nav-hero-card-item-desc {
+  font-size: 11px;
+  color: #888888;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #666666;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.chronicle-nav-hero-card-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.chronicle-nav-hero-card-desc-text {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.chronicle-nav-hero-card-mini {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-mini-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-nav-hero-card-mini-icon svg {
+  width: 12px;
+  height: 12px;
+  color: #666666;
+}
+
+.chronicle-nav-hero-card-mini-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-desc {
+  font-size: 10px;
+  color: #888888;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-image {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.chronicle-nav-hero-card-mini-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+/* Scroll indicator */
+.chronicle-nav-hero-scroll-indicator {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-scroll-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #333333;
+  border-radius: 50%;
+}
+
+.chronicle-nav-hero-scroll-dot.active {
+  height: 24px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+</style>
+
+<section class="chronicle-nav-hero-section">
+  <!-- Navigation -->
+  <nav class="chronicle-nav-hero-nav">
+    <div class="chronicle-nav-hero-nav-left">
+      <a href="#" class="chronicle-nav-hero-logo">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <div class="chronicle-nav-hero-nav-links">
+        <a href="#" class="chronicle-nav-hero-nav-link">Product</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Resources</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Solutions</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Templates</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Enterprise</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Pricing</a>
+      </div>
+    </div>
+    <div class="chronicle-nav-hero-nav-right">
+      <a href="#" class="chronicle-nav-hero-login">Login</a>
+      <a href="#" class="chronicle-nav-hero-cta-nav">Try for free</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="chronicle-nav-hero-hero">
+    <h1 class="chronicle-nav-hero-headline">Every great presentation starts with a Chronicle</h1>
+    <p class="chronicle-nav-hero-subheadline">Create stunning presentations. No design skills required.</p>
+    <div class="chronicle-nav-hero-cta-group">
+      <a href="#" class="chronicle-nav-hero-cta-primary">Start for free</a>
+      <a href="#" class="chronicle-nav-hero-cta-secondary">Watch video</a>
+    </div>
+  </div>
+
+  <!-- Card Preview -->
+  <div class="chronicle-nav-hero-card-preview">
+    <div class="chronicle-nav-hero-card">
+      <div class="chronicle-nav-hero-card-header">
+        <div class="chronicle-nav-hero-card-header-left">
+          <div class="chronicle-nav-hero-card-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <span class="chronicle-nav-hero-card-title">Portfolio</span>
+        </div>
+        <div class="chronicle-nav-hero-card-header-right">
+          <div class="chronicle-nav-hero-card-avatars">
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-1"></div>
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-2"></div>
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-3"></div>
+          </div>
+          <div class="chronicle-nav-hero-card-actions">
+            <button class="chronicle-nav-hero-card-btn">Share</button>
+            <button class="chronicle-nav-hero-card-btn chronicle-nav-hero-card-btn-present">Present</button>
+            <span class="chronicle-nav-hero-card-more">...</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-nav-hero-card-body">
+        <div class="chronicle-nav-hero-card-content-left">
+          <h2 class="chronicle-nav-hero-card-main-title">A platform ecosystem built for <span>mission-critical AI</span></h2>
+          <div class="chronicle-nav-hero-card-items">
+            <div class="chronicle-nav-hero-card-item">
+              <div class="chronicle-nav-hero-card-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <div class="chronicle-nav-hero-card-item-content">
+                <p class="chronicle-nav-hero-card-item-title">SentraAI</p>
+                <p class="chronicle-nav-hero-card-item-desc">Risk monitoring for finance</p>
+              </div>
+            </div>
+            <div class="chronicle-nav-hero-card-item">
+              <div class="chronicle-nav-hero-card-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="chronicle-nav-hero-card-item-content">
+                <p class="chronicle-nav-hero-card-item-title">NeuralInsight</p>
+                <p class="chronicle-nav-hero-card-item-desc">AI observability and health analytics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chronicle-nav-hero-card-content-right">
+          <div class="chronicle-nav-hero-card-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            </svg>
+            Made with Chronicle
+          </div>
+          <p class="chronicle-nav-hero-card-desc-text">Each platform is built to integrate seamlessly into existing infrastructure, delivering transparent, reliable, and high-impact AI performance across critical workflows.</p>
+          <div class="chronicle-nav-hero-card-mini-cards">
+            <div class="chronicle-nav-hero-card-mini">
+              <div class="chronicle-nav-hero-card-mini-header">
+                <div class="chronicle-nav-hero-card-mini-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
+                  </svg>
+                </div>
+                <p class="chronicle-nav-hero-card-mini-title">CoreOptima</p>
+              </div>
+              <p class="chronicle-nav-hero-card-mini-desc">Residential energy efficiency</p>
+              <div class="chronicle-nav-hero-card-mini-image"></div>
+            </div>
+            <div class="chronicle-nav-hero-card-mini">
+              <div class="chronicle-nav-hero-card-mini-header">
+                <div class="chronicle-nav-hero-card-mini-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3v18h18"/>
+                    <path d="M18 17V9"/>
+                    <path d="M13 17V5"/>
+                    <path d="M8 17v-3"/>
+                  </svg>
+                </div>
+                <p class="chronicle-nav-hero-card-mini-title">NeuraPredict</p>
+              </div>
+              <p class="chronicle-nav-hero-card-mini-desc">Predictive analytics</p>
+              <button class="chronicle-nav-hero-card-mini-btn">Pavan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="chronicle-nav-hero-scroll-indicator">
+    <div class="chronicle-nav-hero-scroll-dot active"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+  </div>
+</section>

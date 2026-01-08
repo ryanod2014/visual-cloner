@@ -1,0 +1,409 @@
+<style>
+  .chronicle-testimonials-section {
+    background-color: #0a0a0a;
+    padding: 120px 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .chronicle-testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .chronicle-testimonials-headline {
+    font-size: 48px;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 80px;
+    line-height: 1.2;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chronicle-testimonials-track-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .chronicle-testimonials-row {
+    display: flex;
+    gap: 24px;
+    animation: chronicle-testimonials-scroll 40s linear infinite;
+  }
+
+  .chronicle-testimonials-row-reverse {
+    animation: chronicle-testimonials-scroll-reverse 40s linear infinite;
+  }
+
+  @keyframes chronicle-testimonials-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes chronicle-testimonials-scroll-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .chronicle-testimonials-card {
+    flex-shrink: 0;
+    width: 380px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .chronicle-testimonials-quote {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .chronicle-testimonials-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .chronicle-testimonials-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .chronicle-testimonials-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .chronicle-testimonials-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .chronicle-testimonials-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .chronicle-testimonials-title {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .chronicle-testimonials-row:hover,
+  .chronicle-testimonials-row-reverse:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="chronicle-testimonials-section">
+  <div class="chronicle-testimonials-container">
+    <h2 class="chronicle-testimonials-headline">Loved by world-class founders, strategists, designers and teams.</h2>
+  </div>
+
+  <div class="chronicle-testimonials-track-wrapper">
+    <!-- Row 1 - scrolling left -->
+    <div class="chronicle-testimonials-row">
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle has completely transformed how we present strategy to our board. The visual storytelling capabilities are unmatched."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">SK</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Sarah Kim</span>
+            <span class="chronicle-testimonials-title">CEO, Nexus Ventures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We've cut our presentation prep time by 70%. Chronicle's templates and widgets make it effortless to create polished decks."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MR</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Marcus Rodriguez</span>
+            <span class="chronicle-testimonials-title">Design Lead, Stripe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The real-time collaboration features have made remote strategy sessions actually productive. Game changer for distributed teams."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">EL</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Emma Liu</span>
+            <span class="chronicle-testimonials-title">Strategy Director, Airbnb</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally, a presentation tool that designers actually want to use. The attention to typography and layout is exceptional."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">JT</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">James Thompson</span>
+            <span class="chronicle-testimonials-title">Creative Director, Figma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Our investor updates went from dreaded monthly tasks to something we're proud to share. Chronicle makes data beautiful."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">AP</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Aisha Patel</span>
+            <span class="chronicle-testimonials-title">Founder, Bloom Health</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The publish-to-web feature is brilliant. We use Chronicle for all our public strategy docs and product announcements."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">DW</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">David Wang</span>
+            <span class="chronicle-testimonials-title">Head of Product, Linear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle has completely transformed how we present strategy to our board. The visual storytelling capabilities are unmatched."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">SK</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Sarah Kim</span>
+            <span class="chronicle-testimonials-title">CEO, Nexus Ventures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We've cut our presentation prep time by 70%. Chronicle's templates and widgets make it effortless to create polished decks."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MR</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Marcus Rodriguez</span>
+            <span class="chronicle-testimonials-title">Design Lead, Stripe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The real-time collaboration features have made remote strategy sessions actually productive. Game changer for distributed teams."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">EL</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Emma Liu</span>
+            <span class="chronicle-testimonials-title">Strategy Director, Airbnb</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally, a presentation tool that designers actually want to use. The attention to typography and layout is exceptional."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">JT</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">James Thompson</span>
+            <span class="chronicle-testimonials-title">Creative Director, Figma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Our investor updates went from dreaded monthly tasks to something we're proud to share. Chronicle makes data beautiful."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">AP</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Aisha Patel</span>
+            <span class="chronicle-testimonials-title">Founder, Bloom Health</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The publish-to-web feature is brilliant. We use Chronicle for all our public strategy docs and product announcements."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">DW</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">David Wang</span>
+            <span class="chronicle-testimonials-title">Head of Product, Linear</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 - scrolling right (reverse) -->
+    <div class="chronicle-testimonials-row chronicle-testimonials-row-reverse">
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle helped us secure our Series B. The pitch deck we built was miles ahead of anything we'd done in PowerPoint."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">NB</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Nina Brooks</span>
+            <span class="chronicle-testimonials-title">Co-founder, Catalyst AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"As a consultant, I need to deliver polished work fast. Chronicle has become my secret weapon for client presentations."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">RH</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Ryan Hughes</span>
+            <span class="chronicle-testimonials-title">Partner, McKinsey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The smart canvas feature is incredibly intuitive. Layouts that used to take hours now come together in minutes."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">LM</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Lisa Martinez</span>
+            <span class="chronicle-testimonials-title">VP Design, Notion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We switched our entire company to Chronicle. The consistency across teams has improved our brand presence significantly."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">TN</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Tom Nguyen</span>
+            <span class="chronicle-testimonials-title">CMO, Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally broke free from slide-based thinking. Chronicle lets us tell stories the way they should be told."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">KC</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Kate Chen</span>
+            <span class="chronicle-testimonials-title">Storytelling Lead, Apple</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The interactive widgets are perfect for presenting complex data. Our quarterly reviews have never been more engaging."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MJ</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Michael Jensen</span>
+            <span class="chronicle-testimonials-title">Data Lead, Spotify</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle helped us secure our Series B. The pitch deck we built was miles ahead of anything we'd done in PowerPoint."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">NB</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Nina Brooks</span>
+            <span class="chronicle-testimonials-title">Co-founder, Catalyst AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"As a consultant, I need to deliver polished work fast. Chronicle has become my secret weapon for client presentations."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">RH</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Ryan Hughes</span>
+            <span class="chronicle-testimonials-title">Partner, McKinsey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The smart canvas feature is incredibly intuitive. Layouts that used to take hours now come together in minutes."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">LM</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Lisa Martinez</span>
+            <span class="chronicle-testimonials-title">VP Design, Notion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We switched our entire company to Chronicle. The consistency across teams has improved our brand presence significantly."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">TN</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Tom Nguyen</span>
+            <span class="chronicle-testimonials-title">CMO, Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally broke free from slide-based thinking. Chronicle lets us tell stories the way they should be told."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">KC</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Kate Chen</span>
+            <span class="chronicle-testimonials-title">Storytelling Lead, Apple</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The interactive widgets are perfect for presenting complex data. Our quarterly reviews have never been more engaging."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MJ</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Michael Jensen</span>
+            <span class="chronicle-testimonials-title">Data Lead, Spotify</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

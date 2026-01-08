@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acme - Template</title>
+  <link rel="stylesheet" href="variables.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-primary);
+      background: var(--color-background);
+      color: var(--color-foreground);
+      line-height: var(--leading-normal);
+    }
+  </style>
+</head>
+<body>
+<!-- Section: 00-an-ai-tool-made-to-enhance-des.html -->
+<style>
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(255,255,255,0.05);
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-link: rgb(255, 255, 255);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+  --font-heading: Ein, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+  --text-h1: 69px;
+  --text-h2: 48px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clone-section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.clone-section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.clone-section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.clone-section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 28px;
+  background: linear-gradient(to bottom, #00bcd4 50%, #0e0e0e 50%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.clone-section-0-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.clone-section-0-content {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-section-x);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-headline {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clone-section-0-subheadline {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-xxl);
+}
+
+.clone-section-0-subheadline strong {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-normal);
+}
+
+.clone-section-0-color-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: var(--space-lg) 0;
+  position: relative;
+}
+
+.clone-section-0-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.clone-section-0-color-dot:nth-child(1) { background: #00bcd4; }
+.clone-section-0-color-dot:nth-child(2) { background: #e91e63; }
+.clone-section-0-color-dot:nth-child(3) { background: #2196f3; }
+.clone-section-0-color-dot:nth-child(4) { background: #9c27b0; }
+.clone-section-0-color-dot:nth-child(5) { background: #ff5722; }
+.clone-section-0-color-dot:nth-child(6) { background: #ffc107; }
+.clone-section-0-color-dot:nth-child(7) { background: #ffeb3b; }
+.clone-section-0-color-dot:nth-child(8) { background: #cddc39; }
+.clone-section-0-color-dot:nth-child(9) { background: #00bcd4; }
+.clone-section-0-color-dot:nth-child(10) { background: #03a9f4; }
+
+.clone-section-0-preview {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  padding: var(--space-xxl) var(--space-section-x);
+  position: relative;
+}
+
+.clone-section-0-sidebar {
+  width: 280px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  backdrop-filter: blur(10px);
+}
+
+.clone-section-0-sidebar-item {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.clone-section-0-palette-card {
+  width: 320px;
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.clone-section-0-palette-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-0-palette-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-0-palette-title {
+  font-size: var(--text-small);
+  color: var(--color-text-primary);
+}
+
+.clone-section-0-palette-colors {
+  display: flex;
+  height: 400px;
+}
+
+.clone-section-0-palette-stripe {
+  flex: 1;
+}
+
+.clone-section-0-palette-stripe:nth-child(1) { background: linear-gradient(to bottom, #ff3d00, #ff6e40); }
+.clone-section-0-palette-stripe:nth-child(2) { background: linear-gradient(to bottom, #ff9100, #ffab40); }
+.clone-section-0-palette-stripe:nth-child(3) { background: linear-gradient(to bottom, #ffc400, #ffd740); }
+.clone-section-0-palette-stripe:nth-child(4) { background: linear-gradient(to bottom, #c6ff00, #eeff41); }
+.clone-section-0-palette-stripe:nth-child(5) { background: linear-gradient(to bottom, #76ff03, #b2ff59); }
+.clone-section-0-palette-stripe:nth-child(6) { background: linear-gradient(to bottom, #00e5ff, #18ffff); }
+.clone-section-0-palette-stripe:nth-child(7) { background: linear-gradient(to bottom, #00b0ff, #40c4ff); }
+.clone-section-0-palette-stripe:nth-child(8) { background: linear-gradient(to bottom, #651fff, #7c4dff); }
+.clone-section-0-palette-stripe:nth-child(9) { background: linear-gradient(to bottom, #d500f9, #e040fb); }
+
+.clone-section-0-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 400px;
+  background: radial-gradient(ellipse at center top,
+    rgba(255,100,0,0.15) 0%,
+    rgba(255,200,0,0.1) 20%,
+    rgba(100,255,0,0.08) 40%,
+    rgba(0,200,255,0.05) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+</style>
+
+<div class="clone-section-0">
+  <div class="clone-section-0-glow"></div>
+
+  <nav class="clone-section-0-nav">
+    <div class="clone-section-0-logo"></div>
+    <a href="#" class="clone-section-0-cta-btn">
+      Get Started
+    </a>
+  </nav>
+
+  <div class="clone-section-0-content">
+    <h1 class="clone-section-0-headline">AI-powered tools built for creative professionals.</h1>
+    <p class="clone-section-0-subheadline">
+      Streamline your workflow with smart automation that adapts to your style. <strong>Acme helps you create faster.</strong>
+    </p>
+  </div>
+
+  <div class="clone-section-0-color-row">
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+  </div>
+
+  <div class="clone-section-0-preview">
+    <div class="clone-section-0-sidebar">
+      <div class="clone-section-0-sidebar-item" style="width: 60%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 40%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 70%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 50%;"></div>
+    </div>
+
+    <div class="clone-section-0-palette-card">
+      <div class="clone-section-0-palette-header">
+        <div class="clone-section-0-palette-icon"></div>
+        <span class="clone-section-0-palette-title">Acme</span>
+      </div>
+      <div class="clone-section-0-palette-colors">
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-0-sidebar">
+      <div class="clone-section-0-sidebar-item" style="width: 50%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 65%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 45%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 55%;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 00-hero.html -->
+<style>
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(255,255,255,0.05);
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+  --font-heading: Ein, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+  --text-h1: 69px;
+  --text-h2: 48px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clone-section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.clone-section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.clone-section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.clone-section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: var(--color-background);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.clone-section-0-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-foreground);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.clone-section-0-hero {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clone-section-0-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.clone-section-0-subtitle strong {
+  color: var(--color-foreground);
+  font-weight: var(--weight-medium);
+}
+
+/* Color dots background */
+.clone-section-0-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clone-section-0-dot {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.clone-section-0-dot.teal-1 { background: #00bcd4; top: 15%; left: 5%; }
+.clone-section-0-dot.teal-2 { background: #00bcd4; top: 15%; left: 15%; opacity: 0.5; }
+.clone-section-0-dot.blue-1 { background: #2196f3; top: 15%; left: 35%; }
+.clone-section-0-dot.purple { background: #d500f9; top: 15%; left: 45%; }
+.clone-section-0-dot.orange { background: #ff3d00; top: 15%; left: 55%; }
+.clone-section-0-dot.gold { background: #ffb300; top: 15%; left: 65%; }
+.clone-section-0-dot.yellow { background: #ffd54f; top: 15%; left: 75%; }
+.clone-section-0-dot.lime { background: #aeea00; top: 15%; left: 85%; }
+
+/* Mockup section */
+.clone-section-0-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-color-picker {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  min-width: 280px;
+  border: 1px solid var(--color-border);
+}
+
+.clone-section-0-picker-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-0-picker-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-0-color-bars {
+  display: flex;
+  gap: 2px;
+  height: 300px;
+}
+
+.clone-section-0-color-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.clone-section-0-color-bar:nth-child(1) { background: linear-gradient(to bottom, #ff5722, #ff3d00); }
+.clone-section-0-color-bar:nth-child(2) { background: linear-gradient(to bottom, #ff9800, #ff5722); }
+.clone-section-0-color-bar:nth-child(3) { background: linear-gradient(to bottom, #ffeb3b, #ff9800); }
+.clone-section-0-color-bar:nth-child(4) { background: linear-gradient(to bottom, #cddc39, #ffeb3b); }
+.clone-section-0-color-bar:nth-child(5) { background: linear-gradient(to bottom, #8bc34a, #cddc39); }
+.clone-section-0-color-bar:nth-child(6) { background: linear-gradient(to bottom, #4caf50, #8bc34a); }
+.clone-section-0-color-bar:nth-child(7) { background: linear-gradient(to bottom, #00bcd4, #4caf50); }
+.clone-section-0-color-bar:nth-child(8) { background: linear-gradient(to bottom, #2196f3, #00bcd4); }
+
+/* Rainbow glow effect */
+.clone-section-0::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(ellipse at center top, 
+    rgba(255, 0, 0, 0.15) 0%, 
+    rgba(255, 165, 0, 0.1) 20%,
+    rgba(0, 255, 0, 0.08) 40%,
+    rgba(0, 0, 255, 0.05) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
+
+<div class="clone-section-0">
+  <div class="clone-section-0-dots">
+    <div class="clone-section-0-dot teal-1"></div>
+    <div class="clone-section-0-dot teal-2"></div>
+    <div class="clone-section-0-dot blue-1"></div>
+    <div class="clone-section-0-dot purple"></div>
+    <div class="clone-section-0-dot orange"></div>
+    <div class="clone-section-0-dot gold"></div>
+    <div class="clone-section-0-dot yellow"></div>
+    <div class="clone-section-0-dot lime"></div>
+  </div>
+  
+  <nav class="clone-section-0-nav">
+    <div class="clone-section-0-logo"></div>
+    <a href="#" class="clone-section-0-cta-btn">
+      Get Started
+    </a>
+  </nav>
+
+  <div class="clone-section-0-hero">
+    <h1 class="clone-section-0-title">Smart tools built for modern teams.</h1>
+    <p class="clone-section-0-subtitle">
+      Streamline your workflow with powerful automation and intelligent features. <strong>Acme works for you.</strong>
+    </p>
+  </div>
+
+  <div class="clone-section-0-mockup">
+    <div class="clone-section-0-color-picker">
+      <div class="clone-section-0-picker-header">
+        <div class="clone-section-0-picker-icon"></div>
+        <span>Acme</span>
+      </div>
+      <div class="clone-section-0-color-bars">
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+        <div class="clone-section-0-color-bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 01-section-1.html -->
+<style>
+.clone-section-1 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clone-section-1-preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 48px;
+}
+
+.clone-section-1-sidebar {
+  width: 280px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.clone-section-1-sidebar-item {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.clone-section-1-palette-card {
+  width: 320px;
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.clone-section-1-palette-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-1-palette-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-1-palette-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-1-palette-colors {
+  display: flex;
+  height: 350px;
+}
+
+.clone-section-1-palette-stripe {
+  flex: 1;
+}
+
+.clone-section-1-palette-stripe:nth-child(1) { background: linear-gradient(to bottom, #ff3d00, #ff6e40); }
+.clone-section-1-palette-stripe:nth-child(2) { background: linear-gradient(to bottom, #ff9100, #ffab40); }
+.clone-section-1-palette-stripe:nth-child(3) { background: linear-gradient(to bottom, #ffc400, #ffd740); }
+.clone-section-1-palette-stripe:nth-child(4) { background: linear-gradient(to bottom, #c6ff00, #eeff41); }
+.clone-section-1-palette-stripe:nth-child(5) { background: linear-gradient(to bottom, #76ff03, #b2ff59); }
+.clone-section-1-palette-stripe:nth-child(6) { background: linear-gradient(to bottom, #00e5ff, #18ffff); }
+.clone-section-1-palette-stripe:nth-child(7) { background: linear-gradient(to bottom, #00b0ff, #40c4ff); }
+.clone-section-1-palette-stripe:nth-child(8) { background: linear-gradient(to bottom, #651fff, #7c4dff); }
+.clone-section-1-palette-stripe:nth-child(9) { background: linear-gradient(to bottom, #d500f9, #e040fb); }
+
+.clone-section-1-palette-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-1-back-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-1-insert-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.clone-section-1-action-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.clone-section-1-action-icon {
+  width: 24px;
+  height: 24px;
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-1-toolbar {
+  display: flex;
+  gap: 16px;
+  background: rgba(40, 40, 40, 0.9);
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-top: 32px;
+}
+
+.clone-section-1-tool {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.clone-section-1-tool.active {
+  opacity: 1;
+  background: #2196f3;
+}
+</style>
+
+<div class="clone-section-1">
+  <div class="clone-section-1-preview-container">
+    <div class="clone-section-1-sidebar">
+      <div class="clone-section-1-sidebar-item" style="width: 60%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 40%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 70%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 50%;"></div>
+    </div>
+
+    <div class="clone-section-1-palette-card">
+      <div class="clone-section-1-palette-header">
+        <div class="clone-section-1-palette-icon"></div>
+        <span class="clone-section-1-palette-title">Droplette</span>
+      </div>
+      <div class="clone-section-1-palette-colors">
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+        <div class="clone-section-1-palette-stripe"></div>
+      </div>
+      <div class="clone-section-1-palette-footer">
+        <div class="clone-section-1-back-btn">&larr;</div>
+        <button class="clone-section-1-insert-btn">Insert</button>
+        <div class="clone-section-1-action-icons">
+          <div class="clone-section-1-action-icon"></div>
+          <div class="clone-section-1-action-icon"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-1-sidebar">
+      <div class="clone-section-1-sidebar-item" style="width: 50%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 65%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 45%;"></div>
+      <div class="clone-section-1-sidebar-item" style="width: 55%;"></div>
+    </div>
+  </div>
+
+  <div class="clone-section-1-toolbar">
+    <div class="clone-section-1-tool active"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+    <div class="clone-section-1-tool"></div>
+  </div>
+</div>
+
+<!-- Section: 01-simple-to-setup.html -->
+<style>
+.clone-section-1 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-1-header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+.clone-section-1-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.clone-section-1-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.clone-section-1-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-1-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-section-1-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-foreground);
+  margin: 0 0 var(--space-md);
+}
+
+.clone-section-1-card-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-1-mockup {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-1-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-1-mockup-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-1-mockup-content {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-sm);
+  height: 150px;
+}
+
+.clone-section-1-mockup-light {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-1-mockup-light-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: rgb(30, 30, 30);
+}
+
+.clone-section-1-mockup-light-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(30, 30, 30);
+  border-radius: 50%;
+}
+
+.clone-section-1-mockup-light-content {
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: var(--radius-sm);
+  height: 120px;
+}
+</style>
+
+<div class="clone-section-1">
+  <div class="clone-section-1-header">
+    <h2 class="clone-section-1-title">Easy to get started.</h2>
+    <p class="clone-section-1-subtitle">Configure your preferences or connect your existing workflow in seconds.</p>
+  </div>
+
+  <div class="clone-section-1-grid">
+    <div class="clone-section-1-card">
+      <h3 class="clone-section-1-card-title">Import from your projects</h3>
+      <p class="clone-section-1-card-text">Select your existing projects and Acme will analyze them automatically. The AI uses these as the foundation for your custom solutions.</p>
+      <div class="clone-section-1-mockup">
+        <div class="clone-section-1-mockup-header">
+          <div class="clone-section-1-mockup-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-1-mockup-content"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-1-card">
+      <h3 class="clone-section-1-card-title">Connect your integrations</h3>
+      <p class="clone-section-1-card-text">Sync your existing tools with Acme to leverage AI that understands your context, keeping everything consistent and on track.</p>
+      <div class="clone-section-1-mockup-light">
+        <div class="clone-section-1-mockup-light-header">
+          <div class="clone-section-1-mockup-light-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-1-mockup-light-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 02-features.html -->
+<style>
+.clone-section-2 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-2-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-section-2-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-foreground);
+  margin: 0 0 var(--space-md);
+}
+
+.clone-section-2-card-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-2-mockup-light {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: rgb(30, 30, 30);
+}
+
+.clone-section-2-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(30, 30, 30);
+  border-radius: 50%;
+}
+
+.clone-section-2-mockup-content {
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: var(--radius-sm);
+  height: 180px;
+}
+
+.clone-section-2-mockup-dark {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-dark-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-2-mockup-dark-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-2-mockup-dark-content {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-sm);
+  height: 180px;
+}
+</style>
+
+<div class="clone-section-2">
+  <div class="clone-section-2-grid">
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Customize as you work</h3>
+      <p class="clone-section-2-card-text">Want to fine-tune the results? No problem. Adjust your generated output to match your exact needs with intuitive controls.</p>
+      <div class="clone-section-2-mockup-light">
+        <div class="clone-section-2-mockup-header">
+          <div class="clone-section-2-mockup-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-2-mockup-content"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Regenerate with AI</h3>
+      <p class="clone-section-2-card-text">Iterate on your results as many times as you need. Suggest changes to keep or start fresh from scratch.</p>
+      <div class="clone-section-2-mockup-dark">
+        <div class="clone-section-2-mockup-dark-header">
+          <div class="clone-section-2-mockup-dark-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-2-mockup-dark-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 02-simple-to-setup.html -->
+<style>
+.clone-section-2 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.clone-section-2-headline {
+  font-family: Ein, -apple-system, "system-ui", sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgb(255, 255, 255);
+  margin: 0 0 24px;
+}
+
+.clone-section-2-subheadline {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.clone-section-2-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-2-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+}
+
+.clone-section-2-card-title {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin: 0 0 12px;
+}
+
+.clone-section-2-card-desc {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 24px;
+}
+
+.clone-section-2-card-preview {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-2-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-2-preview-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-2-preview-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-2-preview-body {
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.clone-section-2-preview-text {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 32px;
+}
+
+.clone-section-2-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.clone-section-2-color-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.clone-section-2-color-dot:nth-child(1) { background: #9c27b0; }
+.clone-section-2-color-dot:nth-child(2) { background: #00bcd4; }
+.clone-section-2-color-dot:nth-child(3) { background: #8bc34a; }
+.clone-section-2-color-dot:nth-child(4) { background: #ffeb3b; }
+.clone-section-2-color-dot:nth-child(5) { background: #ff9800; }
+.clone-section-2-color-dot:nth-child(6) { background: #f44336; }
+.clone-section-2-color-dot:nth-child(7) { background: #e91e63; }
+.clone-section-2-color-dot:nth-child(8) { background: #9c27b0; }
+.clone-section-2-color-dot:nth-child(9) { background: #ff5722; }
+
+.clone-section-2-preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-2-preview-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+
+/* White card variant */
+.clone-section-2-card-white {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.clone-section-2-card-white .clone-section-2-preview-body {
+  background: rgb(255, 255, 255);
+}
+
+.clone-section-2-modal {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.clone-section-2-modal-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #9c27b0, #e91e63);
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.clone-section-2-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.clone-section-2-modal-desc {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.clone-section-2-modal-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.clone-section-2-status-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.clone-section-2-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.clone-section-2-status-dot:nth-child(1) { background: #4caf50; }
+.clone-section-2-status-dot:nth-child(2) { background: #f44336; }
+
+.clone-section-2-status-text {
+  font-size: 14px;
+  color: rgba(0,0,0,0.7);
+}
+
+.clone-section-2-modal-btn {
+  background: rgb(60, 60, 60);
+  color: rgb(255, 255, 255);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+</style>
+
+<div class="clone-section-2">
+  <h2 class="clone-section-2-headline">Simple to setup.</h2>
+  <p class="clone-section-2-subheadline">Select the colors you want to work with, or hook up your styles and go.</p>
+
+  <div class="clone-section-2-cards">
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Select from your frames</h3>
+      <p class="clone-section-2-card-desc">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="clone-section-2-card-preview">
+        <div class="clone-section-2-preview-header">
+          <div class="clone-section-2-preview-icon"></div>
+          <span class="clone-section-2-preview-title">Droplette</span>
+        </div>
+        <div class="clone-section-2-preview-body">
+          <p class="clone-section-2-preview-text">A summer rainbow</p>
+          <div class="clone-section-2-color-dots">
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+            <div class="clone-section-2-color-dot"></div>
+          </div>
+        </div>
+        <div class="clone-section-2-preview-footer">
+          <span></span>
+          <button class="clone-section-2-preview-btn">Create</button>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-2-card clone-section-2-card-white">
+      <h3 class="clone-section-2-card-title" style="color: rgb(0,0,0);">Sync with your styles</h3>
+      <p class="clone-section-2-card-desc" style="color: rgba(0,0,0,0.6);">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="clone-section-2-card-preview" style="background: rgb(250, 250, 250); border: 1px solid rgba(0,0,0,0.1);">
+        <div class="clone-section-2-preview-header" style="background: rgb(250, 250, 250); border-bottom: 1px solid rgba(0,0,0,0.1);">
+          <div class="clone-section-2-preview-icon" style="border-color: rgba(0,0,0,0.3);"></div>
+          <span class="clone-section-2-preview-title" style="color: rgb(0,0,0);">Droplette</span>
+        </div>
+        <div class="clone-section-2-preview-body" style="padding: 24px;">
+          <div class="clone-section-2-modal">
+            <div class="clone-section-2-modal-icon"></div>
+            <h4 class="clone-section-2-modal-title">Add your colors</h4>
+            <p class="clone-section-2-modal-desc">Navigate to the file containing your color styles to sync with Droplette.</p>
+            <div class="clone-section-2-modal-status">
+              <div class="clone-section-2-status-dots">
+                <div class="clone-section-2-status-dot"></div>
+                <div class="clone-section-2-status-dot"></div>
+              </div>
+              <span class="clone-section-2-status-text">160 colors synced</span>
+              <button class="clone-section-2-modal-btn">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 03-faq.html -->
+<style>
+.clone-section-3 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-3-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.clone-section-3-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-xxl);
+}
+
+.clone-section-3-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clone-section-3-item {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg) 0;
+}
+
+.clone-section-3-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.clone-section-3-question-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  color: var(--color-foreground);
+}
+
+.clone-section-3-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 24px;
+  font-weight: 300;
+}
+</style>
+
+<div class="clone-section-3">
+  <div class="clone-section-3-container">
+    <h2 class="clone-section-3-title">Frequently asked questions.</h2>
+    
+    <ul class="clone-section-3-list">
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">What makes Acme different from other tools?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">Is there a free trial available?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">What platforms does Acme support?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">How reliable are the AI results?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">What is the typical processing time?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+      <li class="clone-section-3-item">
+        <button class="clone-section-3-question">
+          <span class="clone-section-3-question-text">How do I get started with Acme?</span>
+          <span class="clone-section-3-icon">+</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section: 03-section-3.html -->
+<style>
+.clone-section-3 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 80px 24px;
+}
+
+.clone-section-3-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-3-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.clone-section-3-card-title {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin: 0 0 12px;
+}
+
+.clone-section-3-card-desc {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 24px;
+}
+
+/* Adjust card - white background */
+.clone-section-3-adjust-preview {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-3-adjust-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.clone-section-3-adjust-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.3);
+}
+
+.clone-section-3-adjust-title {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+}
+
+.clone-section-3-adjust-body {
+  padding: 16px;
+}
+
+.clone-section-3-palette-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  margin: 0 0 16px;
+}
+
+.clone-section-3-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-palette-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+}
+
+/* Orange/gold palette */
+.clone-section-3-palette-cell:nth-child(n) { background: #c65100; }
+.clone-section-3-palette-cell:nth-child(2n) { background: #d66800; }
+.clone-section-3-palette-cell:nth-child(3n) { background: #e68000; }
+.clone-section-3-palette-cell:nth-child(4n) { background: #f09800; }
+.clone-section-3-palette-cell:nth-child(5n) { background: #ffb000; }
+.clone-section-3-palette-cell:nth-child(6n) { background: #ffc000; }
+
+.clone-section-3-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 8px;
+}
+
+.clone-section-3-slider {
+  width: 100%;
+  height: 4px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-slider-thumb {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+}
+
+.clone-section-3-adjust-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.clone-section-3-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.clone-section-3-icon-btn.active {
+  border-color: #00bcd4;
+  color: #00bcd4;
+}
+
+/* Redo card - dark background */
+.clone-section-3-redo-preview {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-section-3-redo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-3-redo-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-3-redo-title {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-3-redo-body {
+  padding: 16px;
+}
+
+.clone-section-3-redo-palette-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  margin: 0 0 16px;
+}
+
+.clone-section-3-rainbow-bars {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.clone-section-3-bar {
+  flex: 1;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.clone-section-3-bar:nth-child(1) { background: linear-gradient(to bottom, #ff5722, #ff8a65); }
+.clone-section-3-bar:nth-child(2) { background: linear-gradient(to bottom, #ff9800, #ffb74d); }
+.clone-section-3-bar:nth-child(3) { background: linear-gradient(to bottom, #ffeb3b, #fff176); }
+.clone-section-3-bar:nth-child(4) { background: linear-gradient(to bottom, #8bc34a, #aed581); }
+.clone-section-3-bar:nth-child(5) { background: linear-gradient(to bottom, #00bcd4, #4dd0e1); }
+.clone-section-3-bar:nth-child(6) { background: linear-gradient(to bottom, #2196f3, #64b5f6); }
+.clone-section-3-bar:nth-child(7) { background: linear-gradient(to bottom, #9c27b0, #ba68c8); }
+
+.clone-section-3-selected-colors {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.clone-section-3-selected-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.clone-section-3-selected-dot:nth-child(1) { background: #ffeb3b; }
+.clone-section-3-selected-dot:nth-child(2) { background: #00bcd4; }
+.clone-section-3-selected-dot:nth-child(3) { background: #e91e63; }
+
+.clone-section-3-redo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-3-back-arrow {
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-3-redo-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(44, 44, 44);
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+</style>
+
+<div class="clone-section-3">
+  <div class="clone-section-3-cards">
+    <div class="clone-section-3-card">
+      <h3 class="clone-section-3-card-title">Adjust as you go</h3>
+      <p class="clone-section-3-card-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="clone-section-3-adjust-preview">
+        <div class="clone-section-3-adjust-header">
+          <div class="clone-section-3-adjust-icon"></div>
+          <span class="clone-section-3-adjust-title">Droplette</span>
+        </div>
+        <div class="clone-section-3-adjust-body">
+          <p class="clone-section-3-palette-name">Impressionist sunflowers</p>
+          <div class="clone-section-3-palette-grid">
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+            <div class="clone-section-3-palette-cell"></div>
+          </div>
+          <div class="clone-section-3-slider-label">
+            <span>Saturation</span>
+            <span>+92</span>
+          </div>
+          <div class="clone-section-3-slider">
+            <div class="clone-section-3-slider-thumb"></div>
+          </div>
+        </div>
+        <div class="clone-section-3-adjust-footer">
+          <span class="clone-section-3-back-arrow">&larr;</span>
+          <button class="clone-section-3-icon-btn"></button>
+          <button class="clone-section-3-icon-btn active"></button>
+          <button class="clone-section-3-icon-btn"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-3-card">
+      <h3 class="clone-section-3-card-title">Redo with AI</h3>
+      <p class="clone-section-3-card-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="clone-section-3-redo-preview">
+        <div class="clone-section-3-redo-header">
+          <div class="clone-section-3-redo-icon"></div>
+          <span class="clone-section-3-redo-title">Droplette</span>
+        </div>
+        <div class="clone-section-3-redo-body">
+          <p class="clone-section-3-redo-palette-name">A summer rainbow</p>
+          <div class="clone-section-3-rainbow-bars">
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+            <div class="clone-section-3-bar"></div>
+          </div>
+          <div class="clone-section-3-selected-colors">
+            <div class="clone-section-3-selected-dot"></div>
+            <div class="clone-section-3-selected-dot"></div>
+            <div class="clone-section-3-selected-dot"></div>
+          </div>
+        </div>
+        <div class="clone-section-3-redo-footer">
+          <span class="clone-section-3-back-arrow">&larr;</span>
+          <button class="clone-section-3-redo-btn">Redo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 04-pricing-footer.html -->
+<style>
+.clone-section-4 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-4-pricing-card {
+  max-width: 900px;
+  margin: 0 auto var(--space-xxl);
+  background: rgb(20, 20, 20);
+  border: 1px solid;
+  border-image: linear-gradient(90deg, #ff5722, #ffeb3b, #4caf50, #2196f3, #9c27b0) 1;
+  border-radius: 0;
+  padding: var(--space-xxxl) var(--space-xl);
+  text-align: center;
+}
+
+.clone-section-4-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.clone-section-4-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-4-highlight {
+  color: var(--color-foreground);
+  font-weight: var(--weight-medium);
+}
+
+.clone-section-4-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.clone-section-4-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-foreground);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-4-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.clone-section-4-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-left: var(--space-xs);
+}
+
+.clone-section-4-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: transparent;
+  color: var(--color-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast) var(--easing);
+}
+
+.clone-section-4-btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Footer */
+.clone-section-4-footer {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.clone-section-4-footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.clone-section-4-footer-logo {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
+  border-radius: 4px;
+}
+
+.clone-section-4-footer-link {
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.clone-section-4-footer-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="clone-section-4">
+  <div class="clone-section-4-pricing-card">
+    <h2 class="clone-section-4-title">Simple pricing.<br>No surprises.</h2>
+    <p class="clone-section-4-subtitle">
+      Bring your own API key for full flexibility. Acme is a one-time purchase. <span class="clone-section-4-highlight">Launch special: $29</span>.
+    </p>
+    <div class="clone-section-4-buttons">
+      <a href="#" class="clone-section-4-btn-primary">
+        Get License $29 <span class="clone-section-4-strikethrough">$49</span>
+      </a>
+      <a href="#" class="clone-section-4-btn-secondary">
+        Try Free Demo
+      </a>
+    </div>
+  </div>
+
+  <footer class="clone-section-4-footer">
+    <p class="clone-section-4-footer-text">
+      Crafted with care by
+      <span class="clone-section-4-footer-logo"></span>
+      <a href="#" class="clone-section-4-footer-link">TechCorp</a>
+    </p>
+  </footer>
+</div>
+
+<!-- Section: 04-section-4.html -->
+<style>
+.clone-section-4 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 40px 24px;
+}
+/* Section 4 is a continuation/transition - kept minimal as it duplicates section 3 content */
+</style>
+
+<div class="clone-section-4">
+  <!-- This section appears to be a scroll transition area between sections -->
+</div>
+
+<!-- Section: 05-section-5.html -->
+<style>
+.clone-section-5 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 40px 24px;
+}
+/* Section 5 is a transition area - kept minimal */
+</style>
+
+<div class="clone-section-5">
+  <!-- Transition section -->
+</div>
+
+<!-- Section: 06-frequently-asked-questions.html -->
+<style>
+.clone-section-6 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 100px 24px;
+}
+
+.clone-section-6-headline {
+  font-family: Ein, -apple-system, "system-ui", sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgb(255, 255, 255);
+  margin: 0 0 64px;
+  text-align: center;
+}
+
+.clone-section-6-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.clone-section-6-faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 24px 0;
+}
+
+.clone-section-6-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.clone-section-6-faq-text {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+.clone-section-6-faq-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 24px;
+  font-weight: 300;
+}
+</style>
+
+<div class="clone-section-6">
+  <h2 class="clone-section-6-headline">Frequently asked<br>questions.</h2>
+
+  <div class="clone-section-6-faq-list">
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">Give me the elevator pitch for Droplette...</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">Is Droplette free to use?</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">What languages does Droplette support?</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">How accurate is Droplette?</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">How long does Droplette take to run?</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+
+    <div class="clone-section-6-faq-item">
+      <div class="clone-section-6-faq-question">
+        <span class="clone-section-6-faq-text">How do I setup Droplette?</span>
+        <span class="clone-section-6-faq-toggle">+</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 07-section-7.html -->
+<style>
+.clone-section-7 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 40px 24px;
+}
+
+/* Color dots decoration */
+.clone-section-7-color-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 48px 0;
+}
+
+.clone-section-7-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.clone-section-7-color-dot:nth-child(1) { background: #00bcd4; }
+.clone-section-7-color-dot:nth-child(2) { background: #e91e63; }
+.clone-section-7-color-dot:nth-child(3) { background: #2196f3; }
+.clone-section-7-color-dot:nth-child(4) { background: #9c27b0; }
+.clone-section-7-color-dot:nth-child(5) { background: #ff5722; }
+.clone-section-7-color-dot:nth-child(6) { background: #ffc107; }
+.clone-section-7-color-dot:nth-child(7) { background: #ffeb3b; }
+.clone-section-7-color-dot:nth-child(8) { background: #cddc39; }
+.clone-section-7-color-dot:nth-child(9) { background: #00bcd4; }
+.clone-section-7-color-dot:nth-child(10) { background: #03a9f4; }
+</style>
+
+<div class="clone-section-7">
+  <div class="clone-section-7-color-row">
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+    <div class="clone-section-7-color-dot"></div>
+  </div>
+</div>
+
+<!-- Section: 08-one-price-no-subscription.html -->
+<style>
+.clone-section-8 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.clone-section-8-border {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  border: 1px solid;
+  border-image: linear-gradient(to right, #ff5722, #ff9800, #ffeb3b, #8bc34a, #00bcd4, #2196f3, #9c27b0) 1;
+  pointer-events: none;
+}
+
+.clone-section-8-content {
+  position: relative;
+  z-index: 1;
+}
+
+.clone-section-8-headline {
+  font-family: Ein, -apple-system, "system-ui", sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgb(255, 255, 255);
+  margin: 0 0 32px;
+}
+
+.clone-section-8-subheadline {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin: 0 auto 48px;
+}
+
+.clone-section-8-subheadline strong {
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+}
+
+.clone-section-8-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.clone-section-8-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.clone-section-8-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.clone-section-8-price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.clone-section-8-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(44, 44, 44);
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.clone-section-8-btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.clone-section-8-figma-icon {
+  width: 16px;
+  height: 16px;
+}
+</style>
+
+<div class="clone-section-8">
+  <div class="clone-section-8-border"></div>
+  <div class="clone-section-8-content">
+    <h2 class="clone-section-8-headline">One price.<br>No subscription.</h2>
+    <p class="clone-section-8-subheadline">
+      Bring your own API key for OpenAI. Droplette is a single payment. <strong>Special launch price of $9</strong>.
+    </p>
+    <div class="clone-section-8-buttons">
+      <a href="#" class="clone-section-8-btn-primary">
+        Buy license $9 <span class="clone-section-8-price-old">$20</span>
+      </a>
+      <a href="#" class="clone-section-8-btn-secondary">
+        <span class="clone-section-8-figma-icon"></span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 09-footer.html -->
+<style>
+.clone-section-9 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.clone-section-9-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.clone-section-9-relay-logo {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 6px;
+}
+
+.clone-section-9-relay-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.clone-section-9-relay-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<footer class="clone-section-9">
+  <div class="clone-section-9-credit">
+    <span>Another Figma plugin crafted by</span>
+    <div class="clone-section-9-relay-logo"></div>
+    <a href="https://relay.design" class="clone-section-9-relay-link">Relay</a>
+  </div>
+</footer>
+
+</body></html>

@@ -1,0 +1,842 @@
+<style>
+.chronicle-templates-section {
+  background-color: #0a0a0a;
+  padding: 80px 0 120px;
+  overflow: hidden;
+}
+
+.chronicle-templates-carousel {
+  display: flex;
+  gap: 24px;
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chronicle-templates-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.chronicle-templates-card {
+  flex-shrink: 0;
+  width: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #141414;
+  transition: transform 0.3s ease;
+}
+
+.chronicle-templates-card:hover {
+  transform: translateY(-4px);
+}
+
+.chronicle-templates-card-preview {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chronicle-templates-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chronicle-templates-card-moodboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+}
+
+.chronicle-templates-moodboard-item {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #2a2a2a;
+}
+
+.chronicle-templates-moodboard-item.large {
+  grid-row: span 2;
+}
+
+.chronicle-templates-moodboard-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chronicle-templates-card-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  height: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  position: relative;
+}
+
+.chronicle-templates-card-quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23222" opacity="0.3" x="0" y="0" width="100" height="100"/></svg>');
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.chronicle-templates-quote-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-templates-quote-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #888;
+  stroke-width: 1.5;
+}
+
+.chronicle-templates-quote-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-templates-quote-text .highlight {
+  color: #fff;
+}
+
+.chronicle-templates-quote-text .dimmed {
+  color: #666;
+}
+
+.chronicle-templates-card-portfolio {
+  padding: 12px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-templates-portfolio-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #252525;
+  border-radius: 6px 6px 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+  color: #888;
+}
+
+.chronicle-templates-portfolio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.chronicle-templates-portfolio-dot.red { background: #ff5f57; }
+.chronicle-templates-portfolio-dot.yellow { background: #febc2e; }
+.chronicle-templates-portfolio-dot.green { background: #28c840; }
+
+.chronicle-templates-portfolio-content {
+  flex: 1;
+  background: #1e1e1e;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  overflow: hidden;
+}
+
+.chronicle-templates-portfolio-sidebar {
+  width: 80px;
+  background: #161616;
+  padding: 12px 8px;
+  border-right: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-sidebar-item {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #555;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.chronicle-templates-sidebar-item.active {
+  background: #252525;
+  color: #888;
+}
+
+.chronicle-templates-portfolio-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-templates-portfolio-hero {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.chronicle-templates-portfolio-info {
+  flex: 1;
+}
+
+.chronicle-templates-portfolio-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.chronicle-templates-portfolio-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.chronicle-templates-portfolio-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.chronicle-templates-portfolio-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  color: #fff;
+}
+
+.chronicle-templates-portfolio-avatar {
+  width: 80px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chronicle-templates-portfolio-avatar-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3a8a6e 0%, #2a5a4e 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chronicle-templates-portfolio-avatar-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: #00d4aa;
+  border-radius: 4px;
+}
+
+.chronicle-templates-portfolio-logos {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-portfolio-logo {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chronicle-templates-portfolio-logo svg {
+  width: 16px;
+  height: 16px;
+  fill: #666;
+}
+
+.chronicle-templates-portfolio-skills {
+  display: flex;
+  gap: 12px;
+}
+
+.chronicle-templates-skill-card {
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.chronicle-templates-skill-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-templates-skill-icon.pink {
+  background: linear-gradient(135deg, #ff6b8a 0%, #ff4d6d 100%);
+}
+
+.chronicle-templates-skill-icon.coral {
+  background: linear-gradient(135deg, #ff8a6b 0%, #ff6b4d 100%);
+}
+
+.chronicle-templates-skill-icon.green {
+  background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+}
+
+.chronicle-templates-skill-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.chronicle-templates-skill-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 7px;
+  color: #555;
+  line-height: 1.3;
+}
+
+.chronicle-templates-card-chart {
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-templates-chart-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chronicle-templates-chart-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.chronicle-templates-chart-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #444;
+}
+
+.chronicle-templates-chart-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #fff;
+  margin-left: auto;
+}
+
+.chronicle-templates-chart-legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chronicle-templates-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  color: #888;
+}
+
+.chronicle-templates-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.chronicle-templates-legend-dot.blue { background: #4a9eff; }
+.chronicle-templates-legend-dot.gray { background: #555; }
+
+.chronicle-templates-chart-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.chronicle-templates-chart-y-axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #444;
+}
+
+.chronicle-templates-chart-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 180px;
+  margin-left: 30px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-chart-bar-group {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.chronicle-templates-chart-bar {
+  width: 20px;
+  border-radius: 3px 3px 0 0;
+}
+
+.chronicle-templates-chart-bar.primary {
+  background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+}
+
+.chronicle-templates-chart-bar.secondary {
+  background: linear-gradient(180deg, #333 0%, #222 100%);
+}
+
+.chronicle-templates-chart-line {
+  position: absolute;
+  left: 30px;
+  right: 0;
+  bottom: 40px;
+  height: 140px;
+}
+
+.chronicle-templates-chart-line svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chronicle-templates-chart-x-axis {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 30px;
+  padding-top: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #444;
+}
+
+.chronicle-templates-card-meta {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #141414;
+  border-top: 1px solid #1f1f1f;
+}
+
+.chronicle-templates-meta-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chronicle-templates-meta-icon.figma {
+  background: linear-gradient(135deg, #ff7262 0%, #a259ff 50%, #1abcfe 100%);
+}
+
+.chronicle-templates-meta-icon.graphy {
+  background: #1a1a1a;
+}
+
+.chronicle-templates-meta-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+.chronicle-templates-meta-info {
+  flex: 1;
+}
+
+.chronicle-templates-meta-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.chronicle-templates-meta-title span {
+  color: #666;
+  font-weight: 400;
+}
+
+.chronicle-templates-meta-link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chronicle-templates-meta-link svg {
+  width: 12px;
+  height: 12px;
+  stroke: #666;
+  fill: none;
+}
+
+.chronicle-templates-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 40px 60px 0;
+}
+
+.chronicle-templates-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chronicle-templates-nav-btn:hover {
+  border-color: #555;
+  background: #1a1a1a;
+}
+
+.chronicle-templates-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+}
+</style>
+
+<section class="chronicle-templates-section">
+  <div class="chronicle-templates-carousel">
+    <!-- Card 1: Moodboard -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-moodboard">
+          <div class="chronicle-templates-moodboard-item large" style="background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);">
+            <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+              <div style="flex: 1; background: #222; margin: 8px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-family: sans-serif; font-size: 24px; font-weight: 700; color: #ff6b4a; letter-spacing: -1px;">timbr</span>
+              </div>
+              <div style="flex: 1; background: #c44; margin: 8px; margin-top: 0; border-radius: 4px;"></div>
+            </div>
+          </div>
+          <div class="chronicle-templates-moodboard-item" style="background: #1a1a1a; display: flex; flex-direction: column; gap: 4px; padding: 6px;">
+            <div style="flex: 1; background: #222; border-radius: 3px; overflow: hidden;">
+              <div style="height: 60%; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);"></div>
+            </div>
+            <div style="display: flex; gap: 4px; flex: 0.4;">
+              <div style="flex: 1; background: #333; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-family: sans-serif; font-size: 7px; font-weight: 700; color: #ff8855;">Neue<sup style="font-size: 5px;">TM</sup></span>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-templates-moodboard-item" style="display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #1a1a1a;">
+            <div style="flex: 1; background: #222; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: sans-serif; font-size: 10px; font-weight: 800; color: #ff5544; letter-spacing: 1px;">FREEBIES<br>MONIQUE</span>
+            </div>
+            <div style="display: flex; gap: 4px; flex: 0.5;">
+              <div style="flex: 1; background: #c44; border-radius: 3px;"></div>
+              <div style="flex: 1; background: #333; border-radius: 3px; display: flex; flex-direction: column; gap: 2px; padding: 4px;">
+                <div style="font-size: 5px; color: #888;">Crimson Red</div>
+                <div style="font-size: 5px; color: #888;">Dark Grey</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title" style="color: #666;">Moodboard</div>
+          <div class="chronicle-templates-meta-link">
+            .com
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Quote/Testimonial -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-quote" style="background: linear-gradient(135deg, rgba(80, 50, 30, 0.6) 0%, rgba(20, 15, 10, 0.9) 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1008%22 width=%22400%22 height=%22300%22/></svg>'); background-size: cover;">
+          <div class="chronicle-templates-quote-icon">
+            <svg viewBox="0 0 48 48">
+              <path d="M24 8L8 24L24 40" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 8L40 24L24 40" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 16V32" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="chronicle-templates-quote-text">
+            <span class="highlight">With 50,000 MAUs in our first week post-launch,</span> <span class="dimmed">we've got strong signals toward product-market fit.</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta" style="visibility: hidden; height: 0; padding: 0;">
+      </div>
+    </div>
+
+    <!-- Card 3: Portfolio -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-portfolio">
+          <div class="chronicle-templates-portfolio-header">
+            <span class="chronicle-templates-portfolio-dot red"></span>
+            <span class="chronicle-templates-portfolio-dot yellow"></span>
+            <span class="chronicle-templates-portfolio-dot green"></span>
+            <span style="margin-left: 12px; color: #555;">Feature Asset</span>
+            <span style="margin-left: auto; color: #444;">Portfolio Template</span>
+          </div>
+          <div class="chronicle-templates-portfolio-content">
+            <div class="chronicle-templates-portfolio-sidebar">
+              <div class="chronicle-templates-sidebar-item">Logo</div>
+              <div class="chronicle-templates-sidebar-item">File</div>
+              <div class="chronicle-templates-sidebar-item">Assets</div>
+              <div class="chronicle-templates-sidebar-item active">Pages</div>
+              <div class="chronicle-templates-sidebar-item">Design</div>
+              <div class="chronicle-templates-sidebar-item">Prototype</div>
+              <div class="chronicle-templates-sidebar-item">Layers</div>
+              <div class="chronicle-templates-sidebar-item">Cover</div>
+              <div class="chronicle-templates-sidebar-item">Design</div>
+              <div class="chronicle-templates-sidebar-item">Design 2</div>
+              <div class="chronicle-templates-sidebar-item">Design 3</div>
+            </div>
+            <div class="chronicle-templates-portfolio-main">
+              <div class="chronicle-templates-portfolio-hero">
+                <div class="chronicle-templates-portfolio-info">
+                  <div class="chronicle-templates-portfolio-label">Branding | Image making</div>
+                  <div class="chronicle-templates-portfolio-title">Visual Designer</div>
+                  <div class="chronicle-templates-portfolio-desc">This is a template Figma file, turned into code using Anima.<br>Learn more at Animaapp.com</div>
+                  <div class="chronicle-templates-portfolio-btn">Contact</div>
+                </div>
+                <div class="chronicle-templates-portfolio-avatar">
+                  <div class="chronicle-templates-portfolio-avatar-img">
+                    <svg viewBox="0 0 60 80" width="50" height="70">
+                      <ellipse cx="30" cy="20" rx="12" ry="14" fill="#d4a574"/>
+                      <path d="M10 80 Q30 50 50 80" fill="#2a5a4e"/>
+                    </svg>
+                  </div>
+                  <div class="chronicle-templates-portfolio-avatar-badge"></div>
+                </div>
+              </div>
+              <div class="chronicle-templates-portfolio-logos">
+                <div class="chronicle-templates-portfolio-logo">Google</div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Nike
+                </div>
+                <div class="chronicle-templates-portfolio-logo">SAMSUNG</div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83z"/></svg>
+                </div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M11.5 2L2 7l9.5 5 9.5-5-9.5-5zM2 17l9.5 5 9.5-5M2 12l9.5 5 9.5-5"/></svg>
+                  adidas
+                </div>
+              </div>
+              <div class="chronicle-templates-portfolio-skills">
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon pink">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="8"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Product Design</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon coral">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="8"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Visual Design</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon green">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2" fill="none"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Art Direction</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-icon figma">
+          <svg viewBox="0 0 24 24"><path d="M12 2H8.5A3.5 3.5 0 005 5.5v0A3.5 3.5 0 008.5 9H12V2z" fill="#ff7262"/><path d="M12 9H8.5A3.5 3.5 0 005 12.5v0A3.5 3.5 0 008.5 16H12V9z" fill="#a259ff"/><path d="M12 16H8.5A3.5 3.5 0 005 19.5v0A3.5 3.5 0 008.5 23v0A3.5 3.5 0 0012 19.5V16z" fill="#0acf83"/><path d="M19 5.5A3.5 3.5 0 0015.5 2H12v7h3.5A3.5 3.5 0 0019 5.5v0z" fill="#ff7262"/><circle cx="15.5" cy="12.5" r="3.5" fill="#1abcfe"/></svg>
+        </div>
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title">Portfolio</div>
+          <div class="chronicle-templates-meta-link">
+            figma.com
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Revenue Chart -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-chart">
+          <div class="chronicle-templates-chart-header">
+            <div class="chronicle-templates-chart-dots">
+              <span class="chronicle-templates-chart-dot"></span>
+              <span class="chronicle-templates-chart-dot"></span>
+              <span class="chronicle-templates-chart-dot"></span>
+            </div>
+            <div class="chronicle-templates-chart-title">Revenue</div>
+          </div>
+          <div class="chronicle-templates-chart-legend">
+            <div class="chronicle-templates-chart-legend-item">
+              <span class="chronicle-templates-legend-dot blue"></span>
+              Revenue
+            </div>
+            <div class="chronicle-templates-chart-legend-item">
+              <span class="chronicle-templates-legend-dot gray"></span>
+              % Premium
+            </div>
+          </div>
+          <div class="chronicle-templates-chart-area">
+            <div class="chronicle-templates-chart-y-axis">
+              <span>6k</span>
+              <span>5k</span>
+              <span>4k</span>
+              <span>3k</span>
+              <span>2k</span>
+              <span>1k</span>
+              <span>0</span>
+            </div>
+            <div class="chronicle-templates-chart-bars">
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 60px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 45px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 80px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 55px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 100px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 70px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 130px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 90px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 160px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 110px;"></div>
+              </div>
+            </div>
+            <div class="chronicle-templates-chart-line">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none">
+                <path d="M0 120 Q50 110 80 95 T160 70 T240 30 T300 10" stroke="#ff4444" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <div class="chronicle-templates-chart-x-axis">
+            <span>Jan</span>
+            <span>Feb</span>
+            <span>Mar</span>
+            <span>Apr</span>
+            <span>May</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-icon graphy">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M4 20V10M10 20V4M16 20V14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title">Revenue <span>| Graphy</span></div>
+          <div class="chronicle-templates-meta-link">
+            graphy.app
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chronicle-templates-navigation">
+    <button class="chronicle-templates-nav-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="chronicle-templates-nav-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 18L15 12L9 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>

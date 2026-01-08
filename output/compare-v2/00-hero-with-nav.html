@@ -1,0 +1,350 @@
+<style>
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(0, 0, 0, 0);
+  --color-border: rgb(255, 255, 255);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-link: rgb(255, 255, 255);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-heading: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --text-h1: 69px;
+  --text-h2: 69px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: var(--color-background);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.section-0-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--easing);
+}
+
+.section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.section-0-figma-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-0-figma-icon span {
+  display: flex;
+  gap: 2px;
+}
+
+.section-0-figma-icon span div {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+.section-0-hero {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-xl);
+  position: relative;
+  z-index: 5;
+}
+
+.section-0-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-0-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-0-subtitle strong {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-normal);
+}
+
+.section-0-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xxl);
+  padding: var(--space-xl) 0;
+  flex-wrap: wrap;
+}
+
+.section-0-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.section-0-mockup-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.section-0-mockup {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  min-width: 200px;
+}
+
+.section-0-mockup-main {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  width: 320px;
+}
+
+.section-0-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.section-0-mockup-icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-text-secondary);
+  border-radius: 50%;
+}
+
+.section-0-mockup-title {
+  font-size: var(--text-small);
+  color: var(--color-text-primary);
+}
+
+.section-0-palette {
+  display: flex;
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.section-0-palette-bar {
+  flex: 1;
+}
+
+/* Background glow effects */
+.section-0-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.section-0-glow-1 {
+  top: 0;
+  right: 20%;
+  background: linear-gradient(135deg, #ff6b00, #ffcc00);
+}
+
+.section-0-glow-2 {
+  top: 30%;
+  left: 10%;
+  background: linear-gradient(135deg, #00ccff, #0066ff);
+}
+
+.section-0-glow-3 {
+  bottom: 20%;
+  right: 30%;
+  background: linear-gradient(135deg, #cc00ff, #ff0066);
+}
+</style>
+
+<section class="section-0">
+  <!-- Background glows -->
+  <div class="section-0-glow section-0-glow-1"></div>
+  <div class="section-0-glow section-0-glow-2"></div>
+  <div class="section-0-glow section-0-glow-3"></div>
+
+  <!-- Navigation -->
+  <nav class="section-0-nav">
+    <div class="section-0-logo"></div>
+    <a href="#" class="section-0-cta-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+        <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+        <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+        <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+      </svg>
+      Try in Figma
+    </a>
+  </nav>
+
+  <!-- Hero Content -->
+  <div class="section-0-hero">
+    <h1 class="section-0-title">An AI tool made to enhance designers.</h1>
+    <p class="section-0-subtitle">
+      Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong>
+    </p>
+  </div>
+
+  <!-- Color Dots Row -->
+  <div class="section-0-color-dots">
+    <div class="section-0-dot" style="background: #00bcd4;"></div>
+    <div class="section-0-dot" style="background: #e91e63;"></div>
+    <div class="section-0-dot" style="background: #2196f3;"></div>
+    <div class="section-0-dot" style="background: #9c27b0;"></div>
+    <div class="section-0-dot" style="background: #ff5722;"></div>
+    <div class="section-0-dot" style="background: #ffc107;"></div>
+    <div class="section-0-dot" style="background: #ffeb3b;"></div>
+    <div class="section-0-dot" style="background: #8bc34a;"></div>
+    <div class="section-0-dot" style="background: #e91e63;"></div>
+    <div class="section-0-dot" style="background: #00bcd4;"></div>
+  </div>
+
+  <!-- Mockup Container -->
+  <div class="section-0-mockup-container">
+    <!-- Left sidebar mockup -->
+    <div class="section-0-mockup" style="opacity: 0.6;">
+      <div style="background: rgb(60,60,60); height: 20px; width: 80px; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 60px; border-radius: 4px; margin-bottom: 16px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 100px; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 16px; width: 80px; border-radius: 4px;"></div>
+    </div>
+
+    <!-- Main Droplette mockup -->
+    <div class="section-0-mockup-main">
+      <div class="section-0-mockup-header">
+        <div class="section-0-mockup-icon"></div>
+        <span class="section-0-mockup-title">Droplette</span>
+      </div>
+      <div class="section-0-palette">
+        <div class="section-0-palette-bar" style="background: #ff5722;"></div>
+        <div class="section-0-palette-bar" style="background: #ff9800;"></div>
+        <div class="section-0-palette-bar" style="background: #ffc107;"></div>
+        <div class="section-0-palette-bar" style="background: #ffeb3b;"></div>
+        <div class="section-0-palette-bar" style="background: #cddc39;"></div>
+        <div class="section-0-palette-bar" style="background: #8bc34a;"></div>
+        <div class="section-0-palette-bar" style="background: #00bcd4;"></div>
+        <div class="section-0-palette-bar" style="background: #2196f3;"></div>
+        <div class="section-0-palette-bar" style="background: #9c27b0;"></div>
+      </div>
+    </div>
+
+    <!-- Right sidebar mockup -->
+    <div class="section-0-mockup" style="opacity: 0.6;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+        <div style="width: 24px; height: 24px; border-radius: 50%; background: #ff5722;"></div>
+        <div style="background: rgb(60,60,60); height: 16px; width: 60px; border-radius: 4px;"></div>
+      </div>
+      <div style="background: rgb(60,60,60); height: 12px; width: 100%; border-radius: 4px; margin-bottom: 8px;"></div>
+      <div style="background: rgb(60,60,60); height: 12px; width: 80%; border-radius: 4px;"></div>
+    </div>
+  </div>
+</section>

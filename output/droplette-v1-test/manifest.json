@@ -1,0 +1,60 @@
+{
+  "url": "https://www.droplette.app/",
+  "timestamp": "2026-01-07T21:06:00Z",
+  "themeType": "dark",
+  "sections": [
+    {
+      "index": 0,
+      "id": "nav-hero",
+      "description": "Navigation bar and hero section with headline",
+      "screenshot": "screenshots/00-nav-hero.png"
+    },
+    {
+      "index": 1,
+      "id": "demo-section",
+      "description": "Interactive demo with color palette interface",
+      "screenshot": "screenshots/01-demo-section.png"
+    },
+    {
+      "index": 2,
+      "id": "features-setup",
+      "description": "Simple to setup section with feature cards",
+      "screenshot": "screenshots/02-features-setup.png"
+    },
+    {
+      "index": 3,
+      "id": "features-adjust",
+      "description": "Adjust and redo features section",
+      "screenshot": "screenshots/03-features-adjust.png"
+    },
+    {
+      "index": 4,
+      "id": "faq-pricing",
+      "description": "FAQ and pricing section",
+      "screenshot": "screenshots/04-faq-pricing.png"
+    },
+    {
+      "index": 5,
+      "id": "footer",
+      "description": "Footer section",
+      "screenshot": "screenshots/05-footer.png"
+    }
+  ],
+  "tokens": {
+    "themeType": "dark",
+    "colors": {
+      "background": "rgb(14, 14, 14)",
+      "text": "rgb(255, 255, 255)",
+      "heading": "rgb(255, 255, 255)",
+      "accent": "rgba(255, 255, 255, 0.9)",
+      "muted": "rgba(255, 255, 255, 0.7)"
+    },
+    "typography": {
+      "fontFamily": "ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif",
+      "headingFamily": "Ein, -apple-system, system-ui, Segoe UI, Roboto, sans-serif",
+      "h1Size": "69px",
+      "h2Size": "69px",
+      "bodySize": "16px"
+    }
+  }
+}

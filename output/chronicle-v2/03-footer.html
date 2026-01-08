@@ -1,0 +1,182 @@
+<style>
+.chronicle-footer-container {
+  background-color: #0a0a0a;
+  padding: 0 0 80px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.chronicle-footer-large-text {
+  font-size: clamp(120px, 18vw, 280px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  text-stroke: 1px rgba(255, 255, 255, 0.15);
+  text-align: center;
+  line-height: 0.85;
+  padding: 40px 0 80px 0;
+  user-select: none;
+}
+
+.chronicle-footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chronicle-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chronicle-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-footer-logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.chronicle-footer-logo-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+.chronicle-footer-logo-text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.chronicle-footer-company-name {
+  font-size: 14px;
+  color: #6b6b6b;
+  margin-top: 4px;
+}
+
+.chronicle-footer-links {
+  display: flex;
+  gap: 100px;
+}
+
+.chronicle-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chronicle-footer-column-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.chronicle-footer-link {
+  font-size: 15px;
+  color: #6b6b6b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.chronicle-footer-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .chronicle-footer-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .chronicle-footer-links {
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .chronicle-footer-large-text {
+    font-size: 80px;
+  }
+
+  .chronicle-footer-content {
+    padding: 0 30px;
+  }
+
+  .chronicle-footer-links {
+    gap: 40px;
+  }
+
+  .chronicle-footer-column {
+    min-width: 140px;
+  }
+}
+</style>
+
+<footer class="chronicle-footer-container">
+  <div class="chronicle-footer-large-text">chronicle</div>
+
+  <div class="chronicle-footer-content">
+    <div class="chronicle-footer-brand">
+      <div class="chronicle-footer-logo">
+        <div class="chronicle-footer-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+          </svg>
+        </div>
+        <span class="chronicle-footer-logo-text">chronicle</span>
+      </div>
+      <div class="chronicle-footer-company-name">ChronicleHQ Inc.</div>
+    </div>
+
+    <div class="chronicle-footer-links">
+      <div class="chronicle-footer-column">
+        <div class="chronicle-footer-column-title">Resources</div>
+        <a href="#" class="chronicle-footer-link">Getting Started</a>
+        <a href="#" class="chronicle-footer-link">AI Presentation Maker</a>
+        <a href="#" class="chronicle-footer-link">Pricing</a>
+        <a href="#" class="chronicle-footer-link">PowerPoint Alternatives</a>
+        <a href="#" class="chronicle-footer-link">Chronicle vs. Gamma</a>
+        <a href="#" class="chronicle-footer-link">Solutions</a>
+        <a href="#" class="chronicle-footer-link">Integrations</a>
+        <a href="#" class="chronicle-footer-link">API</a>
+        <a href="#" class="chronicle-footer-link">Templates</a>
+      </div>
+
+      <div class="chronicle-footer-column">
+        <div class="chronicle-footer-column-title">Company</div>
+        <a href="#" class="chronicle-footer-link">Join our Community</a>
+        <a href="#" class="chronicle-footer-link">Academy</a>
+        <a href="#" class="chronicle-footer-link">Become an Affiliate</a>
+        <a href="#" class="chronicle-footer-link">Partner Network</a>
+        <a href="#" class="chronicle-footer-link">Enterprise</a>
+        <a href="#" class="chronicle-footer-link">Chronicle Studio</a>
+        <a href="#" class="chronicle-footer-link">Privacy Policy</a>
+        <a href="#" class="chronicle-footer-link">Terms of Service</a>
+        <a href="#" class="chronicle-footer-link">Careers</a>
+        <a href="#" class="chronicle-footer-link">Contact Us</a>
+      </div>
+
+      <div class="chronicle-footer-column">
+        <div class="chronicle-footer-column-title">Social</div>
+        <a href="#" class="chronicle-footer-link">Instagram</a>
+        <a href="#" class="chronicle-footer-link">Twitter</a>
+        <a href="#" class="chronicle-footer-link">LinkedIn</a>
+        <a href="#" class="chronicle-footer-link">YouTube</a>
+        <a href="#" class="chronicle-footer-link">Chronicle 101</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,331 @@
+<!-- Section: cal-benefits -->
+<section id="cal-benefits" class="cal-benefits-section">
+  <style>
+    .cal-benefits-section {
+      background: #f4f4f4;
+      padding: 40px 24px 80px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-benefits-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .cal-benefits-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal-benefits-card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 16px 0;
+      line-height: 1.3;
+    }
+
+    .cal-benefits-card-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #6b7280;
+      margin: 0 0 24px 0;
+    }
+
+    .cal-benefits-card-visual {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Calendar overlay toggle */
+    .cal-benefits-toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cal-benefits-toggle {
+      width: 44px;
+      height: 24px;
+      background: #000000;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cal-benefits-toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ffffff;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    .cal-benefits-toggle-label {
+      font-size: 14px;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    .cal-benefits-time-toggle {
+      display: flex;
+      background: #f4f4f4;
+      border-radius: 8px;
+      padding: 4px;
+      margin-left: auto;
+    }
+
+    .cal-benefits-time-btn {
+      padding: 4px 12px;
+      font-size: 13px;
+      color: #6b7280;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cal-benefits-time-btn.active {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Calendar grid */
+    .cal-benefits-calendar {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .cal-benefits-calendar-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .cal-benefits-calendar-day {
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .cal-benefits-calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      min-height: 180px;
+      position: relative;
+    }
+
+    .cal-benefits-calendar-col {
+      border-right: 1px solid #f3f4f6;
+      position: relative;
+      min-height: 180px;
+    }
+
+    .cal-benefits-calendar-col:last-child {
+      border-right: none;
+    }
+
+    .cal-benefits-event {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+
+    .cal-benefits-event-orange {
+      background: #fed7aa;
+      border-left: 3px solid #f97316;
+    }
+
+    .cal-benefits-event-purple {
+      background: #e9d5ff;
+      border-left: 3px solid #a855f7;
+    }
+
+    .cal-benefits-event-title {
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 2px;
+    }
+
+    .cal-benefits-event-time {
+      color: #6b7280;
+      font-size: 10px;
+    }
+
+    /* Notification card */
+    .cal-benefits-notification {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 360px;
+      margin-top: 40px;
+    }
+
+    .cal-benefits-notification-icon {
+      width: 40px;
+      height: 40px;
+      background: #000000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .cal-benefits-notification-content {
+      flex: 1;
+    }
+
+    .cal-benefits-notification-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 2px 0;
+    }
+
+    .cal-benefits-notification-text {
+      font-size: 13px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cal-benefits-notification-time {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* Bottom tagline */
+    .cal-benefits-tagline {
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .cal-benefits-tagline h2 {
+      font-size: 48px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .cal-benefits-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-benefits-tagline h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+
+  <div class="cal-benefits-container">
+    <div class="cal-benefits-cards">
+      <!-- Card 1: Streamline bookers experience -->
+      <div class="cal-benefits-card">
+        <h3 class="cal-benefits-card-title">Streamline your team's workflow</h3>
+        <p class="cal-benefits-card-description">
+          Let your team view their priorities at a glance, receive task updates via text or email, get assignments synced to their dashboard, and allow them to adjust deadlines with ease.
+        </p>
+        <div class="cal-benefits-card-visual">
+          <div class="cal-benefits-toggle-row">
+            <div class="cal-benefits-toggle"></div>
+            <span class="cal-benefits-toggle-label">Show my tasks</span>
+            <div class="cal-benefits-time-toggle">
+              <button class="cal-benefits-time-btn active">12h</button>
+              <button class="cal-benefits-time-btn">24h</button>
+            </div>
+          </div>
+          <div class="cal-benefits-calendar">
+            <div class="cal-benefits-calendar-header">
+              <div class="cal-benefits-calendar-day">Wed 06</div>
+              <div class="cal-benefits-calendar-day">Thu 07</div>
+              <div class="cal-benefits-calendar-day">Fri 08</div>
+              <div class="cal-benefits-calendar-day">Sat 09</div>
+              <div class="cal-benefits-calendar-day">Sun 10</div>
+            </div>
+            <div class="cal-benefits-calendar-grid">
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 60px;">
+                  <div class="cal-benefits-event-title">Team sync</div>
+                  <div class="cal-benefits-event-time">12 PM - 1 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-orange" style="top: 10px;">
+                  <div class="cal-benefits-event-title">Weekly standup</div>
+                  <div class="cal-benefits-event-time">11 AM - 12 PM</div>
+                </div>
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 100px;">
+                  <div class="cal-benefits-event-title">Project review</div>
+                  <div class="cal-benefits-event-time">1 PM - 3 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 80px;">
+                  <div class="cal-benefits-event-title">Project review</div>
+                  <div class="cal-benefits-event-time">12 PM - 2 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col"></div>
+              <div class="cal-benefits-calendar-col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Reduce no-shows -->
+      <div class="cal-benefits-card">
+        <h3 class="cal-benefits-card-title">Reduce missed deadlines with automated task reminders</h3>
+        <p class="cal-benefits-card-description">
+          Easily send sms or task reminder emails about upcoming deadlines, and send automated follow-ups to gather any relevant information before the due date.
+        </p>
+        <div class="cal-benefits-card-visual">
+          <div class="cal-benefits-notification">
+            <div class="cal-benefits-notification-icon">Acme</div>
+            <div class="cal-benefits-notification-content">
+              <p class="cal-benefits-notification-title">Task reassigned</p>
+              <p class="cal-benefits-notification-text">Sarah Mitchell has just reassigned the task.</p>
+            </div>
+            <span class="cal-benefits-notification-time">Just now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-benefits-tagline">
+      <h2>...and so much more!</h2>
+    </div>
+  </div>
+</section>

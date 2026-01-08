@@ -1,0 +1,399 @@
+<!-- Section: hero-ui -->
+<section class="hero-ui-section">
+  <style>
+    .hero-ui-section {
+      background: rgb(14, 14, 14);
+      color: white;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 0 0 60px 0;
+      position: relative;
+    }
+
+    .hero-ui-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* UI Mockup Area */
+    .hero-ui-mockup {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 0 0 80px 0;
+      position: relative;
+    }
+
+    .hero-ui-panel-left,
+    .hero-ui-panel-right {
+      width: 240px;
+      height: 280px;
+      background: rgb(32, 32, 32);
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .hero-ui-panel-right {
+      width: 280px;
+    }
+
+    /* Color Palette Panel */
+    .hero-ui-palette-panel {
+      background: rgb(45, 45, 45);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 320px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-ui-color-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0;
+    }
+
+    .hero-ui-color-cell {
+      aspect-ratio: 1;
+      height: 44px;
+    }
+
+    /* Color row 1 - top (lighter) */
+    .hero-ui-color-cell:nth-child(1) { background: #d4a843; }
+    .hero-ui-color-cell:nth-child(2) { background: #c4c42c; }
+    .hero-ui-color-cell:nth-child(3) { background: #8dd42c; }
+    .hero-ui-color-cell:nth-child(4) { background: #2cc48d; }
+    .hero-ui-color-cell:nth-child(5) { background: #2cc4c4; }
+    .hero-ui-color-cell:nth-child(6) { background: #8d5dd4; }
+    .hero-ui-color-cell:nth-child(7) { background: #d45dd4; }
+
+    /* Color row 2 - middle */
+    .hero-ui-color-cell:nth-child(8) { background: #d47a2c; }
+    .hero-ui-color-cell:nth-child(9) { background: #b4b42c; }
+    .hero-ui-color-cell:nth-child(10) { background: #6dc42c; }
+    .hero-ui-color-cell:nth-child(11) { background: #2cb46d; }
+    .hero-ui-color-cell:nth-child(12) { background: #2cb4d4; }
+    .hero-ui-color-cell:nth-child(13) { background: #6d4dc4; }
+    .hero-ui-color-cell:nth-child(14) { background: #c44dc4; }
+
+    /* Color row 3 - bottom (darker/saturated) */
+    .hero-ui-color-cell:nth-child(15) { background: #c45a2c; }
+    .hero-ui-color-cell:nth-child(16) { background: #9a9a2c; }
+    .hero-ui-color-cell:nth-child(17) { background: #4da42c; }
+    .hero-ui-color-cell:nth-child(18) { background: #2c9a4d; }
+    .hero-ui-color-cell:nth-child(19) { background: #2c9ab4; }
+    .hero-ui-color-cell:nth-child(20) { background: #4d3da4; }
+    .hero-ui-color-cell:nth-child(21) { background: #a43da4; }
+
+    .hero-ui-palette-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: rgb(45, 45, 45);
+    }
+
+    .hero-ui-back-arrow {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .hero-ui-insert-btn {
+      background: white;
+      color: black;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .hero-ui-control-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-ui-control-icon {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Toolbar */
+    .hero-ui-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: rgb(38, 38, 38);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 16px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ui-toolbar-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .hero-ui-toolbar-item.hero-ui-active {
+      color: #5b9dff;
+    }
+
+    .hero-ui-toolbar-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 0 4px;
+    }
+
+    .hero-ui-toolbar-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-ui-dropdown-arrow {
+      width: 8px;
+      height: 8px;
+      border-left: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: rotate(-45deg);
+      margin-top: -2px;
+    }
+
+    /* Text Content */
+    .hero-ui-text-content {
+      text-align: center;
+      padding: 80px 0 60px 0;
+    }
+
+    .hero-ui-headline {
+      font-size: 56px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px 0;
+      line-height: 1.1;
+    }
+
+    .hero-ui-subtext {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.5;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Feature Cards */
+    .hero-ui-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-ui-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      color: rgb(14, 14, 14);
+    }
+
+    .hero-ui-card.hero-ui-card-dark {
+      background: rgb(24, 24, 24);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-ui-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-ui-card-text {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+      color: rgba(14, 14, 14, 0.7);
+    }
+
+    .hero-ui-card-dark .hero-ui-card-text {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+
+  <div class="hero-ui-container">
+    <!-- UI Mockup -->
+    <div class="hero-ui-mockup">
+      <div class="hero-ui-panel-left"></div>
+
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="hero-ui-palette-panel">
+          <div class="hero-ui-color-grid">
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+            <div class="hero-ui-color-cell"></div>
+          </div>
+          <div class="hero-ui-palette-controls">
+            <div class="hero-ui-back-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </div>
+            <button class="hero-ui-insert-btn">Insert</button>
+            <div class="hero-ui-control-icons">
+              <div class="hero-ui-control-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2v20"/>
+                </svg>
+              </div>
+              <div class="hero-ui-control-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 1l4 4-4 4"/>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                  <path d="M7 23l-4-4 4-4"/>
+                  <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="hero-ui-toolbar">
+          <div class="hero-ui-toolbar-item hero-ui-active">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.5 2c-5.288 0-9.649 3.914-10.377 9h-3.123l4 5.917 4-5.917h-2.847c.711-3.972 4.174-7 8.347-7 4.687 0 8.5 3.813 8.5 8.5s-3.813 8.5-8.5 8.5c-3.015 0-5.662-1.583-7.171-3.957l-1.2 1.775c1.916 2.536 4.948 4.182 8.371 4.182 5.799 0 10.5-4.701 10.5-10.5s-4.701-10.5-10.5-10.5z"/>
+              </svg>
+            </div>
+            <div class="hero-ui-dropdown-arrow"></div>
+          </div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="9" x2="20" y2="9"/>
+                <line x1="4" y1="15" x2="20" y2="15"/>
+                <line x1="10" y1="3" x2="8" y2="21"/>
+                <line x1="16" y1="3" x2="14" y2="21"/>
+              </svg>
+            </div>
+            <div class="hero-ui-dropdown-arrow"></div>
+          </div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+              </svg>
+            </div>
+            <div class="hero-ui-dropdown-arrow"></div>
+          </div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.55 0 1.08-.05 1.6-.14-.08-.55-.14-1.1-.14-1.67 0-2.82 1.54-5.27 3.82-6.58-.37-.14-.76-.21-1.18-.21-1.66 0-3 1.34-3 3s1.34 3 3 3c.78 0 1.48-.3 2.02-.78.97-1.33 1.54-2.96 1.54-4.72 0-4.42-3.58-8-8-8zm-4 10c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
+              </svg>
+            </div>
+            <div class="hero-ui-dropdown-arrow"></div>
+          </div>
+          <div class="hero-ui-toolbar-divider"></div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5 4v3h5.5v12h3V7H19V4z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="hero-ui-toolbar-divider"></div>
+          <div class="hero-ui-toolbar-item">
+            <div class="hero-ui-toolbar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ui-panel-right"></div>
+    </div>
+
+    <!-- Text Content -->
+    <div class="hero-ui-text-content">
+      <h2 class="hero-ui-headline">Simple to setup.</h2>
+      <p class="hero-ui-subtext">Select the colors you want to work with, or hook up your styles and go.</p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="hero-ui-cards">
+      <div class="hero-ui-card">
+        <h3 class="hero-ui-card-title">Select from your frames</h3>
+        <p class="hero-ui-card-text">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      </div>
+      <div class="hero-ui-card hero-ui-card-dark">
+        <h3 class="hero-ui-card-title">Sync with your styles</h3>
+        <p class="hero-ui-card-text">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Droplette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+
+        .features-section {
+            padding: 0 80px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .features-card {
+            position: relative;
+            padding: 48px 48px 0;
+            overflow: hidden;
+        }
+
+        .features-card-left {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0e0e0e 100%);
+            border-radius: 24px;
+        }
+
+        .features-card-right {
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 24px;
+        }
+
+        .features-logo {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+        }
+
+        .features-logo-rainbow {
+            background: conic-gradient(
+                from 180deg,
+                #ff00ff,
+                #00ffff,
+                #00ff00,
+                #ffff00,
+                #ff0000,
+                #ff00ff
+            );
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .features-logo-rainbow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #0e0e0e;
+            border-radius: 50%;
+        }
+
+        .features-description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            max-width: 380px;
+        }
+
+        .features-card-right .features-description {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .features-mockup {
+            position: relative;
+            margin: 0 -24px;
+        }
+
+        /* Left card - Adjust mockup (white card) */
+        .features-adjust-mockup {
+            background: #ffffff;
+            border-radius: 16px 16px 0 0;
+            padding: 20px 24px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+            margin: 0 24px;
+        }
+
+        .features-app-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .features-app-icon {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .features-app-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .features-app-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .features-palette-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 16px;
+        }
+
+        /* Sunflower palette grid */
+        .features-sunflower-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 2px;
+            height: 220px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .features-sunflower-grid span {
+            display: block;
+        }
+
+        /* Row 1 */
+        .features-sunflower-grid span:nth-child(1) { background: #8B4513; }
+        .features-sunflower-grid span:nth-child(2) { background: #CD6600; }
+        .features-sunflower-grid span:nth-child(3) { background: #D2691E; }
+        .features-sunflower-grid span:nth-child(4) { background: #FF8C00; }
+        .features-sunflower-grid span:nth-child(5) { background: #FFA500; }
+        .features-sunflower-grid span:nth-child(6) { background: #FFB347; }
+        .features-sunflower-grid span:nth-child(7) { background: #FFCC66; }
+        .features-sunflower-grid span:nth-child(8) { background: #FFD27F; }
+        .features-sunflower-grid span:nth-child(9) { background: #FFD280; }
+        .features-sunflower-grid span:nth-child(10) { background: #FFD485; }
+        .features-sunflower-grid span:nth-child(11) { background: #FFD68A; }
+        .features-sunflower-grid span:nth-child(12) { background: #FFDA8F; }
+
+        /* Row 2 */
+        .features-sunflower-grid span:nth-child(13) { background: #8B5A00; }
+        .features-sunflower-grid span:nth-child(14) { background: #CD7F00; }
+        .features-sunflower-grid span:nth-child(15) { background: #D98C00; }
+        .features-sunflower-grid span:nth-child(16) { background: #FF9500; }
+        .features-sunflower-grid span:nth-child(17) { background: #FFAA00; }
+        .features-sunflower-grid span:nth-child(18) { background: #FFBB33; }
+        .features-sunflower-grid span:nth-child(19) { background: #FFCC55; }
+        .features-sunflower-grid span:nth-child(20) { background: #FFD066; }
+        .features-sunflower-grid span:nth-child(21) { background: #FFD270; }
+        .features-sunflower-grid span:nth-child(22) { background: #FFD47A; }
+        .features-sunflower-grid span:nth-child(23) { background: #FFD680; }
+        .features-sunflower-grid span:nth-child(24) { background: #FFDA88; }
+
+        /* Row 3 */
+        .features-sunflower-grid span:nth-child(25) { background: #6B4400; }
+        .features-sunflower-grid span:nth-child(26) { background: #B86B00; }
+        .features-sunflower-grid span:nth-child(27) { background: #CC7700; }
+        .features-sunflower-grid span:nth-child(28) { background: #E68A00; }
+        .features-sunflower-grid span:nth-child(29) { background: #FF9900; }
+        .features-sunflower-grid span:nth-child(30) { background: #FFAA22; }
+        .features-sunflower-grid span:nth-child(31) { background: #FFBB44; }
+        .features-sunflower-grid span:nth-child(32) { background: #FFC455; }
+        .features-sunflower-grid span:nth-child(33) { background: #FFC860; }
+        .features-sunflower-grid span:nth-child(34) { background: #FFCC6A; }
+        .features-sunflower-grid span:nth-child(35) { background: #FFD070; }
+        .features-sunflower-grid span:nth-child(36) { background: #FFD47A; }
+
+        /* Row 4 */
+        .features-sunflower-grid span:nth-child(37) { background: #5C3D00; }
+        .features-sunflower-grid span:nth-child(38) { background: #996300; }
+        .features-sunflower-grid span:nth-child(39) { background: #B87300; }
+        .features-sunflower-grid span:nth-child(40) { background: #CC8000; }
+        .features-sunflower-grid span:nth-child(41) { background: #E69500; }
+        .features-sunflower-grid span:nth-child(42) { background: #FFA500; }
+        .features-sunflower-grid span:nth-child(43) { background: #FFB020; }
+        .features-sunflower-grid span:nth-child(44) { background: #FFBB40; }
+        .features-sunflower-grid span:nth-child(45) { background: #FFC050; }
+        .features-sunflower-grid span:nth-child(46) { background: #FFC55A; }
+        .features-sunflower-grid span:nth-child(47) { background: #FFCA65; }
+        .features-sunflower-grid span:nth-child(48) { background: #FFD070; }
+
+        /* Row 5 */
+        .features-sunflower-grid span:nth-child(49) { background: #4D3200; }
+        .features-sunflower-grid span:nth-child(50) { background: #7A5200; }
+        .features-sunflower-grid span:nth-child(51) { background: #996600; }
+        .features-sunflower-grid span:nth-child(52) { background: #B37700; }
+        .features-sunflower-grid span:nth-child(53) { background: #CC8800; }
+        .features-sunflower-grid span:nth-child(54) { background: #E69900; }
+        .features-sunflower-grid span:nth-child(55) { background: #FFA500; }
+        .features-sunflower-grid span:nth-child(56) { background: #FFB020; }
+        .features-sunflower-grid span:nth-child(57) { background: #FFB830; }
+        .features-sunflower-grid span:nth-child(58) { background: #FFC040; }
+        .features-sunflower-grid span:nth-child(59) { background: #FFC850; }
+        .features-sunflower-grid span:nth-child(60) { background: #FFD060; }
+
+        /* Row 6 */
+        .features-sunflower-grid span:nth-child(61) { background: #3D2800; }
+        .features-sunflower-grid span:nth-child(62) { background: #5C4000; }
+        .features-sunflower-grid span:nth-child(63) { background: #7A5500; }
+        .features-sunflower-grid span:nth-child(64) { background: #996A00; }
+        .features-sunflower-grid span:nth-child(65) { background: #B37F00; }
+        .features-sunflower-grid span:nth-child(66) { background: #CC9400; }
+        .features-sunflower-grid span:nth-child(67) { background: #E6A500; }
+        .features-sunflower-grid span:nth-child(68) { background: #FFAA00; }
+        .features-sunflower-grid span:nth-child(69) { background: #FFB010; }
+        .features-sunflower-grid span:nth-child(70) { background: #FFB820; }
+        .features-sunflower-grid span:nth-child(71) { background: #FFC030; }
+        .features-sunflower-grid span:nth-child(72) { background: #FFC840; }
+
+        .features-slider-container {
+            margin-bottom: 24px;
+        }
+
+        .features-slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .features-slider-name {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .features-slider-value {
+            font-size: 13px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .features-slider-track {
+            position: relative;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+        }
+
+        .features-slider-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 92%;
+            background: #000;
+            border-radius: 2px;
+        }
+
+        .features-slider-thumb {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: #000;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .features-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 0 24px;
+        }
+
+        .features-back-btn {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+        }
+
+        .features-tool-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .features-tool-btn.active {
+            border-color: #0066ff;
+            border-width: 2px;
+        }
+
+        .features-tool-icon {
+            width: 20px;
+            height: 20px;
+            color: #333;
+        }
+
+        /* Right card - Redo mockup (dark card) */
+        .features-redo-mockup {
+            background: #2a2a2a;
+            border-radius: 16px 16px 0 0;
+            padding: 20px 24px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+            margin: 0 24px;
+        }
+
+        .features-redo-mockup .features-app-header {
+            margin-bottom: 16px;
+        }
+
+        .features-redo-mockup .features-app-icon {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .features-redo-mockup .features-app-icon::after {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .features-redo-mockup .features-app-name {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .features-redo-mockup .features-palette-title {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        /* Rainbow bars */
+        .features-rainbow-container {
+            margin-bottom: 20px;
+        }
+
+        .features-rainbow-preview {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+            height: 28px;
+        }
+
+        .features-rainbow-preview span {
+            flex: 1;
+            border-radius: 3px;
+        }
+
+        .features-rainbow-preview span:nth-child(1) { background: #FF4500; }
+        .features-rainbow-preview span:nth-child(2) { background: #FFA500; }
+        .features-rainbow-preview span:nth-child(3) { background: #FFE066; }
+        .features-rainbow-preview span:nth-child(4) { background: #90EE20; }
+        .features-rainbow-preview span:nth-child(5) { background: #00CED1; }
+        .features-rainbow-preview span:nth-child(6) { background: #4FC3F7; }
+        .features-rainbow-preview span:nth-child(7) { background: #DA70D6; }
+
+        .features-rainbow-bars {
+            display: flex;
+            gap: 4px;
+            height: 200px;
+        }
+
+        .features-rainbow-bar {
+            flex: 1;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .features-rainbow-bar:nth-child(1) {
+            background: linear-gradient(to bottom, #FF4500 0%, #CC3700 50%, #8B2500 100%);
+        }
+        .features-rainbow-bar:nth-child(2) {
+            background: linear-gradient(to bottom, #FFA500 0%, #FF8C00 50%, #CC7000 100%);
+        }
+        .features-rainbow-bar:nth-child(3) {
+            background: linear-gradient(to bottom, #FFE066 0%, #FFD700 50%, #CCAA00 100%);
+        }
+        .features-rainbow-bar:nth-child(4) {
+            background: linear-gradient(to bottom, #90EE20 0%, #7CCD17 50%, #5A9E00 100%);
+        }
+        .features-rainbow-bar:nth-child(5) {
+            background: linear-gradient(to bottom, #00CED1 0%, #00AAAA 50%, #008888 100%);
+        }
+        .features-rainbow-bar:nth-child(6) {
+            background: linear-gradient(to bottom, #4FC3F7 0%, #29B6F6 50%, #0288D1 100%);
+        }
+        .features-rainbow-bar:nth-child(7) {
+            background: linear-gradient(to bottom, #DA70D6 0%, #BA55D3 50%, #9932CC 100%);
+        }
+
+        .features-color-dots {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin: 20px 0;
+        }
+
+        .features-color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .features-color-dot:nth-child(1) { background: #FFE066; }
+        .features-color-dot:nth-child(2) { background: #FFA500; }
+        .features-color-dot:nth-child(3) { background: #DA70D6; }
+
+        .features-redo-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0 24px;
+        }
+
+        .features-redo-back {
+            width: 24px;
+            height: 24px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .features-redo-btn {
+            padding: 10px 24px;
+            background: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* Figma button in top right corner - part of the page background */
+        .features-figma-btn {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: #fff;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-figma-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .features-faq-preview {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .features-faq-title {
+            font-size: 48px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-section {
+                padding: 0 40px 80px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="features-section">
+        <div class="features-grid">
+            <!-- Left Card - Adjust as you go -->
+            <div class="features-card features-card-left">
+                <div class="features-logo features-logo-rainbow"></div>
+                <p class="features-description">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+
+                <div class="features-mockup">
+                    <div class="features-adjust-mockup">
+                        <div class="features-app-header">
+                            <div class="features-app-icon"></div>
+                            <span class="features-app-name">Droplette</span>
+                        </div>
+
+                        <div class="features-palette-title">Impressionist sunflowers</div>
+
+                        <div class="features-sunflower-grid">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+
+                        <div class="features-slider-container">
+                            <div class="features-slider-label">
+                                <span class="features-slider-name">Saturation</span>
+                                <span class="features-slider-value">+92</span>
+                            </div>
+                            <div class="features-slider-track">
+                                <div class="features-slider-fill"></div>
+                                <div class="features-slider-thumb"></div>
+                            </div>
+                        </div>
+
+                        <div class="features-toolbar">
+                            <div class="features-back-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                </svg>
+                            </div>
+                            <div class="features-tool-btn">
+                                <svg class="features-tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div class="features-tool-btn active">
+                                <svg class="features-tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                    <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="features-tool-btn">
+                                <svg class="features-tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="5"/>
+                                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Card - Redo with AI -->
+            <div class="features-card features-card-right">
+                <p class="features-description">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+
+                <div class="features-mockup">
+                    <div class="features-redo-mockup">
+                        <div class="features-app-header">
+                            <div class="features-app-icon"></div>
+                            <span class="features-app-name">Droplette</span>
+                        </div>
+
+                        <div class="features-palette-title">A summer rainbow</div>
+
+                        <div class="features-rainbow-container">
+                            <div class="features-rainbow-preview">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <div class="features-rainbow-bars">
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                                <div class="features-rainbow-bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="features-color-dots">
+                            <div class="features-color-dot"></div>
+                            <div class="features-color-dot"></div>
+                            <div class="features-color-dot"></div>
+                        </div>
+
+                        <div class="features-redo-toolbar">
+                            <div class="features-redo-back">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                </svg>
+                            </div>
+                            <button class="features-redo-btn">Redo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Preview -->
+        <div class="features-faq-preview">
+            <h2 class="features-faq-title">Frequently asked</h2>
+        </div>
+    </section>
+</body>
+</html>

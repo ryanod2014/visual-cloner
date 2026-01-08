@@ -1,0 +1,259 @@
+<!-- Section 5: Pricing -->
+<style>
+  .pricing-section {
+    background-color: #0e0e0e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    box-sizing: border-box;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .pricing-content {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 120px;
+  }
+
+  .pricing-heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 64px;
+    font-weight: 400;
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 32px 0;
+  }
+
+  .pricing-subtext {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+  }
+
+  .pricing-subtext-highlight {
+    color: #ffffff;
+  }
+
+  .pricing-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pricing-btn-buy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background-color: #ffffff;
+    color: #0e0e0e;
+    border: none;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .pricing-btn-buy:hover {
+    opacity: 0.9;
+  }
+
+  .pricing-btn-buy .pricing-original-price {
+    color: rgba(14, 14, 14, 0.5);
+    text-decoration: line-through;
+  }
+
+  .pricing-btn-figma {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .pricing-btn-figma:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .pricing-figma-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pricing-figma-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Color dots row */
+  .pricing-dots-row {
+    position: absolute;
+    bottom: 180px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 0 40px;
+  }
+
+  .pricing-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  .pricing-dot-1 {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  }
+
+  .pricing-dot-2 {
+    background: linear-gradient(135deg, #00ccff 0%, #0099cc 100%);
+  }
+
+  .pricing-dot-3 {
+    background: linear-gradient(135deg, #cc66ff 0%, #9933cc 100%);
+  }
+
+  .pricing-dot-4 {
+    background: linear-gradient(135deg, #ff6699 0%, #cc3366 100%);
+  }
+
+  .pricing-dot-5 {
+    background: linear-gradient(135deg, #ff6633 0%, #cc4422 100%);
+  }
+
+  .pricing-dot-6 {
+    background: linear-gradient(135deg, #ffcc00 0%, #cc9900 100%);
+  }
+
+  .pricing-dot-7 {
+    background: linear-gradient(135deg, #99cc33 0%, #669922 100%);
+  }
+
+  .pricing-dot-8 {
+    background: linear-gradient(135deg, #66cccc 0%, #339999 100%);
+  }
+
+  .pricing-dot-9 {
+    background: linear-gradient(135deg, #9999cc 0%, #666699 100%);
+  }
+
+  .pricing-dot-10 {
+    background: linear-gradient(135deg, #cc9966 0%, #996633 100%);
+  }
+
+  .pricing-dot-11 {
+    background: linear-gradient(135deg, #33cccc 0%, #229999 100%);
+  }
+
+  /* Footer */
+  .pricing-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .pricing-footer-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .pricing-relay-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .pricing-relay-logo:hover {
+    color: #ffffff;
+  }
+
+  .pricing-relay-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pricing-relay-name {
+    font-weight: 500;
+  }
+</style>
+
+<section class="pricing-section">
+  <div class="pricing-content">
+    <h2 class="pricing-heading">One price.<br>No subscription.</h2>
+    <p class="pricing-subtext">
+      Bring your own API key for OpenAI. Droplette is a single payment. <span class="pricing-subtext-highlight">Special launch price of $9.</span>
+    </p>
+    <div class="pricing-buttons">
+      <a href="#" class="pricing-btn-buy">
+        Buy license $9 <span class="pricing-original-price">$20</span>
+      </a>
+      <a href="#" class="pricing-btn-figma">
+        <span class="pricing-figma-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4zm0-20C5.8 4 4 5.8 4 8s1.8 4 4 4h4V4H8zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4h4v-8H8zm8-8h-4v8h4c2.2 0 4-1.8 4-4s-1.8-4-4-4zm0 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+          </svg>
+        </span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+
+  <!-- Color dots row -->
+  <div class="pricing-dots-row">
+    <div class="pricing-dot pricing-dot-1"></div>
+    <div class="pricing-dot pricing-dot-2"></div>
+    <div class="pricing-dot pricing-dot-3"></div>
+    <div class="pricing-dot pricing-dot-4"></div>
+    <div class="pricing-dot pricing-dot-5"></div>
+    <div class="pricing-dot pricing-dot-6"></div>
+    <div class="pricing-dot pricing-dot-7"></div>
+    <div class="pricing-dot pricing-dot-8"></div>
+    <div class="pricing-dot pricing-dot-9"></div>
+    <div class="pricing-dot pricing-dot-10"></div>
+    <div class="pricing-dot pricing-dot-11"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="pricing-footer">
+    <span class="pricing-footer-text">
+      Another Figma plugin crafted by
+      <a href="#" class="pricing-relay-logo">
+        <svg class="pricing-relay-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        <span class="pricing-relay-name">Relay</span>
+      </a>
+    </span>
+  </div>
+</section>

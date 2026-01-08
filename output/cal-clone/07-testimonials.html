@@ -1,0 +1,362 @@
+<!-- Section 7: Testimonials / Wall of Love -->
+<section class="cal-testimonials-section">
+  <style>
+    .cal-testimonials-section {
+      background: #f4f4f4;
+      padding: 80px 24px 100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cal-testimonials-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000000;
+      margin-bottom: 24px;
+    }
+
+    .cal-testimonials-badge-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-testimonials-heading {
+      font-size: 48px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 16px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-testimonials-subheading {
+      font-size: 18px;
+      color: #6b7280;
+      margin: 0 0 32px;
+      line-height: 1.5;
+    }
+
+    .cal-testimonials-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+
+    .cal-testimonials-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #000000;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cal-testimonials-btn-primary:hover {
+      background: #1a1a1a;
+    }
+
+    .cal-testimonials-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .cal-testimonials-btn-secondary:hover {
+      background: #f9fafb;
+      border-color: #d1d5db;
+    }
+
+    .cal-testimonials-btn-arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cal-testimonials-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .cal-testimonials-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cal-testimonials-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .cal-testimonials-avatar-1 {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .cal-testimonials-avatar-2 {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .cal-testimonials-avatar-3 {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .cal-testimonials-avatar-4 {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .cal-testimonials-avatar-5 {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    }
+
+    .cal-testimonials-avatar-6 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .cal-testimonials-user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal-testimonials-user-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0;
+    }
+
+    .cal-testimonials-user-handle {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cal-testimonials-twitter-icon {
+      margin-left: auto;
+      color: #1da1f2;
+    }
+
+    .cal-testimonials-card-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0;
+    }
+
+    .cal-testimonials-highlight {
+      color: #000000;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .cal-testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cal-testimonials-section {
+        padding: 60px 20px 80px;
+      }
+
+      .cal-testimonials-heading {
+        font-size: 36px;
+      }
+
+      .cal-testimonials-subheading {
+        font-size: 16px;
+      }
+
+      .cal-testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-testimonials-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <div class="cal-testimonials-container">
+    <div class="cal-testimonials-badge">
+      <span class="cal-testimonials-badge-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </span>
+      Wall of love
+    </div>
+
+    <h2 class="cal-testimonials-heading">See why our users love Cal.com</h2>
+    <p class="cal-testimonials-subheading">Read the impact we've had from those who matter most - our customers.</p>
+
+    <div class="cal-testimonials-buttons">
+      <a href="#" class="cal-testimonials-btn-primary">
+        Get started
+        <svg class="cal-testimonials-btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#" class="cal-testimonials-btn-secondary">
+        Talk to sales
+        <svg class="cal-testimonials-btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="cal-testimonials-grid">
+      <!-- Testimonial Card 1 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-1">M</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Michael Chen</p>
+            <p class="cal-testimonials-user-handle">@michaelchen</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          <span class="cal-testimonials-highlight">@calcom</span> has completely transformed how we schedule meetings. The open-source approach gives us the flexibility we need. Highly recommend!
+        </p>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-2">S</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Sarah Johnson</p>
+            <p class="cal-testimonials-user-handle">@sarahjdev</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          Finally, a scheduling tool that respects user privacy and doesn't lock you into a proprietary system. <span class="cal-testimonials-highlight">@calcom</span> is the future of scheduling.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-3">D</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">David Park</p>
+            <p class="cal-testimonials-user-handle">@davidpark_io</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          We migrated from Calendly to <span class="cal-testimonials-highlight">@calcom</span> and haven't looked back. The team event types and round-robin features are game changers.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 4 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-4">E</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Emma Wilson</p>
+            <p class="cal-testimonials-user-handle">@emmawilson</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          The API and integrations are incredible. We've built custom workflows that save our team hours every week. Thank you <span class="cal-testimonials-highlight">@calcom</span>!
+        </p>
+      </div>
+
+      <!-- Testimonial Card 5 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-5">A</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Alex Rivera</p>
+            <p class="cal-testimonials-user-handle">@alexrivera</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          Self-hosting <span class="cal-testimonials-highlight">@calcom</span> was a breeze. Full control over our data while maintaining all the features. This is how software should be.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 6 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-6">J</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Jordan Lee</p>
+            <p class="cal-testimonials-user-handle">@jordanlee_dev</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          The collective scheduling feature in <span class="cal-testimonials-highlight">@calcom</span> is perfect for our hiring process. Multiple interviewers, one seamless booking experience.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

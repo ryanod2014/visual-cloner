@@ -1,0 +1,164 @@
+<style>
+.pricing-footer {
+  background: rgb(14, 14, 14);
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.pricing-section {
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 24px;
+  margin: 0 40px;
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, transparent 100%);
+}
+
+.pricing-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+}
+
+.pricing-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.pricing-highlight {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.pricing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pricing-btn-primary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-btn-primary .old-price {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.pricing-btn-secondary {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-figma-icon {
+  width: 16px;
+  height: 16px;
+  background: #1e1e1e;
+  border-radius: 2px;
+}
+
+.footer {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.footer-color-strip {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.footer-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.footer-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="pricing-footer">
+  <div class="pricing-section">
+    <h2 class="pricing-headline">One price.<br>No subscription.</h2>
+    <p class="pricing-subheadline">Bring your own API key for OpenAI. Droplette is a single payment. <span class="pricing-highlight">Special launch price of $9</span>.</p>
+
+    <div class="pricing-buttons">
+      <a href="#" class="pricing-btn-primary">
+        Buy license $9 <span class="old-price">$20</span>
+      </a>
+      <a href="#" class="pricing-btn-secondary">
+        <span class="pricing-figma-icon"></span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-color-strip">
+      <div class="footer-color-dot" style="background: #2dd4bf;"></div>
+      <div class="footer-color-dot" style="background: #14b8a6;"></div>
+      <div class="footer-color-dot" style="background: #3b82f6;"></div>
+      <div class="footer-color-dot" style="background: #a855f7;"></div>
+      <div class="footer-color-dot" style="background: #f97316;"></div>
+      <div class="footer-color-dot" style="background: #eab308;"></div>
+      <div class="footer-color-dot" style="background: #84cc16;"></div>
+      <div class="footer-color-dot" style="background: #22d3ee;"></div>
+    </div>
+
+    <div class="footer-credit">
+      Another Figma plugin crafted by
+      <svg class="footer-logo" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.8)"/>
+      </svg>
+      <a href="#" class="footer-link">Relay</a>
+    </div>
+  </footer>
+</div>

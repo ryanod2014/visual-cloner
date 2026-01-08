@@ -1,0 +1,206 @@
+<!-- Section 3: FAQ -->
+<style>
+  .clone-section-3-faq {
+    background-color: var(--color-background);
+    padding: 120px var(--space-section-x);
+    min-height: 100vh;
+  }
+
+  .clone-section-3-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .clone-section-3-heading {
+    font-family: var(--font-primary);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-normal);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    line-height: 1.05;
+    margin: 0 0 60px 0;
+  }
+
+  .clone-section-3-accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-3-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .clone-section-3-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .clone-section-3-question-text {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: var(--weight-normal);
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    padding-right: 24px;
+  }
+
+  .clone-section-3-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    opacity: 0.5;
+  }
+
+  .clone-section-3-icon::before,
+  .clone-section-3-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-text-primary);
+  }
+
+  .clone-section-3-icon::before {
+    width: 16px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .clone-section-3-icon::after {
+    width: 2px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+
+  .clone-section-3-item.active .clone-section-3-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .clone-section-3-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .clone-section-3-answer-content {
+    padding: 0 0 24px 0;
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .clone-section-3-item.active .clone-section-3-answer {
+    max-height: 300px;
+  }
+
+  .clone-section-3-question:hover .clone-section-3-icon {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .clone-section-3-faq {
+      padding: 80px var(--space-section-x);
+    }
+
+    .clone-section-3-heading {
+      font-size: 42px;
+      margin-bottom: 40px;
+    }
+
+    .clone-section-3-question-text {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="clone-section-3-faq">
+  <div class="clone-section-3-container">
+    <h2 class="clone-section-3-heading">Common questions<br>answered.</h2>
+
+    <div class="clone-section-3-accordion">
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">What makes Acme different?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Acme is a powerful platform that helps you achieve your goals quickly and efficiently.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">What pricing plans do you offer?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            We offer flexible pricing tiers designed to meet the needs of individuals and teams of all sizes.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">What platforms do you support?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Acme works seamlessly across web, desktop, and mobile platforms for a consistent experience.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">How reliable is the service?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Our infrastructure maintains high uptime and delivers consistent performance you can depend on.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">What is the typical processing time?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Most tasks complete within seconds, though complex operations may take slightly longer.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">How do I get started with Acme?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Simply create an account, configure your preferences, and follow our guided onboarding process.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

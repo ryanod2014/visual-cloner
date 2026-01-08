@@ -1,0 +1,252 @@
+<!-- Section: cal-features -->
+<section id="cal-features" class="cal-features-section">
+  <style>
+    .cal-features-section {
+      background-color: #f4f4f4;
+      padding: 0 24px 80px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-features-content {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cal-features-description {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #6b7280;
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+
+    .cal-features-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cal-features-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background-color: #6366f1;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .cal-features-btn-primary:hover {
+      background-color: #4f46e5;
+    }
+
+    .cal-features-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background-color: #ffffff;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .cal-features-btn-secondary:hover {
+      border-color: #d1d5db;
+      background-color: #fafafa;
+    }
+
+    .cal-features-btn-secondary svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal-features-video-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .cal-features-video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-features-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .cal-features-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+    }
+
+    .cal-features-video-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      z-index: 2;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-features-video-subtitle {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 700;
+      font-style: italic;
+      background: linear-gradient(90deg, #a78bfa 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      z-index: 2;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-features-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cal-features-play-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .cal-features-play-button svg {
+      width: 32px;
+      height: 32px;
+      fill: #ffffff;
+      margin-left: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .cal-features-section {
+        padding: 0 16px 60px;
+      }
+
+      .cal-features-description {
+        font-size: 16px;
+      }
+
+      .cal-features-buttons {
+        flex-direction: column;
+      }
+
+      .cal-features-btn-primary,
+      .cal-features-btn-secondary {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .cal-features-play-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .cal-features-play-button svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+
+  <div class="cal-features-container">
+    <div class="cal-features-content">
+      <p class="cal-features-description">
+        Automate repetitive tasks, streamline your workflows, and let intelligent systems handle the busywork so your team can focus on what matters most.
+      </p>
+      <div class="cal-features-buttons">
+        <a href="#" class="cal-features-btn-primary">Try Acme free</a>
+        <a href="#" class="cal-features-btn-secondary">
+          Learn more
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="cal-features-video-wrapper">
+      <div class="cal-features-video-container">
+        <div class="cal-features-stars">
+          <!-- Decorative stars -->
+          <span class="cal-features-star" style="top: 15%; left: 20%;"></span>
+          <span class="cal-features-star" style="top: 25%; left: 35%;"></span>
+          <span class="cal-features-star" style="top: 10%; left: 50%;"></span>
+          <span class="cal-features-star" style="top: 20%; left: 65%;"></span>
+          <span class="cal-features-star" style="top: 30%; left: 80%;"></span>
+          <span class="cal-features-star" style="top: 35%; left: 25%;"></span>
+          <span class="cal-features-star" style="top: 40%; left: 45%;"></span>
+          <span class="cal-features-star" style="top: 15%; left: 75%;"></span>
+          <span class="cal-features-star" style="top: 50%; left: 15%;"></span>
+          <span class="cal-features-star" style="top: 55%; left: 30%;"></span>
+          <span class="cal-features-star" style="top: 60%; left: 55%;"></span>
+          <span class="cal-features-star" style="top: 45%; left: 70%;"></span>
+          <span class="cal-features-star" style="top: 65%; left: 85%;"></span>
+          <span class="cal-features-star" style="top: 70%; left: 40%;"></span>
+          <span class="cal-features-star" style="top: 75%; left: 60%;"></span>
+          <span class="cal-features-star" style="top: 80%; left: 20%;"></span>
+          <span class="cal-features-star" style="top: 85%; left: 75%;"></span>
+          <span class="cal-features-star" style="top: 90%; left: 45%;"></span>
+        </div>
+        <div class="cal-features-video-title">Introducing</div>
+        <div class="cal-features-video-subtitle">AI-powered automation</div>
+        <button class="cal-features-play-button" aria-label="Play video">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,229 @@
+<style>
+.clone-section-2 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-2-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-section-2-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-foreground);
+  margin: 0 0 var(--space-md);
+}
+
+.clone-section-2-card-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+/* Light mockup - Adjust palette */
+.clone-section-2-mockup-light {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: rgb(30, 30, 30);
+}
+
+.clone-section-2-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(30, 30, 30);
+  border-radius: 50%;
+}
+
+.clone-section-2-palette-title {
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  color: rgb(30, 30, 30);
+  margin-bottom: var(--space-md);
+}
+
+.clone-section-2-color-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  margin-bottom: var(--space-md);
+}
+
+.clone-section-2-color-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+}
+
+/* Orange/yellow warm palette */
+.clone-section-2-color-cell.c1 { background: #8B4513; }
+.clone-section-2-color-cell.c2 { background: #CD853F; }
+.clone-section-2-color-cell.c3 { background: #DEB887; }
+.clone-section-2-color-cell.c4 { background: #F5DEB3; }
+.clone-section-2-color-cell.c5 { background: #FFE4B5; }
+.clone-section-2-color-cell.c6 { background: #FFDAB9; }
+.clone-section-2-color-cell.c7 { background: #FFE4C4; }
+.clone-section-2-color-cell.c8 { background: #FFEFD5; }
+
+.clone-section-2-slider-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-small);
+  color: rgb(100, 100, 100);
+}
+
+/* Dark mockup - Rainbow palette */
+.clone-section-2-mockup-dark {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-dark-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-2-mockup-dark-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-2-palette-title-dark {
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  color: var(--color-foreground);
+  margin-bottom: var(--space-md);
+}
+
+.clone-section-2-rainbow-bars {
+  display: flex;
+  gap: 4px;
+  height: 200px;
+}
+
+.clone-section-2-rainbow-bar {
+  flex: 1;
+  border-radius: 4px;
+}
+
+.clone-section-2-rainbow-bar:nth-child(1) { background: linear-gradient(to bottom, #ff5722, #e64a19); }
+.clone-section-2-rainbow-bar:nth-child(2) { background: linear-gradient(to bottom, #ff9800, #f57c00); }
+.clone-section-2-rainbow-bar:nth-child(3) { background: linear-gradient(to bottom, #ffeb3b, #fbc02d); }
+.clone-section-2-rainbow-bar:nth-child(4) { background: linear-gradient(to bottom, #8bc34a, #689f38); }
+.clone-section-2-rainbow-bar:nth-child(5) { background: linear-gradient(to bottom, #00bcd4, #0097a7); }
+.clone-section-2-rainbow-bar:nth-child(6) { background: linear-gradient(to bottom, #2196f3, #1976d2); }
+.clone-section-2-rainbow-bar:nth-child(7) { background: linear-gradient(to bottom, #9c27b0, #7b1fa2); }
+.clone-section-2-rainbow-bar:nth-child(8) { background: linear-gradient(to bottom, #e91e63, #c2185b); }
+</style>
+
+<div class="clone-section-2">
+  <div class="clone-section-2-grid">
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Adjust as you go</h3>
+      <p class="clone-section-2-card-text">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="clone-section-2-mockup-light">
+        <div class="clone-section-2-mockup-header">
+          <div class="clone-section-2-mockup-icon"></div>
+          <span>Droplette</span>
+        </div>
+        <div class="clone-section-2-palette-title">Impressionist sunflowers</div>
+        <div class="clone-section-2-color-grid">
+          <div class="clone-section-2-color-cell c1"></div>
+          <div class="clone-section-2-color-cell c2"></div>
+          <div class="clone-section-2-color-cell c3"></div>
+          <div class="clone-section-2-color-cell c4"></div>
+          <div class="clone-section-2-color-cell c5"></div>
+          <div class="clone-section-2-color-cell c6"></div>
+          <div class="clone-section-2-color-cell c7"></div>
+          <div class="clone-section-2-color-cell c8"></div>
+          <div class="clone-section-2-color-cell c1"></div>
+          <div class="clone-section-2-color-cell c2"></div>
+          <div class="clone-section-2-color-cell c3"></div>
+          <div class="clone-section-2-color-cell c4"></div>
+          <div class="clone-section-2-color-cell c5"></div>
+          <div class="clone-section-2-color-cell c6"></div>
+          <div class="clone-section-2-color-cell c7"></div>
+          <div class="clone-section-2-color-cell c8"></div>
+          <div class="clone-section-2-color-cell c1"></div>
+          <div class="clone-section-2-color-cell c2"></div>
+          <div class="clone-section-2-color-cell c3"></div>
+          <div class="clone-section-2-color-cell c4"></div>
+          <div class="clone-section-2-color-cell c5"></div>
+          <div class="clone-section-2-color-cell c6"></div>
+          <div class="clone-section-2-color-cell c7"></div>
+          <div class="clone-section-2-color-cell c8"></div>
+          <div class="clone-section-2-color-cell c1"></div>
+          <div class="clone-section-2-color-cell c2"></div>
+          <div class="clone-section-2-color-cell c3"></div>
+          <div class="clone-section-2-color-cell c4"></div>
+          <div class="clone-section-2-color-cell c5"></div>
+          <div class="clone-section-2-color-cell c6"></div>
+          <div class="clone-section-2-color-cell c7"></div>
+          <div class="clone-section-2-color-cell c8"></div>
+        </div>
+        <div class="clone-section-2-slider-row">
+          <span>Saturation</span>
+          <span>+92</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Redo with AI</h3>
+      <p class="clone-section-2-card-text">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="clone-section-2-mockup-dark">
+        <div class="clone-section-2-mockup-dark-header">
+          <div class="clone-section-2-mockup-dark-icon"></div>
+          <span>Droplette</span>
+        </div>
+        <div class="clone-section-2-palette-title-dark">A summer rainbow</div>
+        <div class="clone-section-2-rainbow-bars">
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+          <div class="clone-section-2-rainbow-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

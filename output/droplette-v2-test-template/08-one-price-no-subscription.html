@@ -1,0 +1,125 @@
+<style>
+.clone-section-8 {
+  background: var(--color-background, rgb(14, 14, 14));
+  color: var(--color-foreground, rgb(255, 255, 255));
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.clone-section-8-border {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  border: 1px solid;
+  border-image: linear-gradient(to right, #ff5722, #ff9800, #ffeb3b, #8bc34a, #00bcd4, #2196f3, #9c27b0) 1;
+  pointer-events: none;
+}
+
+.clone-section-8-content {
+  position: relative;
+  z-index: 1;
+}
+
+.clone-section-8-headline {
+  font-family: Ein, -apple-system, "system-ui", sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgb(255, 255, 255);
+  margin: 0 0 32px;
+}
+
+.clone-section-8-subheadline {
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin: 0 auto 48px;
+}
+
+.clone-section-8-subheadline strong {
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+}
+
+.clone-section-8-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.clone-section-8-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.clone-section-8-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.clone-section-8-price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.clone-section-8-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(44, 44, 44);
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  font-family: ui-sans-serif, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.clone-section-8-btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.clone-section-8-figma-icon {
+  width: 16px;
+  height: 16px;
+}
+</style>
+
+<div class="clone-section-8">
+  <div class="clone-section-8-border"></div>
+  <div class="clone-section-8-content">
+    <h2 class="clone-section-8-headline">One price.<br>No subscription.</h2>
+    <p class="clone-section-8-subheadline">
+      Bring your own API key for OpenAI. Droplette is a single payment. <strong>Special launch price of $9</strong>.
+    </p>
+    <div class="clone-section-8-buttons">
+      <a href="#" class="clone-section-8-btn-primary">
+        Buy license $9 <span class="clone-section-8-price-old">$20</span>
+      </a>
+      <a href="#" class="clone-section-8-btn-secondary">
+        <span class="clone-section-8-figma-icon"></span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</div>

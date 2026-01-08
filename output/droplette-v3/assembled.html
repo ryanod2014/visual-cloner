@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Droplette - Hero (Assembled)</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero === */
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #0e0e0e;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Navigation */
+    .hero-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-logo {
+      width: 48px;
+      height: 48px;
+      position: relative;
+    }
+
+    .hero-logo-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 180deg,
+        #ff00ff 0deg,
+        #ff0080 45deg,
+        #ff8000 90deg,
+        #ffff00 135deg,
+        #80ff00 180deg,
+        #00ffff 225deg,
+        #0080ff 270deg,
+        #8000ff 315deg,
+        #ff00ff 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-logo-inner {
+      width: 30px;
+      height: 30px;
+      background: #0e0e0e;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      transform: rotate(180deg);
+      position: relative;
+      top: -2px;
+    }
+
+    .hero-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      color: #0e0e0e;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .hero-cta-btn:hover {
+      opacity: 0.9;
+    }
+
+    .hero-figma-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Background grid of circles */
+    .hero-bg-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-grid-row {
+      display: flex;
+      justify-content: space-around;
+      padding: 0 20px;
+    }
+
+    .hero-grid-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    /* Grid rows positioning */
+    .hero-grid-row-1 { position: absolute; top: 180px; left: 0; right: 0; }
+    .hero-grid-row-2 { position: absolute; top: 280px; left: 0; right: 0; }
+    .hero-grid-row-3 { position: absolute; top: 380px; left: 0; right: 0; }
+
+    /* Main content */
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .hero-headline {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-subheadline {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-subheadline-highlight {
+      color: white;
+    }
+
+    /* UI Mockups */
+    .hero-mockups {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 60px 40px 0;
+      margin-top: 20px;
+    }
+
+    /* Rainbow glow behind center panel */
+    .hero-glow {
+      position: absolute;
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(ellipse at center,
+        rgba(255, 100, 100, 0.3) 0%,
+        rgba(255, 200, 100, 0.2) 20%,
+        rgba(100, 255, 100, 0.2) 40%,
+        rgba(100, 200, 255, 0.2) 60%,
+        transparent 80%
+      );
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      filter: blur(60px);
+      z-index: 1;
+    }
+
+    /* Side panels */
+    .hero-side-panel {
+      width: 280px;
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-panel-icon {
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+    }
+
+    .hero-panel-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .hero-panel-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    .hero-panel-bar-short { width: 30px; }
+    .hero-panel-bar-medium { width: 60px; }
+    .hero-panel-bar-long { width: 100px; }
+
+    .hero-panel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Center color palette panel */
+    .hero-center-panel {
+      width: 320px;
+      background: rgba(40, 40, 40, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-center-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(30, 30, 30, 0.9);
+    }
+
+    .hero-droplette-icon {
+      width: 16px;
+      height: 16px;
+      background: conic-gradient(
+        from 180deg,
+        #ff00ff,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0080ff,
+        #ff00ff
+      );
+      border-radius: 50%;
+    }
+
+    .hero-center-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+    }
+
+    .hero-color-bars {
+      display: flex;
+      height: 350px;
+    }
+
+    .hero-color-bar {
+      flex: 1;
+    }
+
+    .hero-color-bar-1 { background: linear-gradient(to bottom, #ff4400, #ff6622); }
+    .hero-color-bar-2 { background: linear-gradient(to bottom, #ff6600, #ff8833); }
+    .hero-color-bar-3 { background: linear-gradient(to bottom, #ffaa00, #ffcc33); }
+    .hero-color-bar-4 { background: linear-gradient(to bottom, #ccff00, #ddff33); }
+    .hero-color-bar-5 { background: linear-gradient(to bottom, #88ff00, #aaff33); }
+    .hero-color-bar-6 { background: linear-gradient(to bottom, #00ffcc, #33ffdd); }
+    .hero-color-bar-7 { background: linear-gradient(to bottom, #00ccff, #33ddff); }
+    .hero-color-bar-8 { background: linear-gradient(to bottom, #0088ff, #33aaff); }
+    .hero-color-bar-9 { background: linear-gradient(to bottom, #cc00ff, #dd33ff); }
+    .hero-color-bar-10 { background: linear-gradient(to bottom, #ff00cc, #ff33dd); }
+
+    /* Right panel specific */
+    .hero-right-panel {
+      width: 300px;
+    }
+
+    .hero-right-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .hero-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .hero-right-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-play-btn {
+      width: 0;
+      height: 0;
+      border-left: 8px solid rgba(255, 255, 255, 0.4);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+
+    .hero-toggle {
+      width: 44px;
+      height: 24px;
+      background: #3b82f6;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .hero-toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    .hero-right-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding: 4px 0;
+    }
+
+    .hero-right-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.4;
+    }
+
+    .hero-slider-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .hero-slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+    }
+
+    .hero-color-preview {
+      display: flex;
+      gap: 4px;
+    }
+
+    .hero-color-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    /* Left panel icons */
+    .hero-grid-icon {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-grid-icon span {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 1px;
+    }
+
+    .hero-sidebar-icon {
+      display: flex;
+      gap: 2px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-sidebar-icon span:first-child {
+      width: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 1px;
+    }
+
+    .hero-sidebar-icon span:last-child {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 1px;
+    }
+
+    .hero-search-icon {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .hero-search-icon::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.4);
+      bottom: -1px;
+      right: -3px;
+      transform: rotate(45deg);
+    }
+
+    .hero-plus-icon {
+      width: 14px;
+      height: 14px;
+      position: relative;
+    }
+
+    .hero-plus-icon::before,
+    .hero-plus-icon::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-plus-icon::before {
+      width: 14px;
+      height: 2px;
+      top: 6px;
+      left: 0;
+    }
+
+    .hero-plus-icon::after {
+      width: 2px;
+      height: 14px;
+      left: 6px;
+      top: 0;
+    }
+
+    /* Dropdown arrow */
+    .hero-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid rgba(255, 255, 255, 0.4);
+    }
+
+/* === Section: 01-ui-mockups === */
+.ui-mockups-section {
+      background-color: #0e0e0e;
+      padding: 0 0 80px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .ui-mockups-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Plugin Interface Area */
+    .ui-mockups-plugin-area {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 40px 0 60px;
+      position: relative;
+    }
+
+    .ui-mockups-dark-card {
+      width: 280px;
+      height: 200px;
+      background: linear-gradient(145deg, #1a1a1a 0%, #141414 100%);
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+
+    .ui-mockups-dark-card-left {
+      margin-top: 40px;
+    }
+
+    .ui-mockups-dark-card-right {
+      margin-top: 20px;
+    }
+
+    /* Main Plugin Window */
+    .ui-mockups-plugin-window {
+      background: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    /* Color Palette Grid */
+    .ui-mockups-color-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      height: 100px;
+    }
+
+    .ui-mockups-color-cell {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Row 1 colors - top */
+    .ui-mockups-color-cell:nth-child(1) { background: #e8a956; }
+    .ui-mockups-color-cell:nth-child(2) { background: #e07830; }
+    .ui-mockups-color-cell:nth-child(3) { background: #cf4a2c; }
+    .ui-mockups-color-cell:nth-child(4) { background: #c4b944; }
+    .ui-mockups-color-cell:nth-child(5) { background: #a8c244; }
+    .ui-mockups-color-cell:nth-child(6) { background: #7bc248; }
+    .ui-mockups-color-cell:nth-child(7) { background: #50bf9e; }
+    .ui-mockups-color-cell:nth-child(8) { background: #46c4c4; }
+    .ui-mockups-color-cell:nth-child(9) { background: #4fb4d4; }
+    .ui-mockups-color-cell:nth-child(10) { background: #c85eb8; }
+
+    /* Row 2 colors - bottom */
+    .ui-mockups-color-cell:nth-child(11) { background: #d4864a; }
+    .ui-mockups-color-cell:nth-child(12) { background: #cc5c28; }
+    .ui-mockups-color-cell:nth-child(13) { background: #b83c24; }
+    .ui-mockups-color-cell:nth-child(14) { background: #b0a83c; }
+    .ui-mockups-color-cell:nth-child(15) { background: #94b03c; }
+    .ui-mockups-color-cell:nth-child(16) { background: #68a83c; }
+    .ui-mockups-color-cell:nth-child(17) { background: #40a080; }
+    .ui-mockups-color-cell:nth-child(18) { background: #38a8a8; }
+    .ui-mockups-color-cell:nth-child(19) { background: #4098b8; }
+    .ui-mockups-color-cell:nth-child(20) { background: #a84898; }
+
+    /* Plugin Controls */
+    .ui-mockups-plugin-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #2a2a2a;
+    }
+
+    .ui-mockups-back-btn {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+    }
+
+    .ui-mockups-insert-btn {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .ui-mockups-control-icons {
+      display: flex;
+      gap: 12px;
+      color: #888;
+    }
+
+    .ui-mockups-control-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Toolbar */
+    .ui-mockups-toolbar {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .ui-mockups-toolbar-inner {
+      display: flex;
+      align-items: center;
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 8px 12px;
+      gap: 4px;
+    }
+
+    .ui-mockups-tool-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      border-radius: 6px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .ui-mockups-tool-btn.active {
+      background: #2a2a2a;
+      color: #4a9eff;
+    }
+
+    .ui-mockups-tool-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .ui-mockups-tool-divider {
+      width: 1px;
+      height: 20px;
+      background: #333;
+      margin: 0 4px;
+    }
+
+    .ui-mockups-dropdown-indicator {
+      font-size: 8px;
+      margin-left: 2px;
+      color: #666;
+    }
+
+    /* Text Content */
+    .ui-mockups-text-content {
+      text-align: center;
+      padding: 100px 0 80px;
+    }
+
+    .ui-mockups-heading {
+      font-size: 56px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .ui-mockups-subheading {
+      font-size: 20px;
+      color: #888888;
+      margin: 0;
+      line-height: 1.5;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Feature Cards */
+    .ui-mockups-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .ui-mockups-card {
+      border-radius: 16px;
+      padding: 48px 40px;
+      min-height: 200px;
+    }
+
+    .ui-mockups-card-light {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .ui-mockups-card-dark {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: #ffffff;
+    }
+
+    .ui-mockups-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    .ui-mockups-card-light .ui-mockups-card-title {
+      color: #000000;
+    }
+
+    .ui-mockups-card-dark .ui-mockups-card-title {
+      color: #ffffff;
+    }
+
+    .ui-mockups-card-text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+      max-width: 360px;
+    }
+
+    .ui-mockups-card-light .ui-mockups-card-text {
+      color: #666666;
+    }
+
+    .ui-mockups-card-dark .ui-mockups-card-text {
+      color: #888888;
+    }
+
+    .ui-mockups-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+    }
+
+    .ui-mockups-card-light .ui-mockups-card-btn {
+      background: #f0f0f0;
+      color: #000000;
+    }
+
+    .ui-mockups-card-dark .ui-mockups-card-btn {
+      background: #2a2a2a;
+      color: #ffffff;
+    }
+
+    .ui-mockups-btn-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+/* === Section: 02-features === */
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0e0e0e;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .features-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .features-card {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .features-card-large {
+      min-height: 520px;
+      padding: 32px;
+    }
+
+    .features-card-small {
+      min-height: 280px;
+      padding: 32px;
+    }
+
+    /* Top Left Card - Main Palette Creator */
+    .features-card-palette {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ff00ff 0%, #ffff00 25%, #00ffff 50%, #ff00ff 75%, #ffff00 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-logo::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: #0e0e0e;
+      border-radius: 50%;
+    }
+
+    .features-mockup-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .features-palette-mockup {
+      width: 340px;
+      background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .features-mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .features-mockup-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.5);
+    }
+
+    .features-mockup-title {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .features-mockup-body {
+      padding: 60px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .features-palette-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 100px;
+      text-align: center;
+    }
+
+    .features-color-dots {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 32px;
+    }
+
+    .features-color-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+    }
+
+    .features-color-dot:nth-child(1) { background: linear-gradient(135deg, #c94c87 50%, #a83d72 50%); }
+    .features-color-dot:nth-child(2) { background: linear-gradient(135deg, #d15a8a 50%, #b84a7a 50%); }
+    .features-color-dot:nth-child(3) { background: linear-gradient(135deg, #4a7fd1 50%, #3a6fc1 50%); }
+    .features-color-dot:nth-child(4) { background: linear-gradient(135deg, #5a8fe1 50%, #4a7fd1 50%); }
+    .features-color-dot:nth-child(5) { background: linear-gradient(135deg, #7ab5f5 50%, #6aa5e5 50%); }
+    .features-color-dot:nth-child(6) { background: linear-gradient(135deg, #8ac5ff 50%, #7ab5f5 50%); }
+    .features-color-dot:nth-child(7) { background: linear-gradient(135deg, #a0d0ff 50%, #90c0ff 50%); }
+    .features-color-dot:nth-child(8) { background: linear-gradient(135deg, #b8b4e8 50%, #a8a4d8 50%); }
+    .features-color-dot:nth-child(9) { background: linear-gradient(135deg, #f5a070 50%, #e59060 50%); }
+    .features-color-dot:nth-child(10) { background: linear-gradient(135deg, #ffc875 50%, #f0b865 50%); }
+
+    .features-mockup-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      width: 100%;
+    }
+
+    .features-color-picker {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff69b4 0%, #ffa500 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .features-color-picker::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: white;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 12h20M12 2v20'/%3E%3C/svg%3E");
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 12h20M12 2v20'/%3E%3C/svg%3E");
+    }
+
+    .features-color-picker-icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+    }
+
+    .features-color-picker-icon::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      width: 4px;
+      height: 12px;
+      background: white;
+      border-radius: 1px;
+      transform: rotate(-45deg);
+    }
+
+    .features-create-btn {
+      background: white;
+      color: #0e0e0e;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .features-settings-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.5;
+      position: relative;
+    }
+
+    .features-settings-icon::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+
+    .features-settings-icon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 4px;
+      background: rgba(255,255,255,0.5);
+      box-shadow:
+        0 20px 0 rgba(255,255,255,0.5),
+        -8px 4px 0 rgba(255,255,255,0.5),
+        8px 4px 0 rgba(255,255,255,0.5),
+        -10px 12px 0 rgba(255,255,255,0.5),
+        10px 12px 0 rgba(255,255,255,0.5);
+    }
+
+    /* Top Right Card - Figma Integration */
+    .features-card-figma {
+      position: relative;
+    }
+
+    .features-figma-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: white;
+      color: #0e0e0e;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .features-figma-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .features-figma-icon span {
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+    }
+
+    .features-figma-icon span:nth-child(1) { background: #f24e1e; border-radius: 2px 0 0 0; }
+    .features-figma-icon span:nth-child(2) { background: #ff7262; border-radius: 0 2px 0 0; }
+    .features-figma-icon span:nth-child(3) { background: #a259ff; border-radius: 0 0 0 2px; }
+    .features-figma-icon span:nth-child(4) { background: #1abcfe; border-radius: 0 0 2px 0; }
+
+    .features-figma-mockup-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding-top: 60px;
+    }
+
+    .features-figma-mockup {
+      width: 320px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .features-figma-mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .features-figma-mockup-body {
+      padding: 20px;
+    }
+
+    .features-dialog-box {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .features-dialog-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 20px;
+      height: 20px;
+      opacity: 0.4;
+      cursor: pointer;
+    }
+
+    .features-dialog-close::before,
+    .features-dialog-close::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 2px;
+      background: #333;
+    }
+
+    .features-dialog-close::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .features-dialog-close::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .features-dialog-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .features-dialog-icon::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: #9333ea;
+      border-radius: 4px;
+    }
+
+    .features-dialog-icon::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 8px;
+      height: 8px;
+      background: #9333ea;
+      border-radius: 2px;
+    }
+
+    .features-dialog-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0e0e0e;
+      margin-bottom: 8px;
+    }
+
+    .features-dialog-text {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .features-dialog-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .features-colors-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .features-colors-icon {
+      width: 20px;
+      height: 14px;
+      display: flex;
+      gap: 2px;
+    }
+
+    .features-colors-icon span {
+      flex: 1;
+      border-radius: 2px;
+    }
+
+    .features-colors-icon span:nth-child(1) { background: #ef4444; }
+    .features-colors-icon span:nth-child(2) { background: #22c55e; }
+    .features-colors-icon span:nth-child(3) { background: #3b82f6; }
+
+    .features-done-btn {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Bottom Left Card - Adjust */
+    .features-card-adjust {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .features-card-description {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .features-input-mockup {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 320px;
+    }
+
+    .features-input-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .features-input-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid #333;
+    }
+
+    .features-input-label {
+      font-size: 13px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .features-input-body {
+      padding: 16px;
+    }
+
+    .features-input-text {
+      font-size: 16px;
+      color: #0e0e0e;
+      font-weight: 400;
+    }
+
+    /* Bottom Right Card - Redo with AI */
+    .features-card-ai {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features-dark-input-mockup {
+      background: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 360px;
+      margin-top: auto;
+    }
+
+    .features-dark-input-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .features-dark-input-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.5);
+    }
+
+    .features-dark-input-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+    }
+
+    .features-dark-input-body {
+      padding: 16px;
+    }
+
+    .features-dark-input-text {
+      font-size: 16px;
+      color: white;
+      font-weight: 400;
+    }
+
+    /* Gear icon SVG style */
+    .features-gear-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.5;
+    }
+
+    .features-gear-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: rgba(255,255,255,0.7);
+      fill: none;
+    }
+
+/* === Section: 03-features-2 === */
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .features2-section {
+      background-color: #0e0e0e;
+      min-height: 100vh;
+      padding: 40px 60px 100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      position: relative;
+    }
+
+    /* Logo in top left */
+    .features2-logo {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .features2-logo-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 180deg,
+        #ff00ff 0deg,
+        #ff0080 45deg,
+        #ff4040 90deg,
+        #ffcc00 135deg,
+        #80ff00 180deg,
+        #00ffcc 225deg,
+        #00ccff 270deg,
+        #8000ff 315deg,
+        #ff00ff 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .features2-logo-inner {
+      width: 24px;
+      height: 24px;
+      background: #0e0e0e;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .features2-logo-drop {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 16px;
+      background: linear-gradient(135deg, #00d4ff 0%, #7b68ee 100%);
+      border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    }
+
+    /* Cards container */
+    .features2-cards {
+      display: flex;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 0;
+    }
+
+    /* Left card - dark background with light UI */
+    .features2-card-left {
+      flex: 1;
+      background: #1a1a1a;
+      border-radius: 24px;
+      padding: 24px 24px 40px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* UI mockup inside left card */
+    .features2-ui-light {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features2-ui-title {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    /* Color gradient grid */
+    .features2-color-grid {
+      flex: 1;
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .features2-color-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features2-color-bar span {
+      flex: 1;
+    }
+
+    /* Saturation control */
+    .features2-saturation-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .features2-saturation-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .features2-saturation-value {
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Slider */
+    .features2-slider {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #e0e0e0 92%, #333 92%);
+      border-radius: 2px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .features2-slider-thumb {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: #333;
+      border-radius: 50%;
+    }
+
+    /* Bottom icons */
+    .features2-icons-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+    }
+
+    .features2-back-arrow {
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .features2-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .features2-icon-btn.features2-active {
+      border-color: #00a8ff;
+      border-width: 2px;
+    }
+
+    .features2-icon-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #666;
+      fill: none;
+    }
+
+    /* Right card - gradient background with dark UI */
+    .features2-card-right {
+      flex: 1;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #1a1a1a 50%, #1a1a1a 100%);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Try in Figma button */
+    .features2-figma-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: #ffffff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .features2-figma-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Rainbow bars UI - title area (light part) */
+    .features2-rainbow-title {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+      padding-right: 140px;
+    }
+
+    /* Rainbow bars */
+    .features2-rainbow-bars {
+      display: flex;
+      gap: 8px;
+      height: 240px;
+      margin-bottom: auto;
+    }
+
+    .features2-rainbow-bar {
+      flex: 1;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .features2-rainbow-bar:nth-child(1) { background: linear-gradient(to bottom, #f5a623 0%, #c17a1a 100%); height: 100%; }
+    .features2-rainbow-bar:nth-child(2) { background: linear-gradient(to bottom, #f5a623 0%, #d49a1e 100%); height: 95%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(3) { background: linear-gradient(to bottom, #f5d71a 0%, #c9b015 100%); height: 90%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(4) { background: linear-gradient(to bottom, #8bc34a 0%, #6a9a38 100%); height: 85%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(5) { background: linear-gradient(to bottom, #00bcd4 0%, #0097a7 100%); height: 80%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(6) { background: linear-gradient(to bottom, #03a9f4 0%, #0288d1 100%); height: 75%; margin-top: auto; }
+    .features2-rainbow-bar:nth-child(7) { background: linear-gradient(to bottom, #e040fb 0%, #aa00ff 100%); height: 70%; margin-top: auto; }
+
+    /* Dark UI bottom section */
+    .features2-dark-ui {
+      background: #2a2a2a;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: -60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Color dots */
+    .features2-color-dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .features2-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .features2-dot-orange { background: #f5a623; }
+    .features2-dot-yellow { background: #f5d71a; }
+    .features2-dot-purple { background: #e040fb; }
+
+    /* Redo row */
+    .features2-redo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .features2-dark-arrow {
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .features2-redo-btn {
+      background: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* FAQ Section */
+    .features2-faq {
+      max-width: 1200px;
+      margin: 120px auto 0;
+      text-align: center;
+    }
+
+    .features2-faq-title {
+      font-size: 72px;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.1;
+      font-style: italic;
+      letter-spacing: -2px;
+    }
+
+/* === Section: 04-faq === */
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px 160px;
+        }
+
+        .faq-heading {
+            margin-bottom: 60px;
+        }
+
+        .faq-heading-line1 {
+            font-size: 64px;
+            font-weight: 400;
+            color: #4a4a4a;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-heading-line2 {
+            font-size: 64px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #2a2a2a;
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .faq-item:hover {
+            opacity: 0.7;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #666666;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 16px;
+            height: 1.5px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::after {
+            width: 1.5px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Decorative gradient dots at bottom */
+        .faq-decoration {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .faq-dots-row {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .faq-dots-row-top {
+            bottom: 80px;
+            opacity: 0.3;
+        }
+
+        .faq-dots-row-bottom {
+            bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .faq-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+
+        .faq-dot-small {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Dot colors for top row (faded) */
+        .faq-dot-cyan-teal { background: linear-gradient(135deg, #00d4aa 0%, #0099aa 100%); }
+        .faq-dot-pink { background: linear-gradient(135deg, #ff66aa 0%, #cc4488 100%); }
+        .faq-dot-blue { background: linear-gradient(135deg, #4488cc 0%, #2266aa 100%); }
+        .faq-dot-purple { background: linear-gradient(135deg, #aa44cc 0%, #8833aa 100%); }
+        .faq-dot-orange-red { background: linear-gradient(135deg, #ff6644 0%, #cc4422 100%); }
+        .faq-dot-yellow-green { background: linear-gradient(135deg, #aacc44 0%, #88aa22 100%); }
+        .faq-dot-yellow { background: linear-gradient(135deg, #ffcc44 0%, #ddaa22 100%); }
+        .faq-dot-lime { background: linear-gradient(135deg, #88ff88 0%, #44cc44 100%); }
+        .faq-dot-teal { background: linear-gradient(135deg, #44cccc 0%, #22aaaa 100%); }
+
+/* === Section: 05-pricing === */
+.pricing-section {
+    background-color: #0e0e0e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    box-sizing: border-box;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .pricing-content {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 120px;
+  }
+
+  .pricing-heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 64px;
+    font-weight: 400;
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 32px 0;
+  }
+
+  .pricing-subtext {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+  }
+
+  .pricing-subtext-highlight {
+    color: #ffffff;
+  }
+
+  .pricing-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pricing-btn-buy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background-color: #ffffff;
+    color: #0e0e0e;
+    border: none;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .pricing-btn-buy:hover {
+    opacity: 0.9;
+  }
+
+  .pricing-btn-buy .pricing-original-price {
+    color: rgba(14, 14, 14, 0.5);
+    text-decoration: line-through;
+  }
+
+  .pricing-btn-figma {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .pricing-btn-figma:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .pricing-figma-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pricing-figma-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Color dots row */
+  .pricing-dots-row {
+    position: absolute;
+    bottom: 180px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 0 40px;
+  }
+
+  .pricing-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  .pricing-dot-1 {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  }
+
+  .pricing-dot-2 {
+    background: linear-gradient(135deg, #00ccff 0%, #0099cc 100%);
+  }
+
+  .pricing-dot-3 {
+    background: linear-gradient(135deg, #cc66ff 0%, #9933cc 100%);
+  }
+
+  .pricing-dot-4 {
+    background: linear-gradient(135deg, #ff6699 0%, #cc3366 100%);
+  }
+
+  .pricing-dot-5 {
+    background: linear-gradient(135deg, #ff6633 0%, #cc4422 100%);
+  }
+
+  .pricing-dot-6 {
+    background: linear-gradient(135deg, #ffcc00 0%, #cc9900 100%);
+  }
+
+  .pricing-dot-7 {
+    background: linear-gradient(135deg, #99cc33 0%, #669922 100%);
+  }
+
+  .pricing-dot-8 {
+    background: linear-gradient(135deg, #66cccc 0%, #339999 100%);
+  }
+
+  .pricing-dot-9 {
+    background: linear-gradient(135deg, #9999cc 0%, #666699 100%);
+  }
+
+  .pricing-dot-10 {
+    background: linear-gradient(135deg, #cc9966 0%, #996633 100%);
+  }
+
+  .pricing-dot-11 {
+    background: linear-gradient(135deg, #33cccc 0%, #229999 100%);
+  }
+
+  /* Footer */
+  .pricing-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .pricing-footer-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .pricing-relay-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .pricing-relay-logo:hover {
+    color: #ffffff;
+  }
+
+  .pricing-relay-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pricing-relay-name {
+    font-weight: 500;
+  }
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero -->
+  <section class="hero-section">
+    <!-- Background Grid of Circles -->
+    <div class="hero-bg-grid">
+      <!-- Row 1 -->
+      <div class="hero-grid-row hero-grid-row-1">
+        <div class="hero-grid-circle" style="background: #2a4a5a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #3a3a4a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #4a3a5a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #5a2a6a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #6a3a3a; opacity: 0.5;"></div>
+        <div class="hero-grid-circle" style="background: #7a5a2a; opacity: 0.5;"></div>
+        <div class="hero-grid-circle" style="background: #6a6a2a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #4a7a3a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #3a6a5a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #2a5a6a; opacity: 0.4;"></div>
+      </div>
+      <!-- Row 2 -->
+      <div class="hero-grid-row hero-grid-row-2">
+        <div class="hero-grid-circle" style="background: #1a3a4a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #2a2a3a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #3a2a4a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #4a1a5a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #5a2a2a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #6a4a1a; opacity: 0.4;"></div>
+        <div class="hero-grid-circle" style="background: #5a5a1a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #3a6a2a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #2a5a4a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #1a4a5a; opacity: 0.3;"></div>
+      </div>
+      <!-- Row 3 -->
+      <div class="hero-grid-row hero-grid-row-3">
+        <div class="hero-grid-circle" style="background: #1a2a3a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #2a1a2a; opacity: 0.15;"></div>
+        <div class="hero-grid-circle" style="background: #3a1a3a; opacity: 0.15;"></div>
+        <div class="hero-grid-circle" style="background: #4a0a4a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #5a1a1a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #6a3a0a; opacity: 0.3;"></div>
+        <div class="hero-grid-circle" style="background: #5a5a0a; opacity: 0.25;"></div>
+        <div class="hero-grid-circle" style="background: #3a6a1a; opacity: 0.25;"></div>
+        <div class="hero-grid-circle" style="background: #2a5a3a; opacity: 0.2;"></div>
+        <div class="hero-grid-circle" style="background: #1a4a4a; opacity: 0.25;"></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hero-nav">
+      <div class="hero-logo">
+        <div class="hero-logo-ring">
+          <div class="hero-logo-inner"></div>
+        </div>
+      </div>
+      <button class="hero-cta-btn">
+        <svg class="hero-figma-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M8 24C10.208 24 12 22.208 12 20V16H8C5.792 16 4 17.792 4 20C4 22.208 5.792 24 8 24Z" fill="#0ACF83"/>
+          <path d="M4 12C4 9.792 5.792 8 8 8H12V16H8C5.792 16 4 14.208 4 12Z" fill="#A259FF"/>
+          <path d="M4 4C4 1.792 5.792 0 8 0H12V8H8C5.792 8 4 6.208 4 4Z" fill="#F24E1E"/>
+          <path d="M12 0H16C18.208 0 20 1.792 20 4C20 6.208 18.208 8 16 8H12V0Z" fill="#FF7262"/>
+          <path d="M20 12C20 14.208 18.208 16 16 16C13.792 16 12 14.208 12 12C12 9.792 13.792 8 16 8C18.208 8 20 9.792 20 12Z" fill="#1ABCFE"/>
+        </svg>
+        Try in Figma
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="hero-content">
+      <h1 class="hero-headline">An AI tool made to<br>enhance designers.</h1>
+      <p class="hero-subheadline">
+        Create palettes in Figma & FigJam based on your color styles<br>
+        easily with <span class="hero-subheadline-highlight">Droplette, AI that works for you.</span>
+      </p>
+    </div>
+
+    <!-- UI Mockups -->
+    <div class="hero-mockups">
+      <div class="hero-glow"></div>
+
+      <!-- Left Panel -->
+      <div class="hero-side-panel">
+        <div class="hero-panel-header">
+          <div class="hero-dropdown">
+            <div class="hero-grid-icon">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="hero-arrow-down"></div>
+          </div>
+          <div class="hero-sidebar-icon">
+            <span></span><span></span>
+          </div>
+        </div>
+        <div class="hero-panel-row">
+          <div class="hero-arrow-down"></div>
+          <div class="hero-panel-bar hero-panel-bar-long"></div>
+        </div>
+        <div class="hero-panel-row">
+          <div class="hero-panel-bar hero-panel-bar-medium" style="margin-left: 16px;"></div>
+        </div>
+        <div class="hero-panel-row">
+          <div class="hero-panel-bar hero-panel-bar-short"></div>
+          <div class="hero-panel-bar hero-panel-bar-short"></div>
+          <div style="flex: 1;"></div>
+          <div class="hero-search-icon"></div>
+        </div>
+        <div class="hero-panel-row">
+          <div class="hero-arrow-down"></div>
+          <div class="hero-panel-bar hero-panel-bar-medium"></div>
+          <div style="flex: 1;"></div>
+          <div class="hero-plus-icon"></div>
+        </div>
+        <div class="hero-panel-row">
+          <div class="hero-arrow-down"></div>
+          <div class="hero-panel-bar hero-panel-bar-long"></div>
+        </div>
+      </div>
+
+      <!-- Center Panel - Color Palette -->
+      <div class="hero-center-panel">
+        <div class="hero-center-header">
+          <div class="hero-droplette-icon"></div>
+          <span class="hero-center-title">Droplette</span>
+        </div>
+        <div class="hero-color-bars">
+          <div class="hero-color-bar hero-color-bar-1"></div>
+          <div class="hero-color-bar hero-color-bar-2"></div>
+          <div class="hero-color-bar hero-color-bar-3"></div>
+          <div class="hero-color-bar hero-color-bar-4"></div>
+          <div class="hero-color-bar hero-color-bar-5"></div>
+          <div class="hero-color-bar hero-color-bar-6"></div>
+          <div class="hero-color-bar hero-color-bar-7"></div>
+          <div class="hero-color-bar hero-color-bar-8"></div>
+          <div class="hero-color-bar hero-color-bar-9"></div>
+          <div class="hero-color-bar hero-color-bar-10"></div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="hero-side-panel hero-right-panel">
+        <div class="hero-right-header">
+          <div class="hero-dropdown">
+            <div class="hero-avatar">S</div>
+            <div class="hero-arrow-down"></div>
+          </div>
+          <div class="hero-right-controls">
+            <div class="hero-play-btn"></div>
+            <div class="hero-arrow-down"></div>
+            <div class="hero-toggle"></div>
+          </div>
+        </div>
+        <div class="hero-right-row">
+          <div class="hero-panel-bar hero-panel-bar-short"></div>
+          <div class="hero-panel-bar hero-panel-bar-long"></div>
+          <div class="hero-panel-bar hero-panel-bar-medium"></div>
+          <div class="hero-arrow-down"></div>
+        </div>
+        <div class="hero-right-row">
+          <div class="hero-panel-bar hero-panel-bar-medium"></div>
+          <div style="flex: 1;"></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity: 0.4;">
+            <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/>
+            <path d="M12 5V3M12 21v-2M5 12H3m18 0h-2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="hero-right-row">
+          <div class="hero-panel-bar hero-panel-bar-short"></div>
+          <div class="hero-slider-track" style="width: 80px;">
+            <div class="hero-slider-fill" style="width: 40%;"></div>
+          </div>
+          <div class="hero-color-preview">
+            <div class="hero-color-dot" style="background: #ff6b35;"></div>
+            <div class="hero-color-dot" style="background: #f7931e;"></div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity: 0.4;">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" fill="white"/>
+          </svg>
+        </div>
+        <div class="hero-right-row">
+          <div class="hero-panel-bar" style="width: 140px;"></div>
+          <div style="flex: 1;"></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity: 0.4;">
+            <path d="M12 6V4m0 16v-2M6 12H4m16 0h-2M7.05 7.05L5.636 5.636m12.728 12.728l-1.414-1.414M7.05 16.95l-1.414 1.414m12.728-12.728l-1.414 1.414" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="hero-right-row">
+          <div class="hero-panel-bar" style="width: 100px;"></div>
+          <div style="flex: 1;"></div>
+          <div class="hero-plus-icon"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 01-ui-mockups -->
+  <!-- Plugin Interface Area -->
+  <div class="ui-mockups-plugin-area">
+    <div class="ui-mockups-dark-card ui-mockups-dark-card-left"></div>
+
+    <div class="ui-mockups-plugin-window">
+      <div class="ui-mockups-color-grid">
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+        <div class="ui-mockups-color-cell"></div>
+      </div>
+      <div class="ui-mockups-plugin-controls">
+        <div class="ui-mockups-back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </div>
+        <button class="ui-mockups-insert-btn">Insert</button>
+        <div class="ui-mockups-control-icons">
+          <div class="ui-mockups-control-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 2v20M12 2a10 10 0 0 1 0 20"/>
+            </svg>
+          </div>
+          <div class="ui-mockups-control-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 4v6h-6M1 20v-6h6"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-mockups-dark-card ui-mockups-dark-card-right"></div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="ui-mockups-toolbar">
+    <div class="ui-mockups-toolbar-inner">
+      <button class="ui-mockups-tool-btn active">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+        </svg>
+      </button>
+      <span class="ui-mockups-dropdown-indicator">&#9662;</span>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
+        </svg>
+      </button>
+      <span class="ui-mockups-dropdown-indicator">&#9662;</span>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+        </svg>
+      </button>
+      <span class="ui-mockups-dropdown-indicator">&#9662;</span>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </button>
+      <span class="ui-mockups-dropdown-indicator">&#9662;</span>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 4v3h5.5v12h3V7H19V4H5z"/>
+        </svg>
+      </button>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"/>
+        </svg>
+      </button>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-5.07l-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0l-2.83-2.83M9.76 9.76L6.93 6.93"/>
+        </svg>
+      </button>
+      <div class="ui-mockups-tool-divider"></div>
+      <button class="ui-mockups-tool-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Text Content -->
+  <div class="ui-mockups-text-content">
+    <h2 class="ui-mockups-heading">Simple to setup.</h2>
+    <p class="ui-mockups-subheading">Select the colors you want to work with, or hook up your styles and go.</p>
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="ui-mockups-cards">
+    <div class="ui-mockups-card ui-mockups-card-light">
+      <h3 class="ui-mockups-card-title">Select from your frames</h3>
+      <p class="ui-mockups-card-text">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <button class="ui-mockups-card-btn">
+        <svg class="ui-mockups-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Droplette
+      </button>
+    </div>
+    <div class="ui-mockups-card ui-mockups-card-dark">
+      <h3 class="ui-mockups-card-title">Sync with your styles</h3>
+      <p class="ui-mockups-card-text">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <button class="ui-mockups-card-btn">
+        <svg class="ui-mockups-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Droplette
+      </button>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-features -->
+  <section class="features-section">
+    <div class="features-grid">
+      <!-- Top Left Card - Main Palette Creator -->
+      <div class="features-card features-card-large features-card-palette">
+        <div class="features-logo"></div>
+        <div class="features-mockup-container">
+          <div class="features-palette-mockup">
+            <div class="features-mockup-header">
+              <div class="features-mockup-logo"></div>
+              <span class="features-mockup-title">Droplette</span>
+            </div>
+            <div class="features-mockup-body">
+              <div class="features-palette-title">A summer rainbow</div>
+              <div class="features-color-dots">
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+                <div class="features-color-dot"></div>
+              </div>
+              <div class="features-mockup-footer">
+                <div class="features-color-picker">
+                  <div class="features-color-picker-icon"></div>
+                </div>
+                <button class="features-create-btn">Create</button>
+                <div class="features-gear-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right Card - Figma Integration -->
+      <div class="features-card features-card-large features-card-figma">
+        <button class="features-figma-btn">
+          <span class="features-figma-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          Try in Figma
+        </button>
+        <div class="features-figma-mockup-container">
+          <div class="features-figma-mockup">
+            <div class="features-figma-mockup-header">
+              <div class="features-mockup-logo"></div>
+              <span class="features-mockup-title">Droplette</span>
+            </div>
+            <div class="features-figma-mockup-body">
+              <div class="features-dialog-box">
+                <div class="features-dialog-close"></div>
+                <div class="features-dialog-icon"></div>
+                <h3 class="features-dialog-title">Add your colors</h3>
+                <p class="features-dialog-text">Navigate to the file containing your color<br>styles to sync with Droplette.</p>
+                <div class="features-dialog-actions">
+                  <span class="features-colors-badge">
+                    <span class="features-colors-icon">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    160 colors synced
+                  </span>
+                  <button class="features-done-btn">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Left Card - Adjust as you go -->
+      <div class="features-card features-card-small features-card-adjust">
+        <h2 class="features-card-title">Adjust as you go</h2>
+        <p class="features-card-description">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+        <div class="features-input-mockup">
+          <div class="features-input-header">
+            <div class="features-input-logo"></div>
+            <span class="features-input-label">Droplette</span>
+          </div>
+          <div class="features-input-body">
+            <span class="features-input-text">Impressionist sunflowers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Right Card - Redo with AI -->
+      <div class="features-card features-card-small features-card-ai">
+        <h2 class="features-card-title">Redo with AI</h2>
+        <p class="features-card-description">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+        <div class="features-dark-input-mockup">
+          <div class="features-dark-input-header">
+            <div class="features-dark-input-logo"></div>
+            <span class="features-dark-input-label">Droplette</span>
+          </div>
+          <div class="features-dark-input-body">
+            <span class="features-dark-input-text">A summer rainbow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 03-features-2 -->
+  <section class="features2-section">
+    <!-- Logo -->
+    <div class="features2-logo">
+      <div class="features2-logo-ring">
+        <div class="features2-logo-inner">
+          <div class="features2-logo-drop"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="features2-cards">
+      <!-- Left Card - Saturation UI -->
+      <div class="features2-card-left">
+        <div class="features2-ui-light">
+          <div class="features2-ui-title">Impressionist sunflowers</div>
+
+          <!-- Color gradient grid -->
+          <div class="features2-color-grid">
+            <div class="features2-color-bar">
+              <span style="background: #8b7355;"></span>
+              <span style="background: #9a7b4a;"></span>
+              <span style="background: #a88540;"></span>
+              <span style="background: #b58f35;"></span>
+              <span style="background: #8b6914;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #9a7b4a;"></span>
+              <span style="background: #ab8840;"></span>
+              <span style="background: #bc9535;"></span>
+              <span style="background: #cda22a;"></span>
+              <span style="background: #9a7314;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #ab8840;"></span>
+              <span style="background: #be9835;"></span>
+              <span style="background: #d1a82a;"></span>
+              <span style="background: #e4b81f;"></span>
+              <span style="background: #ab7d14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #be9835;"></span>
+              <span style="background: #d1a82a;"></span>
+              <span style="background: #e4b81f;"></span>
+              <span style="background: #f7c814;"></span>
+              <span style="background: #bc8714;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #cda22a;"></span>
+              <span style="background: #e0b21f;"></span>
+              <span style="background: #f3c214;"></span>
+              <span style="background: #ffd209;"></span>
+              <span style="background: #cd9114;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #d8ac25;"></span>
+              <span style="background: #ebbc1a;"></span>
+              <span style="background: #fecc0f;"></span>
+              <span style="background: #ffdc04;"></span>
+              <span style="background: #d89b14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #e4b61f;"></span>
+              <span style="background: #f7c614;"></span>
+              <span style="background: #ffd609;"></span>
+              <span style="background: #ffe600;"></span>
+              <span style="background: #e4a514;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #efc01a;"></span>
+              <span style="background: #ffd00f;"></span>
+              <span style="background: #ffe004;"></span>
+              <span style="background: #fff000;"></span>
+              <span style="background: #efaf14;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #f5c618;"></span>
+              <span style="background: #ffd60d;"></span>
+              <span style="background: #ffe602;"></span>
+              <span style="background: #fff600;"></span>
+              <span style="background: #f5b514;"></span>
+            </div>
+            <div class="features2-color-bar">
+              <span style="background: #f8ca16;"></span>
+              <span style="background: #ffda0b;"></span>
+              <span style="background: #ffea00;"></span>
+              <span style="background: #fffa00;"></span>
+              <span style="background: #f8b914;"></span>
+            </div>
+          </div>
+
+          <!-- Saturation control -->
+          <div class="features2-saturation-row">
+            <span class="features2-saturation-label">Saturation</span>
+            <span class="features2-saturation-value">+92</span>
+          </div>
+
+          <!-- Slider -->
+          <div class="features2-slider">
+            <div class="features2-slider-thumb"></div>
+          </div>
+
+          <!-- Bottom icons -->
+          <div class="features2-icons-row">
+            <span class="features2-back-arrow">&#8592;</span>
+            <button class="features2-icon-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="8" cy="12" r="5"></circle>
+                <circle cx="16" cy="12" r="5"></circle>
+              </svg>
+            </button>
+            <button class="features2-icon-btn features2-active">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <path d="M12 3 C7 3, 4 7, 4 12 C4 17, 7 21, 12 21 C17 21, 20 17, 20 12 C20 10, 19 8, 17 6"></path>
+              </svg>
+            </button>
+            <button class="features2-icon-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card - Rainbow UI -->
+      <div class="features2-card-right">
+        <!-- Figma button -->
+        <button class="features2-figma-btn">
+          <svg class="features2-figma-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="4" y="14" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="14" y="4" width="6" height="6" rx="1" fill="#333"/>
+            <rect x="14" y="14" width="6" height="6" rx="1" fill="#333"/>
+          </svg>
+          Try in Figma
+        </button>
+
+        <div class="features2-rainbow-title">A summer rainbow</div>
+
+        <!-- Rainbow bars -->
+        <div class="features2-rainbow-bars">
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #e67e22 0%, #d35400 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #f39c12 0%, #e67e22 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #f1c40f 0%, #f39c12 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #2ecc71 0%, #27ae60 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #1abc9c 0%, #16a085 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #3498db 0%, #2980b9 100%);"></div>
+          <div class="features2-rainbow-bar" style="background: linear-gradient(to bottom, #9b59b6 0%, #8e44ad 100%);"></div>
+        </div>
+
+        <!-- Dark UI section -->
+        <div class="features2-dark-ui">
+          <div class="features2-color-dots">
+            <div class="features2-dot features2-dot-orange"></div>
+            <div class="features2-dot features2-dot-yellow"></div>
+            <div class="features2-dot features2-dot-purple"></div>
+          </div>
+          <div class="features2-redo-row">
+            <span class="features2-dark-arrow">&#8592;</span>
+            <button class="features2-redo-btn">Redo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="features2-faq">
+      <h2 class="features2-faq-title">Frequently asked<br>questions.</h2>
+    </div>
+  </section>
+
+  <!-- Section: 04-faq -->
+  <section class="faq-section">
+        <div class="faq-heading">
+            <div class="faq-heading-line1">Frequently asked</div>
+            <div class="faq-heading-line2">questions.</div>
+        </div>
+
+        <ul class="faq-list">
+            <li class="faq-item">
+                <span class="faq-question">Give me the elevator pitch for Droplette...</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">Is Droplette free to use?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">What languages does Droplette support?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How accurate is Droplette?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How long does Droplette take to run?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How do I setup Droplette?</span>
+                <span class="faq-icon"></span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Decorative gradient dots -->
+    <div class="faq-decoration">
+        <div class="faq-dots-row faq-dots-row-top">
+            <div class="faq-dot faq-dot-small faq-dot-cyan-teal"></div>
+            <div class="faq-dot faq-dot-small faq-dot-pink"></div>
+            <div class="faq-dot faq-dot-small faq-dot-blue"></div>
+            <div class="faq-dot faq-dot-small faq-dot-purple"></div>
+            <div class="faq-dot faq-dot-small faq-dot-orange-red"></div>
+            <div class="faq-dot faq-dot-small faq-dot-yellow-green"></div>
+            <div class="faq-dot faq-dot-small faq-dot-yellow"></div>
+            <div class="faq-dot faq-dot-small faq-dot-lime"></div>
+            <div class="faq-dot faq-dot-small faq-dot-teal"></div>
+        </div>
+        <div class="faq-dots-row faq-dots-row-bottom">
+            <div class="faq-dot faq-dot-cyan-teal"></div>
+            <div class="faq-dot faq-dot-pink"></div>
+            <div class="faq-dot faq-dot-blue"></div>
+            <div class="faq-dot faq-dot-purple"></div>
+            <div class="faq-dot faq-dot-orange-red"></div>
+            <div class="faq-dot faq-dot-yellow-green"></div>
+            <div class="faq-dot faq-dot-yellow"></div>
+            <div class="faq-dot faq-dot-lime"></div>
+            <div class="faq-dot faq-dot-teal"></div>
+        </div>
+    </div>
+
+  <!-- Section: 05-pricing -->
+  <section class="pricing-section">
+  <div class="pricing-content">
+    <h2 class="pricing-heading">One price.<br>No subscription.</h2>
+    <p class="pricing-subtext">
+      Bring your own API key for OpenAI. Droplette is a single payment. <span class="pricing-subtext-highlight">Special launch price of $9.</span>
+    </p>
+    <div class="pricing-buttons">
+      <a href="#" class="pricing-btn-buy">
+        Buy license $9 <span class="pricing-original-price">$20</span>
+      </a>
+      <a href="#" class="pricing-btn-figma">
+        <span class="pricing-figma-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4zm0-20C5.8 4 4 5.8 4 8s1.8 4 4 4h4V4H8zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4h4v-8H8zm8-8h-4v8h4c2.2 0 4-1.8 4-4s-1.8-4-4-4zm0 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+          </svg>
+        </span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+
+  <!-- Color dots row -->
+  <div class="pricing-dots-row">
+    <div class="pricing-dot pricing-dot-1"></div>
+    <div class="pricing-dot pricing-dot-2"></div>
+    <div class="pricing-dot pricing-dot-3"></div>
+    <div class="pricing-dot pricing-dot-4"></div>
+    <div class="pricing-dot pricing-dot-5"></div>
+    <div class="pricing-dot pricing-dot-6"></div>
+    <div class="pricing-dot pricing-dot-7"></div>
+    <div class="pricing-dot pricing-dot-8"></div>
+    <div class="pricing-dot pricing-dot-9"></div>
+    <div class="pricing-dot pricing-dot-10"></div>
+    <div class="pricing-dot pricing-dot-11"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="pricing-footer">
+    <span class="pricing-footer-text">
+      Another Figma plugin crafted by
+      <a href="#" class="pricing-relay-logo">
+        <svg class="pricing-relay-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        <span class="pricing-relay-name">Relay</span>
+      </a>
+    </span>
+  </div>
+</section>
+</body>
+</html>

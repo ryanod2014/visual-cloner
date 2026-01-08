@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-nav-hero === */
+/* Chronicle Nav Hero Section */
+.chronicle-nav-hero-section {
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Navigation */
+.chronicle-nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chronicle-nav-hero-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.chronicle-nav-hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-nav-hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.chronicle-nav-hero-nav-link {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.chronicle-nav-hero-nav-link:hover {
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.chronicle-nav-hero-login {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.chronicle-nav-hero-login:hover {
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-cta-nav {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.chronicle-nav-hero-cta-nav:hover {
+  opacity: 0.9;
+}
+
+/* Hero Section */
+.chronicle-nav-hero-hero {
+  padding-top: 120px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.chronicle-nav-hero-headline {
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 auto 24px;
+  max-width: 700px;
+  letter-spacing: -0.02em;
+}
+
+.chronicle-nav-hero-subheadline {
+  font-size: 18px;
+  color: #a0a0a0;
+  margin: 0 auto 40px;
+  max-width: 500px;
+  font-weight: 400;
+}
+
+.chronicle-nav-hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-cta-primary {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  border: 1px solid #ffffff;
+}
+
+.chronicle-nav-hero-cta-primary:hover {
+  opacity: 0.9;
+}
+
+.chronicle-nav-hero-cta-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.chronicle-nav-hero-cta-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Card Preview */
+.chronicle-nav-hero-card-preview {
+  max-width: 900px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+}
+
+.chronicle-nav-hero-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.chronicle-nav-hero-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.chronicle-nav-hero-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chronicle-nav-hero-card-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-nav-hero-card-title {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.chronicle-nav-hero-card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.chronicle-nav-hero-card-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  margin-left: -8px;
+}
+
+.chronicle-nav-hero-card-avatar:first-child {
+  margin-left: 0;
+}
+
+.chronicle-nav-hero-card-avatar-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chronicle-nav-hero-card-avatar-2 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.chronicle-nav-hero-card-avatar-3 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.chronicle-nav-hero-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-btn {
+  font-size: 12px;
+  color: #666666;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chronicle-nav-hero-card-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.chronicle-nav-hero-card-btn-present {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+.chronicle-nav-hero-card-btn-present:hover {
+  background-color: #1a1a1a;
+}
+
+.chronicle-nav-hero-card-more {
+  color: #999999;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chronicle-nav-hero-card-body {
+  padding: 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  min-height: 300px;
+}
+
+.chronicle-nav-hero-card-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.chronicle-nav-hero-card-main-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #0a0a0a;
+  line-height: 1.3;
+  margin: 0 0 32px;
+}
+
+.chronicle-nav-hero-card-main-title span {
+  color: #6b6b6b;
+}
+
+.chronicle-nav-hero-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.chronicle-nav-hero-card-item-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #e8e8e8;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chronicle-nav-hero-card-item-icon svg {
+  width: 16px;
+  height: 16px;
+  color: #666666;
+}
+
+.chronicle-nav-hero-card-item-content {
+  flex: 1;
+}
+
+.chronicle-nav-hero-card-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a0a0a;
+  margin: 0 0 2px;
+}
+
+.chronicle-nav-hero-card-item-desc {
+  font-size: 11px;
+  color: #888888;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-nav-hero-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #666666;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.chronicle-nav-hero-card-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.chronicle-nav-hero-card-desc-text {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.chronicle-nav-hero-card-mini {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-card-mini-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-nav-hero-card-mini-icon svg {
+  width: 12px;
+  height: 12px;
+  color: #666666;
+}
+
+.chronicle-nav-hero-card-mini-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-desc {
+  font-size: 10px;
+  color: #888888;
+  margin: 0;
+}
+
+.chronicle-nav-hero-card-mini-image {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.chronicle-nav-hero-card-mini-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+/* Scroll indicator */
+.chronicle-nav-hero-scroll-indicator {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chronicle-nav-hero-scroll-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #333333;
+  border-radius: 50%;
+}
+
+.chronicle-nav-hero-scroll-dot.active {
+  height: 24px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+/* === Section: 01-logos === */
+.chronicle-logos-section {
+  background-color: #0a0a0a;
+  padding: 60px 0 80px;
+  overflow: hidden;
+}
+
+.chronicle-logos-tagline {
+  text-align: center;
+  color: #a0a0a0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chronicle-logos-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chronicle-logos-marquee-wrapper::before,
+.chronicle-logos-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.chronicle-logos-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+}
+
+.chronicle-logos-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+}
+
+.chronicle-logos-marquee {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  animation: chronicle-logos-scroll 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-logos-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-logos-marquee:hover {
+  animation-play-state: paused;
+}
+
+.chronicle-logos-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.chronicle-logos-item:hover {
+  opacity: 1;
+}
+
+.chronicle-logos-item svg {
+  height: 28px;
+  width: auto;
+}
+
+.chronicle-logos-item span {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Flora logo styles */
+.chronicle-logos-flora {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-flora svg {
+  width: 32px;
+  height: 32px;
+}
+
+.chronicle-logos-flora span {
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* Ramp logo styles */
+.chronicle-logos-ramp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chronicle-logos-ramp span {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.chronicle-logos-ramp svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Browserbase logo styles */
+.chronicle-logos-browserbase {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-browserbase-icon {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-logos-browserbase-icon span {
+  color: #0a0a0a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chronicle-logos-browserbase > span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Vercel logo styles */
+.chronicle-logos-vercel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-vercel svg {
+  width: 26px;
+  height: 26px;
+}
+
+.chronicle-logos-vercel span {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Lattice logo styles */
+.chronicle-logos-lattice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-lattice svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-logos-lattice span {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Notion logo styles */
+.chronicle-logos-notion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-notion svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-logos-notion span {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* === Section: 02-how-it-works === */
+.chronicle-how-section {
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 64px;
+  box-sizing: border-box;
+}
+
+.chronicle-how-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.chronicle-how-content {
+  max-width: 480px;
+}
+
+.chronicle-how-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.chronicle-how-description {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #888888;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.chronicle-how-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.chronicle-how-glow {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(80, 60, 40, 0.4) 0%, rgba(60, 40, 30, 0.2) 40%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.chronicle-how-input-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 380px;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-how-input-icon {
+  width: 20px;
+  height: 20px;
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.chronicle-how-input-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #ffffff;
+  flex: 1;
+}
+
+.chronicle-how-input-button {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chronicle-how-input-button svg {
+  width: 16px;
+  height: 16px;
+  color: #0a0a0a;
+}
+
+@media (max-width: 1024px) {
+  .chronicle-how-section {
+    padding: 60px 40px;
+  }
+
+  .chronicle-how-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .chronicle-how-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .chronicle-how-heading {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .chronicle-how-section {
+    padding: 48px 24px;
+  }
+
+  .chronicle-how-heading {
+    font-size: 32px;
+  }
+
+  .chronicle-how-description {
+    font-size: 16px;
+  }
+
+  .chronicle-how-input-card {
+    min-width: 100%;
+  }
+}
+
+/* === Section: 03-features === */
+.chronicle-features-section {
+  background-color: #0a0a0a;
+  padding: 120px 64px;
+  min-height: 100vh;
+}
+
+.chronicle-features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-features-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.chronicle-features-headline {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.chronicle-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.chronicle-features-card {
+  background-color: #141414;
+  border-radius: 16px;
+  padding: 32px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease;
+}
+
+.chronicle-features-card:hover {
+  background-color: #1a1a1a;
+}
+
+.chronicle-features-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-features-icon svg {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.chronicle-features-card-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+.chronicle-features-card-description {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .chronicle-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chronicle-features-headline {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .chronicle-features-section {
+    padding: 80px 24px;
+  }
+
+  .chronicle-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chronicle-features-headline {
+    font-size: 36px;
+  }
+
+  .chronicle-features-header {
+    margin-bottom: 48px;
+  }
+}
+
+/* === Section: 04-widgets === */
+.chronicle-widgets-section {
+    background-color: #0a0a0a;
+    padding: 120px 0 80px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .chronicle-widgets-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .chronicle-widgets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+  }
+
+  .chronicle-widgets-headline {
+    max-width: 600px;
+  }
+
+  .chronicle-widgets-headline h2 {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .chronicle-widgets-description {
+    max-width: 520px;
+    padding-top: 20px;
+  }
+
+  .chronicle-widgets-description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #888888;
+    margin: 0;
+  }
+
+  .chronicle-widgets-divider {
+    height: 1px;
+    background-color: #222222;
+    margin-bottom: 60px;
+  }
+
+  .chronicle-widgets-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .chronicle-widgets-feature {
+    padding: 0 40px 0 0;
+  }
+
+  .chronicle-widgets-feature:first-child {
+    border-right: 1px solid #222222;
+    padding-right: 60px;
+  }
+
+  .chronicle-widgets-feature:last-child {
+    padding-left: 60px;
+  }
+
+  .chronicle-widgets-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .chronicle-widgets-feature-icon {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  .chronicle-widgets-feature-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .chronicle-widgets-feature-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0 0 40px 0;
+    max-width: 400px;
+  }
+
+  .chronicle-widgets-card {
+    background-color: #161616;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .chronicle-widgets-card-header {
+    padding: 24px 24px 16px;
+  }
+
+  .chronicle-widgets-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+  }
+
+  .chronicle-widgets-tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .chronicle-widgets-tag {
+    padding: 6px 12px;
+    background-color: #222222;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #888888;
+  }
+
+  .chronicle-widgets-card-preview {
+    display: flex;
+    gap: 16px;
+    padding: 0 24px 24px;
+  }
+
+  .chronicle-widgets-preview-item {
+    flex: 1;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .chronicle-widgets-preview-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .chronicle-widgets-preview-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  }
+
+  .chronicle-widgets-preview-label span {
+    font-size: 11px;
+    color: #888888;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .chronicle-widgets-preview-label strong {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* Export Card Styles */
+  .chronicle-widgets-export-card {
+    background-color: #161616;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .chronicle-widgets-export-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+  }
+
+  .chronicle-widgets-export-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .chronicle-widgets-export-option span {
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  .chronicle-widgets-export-option-size {
+    font-size: 14px;
+    color: #666666;
+    margin-left: 12px;
+  }
+
+  .chronicle-widgets-export-section-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888888;
+    margin: 0 0 12px 0;
+  }
+
+  .chronicle-widgets-export-tabs {
+    display: flex;
+    gap: 8px;
+  }
+
+  .chronicle-widgets-export-tab {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #666666;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .chronicle-widgets-export-tab.active {
+    color: #ffffff;
+  }
+
+/* === Section: 05-testimonials === */
+.chronicle-testimonials-section {
+    background-color: #0a0a0a;
+    padding: 120px 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .chronicle-testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .chronicle-testimonials-headline {
+    font-size: 48px;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 80px;
+    line-height: 1.2;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chronicle-testimonials-track-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .chronicle-testimonials-row {
+    display: flex;
+    gap: 24px;
+    animation: chronicle-testimonials-scroll 40s linear infinite;
+  }
+
+  .chronicle-testimonials-row-reverse {
+    animation: chronicle-testimonials-scroll-reverse 40s linear infinite;
+  }
+
+  @keyframes chronicle-testimonials-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes chronicle-testimonials-scroll-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .chronicle-testimonials-card {
+    flex-shrink: 0;
+    width: 380px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .chronicle-testimonials-quote {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .chronicle-testimonials-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .chronicle-testimonials-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .chronicle-testimonials-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .chronicle-testimonials-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .chronicle-testimonials-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .chronicle-testimonials-title {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .chronicle-testimonials-row:hover,
+  .chronicle-testimonials-row-reverse:hover {
+    animation-play-state: paused;
+  }
+
+/* === Section: 06-templates === */
+.chronicle-templates-section {
+  background-color: #0a0a0a;
+  padding: 80px 0 120px;
+  overflow: hidden;
+}
+
+.chronicle-templates-carousel {
+  display: flex;
+  gap: 24px;
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chronicle-templates-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.chronicle-templates-card {
+  flex-shrink: 0;
+  width: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #141414;
+  transition: transform 0.3s ease;
+}
+
+.chronicle-templates-card:hover {
+  transform: translateY(-4px);
+}
+
+.chronicle-templates-card-preview {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chronicle-templates-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chronicle-templates-card-moodboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+}
+
+.chronicle-templates-moodboard-item {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #2a2a2a;
+}
+
+.chronicle-templates-moodboard-item.large {
+  grid-row: span 2;
+}
+
+.chronicle-templates-moodboard-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chronicle-templates-card-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  height: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  position: relative;
+}
+
+.chronicle-templates-card-quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23222" opacity="0.3" x="0" y="0" width="100" height="100"/></svg>');
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.chronicle-templates-quote-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-templates-quote-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #888;
+  stroke-width: 1.5;
+}
+
+.chronicle-templates-quote-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-templates-quote-text .highlight {
+  color: #fff;
+}
+
+.chronicle-templates-quote-text .dimmed {
+  color: #666;
+}
+
+.chronicle-templates-card-portfolio {
+  padding: 12px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-templates-portfolio-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #252525;
+  border-radius: 6px 6px 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+  color: #888;
+}
+
+.chronicle-templates-portfolio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.chronicle-templates-portfolio-dot.red { background: #ff5f57; }
+.chronicle-templates-portfolio-dot.yellow { background: #febc2e; }
+.chronicle-templates-portfolio-dot.green { background: #28c840; }
+
+.chronicle-templates-portfolio-content {
+  flex: 1;
+  background: #1e1e1e;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  overflow: hidden;
+}
+
+.chronicle-templates-portfolio-sidebar {
+  width: 80px;
+  background: #161616;
+  padding: 12px 8px;
+  border-right: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-sidebar-item {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #555;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.chronicle-templates-sidebar-item.active {
+  background: #252525;
+  color: #888;
+}
+
+.chronicle-templates-portfolio-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-templates-portfolio-hero {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.chronicle-templates-portfolio-info {
+  flex: 1;
+}
+
+.chronicle-templates-portfolio-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.chronicle-templates-portfolio-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.chronicle-templates-portfolio-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.chronicle-templates-portfolio-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  color: #fff;
+}
+
+.chronicle-templates-portfolio-avatar {
+  width: 80px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chronicle-templates-portfolio-avatar-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3a8a6e 0%, #2a5a4e 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chronicle-templates-portfolio-avatar-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: #00d4aa;
+  border-radius: 4px;
+}
+
+.chronicle-templates-portfolio-logos {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-portfolio-logo {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chronicle-templates-portfolio-logo svg {
+  width: 16px;
+  height: 16px;
+  fill: #666;
+}
+
+.chronicle-templates-portfolio-skills {
+  display: flex;
+  gap: 12px;
+}
+
+.chronicle-templates-skill-card {
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.chronicle-templates-skill-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-templates-skill-icon.pink {
+  background: linear-gradient(135deg, #ff6b8a 0%, #ff4d6d 100%);
+}
+
+.chronicle-templates-skill-icon.coral {
+  background: linear-gradient(135deg, #ff8a6b 0%, #ff6b4d 100%);
+}
+
+.chronicle-templates-skill-icon.green {
+  background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+}
+
+.chronicle-templates-skill-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.chronicle-templates-skill-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 7px;
+  color: #555;
+  line-height: 1.3;
+}
+
+.chronicle-templates-card-chart {
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-templates-chart-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chronicle-templates-chart-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.chronicle-templates-chart-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #444;
+}
+
+.chronicle-templates-chart-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #fff;
+  margin-left: auto;
+}
+
+.chronicle-templates-chart-legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chronicle-templates-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10px;
+  color: #888;
+}
+
+.chronicle-templates-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.chronicle-templates-legend-dot.blue { background: #4a9eff; }
+.chronicle-templates-legend-dot.gray { background: #555; }
+
+.chronicle-templates-chart-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.chronicle-templates-chart-y-axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #444;
+}
+
+.chronicle-templates-chart-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 180px;
+  margin-left: 30px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.chronicle-templates-chart-bar-group {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.chronicle-templates-chart-bar {
+  width: 20px;
+  border-radius: 3px 3px 0 0;
+}
+
+.chronicle-templates-chart-bar.primary {
+  background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+}
+
+.chronicle-templates-chart-bar.secondary {
+  background: linear-gradient(180deg, #333 0%, #222 100%);
+}
+
+.chronicle-templates-chart-line {
+  position: absolute;
+  left: 30px;
+  right: 0;
+  bottom: 40px;
+  height: 140px;
+}
+
+.chronicle-templates-chart-line svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chronicle-templates-chart-x-axis {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 30px;
+  padding-top: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9px;
+  color: #444;
+}
+
+.chronicle-templates-card-meta {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #141414;
+  border-top: 1px solid #1f1f1f;
+}
+
+.chronicle-templates-meta-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chronicle-templates-meta-icon.figma {
+  background: linear-gradient(135deg, #ff7262 0%, #a259ff 50%, #1abcfe 100%);
+}
+
+.chronicle-templates-meta-icon.graphy {
+  background: #1a1a1a;
+}
+
+.chronicle-templates-meta-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+.chronicle-templates-meta-info {
+  flex: 1;
+}
+
+.chronicle-templates-meta-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.chronicle-templates-meta-title span {
+  color: #666;
+  font-weight: 400;
+}
+
+.chronicle-templates-meta-link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chronicle-templates-meta-link svg {
+  width: 12px;
+  height: 12px;
+  stroke: #666;
+  fill: none;
+}
+
+.chronicle-templates-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 40px 60px 0;
+}
+
+.chronicle-templates-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chronicle-templates-nav-btn:hover {
+  border-color: #555;
+  background: #1a1a1a;
+}
+
+.chronicle-templates-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* === Section: 07-footer === */
+.chronicle-footer-section {
+  background-color: #0a0a0a;
+  padding: 0 0 80px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.chronicle-footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.chronicle-footer-large-text {
+  font-size: clamp(120px, 15vw, 220px);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  text-stroke: 1px rgba(255, 255, 255, 0.15);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 80px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.chronicle-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chronicle-footer-brand {
+  flex-shrink: 0;
+}
+
+.chronicle-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.chronicle-footer-logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.chronicle-footer-logo-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+.chronicle-footer-logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.chronicle-footer-company-name {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+.chronicle-footer-links {
+  display: flex;
+  gap: 120px;
+}
+
+.chronicle-footer-column {
+  min-width: 160px;
+}
+
+.chronicle-footer-column-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 28px;
+}
+
+.chronicle-footer-column-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chronicle-footer-link {
+  font-size: 14px;
+  color: #6b6b6b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.chronicle-footer-link:hover {
+  color: white;
+}
+
+@media (max-width: 1024px) {
+  .chronicle-footer-links {
+    gap: 60px;
+  }
+
+  .chronicle-footer-column {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chronicle-footer-container {
+    padding: 0 24px;
+  }
+
+  .chronicle-footer-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .chronicle-footer-links {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .chronicle-footer-column {
+    min-width: 140px;
+  }
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-nav-hero -->
+  <section class="chronicle-nav-hero-section">
+  <!-- Navigation -->
+  <nav class="chronicle-nav-hero-nav">
+    <div class="chronicle-nav-hero-nav-left">
+      <a href="#" class="chronicle-nav-hero-logo">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <div class="chronicle-nav-hero-nav-links">
+        <a href="#" class="chronicle-nav-hero-nav-link">Product</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Resources</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Solutions</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Templates</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Enterprise</a>
+        <a href="#" class="chronicle-nav-hero-nav-link">Pricing</a>
+      </div>
+    </div>
+    <div class="chronicle-nav-hero-nav-right">
+      <a href="#" class="chronicle-nav-hero-login">Login</a>
+      <a href="#" class="chronicle-nav-hero-cta-nav">Try for free</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="chronicle-nav-hero-hero">
+    <h1 class="chronicle-nav-hero-headline">Every great presentation starts with a Chronicle</h1>
+    <p class="chronicle-nav-hero-subheadline">Create stunning presentations. No design skills required.</p>
+    <div class="chronicle-nav-hero-cta-group">
+      <a href="#" class="chronicle-nav-hero-cta-primary">Start for free</a>
+      <a href="#" class="chronicle-nav-hero-cta-secondary">Watch video</a>
+    </div>
+  </div>
+
+  <!-- Card Preview -->
+  <div class="chronicle-nav-hero-card-preview">
+    <div class="chronicle-nav-hero-card">
+      <div class="chronicle-nav-hero-card-header">
+        <div class="chronicle-nav-hero-card-header-left">
+          <div class="chronicle-nav-hero-card-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <span class="chronicle-nav-hero-card-title">Portfolio</span>
+        </div>
+        <div class="chronicle-nav-hero-card-header-right">
+          <div class="chronicle-nav-hero-card-avatars">
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-1"></div>
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-2"></div>
+            <div class="chronicle-nav-hero-card-avatar chronicle-nav-hero-card-avatar-3"></div>
+          </div>
+          <div class="chronicle-nav-hero-card-actions">
+            <button class="chronicle-nav-hero-card-btn">Share</button>
+            <button class="chronicle-nav-hero-card-btn chronicle-nav-hero-card-btn-present">Present</button>
+            <span class="chronicle-nav-hero-card-more">...</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-nav-hero-card-body">
+        <div class="chronicle-nav-hero-card-content-left">
+          <h2 class="chronicle-nav-hero-card-main-title">A platform ecosystem built for <span>mission-critical AI</span></h2>
+          <div class="chronicle-nav-hero-card-items">
+            <div class="chronicle-nav-hero-card-item">
+              <div class="chronicle-nav-hero-card-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <div class="chronicle-nav-hero-card-item-content">
+                <p class="chronicle-nav-hero-card-item-title">SentraAI</p>
+                <p class="chronicle-nav-hero-card-item-desc">Risk monitoring for finance</p>
+              </div>
+            </div>
+            <div class="chronicle-nav-hero-card-item">
+              <div class="chronicle-nav-hero-card-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="chronicle-nav-hero-card-item-content">
+                <p class="chronicle-nav-hero-card-item-title">NeuralInsight</p>
+                <p class="chronicle-nav-hero-card-item-desc">AI observability and health analytics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chronicle-nav-hero-card-content-right">
+          <div class="chronicle-nav-hero-card-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            </svg>
+            Made with Chronicle
+          </div>
+          <p class="chronicle-nav-hero-card-desc-text">Each platform is built to integrate seamlessly into existing infrastructure, delivering transparent, reliable, and high-impact AI performance across critical workflows.</p>
+          <div class="chronicle-nav-hero-card-mini-cards">
+            <div class="chronicle-nav-hero-card-mini">
+              <div class="chronicle-nav-hero-card-mini-header">
+                <div class="chronicle-nav-hero-card-mini-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
+                  </svg>
+                </div>
+                <p class="chronicle-nav-hero-card-mini-title">CoreOptima</p>
+              </div>
+              <p class="chronicle-nav-hero-card-mini-desc">Residential energy efficiency</p>
+              <div class="chronicle-nav-hero-card-mini-image"></div>
+            </div>
+            <div class="chronicle-nav-hero-card-mini">
+              <div class="chronicle-nav-hero-card-mini-header">
+                <div class="chronicle-nav-hero-card-mini-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3v18h18"/>
+                    <path d="M18 17V9"/>
+                    <path d="M13 17V5"/>
+                    <path d="M8 17v-3"/>
+                  </svg>
+                </div>
+                <p class="chronicle-nav-hero-card-mini-title">NeuraPredict</p>
+              </div>
+              <p class="chronicle-nav-hero-card-mini-desc">Predictive analytics</p>
+              <button class="chronicle-nav-hero-card-mini-btn">Pavan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="chronicle-nav-hero-scroll-indicator">
+    <div class="chronicle-nav-hero-scroll-dot active"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+    <div class="chronicle-nav-hero-scroll-dot"></div>
+  </div>
+</section>
+
+  <!-- Section: 01-logos -->
+  <section class="chronicle-logos-section">
+  <p class="chronicle-logos-tagline">Used by 5000+ teams who value storytelling</p>
+
+  <div class="chronicle-logos-marquee-wrapper">
+    <div class="chronicle-logos-marquee">
+      <!-- First set of logos -->
+      <div class="chronicle-logos-item chronicle-logos-lattice">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="8" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="16" cy="16" r="4" fill="#ffffff"/>
+        </svg>
+        <span>Lattice</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-flora">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="10" cy="22" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="22" r="6" fill="#ffffff"/>
+        </svg>
+        <span>FLORA</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-ramp">
+        <span>ramp</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L20 4" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-browserbase">
+        <div class="chronicle-logos-browserbase-icon">
+          <span>B</span>
+        </div>
+        <span>Browserbase</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-vercel">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4L30 28H2L16 4Z" fill="#ffffff"/>
+        </svg>
+        <span>Vercel</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-notion">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4h14l6 6v18H6V4z" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <path d="M10 12h12M10 17h12M10 22h8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Notion</span>
+      </div>
+
+      <!-- Duplicate set for seamless loop -->
+      <div class="chronicle-logos-item chronicle-logos-lattice">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="8" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="16" cy="16" r="4" fill="#ffffff"/>
+        </svg>
+        <span>Lattice</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-flora">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="10" cy="22" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="22" r="6" fill="#ffffff"/>
+        </svg>
+        <span>FLORA</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-ramp">
+        <span>ramp</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L20 4" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-browserbase">
+        <div class="chronicle-logos-browserbase-icon">
+          <span>B</span>
+        </div>
+        <span>Browserbase</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-vercel">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4L30 28H2L16 4Z" fill="#ffffff"/>
+        </svg>
+        <span>Vercel</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-notion">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4h14l6 6v18H6V4z" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <path d="M10 12h12M10 17h12M10 22h8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Notion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-how-it-works -->
+  <section class="chronicle-how-section">
+  <div class="chronicle-how-container">
+    <div class="chronicle-how-content">
+      <h2 class="chronicle-how-heading">Start with your raw thoughts and ideas.</h2>
+      <p class="chronicle-how-description">Choose a template, paste in a rough outline, or import existing content.</p>
+    </div>
+
+    <div class="chronicle-how-demo">
+      <div class="chronicle-how-glow"></div>
+      <div class="chronicle-how-input-card">
+        <svg class="chronicle-how-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h6v6"></path>
+          <path d="M10 14L21 3"></path>
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+        </svg>
+        <span class="chronicle-how-input-text">Series A pitch deck for a health app</span>
+        <div class="chronicle-how-input-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-features -->
+  <section class="chronicle-features-section">
+  <div class="chronicle-features-container">
+    <div class="chronicle-features-header">
+      <h2 class="chronicle-features-headline">Built for business.<br>Feels like play.</h2>
+    </div>
+
+    <div class="chronicle-features-grid">
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18"/>
+            <path d="M9 21V9"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Smart templates</h3>
+        <p class="chronicle-features-card-description">Start with professionally designed templates that adapt to your content and brand automatically.</p>
+      </div>
+
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Social/PDF export</h3>
+        <p class="chronicle-features-card-description">Export your presentations to social-ready formats or high-quality PDFs with a single click.</p>
+      </div>
+
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Themes & branding</h3>
+        <p class="chronicle-features-card-description">Apply your brand colors, fonts, and logos across all slides with consistent theming.</p>
+      </div>
+
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8"/>
+            <path d="M12 17v4"/>
+            <path d="M7 8h2M7 12h4"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Smart canvas</h3>
+        <p class="chronicle-features-card-description">An intelligent workspace that understands your design intent and helps you create faster.</p>
+      </div>
+
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Real-time collaboration</h3>
+        <p class="chronicle-features-card-description">Work together with your team in real-time. See changes instantly as everyone contributes.</p>
+      </div>
+
+      <div class="chronicle-features-card">
+        <div class="chronicle-features-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3 class="chronicle-features-card-title">Publish to web</h3>
+        <p class="chronicle-features-card-description">Share your presentations as beautiful web pages with a unique URL, no downloads required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-widgets -->
+  <section class="chronicle-widgets-section">
+  <div class="chronicle-widgets-container">
+    <!-- Header with headline and description -->
+    <div class="chronicle-widgets-header">
+      <div class="chronicle-widgets-headline">
+        <h2>Built for business.<br>Feels like play.</h2>
+      </div>
+      <div class="chronicle-widgets-description">
+        <p>Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.</p>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="chronicle-widgets-divider"></div>
+
+    <!-- Features Grid -->
+    <div class="chronicle-widgets-features">
+      <!-- Smart Templates Feature -->
+      <div class="chronicle-widgets-feature">
+        <div class="chronicle-widgets-feature-header">
+          <svg class="chronicle-widgets-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          </svg>
+          <h3 class="chronicle-widgets-feature-title">Smart templates</h3>
+        </div>
+        <p class="chronicle-widgets-feature-text">Save your own templates that your team can insert or use to generate content.</p>
+
+        <!-- Templates Card -->
+        <div class="chronicle-widgets-card">
+          <div class="chronicle-widgets-card-header">
+            <h4 class="chronicle-widgets-card-title">Chapter templates</h4>
+            <div class="chronicle-widgets-tags">
+              <span class="chronicle-widgets-tag">Featured</span>
+              <span class="chronicle-widgets-tag">From Acme</span>
+            </div>
+          </div>
+          <div class="chronicle-widgets-card-preview">
+            <div class="chronicle-widgets-preview-item">
+              <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); height: 140px; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 60px; height: 60px; background: #e94560; border-radius: 50%;"></div>
+              </div>
+              <div class="chronicle-widgets-preview-label">
+                <span>Quarterly</span>
+                <strong>business update</strong>
+              </div>
+            </div>
+            <div class="chronicle-widgets-preview-item">
+              <div style="background: linear-gradient(135deg, #0f4c75 0%, #1b262c 100%); height: 140px; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 50px; height: 50px; background: #3282b8; border-radius: 4px;"></div>
+              </div>
+              <div class="chronicle-widgets-preview-label">
+                <span>Industry</span>
+                <strong>report</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social and PDF Export Feature -->
+      <div class="chronicle-widgets-feature">
+        <div class="chronicle-widgets-feature-header">
+          <svg class="chronicle-widgets-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M7 7h10M7 12h10M7 17h6"></path>
+          </svg>
+          <h3 class="chronicle-widgets-feature-title">Social and PDF export</h3>
+        </div>
+        <p class="chronicle-widgets-feature-text">Share your Chronicle as a high quality PDF or beautiful animated GIF.</p>
+
+        <!-- Export Card -->
+        <div class="chronicle-widgets-export-card">
+          <h4 class="chronicle-widgets-export-title">Export</h4>
+          <div class="chronicle-widgets-export-option">
+            <span>LinkedIn <span class="chronicle-widgets-export-option-size">(1080 × 1080px)</span></span>
+          </div>
+          <h5 class="chronicle-widgets-export-section-title">Background</h5>
+          <div class="chronicle-widgets-export-tabs">
+            <button class="chronicle-widgets-export-tab active">Color</button>
+            <button class="chronicle-widgets-export-tab">Image</button>
+            <button class="chronicle-widgets-export-tab">Gradient</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 05-testimonials -->
+  <section class="chronicle-testimonials-section">
+  <div class="chronicle-testimonials-container">
+    <h2 class="chronicle-testimonials-headline">Loved by world-class founders, strategists, designers and teams.</h2>
+  </div>
+
+  <div class="chronicle-testimonials-track-wrapper">
+    <!-- Row 1 - scrolling left -->
+    <div class="chronicle-testimonials-row">
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle has completely transformed how we present strategy to our board. The visual storytelling capabilities are unmatched."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">SK</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Sarah Kim</span>
+            <span class="chronicle-testimonials-title">CEO, Nexus Ventures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We've cut our presentation prep time by 70%. Chronicle's templates and widgets make it effortless to create polished decks."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MR</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Marcus Rodriguez</span>
+            <span class="chronicle-testimonials-title">Design Lead, Stripe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The real-time collaboration features have made remote strategy sessions actually productive. Game changer for distributed teams."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">EL</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Emma Liu</span>
+            <span class="chronicle-testimonials-title">Strategy Director, Airbnb</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally, a presentation tool that designers actually want to use. The attention to typography and layout is exceptional."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">JT</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">James Thompson</span>
+            <span class="chronicle-testimonials-title">Creative Director, Figma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Our investor updates went from dreaded monthly tasks to something we're proud to share. Chronicle makes data beautiful."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">AP</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Aisha Patel</span>
+            <span class="chronicle-testimonials-title">Founder, Bloom Health</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The publish-to-web feature is brilliant. We use Chronicle for all our public strategy docs and product announcements."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">DW</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">David Wang</span>
+            <span class="chronicle-testimonials-title">Head of Product, Linear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle has completely transformed how we present strategy to our board. The visual storytelling capabilities are unmatched."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">SK</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Sarah Kim</span>
+            <span class="chronicle-testimonials-title">CEO, Nexus Ventures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We've cut our presentation prep time by 70%. Chronicle's templates and widgets make it effortless to create polished decks."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MR</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Marcus Rodriguez</span>
+            <span class="chronicle-testimonials-title">Design Lead, Stripe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The real-time collaboration features have made remote strategy sessions actually productive. Game changer for distributed teams."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">EL</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Emma Liu</span>
+            <span class="chronicle-testimonials-title">Strategy Director, Airbnb</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally, a presentation tool that designers actually want to use. The attention to typography and layout is exceptional."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">JT</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">James Thompson</span>
+            <span class="chronicle-testimonials-title">Creative Director, Figma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Our investor updates went from dreaded monthly tasks to something we're proud to share. Chronicle makes data beautiful."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">AP</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Aisha Patel</span>
+            <span class="chronicle-testimonials-title">Founder, Bloom Health</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The publish-to-web feature is brilliant. We use Chronicle for all our public strategy docs and product announcements."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">DW</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">David Wang</span>
+            <span class="chronicle-testimonials-title">Head of Product, Linear</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 - scrolling right (reverse) -->
+    <div class="chronicle-testimonials-row chronicle-testimonials-row-reverse">
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle helped us secure our Series B. The pitch deck we built was miles ahead of anything we'd done in PowerPoint."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">NB</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Nina Brooks</span>
+            <span class="chronicle-testimonials-title">Co-founder, Catalyst AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"As a consultant, I need to deliver polished work fast. Chronicle has become my secret weapon for client presentations."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">RH</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Ryan Hughes</span>
+            <span class="chronicle-testimonials-title">Partner, McKinsey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The smart canvas feature is incredibly intuitive. Layouts that used to take hours now come together in minutes."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">LM</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Lisa Martinez</span>
+            <span class="chronicle-testimonials-title">VP Design, Notion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We switched our entire company to Chronicle. The consistency across teams has improved our brand presence significantly."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">TN</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Tom Nguyen</span>
+            <span class="chronicle-testimonials-title">CMO, Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally broke free from slide-based thinking. Chronicle lets us tell stories the way they should be told."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">KC</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Kate Chen</span>
+            <span class="chronicle-testimonials-title">Storytelling Lead, Apple</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The interactive widgets are perfect for presenting complex data. Our quarterly reviews have never been more engaging."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MJ</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Michael Jensen</span>
+            <span class="chronicle-testimonials-title">Data Lead, Spotify</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Chronicle helped us secure our Series B. The pitch deck we built was miles ahead of anything we'd done in PowerPoint."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">NB</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Nina Brooks</span>
+            <span class="chronicle-testimonials-title">Co-founder, Catalyst AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"As a consultant, I need to deliver polished work fast. Chronicle has become my secret weapon for client presentations."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">RH</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Ryan Hughes</span>
+            <span class="chronicle-testimonials-title">Partner, McKinsey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The smart canvas feature is incredibly intuitive. Layouts that used to take hours now come together in minutes."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">LM</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Lisa Martinez</span>
+            <span class="chronicle-testimonials-title">VP Design, Notion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"We switched our entire company to Chronicle. The consistency across teams has improved our brand presence significantly."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">TN</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Tom Nguyen</span>
+            <span class="chronicle-testimonials-title">CMO, Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"Finally broke free from slide-based thinking. Chronicle lets us tell stories the way they should be told."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">KC</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Kate Chen</span>
+            <span class="chronicle-testimonials-title">Storytelling Lead, Apple</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-card">
+        <p class="chronicle-testimonials-quote">"The interactive widgets are perfect for presenting complex data. Our quarterly reviews have never been more engaging."</p>
+        <div class="chronicle-testimonials-author">
+          <div class="chronicle-testimonials-avatar">MJ</div>
+          <div class="chronicle-testimonials-info">
+            <span class="chronicle-testimonials-name">Michael Jensen</span>
+            <span class="chronicle-testimonials-title">Data Lead, Spotify</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 06-templates -->
+  <section class="chronicle-templates-section">
+  <div class="chronicle-templates-carousel">
+    <!-- Card 1: Moodboard -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-moodboard">
+          <div class="chronicle-templates-moodboard-item large" style="background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);">
+            <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+              <div style="flex: 1; background: #222; margin: 8px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-family: sans-serif; font-size: 24px; font-weight: 700; color: #ff6b4a; letter-spacing: -1px;">timbr</span>
+              </div>
+              <div style="flex: 1; background: #c44; margin: 8px; margin-top: 0; border-radius: 4px;"></div>
+            </div>
+          </div>
+          <div class="chronicle-templates-moodboard-item" style="background: #1a1a1a; display: flex; flex-direction: column; gap: 4px; padding: 6px;">
+            <div style="flex: 1; background: #222; border-radius: 3px; overflow: hidden;">
+              <div style="height: 60%; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);"></div>
+            </div>
+            <div style="display: flex; gap: 4px; flex: 0.4;">
+              <div style="flex: 1; background: #333; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-family: sans-serif; font-size: 7px; font-weight: 700; color: #ff8855;">Neue<sup style="font-size: 5px;">TM</sup></span>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-templates-moodboard-item" style="display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #1a1a1a;">
+            <div style="flex: 1; background: #222; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: sans-serif; font-size: 10px; font-weight: 800; color: #ff5544; letter-spacing: 1px;">FREEBIES<br>MONIQUE</span>
+            </div>
+            <div style="display: flex; gap: 4px; flex: 0.5;">
+              <div style="flex: 1; background: #c44; border-radius: 3px;"></div>
+              <div style="flex: 1; background: #333; border-radius: 3px; display: flex; flex-direction: column; gap: 2px; padding: 4px;">
+                <div style="font-size: 5px; color: #888;">Crimson Red</div>
+                <div style="font-size: 5px; color: #888;">Dark Grey</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title" style="color: #666;">Moodboard</div>
+          <div class="chronicle-templates-meta-link">
+            .com
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Quote/Testimonial -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-quote" style="background: linear-gradient(135deg, rgba(80, 50, 30, 0.6) 0%, rgba(20, 15, 10, 0.9) 100%), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1008%22 width=%22400%22 height=%22300%22/></svg>'); background-size: cover;">
+          <div class="chronicle-templates-quote-icon">
+            <svg viewBox="0 0 48 48">
+              <path d="M24 8L8 24L24 40" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 8L40 24L24 40" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 16V32" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="chronicle-templates-quote-text">
+            <span class="highlight">With 50,000 MAUs in our first week post-launch,</span> <span class="dimmed">we've got strong signals toward product-market fit.</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta" style="visibility: hidden; height: 0; padding: 0;">
+      </div>
+    </div>
+
+    <!-- Card 3: Portfolio -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-portfolio">
+          <div class="chronicle-templates-portfolio-header">
+            <span class="chronicle-templates-portfolio-dot red"></span>
+            <span class="chronicle-templates-portfolio-dot yellow"></span>
+            <span class="chronicle-templates-portfolio-dot green"></span>
+            <span style="margin-left: 12px; color: #555;">Feature Asset</span>
+            <span style="margin-left: auto; color: #444;">Portfolio Template</span>
+          </div>
+          <div class="chronicle-templates-portfolio-content">
+            <div class="chronicle-templates-portfolio-sidebar">
+              <div class="chronicle-templates-sidebar-item">Logo</div>
+              <div class="chronicle-templates-sidebar-item">File</div>
+              <div class="chronicle-templates-sidebar-item">Assets</div>
+              <div class="chronicle-templates-sidebar-item active">Pages</div>
+              <div class="chronicle-templates-sidebar-item">Design</div>
+              <div class="chronicle-templates-sidebar-item">Prototype</div>
+              <div class="chronicle-templates-sidebar-item">Layers</div>
+              <div class="chronicle-templates-sidebar-item">Cover</div>
+              <div class="chronicle-templates-sidebar-item">Design</div>
+              <div class="chronicle-templates-sidebar-item">Design 2</div>
+              <div class="chronicle-templates-sidebar-item">Design 3</div>
+            </div>
+            <div class="chronicle-templates-portfolio-main">
+              <div class="chronicle-templates-portfolio-hero">
+                <div class="chronicle-templates-portfolio-info">
+                  <div class="chronicle-templates-portfolio-label">Branding | Image making</div>
+                  <div class="chronicle-templates-portfolio-title">Visual Designer</div>
+                  <div class="chronicle-templates-portfolio-desc">This is a template Figma file, turned into code using Anima.<br>Learn more at Animaapp.com</div>
+                  <div class="chronicle-templates-portfolio-btn">Contact</div>
+                </div>
+                <div class="chronicle-templates-portfolio-avatar">
+                  <div class="chronicle-templates-portfolio-avatar-img">
+                    <svg viewBox="0 0 60 80" width="50" height="70">
+                      <ellipse cx="30" cy="20" rx="12" ry="14" fill="#d4a574"/>
+                      <path d="M10 80 Q30 50 50 80" fill="#2a5a4e"/>
+                    </svg>
+                  </div>
+                  <div class="chronicle-templates-portfolio-avatar-badge"></div>
+                </div>
+              </div>
+              <div class="chronicle-templates-portfolio-logos">
+                <div class="chronicle-templates-portfolio-logo">Google</div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Nike
+                </div>
+                <div class="chronicle-templates-portfolio-logo">SAMSUNG</div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83z"/></svg>
+                </div>
+                <div class="chronicle-templates-portfolio-logo">
+                  <svg viewBox="0 0 24 24"><path d="M11.5 2L2 7l9.5 5 9.5-5-9.5-5zM2 17l9.5 5 9.5-5M2 12l9.5 5 9.5-5"/></svg>
+                  adidas
+                </div>
+              </div>
+              <div class="chronicle-templates-portfolio-skills">
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon pink">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="8"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Product Design</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon coral">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="8"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Visual Design</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+                <div class="chronicle-templates-skill-card">
+                  <div class="chronicle-templates-skill-icon green">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2" fill="none"/></svg>
+                  </div>
+                  <div class="chronicle-templates-skill-name">Art Direction</div>
+                  <div class="chronicle-templates-skill-desc">This is a template Figma file,<br>turned into code using Anima.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-icon figma">
+          <svg viewBox="0 0 24 24"><path d="M12 2H8.5A3.5 3.5 0 005 5.5v0A3.5 3.5 0 008.5 9H12V2z" fill="#ff7262"/><path d="M12 9H8.5A3.5 3.5 0 005 12.5v0A3.5 3.5 0 008.5 16H12V9z" fill="#a259ff"/><path d="M12 16H8.5A3.5 3.5 0 005 19.5v0A3.5 3.5 0 008.5 23v0A3.5 3.5 0 0012 19.5V16z" fill="#0acf83"/><path d="M19 5.5A3.5 3.5 0 0015.5 2H12v7h3.5A3.5 3.5 0 0019 5.5v0z" fill="#ff7262"/><circle cx="15.5" cy="12.5" r="3.5" fill="#1abcfe"/></svg>
+        </div>
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title">Portfolio</div>
+          <div class="chronicle-templates-meta-link">
+            figma.com
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Revenue Chart -->
+    <div class="chronicle-templates-card">
+      <div class="chronicle-templates-card-preview">
+        <div class="chronicle-templates-card-chart">
+          <div class="chronicle-templates-chart-header">
+            <div class="chronicle-templates-chart-dots">
+              <span class="chronicle-templates-chart-dot"></span>
+              <span class="chronicle-templates-chart-dot"></span>
+              <span class="chronicle-templates-chart-dot"></span>
+            </div>
+            <div class="chronicle-templates-chart-title">Revenue</div>
+          </div>
+          <div class="chronicle-templates-chart-legend">
+            <div class="chronicle-templates-chart-legend-item">
+              <span class="chronicle-templates-legend-dot blue"></span>
+              Revenue
+            </div>
+            <div class="chronicle-templates-chart-legend-item">
+              <span class="chronicle-templates-legend-dot gray"></span>
+              % Premium
+            </div>
+          </div>
+          <div class="chronicle-templates-chart-area">
+            <div class="chronicle-templates-chart-y-axis">
+              <span>6k</span>
+              <span>5k</span>
+              <span>4k</span>
+              <span>3k</span>
+              <span>2k</span>
+              <span>1k</span>
+              <span>0</span>
+            </div>
+            <div class="chronicle-templates-chart-bars">
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 60px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 45px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 80px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 55px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 100px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 70px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 130px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 90px;"></div>
+              </div>
+              <div class="chronicle-templates-chart-bar-group">
+                <div class="chronicle-templates-chart-bar primary" style="height: 160px;"></div>
+                <div class="chronicle-templates-chart-bar secondary" style="height: 110px;"></div>
+              </div>
+            </div>
+            <div class="chronicle-templates-chart-line">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none">
+                <path d="M0 120 Q50 110 80 95 T160 70 T240 30 T300 10" stroke="#ff4444" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <div class="chronicle-templates-chart-x-axis">
+            <span>Jan</span>
+            <span>Feb</span>
+            <span>Mar</span>
+            <span>Apr</span>
+            <span>May</span>
+          </div>
+        </div>
+      </div>
+      <div class="chronicle-templates-card-meta">
+        <div class="chronicle-templates-meta-icon graphy">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M4 20V10M10 20V4M16 20V14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="chronicle-templates-meta-info">
+          <div class="chronicle-templates-meta-title">Revenue <span>| Graphy</span></div>
+          <div class="chronicle-templates-meta-link">
+            graphy.app
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chronicle-templates-navigation">
+    <button class="chronicle-templates-nav-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="chronicle-templates-nav-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 18L15 12L9 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+  <!-- Section: 07-footer -->
+  <footer class="chronicle-footer-section">
+  <div class="chronicle-footer-container">
+    <div class="chronicle-footer-large-text">chronicle</div>
+
+    <div class="chronicle-footer-content">
+      <div class="chronicle-footer-brand">
+        <div class="chronicle-footer-logo">
+          <div class="chronicle-footer-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L8 6H4V10L0 14L4 18V22H8L12 26L16 22H20V18L24 14L20 10V6H16L12 2Z" fill="white"/>
+              <path d="M12 8L10 10H8V12L6 14L8 16V18H10L12 20L14 18H16V16L18 14L16 12V10H14L12 8Z" fill="#0a0a0a"/>
+            </svg>
+          </div>
+          <span class="chronicle-footer-logo-text">chronicle</span>
+        </div>
+        <div class="chronicle-footer-company-name">ChronicleHQ Inc.</div>
+      </div>
+
+      <div class="chronicle-footer-links">
+        <div class="chronicle-footer-column">
+          <div class="chronicle-footer-column-title">Resources</div>
+          <div class="chronicle-footer-column-links">
+            <a href="#" class="chronicle-footer-link">Getting Started</a>
+            <a href="#" class="chronicle-footer-link">AI Presentation Maker</a>
+            <a href="#" class="chronicle-footer-link">Pricing</a>
+            <a href="#" class="chronicle-footer-link">PowerPoint Alternatives</a>
+            <a href="#" class="chronicle-footer-link">Chronicle vs. Gamma</a>
+            <a href="#" class="chronicle-footer-link">Solutions</a>
+            <a href="#" class="chronicle-footer-link">Integrations</a>
+            <a href="#" class="chronicle-footer-link">API</a>
+            <a href="#" class="chronicle-footer-link">Templates</a>
+          </div>
+        </div>
+
+        <div class="chronicle-footer-column">
+          <div class="chronicle-footer-column-title">Company</div>
+          <div class="chronicle-footer-column-links">
+            <a href="#" class="chronicle-footer-link">Join our Community</a>
+            <a href="#" class="chronicle-footer-link">Academy</a>
+            <a href="#" class="chronicle-footer-link">Become an Affiliate</a>
+            <a href="#" class="chronicle-footer-link">Partner Network</a>
+            <a href="#" class="chronicle-footer-link">Enterprise</a>
+            <a href="#" class="chronicle-footer-link">Chronicle Studio</a>
+            <a href="#" class="chronicle-footer-link">Privacy Policy</a>
+            <a href="#" class="chronicle-footer-link">Terms of Service</a>
+            <a href="#" class="chronicle-footer-link">Careers</a>
+            <a href="#" class="chronicle-footer-link">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="chronicle-footer-column">
+          <div class="chronicle-footer-column-title">Social</div>
+          <div class="chronicle-footer-column-links">
+            <a href="#" class="chronicle-footer-link">Instagram</a>
+            <a href="#" class="chronicle-footer-link">Twitter</a>
+            <a href="#" class="chronicle-footer-link">LinkedIn</a>
+            <a href="#" class="chronicle-footer-link">YouTube</a>
+            <a href="#" class="chronicle-footer-link">Chronicle 101</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

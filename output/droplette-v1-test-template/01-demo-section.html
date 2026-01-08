@@ -1,0 +1,111 @@
+<style>
+.demo-section {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.demo-section-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.demo-section-subtext {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.demo-section-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-section-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-section-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.demo-section-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.demo-section-card-preview {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1;
+}
+
+.demo-section-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.demo-section-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.demo-section-plugin-name {
+  color: #fff;
+  font-size: 14px;
+}
+</style>
+<div class="demo-section">
+  <h1 class="demo-section-headline">Easy to get started.</h1>
+  <p class="demo-section-subtext">Choose your preferences and let the AI handle the rest for you.</p>
+
+  <div class="demo-section-cards">
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Import from your projects</h3>
+      <p class="demo-section-card-text">Select your existing assets and Acme will analyze them. The AI uses these as a foundation for generating new content.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Acme</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Connect your workspace</h3>
+      <p class="demo-section-card-text">Sync your workspace settings with Acme to guide the AI in creating consistent results that match your brand.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Acme</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

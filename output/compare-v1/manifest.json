@@ -1,0 +1,56 @@
+{
+  "url": "https://www.droplette.app/",
+  "timestamp": "2026-01-07",
+  "themeType": "dark",
+  "colors": {
+    "background": "rgb(14, 14, 14)",
+    "text": "rgb(255, 255, 255)",
+    "heading": "rgb(255, 255, 255)",
+    "accent": "rgba(255, 255, 255, 0.9)"
+  },
+  "typography": {
+    "fontFamily": "ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif",
+    "headingFamily": "Ein, -apple-system, system-ui, Segoe UI, Roboto, sans-serif",
+    "h1Size": "69px",
+    "h2Size": "69px",
+    "bodySize": "16px"
+  },
+  "sections": [
+    {
+      "index": 0,
+      "id": "nav-hero",
+      "screenshot": "screenshots/00-nav-hero.png",
+      "description": "Navigation bar and hero section with headline"
+    },
+    {
+      "index": 1,
+      "id": "product-demo",
+      "screenshot": "screenshots/01-product-demo.png",
+      "description": "Product demo with UI mockups"
+    },
+    {
+      "index": 2,
+      "id": "simple-setup",
+      "screenshot": "screenshots/02-simple-setup.png",
+      "description": "Simple to setup section with feature cards"
+    },
+    {
+      "index": 3,
+      "id": "features",
+      "screenshot": "screenshots/03-features.png",
+      "description": "Additional features - adjust and redo"
+    },
+    {
+      "index": 4,
+      "id": "faq",
+      "screenshot": "screenshots/04-faq.png",
+      "description": "Frequently asked questions accordion"
+    },
+    {
+      "index": 5,
+      "id": "pricing-footer",
+      "screenshot": "screenshots/05-pricing-footer.png",
+      "description": "Pricing section and footer"
+    }
+  ]
+}

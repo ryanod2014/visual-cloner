@@ -1,0 +1,136 @@
+<style>
+.section-4 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+  position: relative;
+}
+
+.section-4-color-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xxl);
+  padding: var(--space-xl) 0;
+  flex-wrap: wrap;
+  opacity: 0.5;
+}
+
+.section-4-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.section-4-card {
+  max-width: 900px;
+  margin: var(--space-xxl) auto;
+  border: 1px solid rgba(128, 0, 128, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xxl);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(128, 0, 128, 0.05) 0%, transparent 100%);
+}
+
+.section-4-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-4-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-xl);
+}
+
+.section-4-highlight {
+  color: var(--color-text-primary);
+}
+
+.section-4-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.section-4-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) var(--easing);
+}
+
+.section-4-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  border: none;
+}
+
+.section-4-btn-primary .section-4-price-old {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+
+.section-4-btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-light);
+}
+
+.section-4-btn:hover {
+  opacity: 0.9;
+}
+</style>
+
+<section class="section-4">
+  <!-- Decorative color dots -->
+  <div class="section-4-color-dots">
+    <div class="section-4-dot" style="background: #00bcd4;"></div>
+    <div class="section-4-dot" style="background: #9c27b0;"></div>
+    <div class="section-4-dot" style="background: #2196f3;"></div>
+    <div class="section-4-dot" style="background: #e91e63;"></div>
+    <div class="section-4-dot" style="background: #ff5722;"></div>
+    <div class="section-4-dot" style="background: #ffc107;"></div>
+    <div class="section-4-dot" style="background: #ffeb3b;"></div>
+    <div class="section-4-dot" style="background: #8bc34a;"></div>
+    <div class="section-4-dot" style="background: #9c27b0;"></div>
+    <div class="section-4-dot" style="background: #00bcd4;"></div>
+  </div>
+
+  <!-- Pricing Card -->
+  <div class="section-4-card">
+    <h2 class="section-4-title">One price.<br>No subscription.</h2>
+    <p class="section-4-subtitle">
+      Bring your own API key for OpenAI. Droplette is a single payment. <span class="section-4-highlight">Special launch price of $9</span>.
+    </p>
+    <div class="section-4-buttons">
+      <a href="#" class="section-4-btn section-4-btn-primary">
+        Buy license $9 <span class="section-4-price-old">$20</span>
+      </a>
+      <a href="#" class="section-4-btn section-4-btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+          <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+          <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+          <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+          <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+        </svg>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</section>

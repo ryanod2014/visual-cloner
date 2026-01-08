@@ -1,0 +1,323 @@
+<style>
+  .chronicle-widgets-section {
+    background-color: #0a0a0a;
+    padding: 120px 0 80px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+
+  .chronicle-widgets-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .chronicle-widgets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+  }
+
+  .chronicle-widgets-headline {
+    max-width: 600px;
+  }
+
+  .chronicle-widgets-headline h2 {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .chronicle-widgets-description {
+    max-width: 520px;
+    padding-top: 20px;
+  }
+
+  .chronicle-widgets-description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #888888;
+    margin: 0;
+  }
+
+  .chronicle-widgets-divider {
+    height: 1px;
+    background-color: #222222;
+    margin-bottom: 60px;
+  }
+
+  .chronicle-widgets-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .chronicle-widgets-feature {
+    padding: 0 40px 0 0;
+  }
+
+  .chronicle-widgets-feature:first-child {
+    border-right: 1px solid #222222;
+    padding-right: 60px;
+  }
+
+  .chronicle-widgets-feature:last-child {
+    padding-left: 60px;
+  }
+
+  .chronicle-widgets-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .chronicle-widgets-feature-icon {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  .chronicle-widgets-feature-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .chronicle-widgets-feature-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0 0 40px 0;
+    max-width: 400px;
+  }
+
+  .chronicle-widgets-card {
+    background-color: #161616;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .chronicle-widgets-card-header {
+    padding: 24px 24px 16px;
+  }
+
+  .chronicle-widgets-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+  }
+
+  .chronicle-widgets-tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .chronicle-widgets-tag {
+    padding: 6px 12px;
+    background-color: #222222;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #888888;
+  }
+
+  .chronicle-widgets-card-preview {
+    display: flex;
+    gap: 16px;
+    padding: 0 24px 24px;
+  }
+
+  .chronicle-widgets-preview-item {
+    flex: 1;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .chronicle-widgets-preview-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .chronicle-widgets-preview-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  }
+
+  .chronicle-widgets-preview-label span {
+    font-size: 11px;
+    color: #888888;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .chronicle-widgets-preview-label strong {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* Export Card Styles */
+  .chronicle-widgets-export-card {
+    background-color: #161616;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .chronicle-widgets-export-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+  }
+
+  .chronicle-widgets-export-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .chronicle-widgets-export-option span {
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  .chronicle-widgets-export-option-size {
+    font-size: 14px;
+    color: #666666;
+    margin-left: 12px;
+  }
+
+  .chronicle-widgets-export-section-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888888;
+    margin: 0 0 12px 0;
+  }
+
+  .chronicle-widgets-export-tabs {
+    display: flex;
+    gap: 8px;
+  }
+
+  .chronicle-widgets-export-tab {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #666666;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .chronicle-widgets-export-tab.active {
+    color: #ffffff;
+  }
+</style>
+
+<section class="chronicle-widgets-section">
+  <div class="chronicle-widgets-container">
+    <!-- Header with headline and description -->
+    <div class="chronicle-widgets-header">
+      <div class="chronicle-widgets-headline">
+        <h2>Built for business.<br>Feels like play.</h2>
+      </div>
+      <div class="chronicle-widgets-description">
+        <p>Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.</p>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="chronicle-widgets-divider"></div>
+
+    <!-- Features Grid -->
+    <div class="chronicle-widgets-features">
+      <!-- Smart Templates Feature -->
+      <div class="chronicle-widgets-feature">
+        <div class="chronicle-widgets-feature-header">
+          <svg class="chronicle-widgets-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          </svg>
+          <h3 class="chronicle-widgets-feature-title">Smart templates</h3>
+        </div>
+        <p class="chronicle-widgets-feature-text">Save your own templates that your team can insert or use to generate content.</p>
+
+        <!-- Templates Card -->
+        <div class="chronicle-widgets-card">
+          <div class="chronicle-widgets-card-header">
+            <h4 class="chronicle-widgets-card-title">Chapter templates</h4>
+            <div class="chronicle-widgets-tags">
+              <span class="chronicle-widgets-tag">Featured</span>
+              <span class="chronicle-widgets-tag">From Acme</span>
+            </div>
+          </div>
+          <div class="chronicle-widgets-card-preview">
+            <div class="chronicle-widgets-preview-item">
+              <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); height: 140px; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 60px; height: 60px; background: #e94560; border-radius: 50%;"></div>
+              </div>
+              <div class="chronicle-widgets-preview-label">
+                <span>Quarterly</span>
+                <strong>business update</strong>
+              </div>
+            </div>
+            <div class="chronicle-widgets-preview-item">
+              <div style="background: linear-gradient(135deg, #0f4c75 0%, #1b262c 100%); height: 140px; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 50px; height: 50px; background: #3282b8; border-radius: 4px;"></div>
+              </div>
+              <div class="chronicle-widgets-preview-label">
+                <span>Industry</span>
+                <strong>report</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social and PDF Export Feature -->
+      <div class="chronicle-widgets-feature">
+        <div class="chronicle-widgets-feature-header">
+          <svg class="chronicle-widgets-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M7 7h10M7 12h10M7 17h6"></path>
+          </svg>
+          <h3 class="chronicle-widgets-feature-title">Social and PDF export</h3>
+        </div>
+        <p class="chronicle-widgets-feature-text">Share your Chronicle as a high quality PDF or beautiful animated GIF.</p>
+
+        <!-- Export Card -->
+        <div class="chronicle-widgets-export-card">
+          <h4 class="chronicle-widgets-export-title">Export</h4>
+          <div class="chronicle-widgets-export-option">
+            <span>LinkedIn <span class="chronicle-widgets-export-option-size">(1080 × 1080px)</span></span>
+          </div>
+          <h5 class="chronicle-widgets-export-section-title">Background</h5>
+          <div class="chronicle-widgets-export-tabs">
+            <button class="chronicle-widgets-export-tab active">Color</button>
+            <button class="chronicle-widgets-export-tab">Image</button>
+            <button class="chronicle-widgets-export-tab">Gradient</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

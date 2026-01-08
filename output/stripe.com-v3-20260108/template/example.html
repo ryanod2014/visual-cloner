@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Example - stripe.com Style</title>
+  <link rel="stylesheet" href="template.css">
+  <script>
+    // Customize gradient colors (optional)
+    window.GRADIENT_CONFIG = {
+      speed: 1.0
+    };
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero bg-dark">
+    <div class="hero__gradient">
+      <canvas class="Gradient__canvas"></canvas>
+    </div>
+    <div class="hero__content text-white">
+      <h1 class="headline-hero">Your Headline Here</h1>
+      <p class="text-lg mt-md" style="opacity: 0.8;">
+        Your subheadline text goes here. Make it compelling.
+      </p>
+      <div class="flex-center mt-lg" style="gap: 16px;">
+        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#" class="btn btn-secondary" style="color: #fff; border-color: #fff;">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-lg" data-animate="slideUp">
+        <h2 class="headline-lg">Features</h2>
+        <p class="text-muted mt-sm">Everything you need</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" data-animate="slideUp" data-delay="0.1">
+          <h3 class="headline-md">Feature One</h3>
+          <p class="text-muted mt-sm">Description of the first feature.</p>
+        </div>
+        <div class="card" data-animate="slideUp" data-delay="0.2">
+          <h3 class="headline-md">Feature Two</h3>
+          <p class="text-muted mt-sm">Description of the second feature.</p>
+        </div>
+        <div class="card" data-animate="slideUp" data-delay="0.3">
+          <h3 class="headline-md">Feature Three</h3>
+          <p class="text-muted mt-sm">Description of the third feature.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section bg-dark text-white">
+    <div class="container">
+      <div class="grid grid-4 text-center">
+        <div>
+          <div class="headline-xl" data-counter data-target="99" data-suffix="%">0</div>
+          <p class="text-muted mt-sm">Uptime</p>
+        </div>
+        <div>
+          <div class="headline-xl" data-counter data-target="10000" data-suffix="+">0</div>
+          <p class="text-muted mt-sm">Users</p>
+        </div>
+        <div>
+          <div class="headline-xl" data-counter data-target="50" data-suffix="M">0</div>
+          <p class="text-muted mt-sm">Requests</p>
+        </div>
+        <div>
+          <div class="headline-xl" data-counter data-target="24" data-suffix="/7">0</div>
+          <p class="text-muted mt-sm">Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section text-center">
+    <div class="container" data-animate="slideUp">
+      <h2 class="headline-lg">Ready to get started?</h2>
+      <p class="text-muted mt-sm mb-lg">Join thousands of happy users.</p>
+      <a href="#" class="btn btn-primary">Start Free Trial</a>
+    </div>
+  </section>
+
+  <script src="template.js"></script>
+</body>
+</html>

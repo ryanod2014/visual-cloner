@@ -1,0 +1,268 @@
+<style>
+.resend-deliverability {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-deliverability-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.resend-deliverability-code-panel {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(30, 30, 35, 0.8) 0%, rgba(20, 20, 25, 0.9) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.resend-deliverability-code-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.resend-deliverability-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.resend-deliverability-dot-red {
+  background: #ff5f57;
+}
+
+.resend-deliverability-dot-yellow {
+  background: #febc2e;
+}
+
+.resend-deliverability-dot-green {
+  background: #28c840;
+}
+
+.resend-deliverability-code-content {
+  padding: 20px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.resend-deliverability-line {
+  display: flex;
+  white-space: pre;
+}
+
+.resend-deliverability-line-number {
+  color: rgba(255, 255, 255, 0.25);
+  width: 35px;
+  text-align: right;
+  padding-right: 20px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.resend-deliverability-line-code {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.resend-deliverability-tag {
+  color: #7dd3fc;
+}
+
+.resend-deliverability-attr {
+  color: #fda4af;
+}
+
+.resend-deliverability-string {
+  color: #a5f3fc;
+}
+
+.resend-deliverability-bracket {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resend-deliverability-email-preview {
+  position: absolute;
+  right: -60px;
+  top: 30px;
+  width: 380px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.resend-deliverability-email-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+  padding: 20px 24px;
+  color: #ffffff;
+}
+
+.resend-deliverability-email-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.resend-deliverability-email-body {
+  padding: 24px;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.resend-deliverability-email-greeting {
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.resend-deliverability-email-text {
+  color: #4a4a4a;
+  margin-bottom: 24px;
+}
+
+.resend-deliverability-email-text strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.resend-deliverability-email-btn {
+  display: inline-block;
+  background: #00a3ff;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+
+.resend-deliverability-email-signature {
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.resend-deliverability-email-signature p {
+  margin: 0;
+}
+
+.resend-deliverability-text-section {
+  padding-top: 200px;
+}
+
+.resend-deliverability-heading {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.resend-deliverability-heading-muted {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.resend-deliverability-glow {
+  position: absolute;
+  top: 0;
+  right: 200px;
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(0, 200, 100, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.resend-deliverability-curve {
+  position: absolute;
+  bottom: 300px;
+  right: 100px;
+  width: 400px;
+  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+</style>
+<section class="resend-deliverability">
+  <div class="resend-deliverability-glow"></div>
+  <div class="resend-deliverability-curve"></div>
+
+  <div class="resend-deliverability-container">
+    <div class="resend-deliverability-code-panel">
+      <div class="resend-deliverability-code-header">
+        <span class="resend-deliverability-dot resend-deliverability-dot-red"></span>
+        <span class="resend-deliverability-dot resend-deliverability-dot-yellow"></span>
+        <span class="resend-deliverability-dot resend-deliverability-dot-green"></span>
+      </div>
+      <div class="resend-deliverability-code-content">
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">12</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Head</span> <span class="resend-deliverability-tag">/&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">13</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Preview&gt;</span>{<span class="resend-deliverability-attr">previewText</span>}<span class="resend-deliverability-tag">&lt;/Preview&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">14</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Tailwind&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">15</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Body</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"bg-white my-auto mx-auto font-sans"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">16</span><span class="resend-deliverability-line-code">        <span class="resend-deliverability-tag">&lt;Container</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"my-10 mx-auto p-5 w-[465px]"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">17</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Section</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"mt-8"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">18</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">&lt;Img</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">19</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">src</span>={<span class="resend-deliverability-string">`${baseUrl}/static/example-logo.png`</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">20</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">width</span>=<span class="resend-deliverability-string">"80"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">21</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">height</span>=<span class="resend-deliverability-string">"80"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">22</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">alt</span>=<span class="resend-deliverability-string">"Logo Example"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">23</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"my-0 mx-auto"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">24</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">/&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">25</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Section&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">26</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Heading</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-2xl font-normal text-center p-"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">27</span><span class="resend-deliverability-line-code">            Welcome to <span class="resend-deliverability-tag">&lt;strong&gt;</span>{<span class="resend-deliverability-attr">company</span>}<span class="resend-deliverability-tag">&lt;/strong&gt;</span>, {<span class="resend-deliverability-attr">username</span>}!</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">28</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Heading&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">29</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Text</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-sm"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">30</span><span class="resend-deliverability-line-code">            Hello {<span class="resend-deliverability-attr">username</span>},</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">31</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Text&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">32</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Text</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-sm"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">33</span><span class="resend-deliverability-line-code">            We're excited to have you onboard at <span class="resend-deliverability-tag">&lt;strong&gt;</span>{<span class="resend-deliverability-attr">company</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">34</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Text&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">35</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Section</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-center mt-[32px] mb-[32px]"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">36</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">&lt;Button</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">37</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">pX</span>={<span class="resend-deliverability-attr">20</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">38</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">pY</span>={<span class="resend-deliverability-attr">12</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">39</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"bg-[#00A3FF] rounded-sm text-white te</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">40</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">href</span>={<span class="resend-deliverability-string">`${baseUrl}/get-started`</span>}</span></div>
+      </div>
+
+      <div class="resend-deliverability-email-preview">
+        <div class="resend-deliverability-email-header">
+          <div class="resend-deliverability-email-title">Welcome to ACME, user!</div>
+        </div>
+        <div class="resend-deliverability-email-body">
+          <p class="resend-deliverability-email-greeting">Hello Steve,</p>
+          <p class="resend-deliverability-email-text">We're excited to have you onboard at <strong>ACME</strong>. We hope you enjoy your journey with us. If you have any questions or need assistance, feel free to reach out.</p>
+          <a href="#" class="resend-deliverability-email-btn">Get Started</a>
+          <div class="resend-deliverability-email-signature">
+            <p>Cheers,</p>
+            <p>The ACME Team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resend-deliverability-container">
+    <div class="resend-deliverability-text-section">
+      <h2 class="resend-deliverability-heading">
+        Reach humans, <span class="resend-deliverability-heading-muted">not<br>spam folders</span>
+      </h2>
+    </div>
+  </div>
+</section>

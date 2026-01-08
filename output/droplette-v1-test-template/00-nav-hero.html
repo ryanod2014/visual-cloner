@@ -1,0 +1,305 @@
+<style>
+.nav-hero {
+  background: rgb(14, 14, 14);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 100;
+}
+
+.nav-hero-logo {
+  width: 48px;
+  height: 48px;
+  background: conic-gradient(from 180deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+  border-radius: 50%;
+  position: relative;
+}
+
+.nav-hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: rgb(14, 14, 14);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.nav-hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.nav-hero-cta:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.nav-hero-cta-icon {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.nav-hero-cta-icon span {
+  background: rgb(14, 14, 14);
+  border-radius: 1px;
+}
+
+.nav-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 40px 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-hero-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+  max-width: 800px;
+}
+
+.nav-hero-subtext {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.nav-hero-subtext strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav-hero-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nav-hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.nav-hero-dot-1 { width: 55px; height: 55px; background: #22d3ee; top: 48%; left: 3%; }
+.nav-hero-dot-2 { width: 50px; height: 50px; background: #5ed4ff; top: 48%; left: 13%; }
+.nav-hero-dot-3 { width: 55px; height: 55px; background: #4a9eff; top: 48%; left: 23%; }
+.nav-hero-dot-4 { width: 50px; height: 50px; background: #a855f7; top: 48%; left: 36%; }
+.nav-hero-dot-5 { width: 55px; height: 55px; background: #f97316; top: 48%; left: 46%; }
+.nav-hero-dot-6 { width: 50px; height: 50px; background: #eab308; top: 48%; left: 56%; }
+.nav-hero-dot-7 { width: 55px; height: 55px; background: #84cc16; top: 48%; left: 73%; }
+.nav-hero-dot-8 { width: 50px; height: 50px; background: #22d3ee; top: 48%; left: 83%; }
+.nav-hero-dot-9 { width: 55px; height: 55px; background: #5ed4ff; top: 48%; left: 93%; }
+
+.nav-hero-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 100, 100, 0.3) 0%, rgba(255, 200, 100, 0.2) 30%, transparent 70%);
+  pointer-events: none;
+}
+
+.nav-hero-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-hero-panel {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 280px;
+}
+
+.nav-hero-panel-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-hero-panel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-hero-panel-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.nav-hero-panel-bar {
+  height: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.nav-hero-plugin {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.nav-hero-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgb(50, 50, 50);
+}
+
+.nav-hero-plugin-logo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.nav-hero-plugin-title {
+  color: #fff;
+  font-size: 14px;
+}
+
+.nav-hero-palette {
+  display: flex;
+  height: 300px;
+}
+
+.nav-hero-palette-bar {
+  flex: 1;
+}
+
+.nav-hero-palette-bar:nth-child(1) { background: #f97316; }
+.nav-hero-palette-bar:nth-child(2) { background: #fb923c; }
+.nav-hero-palette-bar:nth-child(3) { background: #fbbf24; }
+.nav-hero-palette-bar:nth-child(4) { background: #facc15; }
+.nav-hero-palette-bar:nth-child(5) { background: #a3e635; }
+.nav-hero-palette-bar:nth-child(6) { background: #4ade80; }
+.nav-hero-palette-bar:nth-child(7) { background: #2dd4bf; }
+.nav-hero-palette-bar:nth-child(8) { background: #22d3ee; }
+.nav-hero-palette-bar:nth-child(9) { background: #38bdf8; }
+.nav-hero-palette-bar:nth-child(10) { background: #a78bfa; }
+.nav-hero-palette-bar:nth-child(11) { background: #e879f9; }
+</style>
+<div class="nav-hero">
+  <div class="nav-hero-glow"></div>
+  <div class="nav-hero-dots">
+    <div class="nav-hero-dot nav-hero-dot-1"></div>
+    <div class="nav-hero-dot nav-hero-dot-2"></div>
+    <div class="nav-hero-dot nav-hero-dot-3"></div>
+    <div class="nav-hero-dot nav-hero-dot-4"></div>
+    <div class="nav-hero-dot nav-hero-dot-5"></div>
+    <div class="nav-hero-dot nav-hero-dot-6"></div>
+    <div class="nav-hero-dot nav-hero-dot-7"></div>
+    <div class="nav-hero-dot nav-hero-dot-8"></div>
+    <div class="nav-hero-dot nav-hero-dot-9"></div>
+  </div>
+  <nav class="nav-hero-nav">
+    <div class="nav-hero-logo"></div>
+    <a href="#" class="nav-hero-cta">
+      <span class="nav-hero-cta-icon">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      Get Started
+    </a>
+  </nav>
+  <div class="nav-hero-content">
+    <h1 class="nav-hero-headline">An AI tool built to empower creators.</h1>
+    <p class="nav-hero-subtext">Generate stunning visuals based on your preferences easily with <strong>Acme, AI that works for you.</strong></p>
+  </div>
+  <div class="nav-hero-demo">
+    <div class="nav-hero-panel nav-hero-panel-left">
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon"></div>
+        <div class="nav-hero-panel-bar" style="width: 80px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-bar" style="width: 60px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon"></div>
+        <div class="nav-hero-panel-bar" style="width: 50px;"></div>
+      </div>
+    </div>
+    <div class="nav-hero-plugin">
+      <div class="nav-hero-plugin-header">
+        <div class="nav-hero-plugin-logo"></div>
+        <span class="nav-hero-plugin-title">Acme</span>
+      </div>
+      <div class="nav-hero-palette">
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+      </div>
+    </div>
+    <div class="nav-hero-panel">
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon" style="background: #f97316; border-radius: 50%;"></div>
+        <div class="nav-hero-panel-bar" style="width: 80px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-bar" style="width: 100px;"></div>
+      </div>
+    </div>
+  </div>
+</div>

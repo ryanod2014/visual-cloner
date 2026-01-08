@@ -1,0 +1,409 @@
+<!-- Section 2: Feature Cards - Adjust as you go & Redo with AI -->
+<style>
+  .clone-section-2-container {
+    background: var(--color-background);
+    padding: 0 var(--space-section-x);
+    padding-bottom: var(--space-section-y);
+    font-family: var(--font-primary);
+  }
+
+  .clone-section-2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .clone-section-2-card {
+    border-radius: var(--radius-card);
+    padding: 48px 40px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-card-light {
+    background: rgb(245, 245, 245);
+  }
+
+  .clone-section-2-card-dark {
+    background: rgb(30, 30, 30);
+  }
+
+  .clone-section-2-card-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .clone-section-2-card-light .clone-section-2-card-title {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-card-dark .clone-section-2-card-title {
+    color: var(--color-text-primary);
+  }
+
+  .clone-section-2-card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+
+  .clone-section-2-card-light .clone-section-2-card-description {
+    color: rgba(14, 14, 14, 0.7);
+  }
+
+  .clone-section-2-card-dark .clone-section-2-card-description {
+    color: var(--color-text-secondary);
+  }
+
+  /* UI Mockup Styles */
+  .clone-section-2-ui-mockup {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-ui-mockup-light {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .clone-section-2-ui-mockup-dark {
+    background: rgb(40, 40, 40);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-ui-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-ui-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #ff6b6b,
+      #feca57,
+      #48dbfb,
+      #ff9ff3,
+      #ff6b6b
+    );
+    position: relative;
+  }
+
+  .clone-section-2-ui-logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-ui-logo::after {
+    background: white;
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-logo::after {
+    background: rgb(40, 40, 40);
+  }
+
+  .clone-section-2-ui-brand {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-ui-brand {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-brand {
+    color: white;
+  }
+
+  .clone-section-2-ui-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-palette-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-palette-title {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-palette-title {
+    color: white;
+  }
+
+  /* Sunflower Palette Grid */
+  .clone-section-2-sunflower-palette {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+
+  .clone-section-2-sunflower-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .clone-section-2-sunflower-cell {
+    flex: 1;
+    border-radius: 2px;
+    min-height: 24px;
+  }
+
+  /* Rainbow Palette */
+  .clone-section-2-rainbow-palette {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .clone-section-2-rainbow-bar {
+    flex: 1;
+    border-radius: 6px;
+  }
+
+  /* Saturation Slider */
+  .clone-section-2-slider-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-row {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-slider-label {
+    font-size: 13px;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-slider-label {
+    color: rgba(14, 14, 14, 0.6);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .clone-section-2-slider-value {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-slider-value {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-value {
+    color: white;
+  }
+
+  @media (max-width: 900px) {
+    .clone-section-2-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .clone-section-2-card {
+      min-height: 450px;
+    }
+  }
+</style>
+
+<section class="clone-section-2-container">
+  <div class="clone-section-2-grid">
+    <!-- Card 1: Adjust as you go (Light) -->
+    <div class="clone-section-2-card clone-section-2-card-light">
+      <h3 class="clone-section-2-card-title">Adjust as you go</h3>
+      <p class="clone-section-2-card-description">
+        Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.
+      </p>
+
+      <div class="clone-section-2-ui-mockup clone-section-2-ui-mockup-light">
+        <div class="clone-section-2-ui-header">
+          <div class="clone-section-2-ui-logo"></div>
+          <span class="clone-section-2-ui-brand">Droplette</span>
+        </div>
+        <div class="clone-section-2-ui-content">
+          <div class="clone-section-2-palette-title">Impressionist sunflowers</div>
+          <div class="clone-section-2-sunflower-palette">
+            <!-- Column 1 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f5c542;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f0b830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e6a020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d98c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cc7810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #bf6408;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b25000;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #9e4200;"></div>
+            </div>
+            <!-- Column 2 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f7ca4a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f2bc38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e8a428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #db9020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ce7c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c16810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b45408;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a04400;"></div>
+            </div>
+            <!-- Column 3 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f9cf52;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f4c040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #eaa830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #dd9428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d08020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c36c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b65810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a24608;"></div>
+            </div>
+            <!-- Column 4 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fbd45a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f6c448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ecac38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #df9830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d28428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c57020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b85c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a44810;"></div>
+            </div>
+            <!-- Column 5 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fdd962;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f8c850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #eeb040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e19c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d48830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c77428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ba6020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a64a18;"></div>
+            </div>
+            <!-- Column 6 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffde6a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #facc58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f0b448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e3a040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d68c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c97830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #bc6428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a84c20;"></div>
+            </div>
+            <!-- Column 7 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffe372;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #fcd060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f2b850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e5a448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d89040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cb7c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #be6830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #aa4e28;"></div>
+            </div>
+            <!-- Column 8 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffe87a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #fed468;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f4bc58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e7a850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #da9448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cd8040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c06c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ac5030;"></div>
+            </div>
+            <!-- Column 9 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffed82;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ffd870;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f6c060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e9ac58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #dc9850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cf8448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c27040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ae5238;"></div>
+            </div>
+            <!-- Column 10 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fff28a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ffdc78;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f8c468;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ebb060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #de9c58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d18850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c47448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b05440;"></div>
+            </div>
+          </div>
+          <div class="clone-section-2-slider-row">
+            <span class="clone-section-2-slider-label">Saturation</span>
+            <span class="clone-section-2-slider-value">+92</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Redo with AI (Dark) -->
+    <div class="clone-section-2-card clone-section-2-card-dark">
+      <h3 class="clone-section-2-card-title">Redo with AI</h3>
+      <p class="clone-section-2-card-description">
+        Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.
+      </p>
+
+      <div class="clone-section-2-ui-mockup clone-section-2-ui-mockup-dark">
+        <div class="clone-section-2-ui-header">
+          <div class="clone-section-2-ui-logo"></div>
+          <span class="clone-section-2-ui-brand">Droplette</span>
+        </div>
+        <div class="clone-section-2-ui-content">
+          <div class="clone-section-2-palette-title">A summer rainbow</div>
+          <div class="clone-section-2-rainbow-palette">
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ff4d4d, #ff6b6b);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ff8c42, #ffa366);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ffd93d, #ffe066);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #6bcb77, #8fd99e);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #4ecdc4, #7eded7);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #45b7d1, #6fc9dd);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #5271ff, #7b93ff);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #c45ab3, #d67ec6);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

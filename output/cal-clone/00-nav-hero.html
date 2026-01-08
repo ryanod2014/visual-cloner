@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cal.com - Nav Hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f4f4f4;
+      color: #000000;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cal-nav-hero-container {
+      max-width: 100%;
+      min-height: 100vh;
+      background: #f4f4f4;
+    }
+
+    /* Navigation */
+    .cal-nav-hero-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #242424;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .cal-nav-hero-logo-dot {
+      color: #242424;
+    }
+
+    .cal-nav-hero-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .cal-nav-hero-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .cal-nav-hero-nav-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .cal-nav-hero-nav-arrow {
+      width: 12px;
+      height: 12px;
+      opacity: 0.6;
+    }
+
+    .cal-nav-hero-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-nav-hero-sign-in {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+      text-decoration: none;
+    }
+
+    .cal-nav-hero-get-started {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: #242424;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .cal-nav-hero-get-started-arrow {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Main Content */
+    .cal-nav-hero-main {
+      display: flex;
+      gap: 40px;
+      padding: 40px;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+
+    .cal-nav-hero-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 60px;
+      flex: 1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Left Content */
+    .cal-nav-hero-left {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .cal-nav-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #242424;
+      margin-bottom: 32px;
+    }
+
+    .cal-nav-hero-badge-arrow {
+      width: 12px;
+      height: 12px;
+    }
+
+    .cal-nav-hero-heading {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      color: #242424;
+      margin-bottom: 24px;
+    }
+
+    .cal-nav-hero-description {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+
+    .cal-nav-hero-cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 420px;
+    }
+
+    .cal-nav-hero-google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: #242424;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-google-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cal-nav-hero-email-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      background: #fff;
+      color: #242424;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-email-arrow {
+      width: 14px;
+      height: 14px;
+    }
+
+    .cal-nav-hero-no-credit {
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+    }
+
+    /* Right Content - Calendar Card */
+    .cal-nav-hero-right {
+      flex: 1.2;
+    }
+
+    .cal-nav-hero-calendar-card {
+      display: flex;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .cal-nav-hero-appointment-info {
+      flex: 1;
+      padding: 24px;
+      border-right: 1px solid #f0f0f0;
+    }
+
+    .cal-nav-hero-doctor-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-nav-hero-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cal-nav-hero-doctor-name {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .cal-nav-hero-appointment-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #242424;
+      margin-bottom: 12px;
+    }
+
+    .cal-nav-hero-appointment-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .cal-nav-hero-duration-selector {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .cal-nav-hero-clock-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+      margin-right: 8px;
+    }
+
+    .cal-nav-hero-duration-option {
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #666;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-duration-option.active {
+      background: #f4f4f4;
+      color: #242424;
+      font-weight: 500;
+    }
+
+    .cal-nav-hero-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .cal-nav-hero-location-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-timezone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .cal-nav-hero-globe-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-timezone-arrow {
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+    }
+
+    /* Calendar */
+    .cal-nav-hero-calendar {
+      padding: 24px;
+      min-width: 280px;
+    }
+
+    .cal-nav-hero-calendar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cal-nav-hero-calendar-month {
+      font-size: 16px;
+      font-weight: 600;
+      color: #242424;
+    }
+
+    .cal-nav-hero-calendar-year {
+      font-size: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-calendar-days {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .cal-nav-hero-calendar-day-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888;
+      padding: 8px 0;
+    }
+
+    .cal-nav-hero-calendar-dates {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+
+    .cal-nav-hero-calendar-date {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #242424;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-calendar-date:hover {
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-calendar-date.empty {
+      visibility: hidden;
+    }
+
+    .cal-nav-hero-calendar-date.dimmed {
+      color: #ccc;
+    }
+
+    .cal-nav-hero-calendar-date.selected {
+      background: #242424;
+      color: #fff;
+    }
+
+    .cal-nav-hero-calendar-date.highlighted {
+      background: #f4f4f4;
+    }
+
+    /* Trust Section */
+    .cal-nav-hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 32px 40px;
+      margin-top: 20px;
+    }
+
+    .cal-nav-hero-trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-nav-hero-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .cal-nav-hero-star {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cal-nav-hero-star.green {
+      color: #00b67a;
+    }
+
+    .cal-nav-hero-star.orange {
+      color: #ff6b35;
+    }
+
+    .cal-nav-hero-star.red {
+      color: #ea4335;
+    }
+
+    .cal-nav-hero-trust-logo {
+      height: 20px;
+    }
+
+    .cal-nav-hero-trustpilot-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-trustpilot-star {
+      width: 24px;
+      height: 24px;
+      background: #00b67a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-nav-hero-trustpilot-star:last-child {
+      background: linear-gradient(90deg, #00b67a 50%, #dcdce6 50%);
+    }
+
+    .cal-nav-hero-trustpilot-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: #242424;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-nav-hero-trustpilot-icon {
+      color: #00b67a;
+    }
+
+    .cal-nav-hero-producthunt-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-producthunt-logo {
+      width: 28px;
+      height: 28px;
+      background: #da552f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .cal-nav-hero-google-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-google-logo {
+      width: 28px;
+      height: 28px;
+      background: #4285f4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Logos Section */
+    .cal-nav-hero-logos-section {
+      padding: 40px;
+      border-top: 1px solid #e8e8e8;
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-logos-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-nav-hero-trusted-text {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.4;
+      max-width: 120px;
+    }
+
+    .cal-nav-hero-company-logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #242424;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cal-nav-hero-company-logo.storyblok {
+      color: #09b3af;
+    }
+
+    .cal-nav-hero-company-logo.angellist {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.raycast {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.vercel {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.supabase {
+      color: #3ecf8e;
+    }
+
+    /* SVG Icons */
+    .cal-nav-hero-svg-icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="cal-nav-hero-container">
+    <!-- Navigation -->
+    <nav class="cal-nav-hero-nav">
+      <a href="#" class="cal-nav-hero-logo">Cal<span class="cal-nav-hero-logo-dot">.com</span></a>
+
+      <ul class="cal-nav-hero-nav-links">
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Solutions
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Enterprise</a></li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Cal.ai</a></li>
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Developer
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Resources
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Pricing</a></li>
+      </ul>
+
+      <div class="cal-nav-hero-nav-right">
+        <a href="#" class="cal-nav-hero-sign-in">Sign in</a>
+        <a href="#" class="cal-nav-hero-get-started">
+          Get started
+          <svg class="cal-nav-hero-get-started-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="cal-nav-hero-main">
+      <div class="cal-nav-hero-card" style="display: flex; gap: 40px; padding: 50px;">
+        <!-- Left Content -->
+        <div class="cal-nav-hero-left">
+          <div class="cal-nav-hero-badge">
+            Cal.com launches v5.9
+            <svg class="cal-nav-hero-badge-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+
+          <h1 class="cal-nav-hero-heading">The better way to schedule your meetings</h1>
+
+          <p class="cal-nav-hero-description">A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.</p>
+
+          <div class="cal-nav-hero-cta-buttons">
+            <button class="cal-nav-hero-google-btn">
+              <svg class="cal-nav-hero-google-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Sign up with Google
+            </button>
+
+            <button class="cal-nav-hero-email-btn">
+              Sign up with email
+              <svg class="cal-nav-hero-email-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+
+          <p class="cal-nav-hero-no-credit">No credit card required</p>
+        </div>
+
+        <!-- Right Content - Calendar Card -->
+        <div class="cal-nav-hero-right">
+          <div class="cal-nav-hero-calendar-card">
+            <div class="cal-nav-hero-appointment-info">
+              <div class="cal-nav-hero-doctor-avatar">
+                <svg viewBox="0 0 40 40" width="40" height="40">
+                  <circle cx="20" cy="14" r="8" fill="#d4a574"/>
+                  <circle cx="20" cy="45" r="18" fill="#f5e6d3"/>
+                  <path d="M12 10 Q20 0 28 10" fill="#4a3728"/>
+                </svg>
+              </div>
+              <p class="cal-nav-hero-doctor-name">Dr. Sarah Smith</p>
+              <h3 class="cal-nav-hero-appointment-title">Medical Appointment</h3>
+              <p class="cal-nav-hero-appointment-desc">Welcome to Sacred Hearth Hospital. Please pick a time for your appointment.</p>
+
+              <div class="cal-nav-hero-duration-selector">
+                <svg class="cal-nav-hero-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+                <button class="cal-nav-hero-duration-option">15m</button>
+                <button class="cal-nav-hero-duration-option">30m</button>
+                <button class="cal-nav-hero-duration-option">45m</button>
+                <button class="cal-nav-hero-duration-option active">1h</button>
+              </div>
+
+              <div class="cal-nav-hero-location">
+                <svg class="cal-nav-hero-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                22 Street, Chicago
+              </div>
+
+              <div class="cal-nav-hero-timezone">
+                <svg class="cal-nav-hero-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                Asia/Singapore
+                <svg class="cal-nav-hero-timezone-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="cal-nav-hero-calendar">
+              <div class="cal-nav-hero-calendar-header">
+                <span class="cal-nav-hero-calendar-month">May</span>
+                <span class="cal-nav-hero-calendar-year">2025</span>
+              </div>
+
+              <div class="cal-nav-hero-calendar-days">
+                <span class="cal-nav-hero-calendar-day-name">SUN</span>
+                <span class="cal-nav-hero-calendar-day-name">MON</span>
+                <span class="cal-nav-hero-calendar-day-name">TUE</span>
+                <span class="cal-nav-hero-calendar-day-name">WED</span>
+                <span class="cal-nav-hero-calendar-day-name">THU</span>
+              </div>
+
+              <div class="cal-nav-hero-calendar-dates">
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date highlighted">1</span>
+                <span class="cal-nav-hero-calendar-date">2</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">5</span>
+                <span class="cal-nav-hero-calendar-date highlighted">6</span>
+                <span class="cal-nav-hero-calendar-date">7</span>
+                <span class="cal-nav-hero-calendar-date highlighted">8</span>
+                <span class="cal-nav-hero-calendar-date">9</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">12</span>
+                <span class="cal-nav-hero-calendar-date">13</span>
+                <span class="cal-nav-hero-calendar-date">14</span>
+                <span class="cal-nav-hero-calendar-date highlighted">15</span>
+                <span class="cal-nav-hero-calendar-date">16</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">19</span>
+                <span class="cal-nav-hero-calendar-date highlighted">20</span>
+                <span class="cal-nav-hero-calendar-date">21</span>
+                <span class="cal-nav-hero-calendar-date highlighted">22</span>
+                <span class="cal-nav-hero-calendar-date">23</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">26</span>
+                <span class="cal-nav-hero-calendar-date selected">27</span>
+                <span class="cal-nav-hero-calendar-date">28</span>
+                <span class="cal-nav-hero-calendar-date highlighted">29</span>
+                <span class="cal-nav-hero-calendar-date">30</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="cal-nav-hero-trust">
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-trustpilot-stars">
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star" style="background: linear-gradient(90deg, #00b67a 50%, #dcdce6 50%);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="cal-nav-hero-trustpilot-logo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#00b67a">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Trustpilot
+              </div>
+            </div>
+
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-stars" style="gap: 4px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="cal-nav-hero-producthunt-logo">P</div>
+            </div>
+
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-stars" style="gap: 4px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                  <defs>
+                    <linearGradient id="half-star">
+                      <stop offset="50%" stop-color="#fbbc05"/>
+                      <stop offset="50%" stop-color="#ddd"/>
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#half-star)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="cal-nav-hero-google-logo">G</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Logos Section -->
+    <div class="cal-nav-hero-logos-section">
+      <div class="cal-nav-hero-logos-inner">
+        <span class="cal-nav-hero-trusted-text">Trusted by fast-growing companies around the world</span>
+
+        <span class="cal-nav-hero-company-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#09b3af">
+            <rect width="24" height="24" rx="4"/>
+          </svg>
+          storyblok
+        </span>
+
+        <span class="cal-nav-hero-company-logo angellist">AngelList</span>
+
+        <span class="cal-nav-hero-company-logo raycast">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 19l3-3-3-3v6zm14-14l-3 3 3 3V5zM5 5v6l3-3-3-3zm14 14v-6l-3 3 3 3z"/>
+          </svg>
+          Raycast
+        </span>
+
+        <span class="cal-nav-hero-company-logo vercel">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 19.5h20L12 2z"/>
+          </svg>
+          Vercel
+        </span>
+
+        <span class="cal-nav-hero-company-logo" style="color: #3ecf8e;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
+          </svg>
+          supabase
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

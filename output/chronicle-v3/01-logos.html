@@ -1,0 +1,318 @@
+<style>
+.chronicle-logos-section {
+  background-color: #0a0a0a;
+  padding: 60px 0 80px;
+  overflow: hidden;
+}
+
+.chronicle-logos-tagline {
+  text-align: center;
+  color: #a0a0a0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chronicle-logos-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chronicle-logos-marquee-wrapper::before,
+.chronicle-logos-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.chronicle-logos-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+}
+
+.chronicle-logos-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+}
+
+.chronicle-logos-marquee {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  animation: chronicle-logos-scroll 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-logos-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-logos-marquee:hover {
+  animation-play-state: paused;
+}
+
+.chronicle-logos-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.chronicle-logos-item:hover {
+  opacity: 1;
+}
+
+.chronicle-logos-item svg {
+  height: 28px;
+  width: auto;
+}
+
+.chronicle-logos-item span {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Flora logo styles */
+.chronicle-logos-flora {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-flora svg {
+  width: 32px;
+  height: 32px;
+}
+
+.chronicle-logos-flora span {
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* Ramp logo styles */
+.chronicle-logos-ramp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chronicle-logos-ramp span {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.chronicle-logos-ramp svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Browserbase logo styles */
+.chronicle-logos-browserbase {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-browserbase-icon {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-logos-browserbase-icon span {
+  color: #0a0a0a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chronicle-logos-browserbase > span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Vercel logo styles */
+.chronicle-logos-vercel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-vercel svg {
+  width: 26px;
+  height: 26px;
+}
+
+.chronicle-logos-vercel span {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Lattice logo styles */
+.chronicle-logos-lattice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-lattice svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-logos-lattice span {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Notion logo styles */
+.chronicle-logos-notion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chronicle-logos-notion svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chronicle-logos-notion span {
+  font-size: 22px;
+  font-weight: 500;
+}
+</style>
+
+<section class="chronicle-logos-section">
+  <p class="chronicle-logos-tagline">Used by 5000+ teams who value storytelling</p>
+
+  <div class="chronicle-logos-marquee-wrapper">
+    <div class="chronicle-logos-marquee">
+      <!-- First set of logos -->
+      <div class="chronicle-logos-item chronicle-logos-lattice">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="8" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="16" cy="16" r="4" fill="#ffffff"/>
+        </svg>
+        <span>Lattice</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-flora">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="10" cy="22" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="22" r="6" fill="#ffffff"/>
+        </svg>
+        <span>FLORA</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-ramp">
+        <span>ramp</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L20 4" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-browserbase">
+        <div class="chronicle-logos-browserbase-icon">
+          <span>B</span>
+        </div>
+        <span>Browserbase</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-vercel">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4L30 28H2L16 4Z" fill="#ffffff"/>
+        </svg>
+        <span>Vercel</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-notion">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4h14l6 6v18H6V4z" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <path d="M10 12h12M10 17h12M10 22h8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Notion</span>
+      </div>
+
+      <!-- Duplicate set for seamless loop -->
+      <div class="chronicle-logos-item chronicle-logos-lattice">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="8" r="4" fill="#ffffff"/>
+          <circle cx="8" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="24" cy="24" r="4" fill="#ffffff"/>
+          <circle cx="16" cy="16" r="4" fill="#ffffff"/>
+        </svg>
+        <span>Lattice</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-flora">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="10" r="6" fill="#ffffff"/>
+          <circle cx="10" cy="22" r="6" fill="#ffffff"/>
+          <circle cx="22" cy="22" r="6" fill="#ffffff"/>
+        </svg>
+        <span>FLORA</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-ramp">
+        <span>ramp</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L20 4" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-browserbase">
+        <div class="chronicle-logos-browserbase-icon">
+          <span>B</span>
+        </div>
+        <span>Browserbase</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-vercel">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4L30 28H2L16 4Z" fill="#ffffff"/>
+        </svg>
+        <span>Vercel</span>
+      </div>
+
+      <div class="chronicle-logos-item chronicle-logos-notion">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4h14l6 6v18H6V4z" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <path d="M10 12h12M10 17h12M10 22h8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Notion</span>
+      </div>
+    </div>
+  </div>
+</section>

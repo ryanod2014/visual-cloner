@@ -1,0 +1,56 @@
+/* === DARK THEME BEHAVIORAL OVERRIDES === */
+
+/* Subtle borders on dark backgrounds */
+.card, [class*="card"] {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Input styling */
+input, textarea, select {
+  background: var(--color-input);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-border-focus);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-card); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Text selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+/* Link styling */
+a:not([class]) {
+  color: var(--color-link);
+  text-decoration: none;
+}
+a:not([class]):hover {
+  text-decoration: underline;
+}
+
+/* Button hover states */
+button:hover, [class*="btn"]:hover {
+  opacity: 0.9;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-nav-hero === */
+.nav-hero {
+  background: rgb(14, 14, 14);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 100;
+}
+
+.nav-hero-logo {
+  width: 48px;
+  height: 48px;
+  background: conic-gradient(from 180deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+  border-radius: 50%;
+  position: relative;
+}
+
+.nav-hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: rgb(14, 14, 14);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.nav-hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.nav-hero-cta:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.nav-hero-cta-icon {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.nav-hero-cta-icon span {
+  background: rgb(14, 14, 14);
+  border-radius: 1px;
+}
+
+.nav-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 40px 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-hero-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+  max-width: 800px;
+}
+
+.nav-hero-subtext {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.nav-hero-subtext strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav-hero-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nav-hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.nav-hero-dot-1 { width: 55px; height: 55px; background: #22d3ee; top: 48%; left: 3%; }
+.nav-hero-dot-2 { width: 50px; height: 50px; background: #5ed4ff; top: 48%; left: 13%; }
+.nav-hero-dot-3 { width: 55px; height: 55px; background: #4a9eff; top: 48%; left: 23%; }
+.nav-hero-dot-4 { width: 50px; height: 50px; background: #a855f7; top: 48%; left: 36%; }
+.nav-hero-dot-5 { width: 55px; height: 55px; background: #f97316; top: 48%; left: 46%; }
+.nav-hero-dot-6 { width: 50px; height: 50px; background: #eab308; top: 48%; left: 56%; }
+.nav-hero-dot-7 { width: 55px; height: 55px; background: #84cc16; top: 48%; left: 73%; }
+.nav-hero-dot-8 { width: 50px; height: 50px; background: #22d3ee; top: 48%; left: 83%; }
+.nav-hero-dot-9 { width: 55px; height: 55px; background: #5ed4ff; top: 48%; left: 93%; }
+
+.nav-hero-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 100, 100, 0.3) 0%, rgba(255, 200, 100, 0.2) 30%, transparent 70%);
+  pointer-events: none;
+}
+
+.nav-hero-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-hero-panel {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 280px;
+}
+
+.nav-hero-panel-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-hero-panel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-hero-panel-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.nav-hero-panel-bar {
+  height: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.nav-hero-plugin {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.nav-hero-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgb(50, 50, 50);
+}
+
+.nav-hero-plugin-logo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.nav-hero-plugin-title {
+  color: #fff;
+  font-size: 14px;
+}
+
+.nav-hero-palette {
+  display: flex;
+  height: 300px;
+}
+
+.nav-hero-palette-bar {
+  flex: 1;
+}
+
+.nav-hero-palette-bar:nth-child(1) { background: #f97316; }
+.nav-hero-palette-bar:nth-child(2) { background: #fb923c; }
+.nav-hero-palette-bar:nth-child(3) { background: #fbbf24; }
+.nav-hero-palette-bar:nth-child(4) { background: #facc15; }
+.nav-hero-palette-bar:nth-child(5) { background: #a3e635; }
+.nav-hero-palette-bar:nth-child(6) { background: #4ade80; }
+.nav-hero-palette-bar:nth-child(7) { background: #2dd4bf; }
+.nav-hero-palette-bar:nth-child(8) { background: #22d3ee; }
+.nav-hero-palette-bar:nth-child(9) { background: #38bdf8; }
+.nav-hero-palette-bar:nth-child(10) { background: #a78bfa; }
+.nav-hero-palette-bar:nth-child(11) { background: #e879f9; }
+
+/* === Section: 01-demo-section === */
+.demo-section {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.demo-section-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.demo-section-subtext {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.demo-section-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-section-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-section-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.demo-section-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.demo-section-card-preview {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1;
+}
+
+.demo-section-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.demo-section-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.demo-section-plugin-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+.demo-section-palette-preview {
+  display: flex;
+  gap: 4px;
+  height: 160px;
+}
+
+.demo-section-palette-bar {
+  flex: 1;
+  border-radius: 4px;
+}
+
+.demo-section-palette-bar:nth-child(1) { background: #f97316; }
+.demo-section-palette-bar:nth-child(2) { background: #fb923c; }
+.demo-section-palette-bar:nth-child(3) { background: #fbbf24; }
+.demo-section-palette-bar:nth-child(4) { background: #facc15; }
+.demo-section-palette-bar:nth-child(5) { background: #a3e635; }
+.demo-section-palette-bar:nth-child(6) { background: #4ade80; }
+.demo-section-palette-bar:nth-child(7) { background: #2dd4bf; }
+.demo-section-palette-bar:nth-child(8) { background: #22d3ee; }
+.demo-section-palette-bar:nth-child(9) { background: #38bdf8; }
+.demo-section-palette-bar:nth-child(10) { background: #a78bfa; }
+.demo-section-palette-bar:nth-child(11) { background: #e879f9; }
+
+.demo-section-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-top: 16px;
+}
+
+.demo-section-toolbar-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.demo-section-toolbar-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* === Section: 02-features-setup === */
+.features-setup {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-setup-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.features-setup-card-content {
+  padding: 32px;
+}
+
+.features-setup-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.features-setup-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.features-setup-card-preview {
+  padding: 24px;
+}
+
+.features-setup-plugin {
+  background: rgb(40, 40, 40);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-setup-plugin-dark {
+  background: rgb(30, 30, 30);
+}
+
+.features-setup-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-setup-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.features-setup-plugin-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+.features-setup-palette-title {
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.features-setup-palette {
+  display: flex;
+  height: 200px;
+}
+
+.features-setup-palette-bar {
+  flex: 1;
+}
+
+.features-setup-palette-bar:nth-child(1) { background: #92400e; }
+.features-setup-palette-bar:nth-child(2) { background: #b45309; }
+.features-setup-palette-bar:nth-child(3) { background: #d97706; }
+.features-setup-palette-bar:nth-child(4) { background: #f59e0b; }
+.features-setup-palette-bar:nth-child(5) { background: #fbbf24; }
+.features-setup-palette-bar:nth-child(6) { background: #fcd34d; }
+.features-setup-palette-bar:nth-child(7) { background: #fde68a; }
+.features-setup-palette-bar:nth-child(8) { background: #fef3c7; }
+.features-setup-palette-bar:nth-child(9) { background: #fffbeb; }
+
+.features-setup-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-setup-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-setup-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-setup-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.features-setup-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.features-setup-modal-icon {
+  width: 48px;
+  height: 48px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-setup-modal-title {
+  color: rgb(14, 14, 14);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.features-setup-modal-text {
+  color: rgba(14, 14, 14, 0.7);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.features-setup-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.features-setup-modal-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  font-size: 14px;
+  color: rgb(14, 14, 14);
+}
+
+.features-setup-modal-btn {
+  background: rgb(30, 30, 30);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* === Section: 03-features-adjust === */
+.features-adjust {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-adjust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-adjust-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.features-adjust-card-content {
+  padding: 32px;
+}
+
+.features-adjust-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.features-adjust-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.features-adjust-card-preview {
+  padding: 24px;
+}
+
+.features-adjust-plugin {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-adjust-plugin-dark {
+  background: rgb(40, 40, 40);
+}
+
+.features-adjust-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.features-adjust-plugin-header-dark {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-adjust-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+.features-adjust-plugin-icon-dark {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.features-adjust-plugin-name {
+  color: rgb(14, 14, 14);
+  font-size: 14px;
+}
+
+.features-adjust-plugin-name-dark {
+  color: #fff;
+}
+
+.features-adjust-palette-title {
+  color: rgb(14, 14, 14);
+  font-size: 14px;
+  padding: 12px 16px 8px;
+  margin: 0;
+}
+
+.features-adjust-palette-title-dark {
+  color: #fff;
+}
+
+.features-adjust-palette {
+  display: flex;
+  height: 120px;
+  padding: 0 16px;
+  gap: 4px;
+}
+
+.features-adjust-palette-bar {
+  flex: 1;
+  border-radius: 4px;
+}
+
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(1) { background: #7c2d12; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(2) { background: #9a3412; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(3) { background: #c2410c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(4) { background: #ea580c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(5) { background: #f97316; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(6) { background: #fb923c; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(7) { background: #fdba74; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(8) { background: #fed7aa; }
+.features-adjust-palette-warm .features-adjust-palette-bar:nth-child(9) { background: #ffedd5; }
+
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(1) { background: #f97316; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(2) { background: #fbbf24; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(3) { background: #facc15; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(4) { background: #84cc16; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(5) { background: #22c55e; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(6) { background: #14b8a6; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(7) { background: #06b6d4; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(8) { background: #3b82f6; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(9) { background: #a855f7; }
+.features-adjust-palette-rainbow .features-adjust-palette-bar:nth-child(10) { background: #ec4899; }
+
+.features-adjust-slider {
+  padding: 16px;
+}
+
+.features-adjust-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(0,0,0,0.6);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.features-adjust-slider-track {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  position: relative;
+}
+
+.features-adjust-slider-fill {
+  height: 100%;
+  background: #000;
+  border-radius: 2px;
+  width: 92%;
+}
+
+.features-adjust-slider-thumb {
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.features-adjust-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.features-adjust-controls-dark {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.features-adjust-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-adjust-icon-btn-active {
+  border-color: #3b82f6;
+}
+
+.features-adjust-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-adjust-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-adjust-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* === Section: 04-faq-pricing === */
+.faq-pricing {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.faq-pricing-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 48px;
+  max-width: 600px;
+}
+
+.faq-pricing-list {
+  max-width: 700px;
+  margin: 0 0 100px;
+}
+
+.faq-pricing-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+}
+
+.faq-pricing-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.faq-pricing-icon {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.faq-pricing-dots {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding: 60px 0;
+  position: relative;
+}
+
+.faq-pricing-dot {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.faq-pricing-cta {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 80px 40px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-pricing-cta-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+}
+
+.faq-pricing-cta-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+.faq-pricing-cta-text strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.faq-pricing-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.faq-pricing-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.faq-pricing-btn-primary .price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.faq-pricing-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.faq-pricing-btn-icon {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.faq-pricing-btn-icon span {
+  background: #fff;
+  border-radius: 1px;
+}
+
+/* === Section: 05-footer === */
+.footer {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+.footer-logo {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 4px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-nav-hero -->
+  <div class="nav-hero">
+  <div class="nav-hero-glow"></div>
+  <div class="nav-hero-dots">
+    <div class="nav-hero-dot nav-hero-dot-1"></div>
+    <div class="nav-hero-dot nav-hero-dot-2"></div>
+    <div class="nav-hero-dot nav-hero-dot-3"></div>
+    <div class="nav-hero-dot nav-hero-dot-4"></div>
+    <div class="nav-hero-dot nav-hero-dot-5"></div>
+    <div class="nav-hero-dot nav-hero-dot-6"></div>
+    <div class="nav-hero-dot nav-hero-dot-7"></div>
+    <div class="nav-hero-dot nav-hero-dot-8"></div>
+    <div class="nav-hero-dot nav-hero-dot-9"></div>
+  </div>
+  <nav class="nav-hero-nav">
+    <div class="nav-hero-logo"></div>
+    <a href="#" class="nav-hero-cta">
+      <span class="nav-hero-cta-icon">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      Try in Figma
+    </a>
+  </nav>
+  <div class="nav-hero-content">
+    <h1 class="nav-hero-headline">An AI tool made to enhance designers.</h1>
+    <p class="nav-hero-subtext">Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong></p>
+  </div>
+  <div class="nav-hero-demo">
+    <div class="nav-hero-panel nav-hero-panel-left">
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon"></div>
+        <div class="nav-hero-panel-bar" style="width: 80px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-bar" style="width: 60px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon"></div>
+        <div class="nav-hero-panel-bar" style="width: 50px;"></div>
+      </div>
+    </div>
+    <div class="nav-hero-plugin">
+      <div class="nav-hero-plugin-header">
+        <div class="nav-hero-plugin-logo"></div>
+        <span class="nav-hero-plugin-title">Droplette</span>
+      </div>
+      <div class="nav-hero-palette">
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+        <div class="nav-hero-palette-bar"></div>
+      </div>
+    </div>
+    <div class="nav-hero-panel">
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-icon" style="background: #f97316; border-radius: 50%;"></div>
+        <div class="nav-hero-panel-bar" style="width: 80px;"></div>
+      </div>
+      <div class="nav-hero-panel-row">
+        <div class="nav-hero-panel-bar" style="width: 100px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 01-demo-section -->
+  <div class="demo-section">
+  <h1 class="demo-section-headline">Simple to setup.</h1>
+  <p class="demo-section-subtext">Select the colors you want to work with, or hook up your styles and go.</p>
+
+  <div class="demo-section-cards">
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Select from your frames</h3>
+      <p class="demo-section-card-text">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Droplette</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Sync with your styles</h3>
+      <p class="demo-section-card-text">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Droplette</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 02-features-setup -->
+  <div class="features-setup">
+  <div class="features-setup-grid">
+    <div class="features-setup-card">
+      <div class="features-setup-card-preview">
+        <div class="features-setup-plugin features-setup-plugin-dark">
+          <div class="features-setup-palette-title">A summer rainbow</div>
+          <div class="features-setup-palette">
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+            <div class="features-setup-palette-bar"></div>
+          </div>
+          <div class="features-setup-controls">
+            <div class="features-setup-color-dots">
+              <div class="features-setup-color-dot" style="background: #f97316;"></div>
+              <div class="features-setup-color-dot" style="background: #fbbf24;"></div>
+              <div class="features-setup-color-dot" style="background: #84cc16;"></div>
+              <div class="features-setup-color-dot" style="background: #22d3ee;"></div>
+              <div class="features-setup-color-dot" style="background: #a78bfa;"></div>
+              <div class="features-setup-color-dot" style="background: #ec4899;"></div>
+              <div class="features-setup-color-dot" style="background: #f97316;"></div>
+            </div>
+            <span class="features-setup-btn">Create</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features-setup-card">
+      <div class="features-setup-card-preview">
+        <div class="features-setup-modal">
+          <div class="features-setup-modal-icon">
+            <svg width="24" height="24" fill="none" stroke="#6366f1" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </div>
+          <h3 class="features-setup-modal-title">Add your colors</h3>
+          <p class="features-setup-modal-text">Navigate to the file containing your color styles to sync with Droplette.</p>
+          <div class="features-setup-modal-actions">
+            <span class="features-setup-modal-badge">
+              <span style="display: flex; gap: 2px;"><span style="width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;"></span><span style="width: 8px; height: 8px; background: #ec4899; border-radius: 50%;"></span></span>
+              160 colors synced
+            </span>
+            <span class="features-setup-modal-btn">Done</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 03-features-adjust -->
+  <div class="features-adjust">
+  <div class="features-adjust-grid">
+    <div class="features-adjust-card">
+      <div class="features-adjust-card-content">
+        <h3 class="features-adjust-card-title">Adjust as you go</h3>
+        <p class="features-adjust-card-text">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      </div>
+      <div class="features-adjust-card-preview">
+        <div class="features-adjust-plugin">
+          <div class="features-adjust-plugin-header">
+            <div class="features-adjust-plugin-icon"></div>
+            <span class="features-adjust-plugin-name">Droplette</span>
+          </div>
+          <p class="features-adjust-palette-title">Impressionist sunflowers</p>
+          <div class="features-adjust-palette features-adjust-palette-warm">
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+          </div>
+          <div class="features-adjust-slider">
+            <div class="features-adjust-slider-label">
+              <span>Saturation</span>
+              <span>+92</span>
+            </div>
+            <div class="features-adjust-slider-track">
+              <div class="features-adjust-slider-fill"></div>
+              <div class="features-adjust-slider-thumb"></div>
+            </div>
+          </div>
+          <div class="features-adjust-controls">
+            <span style="font-size: 20px; color: rgba(0,0,0,0.5);">&#8592;</span>
+            <div style="display: flex; gap: 8px;">
+              <div class="features-adjust-icon-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+              </div>
+              <div class="features-adjust-icon-btn features-adjust-icon-btn-active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M12 2l3 7h7l-6 4 3 7-7-5-7 5 3-7-6-4h7z"/></svg>
+              </div>
+              <div class="features-adjust-icon-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="features-adjust-card">
+      <div class="features-adjust-card-content">
+        <h3 class="features-adjust-card-title">Redo with AI</h3>
+        <p class="features-adjust-card-text">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      </div>
+      <div class="features-adjust-card-preview">
+        <div class="features-adjust-plugin features-adjust-plugin-dark">
+          <div class="features-adjust-plugin-header features-adjust-plugin-header-dark">
+            <div class="features-adjust-plugin-icon features-adjust-plugin-icon-dark"></div>
+            <span class="features-adjust-plugin-name features-adjust-plugin-name-dark">Droplette</span>
+          </div>
+          <p class="features-adjust-palette-title features-adjust-palette-title-dark">A summer rainbow</p>
+          <div class="features-adjust-palette features-adjust-palette-rainbow">
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+            <div class="features-adjust-palette-bar"></div>
+          </div>
+          <div class="features-adjust-controls features-adjust-controls-dark">
+            <span style="font-size: 20px; color: rgba(255,255,255,0.5);">&#8592;</span>
+            <div class="features-adjust-color-dots">
+              <div class="features-adjust-color-dot" style="background: #fbbf24;"></div>
+              <div class="features-adjust-color-dot" style="background: #f97316;"></div>
+              <div class="features-adjust-color-dot" style="background: #ec4899;"></div>
+            </div>
+            <span class="features-adjust-btn">Redo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 04-faq-pricing -->
+  <div class="faq-pricing">
+  <h2 class="faq-pricing-headline">Frequently asked questions.</h2>
+
+  <div class="faq-pricing-list">
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>Give me the elevator pitch for Droplette...</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>Is Droplette free to use?</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>What languages does Droplette support?</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>How accurate is Droplette?</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>How long does Droplette take to run?</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+    <div class="faq-pricing-item">
+      <div class="faq-pricing-question">
+        <span>How do I setup Droplette?</span>
+        <span class="faq-pricing-icon">+</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-pricing-dots">
+    <div class="faq-pricing-dot" style="background: #22d3ee;"></div>
+    <div class="faq-pricing-dot" style="background: #5ed4ff;"></div>
+    <div class="faq-pricing-dot" style="background: #4a9eff;"></div>
+    <div class="faq-pricing-dot" style="background: #a855f7;"></div>
+    <div class="faq-pricing-dot" style="background: #f97316;"></div>
+    <div class="faq-pricing-dot" style="background: #eab308;"></div>
+    <div class="faq-pricing-dot" style="background: #84cc16;"></div>
+    <div class="faq-pricing-dot" style="background: #22d3ee;"></div>
+    <div class="faq-pricing-dot" style="background: #5ed4ff;"></div>
+  </div>
+
+  <div class="faq-pricing-cta">
+    <h2 class="faq-pricing-cta-headline">One price.<br>No subscription.</h2>
+    <p class="faq-pricing-cta-text">Bring your own API key for OpenAI. Droplette is a single payment. <strong>Special launch price of $9</strong>.</p>
+    <div class="faq-pricing-cta-buttons">
+      <a href="#" class="faq-pricing-btn-primary">Buy license $9 <span class="price-old">$20</span></a>
+      <a href="#" class="faq-pricing-btn-secondary">
+        <span class="faq-pricing-btn-icon">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 05-footer -->
+  <footer class="footer">
+  <p class="footer-text">
+    Another Figma plugin crafted by
+    <span class="footer-logo"></span>
+    <a href="#" class="footer-link">Relay</a>
+  </p>
+</footer>
+</body>
+</html>

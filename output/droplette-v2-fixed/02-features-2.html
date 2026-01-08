@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 2 - Features</title>
+  <style>
+    :root {
+      --color-bg: rgb(14,14,14);
+      --color-text: rgb(255,255,255);
+      --font: ui-sans-serif, -apple-system, system-ui, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .s2-section {
+      padding: 0 24px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .s2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .s2-card {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .s2-card-top-left {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 320px;
+    }
+
+    .s2-card-top-left .s2-logo {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .s2-rainbow-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0080ff,
+        #8000ff,
+        #ff00ff,
+        #ff0000
+      );
+    }
+
+    .s2-app-window {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 24px 32px;
+      width: 100%;
+      max-width: 340px;
+      margin-top: 60px;
+    }
+
+    .s2-app-title {
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .s2-color-dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+
+    .s2-color-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .s2-color-dot:nth-child(1) { background: #ff6b35; }
+    .s2-color-dot:nth-child(2) { background: #ffa500; }
+    .s2-color-dot:nth-child(3) { background: #ffc107; }
+    .s2-color-dot:nth-child(4) { background: #ffeb3b; }
+    .s2-color-dot:nth-child(5) { background: #cddc39; }
+    .s2-color-dot:nth-child(6) { background: #8bc34a; }
+    .s2-color-dot:nth-child(7) { background: #4caf50; }
+    .s2-color-dot:nth-child(8) { background: #00bcd4; }
+    .s2-color-dot:nth-child(9) { background: #2196f3; }
+    .s2-color-dot:nth-child(10) { background: #9c27b0; }
+    .s2-color-dot:nth-child(11) { background: #e91e63; }
+
+    .s2-app-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .s2-eyedropper-btn {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .s2-create-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .s2-settings-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .s2-card-top-right {
+      background: linear-gradient(180deg, #d4d4d4 0%, #a8a8a8 100%);
+      padding: 32px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 320px;
+      position: relative;
+    }
+
+    .s2-figma-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .s2-figma-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .s2-modal-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      width: 240px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      margin-top: 20px;
+    }
+
+    .s2-modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .s2-modal-desc {
+      font-size: 12px;
+      color: rgba(0,0,0,0.5);
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .s2-sync-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .s2-sync-dots {
+      display: flex;
+      gap: 2px;
+    }
+
+    .s2-sync-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .s2-sync-dot:nth-child(1) { background: #ff6b35; }
+    .s2-sync-dot:nth-child(2) { background: #4caf50; }
+
+    .s2-sync-text {
+      font-size: 13px;
+      color: #000;
+    }
+
+    .s2-done-btn {
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .s2-card-bottom-left {
+      background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+      padding: 40px;
+      min-height: 480px;
+    }
+
+    .s2-card-bottom-right {
+      background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+      padding: 40px;
+      min-height: 480px;
+    }
+
+    .s2-feature-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .s2-feature-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      margin-bottom: 32px;
+      max-width: 360px;
+    }
+
+    .s2-palette-window {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .s2-palette-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .s2-palette-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #e0e0e0;
+    }
+
+    .s2-palette-name {
+      font-size: 13px;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .s2-palette-content {
+      padding: 16px;
+    }
+
+    .s2-palette-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .s2-palette-colors {
+      display: flex;
+      gap: 0;
+    }
+
+    .s2-palette-color {
+      flex: 1;
+      height: 200px;
+    }
+
+    .s2-sunflower-colors .s2-palette-color:nth-child(1) { background: #6b5e00; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(2) { background: #8b7500; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(3) { background: #9b8500; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(4) { background: #ab9500; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(5) { background: #c5a800; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(6) { background: #d4b500; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(7) { background: #e0b800; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(8) { background: #ebc200; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(9) { background: #f0c800; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(10) { background: #d89050; }
+    .s2-sunflower-colors .s2-palette-color:nth-child(11) { background: #c07040; }
+
+    .s2-palette-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .s2-saturation-label {
+      font-size: 12px;
+      color: rgba(0,0,0,0.5);
+    }
+
+    .s2-saturation-value {
+      font-size: 12px;
+      color: rgba(0,0,0,0.8);
+      font-weight: 500;
+    }
+
+    .s2-dark-window {
+      background: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .s2-dark-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .s2-dark-logo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .s2-dark-name {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .s2-dark-content {
+      padding: 16px;
+    }
+
+    .s2-dark-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .s2-rainbow-colors {
+      display: flex;
+      gap: 0;
+    }
+
+    .s2-rainbow-color {
+      flex: 1;
+      height: 200px;
+    }
+
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(1) { background: #ff4444; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(2) { background: #ff8c00; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(3) { background: #ffd700; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(4) { background: #adff2f; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(5) { background: #00ff00; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(6) { background: #00ffcc; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(7) { background: #00bfff; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(8) { background: #4169e1; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(9) { background: #8a2be2; }
+    .s2-rainbow-colors .s2-rainbow-color:nth-child(10) { background: #ff00ff; }
+  </style>
+</head>
+<body>
+  <section class="s2-section">
+    <div class="s2-grid">
+      <!-- Top Left Card - Create palette -->
+      <div class="s2-card s2-card-top-left">
+        <div class="s2-logo">
+          <div class="s2-rainbow-circle"></div>
+        </div>
+        <div class="s2-app-window">
+          <p class="s2-app-title">A summer rainbow</p>
+          <div class="s2-color-dots">
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+            <span class="s2-color-dot"></span>
+          </div>
+          <div class="s2-app-controls">
+            <div class="s2-eyedropper-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 2L2 12l2 2 8-8 8 8 2-2L12 2z"/>
+              </svg>
+            </div>
+            <button class="s2-create-btn">Create</button>
+            <div class="s2-settings-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right Card - Add your colors -->
+      <div class="s2-card s2-card-top-right">
+        <button class="s2-figma-btn">
+          <svg class="s2-figma-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M8 24C10.2 24 12 22.2 12 20V16H8C5.8 16 4 17.8 4 20C4 22.2 5.8 24 8 24Z" fill="#0ACF83"/>
+            <path d="M4 12C4 9.8 5.8 8 8 8H12V16H8C5.8 16 4 14.2 4 12Z" fill="#A259FF"/>
+            <path d="M4 4C4 1.8 5.8 0 8 0H12V8H8C5.8 8 4 6.2 4 4Z" fill="#F24E1E"/>
+            <path d="M12 0H16C18.2 0 20 1.8 20 4C20 6.2 18.2 8 16 8H12V0Z" fill="#FF7262"/>
+            <path d="M20 12C20 14.2 18.2 16 16 16C13.8 16 12 14.2 12 12C12 9.8 13.8 8 16 8C18.2 8 20 9.8 20 12Z" fill="#1ABCFE"/>
+          </svg>
+          Try in Figma
+        </button>
+        <div class="s2-modal-card">
+          <h3 class="s2-modal-title">Add your colors</h3>
+          <p class="s2-modal-desc">Navigate to the file containing your color<br>styles to sync with Droplette.</p>
+          <div class="s2-sync-status">
+            <div class="s2-sync-dots">
+              <span class="s2-sync-dot"></span>
+              <span class="s2-sync-dot"></span>
+            </div>
+            <span class="s2-sync-text">160 colors synced</span>
+            <button class="s2-done-btn">Done</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Left Card - Adjust as you go -->
+      <div class="s2-card s2-card-bottom-left">
+        <h2 class="s2-feature-title">Adjust as you go</h2>
+        <p class="s2-feature-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+        <div class="s2-palette-window">
+          <div class="s2-palette-header">
+            <div class="s2-palette-logo"></div>
+            <span class="s2-palette-name">Droplette</span>
+          </div>
+          <div class="s2-palette-content">
+            <h4 class="s2-palette-title">Impressionist sunflowers</h4>
+            <div class="s2-palette-colors s2-sunflower-colors">
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+              <div class="s2-palette-color"></div>
+            </div>
+          </div>
+          <div class="s2-palette-footer">
+            <span class="s2-saturation-label">Saturation</span>
+            <span class="s2-saturation-value">+92</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Right Card - Redo with AI -->
+      <div class="s2-card s2-card-bottom-right">
+        <h2 class="s2-feature-title">Redo with AI</h2>
+        <p class="s2-feature-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+        <div class="s2-dark-window">
+          <div class="s2-dark-header">
+            <div class="s2-dark-logo"></div>
+            <span class="s2-dark-name">Droplette</span>
+          </div>
+          <div class="s2-dark-content">
+            <h4 class="s2-dark-title">A summer rainbow</h4>
+            <div class="s2-rainbow-colors">
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+              <div class="s2-rainbow-color"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

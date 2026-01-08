@@ -1,0 +1,3956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cal.com - Nav Hero (Assembled)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-nav-hero === */
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f4f4f4;
+      color: #000000;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cal-nav-hero-container {
+      max-width: 100%;
+      min-height: 100vh;
+      background: #f4f4f4;
+    }
+
+    /* Navigation */
+    .cal-nav-hero-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #242424;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .cal-nav-hero-logo-dot {
+      color: #242424;
+    }
+
+    .cal-nav-hero-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .cal-nav-hero-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .cal-nav-hero-nav-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .cal-nav-hero-nav-arrow {
+      width: 12px;
+      height: 12px;
+      opacity: 0.6;
+    }
+
+    .cal-nav-hero-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-nav-hero-sign-in {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+      text-decoration: none;
+    }
+
+    .cal-nav-hero-get-started {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: #242424;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .cal-nav-hero-get-started-arrow {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Main Content */
+    .cal-nav-hero-main {
+      display: flex;
+      gap: 40px;
+      padding: 40px;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+
+    .cal-nav-hero-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 60px;
+      flex: 1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Left Content */
+    .cal-nav-hero-left {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .cal-nav-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #242424;
+      margin-bottom: 32px;
+    }
+
+    .cal-nav-hero-badge-arrow {
+      width: 12px;
+      height: 12px;
+    }
+
+    .cal-nav-hero-heading {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      color: #242424;
+      margin-bottom: 24px;
+    }
+
+    .cal-nav-hero-description {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+
+    .cal-nav-hero-cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 420px;
+    }
+
+    .cal-nav-hero-google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: #242424;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-google-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cal-nav-hero-email-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      background: #fff;
+      color: #242424;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-email-arrow {
+      width: 14px;
+      height: 14px;
+    }
+
+    .cal-nav-hero-no-credit {
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+    }
+
+    /* Right Content - Calendar Card */
+    .cal-nav-hero-right {
+      flex: 1.2;
+    }
+
+    .cal-nav-hero-calendar-card {
+      display: flex;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .cal-nav-hero-appointment-info {
+      flex: 1;
+      padding: 24px;
+      border-right: 1px solid #f0f0f0;
+    }
+
+    .cal-nav-hero-doctor-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-nav-hero-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cal-nav-hero-doctor-name {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .cal-nav-hero-appointment-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #242424;
+      margin-bottom: 12px;
+    }
+
+    .cal-nav-hero-appointment-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .cal-nav-hero-duration-selector {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .cal-nav-hero-clock-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+      margin-right: 8px;
+    }
+
+    .cal-nav-hero-duration-option {
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #666;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-duration-option.active {
+      background: #f4f4f4;
+      color: #242424;
+      font-weight: 500;
+    }
+
+    .cal-nav-hero-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .cal-nav-hero-location-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-timezone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .cal-nav-hero-globe-icon {
+      width: 16px;
+      height: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-timezone-arrow {
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+    }
+
+    /* Calendar */
+    .cal-nav-hero-calendar {
+      padding: 24px;
+      min-width: 280px;
+    }
+
+    .cal-nav-hero-calendar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cal-nav-hero-calendar-month {
+      font-size: 16px;
+      font-weight: 600;
+      color: #242424;
+    }
+
+    .cal-nav-hero-calendar-year {
+      font-size: 16px;
+      color: #888;
+    }
+
+    .cal-nav-hero-calendar-days {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .cal-nav-hero-calendar-day-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888;
+      padding: 8px 0;
+    }
+
+    .cal-nav-hero-calendar-dates {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+
+    .cal-nav-hero-calendar-date {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #242424;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .cal-nav-hero-calendar-date:hover {
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-calendar-date.empty {
+      visibility: hidden;
+    }
+
+    .cal-nav-hero-calendar-date.dimmed {
+      color: #ccc;
+    }
+
+    .cal-nav-hero-calendar-date.selected {
+      background: #242424;
+      color: #fff;
+    }
+
+    .cal-nav-hero-calendar-date.highlighted {
+      background: #f4f4f4;
+    }
+
+    /* Trust Section */
+    .cal-nav-hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 32px 40px;
+      margin-top: 20px;
+    }
+
+    .cal-nav-hero-trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-nav-hero-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .cal-nav-hero-star {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cal-nav-hero-star.green {
+      color: #00b67a;
+    }
+
+    .cal-nav-hero-star.orange {
+      color: #ff6b35;
+    }
+
+    .cal-nav-hero-star.red {
+      color: #ea4335;
+    }
+
+    .cal-nav-hero-trust-logo {
+      height: 20px;
+    }
+
+    .cal-nav-hero-trustpilot-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-trustpilot-star {
+      width: 24px;
+      height: 24px;
+      background: #00b67a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-nav-hero-trustpilot-star:last-child {
+      background: linear-gradient(90deg, #00b67a 50%, #dcdce6 50%);
+    }
+
+    .cal-nav-hero-trustpilot-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: #242424;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-nav-hero-trustpilot-icon {
+      color: #00b67a;
+    }
+
+    .cal-nav-hero-producthunt-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-producthunt-logo {
+      width: 28px;
+      height: 28px;
+      background: #da552f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .cal-nav-hero-google-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .cal-nav-hero-google-logo {
+      width: 28px;
+      height: 28px;
+      background: #4285f4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Logos Section */
+    .cal-nav-hero-logos-section {
+      padding: 40px;
+      border-top: 1px solid #e8e8e8;
+      background: #f4f4f4;
+    }
+
+    .cal-nav-hero-logos-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-nav-hero-trusted-text {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.4;
+      max-width: 120px;
+    }
+
+    .cal-nav-hero-company-logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #242424;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cal-nav-hero-company-logo.storyblok {
+      color: #09b3af;
+    }
+
+    .cal-nav-hero-company-logo.angellist {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.raycast {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.vercel {
+      color: #242424;
+    }
+
+    .cal-nav-hero-company-logo.supabase {
+      color: #3ecf8e;
+    }
+
+    /* SVG Icons */
+    .cal-nav-hero-svg-icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+/* === Section: 01-logos === */
+.cal-logos-section {
+      background: #ffffff;
+      padding: 40px 0 60px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-logos-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cal-logos-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .cal-logos-text {
+      flex-shrink: 0;
+      max-width: 180px;
+    }
+
+    .cal-logos-text p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #6b7280;
+    }
+
+    .cal-logos-grid {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 48px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .cal-logos-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-logos-logo-supabase {
+      font-size: 20px;
+    }
+
+    .cal-logos-logo-supabase::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #3ecf8e 50%, #1a1a1a 50%);
+      transform: rotate(-45deg);
+      margin-right: 4px;
+    }
+
+    .cal-logos-logo-rio {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .cal-logos-logo-deel {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-logos-logo-deel span {
+      display: inline-block;
+    }
+
+    .cal-logos-logo-framer {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cal-logos-framer-icon {
+      width: 18px;
+      height: 18px;
+      position: relative;
+    }
+
+    .cal-logos-framer-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid #000;
+    }
+
+    .cal-logos-framer-icon::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 18px;
+      height: 9px;
+      background: #000;
+    }
+
+    .cal-logos-logo-ramp {
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .cal-logos-ramp-arrow {
+      display: inline-block;
+      width: 20px;
+      height: 16px;
+      position: relative;
+      margin-left: 2px;
+    }
+
+    .cal-logos-ramp-arrow::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 14px;
+      height: 2px;
+      background: #84cc16;
+      transform: translateY(-50%);
+    }
+
+    .cal-logos-ramp-arrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #84cc16;
+      border-right: 2px solid #84cc16;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .cal-logos-logo-planetscale {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-logos-planetscale-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+    }
+
+    .cal-logos-planetscale-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .cal-logos-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .cal-logos-text {
+        max-width: 100%;
+      }
+
+      .cal-logos-grid {
+        justify-content: center;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cal-logos-grid {
+        gap: 24px;
+      }
+
+      .cal-logos-logo {
+        font-size: 16px;
+      }
+    }
+
+/* === Section: 02-how-it-works === */
+.cal-how-it-works-section {
+      background: #f4f4f4;
+      padding: 80px 24px 100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-how-it-works-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-how-it-works-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .cal-how-it-works-badge-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+    }
+
+    .cal-how-it-works-badge-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    .cal-how-it-works-title {
+      text-align: center;
+      font-size: 56px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 20px;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .cal-how-it-works-subtitle {
+      text-align: center;
+      font-size: 20px;
+      color: #6b7280;
+      margin: 0 0 40px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .cal-how-it-works-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+
+    .cal-how-it-works-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #000000;
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cal-how-it-works-btn-primary:hover {
+      background: #242424;
+    }
+
+    .cal-how-it-works-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid #e5e5e5;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .cal-how-it-works-btn-secondary:hover {
+      background: #f9f9f9;
+      border-color: #d1d5db;
+    }
+
+    .cal-how-it-works-btn-arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal-how-it-works-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .cal-how-it-works-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .cal-how-it-works-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 12px;
+    }
+
+    .cal-how-it-works-card-text {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+
+    .cal-how-it-works-card-demo {
+      background: #f9fafb;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .cal-how-it-works-demo-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 16px;
+    }
+
+    .cal-how-it-works-demo-label {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0 0 8px;
+      font-weight: 500;
+    }
+
+    .cal-how-it-works-demo-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      background: #ffffff;
+      font-size: 15px;
+      color: #242424;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+    }
+
+    .cal-how-it-works-booking-preview {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .cal-how-it-works-booking-url {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    .cal-how-it-works-booking-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .cal-how-it-works-booking-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f3e8d7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    .cal-how-it-works-booking-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cal-how-it-works-booking-name {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cal-how-it-works-booking-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 8px;
+    }
+
+    .cal-how-it-works-booking-desc {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .cal-how-it-works-section {
+        padding: 60px 20px 80px;
+      }
+
+      .cal-how-it-works-title {
+        font-size: 36px;
+        letter-spacing: -1px;
+      }
+
+      .cal-how-it-works-subtitle {
+        font-size: 17px;
+      }
+
+      .cal-how-it-works-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cal-how-it-works-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+/* === Section: 03-benefits === */
+.cal-benefits-section {
+      background: #f4f4f4;
+      padding: 40px 24px 80px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-benefits-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .cal-benefits-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal-benefits-card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 16px 0;
+      line-height: 1.3;
+    }
+
+    .cal-benefits-card-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #6b7280;
+      margin: 0 0 24px 0;
+    }
+
+    .cal-benefits-card-visual {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Calendar overlay toggle */
+    .cal-benefits-toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cal-benefits-toggle {
+      width: 44px;
+      height: 24px;
+      background: #000000;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cal-benefits-toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ffffff;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    .cal-benefits-toggle-label {
+      font-size: 14px;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    .cal-benefits-time-toggle {
+      display: flex;
+      background: #f4f4f4;
+      border-radius: 8px;
+      padding: 4px;
+      margin-left: auto;
+    }
+
+    .cal-benefits-time-btn {
+      padding: 4px 12px;
+      font-size: 13px;
+      color: #6b7280;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cal-benefits-time-btn.active {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Calendar grid */
+    .cal-benefits-calendar {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .cal-benefits-calendar-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .cal-benefits-calendar-day {
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .cal-benefits-calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      min-height: 180px;
+      position: relative;
+    }
+
+    .cal-benefits-calendar-col {
+      border-right: 1px solid #f3f4f6;
+      position: relative;
+      min-height: 180px;
+    }
+
+    .cal-benefits-calendar-col:last-child {
+      border-right: none;
+    }
+
+    .cal-benefits-event {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+
+    .cal-benefits-event-orange {
+      background: #fed7aa;
+      border-left: 3px solid #f97316;
+    }
+
+    .cal-benefits-event-purple {
+      background: #e9d5ff;
+      border-left: 3px solid #a855f7;
+    }
+
+    .cal-benefits-event-title {
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 2px;
+    }
+
+    .cal-benefits-event-time {
+      color: #6b7280;
+      font-size: 10px;
+    }
+
+    /* Notification card */
+    .cal-benefits-notification {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 360px;
+      margin-top: 40px;
+    }
+
+    .cal-benefits-notification-icon {
+      width: 40px;
+      height: 40px;
+      background: #000000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .cal-benefits-notification-content {
+      flex: 1;
+    }
+
+    .cal-benefits-notification-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0 0 2px 0;
+    }
+
+    .cal-benefits-notification-text {
+      font-size: 13px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cal-benefits-notification-time {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* Bottom tagline */
+    .cal-benefits-tagline {
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .cal-benefits-tagline h2 {
+      font-size: 48px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .cal-benefits-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-benefits-tagline h2 {
+        font-size: 32px;
+      }
+    }
+
+/* === Section: 04-benefits2 === */
+.cal-benefits2-section {
+      background: #f4f4f4;
+      padding: 0 0 80px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-benefits2-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cal-benefits2-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .cal-benefits2-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .cal-benefits2-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: #f4f4f4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .cal-benefits2-icon {
+      width: 28px;
+      height: 28px;
+      color: #000000;
+    }
+
+    .cal-benefits2-card-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #000000;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Divider */
+    .cal-benefits2-divider {
+      position: relative;
+      height: 80px;
+      margin-top: 80px;
+    }
+
+    .cal-benefits2-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #e5e5e5;
+    }
+
+    .cal-benefits2-divider-cross-left,
+    .cal-benefits2-divider-cross-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: #d0d0d0;
+    }
+
+    .cal-benefits2-divider-cross-left {
+      left: 12%;
+    }
+
+    .cal-benefits2-divider-cross-right {
+      right: 12%;
+    }
+
+    /* AI Agents Section */
+    .cal-benefits2-agents {
+      background: linear-gradient(to bottom, #f4f4f4 0%, #e8e8e8 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .cal-benefits2-agents-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000000;
+      margin-bottom: 24px;
+    }
+
+    .cal-benefits2-agents-badge-icon {
+      width: 16px;
+      height: 16px;
+      color: #888888;
+    }
+
+    .cal-benefits2-agents-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 0 0;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-benefits2-agents-title-highlight {
+      display: block;
+      background: linear-gradient(90deg, #9b7bff 0%, #c4a3ff 50%, #a8c4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+    }
+
+    .cal-benefits2-agents-description {
+      font-size: 18px;
+      color: #888888;
+      max-width: 540px;
+      margin: 24px auto 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .cal-benefits2-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .cal-benefits2-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-benefits2-agents-title {
+        font-size: 32px;
+      }
+    }
+
+/* === Section: 05-features === */
+.cal-features-section {
+      background-color: #f4f4f4;
+      padding: 0 24px 80px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cal-features-content {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cal-features-description {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #6b7280;
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+
+    .cal-features-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cal-features-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background-color: #6366f1;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .cal-features-btn-primary:hover {
+      background-color: #4f46e5;
+    }
+
+    .cal-features-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background-color: #ffffff;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .cal-features-btn-secondary:hover {
+      border-color: #d1d5db;
+      background-color: #fafafa;
+    }
+
+    .cal-features-btn-secondary svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal-features-video-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .cal-features-video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-features-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .cal-features-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+    }
+
+    .cal-features-video-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      z-index: 2;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-features-video-subtitle {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 700;
+      font-style: italic;
+      background: linear-gradient(90deg, #a78bfa 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      z-index: 2;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-features-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cal-features-play-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .cal-features-play-button svg {
+      width: 32px;
+      height: 32px;
+      fill: #ffffff;
+      margin-left: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .cal-features-section {
+        padding: 0 16px 60px;
+      }
+
+      .cal-features-description {
+        font-size: 16px;
+      }
+
+      .cal-features-buttons {
+        flex-direction: column;
+      }
+
+      .cal-features-btn-primary,
+      .cal-features-btn-secondary {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .cal-features-play-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .cal-features-play-button svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+/* === Section: 06-ai === */
+.cal-ai-section {
+  background-color: #f4f4f4;
+  padding: 80px 20px 120px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.cal-ai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cal-ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 24px;
+}
+
+.cal-ai-badge-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.cal-ai-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cal-ai-subheading {
+  font-size: 18px;
+  color: #666;
+  margin: 0 auto 60px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.cal-ai-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.cal-ai-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+}
+
+.cal-ai-card-center {
+  width: 420px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.cal-ai-card-side {
+  width: 320px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.cal-ai-card-left {
+  margin-right: -40px;
+}
+
+.cal-ai-card-right {
+  margin-left: -40px;
+}
+
+/* Corner decorations */
+.cal-ai-card-side::before,
+.cal-ai-card-side::after {
+  content: '+';
+  position: absolute;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.cal-ai-card-side::before {
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cal-ai-card-side::after {
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cal-ai-card-center::before,
+.cal-ai-card-center::after {
+  content: '+';
+  position: absolute;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.cal-ai-card-center::before {
+  top: -20px;
+  left: -20px;
+}
+
+.cal-ai-card-center::after {
+  top: -20px;
+  right: -20px;
+}
+
+.cal-ai-quote {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 32px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.cal-ai-card-side .cal-ai-quote {
+  color: #666;
+}
+
+.cal-ai-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cal-ai-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e5e5;
+  flex-shrink: 0;
+}
+
+.cal-ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cal-ai-avatar-placeholder {
+  background: #ddd;
+}
+
+.cal-ai-avatar-navi {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: lowercase;
+}
+
+.cal-ai-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cal-ai-author-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.cal-ai-card-side .cal-ai-author-name {
+  color: #999;
+}
+
+.cal-ai-author-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.cal-ai-card-side .cal-ai-author-title {
+  color: #aaa;
+}
+
+/* Grid decoration lines */
+.cal-ai-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1080px;
+  height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 540px), #e5e5e5 calc(50% - 540px), #e5e5e5 calc(50% - 539px), transparent calc(50% - 539px)),
+    linear-gradient(90deg, transparent calc(50% + 539px), #e5e5e5 calc(50% + 539px), #e5e5e5 calc(50% + 540px), transparent calc(50% + 540px));
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .cal-ai-card-side {
+    display: none;
+  }
+
+  .cal-ai-card-center {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cal-ai-heading {
+    font-size: 32px;
+  }
+
+  .cal-ai-subheading {
+    font-size: 16px;
+  }
+
+  .cal-ai-quote {
+    font-size: 18px;
+  }
+}
+
+/* === Section: 07-testimonials === */
+.cal-testimonials-section {
+      background: #f4f4f4;
+      padding: 80px 24px 100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cal-testimonials-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000000;
+      margin-bottom: 24px;
+    }
+
+    .cal-testimonials-badge-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-testimonials-heading {
+      font-size: 48px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 16px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-testimonials-subheading {
+      font-size: 18px;
+      color: #6b7280;
+      margin: 0 0 32px;
+      line-height: 1.5;
+    }
+
+    .cal-testimonials-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+
+    .cal-testimonials-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #000000;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cal-testimonials-btn-primary:hover {
+      background: #1a1a1a;
+    }
+
+    .cal-testimonials-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .cal-testimonials-btn-secondary:hover {
+      background: #f9fafb;
+      border-color: #d1d5db;
+    }
+
+    .cal-testimonials-btn-arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cal-testimonials-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .cal-testimonials-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cal-testimonials-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .cal-testimonials-avatar-1 {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .cal-testimonials-avatar-2 {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .cal-testimonials-avatar-3 {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .cal-testimonials-avatar-4 {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .cal-testimonials-avatar-5 {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    }
+
+    .cal-testimonials-avatar-6 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .cal-testimonials-user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal-testimonials-user-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000000;
+      margin: 0;
+    }
+
+    .cal-testimonials-user-handle {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cal-testimonials-twitter-icon {
+      margin-left: auto;
+      color: #1da1f2;
+    }
+
+    .cal-testimonials-card-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0;
+    }
+
+    .cal-testimonials-highlight {
+      color: #000000;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .cal-testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cal-testimonials-section {
+        padding: 60px 20px 80px;
+      }
+
+      .cal-testimonials-heading {
+        font-size: 36px;
+      }
+
+      .cal-testimonials-subheading {
+        font-size: 16px;
+      }
+
+      .cal-testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-testimonials-buttons {
+        flex-direction: column;
+      }
+    }
+
+/* === Section: 08-wall-of-love === */
+.cal-wall-of-love-section {
+      background: #f9fafb;
+      padding: 80px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-wall-of-love-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cal-wall-of-love-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .cal-wall-of-love-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cal-wall-of-love-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .cal-wall-of-love-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .cal-wall-of-love-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-wall-of-love-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cal-wall-of-love-avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .cal-wall-of-love-user-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cal-wall-of-love-name-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-wall-of-love-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: #000000;
+      line-height: 1.3;
+    }
+
+    .cal-wall-of-love-verified {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .cal-wall-of-love-handle {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+
+    .cal-wall-of-love-title {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .cal-wall-of-love-content {
+      font-size: 15px;
+      color: #000000;
+      line-height: 1.5;
+    }
+
+    .cal-wall-of-love-content p {
+      margin: 0 0 12px 0;
+    }
+
+    .cal-wall-of-love-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cal-wall-of-love-link {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+
+    .cal-wall-of-love-link:hover {
+      text-decoration: underline;
+    }
+
+    .cal-wall-of-love-twitter-icon {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .cal-wall-of-love-twitter-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #9ca3af;
+    }
+
+    @media (max-width: 900px) {
+      .cal-wall-of-love-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cal-wall-of-love-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-wall-of-love-section {
+        padding: 60px 0;
+      }
+    }
+
+/* === Section: 09-cta === */
+/* CTA Section Styles */
+.cal-cta-section {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f4f4f4;
+}
+
+/* Trusted By Section */
+.cal-cta-trusted-container {
+  background: #fff;
+  padding: 40px 24px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.cal-cta-trusted-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.cal-cta-trusted-text {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+.cal-cta-logos {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.cal-cta-logo {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.cal-cta-logo:hover {
+  opacity: 1;
+}
+
+.cal-cta-logo-svg {
+  height: 24px;
+  width: auto;
+}
+
+.cal-cta-logo-mercury {
+  height: 26px;
+}
+
+.cal-cta-logo-coinbase {
+  height: 22px;
+}
+
+/* Main CTA Block */
+.cal-cta-main {
+  padding: 24px;
+}
+
+.cal-cta-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f9fafb;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 40px 120px;
+}
+
+/* Grid Pattern Background */
+.cal-cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cal-cta-grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(500px) rotateX(30deg);
+}
+
+/* Content */
+.cal-cta-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.cal-cta-headline {
+  font-size: 52px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 32px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Buttons */
+.cal-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.cal-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.cal-cta-btn-primary {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.cal-cta-btn-primary:hover {
+  background: #333;
+}
+
+.cal-cta-btn-secondary {
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #e5e5e5;
+}
+
+.cal-cta-btn-secondary:hover {
+  background: #f5f5f5;
+  border-color: #d1d1d1;
+}
+
+/* Badges */
+.cal-cta-badges {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cal-cta-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Product Hunt Badges */
+.cal-cta-badge-ph {
+  position: relative;
+}
+
+.cal-cta-ph-wreath {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-cta-wreath-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cal-cta-ph-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.cal-cta-ph-label {
+  font-size: 9px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cal-cta-ph-rank {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Review Badges */
+.cal-cta-badge-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.cal-cta-stars-svg {
+  width: 70px;
+  height: 14px;
+}
+
+.cal-cta-review-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cal-cta-trusted-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .cal-cta-logos {
+    justify-content: center;
+  }
+
+  .cal-cta-headline {
+    font-size: 36px;
+  }
+
+  .cal-cta-badges {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cal-cta-headline {
+    font-size: 28px;
+  }
+
+  .cal-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cal-cta-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+/* === Section: 10-footer === */
+.cal-footer-section {
+  background-color: #f4f4f4;
+  padding: 80px 0 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cal-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 60px;
+}
+
+.cal-footer-brand-column {
+  flex: 0 0 360px;
+  max-width: 360px;
+}
+
+.cal-footer-logo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+.cal-footer-trademark {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.cal-footer-badges {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.cal-footer-badge {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-footer-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cal-footer-mission {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.cal-footer-status-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  align-items: center;
+}
+
+.cal-footer-language-btn {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cal-footer-status {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+}
+
+.cal-footer-status-text {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.cal-footer-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.cal-footer-downloads-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 16px;
+}
+
+.cal-footer-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.cal-footer-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cal-footer-download-btn:hover {
+  border-color: #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.cal-footer-reviews {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.cal-footer-review-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  min-width: 120px;
+}
+
+.cal-footer-review-g2 {
+  background: linear-gradient(135deg, #ff492c 0%, #ff6b4a 100%);
+  color: #fff;
+}
+
+.cal-footer-review-capterra {
+  background: linear-gradient(135deg, #1aa37a 0%, #2bc48a 100%);
+  color: #fff;
+}
+
+.cal-footer-review-stars {
+  display: flex;
+  font-size: 14px;
+  color: #fff;
+}
+
+.cal-footer-star,
+.cal-footer-star-half {
+  margin-right: 1px;
+}
+
+.cal-footer-review-text {
+  font-size: 10px;
+  line-height: 1.3;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.cal-footer-review-logo {
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.cal-footer-g2-logo {
+  font-family: serif;
+}
+
+.cal-footer-help {
+  font-size: 14px;
+  color: #666;
+}
+
+.cal-footer-help a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.cal-footer-help a:hover {
+  text-decoration: none;
+}
+
+.cal-footer-links {
+  flex: 1;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.cal-footer-link-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.cal-footer-column-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 20px;
+}
+
+.cal-footer-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cal-footer-link-list li {
+  margin-bottom: 12px;
+}
+
+.cal-footer-link-list a {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cal-footer-link-list a:hover {
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .cal-footer-container {
+    flex-direction: column;
+  }
+
+  .cal-footer-brand-column {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .cal-footer-links {
+    flex-wrap: wrap;
+  }
+
+  .cal-footer-link-column {
+    flex: 0 0 calc(50% - 20px);
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cal-footer-section {
+    padding: 60px 0 40px;
+  }
+
+  .cal-footer-container {
+    padding: 0 20px;
+  }
+
+  .cal-footer-link-column {
+    flex: 0 0 100%;
+  }
+
+  .cal-footer-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cal-footer-reviews {
+    flex-direction: column;
+  }
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-nav-hero -->
+  <div class="cal-nav-hero-container">
+    <!-- Navigation -->
+    <nav class="cal-nav-hero-nav">
+      <a href="#" class="cal-nav-hero-logo">Cal<span class="cal-nav-hero-logo-dot">.com</span></a>
+
+      <ul class="cal-nav-hero-nav-links">
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Solutions
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Enterprise</a></li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Cal.ai</a></li>
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Developer
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="cal-nav-hero-nav-link">
+            Resources
+            <svg class="cal-nav-hero-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#" class="cal-nav-hero-nav-link">Pricing</a></li>
+      </ul>
+
+      <div class="cal-nav-hero-nav-right">
+        <a href="#" class="cal-nav-hero-sign-in">Sign in</a>
+        <a href="#" class="cal-nav-hero-get-started">
+          Get started
+          <svg class="cal-nav-hero-get-started-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="cal-nav-hero-main">
+      <div class="cal-nav-hero-card" style="display: flex; gap: 40px; padding: 50px;">
+        <!-- Left Content -->
+        <div class="cal-nav-hero-left">
+          <div class="cal-nav-hero-badge">
+            Cal.com launches v5.9
+            <svg class="cal-nav-hero-badge-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+
+          <h1 class="cal-nav-hero-heading">The better way to schedule your meetings</h1>
+
+          <p class="cal-nav-hero-description">A fully customizable scheduling software for individuals, businesses taking calls and developers building scheduling platforms where users meet users.</p>
+
+          <div class="cal-nav-hero-cta-buttons">
+            <button class="cal-nav-hero-google-btn">
+              <svg class="cal-nav-hero-google-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Sign up with Google
+            </button>
+
+            <button class="cal-nav-hero-email-btn">
+              Sign up with email
+              <svg class="cal-nav-hero-email-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+
+          <p class="cal-nav-hero-no-credit">No credit card required</p>
+        </div>
+
+        <!-- Right Content - Calendar Card -->
+        <div class="cal-nav-hero-right">
+          <div class="cal-nav-hero-calendar-card">
+            <div class="cal-nav-hero-appointment-info">
+              <div class="cal-nav-hero-doctor-avatar">
+                <svg viewBox="0 0 40 40" width="40" height="40">
+                  <circle cx="20" cy="14" r="8" fill="#d4a574"/>
+                  <circle cx="20" cy="45" r="18" fill="#f5e6d3"/>
+                  <path d="M12 10 Q20 0 28 10" fill="#4a3728"/>
+                </svg>
+              </div>
+              <p class="cal-nav-hero-doctor-name">Dr. Sarah Smith</p>
+              <h3 class="cal-nav-hero-appointment-title">Medical Appointment</h3>
+              <p class="cal-nav-hero-appointment-desc">Welcome to Sacred Hearth Hospital. Please pick a time for your appointment.</p>
+
+              <div class="cal-nav-hero-duration-selector">
+                <svg class="cal-nav-hero-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+                <button class="cal-nav-hero-duration-option">15m</button>
+                <button class="cal-nav-hero-duration-option">30m</button>
+                <button class="cal-nav-hero-duration-option">45m</button>
+                <button class="cal-nav-hero-duration-option active">1h</button>
+              </div>
+
+              <div class="cal-nav-hero-location">
+                <svg class="cal-nav-hero-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                22 Street, Chicago
+              </div>
+
+              <div class="cal-nav-hero-timezone">
+                <svg class="cal-nav-hero-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                Asia/Singapore
+                <svg class="cal-nav-hero-timezone-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="cal-nav-hero-calendar">
+              <div class="cal-nav-hero-calendar-header">
+                <span class="cal-nav-hero-calendar-month">May</span>
+                <span class="cal-nav-hero-calendar-year">2025</span>
+              </div>
+
+              <div class="cal-nav-hero-calendar-days">
+                <span class="cal-nav-hero-calendar-day-name">SUN</span>
+                <span class="cal-nav-hero-calendar-day-name">MON</span>
+                <span class="cal-nav-hero-calendar-day-name">TUE</span>
+                <span class="cal-nav-hero-calendar-day-name">WED</span>
+                <span class="cal-nav-hero-calendar-day-name">THU</span>
+              </div>
+
+              <div class="cal-nav-hero-calendar-dates">
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date empty"></span>
+                <span class="cal-nav-hero-calendar-date highlighted">1</span>
+                <span class="cal-nav-hero-calendar-date">2</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">5</span>
+                <span class="cal-nav-hero-calendar-date highlighted">6</span>
+                <span class="cal-nav-hero-calendar-date">7</span>
+                <span class="cal-nav-hero-calendar-date highlighted">8</span>
+                <span class="cal-nav-hero-calendar-date">9</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">12</span>
+                <span class="cal-nav-hero-calendar-date">13</span>
+                <span class="cal-nav-hero-calendar-date">14</span>
+                <span class="cal-nav-hero-calendar-date highlighted">15</span>
+                <span class="cal-nav-hero-calendar-date">16</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">19</span>
+                <span class="cal-nav-hero-calendar-date highlighted">20</span>
+                <span class="cal-nav-hero-calendar-date">21</span>
+                <span class="cal-nav-hero-calendar-date highlighted">22</span>
+                <span class="cal-nav-hero-calendar-date">23</span>
+
+                <span class="cal-nav-hero-calendar-date dimmed">26</span>
+                <span class="cal-nav-hero-calendar-date selected">27</span>
+                <span class="cal-nav-hero-calendar-date">28</span>
+                <span class="cal-nav-hero-calendar-date highlighted">29</span>
+                <span class="cal-nav-hero-calendar-date">30</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="cal-nav-hero-trust">
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-trustpilot-stars">
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="cal-nav-hero-trustpilot-star" style="background: linear-gradient(90deg, #00b67a 50%, #dcdce6 50%);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="cal-nav-hero-trustpilot-logo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#00b67a">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Trustpilot
+              </div>
+            </div>
+
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-stars" style="gap: 4px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff6b35">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="cal-nav-hero-producthunt-logo">P</div>
+            </div>
+
+            <div class="cal-nav-hero-trust-item">
+              <div class="cal-nav-hero-stars" style="gap: 4px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbc05">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                  <defs>
+                    <linearGradient id="half-star">
+                      <stop offset="50%" stop-color="#fbbc05"/>
+                      <stop offset="50%" stop-color="#ddd"/>
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#half-star)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="cal-nav-hero-google-logo">G</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Logos Section -->
+    <div class="cal-nav-hero-logos-section">
+      <div class="cal-nav-hero-logos-inner">
+        <span class="cal-nav-hero-trusted-text">Trusted by fast-growing companies around the world</span>
+
+        <span class="cal-nav-hero-company-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#09b3af">
+            <rect width="24" height="24" rx="4"/>
+          </svg>
+          storyblok
+        </span>
+
+        <span class="cal-nav-hero-company-logo angellist">AngelList</span>
+
+        <span class="cal-nav-hero-company-logo raycast">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 19l3-3-3-3v6zm14-14l-3 3 3 3V5zM5 5v6l3-3-3-3zm14 14v-6l-3 3 3 3z"/>
+          </svg>
+          Raycast
+        </span>
+
+        <span class="cal-nav-hero-company-logo vercel">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 19.5h20L12 2z"/>
+          </svg>
+          Vercel
+        </span>
+
+        <span class="cal-nav-hero-company-logo" style="color: #3ecf8e;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
+          </svg>
+          supabase
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: 01-logos -->
+  <div class="cal-logos-container">
+    <div class="cal-logos-content">
+      <div class="cal-logos-text">
+        <p>Trusted by fast-growing companies around the world</p>
+      </div>
+      <div class="cal-logos-grid">
+        <!-- Supabase -->
+        <div class="cal-logos-logo cal-logos-logo-supabase">
+          <svg width="20" height="20" viewBox="0 0 109 113" fill="none">
+            <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627H99.1935C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="url(#paint0_linear)"/>
+            <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627H99.1935C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="url(#paint1_linear)" fill-opacity="0.2"/>
+            <path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E"/>
+            <defs>
+              <linearGradient id="paint0_linear" x1="53.9738" y1="54.974" x2="94.1635" y2="71.8295" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#249361"/>
+                <stop offset="1" stop-color="#3ECF8E"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear" x1="36.1558" y1="30.578" x2="54.4844" y2="65.0806" gradientUnits="userSpaceOnUse">
+                <stop/>
+                <stop offset="1" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>supabase</span>
+        </div>
+
+        <!-- Rio -->
+        <div class="cal-logos-logo cal-logos-logo-rio">
+          Rio
+        </div>
+
+        <!-- Deel -->
+        <div class="cal-logos-logo cal-logos-logo-deel">
+          deel.
+        </div>
+
+        <!-- Framer -->
+        <div class="cal-logos-logo cal-logos-logo-framer">
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+            <path d="M0 16H8L16 24H0V16Z" fill="black"/>
+            <path d="M0 8H16L8 16H0V8Z" fill="black"/>
+            <path d="M0 0H16V8H8L0 0Z" fill="black"/>
+          </svg>
+          <span>Framer</span>
+        </div>
+
+        <!-- Ramp -->
+        <div class="cal-logos-logo cal-logos-logo-ramp">
+          <span>ramp</span>
+          <svg width="24" height="16" viewBox="0 0 24 16" fill="none">
+            <path d="M4 8H18M18 8L13 3M18 8L13 13" stroke="#84cc16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- PlanetScale -->
+        <div class="cal-logos-logo cal-logos-logo-planetscale">
+          <svg width="24" height="24" viewBox="0 0 256 256" fill="none">
+            <path d="M256 128C256 198.692 198.692 256 128 256C114.564 256 101.634 254.006 89.44 250.306L205.218 134.528C207.732 132.014 209.132 128.612 209.132 125.066C209.132 121.52 207.732 118.118 205.218 115.604L140.396 50.782C136.066 46.452 132.668 43.054 128 43.054C123.332 43.054 119.934 46.452 115.604 50.782L50.782 115.604C46.452 119.934 43.054 123.332 43.054 128C43.054 132.668 46.452 136.066 50.782 140.396L115.604 205.218C118.118 207.732 121.52 209.132 125.066 209.132C128.612 209.132 132.014 207.732 134.528 205.218L250.306 89.44C254.006 101.634 256 114.564 256 128Z" fill="black"/>
+            <path d="M0 128C0 57.308 57.308 0 128 0C140.046 0 151.67 1.71 162.68 4.91L4.91 162.68C1.71 151.67 0 140.046 0 128Z" fill="black"/>
+          </svg>
+          <span>PlanetScale</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-how-it-works -->
+  <div class="cal-how-it-works-container">
+    <div class="cal-how-it-works-badge">
+      <span class="cal-how-it-works-badge-inner">
+        <svg class="cal-how-it-works-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+        Benefits
+      </span>
+    </div>
+
+    <h2 class="cal-how-it-works-title">Your all-purpose scheduling app</h2>
+    <p class="cal-how-it-works-subtitle">Discover a variety of our advanced features. Unlimited and free for individuals.</p>
+
+    <div class="cal-how-it-works-buttons">
+      <a href="#" class="cal-how-it-works-btn-primary">
+        Get started
+        <svg class="cal-how-it-works-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+      <a href="#" class="cal-how-it-works-btn-secondary">
+        Talk to sales
+        <svg class="cal-how-it-works-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="cal-how-it-works-cards">
+      <div class="cal-how-it-works-card">
+        <h3 class="cal-how-it-works-card-title">Avoid meeting overload</h3>
+        <p class="cal-how-it-works-card-text">Only get booked when you want to. Set daily, weekly or monthly limits and add buffers around your events to allow you to focus or take a break.</p>
+        <div class="cal-how-it-works-card-demo">
+          <h4 class="cal-how-it-works-demo-title">Notice and buffers</h4>
+          <p class="cal-how-it-works-demo-label">Minimum notice</p>
+          <select class="cal-how-it-works-demo-select">
+            <option>1 hour</option>
+            <option>2 hours</option>
+            <option>4 hours</option>
+            <option>1 day</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cal-how-it-works-card">
+        <h3 class="cal-how-it-works-card-title">Stand out with a custom booking link</h3>
+        <p class="cal-how-it-works-card-text">Customize your booking link so it's short and easy to remember for your bookers. No more long, complicated links one can easily forget.</p>
+        <div class="cal-how-it-works-booking-preview">
+          <span class="cal-how-it-works-booking-url">cal.com/keith</span>
+          <div class="cal-how-it-works-booking-header">
+            <div class="cal-how-it-works-booking-avatar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#8b7355">
+                <circle cx="12" cy="8" r="5"></circle>
+                <path d="M20 21a8 8 0 10-16 0"></path>
+              </svg>
+            </div>
+            <p class="cal-how-it-works-booking-name">Keith Williams</p>
+          </div>
+          <h4 class="cal-how-it-works-booking-title">Engineering Deep-Dive</h4>
+          <p class="cal-how-it-works-booking-desc">Have technical questions or want to dive into Cal.com's architecture, infrastructure, or roadmap? Book a time for a deep technical session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-benefits -->
+  <div class="cal-benefits-container">
+    <div class="cal-benefits-cards">
+      <!-- Card 1: Streamline bookers experience -->
+      <div class="cal-benefits-card">
+        <h3 class="cal-benefits-card-title">Streamline your bookers' experience</h3>
+        <p class="cal-benefits-card-description">
+          Let your bookers overlay their calendar, receive booking confirmations via text or email, get events added to their calendar, and allow them to reschedule with ease.
+        </p>
+        <div class="cal-benefits-card-visual">
+          <div class="cal-benefits-toggle-row">
+            <div class="cal-benefits-toggle"></div>
+            <span class="cal-benefits-toggle-label">Overlay my calendar</span>
+            <div class="cal-benefits-time-toggle">
+              <button class="cal-benefits-time-btn active">12h</button>
+              <button class="cal-benefits-time-btn">24h</button>
+            </div>
+          </div>
+          <div class="cal-benefits-calendar">
+            <div class="cal-benefits-calendar-header">
+              <div class="cal-benefits-calendar-day">Wed 06</div>
+              <div class="cal-benefits-calendar-day">Thu 07</div>
+              <div class="cal-benefits-calendar-day">Fri 08</div>
+              <div class="cal-benefits-calendar-day">Sat 09</div>
+              <div class="cal-benefits-calendar-day">Sun 10</div>
+            </div>
+            <div class="cal-benefits-calendar-grid">
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 60px;">
+                  <div class="cal-benefits-event-title">Lunch date</div>
+                  <div class="cal-benefits-event-time">12 PM - 1 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-orange" style="top: 10px;">
+                  <div class="cal-benefits-event-title">Coffee</div>
+                  <div class="cal-benefits-event-time">11 AM - 12 PM</div>
+                </div>
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 100px;">
+                  <div class="cal-benefits-event-title">Design conference</div>
+                  <div class="cal-benefits-event-time">1 PM - 3 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col">
+                <div class="cal-benefits-event cal-benefits-event-purple" style="top: 80px;">
+                  <div class="cal-benefits-event-title">Design conference</div>
+                  <div class="cal-benefits-event-time">12 PM - 2 PM</div>
+                </div>
+              </div>
+              <div class="cal-benefits-calendar-col"></div>
+              <div class="cal-benefits-calendar-col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Reduce no-shows -->
+      <div class="cal-benefits-card">
+        <h3 class="cal-benefits-card-title">Reduce no-shows with automated meeting reminders</h3>
+        <p class="cal-benefits-card-description">
+          Easily send sms or meeting reminder emails about bookings, and send automated follow-ups to gather any relevant information before the meeting.
+        </p>
+        <div class="cal-benefits-card-visual">
+          <div class="cal-benefits-notification">
+            <div class="cal-benefits-notification-icon">Cal</div>
+            <div class="cal-benefits-notification-content">
+              <p class="cal-benefits-notification-title">Meeting canceled</p>
+              <p class="cal-benefits-notification-text">James Carwell has just cancelled the meeting.</p>
+            </div>
+            <span class="cal-benefits-notification-time">Just now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-benefits-tagline">
+      <h2>...and so much more!</h2>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-benefits2 -->
+  <div class="cal-benefits2-container">
+    <div class="cal-benefits2-grid">
+      <!-- Row 1 -->
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <rect x="6" y="8" width="4" height="4" rx="0.5"/>
+            <line x1="14" y1="9" x2="18" y2="9"/>
+            <line x1="14" y1="13" x2="18" y2="13"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Accept payments</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="14" rx="2"/>
+            <circle cx="12" cy="11" r="2" fill="currentColor"/>
+            <line x1="16" y1="21" x2="8" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Built-in video<br>conferencing</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="14" height="14" rx="2"/>
+            <path d="M21 8v8"/>
+            <circle cx="10" cy="12" r="2"/>
+            <path d="M17 5h2a2 2 0 0 1 2 2"/>
+            <path d="M17 19h2a2 2 0 0 0 2-2"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Short booking links</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Privacy first</h3>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="600" fill="currentColor" stroke="none">A</text>
+            <text x="7" y="10" text-anchor="middle" font-size="7" font-weight="500" fill="currentColor" stroke="none">文</text>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">65+ languages</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="14" rx="2"/>
+            <path d="M21 13l-4-4"/>
+            <path d="M17 13l4-4"/>
+            <line x1="7" y1="21" x2="17" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Easy embeds</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="6" height="6" rx="1"/>
+            <rect x="14" y="4" width="6" height="6" rx="1"/>
+            <rect x="4" y="14" width="6" height="6" rx="1"/>
+            <rect x="14" y="14" width="6" height="6" rx="1"/>
+            <circle cx="7" cy="7" r="1" fill="currentColor"/>
+            <circle cx="17" cy="7" r="1" fill="currentColor"/>
+            <circle cx="7" cy="17" r="1" fill="currentColor"/>
+            <circle cx="17" cy="17" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">All your favorite apps</h3>
+      </div>
+
+      <div class="cal-benefits2-card">
+        <div class="cal-benefits2-icon-wrapper">
+          <svg class="cal-benefits2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="14" rx="2"/>
+            <path d="M8 21h8"/>
+            <path d="M12 17v4"/>
+            <path d="M8 10l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3 class="cal-benefits2-card-title">Simple customization</h3>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="cal-benefits2-divider">
+      <svg class="cal-benefits2-divider-cross-left" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1">
+        <line x1="10" y1="2" x2="10" y2="18"/>
+        <line x1="2" y1="10" x2="18" y2="10"/>
+      </svg>
+      <svg class="cal-benefits2-divider-cross-right" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1">
+        <line x1="10" y1="2" x2="10" y2="18"/>
+        <line x1="2" y1="10" x2="18" y2="10"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- AI Agents Section -->
+  <div class="cal-benefits2-agents">
+    <div class="cal-benefits2-agents-badge">
+      <svg class="cal-benefits2-agents-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+      Cal.ai Agents
+    </div>
+    <h2 class="cal-benefits2-agents-title">
+      Supercharged scheduling with
+      <span class="cal-benefits2-agents-title-highlight">AI-powered calls</span>
+    </h2>
+    <p class="cal-benefits2-agents-description">
+      Turn scheduling into a conversation. Cal.ai uses lifelike agents to book meetings, send reminders and follow up all through natural phone calls that
+    </p>
+  </div>
+</section>
+
+  <!-- Section: 05-features -->
+  <div class="cal-features-container">
+    <div class="cal-features-content">
+      <p class="cal-features-description">
+        meetings, send reminders and follow up all through natural phone calls that boost conversions, reduce no-shows, and save time.
+      </p>
+      <div class="cal-features-buttons">
+        <a href="#" class="cal-features-btn-primary">Try AI scheduling</a>
+        <a href="#" class="cal-features-btn-secondary">
+          Learn more
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="cal-features-video-wrapper">
+      <div class="cal-features-video-container">
+        <div class="cal-features-stars">
+          <!-- Decorative stars -->
+          <span class="cal-features-star" style="top: 15%; left: 20%;"></span>
+          <span class="cal-features-star" style="top: 25%; left: 35%;"></span>
+          <span class="cal-features-star" style="top: 10%; left: 50%;"></span>
+          <span class="cal-features-star" style="top: 20%; left: 65%;"></span>
+          <span class="cal-features-star" style="top: 30%; left: 80%;"></span>
+          <span class="cal-features-star" style="top: 35%; left: 25%;"></span>
+          <span class="cal-features-star" style="top: 40%; left: 45%;"></span>
+          <span class="cal-features-star" style="top: 15%; left: 75%;"></span>
+          <span class="cal-features-star" style="top: 50%; left: 15%;"></span>
+          <span class="cal-features-star" style="top: 55%; left: 30%;"></span>
+          <span class="cal-features-star" style="top: 60%; left: 55%;"></span>
+          <span class="cal-features-star" style="top: 45%; left: 70%;"></span>
+          <span class="cal-features-star" style="top: 65%; left: 85%;"></span>
+          <span class="cal-features-star" style="top: 70%; left: 40%;"></span>
+          <span class="cal-features-star" style="top: 75%; left: 60%;"></span>
+          <span class="cal-features-star" style="top: 80%; left: 20%;"></span>
+          <span class="cal-features-star" style="top: 85%; left: 75%;"></span>
+          <span class="cal-features-star" style="top: 90%; left: 45%;"></span>
+        </div>
+        <div class="cal-features-video-title">Introducing</div>
+        <div class="cal-features-video-subtitle">AI-powered calls</div>
+        <button class="cal-features-play-button" aria-label="Play video">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 07-testimonials -->
+  <div class="cal-testimonials-container">
+    <div class="cal-testimonials-badge">
+      <span class="cal-testimonials-badge-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </span>
+      Wall of love
+    </div>
+
+    <h2 class="cal-testimonials-heading">See why our users love Cal.com</h2>
+    <p class="cal-testimonials-subheading">Read the impact we've had from those who matter most - our customers.</p>
+
+    <div class="cal-testimonials-buttons">
+      <a href="#" class="cal-testimonials-btn-primary">
+        Get started
+        <svg class="cal-testimonials-btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#" class="cal-testimonials-btn-secondary">
+        Talk to sales
+        <svg class="cal-testimonials-btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="cal-testimonials-grid">
+      <!-- Testimonial Card 1 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-1">M</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Michael Chen</p>
+            <p class="cal-testimonials-user-handle">@michaelchen</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          <span class="cal-testimonials-highlight">@calcom</span> has completely transformed how we schedule meetings. The open-source approach gives us the flexibility we need. Highly recommend!
+        </p>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-2">S</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Sarah Johnson</p>
+            <p class="cal-testimonials-user-handle">@sarahjdev</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          Finally, a scheduling tool that respects user privacy and doesn't lock you into a proprietary system. <span class="cal-testimonials-highlight">@calcom</span> is the future of scheduling.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-3">D</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">David Park</p>
+            <p class="cal-testimonials-user-handle">@davidpark_io</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          We migrated from Calendly to <span class="cal-testimonials-highlight">@calcom</span> and haven't looked back. The team event types and round-robin features are game changers.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 4 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-4">E</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Emma Wilson</p>
+            <p class="cal-testimonials-user-handle">@emmawilson</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          The API and integrations are incredible. We've built custom workflows that save our team hours every week. Thank you <span class="cal-testimonials-highlight">@calcom</span>!
+        </p>
+      </div>
+
+      <!-- Testimonial Card 5 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-5">A</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Alex Rivera</p>
+            <p class="cal-testimonials-user-handle">@alexrivera</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          Self-hosting <span class="cal-testimonials-highlight">@calcom</span> was a breeze. Full control over our data while maintaining all the features. This is how software should be.
+        </p>
+      </div>
+
+      <!-- Testimonial Card 6 -->
+      <div class="cal-testimonials-card">
+        <div class="cal-testimonials-card-header">
+          <div class="cal-testimonials-avatar cal-testimonials-avatar-6">J</div>
+          <div class="cal-testimonials-user-info">
+            <p class="cal-testimonials-user-name">Jordan Lee</p>
+            <p class="cal-testimonials-user-handle">@jordanlee_dev</p>
+          </div>
+          <svg class="cal-testimonials-twitter-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <p class="cal-testimonials-card-text">
+          The collective scheduling feature in <span class="cal-testimonials-highlight">@calcom</span> is perfect for our hiring process. Multiple interviewers, one seamless booking experience.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 08-wall-of-love -->
+  <div class="cal-wall-of-love-container">
+    <div class="cal-wall-of-love-grid">
+      <!-- Column 1 -->
+      <div class="cal-wall-of-love-column">
+        <!-- Ben -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar">
+              <div class="cal-wall-of-love-avatar-placeholder">B</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Ben</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@Suparnl</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Amazing. I've been sharing it with everyone I know. It's helped me create more events spontaneously, because of how smooth it is compared to Calendly and Harmonizely.</p>
+          </div>
+        </div>
+
+        <!-- Jeroen C. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar">
+              <div class="cal-wall-of-love-avatar-placeholder">J</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Jeroen C.</span>
+              </div>
+              <div class="cal-wall-of-love-title">Pre-incubator program manager</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>I came from calendly, where I had a lot of features I didn't need in a paid account. <a href="#" class="cal-wall-of-love-link">Cal.com</a>'s free account for a freelancer like me is great. It packs quite some features, including Google Analytics and workflows. Support has been very responsive in fixing things, big plus!</p>
+          </div>
+        </div>
+
+        <!-- Kent C. Dodds -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #e5e7eb;">
+              <div class="cal-wall-of-love-avatar-placeholder" style="color: #374151;">K</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Kent C. Dodds</span>
+                <svg class="cal-wall-of-love-verified" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#1d9bf0"/><path d="M9.5 14.25L6.75 11.5l1.06-1.06 1.69 1.69 4.69-4.69 1.06 1.06-5.75 5.75z" fill="#fff"/></svg>
+              </div>
+              <div class="cal-wall-of-love-handle">@kentcdodds</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>I just migrated from calendly to <a href="#" class="cal-wall-of-love-link">cal.com</a></p>
+            <p>I'm liking it so far. I wasn't particularly displeased with calendly. It's fine. But I like that cal is OSS and my sub to calendly was coming up for renewal so I thought I'd check it out. Looks good.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="cal-wall-of-love-column">
+        <!-- Tosin -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #10b981;">
+              <div class="cal-wall-of-love-avatar-placeholder">T</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Tosin</span>
+                <svg class="cal-wall-of-love-verified" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#1d9bf0"/><path d="M9.5 14.25L6.75 11.5l1.06-1.06 1.69 1.69 4.69-4.69 1.06 1.06-5.75 5.75z" fill="#fff"/></svg>
+              </div>
+              <div class="cal-wall-of-love-handle">@heisguy</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p><a href="#" class="cal-wall-of-love-link">@calcom</a> is the best thing I discovered this year.</p>
+          </div>
+        </div>
+
+        <!-- davidvkimball -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #6366f1;">
+              <div class="cal-wall-of-love-avatar-placeholder">D</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">davidvkimball</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Without a doubt the best calendar/scheduling application I have ever used. It has all of the advanced features I need while also being insanely intuitive and straightforward for both end-users and booking recipients. Love it!!</p>
+          </div>
+        </div>
+
+        <!-- Ant Wilson -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #f59e0b;">
+              <div class="cal-wall-of-love-avatar-placeholder">A</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Ant Wilson</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@AntWilson</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>(finally) made the move to <a href="#" class="cal-wall-of-love-link">@cal.com</a> after I couldn't find how to edit events in the calendly dashboard and I must say - dash is 10/10</p>
+            <p>Bravo <a href="#" class="cal-wall-of-love-link">@peer_rich</a> and team (I should have moved over years ago!)</p>
+            <p>OSS fam</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="cal-wall-of-love-column">
+        <!-- K.O.O -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #8b5cf6;">
+              <div class="cal-wall-of-love-avatar-placeholder">K</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">K.O.O</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@Dominus_Kelvin</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Okay I am moving from Calendly to <a href="#" class="cal-wall-of-love-link">Cal.com</a></p>
+          </div>
+        </div>
+
+        <!-- Aashish Upadhyay -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #ec4899;">
+              <div class="cal-wall-of-love-avatar-placeholder">A</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Aashish Upadhyay</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>There are so many app integrations available, offering a wide range of choices for video conferencing. Additionally, the built-in Cal Video feature is excellent as it allows you to seamlessly conduct video conferences directly in your browser, without the need to download and install any additional applications in your computer.</p>
+          </div>
+        </div>
+
+        <!-- JJ oss/acc -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #14b8a6;">
+              <div class="cal-wall-of-love-avatar-placeholder">J</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">JJ -- oss/acc</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@JosephJacks_</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Officially switching from <a href="#" class="cal-wall-of-love-link">@Calendly</a> to <a href="#" class="cal-wall-of-love-link">@calcom</a> ></p>
+          </div>
+        </div>
+
+        <!-- Francis Lacson -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #ef4444;">
+              <div class="cal-wall-of-love-avatar-placeholder">F</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Francis Lacson</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p><a href="#" class="cal-wall-of-love-link">Cal.com</a> has really upped the ante for scheduling tools! I knew right away, even when I started using it, that it was one step above the rest. It has an intuitive interface, flexibility in customization options, and seamless integration into my workflow that</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<style>
+.chronicle-templates-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-templates-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-templates-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-templates-showcase {
+  position: relative;
+}
+
+.chronicle-templates-carousel {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.chronicle-templates-track {
+  display: flex;
+  gap: 24px;
+  animation: chronicle-templates-scroll 35s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-templates-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-template-card {
+  min-width: 320px;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+
+.chronicle-template-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.chronicle-template-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-template-placeholder {
+  width: 90%;
+  height: 85%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-template-placeholder-content {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.chronicle-template-placeholder-line {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.chronicle-template-placeholder-line.title {
+  width: 70%;
+  height: 14px;
+}
+
+.chronicle-template-placeholder-line.subtitle {
+  width: 50%;
+  height: 8px;
+}
+
+.chronicle-template-placeholder-line.body {
+  width: 90%;
+}
+
+.chronicle-template-placeholder-block {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.chronicle-templates-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.chronicle-templates-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chronicle-templates-meta-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chronicle-templates-meta-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.chronicle-templates-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.chronicle-templates-nav-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chronicle-templates-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chronicle-templates-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+</style>
+
+<section class="chronicle-templates-section">
+  <div class="chronicle-templates-container">
+    <h2 class="chronicle-templates-title">Templates from the world's<br>best storytellers.</h2>
+
+    <div class="chronicle-templates-showcase">
+      <div class="chronicle-templates-carousel">
+        <div class="chronicle-templates-track">
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-templates-info">
+        <div class="chronicle-templates-meta">
+          <h5 class="chronicle-templates-meta-title">01. Pitch deck</h5>
+          <p class="chronicle-templates-meta-desc">Win over investors with a clear, compelling story of your vision.</p>
+        </div>
+        <div class="chronicle-templates-nav">
+          <button class="chronicle-templates-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="chronicle-templates-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

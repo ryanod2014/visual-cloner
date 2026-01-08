@@ -1,0 +1,382 @@
+<!-- Section: Wall of Love -->
+<section class="cal-wall-of-love-section">
+  <style>
+    .cal-wall-of-love-section {
+      background: #f9fafb;
+      padding: 80px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .cal-wall-of-love-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cal-wall-of-love-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .cal-wall-of-love-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cal-wall-of-love-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .cal-wall-of-love-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .cal-wall-of-love-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cal-wall-of-love-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cal-wall-of-love-avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .cal-wall-of-love-user-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cal-wall-of-love-name-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-wall-of-love-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: #000000;
+      line-height: 1.3;
+    }
+
+    .cal-wall-of-love-verified {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .cal-wall-of-love-handle {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+
+    .cal-wall-of-love-title {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .cal-wall-of-love-content {
+      font-size: 15px;
+      color: #000000;
+      line-height: 1.5;
+    }
+
+    .cal-wall-of-love-content p {
+      margin: 0 0 12px 0;
+    }
+
+    .cal-wall-of-love-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cal-wall-of-love-link {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+
+    .cal-wall-of-love-link:hover {
+      text-decoration: underline;
+    }
+
+    .cal-wall-of-love-twitter-icon {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .cal-wall-of-love-twitter-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #9ca3af;
+    }
+
+    @media (max-width: 900px) {
+      .cal-wall-of-love-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cal-wall-of-love-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cal-wall-of-love-section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+
+  <div class="cal-wall-of-love-container">
+    <div class="cal-wall-of-love-grid">
+      <!-- Column 1 -->
+      <div class="cal-wall-of-love-column">
+        <!-- Alex -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar">
+              <div class="cal-wall-of-love-avatar-placeholder">A</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Alex M.</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@alexm</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Just switched to <a href="#" class="cal-wall-of-love-link">@acme</a> and wow. The interface is so much cleaner than our old tool. I've been sharing it with everyone I know.</p>
+          </div>
+        </div>
+
+        <!-- Sarah K. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar">
+              <div class="cal-wall-of-love-avatar-placeholder">S</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Sarah K.</span>
+              </div>
+              <div class="cal-wall-of-love-title">Operations Manager</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Came from our old tool where I was paying for features I never used. <a href="#" class="cal-wall-of-love-link">@acme</a>'s free tier is perfect for freelancers like me. The analytics and automation features are a game changer. Support team has been incredibly responsive too!</p>
+          </div>
+        </div>
+
+        <!-- James P. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #e5e7eb;">
+              <div class="cal-wall-of-love-avatar-placeholder" style="color: #374151;">J</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">James P.</span>
+                <svg class="cal-wall-of-love-verified" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#1d9bf0"/><path d="M9.5 14.25L6.75 11.5l1.06-1.06 1.69 1.69 4.69-4.69 1.06 1.06-5.75 5.75z" fill="#fff"/></svg>
+              </div>
+              <div class="cal-wall-of-love-handle">@jamesp</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Finally made the switch from our old tool to <a href="#" class="cal-wall-of-love-link">@acme</a></p>
+            <p>Really liking it so far. Wasn't particularly unhappy before, but figured I'd check it out when my subscription came up for renewal. The dashboard is way more intuitive.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="cal-wall-of-love-column">
+        <!-- Marcus T. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #10b981;">
+              <div class="cal-wall-of-love-avatar-placeholder">M</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Marcus T.</span>
+                <svg class="cal-wall-of-love-verified" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#1d9bf0"/><path d="M9.5 14.25L6.75 11.5l1.06-1.06 1.69 1.69 4.69-4.69 1.06 1.06-5.75 5.75z" fill="#fff"/></svg>
+              </div>
+              <div class="cal-wall-of-love-handle">@marcust</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p><a href="#" class="cal-wall-of-love-link">@acme</a> is the best thing I discovered this year.</p>
+          </div>
+        </div>
+
+        <!-- David R. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #6366f1;">
+              <div class="cal-wall-of-love-avatar-placeholder">D</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">David R.</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Without a doubt the best scheduling application I have ever used. It has all the advanced features I need while being insanely intuitive for both me and the people booking time with me. Love it!</p>
+          </div>
+        </div>
+
+        <!-- Emily W. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #f59e0b;">
+              <div class="cal-wall-of-love-avatar-placeholder">E</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Emily W.</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@emilyw</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>Finally made the move to <a href="#" class="cal-wall-of-love-link">@acme</a> after getting frustrated with our old tool's dashboard. The UX is incredible.</p>
+            <p>Shoutout to the <a href="#" class="cal-wall-of-love-link">@acme</a> team for building something this good. Should have switched years ago!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="cal-wall-of-love-column">
+        <!-- Kevin L. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #8b5cf6;">
+              <div class="cal-wall-of-love-avatar-placeholder">K</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Kevin L.</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@kevinl</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>3 months in and our team can't stop raving about <a href="#" class="cal-wall-of-love-link">@acme</a></p>
+          </div>
+        </div>
+
+        <!-- Rachel H. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #ec4899;">
+              <div class="cal-wall-of-love-avatar-placeholder">R</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Rachel H.</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>The integrations are incredible. So many options for video conferencing. Plus the built-in video feature lets you run calls directly in the browser without downloading anything. Such a smooth experience for everyone involved.</p>
+          </div>
+        </div>
+
+        <!-- Jordan B. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #14b8a6;">
+              <div class="cal-wall-of-love-avatar-placeholder">J</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Jordan B.</span>
+              </div>
+              <div class="cal-wall-of-love-handle">@jordanb</div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p>The support team at <a href="#" class="cal-wall-of-love-link">@acme</a> is incredible. Issue resolved in minutes.</p>
+          </div>
+        </div>
+
+        <!-- Chris N. -->
+        <div class="cal-wall-of-love-card">
+          <div class="cal-wall-of-love-header">
+            <div class="cal-wall-of-love-avatar" style="background: #ef4444;">
+              <div class="cal-wall-of-love-avatar-placeholder">C</div>
+            </div>
+            <div class="cal-wall-of-love-user-info">
+              <div class="cal-wall-of-love-name-row">
+                <span class="cal-wall-of-love-name">Chris N.</span>
+              </div>
+            </div>
+            <div class="cal-wall-of-love-twitter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+          </div>
+          <div class="cal-wall-of-love-content">
+            <p><a href="#" class="cal-wall-of-love-link">@acme</a> has really raised the bar for scheduling tools. Knew right away when I started using it that this was a step above everything else. Intuitive interface, flexible customization, and it fits seamlessly into my workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

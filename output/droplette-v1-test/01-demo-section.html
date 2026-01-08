@@ -1,0 +1,160 @@
+<style>
+.demo-section {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.demo-section-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 69px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.demo-section-subtext {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.demo-section-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-section-card {
+  background: rgb(14, 14, 14);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-section-card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.demo-section-card-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.demo-section-card-preview {
+  background: rgb(30, 30, 30);
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1;
+}
+
+.demo-section-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.demo-section-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.demo-section-plugin-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+.demo-section-palette-preview {
+  display: flex;
+  gap: 4px;
+  height: 160px;
+}
+
+.demo-section-palette-bar {
+  flex: 1;
+  border-radius: 4px;
+}
+
+.demo-section-palette-bar:nth-child(1) { background: #f97316; }
+.demo-section-palette-bar:nth-child(2) { background: #fb923c; }
+.demo-section-palette-bar:nth-child(3) { background: #fbbf24; }
+.demo-section-palette-bar:nth-child(4) { background: #facc15; }
+.demo-section-palette-bar:nth-child(5) { background: #a3e635; }
+.demo-section-palette-bar:nth-child(6) { background: #4ade80; }
+.demo-section-palette-bar:nth-child(7) { background: #2dd4bf; }
+.demo-section-palette-bar:nth-child(8) { background: #22d3ee; }
+.demo-section-palette-bar:nth-child(9) { background: #38bdf8; }
+.demo-section-palette-bar:nth-child(10) { background: #a78bfa; }
+.demo-section-palette-bar:nth-child(11) { background: #e879f9; }
+
+.demo-section-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-top: 16px;
+}
+
+.demo-section-toolbar-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.demo-section-toolbar-btn {
+  background: #fff;
+  color: rgb(14, 14, 14);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+</style>
+<div class="demo-section">
+  <h1 class="demo-section-headline">Simple to setup.</h1>
+  <p class="demo-section-subtext">Select the colors you want to work with, or hook up your styles and go.</p>
+
+  <div class="demo-section-cards">
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Select from your frames</h3>
+      <p class="demo-section-card-text">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Droplette</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section-card">
+      <h3 class="demo-section-card-title">Sync with your styles</h3>
+      <p class="demo-section-card-text">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="demo-section-card-preview">
+        <div class="demo-section-plugin-header">
+          <div class="demo-section-plugin-icon"></div>
+          <span class="demo-section-plugin-name">Droplette</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

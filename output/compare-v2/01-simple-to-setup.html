@@ -1,0 +1,161 @@
+<style>
+.section-1 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.section-1-header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+.section-1-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-md);
+}
+
+.section-1-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.section-1-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-1-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-1-card-left {
+  background: #ffffff;
+  color: #000000;
+}
+
+.section-1-card-right {
+  background: rgb(30, 30, 30);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.section-1-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-sm);
+}
+
+.section-1-card-left .section-1-card-title {
+  color: #000000;
+}
+
+.section-1-card-right .section-1-card-title {
+  color: #ffffff;
+}
+
+.section-1-card-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-1-card-left .section-1-card-desc {
+  color: rgba(0,0,0,0.6);
+}
+
+.section-1-card-right .section-1-card-desc {
+  color: var(--color-text-secondary);
+}
+
+.section-1-mockup {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: auto;
+}
+
+.section-1-mockup-light {
+  background: rgb(245, 245, 245);
+}
+
+.section-1-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-1-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.section-1-mockup-label {
+  font-size: 13px;
+}
+
+.section-1-mockup-light .section-1-mockup-label {
+  color: #000000;
+}
+
+.section-1-mockup .section-1-mockup-label {
+  color: #ffffff;
+}
+</style>
+
+<section class="section-1">
+  <div class="section-1-header">
+    <h2 class="section-1-title">Simple to setup.</h2>
+    <p class="section-1-subtitle">Select the colors you want to work with, or hook up your styles and go.</p>
+  </div>
+
+  <div class="section-1-grid">
+    <!-- Left Card - Select from frames -->
+    <div class="section-1-card section-1-card-left">
+      <h3 class="section-1-card-title">Select from your frames</h3>
+      <p class="section-1-card-desc">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+      <div class="section-1-mockup section-1-mockup-light">
+        <div class="section-1-mockup-header">
+          <div class="section-1-mockup-icon" style="border-color: #000;"></div>
+          <span class="section-1-mockup-label">Droplette</span>
+        </div>
+        <div style="background: #e0e0e0; height: 120px; border-radius: 8px;"></div>
+      </div>
+    </div>
+
+    <!-- Right Card - Sync with styles -->
+    <div class="section-1-card section-1-card-right">
+      <h3 class="section-1-card-title">Sync with your styles</h3>
+      <p class="section-1-card-desc">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="section-1-mockup">
+        <div class="section-1-mockup-header">
+          <div class="section-1-mockup-icon" style="border-color: #fff;"></div>
+          <span class="section-1-mockup-label">Droplette</span>
+        </div>
+        <div style="background: rgb(60,60,60); height: 120px; border-radius: 8px;"></div>
+      </div>
+    </div>
+  </div>
+</section>

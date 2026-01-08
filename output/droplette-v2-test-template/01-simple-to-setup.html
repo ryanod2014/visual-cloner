@@ -1,0 +1,158 @@
+<style>
+.clone-section-1 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-1-header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+.clone-section-1-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.clone-section-1-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.clone-section-1-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-1-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-section-1-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-foreground);
+  margin: 0 0 var(--space-md);
+}
+
+.clone-section-1-card-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-1-mockup {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-1-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-1-mockup-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-1-mockup-content {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-sm);
+  height: 150px;
+}
+
+.clone-section-1-mockup-light {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-1-mockup-light-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: rgb(30, 30, 30);
+}
+
+.clone-section-1-mockup-light-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(30, 30, 30);
+  border-radius: 50%;
+}
+
+.clone-section-1-mockup-light-content {
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: var(--radius-sm);
+  height: 120px;
+}
+</style>
+
+<div class="clone-section-1">
+  <div class="clone-section-1-header">
+    <h2 class="clone-section-1-title">Easy to get started.</h2>
+    <p class="clone-section-1-subtitle">Configure your preferences or connect your existing workflow in seconds.</p>
+  </div>
+
+  <div class="clone-section-1-grid">
+    <div class="clone-section-1-card">
+      <h3 class="clone-section-1-card-title">Import from your projects</h3>
+      <p class="clone-section-1-card-text">Select your existing projects and Acme will analyze them automatically. The AI uses these as the foundation for your custom solutions.</p>
+      <div class="clone-section-1-mockup">
+        <div class="clone-section-1-mockup-header">
+          <div class="clone-section-1-mockup-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-1-mockup-content"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-1-card">
+      <h3 class="clone-section-1-card-title">Connect your integrations</h3>
+      <p class="clone-section-1-card-text">Sync your existing tools with Acme to leverage AI that understands your context, keeping everything consistent and on track.</p>
+      <div class="clone-section-1-mockup-light">
+        <div class="clone-section-1-mockup-light-header">
+          <div class="clone-section-1-mockup-light-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-1-mockup-light-content"></div>
+      </div>
+    </div>
+  </div>
+</div>

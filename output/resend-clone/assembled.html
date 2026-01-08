@@ -1,0 +1,2911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-nav-hero === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.resend-nav-hero {
+  background: #000000;
+  min-height: 100vh;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-nav-hero-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  position: relative;
+  z-index: 10;
+}
+
+.resend-nav-hero-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.resend-nav-hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resend-nav-hero-nav-link {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.resend-nav-hero-nav-link:hover {
+  color: #ffffff;
+}
+
+.resend-nav-hero-nav-link svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+.resend-nav-hero-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resend-nav-hero-login {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 16px;
+  transition: color 0.2s ease;
+}
+
+.resend-nav-hero-login:hover {
+  color: #ffffff;
+}
+
+.resend-nav-hero-get-started-nav {
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.resend-nav-hero-get-started-nav:hover {
+  opacity: 0.9;
+}
+
+.resend-nav-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 48px 120px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.resend-nav-hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.resend-nav-hero-headline {
+  font-family: 'Domaine Display', Georgia, 'Times New Roman', serif;
+  font-size: 88px;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  color: #ffffff;
+  margin: 0 0 32px 0;
+}
+
+.resend-nav-hero-subtext {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin: 0 0 40px 0;
+  max-width: 440px;
+}
+
+.resend-nav-hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.resend-nav-hero-btn-primary {
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 24px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.resend-nav-hero-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.resend-nav-hero-btn-secondary {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.resend-nav-hero-btn-secondary:hover {
+  color: #ffffff;
+}
+
+.resend-nav-hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.resend-nav-hero-cube {
+  width: 380px;
+  height: 380px;
+  position: relative;
+  transform: perspective(1000px) rotateX(15deg) rotateY(-20deg);
+  transform-style: preserve-3d;
+}
+
+.resend-nav-hero-cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 40px 80px rgba(0,0,0,0.8),
+    0 20px 40px rgba(0,0,0,0.6);
+}
+
+.resend-nav-hero-cube-segment {
+  position: absolute;
+  background: linear-gradient(145deg, #2a2a2a 0%, #151515 100%);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 4px 12px rgba(0,0,0,0.5);
+}
+
+.resend-nav-hero-cube-segment:nth-child(1) { top: 8%; left: 8%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(2) { top: 8%; left: 37%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(3) { top: 8%; left: 66%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(4) { top: 37%; left: 8%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(5) { top: 37%; left: 37%; width: 25%; height: 25%; background: linear-gradient(145deg, #1f1f1f 0%, #0a0a0a 100%); }
+.resend-nav-hero-cube-segment:nth-child(6) { top: 37%; left: 66%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(7) { top: 66%; left: 8%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(8) { top: 66%; left: 37%; width: 25%; height: 25%; }
+.resend-nav-hero-cube-segment:nth-child(9) { top: 66%; left: 66%; width: 25%; height: 25%; }
+
+.resend-nav-hero-cube-floating {
+  position: absolute;
+  background: linear-gradient(145deg, #252525 0%, #121212 100%);
+  border-radius: 6px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.resend-nav-hero-cube-floating:nth-child(10) {
+  top: -15%; right: -10%; width: 22%; height: 22%;
+  transform: rotateX(10deg) rotateY(-15deg) rotateZ(5deg);
+}
+.resend-nav-hero-cube-floating:nth-child(11) {
+  top: 20%; right: -20%; width: 18%; height: 18%;
+  transform: rotateX(-5deg) rotateY(10deg) rotateZ(-8deg);
+}
+.resend-nav-hero-cube-floating:nth-child(12) {
+  bottom: -10%; right: 5%; width: 20%; height: 20%;
+  transform: rotateX(8deg) rotateY(-12deg) rotateZ(3deg);
+}
+.resend-nav-hero-cube-floating:nth-child(13) {
+  bottom: 15%; left: -15%; width: 16%; height: 16%;
+  transform: rotateX(-10deg) rotateY(8deg) rotateZ(-5deg);
+}
+
+.resend-nav-hero-glow {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(60,60,70,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.resend-nav-hero-floor-reflection {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-0.3) scaleX(1.2);
+  width: 380px;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(30,30,35,0.3) 0%, transparent 100%);
+  filter: blur(20px);
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+/* === Section: 01-logos === */
+.resend-logos {
+  background: #000000;
+  padding: 80px 40px 120px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: center;
+}
+
+.resend-logos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resend-logos-divider {
+  width: 100%;
+  max-width: 900px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.15) 80%, transparent 100%);
+  margin: 0 auto 60px;
+}
+
+.resend-logos-headline {
+  color: #888888;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 60px;
+}
+
+.resend-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px 70px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.resend-logos-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.resend-logos-item svg {
+  flex-shrink: 0;
+}
+
+/* Warner Bros */
+.resend-logos-warner {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Max */
+.resend-logos-max {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Raycast */
+.resend-logos-raycast {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Mistral AI */
+.resend-logos-mistral {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.resend-logos-mistral-sub {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+/* Replit */
+.resend-logos-replit {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Anghami */
+.resend-logos-anghami {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Gumroad */
+.resend-logos-gumroad {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+/* fal */
+.resend-logos-fal {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Decathlon */
+.resend-logos-decathlon {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Supabase */
+.resend-logos-supabase {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Leap */
+.resend-logos-leap {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Payload */
+.resend-logos-payload {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* === Section: 02-integrate === */
+.resend-integrate {
+  background: #000000;
+  padding: 60px 20px 80px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #f0f0f0;
+}
+
+.resend-integrate-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.resend-integrate-title {
+  font-size: 56px;
+  font-weight: 600;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.resend-integrate-title-white {
+  color: #ffffff;
+}
+
+.resend-integrate-title-orange {
+  color: #f97316;
+}
+
+.resend-integrate-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #888888;
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+
+.resend-integrate-sdks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.resend-integrate-sdk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.resend-integrate-sdk-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid #333333;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888888;
+  transition: border-color 0.2s;
+}
+
+.resend-integrate-sdk-icon.resend-integrate-active {
+  border-color: #f97316;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, transparent 100%);
+}
+
+.resend-integrate-sdk-label {
+  font-size: 13px;
+  color: #666666;
+}
+
+.resend-integrate-code-container {
+  background: #0a0a0a;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.resend-integrate-tabs {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #222222;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.resend-integrate-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #666666;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.resend-integrate-tab.resend-integrate-tab-active {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.resend-integrate-tab-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.resend-integrate-copy-btn {
+  margin-left: auto;
+  padding: 6px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.resend-integrate-code {
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+
+.resend-integrate-code pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.resend-integrate-line {
+  display: flex;
+}
+
+.resend-integrate-line-number {
+  color: #444444;
+  width: 32px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 16px;
+  user-select: none;
+}
+
+.resend-integrate-line-content {
+  color: #888888;
+}
+
+.resend-integrate-keyword {
+  color: #888888;
+}
+
+.resend-integrate-variable {
+  color: #f0f0f0;
+}
+
+.resend-integrate-string {
+  color: #f97316;
+}
+
+.resend-integrate-function {
+  color: #f0f0f0;
+}
+
+.resend-integrate-property {
+  color: #888888;
+}
+
+.resend-integrate-punctuation {
+  color: #888888;
+}
+
+.resend-integrate-comment {
+  color: #555555;
+}
+
+/* === Section: 03-devexp === */
+.resend-devexp {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 0 60px;
+  min-height: 100vh;
+}
+
+.resend-devexp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.resend-devexp-title {
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 40px;
+  letter-spacing: -0.02em;
+}
+
+.resend-devexp-title-line {
+  display: block;
+}
+
+.resend-devexp-description {
+  font-size: 22px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 60px;
+  max-width: 700px;
+}
+
+.resend-devexp-description em {
+  font-style: italic;
+}
+
+.resend-devexp-panels {
+  display: flex;
+  gap: 24px;
+}
+
+.resend-devexp-panel-left {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-devexp-email-bar {
+  display: flex;
+  align-items: center;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 40px;
+  gap: 12px;
+}
+
+.resend-devexp-badge {
+  background: #10b981;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.resend-devexp-email-address {
+  color: #f0f0f0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resend-devexp-dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.resend-devexp-send-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f0f0f0;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.resend-devexp-send-icon {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  position: relative;
+}
+
+.resend-devexp-send-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.resend-devexp-http-logs {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.resend-devexp-http-line {
+  display: flex;
+  gap: 8px;
+}
+
+.resend-devexp-http-status {
+  color: #10b981;
+}
+
+.resend-devexp-http-bracket {
+  color: #f0f0f0;
+}
+
+.resend-devexp-http-key {
+  color: #60a5fa;
+}
+
+.resend-devexp-http-value {
+  color: #fbbf24;
+}
+
+.resend-devexp-panel-right {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 340px;
+}
+
+.resend-devexp-event-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resend-devexp-event-item:last-child {
+  border-bottom: none;
+}
+
+.resend-devexp-event-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resend-devexp-play-icon {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.7);
+  margin-left: 2px;
+}
+
+.resend-devexp-event-content {
+  flex: 1;
+}
+
+.resend-devexp-event-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.resend-devexp-event-badge {
+  background: #10b981;
+  color: #000;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.resend-devexp-event-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.resend-devexp-clock-icon {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: relative;
+}
+
+.resend-devexp-clock-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.5);
+  transform-origin: left center;
+  transform: translateY(-50%);
+}
+
+.resend-devexp-clock-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  transform-origin: center bottom;
+  transform: translate(-50%, -100%);
+}
+
+.resend-devexp-event-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.resend-devexp-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resend-devexp-value-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: #f0f0f0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resend-devexp-gmail-icon {
+  width: 16px;
+  height: 12px;
+  position: relative;
+}
+
+.resend-devexp-gmail-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ea4335 25%, #fbbc05 25%, #fbbc05 50%, #34a853 50%, #34a853 75%, #4285f4 75%);
+  border-radius: 2px;
+}
+
+.resend-devexp-windows-icon {
+  width: 14px;
+  height: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+}
+
+.resend-devexp-windows-icon span {
+  background: #00a4ef;
+}
+
+/* === Section: 04-editor === */
+.resend-editor {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 0 0 60px 0;
+  width: 100%;
+}
+
+.resend-editor-features {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px 120px;
+  gap: 200px;
+}
+
+.resend-editor-feature {
+  flex: 1;
+  max-width: 400px;
+}
+
+.resend-editor-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resend-editor-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #888;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.resend-editor-feature-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.resend-editor-feature-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #888888;
+  margin: 0 0 20px 0;
+}
+
+.resend-editor-link {
+  font-size: 14px;
+  color: #f0f0f0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.resend-editor-link:hover {
+  text-decoration: underline;
+}
+
+.resend-editor-main {
+  text-align: center;
+  padding: 60px 20px 80px;
+}
+
+.resend-editor-app-icon {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 50px;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.resend-editor-app-icon::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  background: linear-gradient(135deg,
+    transparent 0%,
+    rgba(147, 112, 219, 0.3) 20%,
+    rgba(138, 43, 226, 0.5) 40%,
+    rgba(75, 0, 130, 0.4) 60%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.resend-editor-app-icon::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 60%;
+  height: 55%;
+  background:
+    radial-gradient(ellipse 100% 100% at 30% 50%,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(200, 200, 220, 0.6) 30%,
+      transparent 70%
+    );
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+.resend-editor-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%) rotateX(75deg) rotateZ(-20deg);
+  border: 3px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(180,180,200,0.4) 50%, rgba(100,80,150,0.6) 100%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.resend-editor-heading {
+  font-size: 64px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.resend-editor-heading em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.resend-editor-subtext {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #888888;
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+.resend-editor-preview {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #111111;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #222;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.resend-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #0a0a0a;
+  border-bottom: 1px solid #222;
+}
+
+.resend-editor-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resend-editor-styles-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.resend-editor-styles-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.resend-editor-toolbar-center {
+  flex: 1;
+  text-align: center;
+}
+
+.resend-editor-doc-title {
+  color: #888;
+  font-size: 14px;
+}
+
+.resend-editor-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resend-editor-timestamp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+  font-size: 13px;
+}
+
+.resend-editor-clock-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.resend-editor-test-btn {
+  color: #666;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.resend-editor-send-btn {
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+/* === Section: 05-react === */
+.resend-react {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 80px 100px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.resend-react-header {
+  margin-bottom: 60px;
+}
+
+.resend-react-title {
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+}
+
+.resend-react-subtitle {
+  font-size: 20px;
+  color: #888888;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.resend-react-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.resend-react-card {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-react-card-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.resend-react-audience-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.resend-react-avatar {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #0a2a1a 0%, #0d3d24 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.resend-react-avatar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.resend-react-avatar-row {
+  display: flex;
+  gap: 6px;
+}
+
+.resend-react-avatar-dot {
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.resend-react-avatar-dot-small {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.resend-react-audience-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.resend-react-audience-label {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.resend-react-audience-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resend-react-dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #666666;
+}
+
+.resend-react-metrics-row {
+  display: flex;
+  gap: 48px;
+}
+
+.resend-react-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.resend-react-metric-label {
+  font-size: 11px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.resend-react-metric-value {
+  font-size: 20px;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.resend-react-metric-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 40px;
+}
+
+.resend-react-metric-bar {
+  width: 6px;
+  background: linear-gradient(to top, #22c55e, #4ade80);
+  border-radius: 2px;
+}
+
+.resend-react-metric-input {
+  background: rgba(40, 40, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #888888;
+  font-size: 14px;
+  width: 60px;
+}
+
+.resend-react-card-right {
+  display: flex;
+  gap: 16px;
+}
+
+.resend-react-stat-card {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(25, 25, 25, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-react-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: radial-gradient(ellipse at center top, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.resend-react-stat-label {
+  font-size: 11px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.resend-react-stat-value {
+  font-size: 48px;
+  font-weight: 500;
+  color: #f0f0f0;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.resend-react-stat-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.resend-react-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resend-react-stat-row-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resend-react-stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.resend-react-stat-dot-green {
+  background: #22c55e;
+}
+
+.resend-react-stat-dot-red {
+  background: #ef4444;
+}
+
+.resend-react-stat-dot-blue {
+  background: #3b82f6;
+}
+
+.resend-react-stat-dot-orange {
+  background: #f97316;
+}
+
+.resend-react-stat-row-label {
+  font-size: 15px;
+  color: #f0f0f0;
+}
+
+.resend-react-stat-row-value {
+  font-size: 15px;
+  color: #888888;
+}
+
+.resend-react-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 0 8px;
+}
+
+.resend-react-feature {
+  display: flex;
+  flex-direction: column;
+}
+
+.resend-react-feature-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+.resend-react-feature-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.resend-react-feature-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #f0f0f0;
+  margin-bottom: 16px;
+}
+
+.resend-react-feature-desc {
+  font-size: 16px;
+  color: #888888;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.resend-react-feature-link {
+  font-size: 15px;
+  color: #f0f0f0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.resend-react-feature-link:hover {
+  text-decoration: underline;
+}
+
+/* === Section: 06-deliverability === */
+.resend-deliverability {
+  background: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-deliverability-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.resend-deliverability-code-panel {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(30, 30, 35, 0.8) 0%, rgba(20, 20, 25, 0.9) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.resend-deliverability-code-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.resend-deliverability-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.resend-deliverability-dot-red {
+  background: #ff5f57;
+}
+
+.resend-deliverability-dot-yellow {
+  background: #febc2e;
+}
+
+.resend-deliverability-dot-green {
+  background: #28c840;
+}
+
+.resend-deliverability-code-content {
+  padding: 20px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.resend-deliverability-line {
+  display: flex;
+  white-space: pre;
+}
+
+.resend-deliverability-line-number {
+  color: rgba(255, 255, 255, 0.25);
+  width: 35px;
+  text-align: right;
+  padding-right: 20px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.resend-deliverability-line-code {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.resend-deliverability-tag {
+  color: #7dd3fc;
+}
+
+.resend-deliverability-attr {
+  color: #fda4af;
+}
+
+.resend-deliverability-string {
+  color: #a5f3fc;
+}
+
+.resend-deliverability-bracket {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resend-deliverability-email-preview {
+  position: absolute;
+  right: -60px;
+  top: 30px;
+  width: 380px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.resend-deliverability-email-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+  padding: 20px 24px;
+  color: #ffffff;
+}
+
+.resend-deliverability-email-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.resend-deliverability-email-body {
+  padding: 24px;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.resend-deliverability-email-greeting {
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.resend-deliverability-email-text {
+  color: #4a4a4a;
+  margin-bottom: 24px;
+}
+
+.resend-deliverability-email-text strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.resend-deliverability-email-btn {
+  display: inline-block;
+  background: #00a3ff;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+
+.resend-deliverability-email-signature {
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.resend-deliverability-email-signature p {
+  margin: 0;
+}
+
+.resend-deliverability-text-section {
+  padding-top: 200px;
+}
+
+.resend-deliverability-heading {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.resend-deliverability-heading-muted {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.resend-deliverability-glow {
+  position: absolute;
+  top: 0;
+  right: 200px;
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(0, 200, 100, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.resend-deliverability-curve {
+  position: absolute;
+  bottom: 300px;
+  right: 100px;
+  width: 400px;
+  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+/* === Section: 07-testimonials === */
+.resend-testimonials {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 80px 20px 120px;
+  text-align: center;
+}
+
+.resend-testimonials-quote {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.resend-testimonials-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 180px;
+}
+
+.resend-testimonials-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.resend-testimonials-avatar::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(180deg, #d4b896 0%, #c4a882 100%);
+  border-radius: 50%;
+  top: 8px;
+}
+
+.resend-testimonials-avatar::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 20px;
+  background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%);
+  border-radius: 50% 50% 0 0;
+  bottom: 0;
+}
+
+.resend-testimonials-author-info {
+  text-align: left;
+}
+
+.resend-testimonials-author-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 2px;
+}
+
+.resend-testimonials-author-title {
+  font-size: 14px;
+  color: #888888;
+  margin: 0;
+}
+
+.resend-testimonials-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 40px;
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.resend-testimonials-globe {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
+  box-shadow:
+    inset 0 0 30px rgba(0, 255, 180, 0.1),
+    0 0 20px rgba(0, 255, 180, 0.15);
+  border: 1px solid rgba(0, 255, 180, 0.2);
+}
+
+.resend-testimonials-globe::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(0, 255, 180, 0.15) 8px,
+      rgba(0, 255, 180, 0.15) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 10px,
+      rgba(0, 255, 180, 0.1) 10px,
+      rgba(0, 255, 180, 0.1) 11px
+    );
+  clip-path: circle(50%);
+}
+
+.resend-testimonials-globe::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 255, 180, 0.4) 0%, rgba(0, 255, 180, 0.2) 40%, transparent 70%);
+  filter: blur(4px);
+}
+
+.resend-testimonials-glow {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(90deg, transparent 0%, #00ffb4 50%, transparent 100%);
+  filter: blur(6px);
+  opacity: 0.8;
+}
+
+.resend-testimonials-heading {
+  font-size: 56px;
+  font-weight: 500;
+  margin: 0 0 24px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.resend-testimonials-heading em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.resend-testimonials-description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #888888;
+}
+
+/* === Section: 08-footer === */
+.resend-footer {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 0 0 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.resend-footer-background {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.resend-footer-logo-bg {
+  font-size: 280px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.resend-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+}
+
+.resend-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.resend-footer-address {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #888888;
+}
+
+.resend-footer-backed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #888888;
+}
+
+.resend-footer-yc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f0f0;
+  color: #000000;
+  padding: 2px 8px 2px 4px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.resend-footer-yc-icon {
+  width: 18px;
+  height: 18px;
+  background: #ff6600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.resend-footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.resend-footer-social-link {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888888;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.resend-footer-social-link:hover {
+  border-color: #555555;
+  color: #f0f0f0;
+}
+
+.resend-footer-social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resend-footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #888888;
+  margin-top: 8px;
+}
+
+.resend-footer-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #f59e0b;
+  border-radius: 50%;
+}
+
+.resend-footer-links {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.resend-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.resend-footer-column-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0f0f0;
+  margin-bottom: 4px;
+}
+
+.resend-footer-link {
+  font-size: 14px;
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.resend-footer-link:hover {
+  color: #f0f0f0;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-nav-hero -->
+  <section class="resend-nav-hero">
+  <nav class="resend-nav-hero-nav">
+    <a href="#" class="resend-nav-hero-logo">Resend</a>
+
+    <div class="resend-nav-hero-nav-links">
+      <a href="#" class="resend-nav-hero-nav-link">
+        Features
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </a>
+      <a href="#" class="resend-nav-hero-nav-link">
+        Company
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </a>
+      <a href="#" class="resend-nav-hero-nav-link">
+        Resources
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </a>
+      <a href="#" class="resend-nav-hero-nav-link">
+        Help
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </a>
+      <a href="#" class="resend-nav-hero-nav-link">
+        Docs
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </a>
+      <a href="#" class="resend-nav-hero-nav-link">Pricing</a>
+    </div>
+
+    <div class="resend-nav-hero-nav-right">
+      <a href="#" class="resend-nav-hero-login">Log In</a>
+      <a href="#" class="resend-nav-hero-get-started-nav">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="resend-nav-hero-content">
+    <div class="resend-nav-hero-text">
+      <h1 class="resend-nav-hero-headline">Email for<br>developers</h1>
+      <p class="resend-nav-hero-subtext">The best way to reach humans instead of spam folders. Deliver transactional and marketing emails at scale.</p>
+      <div class="resend-nav-hero-buttons">
+        <a href="#" class="resend-nav-hero-btn-primary">Get Started</a>
+        <a href="#" class="resend-nav-hero-btn-secondary">Documentation</a>
+      </div>
+    </div>
+
+    <div class="resend-nav-hero-visual">
+      <div class="resend-nav-hero-glow"></div>
+      <div class="resend-nav-hero-cube">
+        <div class="resend-nav-hero-cube-face">
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+          <div class="resend-nav-hero-cube-segment"></div>
+        </div>
+        <div class="resend-nav-hero-cube-floating"></div>
+        <div class="resend-nav-hero-cube-floating"></div>
+        <div class="resend-nav-hero-cube-floating"></div>
+        <div class="resend-nav-hero-cube-floating"></div>
+      </div>
+      <div class="resend-nav-hero-floor-reflection"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 01-logos -->
+  <section class="resend-logos">
+  <div class="resend-logos-container">
+    <div class="resend-logos-divider"></div>
+
+    <p class="resend-logos-headline">
+      Companies of all sizes trust Resend<br>
+      to deliver their most important emails.
+    </p>
+
+    <div class="resend-logos-grid">
+      <!-- Row 1 -->
+      <div class="resend-logos-item resend-logos-warner">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 26C9.373 28 4 22.627 4 16S9.373 4 16 4s12 5.373 12 12-5.373 12-12 12zm-4-17l2 8 2-8 2 8 2-8v10h-8V11z"/>
+        </svg>
+        WARNER BROS.
+      </div>
+
+      <div class="resend-logos-item resend-logos-max">
+        max
+      </div>
+
+      <div class="resend-logos-item resend-logos-raycast">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 18l3-3-3-3v6zm12-12l-3 3 3 3V6zM9.5 9.5L6 13l3 3 3.5-3.5-3-3zm5 5l3.5 3.5 3-3-3-3-3.5 3.5z"/>
+        </svg>
+        Raycast
+      </div>
+
+      <div class="resend-logos-item resend-logos-mistral">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
+          <rect x="2" y="4" width="6" height="6"/>
+          <rect x="11" y="4" width="6" height="6"/>
+          <rect x="20" y="4" width="6" height="6"/>
+          <rect x="2" y="11" width="6" height="6"/>
+          <rect x="20" y="11" width="6" height="6"/>
+          <rect x="2" y="18" width="6" height="6"/>
+          <rect x="11" y="18" width="6" height="6"/>
+          <rect x="20" y="18" width="6" height="6"/>
+        </svg>
+        <span>MISTRAL<br><span class="resend-logos-mistral-sub">AI_</span></span>
+      </div>
+
+      <div class="resend-logos-item resend-logos-replit">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="4" y="4" width="6" height="6" rx="1"/>
+          <rect x="4" y="14" width="6" height="6" rx="1"/>
+          <rect x="14" y="9" width="6" height="6" rx="1"/>
+        </svg>
+        replit
+      </div>
+
+      <div class="resend-logos-item resend-logos-anghami">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="currentColor">
+          <circle cx="13" cy="13" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M9 8v10l8-5-8-5z"/>
+        </svg>
+        anghami
+      </div>
+
+      <!-- Row 2 -->
+      <div class="resend-logos-item resend-logos-gumroad">
+        gumroad
+      </div>
+
+      <div class="resend-logos-item resend-logos-fal">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="currentColor">
+          <polygon points="13,2 2,24 24,24" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="13" cy="16" r="3"/>
+        </svg>
+        fal
+      </div>
+
+      <div class="resend-logos-item resend-logos-decathlon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="currentColor">
+          <circle cx="13" cy="13" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 13c0-3 2-5 5-5" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        DECATHLON
+      </div>
+
+      <div class="resend-logos-item resend-logos-supabase">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L4 14h8v8l8-12h-8V2z"/>
+        </svg>
+        supabase
+      </div>
+
+      <div class="resend-logos-item resend-logos-leap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 16V8l8 8" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        Leap
+      </div>
+
+      <div class="resend-logos-item resend-logos-payload">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 12a8 8 0 1116 0" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        Payload
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-integrate -->
+  <section class="resend-integrate" id="resend-integrate">
+  <div class="resend-integrate-container">
+    <h2 class="resend-integrate-title">
+      <span class="resend-integrate-title-white">Integrate</span> <span class="resend-integrate-title-orange">this afternoon</span>
+    </h2>
+    <p class="resend-integrate-subtitle">
+      A simple, elegant interface so you can start sending emails in minutes. It fits right into your code with SDKs for your favorite programming languages.
+    </p>
+
+    <div class="resend-integrate-sdks">
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon resend-integrate-active">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Node.js</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Serverless</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Ruby</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="#666" stroke-width="1.5"/>
+            <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0l-2.83-2.83M9.76 9.76L6.93 6.93" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Python</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 12px; font-weight: 600;">PHP</span>
+        </div>
+        <span class="resend-integrate-sdk-label">PHP</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 12px; font-weight: 600;">GO</span>
+        </div>
+        <span class="resend-integrate-sdk-label">Go</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="#666" stroke-width="1.5"/>
+            <path d="M12 2a10 10 0 0110 10" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Rust</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Java</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M2 12h20" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="#666" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">Elixir</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 11px; font-weight: 600;">.NET</span>
+        </div>
+        <span class="resend-integrate-sdk-label">.NET</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="resend-integrate-sdk-label">REST</span>
+      </div>
+      <div class="resend-integrate-sdk">
+        <div class="resend-integrate-sdk-icon">
+          <span style="color: #666; font-size: 10px; font-weight: 600;">SMTP</span>
+        </div>
+        <span class="resend-integrate-sdk-label">SMTP</span>
+      </div>
+    </div>
+
+    <div class="resend-integrate-code-container">
+      <div class="resend-integrate-tabs">
+        <div class="resend-integrate-tab resend-integrate-tab-active">
+          <span class="resend-integrate-tab-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Node.js
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">N</span>
+          Next.js
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">R</span>
+          Remix
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 19h20L12 2z" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Nuxt
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">Ex</span>
+          Express
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Hono
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5"/>
+            </svg>
+          </span>
+          Redwood
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="#666" stroke-width="2"/>
+            </svg>
+          </span>
+          Bun
+        </div>
+        <div class="resend-integrate-tab">
+          <span class="resend-integrate-tab-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 2z" stroke="#666" stroke-width="1.5"/>
+            </svg>
+          </span>
+          Astro
+        </div>
+        <div class="resend-integrate-copy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="#666" stroke-width="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="#666" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="resend-integrate-code">
+        <pre><div class="resend-integrate-line"><span class="resend-integrate-line-number">1</span><span class="resend-integrate-line-content"><span class="resend-integrate-keyword">import</span> { <span class="resend-integrate-variable">Resend</span> } <span class="resend-integrate-keyword">from</span> <span class="resend-integrate-string">'resend'</span>;</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">2</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">3</span><span class="resend-integrate-line-content"><span class="resend-integrate-keyword">const</span> <span class="resend-integrate-variable">resend</span> = <span class="resend-integrate-keyword">new</span> <span class="resend-integrate-function">Resend</span>(<span class="resend-integrate-string">'re_xxxxxxxxx'</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">4</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">5</span><span class="resend-integrate-line-content">(<span class="resend-integrate-keyword">async function</span>() {</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">6</span><span class="resend-integrate-line-content">  <span class="resend-integrate-keyword">const</span> { <span class="resend-integrate-variable">data</span>, <span class="resend-integrate-variable">error</span> } = <span class="resend-integrate-keyword">await</span> <span class="resend-integrate-variable">resend</span>.<span class="resend-integrate-property">emails</span>.<span class="resend-integrate-function">send</span>({</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">7</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">from:</span> <span class="resend-integrate-string">'onboarding@resend.dev'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">8</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">to:</span> <span class="resend-integrate-string">'delivered@resend.dev'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">9</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">subject:</span> <span class="resend-integrate-string">'Hello World'</span>,</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">10</span><span class="resend-integrate-line-content">    <span class="resend-integrate-property">html:</span> <span class="resend-integrate-string">'&lt;strong&gt;it works!&lt;/strong&gt;'</span></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">11</span><span class="resend-integrate-line-content">  });</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">12</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">13</span><span class="resend-integrate-line-content">  <span class="resend-integrate-keyword">if</span> (<span class="resend-integrate-variable">error</span>) {</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">14</span><span class="resend-integrate-line-content">    <span class="resend-integrate-keyword">return</span> <span class="resend-integrate-variable">console</span>.<span class="resend-integrate-function">log</span>(<span class="resend-integrate-variable">error</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">15</span><span class="resend-integrate-line-content">  }</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">16</span><span class="resend-integrate-line-content"></span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">17</span><span class="resend-integrate-line-content">  <span class="resend-integrate-variable">console</span>.<span class="resend-integrate-function">log</span>(<span class="resend-integrate-variable">data</span>);</span></div>
+<div class="resend-integrate-line"><span class="resend-integrate-line-number">18</span><span class="resend-integrate-line-content">})();</span></div></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-devexp -->
+  <section class="resend-devexp">
+  <div class="resend-devexp-container">
+    <h2 class="resend-devexp-title">
+      <span class="resend-devexp-title-line">First-class</span>
+      <span class="resend-devexp-title-line">developer experience</span>
+    </h2>
+
+    <p class="resend-devexp-description">
+      We are a team of engineers who love building tools for other engineers.<br>
+      Our goal is to create the email platform we've always wished we had — one that <em>just works</em>.
+    </p>
+
+    <div class="resend-devexp-panels">
+      <div class="resend-devexp-panel-left">
+        <div class="resend-devexp-email-bar">
+          <span class="resend-devexp-badge">Delivered</span>
+          <span class="resend-devexp-email-address">
+            delivered@resend.dev
+            <span class="resend-devexp-dropdown-arrow"></span>
+          </span>
+          <button class="resend-devexp-send-btn">
+            <span class="resend-devexp-send-icon"></span>
+            Send
+          </button>
+        </div>
+
+        <div class="resend-devexp-http-logs">
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"16b639b3-46b9-4149-83a7-2b540fdcb1c2"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"ba1bc919-b715-44d0-839a-551f2c7cb2b6"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+          <div class="resend-devexp-http-line">
+            <span class="resend-devexp-http-status">HTTP 200:</span>
+            <span class="resend-devexp-http-bracket">{</span>
+            <span class="resend-devexp-http-key">"id":</span>
+            <span class="resend-devexp-http-value">"6e5451aa-1795-4614-86c0-b6d217e8767a"</span>
+            <span class="resend-devexp-http-bracket">}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="resend-devexp-panel-right">
+        <div class="resend-devexp-event-item">
+          <div class="resend-devexp-event-icon">
+            <span class="resend-devexp-play-icon"></span>
+          </div>
+          <div class="resend-devexp-event-content">
+            <div class="resend-devexp-event-header">
+              <span class="resend-devexp-event-badge">Clicked</span>
+              <span class="resend-devexp-event-time">
+                <span class="resend-devexp-clock-icon"></span>
+                Jan 07 01:39:42
+              </span>
+            </div>
+            <div class="resend-devexp-event-details">
+              <span class="resend-devexp-label">from</span>
+              <span class="resend-devexp-value-box">noah@gmail.com</span>
+              <span class="resend-devexp-label">on</span>
+              <span class="resend-devexp-value-box">Get Started</span>
+            </div>
+            <div class="resend-devexp-event-details" style="margin-top: 8px;">
+              <span class="resend-devexp-label">on agent</span>
+              <span class="resend-devexp-value-box">
+                <span class="resend-devexp-gmail-icon"></span>
+                Gmail
+              </span>
+              <span class="resend-devexp-label">running on</span>
+              <span class="resend-devexp-value-box">
+                <span class="resend-devexp-windows-icon">
+                  <span></span><span></span><span></span><span></span>
+                </span>
+                Windows
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resend-devexp-event-item">
+          <div class="resend-devexp-event-icon">
+            <span class="resend-devexp-play-icon"></span>
+          </div>
+          <div class="resend-devexp-event-content">
+            <div class="resend-devexp-event-header">
+              <span class="resend-devexp-event-badge">Clicked</span>
+              <span class="resend-devexp-event-time">
+                <span class="resend-devexp-clock-icon"></span>
+                Jan 07 01:39:39
+              </span>
+            </div>
+            <div class="resend-devexp-event-details">
+              <span class="resend-devexp-label">from</span>
+              <span class="resend-devexp-value-box">liam@verox.com</span>
+              <span class="resend-devexp-label">on</span>
+              <span class="resend-devexp-value-box">Hello world</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-editor -->
+  <section class="resend-editor">
+  <div class="resend-editor-features">
+    <div class="resend-editor-feature">
+      <div class="resend-editor-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="6" cy="6" r="1" fill="#888"/>
+        </svg>
+      </div>
+      <h3 class="resend-editor-feature-title">Test Mode</h3>
+      <p class="resend-editor-feature-text">Simulate events and experiment with our API without the risk of accidentally sending real emails to real people.</p>
+      <a href="#" class="resend-editor-link">Learn more</a>
+    </div>
+    <div class="resend-editor-feature">
+      <div class="resend-editor-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 9h18M9 21V9" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="17" cy="3" r="3" fill="#888" stroke="#888"/>
+        </svg>
+      </div>
+      <h3 class="resend-editor-feature-title">Modular Webhooks</h3>
+      <p class="resend-editor-feature-text">Receive real-time notifications directly to your server. Every time an email is delivered, opened, bounces, or a link is clicked.</p>
+      <a href="#" class="resend-editor-link">Learn more</a>
+    </div>
+  </div>
+
+  <div class="resend-editor-main">
+    <div class="resend-editor-app-icon">
+      <div class="resend-editor-ring"></div>
+    </div>
+    <h2 class="resend-editor-heading">Write using a <em>delightful</em> editor</h2>
+    <p class="resend-editor-subtext">A modern editor that makes it easy for anyone to write, format, and send emails. Visually build your email and change the design by adding custom styles.</p>
+
+    <div class="resend-editor-preview">
+      <div class="resend-editor-toolbar">
+        <div class="resend-editor-toolbar-left">
+          <button class="resend-editor-styles-btn">
+            <svg class="resend-editor-styles-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3L3 9l9 6 9-6-9-6z"/>
+              <path d="M3 15l9 6 9-6"/>
+            </svg>
+            Styles
+          </button>
+        </div>
+        <div class="resend-editor-toolbar-center">
+          <span class="resend-editor-doc-title">Weekly Acme Newsletter</span>
+        </div>
+        <div class="resend-editor-toolbar-right">
+          <span class="resend-editor-timestamp">
+            <svg class="resend-editor-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            a day ago
+          </span>
+          <button class="resend-editor-test-btn">Test</button>
+          <button class="resend-editor-send-btn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 05-react -->
+  <section class="resend-react">
+  <header class="resend-react-header">
+    <h2 class="resend-react-title">Go beyond editing</h2>
+    <p class="resend-react-subtitle">Group and control your contacts in a simple and intuitive way. Straightforward analytics and reporting tools that will help you send better emails.</p>
+  </header>
+
+  <div class="resend-react-cards">
+    <div class="resend-react-card resend-react-card-left">
+      <div class="resend-react-audience-header">
+        <div class="resend-react-avatar">
+          <div class="resend-react-avatar-icon">
+            <div class="resend-react-avatar-row">
+              <div class="resend-react-avatar-dot"></div>
+              <div class="resend-react-avatar-dot"></div>
+            </div>
+            <div class="resend-react-avatar-row">
+              <div class="resend-react-avatar-dot-small"></div>
+              <div class="resend-react-avatar-dot-small"></div>
+              <div class="resend-react-avatar-dot-small"></div>
+            </div>
+          </div>
+        </div>
+        <div class="resend-react-audience-info">
+          <span class="resend-react-audience-label">Audience</span>
+          <span class="resend-react-audience-title">Newsletter subscribers <span class="resend-react-dropdown-arrow"></span></span>
+        </div>
+      </div>
+      <div class="resend-react-metrics-row">
+        <div class="resend-react-metric">
+          <span class="resend-react-metric-label">ALL CONTACTS</span>
+          <span class="resend-react-metric-value">1,034</span>
+        </div>
+        <div class="resend-react-metric">
+          <span class="resend-react-metric-label">UNSUBSCRIBED</span>
+          <span class="resend-react-metric-value">5</span>
+        </div>
+        <div class="resend-react-metric">
+          <span class="resend-react-metric-label">METRICS</span>
+          <div class="resend-react-metric-chart">
+            <div class="resend-react-metric-bar" style="height: 12px;"></div>
+            <div class="resend-react-metric-bar" style="height: 18px;"></div>
+            <div class="resend-react-metric-bar" style="height: 24px;"></div>
+            <div class="resend-react-metric-bar" style="height: 16px;"></div>
+            <div class="resend-react-metric-bar" style="height: 28px;"></div>
+            <div class="resend-react-metric-bar" style="height: 32px;"></div>
+            <div class="resend-react-metric-bar" style="height: 26px;"></div>
+            <div class="resend-react-metric-bar" style="height: 38px;"></div>
+            <div class="resend-react-metric-bar" style="height: 34px;"></div>
+            <div class="resend-react-metric-bar" style="height: 40px;"></div>
+          </div>
+        </div>
+        <div class="resend-react-metric">
+          <span class="resend-react-metric-label">AUDI...</span>
+          <div class="resend-react-metric-input">a91...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resend-react-card resend-react-card-right">
+      <div class="resend-react-stat-card">
+        <div class="resend-react-stat-label">DELIVERABILITY</div>
+        <div class="resend-react-stat-value">98%</div>
+        <div class="resend-react-stat-rows">
+          <div class="resend-react-stat-row">
+            <div class="resend-react-stat-row-left">
+              <span class="resend-react-stat-dot resend-react-stat-dot-green"></span>
+              <span class="resend-react-stat-row-label">Delivered</span>
+            </div>
+            <span class="resend-react-stat-row-value">3,204</span>
+          </div>
+          <div class="resend-react-stat-row">
+            <div class="resend-react-stat-row-left">
+              <span class="resend-react-stat-dot resend-react-stat-dot-red"></span>
+              <span class="resend-react-stat-row-label">Bounced</span>
+            </div>
+            <span class="resend-react-stat-row-value">60</span>
+          </div>
+        </div>
+      </div>
+      <div class="resend-react-stat-card">
+        <div class="resend-react-stat-label">ENGAGEMENT</div>
+        <div class="resend-react-stat-value">41%</div>
+        <div class="resend-react-stat-rows">
+          <div class="resend-react-stat-row">
+            <div class="resend-react-stat-row-left">
+              <span class="resend-react-stat-dot resend-react-stat-dot-blue"></span>
+              <span class="resend-react-stat-row-label">Opened</span>
+            </div>
+          </div>
+          <div class="resend-react-stat-row">
+            <div class="resend-react-stat-row-left">
+              <span class="resend-react-stat-dot resend-react-stat-dot-orange"></span>
+              <span class="resend-react-stat-row-label">Clicked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resend-react-features">
+    <div class="resend-react-feature">
+      <div class="resend-react-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+          <circle cx="19" cy="7" r="3"/>
+          <path d="M19 14a3 3 0 0 1 3 3v2"/>
+        </svg>
+      </div>
+      <h3 class="resend-react-feature-title">Contact Management</h3>
+      <p class="resend-react-feature-desc">Import your list in minutes, regardless the size of your audience. Get full visibility of each contact and their personal attributes.</p>
+      <a href="#" class="resend-react-feature-link">Learn more</a>
+    </div>
+    <div class="resend-react-feature">
+      <div class="resend-react-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 3v18h18"/>
+          <path d="M7 16l4-4 4 4 6-6"/>
+        </svg>
+      </div>
+      <h3 class="resend-react-feature-title">Broadcast Analytics</h3>
+      <p class="resend-react-feature-desc">Unlock powerful insights and understand exactly how your audience is interacting with your broadcast emails.</p>
+      <a href="#" class="resend-react-feature-link">Learn more</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 06-deliverability -->
+  <section class="resend-deliverability">
+  <div class="resend-deliverability-glow"></div>
+  <div class="resend-deliverability-curve"></div>
+
+  <div class="resend-deliverability-container">
+    <div class="resend-deliverability-code-panel">
+      <div class="resend-deliverability-code-header">
+        <span class="resend-deliverability-dot resend-deliverability-dot-red"></span>
+        <span class="resend-deliverability-dot resend-deliverability-dot-yellow"></span>
+        <span class="resend-deliverability-dot resend-deliverability-dot-green"></span>
+      </div>
+      <div class="resend-deliverability-code-content">
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">12</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Head</span> <span class="resend-deliverability-tag">/&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">13</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Preview&gt;</span>{<span class="resend-deliverability-attr">previewText</span>}<span class="resend-deliverability-tag">&lt;/Preview&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">14</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Tailwind&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">15</span><span class="resend-deliverability-line-code">      <span class="resend-deliverability-tag">&lt;Body</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"bg-white my-auto mx-auto font-sans"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">16</span><span class="resend-deliverability-line-code">        <span class="resend-deliverability-tag">&lt;Container</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"my-10 mx-auto p-5 w-[465px]"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">17</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Section</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"mt-8"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">18</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">&lt;Img</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">19</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">src</span>={<span class="resend-deliverability-string">`${baseUrl}/static/example-logo.png`</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">20</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">width</span>=<span class="resend-deliverability-string">"80"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">21</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">height</span>=<span class="resend-deliverability-string">"80"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">22</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">alt</span>=<span class="resend-deliverability-string">"Logo Example"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">23</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"my-0 mx-auto"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">24</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">/&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">25</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Section&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">26</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Heading</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-2xl font-normal text-center p-"</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">27</span><span class="resend-deliverability-line-code">            Welcome to <span class="resend-deliverability-tag">&lt;strong&gt;</span>{<span class="resend-deliverability-attr">company</span>}<span class="resend-deliverability-tag">&lt;/strong&gt;</span>, {<span class="resend-deliverability-attr">username</span>}!</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">28</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Heading&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">29</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Text</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-sm"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">30</span><span class="resend-deliverability-line-code">            Hello {<span class="resend-deliverability-attr">username</span>},</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">31</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Text&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">32</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Text</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-sm"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">33</span><span class="resend-deliverability-line-code">            We're excited to have you onboard at <span class="resend-deliverability-tag">&lt;strong&gt;</span>{<span class="resend-deliverability-attr">company</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">34</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;/Text&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">35</span><span class="resend-deliverability-line-code">          <span class="resend-deliverability-tag">&lt;Section</span> <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"text-center mt-[32px] mb-[32px]"</span><span class="resend-deliverability-tag">&gt;</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">36</span><span class="resend-deliverability-line-code">            <span class="resend-deliverability-tag">&lt;Button</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">37</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">pX</span>={<span class="resend-deliverability-attr">20</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">38</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">pY</span>={<span class="resend-deliverability-attr">12</span>}</span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">39</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">className</span>=<span class="resend-deliverability-string">"bg-[#00A3FF] rounded-sm text-white te</span></span></div>
+        <div class="resend-deliverability-line"><span class="resend-deliverability-line-number">40</span><span class="resend-deliverability-line-code">              <span class="resend-deliverability-attr">href</span>={<span class="resend-deliverability-string">`${baseUrl}/get-started`</span>}</span></div>
+      </div>
+
+      <div class="resend-deliverability-email-preview">
+        <div class="resend-deliverability-email-header">
+          <div class="resend-deliverability-email-title">Welcome to ACME, user!</div>
+        </div>
+        <div class="resend-deliverability-email-body">
+          <p class="resend-deliverability-email-greeting">Hello Steve,</p>
+          <p class="resend-deliverability-email-text">We're excited to have you onboard at <strong>ACME</strong>. We hope you enjoy your journey with us. If you have any questions or need assistance, feel free to reach out.</p>
+          <a href="#" class="resend-deliverability-email-btn">Get Started</a>
+          <div class="resend-deliverability-email-signature">
+            <p>Cheers,</p>
+            <p>The ACME Team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resend-deliverability-container">
+    <div class="resend-deliverability-text-section">
+      <h2 class="resend-deliverability-heading">
+        Reach humans, <span class="resend-deliverability-heading-muted">not<br>spam folders</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 07-testimonials -->
+  <section class="resend-testimonials" id="resend-testimonials">
+  <p class="resend-testimonials-quote">Resend is transforming email for developers. Simple interface, easy integrations, handy templates. What else could we ask for.</p>
+
+  <div class="resend-testimonials-author">
+    <div class="resend-testimonials-avatar"></div>
+    <div class="resend-testimonials-author-info">
+      <p class="resend-testimonials-author-name">Guillermo Rauch</p>
+      <p class="resend-testimonials-author-title">CEO at Vercel</p>
+    </div>
+  </div>
+
+  <div class="resend-testimonials-icon">
+    <div class="resend-testimonials-globe"></div>
+    <div class="resend-testimonials-glow"></div>
+  </div>
+
+  <h2 class="resend-testimonials-heading">Everything <em>in your control</em></h2>
+
+  <p class="resend-testimonials-description">All the features you need to manage your email sending, troubleshoot with detailed logs, and protect your domain reputation – without the friction.</p>
+</section>
+
+  <!-- Section: 08-footer -->
+  <section class="resend-footer">
+  <div class="resend-footer-background">
+    <span class="resend-footer-logo-bg">Resend</span>
+  </div>
+
+  <div class="resend-footer-content">
+    <div class="resend-footer-left">
+      <div class="resend-footer-address">
+        2261 Market Street #5039<br>
+        San Francisco, CA 94114
+      </div>
+
+      <div class="resend-footer-backed">
+        Backed by
+        <span class="resend-footer-yc-badge">
+          <span class="resend-footer-yc-icon">Y</span>
+          Combinator
+        </span>
+      </div>
+
+      <div class="resend-footer-social">
+        <a href="#" class="resend-footer-social-link" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="#" class="resend-footer-social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+          </svg>
+        </a>
+        <a href="#" class="resend-footer-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="#" class="resend-footer-social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="resend-footer-status">
+        <span class="resend-footer-status-dot"></span>
+        All systems operational
+      </div>
+    </div>
+
+    <div class="resend-footer-links">
+      <div class="resend-footer-column">
+        <span class="resend-footer-column-title">Documentation</span>
+        <a href="#" class="resend-footer-link">Getting Started</a>
+        <a href="#" class="resend-footer-link">API Reference</a>
+        <a href="#" class="resend-footer-link">Integrations</a>
+        <a href="#" class="resend-footer-link">Examples</a>
+        <a href="#" class="resend-footer-link">SDKs</a>
+      </div>
+
+      <div class="resend-footer-column">
+        <span class="resend-footer-column-title">Resources</span>
+        <a href="#" class="resend-footer-link">Changelog</a>
+        <a href="#" class="resend-footer-link">Pricing</a>
+        <a href="#" class="resend-footer-link">Security</a>
+        <a href="#" class="resend-footer-link">SOC 2</a>
+        <a href="#" class="resend-footer-link">GDPR</a>
+        <a href="#" class="resend-footer-link">Brand</a>
+        <a href="#" class="resend-footer-link">Wallpapers</a>
+      </div>
+
+      <div class="resend-footer-column">
+        <span class="resend-footer-column-title">Company</span>
+        <a href="#" class="resend-footer-link">About</a>
+        <a href="#" class="resend-footer-link">Blog</a>
+        <a href="#" class="resend-footer-link">Careers</a>
+        <a href="#" class="resend-footer-link">Customers</a>
+        <a href="#" class="resend-footer-link">Events</a>
+        <a href="#" class="resend-footer-link">Humans</a>
+        <a href="#" class="resend-footer-link">Philosophy</a>
+      </div>
+
+      <div class="resend-footer-column">
+        <span class="resend-footer-column-title">Help</span>
+        <a href="#" class="resend-footer-link">Contact</a>
+        <a href="#" class="resend-footer-link">Support</a>
+        <a href="#" class="resend-footer-link">Status</a>
+        <a href="#" class="resend-footer-link">Migrate</a>
+        <a href="#" class="resend-footer-link">Knowledge Base</a>
+        <a href="#" class="resend-footer-link">Legal Policies</a>
+      </div>
+
+      <div class="resend-footer-column">
+        <span class="resend-footer-column-title">Handbook</span>
+        <a href="#" class="resend-footer-link">Why we exist</a>
+        <a href="#" class="resend-footer-link">How we work</a>
+        <a href="#" class="resend-footer-link">Engineering</a>
+        <a href="#" class="resend-footer-link">Design</a>
+        <a href="#" class="resend-footer-link">Success</a>
+        <a href="#" class="resend-footer-link">Marketing</a>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

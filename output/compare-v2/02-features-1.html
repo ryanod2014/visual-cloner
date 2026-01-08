@@ -1,0 +1,232 @@
+<style>
+.section-2 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.section-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-2-card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-2-card-light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.section-2-card-dark {
+  background: rgb(30, 30, 30);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-2-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-sm);
+}
+
+.section-2-card-light .section-2-card-title {
+  color: #000000;
+}
+
+.section-2-card-dark .section-2-card-title {
+  color: #ffffff;
+}
+
+.section-2-card-desc {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  margin: 0 0 var(--space-lg);
+}
+
+.section-2-card-light .section-2-card-desc {
+  color: rgba(0,0,0,0.6);
+}
+
+.section-2-card-dark .section-2-card-desc {
+  color: var(--color-text-secondary);
+}
+
+.section-2-mockup {
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-2-mockup-light {
+  background: rgb(245, 245, 245);
+}
+
+.section-2-mockup-dark {
+  background: rgb(40, 40, 40);
+}
+
+.section-2-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-2-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.section-2-mockup-label {
+  font-size: 13px;
+}
+
+.section-2-palette-preview {
+  display: flex;
+  height: 200px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.section-2-palette-bar {
+  flex: 1;
+}
+
+.section-2-color-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.section-2-color-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.section-2-slider {
+  margin: var(--space-md) 0;
+}
+
+.section-2-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: var(--space-xs);
+}
+
+.section-2-slider-track {
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  position: relative;
+}
+
+.section-2-slider-thumb {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.section-2-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-md);
+}
+
+.section-2-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.section-2-icon-btn-active {
+  border-color: #2196f3;
+  color: #2196f3;
+}
+</style>
+
+<section class="section-2">
+  <div class="section-2-grid">
+    <!-- Left Card - Adjust as you go (Light) -->
+    <div class="section-2-card section-2-card-light">
+      <h3 class="section-2-card-title">Adjust as you go</h3>
+      <p class="section-2-card-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="section-2-mockup section-2-mockup-light">
+        <div class="section-2-mockup-header">
+          <div class="section-2-mockup-icon" style="border-color: #000;"></div>
+          <span class="section-2-mockup-label" style="color: #000;">Droplette</span>
+        </div>
+        <div style="font-size: 14px; color: #000; margin-bottom: 12px;">Impressionist sunflowers</div>
+        <div class="section-2-palette-preview">
+          <div class="section-2-palette-bar" style="background: #5d4e37;"></div>
+          <div class="section-2-palette-bar" style="background: #8b7355;"></div>
+          <div class="section-2-palette-bar" style="background: #a08050;"></div>
+          <div class="section-2-palette-bar" style="background: #c4a035;"></div>
+          <div class="section-2-palette-bar" style="background: #d4b020;"></div>
+          <div class="section-2-palette-bar" style="background: #e8c41a;"></div>
+          <div class="section-2-palette-bar" style="background: #f0d020;"></div>
+          <div class="section-2-palette-bar" style="background: #f5da30;"></div>
+          <div class="section-2-palette-bar" style="background: #f8e040;"></div>
+          <div class="section-2-palette-bar" style="background: #fae550;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Card - Redo with AI (Dark) -->
+    <div class="section-2-card section-2-card-dark">
+      <h3 class="section-2-card-title">Redo with AI</h3>
+      <p class="section-2-card-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="section-2-mockup section-2-mockup-dark">
+        <div class="section-2-mockup-header">
+          <div class="section-2-mockup-icon" style="border-color: #fff;"></div>
+          <span class="section-2-mockup-label" style="color: #fff;">Droplette</span>
+        </div>
+        <div style="font-size: 14px; color: #fff; margin-bottom: 12px;">A summer rainbow</div>
+        <div class="section-2-palette-preview">
+          <div class="section-2-palette-bar" style="background: #ff5722;"></div>
+          <div class="section-2-palette-bar" style="background: #ff9800;"></div>
+          <div class="section-2-palette-bar" style="background: #ffc107;"></div>
+          <div class="section-2-palette-bar" style="background: #ffeb3b;"></div>
+          <div class="section-2-palette-bar" style="background: #8bc34a;"></div>
+          <div class="section-2-palette-bar" style="background: #00bcd4;"></div>
+          <div class="section-2-palette-bar" style="background: #2196f3;"></div>
+          <div class="section-2-palette-bar" style="background: #9c27b0;"></div>
+        </div>
+        <div class="section-2-color-row" style="margin-top: 16px;">
+          <div class="section-2-color-dot" style="background: #8bc34a;"></div>
+          <div class="section-2-color-dot" style="background: #e91e63;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

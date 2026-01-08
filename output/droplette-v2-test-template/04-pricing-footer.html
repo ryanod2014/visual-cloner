@@ -1,0 +1,156 @@
+<style>
+.clone-section-4 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-4-pricing-card {
+  max-width: 900px;
+  margin: 0 auto var(--space-xxl);
+  background: rgb(20, 20, 20);
+  border: 1px solid;
+  border-image: linear-gradient(90deg, #ff5722, #ffeb3b, #4caf50, #2196f3, #9c27b0) 1;
+  border-radius: 0;
+  padding: var(--space-xxxl) var(--space-xl);
+  text-align: center;
+}
+
+.clone-section-4-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+}
+
+.clone-section-4-subtitle {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-4-highlight {
+  color: var(--color-foreground);
+  font-weight: var(--weight-medium);
+}
+
+.clone-section-4-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.clone-section-4-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-foreground);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-4-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.clone-section-4-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-left: var(--space-xs);
+}
+
+.clone-section-4-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: transparent;
+  color: var(--color-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast) var(--easing);
+}
+
+.clone-section-4-btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Footer */
+.clone-section-4-footer {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.clone-section-4-footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.clone-section-4-footer-logo {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
+  border-radius: 4px;
+}
+
+.clone-section-4-footer-link {
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.clone-section-4-footer-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="clone-section-4">
+  <div class="clone-section-4-pricing-card">
+    <h2 class="clone-section-4-title">Simple pricing.<br>No surprises.</h2>
+    <p class="clone-section-4-subtitle">
+      Bring your own API key for full flexibility. Acme is a one-time purchase. <span class="clone-section-4-highlight">Launch special: $29</span>.
+    </p>
+    <div class="clone-section-4-buttons">
+      <a href="#" class="clone-section-4-btn-primary">
+        Get License $29 <span class="clone-section-4-strikethrough">$49</span>
+      </a>
+      <a href="#" class="clone-section-4-btn-secondary">
+        Try Free Demo
+      </a>
+    </div>
+  </div>
+
+  <footer class="clone-section-4-footer">
+    <p class="clone-section-4-footer-text">
+      Crafted with care by
+      <span class="clone-section-4-footer-logo"></span>
+      <a href="#" class="clone-section-4-footer-link">TechCorp</a>
+    </p>
+  </footer>
+</div>

@@ -1,0 +1,226 @@
+<style>
+.nav-hero {
+  background: rgb(14, 14, 14);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 100;
+}
+
+.nav-hero-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff6b9d, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #a66cff, #ff6b9d);
+  position: relative;
+}
+
+.nav-hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: rgb(14, 14, 14);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.nav-hero-cta {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-hero-figma-icon {
+  width: 16px;
+  height: 16px;
+  background: #1e1e1e;
+  border-radius: 2px;
+}
+
+.nav-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-hero-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+  max-width: 800px;
+}
+
+.nav-hero-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.nav-hero-subheadline strong {
+  color: #ffffff;
+}
+
+.nav-hero-color-dots {
+  display: flex;
+  gap: 60px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-hero-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.nav-hero-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 100, 100, 0.3) 0%, rgba(255, 200, 50, 0.2) 30%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.nav-hero-demo {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+
+.nav-hero-panel {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  width: 280px;
+}
+
+.nav-hero-plugin {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  padding: 0;
+  width: 320px;
+  overflow: hidden;
+}
+
+.nav-hero-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-hero-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-hero-plugin-title {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.nav-hero-palette {
+  display: flex;
+  height: 280px;
+}
+
+.nav-hero-palette-bar {
+  flex: 1;
+}
+</style>
+
+<div class="nav-hero">
+  <div class="nav-hero-glow"></div>
+
+  <nav class="nav-hero-nav">
+    <div class="nav-hero-logo"></div>
+    <a href="#" class="nav-hero-cta">
+      <span class="nav-hero-figma-icon"></span>
+      Try in Figma
+    </a>
+  </nav>
+
+  <div class="nav-hero-content">
+    <h1 class="nav-hero-headline">An AI tool made to enhance designers.</h1>
+    <p class="nav-hero-subheadline">
+      Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong>
+    </p>
+
+    <div class="nav-hero-color-dots">
+      <div class="nav-hero-dot" style="background: #2dd4bf;"></div>
+      <div class="nav-hero-dot" style="background: #14b8a6;"></div>
+      <div class="nav-hero-dot" style="background: #3b82f6;"></div>
+      <div class="nav-hero-dot" style="background: #a855f7;"></div>
+      <div class="nav-hero-dot" style="background: #f97316;"></div>
+      <div class="nav-hero-dot" style="background: #eab308;"></div>
+      <div class="nav-hero-dot" style="background: #84cc16;"></div>
+      <div class="nav-hero-dot" style="background: #22d3ee;"></div>
+    </div>
+  </div>
+
+  <div class="nav-hero-demo">
+    <div class="nav-hero-panel"></div>
+
+    <div class="nav-hero-plugin">
+      <div class="nav-hero-plugin-header">
+        <div class="nav-hero-plugin-icon"></div>
+        <span class="nav-hero-plugin-title">Droplette</span>
+      </div>
+      <div class="nav-hero-palette">
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ff6b35, #c73e1d);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ff8c42, #e85d04);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ffc145, #ffb627);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #a7c957, #6a994e);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #4ecdc4, #45b7d1);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #7209b7, #560bad);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #f72585, #b5179e);"></div>
+      </div>
+    </div>
+
+    <div class="nav-hero-panel"></div>
+  </div>
+</div>

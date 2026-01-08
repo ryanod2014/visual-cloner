@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0e0e0e;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .setup-section {
+            padding: 0 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .setup-card {
+            background: linear-gradient(180deg, rgba(30, 30, 30, 0.8) 0%, rgba(20, 20, 20, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 520px;
+            position: relative;
+        }
+
+        .setup-card-content {
+            padding: 32px 32px 24px;
+        }
+
+        .setup-card-title {
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .setup-card-description {
+            font-size: 17px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            max-width: 400px;
+        }
+
+        /* UI Mockup Container */
+        .setup-mockup-container {
+            padding: 24px 32px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Left Card - Droplette UI with Rainbow */
+        .setup-droplette-ui {
+            width: 320px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .setup-droplette-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .setup-droplette-logo {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+        }
+
+        .setup-droplette-logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+        }
+
+        .setup-droplette-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .setup-droplette-body {
+            padding: 80px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .setup-palette-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .setup-rainbow-dots {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+        }
+
+        .setup-rainbow-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+
+        .setup-rainbow-dot:nth-child(1) { background: #9B4DCA; }
+        .setup-rainbow-dot:nth-child(2) { background: #7B5DCF; }
+        .setup-rainbow-dot:nth-child(3) { background: #5B8DD4; }
+        .setup-rainbow-dot:nth-child(4) { background: #4DBDA3; }
+        .setup-rainbow-dot:nth-child(5) { background: #5DBD6B; }
+        .setup-rainbow-dot:nth-child(6) { background: #8DBD4D; }
+        .setup-rainbow-dot:nth-child(7) { background: #BDBD4D; }
+        .setup-rainbow-dot:nth-child(8) { background: #DDAD4D; }
+        .setup-rainbow-dot:nth-child(9) { background: #ED9D4D; }
+        .setup-rainbow-dot:nth-child(10) { background: #FD8D4D; }
+
+        .setup-droplette-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .setup-color-picker {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #7B5DCF 50%, #4DBDA3 50%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .setup-color-picker::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 2px solid white;
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+
+        .setup-create-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .setup-settings-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .setup-settings-icon::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        /* Right Card - Sync Modal */
+        .setup-sync-modal {
+            width: 280px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .setup-sync-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .setup-sync-logo {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .setup-sync-logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        .setup-sync-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        .setup-sync-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .setup-sync-body {
+            padding: 48px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .setup-sync-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #E8E0FF 0%, #F0E8FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .setup-sync-icon::before {
+            content: '';
+            width: 20px;
+            height: 16px;
+            background: #8B5CF6;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .setup-sync-icon::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid #C4B5FD;
+        }
+
+        .setup-sync-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .setup-sync-description {
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            max-width: 220px;
+        }
+
+        .setup-sync-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .setup-sync-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #000000;
+        }
+
+        .setup-sync-colors {
+            display: flex;
+            gap: 2px;
+        }
+
+        .setup-sync-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .setup-sync-color:nth-child(1) { background: #22C55E; }
+        .setup-sync-color:nth-child(2) { background: #FACC15; }
+
+        .setup-done-btn {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Bottom Cards - Text Only */
+        .setup-card-text-only {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .setup-card-text-only .setup-card-content {
+            padding: 40px 32px;
+        }
+
+        .setup-card-text-only .setup-card-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .setup-card-text-only .setup-card-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        /* Icon in card corner */
+        .setup-card-icon {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .setup-gradient-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 180deg,
+                #FF6B6B 0deg,
+                #FECA57 60deg,
+                #48DBFB 120deg,
+                #FF9FF3 180deg,
+                #54A0FF 240deg,
+                #5F27CD 300deg,
+                #FF6B6B 360deg
+            );
+            position: relative;
+        }
+
+        .setup-gradient-circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: #0e0e0e;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <section class="setup-section">
+        <div class="setup-grid">
+            <!-- Card 1: Select from your frames -->
+            <div class="setup-card">
+                <div class="setup-card-icon">
+                    <div class="setup-gradient-circle"></div>
+                </div>
+                <div class="setup-card-content" style="padding-top: 80px;">
+                    <div class="setup-card-title">Select from your frames</div>
+                    <p class="setup-card-description">Grab some frames and Droplette will extract colors. The AI will use these a basis for creating your unique palettes.</p>
+                </div>
+                <div class="setup-mockup-container">
+                    <div class="setup-droplette-ui">
+                        <div class="setup-droplette-header">
+                            <div class="setup-droplette-logo"></div>
+                            <span class="setup-droplette-title">Droplette</span>
+                        </div>
+                        <div class="setup-droplette-body">
+                            <div class="setup-palette-title">A summer rainbow</div>
+                            <div class="setup-rainbow-dots">
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                                <div class="setup-rainbow-dot"></div>
+                            </div>
+                        </div>
+                        <div class="setup-droplette-footer">
+                            <div class="setup-color-picker"></div>
+                            <button class="setup-create-btn">Create</button>
+                            <div class="setup-settings-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                                    <circle cx="10" cy="10" r="2.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Sync with your styles -->
+            <div class="setup-card">
+                <div class="setup-card-content">
+                    <div class="setup-card-title">Sync with your styles</div>
+                    <p class="setup-card-description">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+                </div>
+                <div class="setup-mockup-container">
+                    <div class="setup-sync-modal">
+                        <div class="setup-sync-header">
+                            <div class="setup-sync-logo"></div>
+                            <span class="setup-sync-title">Droplette</span>
+                        </div>
+                        <span class="setup-sync-close">&times;</span>
+                        <div class="setup-sync-body">
+                            <div class="setup-sync-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="4" y="6" width="16" height="12" rx="2" fill="#8B5CF6"/>
+                                    <path d="M8 10H16M8 14H12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="setup-sync-heading">Add your colors</div>
+                            <p class="setup-sync-description">Navigate to the file containing your color styles to sync with Droplette.</p>
+                            <div class="setup-sync-status">
+                                <div class="setup-sync-badge">
+                                    <div class="setup-sync-colors">
+                                        <div class="setup-sync-color"></div>
+                                        <div class="setup-sync-color"></div>
+                                    </div>
+                                    <span>160 colors synced</span>
+                                </div>
+                                <button class="setup-done-btn">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Adjust as you go -->
+            <div class="setup-card setup-card-text-only">
+                <div class="setup-card-content">
+                    <div class="setup-card-title">Adjust as you go</div>
+                    <p class="setup-card-description">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+                </div>
+            </div>
+
+            <!-- Card 4: Redo with AI -->
+            <div class="setup-card setup-card-text-only">
+                <div class="setup-card-content">
+                    <div class="setup-card-title">Redo with AI</div>
+                    <p class="setup-card-description">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

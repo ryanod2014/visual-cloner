@@ -1,0 +1,248 @@
+<!-- Section 1: Features - Simple to setup -->
+<style>
+  .s1-section {
+    --color-bg: rgb(14,14,14);
+    --color-text: rgb(255,255,255);
+    --color-muted: rgba(255,255,255,0.7);
+    --font: ui-sans-serif, -apple-system, system-ui, sans-serif;
+    --h1-size: 69px;
+
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font);
+    padding: 120px 40px 80px;
+    box-sizing: border-box;
+  }
+
+  .s1-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .s1-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .s1-title {
+    font-size: var(--h1-size);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    line-height: 1.1;
+  }
+
+  .s1-subtitle {
+    font-size: 20px;
+    color: var(--color-muted);
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .s1-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .s1-card {
+    border-radius: 16px;
+    padding: 40px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s1-card--light {
+    background: rgb(255, 255, 255);
+    color: rgb(14, 14, 14);
+  }
+
+  .s1-card--dark {
+    background: rgb(38, 38, 38);
+    color: rgb(255, 255, 255);
+  }
+
+  .s1-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .s1-card-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+    max-width: 340px;
+  }
+
+  .s1-card--light .s1-card-text {
+    color: rgba(14, 14, 14, 0.7);
+  }
+
+  .s1-card--dark .s1-card-text {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .s1-card-preview {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .s1-preview-window {
+    background: rgb(51, 51, 51);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .s1-preview-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgb(51, 51, 51);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .s1-preview-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+
+  .s1-preview-title {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .s1-preview-body {
+    height: 160px;
+    background: rgb(64, 64, 64);
+  }
+
+  /* Right card preview - white modal style */
+  .s1-preview-modal {
+    background: rgb(51, 51, 51);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .s1-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgb(51, 51, 51);
+  }
+
+  .s1-modal-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+
+  .s1-modal-title {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .s1-modal-body {
+    background: rgb(255, 255, 255);
+    margin: 0 12px 12px;
+    border-radius: 8px;
+    padding: 24px;
+    min-height: 140px;
+    position: relative;
+  }
+
+  .s1-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 18px;
+  }
+
+  .s1-modal-icon-center {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .s1-modal-icon-center svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+  }
+</style>
+
+<section class="s1-section">
+  <div class="s1-container">
+    <div class="s1-header">
+      <h2 class="s1-title">Simple to setup.</h2>
+      <p class="s1-subtitle">Select the colors you want to work with, or hook up your styles and go.</p>
+    </div>
+
+    <div class="s1-cards">
+      <!-- Left Card - Light -->
+      <div class="s1-card s1-card--light">
+        <h3 class="s1-card-title">Select from your frames</h3>
+        <p class="s1-card-text">Grab some frames and Droplette will extract colors. The AI will use use these a basis for creating your unique palettes.</p>
+        <div class="s1-card-preview">
+          <div class="s1-preview-window">
+            <div class="s1-preview-header">
+              <div class="s1-preview-icon"></div>
+              <span class="s1-preview-title">Droplette</span>
+            </div>
+            <div class="s1-preview-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card - Dark -->
+      <div class="s1-card s1-card--dark">
+        <h3 class="s1-card-title">Sync with your styles</h3>
+        <p class="s1-card-text">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+        <div class="s1-card-preview">
+          <div class="s1-preview-modal">
+            <div class="s1-modal-header">
+              <div class="s1-modal-icon"></div>
+              <span class="s1-modal-title">Droplette</span>
+            </div>
+            <div class="s1-modal-body">
+              <div class="s1-modal-close">×</div>
+              <div class="s1-modal-icon-center">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

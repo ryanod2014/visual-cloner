@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px 160px;
+        }
+
+        .faq-heading {
+            margin-bottom: 60px;
+        }
+
+        .faq-heading-line1 {
+            font-size: 64px;
+            font-weight: 400;
+            color: #4a4a4a;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-heading-line2 {
+            font-size: 64px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #2a2a2a;
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .faq-item:hover {
+            opacity: 0.7;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #666666;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 16px;
+            height: 1.5px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::after {
+            width: 1.5px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Decorative gradient dots at bottom */
+        .faq-decoration {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .faq-dots-row {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .faq-dots-row-top {
+            bottom: 80px;
+            opacity: 0.3;
+        }
+
+        .faq-dots-row-bottom {
+            bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .faq-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+
+        .faq-dot-small {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Dot colors for top row (faded) */
+        .faq-dot-cyan-teal { background: linear-gradient(135deg, #00d4aa 0%, #0099aa 100%); }
+        .faq-dot-pink { background: linear-gradient(135deg, #ff66aa 0%, #cc4488 100%); }
+        .faq-dot-blue { background: linear-gradient(135deg, #4488cc 0%, #2266aa 100%); }
+        .faq-dot-purple { background: linear-gradient(135deg, #aa44cc 0%, #8833aa 100%); }
+        .faq-dot-orange-red { background: linear-gradient(135deg, #ff6644 0%, #cc4422 100%); }
+        .faq-dot-yellow-green { background: linear-gradient(135deg, #aacc44 0%, #88aa22 100%); }
+        .faq-dot-yellow { background: linear-gradient(135deg, #ffcc44 0%, #ddaa22 100%); }
+        .faq-dot-lime { background: linear-gradient(135deg, #88ff88 0%, #44cc44 100%); }
+        .faq-dot-teal { background: linear-gradient(135deg, #44cccc 0%, #22aaaa 100%); }
+    </style>
+</head>
+<body>
+    <section class="faq-section">
+        <div class="faq-heading">
+            <div class="faq-heading-line1">Frequently asked</div>
+            <div class="faq-heading-line2">questions.</div>
+        </div>
+
+        <ul class="faq-list">
+            <li class="faq-item">
+                <span class="faq-question">Give me the elevator pitch for Droplette...</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">Is Droplette free to use?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">What languages does Droplette support?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How accurate is Droplette?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How long does Droplette take to run?</span>
+                <span class="faq-icon"></span>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How do I setup Droplette?</span>
+                <span class="faq-icon"></span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Decorative gradient dots -->
+    <div class="faq-decoration">
+        <div class="faq-dots-row faq-dots-row-top">
+            <div class="faq-dot faq-dot-small faq-dot-cyan-teal"></div>
+            <div class="faq-dot faq-dot-small faq-dot-pink"></div>
+            <div class="faq-dot faq-dot-small faq-dot-blue"></div>
+            <div class="faq-dot faq-dot-small faq-dot-purple"></div>
+            <div class="faq-dot faq-dot-small faq-dot-orange-red"></div>
+            <div class="faq-dot faq-dot-small faq-dot-yellow-green"></div>
+            <div class="faq-dot faq-dot-small faq-dot-yellow"></div>
+            <div class="faq-dot faq-dot-small faq-dot-lime"></div>
+            <div class="faq-dot faq-dot-small faq-dot-teal"></div>
+        </div>
+        <div class="faq-dots-row faq-dots-row-bottom">
+            <div class="faq-dot faq-dot-cyan-teal"></div>
+            <div class="faq-dot faq-dot-pink"></div>
+            <div class="faq-dot faq-dot-blue"></div>
+            <div class="faq-dot faq-dot-purple"></div>
+            <div class="faq-dot faq-dot-orange-red"></div>
+            <div class="faq-dot faq-dot-yellow-green"></div>
+            <div class="faq-dot faq-dot-yellow"></div>
+            <div class="faq-dot faq-dot-lime"></div>
+            <div class="faq-dot faq-dot-teal"></div>
+        </div>
+    </div>
+</body>
+</html>

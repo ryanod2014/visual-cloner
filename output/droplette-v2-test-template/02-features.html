@@ -1,0 +1,128 @@
+<style>
+.clone-section-2 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.clone-section-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clone-section-2-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-section-2-card-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-foreground);
+  margin: 0 0 var(--space-md);
+}
+
+.clone-section-2-card-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+}
+
+.clone-section-2-mockup-light {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: rgb(30, 30, 30);
+}
+
+.clone-section-2-mockup-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(30, 30, 30);
+  border-radius: 50%;
+}
+
+.clone-section-2-mockup-content {
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: var(--radius-sm);
+  height: 180px;
+}
+
+.clone-section-2-mockup-dark {
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.clone-section-2-mockup-dark-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--color-foreground);
+}
+
+.clone-section-2-mockup-dark-icon {
+  width: 16px;
+  height: 16px;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  border-radius: 50%;
+}
+
+.clone-section-2-mockup-dark-content {
+  background: rgb(30, 30, 30);
+  border-radius: var(--radius-sm);
+  height: 180px;
+}
+</style>
+
+<div class="clone-section-2">
+  <div class="clone-section-2-grid">
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Customize as you work</h3>
+      <p class="clone-section-2-card-text">Want to fine-tune the results? No problem. Adjust your generated output to match your exact needs with intuitive controls.</p>
+      <div class="clone-section-2-mockup-light">
+        <div class="clone-section-2-mockup-header">
+          <div class="clone-section-2-mockup-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-2-mockup-content"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-2-card">
+      <h3 class="clone-section-2-card-title">Regenerate with AI</h3>
+      <p class="clone-section-2-card-text">Iterate on your results as many times as you need. Suggest changes to keep or start fresh from scratch.</p>
+      <div class="clone-section-2-mockup-dark">
+        <div class="clone-section-2-mockup-dark-header">
+          <div class="clone-section-2-mockup-dark-icon"></div>
+          <span>Acme</span>
+        </div>
+        <div class="clone-section-2-mockup-dark-content"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,515 @@
+<!-- Section: features -->
+<section id="features" class="features-section">
+  <style>
+    .features-section {
+      background: rgb(14, 14, 14);
+      padding: 0 0 120px 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: white;
+      position: relative;
+    }
+
+    .features-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .features-card {
+      position: relative;
+      padding: 40px 48px;
+    }
+
+    .features-card-left {
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.4) 0%, rgba(20, 20, 20, 0.6) 100%);
+      border-radius: 0;
+    }
+
+    .features-card-right {
+      background: linear-gradient(135deg, rgba(180, 180, 180, 0.15) 0%, rgba(140, 140, 140, 0.1) 100%);
+      border-radius: 0;
+    }
+
+    .features-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .features-icon-drop {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, #ff0080, #ff8c00, #ffee00, #00ff00, #00ffff, #0080ff, #8000ff, #ff0080);
+      position: relative;
+    }
+
+    .features-icon-drop::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      background: rgb(14, 14, 14);
+      border-radius: 50%;
+    }
+
+    .features-description {
+      font-size: 18px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      max-width: 380px;
+    }
+
+    .features-app-window {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .features-app-window-dark {
+      background: rgb(38, 38, 38);
+    }
+
+    .features-app-header {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(250, 250, 250, 1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .features-app-header-dark {
+      background: rgba(50, 50, 50, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .features-app-logo {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .features-app-logo::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: #666;
+      border-radius: 50%;
+    }
+
+    .features-app-logo-dark {
+      border-color: #888;
+    }
+
+    .features-app-logo-dark::after {
+      background: #888;
+    }
+
+    .features-app-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .features-app-title-dark {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .features-app-content {
+      padding: 20px;
+    }
+
+    .features-palette-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 16px;
+    }
+
+    .features-palette-title-dark {
+      color: white;
+    }
+
+    .features-color-grid {
+      display: grid;
+      grid-template-columns: repeat(14, 1fr);
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+
+    .features-color-bar {
+      height: 200px;
+      border-radius: 0;
+    }
+
+    /* Sunflower palette colors - gradient variations */
+    .features-sunflower-1 { background: linear-gradient(to bottom, #8B4513, #654321); }
+    .features-sunflower-2 { background: linear-gradient(to bottom, #A0522D, #8B4513); }
+    .features-sunflower-3 { background: linear-gradient(to bottom, #B8860B, #996515); }
+    .features-sunflower-4 { background: linear-gradient(to bottom, #CD853F, #A0522D); }
+    .features-sunflower-5 { background: linear-gradient(to bottom, #D2691E, #B8860B); }
+    .features-sunflower-6 { background: linear-gradient(to bottom, #DAA520, #CD853F); }
+    .features-sunflower-7 { background: linear-gradient(to bottom, #E8A317, #D2691E); }
+    .features-sunflower-8 { background: linear-gradient(to bottom, #F0A500, #DAA520); }
+    .features-sunflower-9 { background: linear-gradient(to bottom, #F5B800, #E8A317); }
+    .features-sunflower-10 { background: linear-gradient(to bottom, #FACC00, #F0A500); }
+    .features-sunflower-11 { background: linear-gradient(to bottom, #FFD700, #F5B800); }
+    .features-sunflower-12 { background: linear-gradient(to bottom, #FFDD33, #FACC00); }
+    .features-sunflower-13 { background: linear-gradient(to bottom, #FFE566, #FFD700); }
+    .features-sunflower-14 { background: linear-gradient(to bottom, #FFEB99, #FFDD33); }
+
+    .features-slider-section {
+      margin-top: 16px;
+    }
+
+    .features-slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .features-slider-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .features-slider-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .features-slider-track {
+      position: relative;
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+    }
+
+    .features-slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 92%;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    .features-slider-thumb {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 2px solid #333;
+      border-radius: 50%;
+    }
+
+    .features-app-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .features-app-footer-dark {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .features-back-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+
+    .features-back-btn-dark {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .features-icon-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .features-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      color: #666;
+    }
+
+    .features-icon-btn-active {
+      border-color: #0066ff;
+      color: #0066ff;
+    }
+
+    /* Rainbow palette */
+    .features-rainbow-grid {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .features-rainbow-bar {
+      flex: 1;
+      height: 240px;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+    }
+
+    .features-rainbow-bar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    }
+
+    .features-rb-1 { background: linear-gradient(to bottom, #ff5722, #e64a19); }
+    .features-rb-2 { background: linear-gradient(to bottom, #ff9800, #f57c00); }
+    .features-rb-3 { background: linear-gradient(to bottom, #ffeb3b, #fbc02d); }
+    .features-rb-4 { background: linear-gradient(to bottom, #8bc34a, #689f38); }
+    .features-rb-5 { background: linear-gradient(to bottom, #00bcd4, #0097a7); }
+    .features-rb-6 { background: linear-gradient(to bottom, #2196f3, #1976d2); }
+    .features-rb-7 { background: linear-gradient(to bottom, #e91e63, #c2185b); }
+
+    .features-color-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 16px 0;
+    }
+
+    .features-color-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    .features-dot-1 { background: #333; }
+    .features-dot-2 { background: #8bc34a; }
+    .features-dot-3 { background: #e91e63; }
+
+    .features-redo-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+    }
+
+    .features-redo-btn {
+      padding: 8px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .features-figma-btn {
+      position: absolute;
+      top: 40px;
+      right: 48px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: white;
+      border-radius: 30px;
+      color: #111;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+
+    .features-figma-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .features-figma-block {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .features-figma-red { background: #f24e1e; }
+    .features-figma-orange { background: #ff7262; }
+    .features-figma-purple { background: #a259ff; }
+    .features-figma-blue { background: #1abcfe; }
+    .features-figma-green { background: #0acf83; }
+
+    .features-faq-preview {
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .features-faq-title {
+      font-size: 56px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+  </style>
+
+  <div class="features-container">
+    <!-- Left Card -->
+    <div class="features-card features-card-left">
+      <div class="features-icon">
+        <div class="features-icon-drop"></div>
+      </div>
+      <p class="features-description">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+
+      <div class="features-app-window">
+        <div class="features-app-header">
+          <div class="features-app-logo"></div>
+          <span class="features-app-title">Droplette</span>
+        </div>
+        <div class="features-app-content">
+          <div class="features-palette-title">Impressionist sunflowers</div>
+          <div class="features-color-grid">
+            <div class="features-color-bar features-sunflower-1"></div>
+            <div class="features-color-bar features-sunflower-2"></div>
+            <div class="features-color-bar features-sunflower-3"></div>
+            <div class="features-color-bar features-sunflower-4"></div>
+            <div class="features-color-bar features-sunflower-5"></div>
+            <div class="features-color-bar features-sunflower-6"></div>
+            <div class="features-color-bar features-sunflower-7"></div>
+            <div class="features-color-bar features-sunflower-8"></div>
+            <div class="features-color-bar features-sunflower-9"></div>
+            <div class="features-color-bar features-sunflower-10"></div>
+            <div class="features-color-bar features-sunflower-11"></div>
+            <div class="features-color-bar features-sunflower-12"></div>
+            <div class="features-color-bar features-sunflower-13"></div>
+            <div class="features-color-bar features-sunflower-14"></div>
+          </div>
+          <div class="features-slider-section">
+            <div class="features-slider-label">
+              <span class="features-slider-text">Saturation</span>
+              <span class="features-slider-value">+92</span>
+            </div>
+            <div class="features-slider-track">
+              <div class="features-slider-fill"></div>
+              <div class="features-slider-thumb"></div>
+            </div>
+          </div>
+        </div>
+        <div class="features-app-footer">
+          <div class="features-back-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </div>
+          <div class="features-icon-buttons">
+            <div class="features-icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2v20"/>
+              </svg>
+            </div>
+            <div class="features-icon-btn features-icon-btn-active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.8-.1 2.7-.3"/>
+                <circle cx="12" cy="8" r="2"/>
+              </svg>
+            </div>
+            <div class="features-icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Card -->
+    <div class="features-card features-card-right">
+      <p class="features-description">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+
+      <a href="#" class="features-figma-btn">
+        <div class="features-figma-icon">
+          <div class="features-figma-block features-figma-red"></div>
+          <div class="features-figma-block features-figma-orange"></div>
+          <div class="features-figma-block features-figma-purple"></div>
+          <div class="features-figma-block features-figma-blue"></div>
+          <div class="features-figma-block features-figma-green"></div>
+        </div>
+        Try in Figma
+      </a>
+
+      <div class="features-app-window features-app-window-dark">
+        <div class="features-app-header features-app-header-dark">
+          <div class="features-app-logo features-app-logo-dark"></div>
+          <span class="features-app-title features-app-title-dark">Droplette</span>
+        </div>
+        <div class="features-app-content">
+          <div class="features-palette-title features-palette-title-dark">A summer rainbow</div>
+          <div class="features-rainbow-grid">
+            <div class="features-rainbow-bar features-rb-1"></div>
+            <div class="features-rainbow-bar features-rb-2"></div>
+            <div class="features-rainbow-bar features-rb-3"></div>
+            <div class="features-rainbow-bar features-rb-4"></div>
+            <div class="features-rainbow-bar features-rb-5"></div>
+            <div class="features-rainbow-bar features-rb-6"></div>
+            <div class="features-rainbow-bar features-rb-7"></div>
+          </div>
+          <div class="features-color-indicator">
+            <div class="features-color-dot features-dot-1"></div>
+            <div class="features-color-dot features-dot-2"></div>
+            <div class="features-color-dot features-dot-3"></div>
+          </div>
+        </div>
+        <div class="features-redo-section">
+          <div class="features-back-btn features-back-btn-dark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </div>
+          <button class="features-redo-btn">Redo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-faq-preview">
+    <h2 class="features-faq-title">Frequently asked</h2>
+  </div>
+</section>

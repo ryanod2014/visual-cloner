@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-nav-hero === */
+.nav-hero {
+  background: rgb(14, 14, 14);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.nav-hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 100;
+}
+
+.nav-hero-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff6b9d, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #a66cff, #ff6b9d);
+  position: relative;
+}
+
+.nav-hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 24px;
+  background: rgb(14, 14, 14);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.nav-hero-cta {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-hero-figma-icon {
+  width: 16px;
+  height: 16px;
+  background: #1e1e1e;
+  border-radius: 2px;
+}
+
+.nav-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-hero-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+  max-width: 800px;
+}
+
+.nav-hero-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.nav-hero-subheadline strong {
+  color: #ffffff;
+}
+
+.nav-hero-color-dots {
+  display: flex;
+  gap: 60px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-hero-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.nav-hero-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 100, 100, 0.3) 0%, rgba(255, 200, 50, 0.2) 30%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.nav-hero-demo {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+
+.nav-hero-panel {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  width: 280px;
+}
+
+.nav-hero-plugin {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  padding: 0;
+  width: 320px;
+  overflow: hidden;
+}
+
+.nav-hero-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-hero-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-hero-plugin-title {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.nav-hero-palette {
+  display: flex;
+  height: 280px;
+}
+
+.nav-hero-palette-bar {
+  flex: 1;
+}
+
+/* === Section: 01-product-demo === */
+.product-demo {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.product-demo-toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.product-demo-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(40, 40, 40, 0.8);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.product-demo-toolbar-item {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.product-demo-toolbar-item.active {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+  color: #3b82f6;
+}
+
+.product-demo-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.product-demo-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 20px;
+}
+
+.product-demo-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.product-demo-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-demo-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-demo-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-demo-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+}
+
+.product-demo-card.dark .product-demo-card-title {
+  color: #ffffff;
+}
+
+.product-demo-card-desc {
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.7);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 320px;
+}
+
+.product-demo-card.dark .product-demo-card-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.product-demo-card-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.product-demo-card.dark .product-demo-card-image {
+  background: rgba(40, 40, 40, 0.8);
+}
+
+/* === Section: 02-simple-setup === */
+.simple-setup {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.simple-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.simple-setup-card {
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.simple-setup-card.white {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.simple-setup-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-plugin-preview {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.simple-setup-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.simple-setup-plugin-title {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.simple-setup-prompt {
+  padding: 20px 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.simple-setup-color-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px;
+}
+
+.simple-setup-color-pill {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.simple-setup-plugin-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-palette-icon {
+  width: 32px;
+  height: 20px;
+  background: linear-gradient(90deg, #a855f7, #f97316);
+  border-radius: 4px;
+}
+
+.simple-setup-create-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+
+.simple-setup-settings-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.simple-setup-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.simple-setup-modal-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-setup-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+}
+
+.simple-setup-modal-desc {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.6);
+  margin: 0 0 20px;
+}
+
+.simple-setup-modal-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.simple-setup-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.simple-setup-status-dot {
+  width: 16px;
+  height: 8px;
+  background: linear-gradient(90deg, #3b82f6, #ec4899);
+  border-radius: 4px;
+}
+
+.simple-setup-done-btn {
+  background: rgba(30, 30, 30, 0.9);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+
+.simple-setup-feature-card {
+  padding: 40px;
+}
+
+.simple-setup-feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.simple-setup-feature-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 320px;
+}
+
+.simple-setup-feature-preview {
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.simple-setup-feature-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.simple-setup-feature-preview-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.simple-setup-feature-preview-title {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.simple-setup-feature-preview-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
+/* === Section: 03-features === */
+.features {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-card {
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.features-card.white {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.features-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.features-plugin-preview {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.features-plugin-header {
+  padding: 12px 16px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+}
+
+.features-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 180px;
+}
+
+.features-palette-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-palette-cell {
+  flex: 1;
+}
+
+.features-slider-section {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.features-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 8px;
+}
+
+.features-slider {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  position: relative;
+}
+
+.features-slider-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  width: 92%;
+}
+
+.features-slider-thumb {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #1a1a1a;
+  border-radius: 50%;
+}
+
+.features-controls {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+}
+
+.features-control-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.features-control-btn.active {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.features-dark-preview {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-dark-header {
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.features-dark-palette {
+  display: flex;
+  height: 200px;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.features-dark-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.features-dark-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.features-color-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.features-color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.features-redo-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+
+/* === Section: 04-faq === */
+.faq {
+  background: rgb(14, 14, 14);
+  padding: 100px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 60px;
+  text-align: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.faq-color-strip {
+  display: flex;
+  gap: 60px;
+  margin-top: 80px;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.faq-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+/* === Section: 05-pricing-footer === */
+.pricing-footer {
+  background: rgb(14, 14, 14);
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.pricing-section {
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 24px;
+  margin: 0 40px;
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, transparent 100%);
+}
+
+.pricing-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+}
+
+.pricing-subheadline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.pricing-highlight {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.pricing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pricing-btn-primary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-btn-primary .old-price {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.pricing-btn-secondary {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(14, 14, 14);
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-figma-icon {
+  width: 16px;
+  height: 16px;
+  background: #1e1e1e;
+  border-radius: 2px;
+}
+
+.footer {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.footer-color-strip {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.footer-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.footer-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-nav-hero -->
+  <div class="nav-hero">
+  <div class="nav-hero-glow"></div>
+
+  <nav class="nav-hero-nav">
+    <div class="nav-hero-logo"></div>
+    <a href="#" class="nav-hero-cta">
+      <span class="nav-hero-figma-icon"></span>
+      Try in Figma
+    </a>
+  </nav>
+
+  <div class="nav-hero-content">
+    <h1 class="nav-hero-headline">An AI tool made to enhance designers.</h1>
+    <p class="nav-hero-subheadline">
+      Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong>
+    </p>
+
+    <div class="nav-hero-color-dots">
+      <div class="nav-hero-dot" style="background: #2dd4bf;"></div>
+      <div class="nav-hero-dot" style="background: #14b8a6;"></div>
+      <div class="nav-hero-dot" style="background: #3b82f6;"></div>
+      <div class="nav-hero-dot" style="background: #a855f7;"></div>
+      <div class="nav-hero-dot" style="background: #f97316;"></div>
+      <div class="nav-hero-dot" style="background: #eab308;"></div>
+      <div class="nav-hero-dot" style="background: #84cc16;"></div>
+      <div class="nav-hero-dot" style="background: #22d3ee;"></div>
+    </div>
+  </div>
+
+  <div class="nav-hero-demo">
+    <div class="nav-hero-panel"></div>
+
+    <div class="nav-hero-plugin">
+      <div class="nav-hero-plugin-header">
+        <div class="nav-hero-plugin-icon"></div>
+        <span class="nav-hero-plugin-title">Droplette</span>
+      </div>
+      <div class="nav-hero-palette">
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ff6b35, #c73e1d);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ff8c42, #e85d04);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #ffc145, #ffb627);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #a7c957, #6a994e);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #4ecdc4, #45b7d1);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #7209b7, #560bad);"></div>
+        <div class="nav-hero-palette-bar" style="background: linear-gradient(to bottom, #f72585, #b5179e);"></div>
+      </div>
+    </div>
+
+    <div class="nav-hero-panel"></div>
+  </div>
+</div>
+
+  <!-- Section: 01-product-demo -->
+  <div class="product-demo">
+  <div class="product-demo-toolbar">
+    <div class="product-demo-toolbar-inner">
+      <div class="product-demo-toolbar-item active">V</div>
+      <div class="product-demo-toolbar-item">#</div>
+      <div class="product-demo-toolbar-item">[]</div>
+      <div class="product-demo-toolbar-item">H</div>
+      <div class="product-demo-toolbar-item">T</div>
+      <div class="product-demo-toolbar-item">O</div>
+      <div class="product-demo-toolbar-item">*</div>
+      <div class="product-demo-toolbar-item">&lt;/&gt;</div>
+    </div>
+  </div>
+
+  <div class="product-demo-section-header">
+    <h2 class="product-demo-headline">Simple to setup.</h2>
+    <p class="product-demo-subheadline">Select the colors you want to work with, or hook up your styles and go.</p>
+  </div>
+
+  <div class="product-demo-cards">
+    <div class="product-demo-card">
+      <h3 class="product-demo-card-title">Select from your frames</h3>
+      <p class="product-demo-card-desc">Grab some frames and Droplette will extract colors. The AI will use these as a basis for creating your unique palettes.</p>
+      <div class="product-demo-card-image"></div>
+    </div>
+
+    <div class="product-demo-card dark">
+      <h3 class="product-demo-card-title">Sync with your styles</h3>
+      <p class="product-demo-card-desc">Sync your color styles with Droplette to inform the AI what colors it can work with, helping you keep on brand and on track.</p>
+      <div class="product-demo-card-image"></div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 02-simple-setup -->
+  <div class="simple-setup">
+  <div class="simple-setup-grid">
+    <div class="simple-setup-card white">
+      <div class="simple-setup-plugin-preview">
+        <div class="simple-setup-plugin-header">
+          <div class="simple-setup-plugin-icon"></div>
+          <span class="simple-setup-plugin-title">Droplette</span>
+        </div>
+        <div class="simple-setup-prompt">A summer rainbow</div>
+        <div class="simple-setup-color-row">
+          <div class="simple-setup-color-pill" style="background: #7c3aed;"></div>
+          <div class="simple-setup-color-pill" style="background: #6366f1;"></div>
+          <div class="simple-setup-color-pill" style="background: #3b82f6;"></div>
+          <div class="simple-setup-color-pill" style="background: #14b8a6;"></div>
+          <div class="simple-setup-color-pill" style="background: #22c55e;"></div>
+          <div class="simple-setup-color-pill" style="background: #eab308;"></div>
+          <div class="simple-setup-color-pill" style="background: #f97316;"></div>
+          <div class="simple-setup-color-pill" style="background: #ef4444;"></div>
+        </div>
+        <div class="simple-setup-plugin-footer">
+          <div class="simple-setup-palette-icon"></div>
+          <button class="simple-setup-create-btn">Create</button>
+          <span class="simple-setup-settings-icon">&#9881;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark">
+      <div class="simple-setup-modal">
+        <div class="simple-setup-modal-icon">
+          <span style="color: white; font-size: 20px;">&#9741;</span>
+        </div>
+        <h3 class="simple-setup-modal-title">Add your colors</h3>
+        <p class="simple-setup-modal-desc">Navigate to the file containing your color styles to sync with Droplette.</p>
+        <div class="simple-setup-modal-status">
+          <span class="simple-setup-status-badge">
+            <span class="simple-setup-status-dot"></span>
+            160 colors synced
+          </span>
+          <button class="simple-setup-done-btn">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark simple-setup-feature-card">
+      <h3 class="simple-setup-feature-title">Adjust as you go</h3>
+      <p class="simple-setup-feature-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="simple-setup-feature-preview">
+        <div class="simple-setup-feature-preview-header">
+          <div class="simple-setup-feature-preview-icon"></div>
+          <span class="simple-setup-feature-preview-title">Droplette</span>
+        </div>
+        <div class="simple-setup-feature-preview-text">Impressionist sunflowers</div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark simple-setup-feature-card">
+      <h3 class="simple-setup-feature-title">Redo with AI</h3>
+      <p class="simple-setup-feature-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="simple-setup-feature-preview">
+        <div class="simple-setup-feature-preview-header">
+          <div class="simple-setup-feature-preview-icon"></div>
+          <span class="simple-setup-feature-preview-title">Droplette</span>
+        </div>
+        <div class="simple-setup-feature-preview-text">A summer rainbow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 03-features -->
+  <div class="features">
+  <div class="features-grid">
+    <div class="features-card white">
+      <div class="features-plugin-preview">
+        <div class="features-plugin-header">Impressionist sunflowers</div>
+        <div class="features-palette-grid">
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #8b6914;"></div>
+            <div class="features-palette-cell" style="background: #9a7516;"></div>
+            <div class="features-palette-cell" style="background: #a98218;"></div>
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #9a7516;"></div>
+            <div class="features-palette-cell" style="background: #a98218;"></div>
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #b88f1a;"></div>
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #c79c1c;"></div>
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+            <div class="features-palette-cell" style="background: #f9d024;"></div>
+          </div>
+          <div class="features-palette-col">
+            <div class="features-palette-cell" style="background: #d6a91e;"></div>
+            <div class="features-palette-cell" style="background: #e5b620;"></div>
+            <div class="features-palette-cell" style="background: #f4c322;"></div>
+            <div class="features-palette-cell" style="background: #f9d024;"></div>
+            <div class="features-palette-cell" style="background: #fade50;"></div>
+          </div>
+        </div>
+        <div class="features-slider-section">
+          <div class="features-slider-label">
+            <span>Saturation</span>
+            <span>+92</span>
+          </div>
+          <div class="features-slider">
+            <div class="features-slider-fill"></div>
+            <div class="features-slider-thumb"></div>
+          </div>
+        </div>
+        <div class="features-controls">
+          <button class="features-control-btn">&#8592;</button>
+          <button class="features-control-btn">&#9681;</button>
+          <button class="features-control-btn active">&#9711;</button>
+          <button class="features-control-btn">&#9788;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-card dark">
+      <div class="features-dark-preview">
+        <div class="features-dark-header">A summer rainbow</div>
+        <div class="features-dark-palette">
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #f97316, #c2410c);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #fb923c, #ea580c);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #facc15, #ca8a04);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #a3e635, #65a30d);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #22d3ee, #0891b2);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #a855f7, #7c3aed);"></div>
+          <div class="features-dark-bar" style="background: linear-gradient(to bottom, #ec4899, #be185d);"></div>
+        </div>
+        <div class="features-dark-footer">
+          <button class="features-control-btn" style="background: transparent; border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">&#8592;</button>
+          <div class="features-color-dots">
+            <div class="features-color-dot" style="background: #f97316;"></div>
+            <div class="features-color-dot" style="background: #22d3ee;"></div>
+            <div class="features-color-dot" style="background: #a855f7;"></div>
+          </div>
+          <button class="features-redo-btn">Redo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 04-faq -->
+  <div class="faq">
+  <div class="faq-container">
+    <h2 class="faq-headline">Frequently asked questions.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">Give me the elevator pitch for Droplette...</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">Is Droplette free to use?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">What languages does Droplette support?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How accurate is Droplette?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How long does Droplette take to run?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How do I setup Droplette?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-color-strip">
+      <div class="faq-color-dot" style="background: #2dd4bf;"></div>
+      <div class="faq-color-dot" style="background: #14b8a6;"></div>
+      <div class="faq-color-dot" style="background: #3b82f6;"></div>
+      <div class="faq-color-dot" style="background: #a855f7;"></div>
+      <div class="faq-color-dot" style="background: #f97316;"></div>
+      <div class="faq-color-dot" style="background: #eab308;"></div>
+      <div class="faq-color-dot" style="background: #84cc16;"></div>
+      <div class="faq-color-dot" style="background: #22d3ee;"></div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section: 05-pricing-footer -->
+  <div class="pricing-footer">
+  <div class="pricing-section">
+    <h2 class="pricing-headline">One price.<br>No subscription.</h2>
+    <p class="pricing-subheadline">Bring your own API key for OpenAI. Droplette is a single payment. <span class="pricing-highlight">Special launch price of $9</span>.</p>
+
+    <div class="pricing-buttons">
+      <a href="#" class="pricing-btn-primary">
+        Buy license $9 <span class="old-price">$20</span>
+      </a>
+      <a href="#" class="pricing-btn-secondary">
+        <span class="pricing-figma-icon"></span>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-color-strip">
+      <div class="footer-color-dot" style="background: #2dd4bf;"></div>
+      <div class="footer-color-dot" style="background: #14b8a6;"></div>
+      <div class="footer-color-dot" style="background: #3b82f6;"></div>
+      <div class="footer-color-dot" style="background: #a855f7;"></div>
+      <div class="footer-color-dot" style="background: #f97316;"></div>
+      <div class="footer-color-dot" style="background: #eab308;"></div>
+      <div class="footer-color-dot" style="background: #84cc16;"></div>
+      <div class="footer-color-dot" style="background: #22d3ee;"></div>
+    </div>
+
+    <div class="footer-credit">
+      Another Figma plugin crafted by
+      <svg class="footer-logo" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.8)"/>
+      </svg>
+      <a href="#" class="footer-link">Relay</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

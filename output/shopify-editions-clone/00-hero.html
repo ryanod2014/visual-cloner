@@ -1,0 +1,472 @@
+<style>
+/* Shopify Editions Hero - Scoped Styles */
+.shopify-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a1a 0%, #2d3a2d 25%, #3d4a4a 50%, #4a5a6a 75%, #2a3a4a 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.shopify-hero-bg-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg,
+    #4a6a7a 0%,
+    #3a5a4a 30%,
+    #2a4a3a 50%,
+    #1a3a2a 70%,
+    #0a2a1a 100%
+  );
+  z-index: 0;
+}
+
+.shopify-hero-bg-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+/* Header */
+.shopify-hero-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.shopify-hero-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.shopify-hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.shopify-hero-logo-icon {
+  width: 24px;
+  height: 24px;
+  background: #95bf47;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopify-hero-logo-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.shopify-hero-logo-text {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shopify-hero-logo-editions {
+  opacity: 0.7;
+}
+
+.shopify-hero-logo-winter {
+  opacity: 0.7;
+}
+
+.shopify-hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shopify-hero-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shopify-hero-dropdown svg {
+  width: 12px;
+  height: 12px;
+  fill: #fff;
+}
+
+.shopify-hero-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shopify-hero-search svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.shopify-hero-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shopify-hero-link {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.shopify-hero-link:hover {
+  text-decoration: underline;
+}
+
+.shopify-hero-cta {
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.shopify-hero-cta:hover {
+  background: #f0f0f0;
+}
+
+/* Main Content */
+.shopify-hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+  padding: 40px 24px;
+}
+
+.shopify-hero-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* Central Panel */
+.shopify-hero-panel {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 40px 48px;
+  max-width: 380px;
+  border-radius: 2px;
+}
+
+.shopify-hero-title {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+}
+
+.shopify-hero-title-the {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  letter-spacing: 0;
+}
+
+.shopify-hero-title-main {
+  display: block;
+}
+
+.shopify-hero-title-ai {
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.shopify-hero-subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 32px 0;
+  opacity: 0.9;
+}
+
+/* Navigation List */
+.shopify-hero-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shopify-hero-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+
+.shopify-hero-nav-item:hover {
+  color: #ff1493;
+}
+
+.shopify-hero-nav-item-name {
+  font-weight: 500;
+}
+
+.shopify-hero-nav-item-numeral {
+  font-size: 12px;
+  opacity: 0.6;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+}
+
+/* Decorative Elements - Pink overlays */
+.shopify-hero-decor {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.shopify-hero-bag-left {
+  top: 15%;
+  left: 8%;
+  width: 60px;
+  height: 80px;
+}
+
+.shopify-hero-bag-right {
+  top: 35%;
+  right: 5%;
+  width: 100px;
+  height: 120px;
+}
+
+.shopify-hero-skateboard {
+  bottom: 8%;
+  left: 5%;
+  width: 200px;
+  height: 60px;
+}
+
+.shopify-hero-decor-bag {
+  fill: #ff1493;
+  opacity: 0.95;
+}
+
+.shopify-hero-decor-skateboard {
+  fill: #ff1493;
+}
+
+/* Pink shopping bag SVG styles */
+.shopify-hero-bag-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shopify-hero-header {
+    padding: 12px 16px;
+  }
+
+  .shopify-hero-header-left {
+    gap: 12px;
+  }
+
+  .shopify-hero-logo-text span:not(.shopify-hero-logo-editions) {
+    display: none;
+  }
+
+  .shopify-hero-panel {
+    padding: 24px 28px;
+    margin: 0 16px;
+  }
+
+  .shopify-hero-title {
+    font-size: 26px;
+  }
+
+  .shopify-hero-link {
+    display: none;
+  }
+}
+</style>
+
+<section class="shopify-hero-section">
+  <!-- Background Placeholder -->
+  <div class="shopify-hero-bg-placeholder">
+    <span class="shopify-hero-bg-label">[Renaissance Painting Background - Angels/Classical Figures in Clouds & Forest]</span>
+  </div>
+
+  <!-- Decorative Pink Elements -->
+  <div class="shopify-hero-decor shopify-hero-bag-left">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+      <path class="shopify-hero-decor-bag" d="M10 25 L10 70 Q10 75 15 75 L45 75 Q50 75 50 70 L50 25 L40 25 L40 15 Q40 5 30 5 Q20 5 20 15 L20 25 Z M24 15 Q24 10 30 10 Q36 10 36 15 L36 25 L24 25 Z"/>
+    </svg>
+  </div>
+
+  <div class="shopify-hero-decor shopify-hero-bag-right">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+      <path class="shopify-hero-decor-bag" d="M15 35 L15 105 Q15 115 25 115 L75 115 Q85 115 85 105 L85 35 L70 35 L70 20 Q70 5 50 5 Q30 5 30 20 L30 35 Z M38 20 Q38 12 50 12 Q62 12 62 20 L62 35 L38 35 Z" transform="rotate(-15 50 60)"/>
+      <path class="shopify-hero-decor-bag" d="M25 40 L25 100 Q25 108 33 108 L67 108 Q75 108 75 100 L75 40 L63 40 L63 28 Q63 18 50 18 Q37 18 37 28 L37 40 Z" transform="translate(10 5) rotate(10 50 60)" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <div class="shopify-hero-decor shopify-hero-skateboard">
+    <svg class="shopify-hero-bag-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="shopify-hero-decor-skateboard" cx="30" cy="45" rx="12" ry="12"/>
+      <ellipse class="shopify-hero-decor-skateboard" cx="170" cy="45" rx="12" ry="12"/>
+      <path class="shopify-hero-decor-skateboard" d="M15 30 Q5 30 5 25 L5 20 Q5 15 15 15 L185 15 Q195 15 195 20 L195 25 Q195 30 185 30 Z"/>
+      <text x="100" y="26" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">SHOPIFY</text>
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <header class="shopify-hero-header">
+    <div class="shopify-hero-header-left">
+      <a href="#" class="shopify-hero-logo">
+        <div class="shopify-hero-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 4.5c-.3 0-.5.2-.5.5v1h-2V5c0-.3-.2-.5-.5-.5s-.5.2-.5.5v1H10V5c0-.3-.2-.5-.5-.5s-.5.2-.5.5v1.3c-1.1.4-2 1.5-2 2.7v8c0 1.7 1.3 3 3 3h4c1.7 0 3-1.3 3-3V9c0-1.3-.8-2.3-2-2.7V5c0-.3-.2-.5-.5-.5zM12 8c.6 0 1 .4 1 1v1h-2V9c0-.6.4-1 1-1z"/>
+          </svg>
+        </div>
+        <span class="shopify-hero-logo-text">
+          <span>Shopify</span>
+          <span class="shopify-hero-logo-editions">Editions</span>
+          <span class="shopify-hero-logo-winter">Winter '26</span>
+        </span>
+      </a>
+      <nav class="shopify-hero-nav">
+        <button class="shopify-hero-dropdown">
+          Editions
+          <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </button>
+        <button class="shopify-hero-search">
+          Search
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <div class="shopify-hero-header-right">
+      <a href="#" class="shopify-hero-link">Shopify.com</a>
+      <a href="#" class="shopify-hero-cta">Start for free</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="shopify-hero-content">
+    <div class="shopify-hero-main">
+      <div class="shopify-hero-panel">
+        <h1 class="shopify-hero-title">
+          <span class="shopify-hero-title-the">The</span>
+          <span class="shopify-hero-title-main">Ren<span class="shopify-hero-title-ai">ai</span>ssance</span>
+          <span class="shopify-hero-title-main">Edition</span>
+        </h1>
+        <p class="shopify-hero-subtitle">
+          A new world of commerce.<br>
+          150+ product updates.
+        </p>
+        <ul class="shopify-hero-nav-list">
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Sidekick</span>
+            <span class="shopify-hero-nav-item-numeral">I</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Agentic</span>
+            <span class="shopify-hero-nav-item-numeral">II</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Online</span>
+            <span class="shopify-hero-nav-item-numeral">III</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Retail</span>
+            <span class="shopify-hero-nav-item-numeral">IV</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Marketing</span>
+            <span class="shopify-hero-nav-item-numeral">V</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Checkout</span>
+            <span class="shopify-hero-nav-item-numeral">VI</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Operations</span>
+            <span class="shopify-hero-nav-item-numeral">VII</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Shop app</span>
+            <span class="shopify-hero-nav-item-numeral">VIII</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">B2B</span>
+            <span class="shopify-hero-nav-item-numeral">IX</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Finance</span>
+            <span class="shopify-hero-nav-item-numeral">X</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Shipping</span>
+            <span class="shopify-hero-nav-item-numeral">XI</span>
+          </li>
+          <li class="shopify-hero-nav-item">
+            <span class="shopify-hero-nav-item-name">Developer</span>
+            <span class="shopify-hero-nav-item-numeral">XII</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

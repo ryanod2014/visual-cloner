@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "source": "https://droplette.app",
+    "extractedAt": "2024-01-07T22:00:00Z",
+    "totalAnimations": 4,
+    "method": "js-to-css-conversion"
+  },
+  "animations": [
+    {
+      "name": "dot-pulse",
+      "selector": ".dots .circle",
+      "type": "pulse",
+      "detected": {
+        "initialOpacity": 0,
+        "initialTransform": "scale(0.5) rotate(45deg)",
+        "transition": "all 1s ease-in-out"
+      },
+      "keyframes": "@keyframes dot-pulse { 0%, 100% { opacity: 0; transform: scale(0.5) rotate(45deg); } 50% { opacity: 1; transform: scale(1) rotate(0deg); } }",
+      "tokens": {
+        "duration": { "value": 4, "unit": "s", "purpose": "animation_speed", "cssVar": "--animation-dot-duration" },
+        "easing": { "value": "ease-in-out", "purpose": "animation_feel", "cssVar": "--animation-dot-easing" },
+        "initial_opacity": { "value": 0, "purpose": "start_visibility" },
+        "initial_scale": { "value": 0.5, "purpose": "start_size" },
+        "initial_rotate": { "value": 45, "unit": "deg", "purpose": "start_rotation" },
+        "peak_opacity": { "value": 1, "purpose": "end_visibility" },
+        "peak_scale": { "value": 1, "purpose": "end_size" }
+      }
+    },
+    {
+      "name": "logo-rainbow-spin",
+      "selector": ".illo-logo",
+      "type": "looping",
+      "detected": {
+        "existingKeyframes": "svelte-110jv8p-fullCircle"
+      },
+      "keyframes": "@keyframes svelte-110jv8p-fullCircle { to { transform: scale(1.5) rotate(360deg); } }",
+      "tokens": {
+        "duration": { "value": 2, "unit": "s", "purpose": "spin_speed" },
+        "easing": { "value": "linear", "purpose": "constant_rotation" }
+      },
+      "note": "Preserved from original CSS - already keyframe-based"
+    },
+    {
+      "name": "button-shine",
+      "selector": ".shine",
+      "type": "looping",
+      "detected": {
+        "existingKeyframes": "svelte-17jc8nk-shiner"
+      },
+      "keyframes": "@keyframes svelte-17jc8nk-shiner { 0% { transform: translate3d(-100px, 0, 0) skew(-15deg); } 20% { transform: translate3d(500px, 0, 0) skew(-15deg); } to { transform: translate3d(500px, 0, 0) skew(-15deg); } }",
+      "tokens": {
+        "duration": { "value": 6, "unit": "s", "purpose": "shine_cycle" },
+        "travel_distance": { "value": 600, "unit": "px", "purpose": "shine_travel" },
+        "skew": { "value": -15, "unit": "deg", "purpose": "shine_angle" }
+      },
+      "note": "Preserved from original CSS - already keyframe-based"
+    },
+    {
+      "name": "color-transition",
+      "selector": ".colors .color",
+      "type": "transition",
+      "detected": {
+        "transition": "transform 0.25s cubic-bezier(0.12, 0.09, 0, 2.05), opacity 0.2s linear"
+      },
+      "tokens": {
+        "duration": { "value": 0.25, "unit": "s" },
+        "easing": { "value": "cubic-bezier(0.12, 0.09, 0, 2.05)", "purpose": "bouncy_feel" }
+      },
+      "note": "Interactive transition - works on hover without JS"
+    }
+  ],
+  "staggerPatterns": [
+    {
+      "name": "dot-grid-stagger",
+      "parentSelector": ".dots .dot-holder",
+      "childSelector": ".dot",
+      "gridSize": { "columns": 18, "rows": 5 },
+      "pattern": "prime-based",
+      "baseDelay": 0.3,
+      "tokens": {
+        "stagger_base": { "value": 0.3, "unit": "s", "purpose": "cascade_timing", "cssVar": "--animation-stagger-base" }
+      },
+      "css": ".dot:nth-child(1) .circle { animation-delay: 0s; }\n.dot:nth-child(2) .circle { animation-delay: 0.3s; }\n.dot:nth-child(3n) .circle { animation-delay: 0.7s; animation-duration: 5s; }\n.dot:nth-child(5n) .circle { animation-delay: 1.3s; animation-duration: 4.5s; }\n.dot:nth-child(7n) .circle { animation-delay: 0.4s; animation-duration: 5.5s; }\n.dot:nth-child(11n) .circle { animation-delay: 1.9s; animation-duration: 4s; }\n.dot:nth-child(13n) .circle { animation-delay: 0.8s; animation-duration: 6s; }\n.dot:nth-child(17n) .circle { animation-delay: 2.2s; animation-duration: 3.5s; }"
+    }
+  ],
+  "cssKeyframesPreserved": [
+    "svelte-uk22tq-fullCircle",
+    "svelte-uk22tq-pulser",
+    "svelte-uk22tq-shiner",
+    "svelte-uk22tq-shiner-flat",
+    "svelte-uk22tq-shiner-flat-reverse",
+    "svelte-uk22tq-shine-big",
+    "svelte-17jc8nk-shiner",
+    "svelte-110jv8p-scale",
+    "svelte-110jv8p-fullCircle"
+  ],
+  "generatedCSS": "/* Animated dot grid - CSS-only replacement for JS animation */\n@keyframes dot-pulse {\n  0%, 100% { opacity: 0; transform: scale(0.5) rotate(45deg); }\n  50% { opacity: 1; transform: scale(1) rotate(0deg); }\n}\n\n.dots .circle {\n  animation: dot-pulse 4s ease-in-out infinite;\n}\n\n/* Staggered delays using prime-based pattern for pseudo-random feel */\n.dot:nth-child(3n) .circle { animation-delay: 0.7s; animation-duration: 5s; }\n.dot:nth-child(5n) .circle { animation-delay: 1.3s; animation-duration: 4.5s; }\n.dot:nth-child(7n) .circle { animation-delay: 0.4s; animation-duration: 5.5s; }\n.dot:nth-child(11n) .circle { animation-delay: 1.9s; animation-duration: 4s; }\n.dot:nth-child(13n) .circle { animation-delay: 0.8s; animation-duration: 6s; }\n.dot:nth-child(17n) .circle { animation-delay: 2.2s; animation-duration: 3.5s; }\n.dot:nth-child(19n) .circle { animation-delay: 0.1s; animation-duration: 5s; }\n.dot:nth-child(23n) .circle { animation-delay: 1.6s; animation-duration: 4.2s; }"
+}

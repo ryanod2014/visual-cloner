@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://vercel.com",
+    "canvases": 0,
+    "shaders": 2,
+    "uniforms": 3,
+    "inlineShaders": 0,
+    "threeJs": false,
+    "rawShaders": [
+      {
+        "type": "vertex",
+        "source": "#version 300 es\nin vec4 position;\nin vec2 uv;\nout vec2 vUv;\nvoid main(){\n  vUv = uv;\n  gl_Position = position;\n}",
+        "timestamp": 1767851044044,
+        "context": "webgl2"
+      },
+      {
+        "type": "fragment",
+        "source": "#version 300 es\n\nprecision mediump float;\n\nout vec4 fragColor;\n\nuniform float time;\nuniform float width;\nuniform float height;\n\nfloat blendOverlay(float base, float blend) {\n\treturn base<0.5?(2.0*base*blend):(1.0-2.0*(1.0-base)*(1.0-blend));\n}\n\nvec3 blendOverlay(vec3 base, vec3 blend) {\n\treturn vec3(blendOverlay(base.r,blend.r),blendOverlay(base.g,blend.g),blendOverlay(base.b,blend.b));\n}\n\nvec3 blendOverlay(vec3 base, vec3 blend, float opacity) {\n\treturn (blendOverlay(base, blend) * opacity + base * (1.0 - opacity));\n}\n\nvec3 brightnessContrast(vec3 value, float brightness, float contrast) {\n\treturn (value - 0.5) * contrast + 0.5 + brightness;\n}\n\nfloat random(in vec2 st) {\n\treturn fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);\n}\n\nvec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }\n\nvec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }\n\nvec4 permute(vec4 x) { return mod289(((x * 34.0) + 1.0) * x); }\n\nvec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }\n\nvec3 fade(vec3 t) { return t * t * t * (t * (t * 6.0 - 15.0) + 10.0); }\n\nfloat snoise(vec3 v){ \n\tconst vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n\tconst vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n\tvec3 i  = floor(v + dot(v, C.yyy) );\n\tvec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n\tvec3 g = step(x0.yzx, x0.xyz);\n\tvec3 l = 1.0 - g;\n\tvec3 i1 = min( g.xyz, l.zxy );\n\tvec3 i2 = max( g.xyz, l.zxy );\n\n\t//  x0 = x0 - 0. + 0.0 * C \n\tvec3 x1 = x0 - i1 + 1.0 * C.xxx;\n\tvec3 x2 = x0 - i2 + 2.0 * C.xxx;\n\tvec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n\ti = mod(i, 289.0 ); \n\tvec4 p = permute( permute( permute( \n\t\t\t\t\t\t i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n\t\t\t\t\t + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n\t\t\t\t\t + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n\tfloat n_ = 1.0/7.0; // N=7\n\tvec3  ns = n_ * D.wyz - D.xzx;\n\n\tvec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n\tvec4 x_ = floor(j * ns.z);\n\tvec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n\tvec4 x = x_ *ns.x + ns.yyyy;\n\tvec4 y = y_ *ns.x + ns.yyyy;\n\tvec4 h = 1.0 - abs(x) - abs(y);\n\n\tvec4 b0 = vec4( x.xy, y.xy );\n\tvec4 b1 = vec4( x.zw, y.zw );\n\n\tvec4 s0 = floor(b0)*2.0 + 1.0;\n\tvec4 s1 = floor(b1)*2.0 + 1.0;\n\tvec4 sh = -step(h, vec4(0.0));\n\n\tvec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n\tvec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n\tvec3 p0 = vec3(a0.xy,h.x);\n\tvec3 p1 = vec3(a0.zw,h.y);\n\tvec3 p2 = vec3(a1.xy,h.z);\n\tvec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n\tvec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n\tp0 *= norm.x;\n\tp1 *= norm.y;\n\tp2 *= norm.z;\n\tp3 *= norm.w;\n\n// Mix final noise value\n\tvec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n\tm = m * m;\n\treturn 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdot(p2,x2), dot(p3,x3) ) );\n}\n\n// https://iquilezles.org/www/articles/palettes/palettes.htm\nvec3 palette(in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {\n\treturn a + b * cos(6.4 * (c * t + d));\n}\n\nvec3 compose(in float t, in vec2 uv, in float index) {\n\tfloat delta = 0.15;\n\tfloat offset = delta * index;\n\n\tvec3 color1 = vec3(0.45, 0.29, 0.45);\n\tvec3 color2 = vec3(0.5, 0.3, 0.1);\n\tvec3 color3 = vec3(1.0, 1.1, 1.1);\n\tvec3 color4 = vec3(0.38, 0.25, 1.1);\n\n\treturn palette(\n\t\tsnoise(vec3(uv.x, uv.y + sin(uv.x + offset * 1. + t) * 3., t) * 0.4) * 1.,\n\t\tcolor1,\n\t\tcolor2,\n\t\tcolor3,\n\t\tcolor4\n\t);\n}\n\nvoid main() {\n\tvec2 resolution = vec2(width, height);\n\t// vec2 vUv = gl_FragCoord.xy / resolution.xy;\n\tvec2 vUv = gl_FragCoord.xy / resolution.yx;  \n\tvec2 uv = vUv * 1.1;\n\tfloat t = time * 0.32;\n\n\tfloat n =\n\t\t\tsnoise(vec3(uv.x - t * 2., uv.y + sin(uv.x + 120.0 * 1. + t) * 3., t) *\n\t\t\t\t\t\t 0.4) *\n\t\t\t1.;\n\n\tvec3 color = palette(n, vec3(0.5, 0.29, 0.45), vec3(0.5, 0.3, 0.1),\n\t\t\t\t\t\t\t\t\t\t\t vec3(1.0, 1.1, 1.1), vec3(0.35, 0.25, 1.1));\n\n\tvec2 st = gl_FragCoord.xy / resolution.xy;\n\tst.x *= resolution.y / resolution.y;\n\tfloat noise = random(st * 1.0);\n\n\tvec3 color1 = vec3(0.45, 0.29, 0.45);\n\tvec3 color2 = vec3(0.5, 0.3, 0.1);\n\tvec3 color3 = vec3(1.0, 1.1, 1.1);\n\tvec3 color4 = vec3(0.38, 0.25, 1.1);\n\n\tvec3[] x = vec3[] (\n\t\tcompose(t, uv, 1.0),\n\t\tcompose(t, uv, 2.0),\n\t\tcompose(t, uv, 3.0),\n\t\tcompose(t, uv, 4.0),\n\t\tcompose(t, uv, 5.0),\n\t\tcompose(t, uv, 6.0),\n\t\tcompose(t, uv, 7.0),\n\t\tcompose(t, uv, 8.0),\n\t\tcompose(t, uv, 9.0),\n\t\tcompose(t, uv, 10.0),\n\t\tcompose(t, uv, 11.0),\n\t\tcompose(t, uv, 12.0)\n\t);\n\n\t\tint k = int(vUv.x * 8.0);\n\t\tvec3 p = x[k];\n\n\t\tp = brightnessContrast(p, 0.0, 1.1);\n\t\tp = vec3(p.r * 0.3 + p.g * 0.59 + p.b * 0.11);\n\t\t\t\n\t\tfragColor = vec4(\n\t\t\tblendOverlay(\n\t\t\t\tp,\n\t\t\t\tvec3(noise), \n\t\t\t\t0.2\n\t\t\t), \n\t\t\t1.0\n\t\t);\n\n\t\t// fragColor = vec4(p, 1.0);\n}\n",
+        "timestamp": 1767851044059,
+        "context": "webgl2"
+      }
+    ],
+    "rawUniforms": [
+      {
+        "name": "time",
+        "timestamp": 1767851044074
+      },
+      {
+        "name": "width",
+        "timestamp": 1767851044074
+      },
+      {
+        "name": "height",
+        "timestamp": 1767851044074
+      }
+    ]
+  }
+]

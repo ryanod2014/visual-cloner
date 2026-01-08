@@ -1,0 +1,322 @@
+<style>
+:root {
+  /* Colors */
+  --color-background: rgb(14, 14, 14);
+  --color-foreground: rgb(255, 255, 255);
+  --color-text-primary: rgb(255, 255, 255);
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-muted: rgba(255,255,255,0.5);
+  --color-heading: rgb(255, 255, 255);
+  --color-accent: rgba(255, 255, 255, 0.9);
+  --color-accent-foreground: rgb(44, 44, 44);
+  --color-card: rgba(255,255,255,0.05);
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-link: rgb(255, 255, 255);
+
+  /* Typography */
+  --font-primary: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+  --font-heading: Ein, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+  --text-h1: 69px;
+  --text-h2: 48px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.04em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section-y: 80px;
+  --space-section-x: 24px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --radius-button: 30px;
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clone-section-0 {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.clone-section-0-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.clone-section-0-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  position: relative;
+}
+
+.clone-section-0-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 28px;
+  background: linear-gradient(to bottom, #00bcd4 50%, #0e0e0e 50%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.clone-section-0-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  transition: opacity var(--transition-fast) var(--easing);
+}
+
+.clone-section-0-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.clone-section-0-content {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-section-x);
+  position: relative;
+  z-index: 5;
+}
+
+.clone-section-0-headline {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-heading);
+  margin: 0 0 var(--space-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clone-section-0-subheadline {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-xxl);
+}
+
+.clone-section-0-subheadline strong {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-normal);
+}
+
+.clone-section-0-color-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: var(--space-lg) 0;
+  position: relative;
+}
+
+.clone-section-0-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.clone-section-0-color-dot:nth-child(1) { background: #00bcd4; }
+.clone-section-0-color-dot:nth-child(2) { background: #e91e63; }
+.clone-section-0-color-dot:nth-child(3) { background: #2196f3; }
+.clone-section-0-color-dot:nth-child(4) { background: #9c27b0; }
+.clone-section-0-color-dot:nth-child(5) { background: #ff5722; }
+.clone-section-0-color-dot:nth-child(6) { background: #ffc107; }
+.clone-section-0-color-dot:nth-child(7) { background: #ffeb3b; }
+.clone-section-0-color-dot:nth-child(8) { background: #cddc39; }
+.clone-section-0-color-dot:nth-child(9) { background: #00bcd4; }
+.clone-section-0-color-dot:nth-child(10) { background: #03a9f4; }
+
+.clone-section-0-preview {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  padding: var(--space-xxl) var(--space-section-x);
+  position: relative;
+}
+
+.clone-section-0-sidebar {
+  width: 280px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  backdrop-filter: blur(10px);
+}
+
+.clone-section-0-sidebar-item {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.clone-section-0-palette-card {
+  width: 320px;
+  background: rgb(40, 40, 40);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.clone-section-0-palette-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgb(50, 50, 50);
+}
+
+.clone-section-0-palette-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.clone-section-0-palette-title {
+  font-size: var(--text-small);
+  color: var(--color-text-primary);
+}
+
+.clone-section-0-palette-colors {
+  display: flex;
+  height: 400px;
+}
+
+.clone-section-0-palette-stripe {
+  flex: 1;
+}
+
+.clone-section-0-palette-stripe:nth-child(1) { background: linear-gradient(to bottom, #ff3d00, #ff6e40); }
+.clone-section-0-palette-stripe:nth-child(2) { background: linear-gradient(to bottom, #ff9100, #ffab40); }
+.clone-section-0-palette-stripe:nth-child(3) { background: linear-gradient(to bottom, #ffc400, #ffd740); }
+.clone-section-0-palette-stripe:nth-child(4) { background: linear-gradient(to bottom, #c6ff00, #eeff41); }
+.clone-section-0-palette-stripe:nth-child(5) { background: linear-gradient(to bottom, #76ff03, #b2ff59); }
+.clone-section-0-palette-stripe:nth-child(6) { background: linear-gradient(to bottom, #00e5ff, #18ffff); }
+.clone-section-0-palette-stripe:nth-child(7) { background: linear-gradient(to bottom, #00b0ff, #40c4ff); }
+.clone-section-0-palette-stripe:nth-child(8) { background: linear-gradient(to bottom, #651fff, #7c4dff); }
+.clone-section-0-palette-stripe:nth-child(9) { background: linear-gradient(to bottom, #d500f9, #e040fb); }
+
+.clone-section-0-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 400px;
+  background: radial-gradient(ellipse at center top,
+    rgba(255,100,0,0.15) 0%,
+    rgba(255,200,0,0.1) 20%,
+    rgba(100,255,0,0.08) 40%,
+    rgba(0,200,255,0.05) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+</style>
+
+<div class="clone-section-0">
+  <div class="clone-section-0-glow"></div>
+
+  <nav class="clone-section-0-nav">
+    <div class="clone-section-0-logo"></div>
+    <a href="#" class="clone-section-0-cta-btn">
+      Get Started
+    </a>
+  </nav>
+
+  <div class="clone-section-0-content">
+    <h1 class="clone-section-0-headline">AI-powered tools built for creative professionals.</h1>
+    <p class="clone-section-0-subheadline">
+      Streamline your workflow with smart automation that adapts to your style. <strong>Acme helps you create faster.</strong>
+    </p>
+  </div>
+
+  <div class="clone-section-0-color-row">
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+    <div class="clone-section-0-color-dot"></div>
+  </div>
+
+  <div class="clone-section-0-preview">
+    <div class="clone-section-0-sidebar">
+      <div class="clone-section-0-sidebar-item" style="width: 60%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 40%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 70%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 50%;"></div>
+    </div>
+
+    <div class="clone-section-0-palette-card">
+      <div class="clone-section-0-palette-header">
+        <div class="clone-section-0-palette-icon"></div>
+        <span class="clone-section-0-palette-title">Acme</span>
+      </div>
+      <div class="clone-section-0-palette-colors">
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+        <div class="clone-section-0-palette-stripe"></div>
+      </div>
+    </div>
+
+    <div class="clone-section-0-sidebar">
+      <div class="clone-section-0-sidebar-item" style="width: 50%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 65%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 45%;"></div>
+      <div class="clone-section-0-sidebar-item" style="width: 55%;"></div>
+    </div>
+  </div>
+</div>

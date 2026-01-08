@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Section</title>
+  <style>
+    :root {
+      --color-bg: rgb(14,14,14);
+      --color-text: rgb(255,255,255);
+      --color-text-muted: rgba(255,255,255,0.7);
+      --color-border: rgba(255,255,255,0.1);
+      --font: ui-sans-serif, -apple-system, system-ui, sans-serif;
+      --h2-size: 69px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .s3-faq-section {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font);
+      padding: 120px 24px 80px;
+      min-height: 100vh;
+    }
+
+    .s3-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .s3-title {
+      font-size: var(--h2-size);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 60px;
+    }
+
+    .s3-faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .s3-faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .s3-faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      color: var(--color-text-muted);
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
+
+    .s3-faq-question:hover {
+      color: var(--color-text);
+    }
+
+    .s3-faq-question-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .s3-faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      opacity: 0.5;
+    }
+
+    .s3-faq-icon::before,
+    .s3-faq-icon::after {
+      content: '';
+      position: absolute;
+      background-color: var(--color-text);
+      transition: transform 0.3s ease;
+    }
+
+    .s3-faq-icon::before {
+      width: 14px;
+      height: 1.5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .s3-faq-icon::after {
+      width: 1.5px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .s3-faq-item.active .s3-faq-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .s3-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .s3-faq-item.active .s3-faq-answer {
+      max-height: 200px;
+      padding-bottom: 24px;
+    }
+
+    .s3-faq-answer-content {
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .s3-faq-section {
+        padding: 80px 20px 60px;
+      }
+
+      .s3-title {
+        font-size: 42px;
+        margin-bottom: 40px;
+      }
+
+      .s3-faq-question {
+        font-size: 16px;
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="s3-faq-section">
+    <div class="s3-container">
+      <h2 class="s3-title">Frequently asked<br>questions.</h2>
+
+      <div class="s3-faq-list">
+        <div class="s3-faq-item">
+          <button class="s3-faq-question">
+            <span class="s3-faq-question-text">Give me the elevator pitch for Droplette...</span>
+            <span class="s3-faq-icon"></span>
+          </button>
+          <div class="s3-faq-answer">
+            <p class="s3-faq-answer-content">Droplette is a powerful tool that helps you create stunning designs quickly and efficiently.</p>
+          </div>
+        </div>
+
+        <div class="s3-faq-item">
+          <button class="s3-faq-question">
+            <span class="s3-faq-question-text">Is Droplette free to use?</span>
+            <span class="s3-faq-icon"></span>
+          </button>
+          <div class="s3-faq-answer">
+            <p class="s3-faq-answer-content">Yes, Droplette offers a free tier with essential features to get you started.</p>
+          </div>
+        </div>
+
+        <div class="s3-faq-item">
+          <button class="s3-faq-question">
+            <span class="s3-faq-question-text">What languages does Droplette support?</span>
+            <span class="s3-faq-icon"></span>
+          </button>
+          <div class="s3-faq-answer">
+            <p class="s3-faq-answer-content">Droplette supports multiple languages to serve a global audience.</p>
+          </div>
+        </div>
+
+        <div class="s3-faq-item">
+          <button class="s3-faq-question">
+            <span class="s3-faq-question-text">How accurate is Droplette?</span>
+            <span class="s3-faq-icon"></span>
+          </button>
+          <div class="s3-faq-answer">
+            <p class="s3-faq-answer-content">Droplette uses advanced algorithms to ensure high accuracy in all its features.</p>
+          </div>
+        </div>
+
+        <div class="s3-faq-item">
+          <button class="s3-faq-question">
+            <span class="s3-faq-question-text">How long does Droplette take to run?</span>
+            <span class="s3-faq-icon"></span>
+          </button>
+          <div class="s3-faq-answer">
+            <p class="s3-faq-answer-content">Droplette processes requests quickly, typically within seconds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.s3-faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

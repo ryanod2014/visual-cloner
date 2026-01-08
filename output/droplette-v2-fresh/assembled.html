@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Droplette - Hero (Assembled)</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero === */
+:root {
+      --color-background: rgb(14, 14, 14);
+      --color-foreground: rgb(255, 255, 255);
+      --color-text-primary: rgb(255, 255, 255);
+      --color-text-secondary: rgba(255,255,255,0.7);
+      --color-text-muted: rgba(255,255,255,0.5);
+      --color-heading: rgb(255, 255, 255);
+      --color-accent: rgba(255, 255, 255, 0.9);
+      --color-accent-foreground: rgb(44, 44, 44);
+      --color-card: rgba(0, 0, 0, 0);
+      --color-border: rgb(255, 255, 255);
+      --color-border-light: rgba(255,255,255,0.05);
+      --color-link: rgb(255, 255, 255);
+      --font-primary: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+      --font-heading: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+      --text-h1: 69px;
+      --text-h2: 69px;
+      --text-body: 16px;
+      --text-small: 14px;
+      --weight-normal: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --weight-bold: 700;
+      --leading-tight: 1.1;
+      --leading-normal: 1.5;
+      --tracking-tight: -0.04em;
+      --space-section-y: 80px;
+      --space-section-x: 24px;
+      --space-card: 24px;
+      --space-grid-gap: 24px;
+      --space-stack-gap: 16px;
+      --radius-button: 30px;
+      --radius-card: 12px;
+      --transition-normal: 250ms;
+      --easing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--color-background);
+      color: var(--color-text-primary);
+      font-size: var(--text-body);
+      line-height: var(--leading-normal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Navigation */
+    .clone-section-0-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .clone-section-0-logo {
+      width: 48px;
+      height: 48px;
+      position: relative;
+    }
+
+    .clone-section-0-logo-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 180deg,
+        #ff0080 0deg,
+        #ff8c00 60deg,
+        #ffff00 120deg,
+        #00ff00 180deg,
+        #00ffff 240deg,
+        #0080ff 300deg,
+        #ff0080 360deg
+      );
+      position: relative;
+    }
+
+    .clone-section-0-logo-ring::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-background);
+    }
+
+    .clone-section-0-logo-drop {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      width: 16px;
+      height: 20px;
+      background: var(--color-background);
+      border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+      z-index: 1;
+    }
+
+    .clone-section-0-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: var(--color-foreground);
+      color: var(--color-accent-foreground);
+      border: none;
+      border-radius: var(--radius-button);
+      font-family: var(--font-primary);
+      font-size: var(--text-body);
+      font-weight: var(--weight-medium);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-normal) var(--easing);
+    }
+
+    .clone-section-0-cta-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .clone-section-0-figma-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Hero Section */
+    .clone-section-0-hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Color Glow Background */
+    .clone-section-0-glow-bg {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 500px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .clone-section-0-glow-orange {
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(255, 100, 0, 0.4) 0%, transparent 70%);
+      filter: blur(60px);
+    }
+
+    .clone-section-0-glow-red {
+      position: absolute;
+      top: 50px;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(255, 50, 50, 0.3) 0%, transparent 70%);
+      filter: blur(50px);
+    }
+
+    .clone-section-0-glow-cyan {
+      position: absolute;
+      top: 0;
+      right: 20%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(ellipse, rgba(0, 200, 200, 0.25) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .clone-section-0-glow-blue {
+      position: absolute;
+      top: 100px;
+      right: 10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(50, 100, 255, 0.2) 0%, transparent 70%);
+      filter: blur(60px);
+    }
+
+    /* Hero Content */
+    .clone-section-0-hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px var(--space-section-x) 40px;
+    }
+
+    .clone-section-0-hero-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-h1);
+      font-weight: var(--weight-normal);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-heading);
+      margin-bottom: 24px;
+    }
+
+    .clone-section-0-hero-subtitle {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .clone-section-0-hero-subtitle strong {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-normal);
+    }
+
+    /* Color Dots Row */
+    .clone-section-0-dots-container {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .clone-section-0-dots-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      padding: 30px 0;
+      position: relative;
+    }
+
+    .clone-section-0-dots-row-top {
+      margin-bottom: -20px;
+    }
+
+    .clone-section-0-dot-cell {
+      width: 120px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .clone-section-0-dot-cell:last-child {
+      border-right: none;
+    }
+
+    .clone-section-0-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .clone-section-0-dot-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.5;
+    }
+
+    /* Specific dot colors - Row 1 */
+    .clone-section-0-dot-teal-dark { background: #1a5a5a; }
+    .clone-section-0-dot-teal { background: #2dd4bf; }
+    .clone-section-0-dot-teal-light { background: #0ea5a5; }
+    .clone-section-0-dot-blue { background: #3b82f6; }
+    .clone-section-0-dot-purple { background: #8b5cf6; }
+    .clone-section-0-dot-brown { background: #7c5c4a; }
+    .clone-section-0-dot-orange { background: #f97316; }
+    .clone-section-0-dot-gold { background: #d4a53a; }
+    .clone-section-0-dot-cyan-dark { background: #155e75; }
+
+    /* Specific dot colors - Row 2 */
+    .clone-section-0-dot-cyan2 { background: #06b6d4; }
+    .clone-section-0-dot-orange2 { background: #fb923c; }
+    .clone-section-0-dot-blue2 { background: #3b82f6; }
+    .clone-section-0-dot-magenta { background: #c026d3; }
+    .clone-section-0-dot-red { background: #ef4444; }
+    .clone-section-0-dot-gold2 { background: #d97706; }
+    .clone-section-0-dot-yellow { background: #fbbf24; }
+    .clone-section-0-dot-lime { background: #a3e635; }
+    .clone-section-0-dot-teal3 { background: #14b8a6; }
+    .clone-section-0-dot-cyan3 { background: #22d3ee; }
+
+    /* UI Mockup Section */
+    .clone-section-0-ui-section {
+      position: relative;
+      z-index: 10;
+      padding: 40px var(--space-section-x);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .clone-section-0-panel {
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .clone-section-0-panel-left {
+      width: 280px;
+      min-height: 380px;
+    }
+
+    .clone-section-0-panel-right {
+      width: 280px;
+      min-height: 380px;
+    }
+
+    .clone-section-0-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .clone-section-0-panel-icon {
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+    }
+
+    .clone-section-0-panel-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .clone-section-0-panel-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+    }
+
+    .clone-section-0-panel-bar-short { width: 40px; }
+    .clone-section-0-panel-bar-medium { width: 80px; }
+    .clone-section-0-panel-bar-long { width: 120px; }
+
+    .clone-section-0-panel-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Droplette Center Panel */
+    .clone-section-0-droplette-panel {
+      background: rgba(40, 40, 40, 0.95);
+      border-radius: var(--radius-card);
+      padding: 0;
+      width: 320px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    .clone-section-0-droplette-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: rgba(50, 50, 50, 0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .clone-section-0-droplette-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    .clone-section-0-droplette-title {
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      font-weight: var(--weight-normal);
+    }
+
+    .clone-section-0-color-palette {
+      display: flex;
+      height: 360px;
+    }
+
+    .clone-section-0-color-strip {
+      flex: 1;
+    }
+
+    .clone-section-0-strip-orange { background: linear-gradient(to bottom, #f97316, #ea580c); }
+    .clone-section-0-strip-red { background: linear-gradient(to bottom, #ef4444, #dc2626); }
+    .clone-section-0-strip-yellow { background: linear-gradient(to bottom, #fbbf24, #f59e0b); }
+    .clone-section-0-strip-lime { background: linear-gradient(to bottom, #a3e635, #84cc16); }
+    .clone-section-0-strip-green { background: linear-gradient(to bottom, #22c55e, #16a34a); }
+    .clone-section-0-strip-cyan { background: linear-gradient(to bottom, #06b6d4, #0891b2); }
+    .clone-section-0-strip-blue { background: linear-gradient(to bottom, #3b82f6, #2563eb); }
+    .clone-section-0-strip-magenta { background: linear-gradient(to bottom, #d946ef, #c026d3); }
+
+    /* Right panel specific */
+    .clone-section-0-panel-right .clone-section-0-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .clone-section-0-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: var(--weight-medium);
+      color: white;
+    }
+
+    .clone-section-0-toggle {
+      width: 44px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      position: relative;
+      margin-left: auto;
+    }
+
+    .clone-section-0-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .clone-section-0-small-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.4;
+    }
+
+    /* Grid lines overlay */
+    .clone-section-0-grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .clone-section-0-grid-line {
+      position: absolute;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .clone-section-0-grid-line-v {
+      width: 1px;
+      height: 100%;
+    }
+
+    .clone-section-0-grid-line-h {
+      width: 100%;
+      height: 1px;
+    }
+
+/* === Section: 01-simple-to-setup === */
+:root {
+      --color-background: rgb(14, 14, 14);
+      --color-foreground: rgb(255, 255, 255);
+      --color-text-primary: rgb(255, 255, 255);
+      --color-text-secondary: rgba(255,255,255,0.7);
+      --color-accent: rgba(255, 255, 255, 0.9);
+      --color-accent-foreground: rgb(44, 44, 44);
+      --color-border: rgb(255, 255, 255);
+      --font-primary: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+      --text-h1: 69px;
+      --text-body: 16px;
+      --weight-normal: 400;
+      --leading-tight: 1.1;
+      --tracking-tight: -0.04em;
+      --space-section-y: 80px;
+      --space-section-x: 24px;
+      --radius-card: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .clone-section-1-container {
+      background-color: var(--color-background);
+      font-family: var(--font-primary);
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Color glow effects in background */
+    .clone-section-1-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 500px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .clone-section-1-glow::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 100, 50, 0.4) 0%, transparent 70%);
+      filter: blur(60px);
+    }
+
+    .clone-section-1-glow::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 25%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 200, 0, 0.3) 0%, transparent 70%);
+      filter: blur(50px);
+    }
+
+    .clone-section-1-glow-extra {
+      position: absolute;
+      top: -50px;
+      right: 20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(0, 200, 255, 0.25) 0%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    .clone-section-1-glow-pink {
+      position: absolute;
+      top: -60px;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 50, 150, 0.3) 0%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    /* Main content */
+    .clone-section-1-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 120px;
+      text-align: center;
+    }
+
+    .clone-section-1-headline {
+      font-size: var(--text-h1);
+      font-weight: var(--weight-normal);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+      line-height: var(--leading-tight);
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .clone-section-1-subheadline {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .clone-section-1-subheadline strong {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    /* Color swatches grid background */
+    .clone-section-1-swatches-container {
+      position: absolute;
+      top: 140px;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .clone-section-1-swatches-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 20px;
+      margin-bottom: 160px;
+    }
+
+    .clone-section-1-swatch {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(1) { background: #0a4a4a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(2) { background: #2a7a9a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(3) { background: #3a5aaa; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(4) { background: #5a3a6a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(5) { background: #7a4a2a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(6) { background: #aa5500; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(7) { background: #8a7a20; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(8) { background: #6a8a30; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(9) { background: #4a6a5a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(10) { background: #2a5a6a; }
+    .clone-section-1-swatch-row-1 .clone-section-1-swatch:nth-child(11) { background: #3a6a8a; }
+
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(1) { background: #00aaaa; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(2) { background: #00bbcc; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(3) { background: #2288dd; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(4) { background: #8833aa; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(5) { background: #ee5500; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(6) { background: #ddaa00; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(7) { background: #bbaa00; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(8) { background: #99bb00; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(9) { background: #55aa88; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(10) { background: #33aaaa; }
+    .clone-section-1-swatch-row-2 .clone-section-1-swatch:nth-child(11) { background: #44bbcc; }
+
+    /* UI Mockups Container */
+    .clone-section-1-mockups {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+      margin-top: -20px;
+    }
+
+    /* Left Panel - Figma layers panel */
+    .clone-section-1-panel-left {
+      width: 280px;
+      background: rgba(30, 30, 30, 0.95);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .clone-section-1-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .clone-section-1-panel-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .clone-section-1-panel-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .clone-section-1-layer-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .clone-section-1-layer-arrow {
+      width: 12px;
+      height: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .clone-section-1-layer-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .clone-section-1-layer-bar-wide { width: 100px; }
+    .clone-section-1-layer-bar-medium { width: 60px; }
+    .clone-section-1-layer-bar-short { width: 40px; }
+
+    .clone-section-1-search-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 8px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .clone-section-1-search-icon {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .clone-section-1-add-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .clone-section-1-add-icon {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 16px;
+    }
+
+    /* Center Panel - Droplette color picker */
+    .clone-section-1-panel-center {
+      width: 320px;
+      background: rgba(40, 40, 40, 0.98);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      z-index: 3;
+    }
+
+    .clone-section-1-droplette-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(50, 50, 50, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .clone-section-1-droplette-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+    }
+
+    .clone-section-1-droplette-icon::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+    }
+
+    .clone-section-1-droplette-title {
+      color: var(--color-text-primary);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .clone-section-1-color-bars {
+      display: flex;
+      padding: 8px;
+      gap: 4px;
+      height: 380px;
+    }
+
+    .clone-section-1-color-bar {
+      flex: 1;
+      border-radius: 4px;
+    }
+
+    .clone-section-1-color-bar:nth-child(1) { background: linear-gradient(to bottom, #ff4500, #cc3300); }
+    .clone-section-1-color-bar:nth-child(2) { background: linear-gradient(to bottom, #ff6600, #dd5500); }
+    .clone-section-1-color-bar:nth-child(3) { background: linear-gradient(to bottom, #ffaa00, #ee9900); }
+    .clone-section-1-color-bar:nth-child(4) { background: linear-gradient(to bottom, #aadd00, #99cc00); }
+    .clone-section-1-color-bar:nth-child(5) { background: linear-gradient(to bottom, #66ee00, #55dd00); }
+    .clone-section-1-color-bar:nth-child(6) { background: linear-gradient(to bottom, #00dddd, #00cccc); }
+    .clone-section-1-color-bar:nth-child(7) { background: linear-gradient(to bottom, #00aaff, #0099ee); }
+    .clone-section-1-color-bar:nth-child(8) { background: linear-gradient(to bottom, #dd44ff, #cc33ee); }
+    .clone-section-1-color-bar:nth-child(9) { background: linear-gradient(to bottom, #ff00aa, #ee0099); }
+
+    /* Right Panel - Figma properties panel */
+    .clone-section-1-panel-right {
+      width: 280px;
+      background: rgba(35, 35, 38, 0.95);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .clone-section-1-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .clone-section-1-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .clone-section-1-right-icons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .clone-section-1-play-icon {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .clone-section-1-share-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.7);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .clone-section-1-prop-section {
+      margin-bottom: 16px;
+    }
+
+    .clone-section-1-prop-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .clone-section-1-prop-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    .clone-section-1-prop-bar-xs { width: 30px; }
+    .clone-section-1-prop-bar-sm { width: 50px; }
+    .clone-section-1-prop-bar-md { width: 80px; }
+    .clone-section-1-prop-bar-lg { width: 100px; }
+
+    .clone-section-1-prop-icon {
+      width: 16px;
+      height: 16px;
+      color: rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    .clone-section-1-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 16px 0;
+    }
+
+    .clone-section-1-color-preview-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .clone-section-1-color-preview {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      background: #888;
+    }
+
+    .clone-section-1-color-preview-2 {
+      background: linear-gradient(45deg, #aaa 25%, transparent 25%),
+                  linear-gradient(-45deg, #aaa 25%, transparent 25%),
+                  linear-gradient(45deg, transparent 75%, #aaa 75%),
+                  linear-gradient(-45deg, transparent 75%, #aaa 75%);
+      background-size: 8px 8px;
+      background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+    }
+
+/* === Section: 02-features === */
+.clone-section-2-container {
+    background: var(--color-background);
+    padding: 0 var(--space-section-x);
+    padding-bottom: var(--space-section-y);
+    font-family: var(--font-primary);
+  }
+
+  .clone-section-2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .clone-section-2-card {
+    border-radius: var(--radius-card);
+    padding: 48px 40px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-card-light {
+    background: rgb(245, 245, 245);
+  }
+
+  .clone-section-2-card-dark {
+    background: rgb(30, 30, 30);
+  }
+
+  .clone-section-2-card-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .clone-section-2-card-light .clone-section-2-card-title {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-card-dark .clone-section-2-card-title {
+    color: var(--color-text-primary);
+  }
+
+  .clone-section-2-card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+
+  .clone-section-2-card-light .clone-section-2-card-description {
+    color: rgba(14, 14, 14, 0.7);
+  }
+
+  .clone-section-2-card-dark .clone-section-2-card-description {
+    color: var(--color-text-secondary);
+  }
+
+  /* UI Mockup Styles */
+  .clone-section-2-ui-mockup {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-ui-mockup-light {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .clone-section-2-ui-mockup-dark {
+    background: rgb(40, 40, 40);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-ui-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-ui-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #ff6b6b,
+      #feca57,
+      #48dbfb,
+      #ff9ff3,
+      #ff6b6b
+    );
+    position: relative;
+  }
+
+  .clone-section-2-ui-logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-ui-logo::after {
+    background: white;
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-logo::after {
+    background: rgb(40, 40, 40);
+  }
+
+  .clone-section-2-ui-brand {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-ui-brand {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-ui-brand {
+    color: white;
+  }
+
+  .clone-section-2-ui-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-2-palette-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-palette-title {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-palette-title {
+    color: white;
+  }
+
+  /* Sunflower Palette Grid */
+  .clone-section-2-sunflower-palette {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+
+  .clone-section-2-sunflower-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .clone-section-2-sunflower-cell {
+    flex: 1;
+    border-radius: 2px;
+    min-height: 24px;
+  }
+
+  /* Rainbow Palette */
+  .clone-section-2-rainbow-palette {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .clone-section-2-rainbow-bar {
+    flex: 1;
+    border-radius: 6px;
+  }
+
+  /* Saturation Slider */
+  .clone-section-2-slider-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-row {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .clone-section-2-slider-label {
+    font-size: 13px;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-slider-label {
+    color: rgba(14, 14, 14, 0.6);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .clone-section-2-slider-value {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .clone-section-2-ui-mockup-light .clone-section-2-slider-value {
+    color: rgb(14, 14, 14);
+  }
+
+  .clone-section-2-ui-mockup-dark .clone-section-2-slider-value {
+    color: white;
+  }
+
+  @media (max-width: 900px) {
+    .clone-section-2-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .clone-section-2-card {
+      min-height: 450px;
+    }
+  }
+
+/* === Section: 03-faq === */
+.clone-section-3-faq {
+    background-color: var(--color-background);
+    padding: 120px var(--space-section-x);
+    min-height: 100vh;
+  }
+
+  .clone-section-3-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .clone-section-3-heading {
+    font-family: var(--font-primary);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-normal);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    line-height: 1.05;
+    margin: 0 0 60px 0;
+  }
+
+  .clone-section-3-accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clone-section-3-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .clone-section-3-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .clone-section-3-question-text {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: var(--weight-normal);
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    padding-right: 24px;
+  }
+
+  .clone-section-3-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    opacity: 0.5;
+  }
+
+  .clone-section-3-icon::before,
+  .clone-section-3-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-text-primary);
+  }
+
+  .clone-section-3-icon::before {
+    width: 16px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .clone-section-3-icon::after {
+    width: 2px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+
+  .clone-section-3-item.active .clone-section-3-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .clone-section-3-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .clone-section-3-answer-content {
+    padding: 0 0 24px 0;
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .clone-section-3-item.active .clone-section-3-answer {
+    max-height: 300px;
+  }
+
+  .clone-section-3-question:hover .clone-section-3-icon {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .clone-section-3-faq {
+      padding: 80px var(--space-section-x);
+    }
+
+    .clone-section-3-heading {
+      font-size: 42px;
+      margin-bottom: 40px;
+    }
+
+    .clone-section-3-question-text {
+      font-size: 16px;
+    }
+  }
+
+/* === Section: 04-pricing-footer === */
+.clone-section-4-pricing-wrapper {
+    background-color: var(--color-background);
+    padding: 0 var(--space-section-x) var(--space-section-y);
+  }
+
+  .clone-section-4-pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 120px 40px 140px;
+    text-align: center;
+    background-color: rgba(20, 20, 20, 0.5);
+  }
+
+  .clone-section-4-headline {
+    font-family: var(--font-primary);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-normal);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin: 0 0 32px;
+  }
+
+  .clone-section-4-description {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: var(--weight-normal);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 auto 40px;
+    max-width: 500px;
+  }
+
+  .clone-section-4-highlight {
+    color: var(--color-text-primary);
+  }
+
+  .clone-section-4-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .clone-section-4-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .clone-section-4-btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .clone-section-4-strikethrough {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .clone-section-4-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-body);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .clone-section-4-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .clone-section-4-figma-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Footer */
+  .clone-section-4-footer {
+    background-color: var(--color-background);
+    padding: 60px var(--space-section-x) 40px;
+  }
+
+  .clone-section-4-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clone-section-4-footer-text {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clone-section-4-relay-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .clone-section-4-relay-logo:hover {
+    opacity: 0.8;
+  }
+
+  .clone-section-4-relay-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .clone-section-4-headline {
+      font-size: 42px;
+    }
+
+    .clone-section-4-pricing-container {
+      padding: 80px 24px 100px;
+    }
+
+    .clone-section-4-buttons {
+      flex-direction: column;
+    }
+
+    .clone-section-4-btn-primary,
+    .clone-section-4-btn-secondary {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero -->
+  <section class="clone-section-0-hero">
+    <!-- Glow Background -->
+    <div class="clone-section-0-glow-bg">
+      <div class="clone-section-0-glow-orange"></div>
+      <div class="clone-section-0-glow-red"></div>
+      <div class="clone-section-0-glow-cyan"></div>
+      <div class="clone-section-0-glow-blue"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="clone-section-0-nav">
+      <div class="clone-section-0-logo">
+        <div class="clone-section-0-logo-ring"></div>
+        <div class="clone-section-0-logo-drop"></div>
+      </div>
+      <a href="#" class="clone-section-0-cta-btn">
+        <svg class="clone-section-0-figma-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M8 24C10.2 24 12 22.2 12 20V16H8C5.8 16 4 17.8 4 20C4 22.2 5.8 24 8 24Z" fill="#0ACF83"/>
+          <path d="M4 12C4 9.8 5.8 8 8 8H12V16H8C5.8 16 4 14.2 4 12Z" fill="#A259FF"/>
+          <path d="M4 4C4 1.8 5.8 0 8 0H12V8H8C5.8 8 4 6.2 4 4Z" fill="#F24E1E"/>
+          <path d="M12 0H16C18.2 0 20 1.8 20 4C20 6.2 18.2 8 16 8H12V0Z" fill="#FF7262"/>
+          <path d="M20 12C20 14.2 18.2 16 16 16C13.8 16 12 14.2 12 12C12 9.8 13.8 8 16 8C18.2 8 20 9.8 20 12Z" fill="#1ABCFE"/>
+        </svg>
+        Try in Figma
+      </a>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="clone-section-0-hero-content">
+      <h1 class="clone-section-0-hero-title">An AI tool made to<br>enhance designers.</h1>
+      <p class="clone-section-0-hero-subtitle">
+        Create palettes in Figma & FigJam based on your color styles<br>
+        easily with <strong>Droplette, AI that works for you.</strong>
+      </p>
+    </div>
+
+    <!-- Color Dots Row 1 -->
+    <div class="clone-section-0-dots-container clone-section-0-dots-row-top">
+      <div class="clone-section-0-dots-row">
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-teal-dark"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-teal"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-teal-light"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-blue"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-purple"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-brown"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-orange"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-gold"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-cyan-dark"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Dots Row 2 -->
+    <div class="clone-section-0-dots-container">
+      <div class="clone-section-0-dots-row">
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-cyan2"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-orange2"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-blue2"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-magenta"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-red"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-gold2"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-yellow"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-lime"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-teal3"></div>
+        </div>
+        <div class="clone-section-0-dot-cell">
+          <div class="clone-section-0-dot clone-section-0-dot-cyan3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI Mockup Section -->
+    <div class="clone-section-0-ui-section">
+      <!-- Left Panel -->
+      <div class="clone-section-0-panel clone-section-0-panel-left">
+        <div class="clone-section-0-panel-header">
+          <svg class="clone-section-0-panel-icon" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <svg class="clone-section-0-panel-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+            <rect x="3" y="3" width="8" height="18" rx="1"/>
+            <rect x="13" y="3" width="8" height="18" rx="1"/>
+          </svg>
+        </div>
+        <div class="clone-section-0-panel-row">
+          <span style="opacity: 0.4; font-size: 10px;">v</span>
+          <div class="clone-section-0-panel-bar clone-section-0-panel-bar-medium"></div>
+        </div>
+        <div class="clone-section-0-panel-row">
+          <div class="clone-section-0-panel-bar clone-section-0-panel-bar-long"></div>
+        </div>
+        <div class="clone-section-0-panel-row" style="margin-top: 16px;">
+          <div class="clone-section-0-panel-dot"></div>
+          <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+          <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="18" y1="18" x2="22" y2="22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="clone-section-0-panel-row">
+          <span style="opacity: 0.4; font-size: 10px;">v</span>
+          <div class="clone-section-0-panel-bar clone-section-0-panel-bar-medium"></div>
+          <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+            <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="clone-section-0-panel-row">
+          <span style="opacity: 0.4; font-size: 10px;">v</span>
+          <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+        </div>
+      </div>
+
+      <!-- Center Droplette Panel -->
+      <div class="clone-section-0-droplette-panel">
+        <div class="clone-section-0-droplette-header">
+          <svg class="clone-section-0-droplette-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C12 2 6 10 6 14C6 17.31 8.69 20 12 20C15.31 20 18 17.31 18 14C18 10 12 2 12 2Z"/>
+          </svg>
+          <span class="clone-section-0-droplette-title">Droplette</span>
+        </div>
+        <div class="clone-section-0-color-palette">
+          <div class="clone-section-0-color-strip clone-section-0-strip-orange"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-red"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-yellow"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-lime"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-green"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-cyan"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-blue"></div>
+          <div class="clone-section-0-color-strip clone-section-0-strip-magenta"></div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="clone-section-0-panel clone-section-0-panel-right">
+        <div class="clone-section-0-panel-header" style="border-bottom: none; padding-bottom: 0;">
+          <div class="clone-section-0-avatar">S</div>
+          <div style="flex: 1;"></div>
+          <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5V19L19 12L8 5Z"/>
+          </svg>
+          <div class="clone-section-0-toggle"></div>
+        </div>
+        <div style="padding: 12px 0;">
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-medium"></div>
+          </div>
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+            <span style="opacity: 0.4; font-size: 10px;">v</span>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 12px 0;">
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-medium"></div>
+            <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+              <circle cx="12" cy="12" r="3"/>
+              <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-dot" style="width: 16px; height: 16px;"></div>
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-long"></div>
+            <div class="clone-section-0-panel-dot" style="width: 32px; height: 8px; border-radius: 4px; background: rgba(255,100,100,0.3);"></div>
+            <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-medium"></div>
+            <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+              <line x1="4" y1="8" x2="20" y2="8" stroke="currentColor" stroke-width="2"/>
+              <line x1="4" y1="16" x2="20" y2="16" stroke="currentColor" stroke-width="2"/>
+              <circle cx="8" cy="8" r="2" fill="currentColor"/>
+              <circle cx="16" cy="16" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="clone-section-0-panel-row">
+            <div class="clone-section-0-panel-bar clone-section-0-panel-bar-short"></div>
+            <svg class="clone-section-0-small-icon" viewBox="0 0 24 24" fill="currentColor" style="margin-left: auto;">
+              <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 01-simple-to-setup -->
+  <section class="clone-section-1-container">
+    <!-- Background glows -->
+    <div class="clone-section-1-glow"></div>
+    <div class="clone-section-1-glow-extra"></div>
+    <div class="clone-section-1-glow-pink"></div>
+
+    <!-- Color swatches background -->
+    <div class="clone-section-1-swatches-container">
+      <div class="clone-section-1-swatches-row clone-section-1-swatch-row-1">
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+      </div>
+      <div class="clone-section-1-swatches-row clone-section-1-swatch-row-2">
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+        <div class="clone-section-1-swatch"></div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="clone-section-1-content">
+      <h1 class="clone-section-1-headline">An AI tool made to<br>enhance designers.</h1>
+      <p class="clone-section-1-subheadline">Create palettes in Figma & FigJam based on your color styles easily with <strong>Droplette, AI that works for you.</strong></p>
+    </div>
+
+    <!-- UI Mockups -->
+    <div class="clone-section-1-mockups">
+      <!-- Left Panel -->
+      <div class="clone-section-1-panel-left">
+        <div class="clone-section-1-panel-header">
+          <div class="clone-section-1-panel-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="clone-section-1-panel-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M9 3v18"/>
+            </svg>
+          </div>
+        </div>
+        <div class="clone-section-1-layer-row">
+          <span class="clone-section-1-layer-arrow">▼</span>
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-wide"></div>
+        </div>
+        <div class="clone-section-1-layer-row">
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-medium" style="margin-left: 20px;"></div>
+        </div>
+        <div class="clone-section-1-search-row">
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-short"></div>
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-short"></div>
+          <span class="clone-section-1-search-icon" style="margin-left: auto;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </span>
+        </div>
+        <div class="clone-section-1-add-row">
+          <span class="clone-section-1-layer-arrow">▼</span>
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-medium"></div>
+          <span class="clone-section-1-add-icon" style="margin-left: auto;">+</span>
+        </div>
+        <div class="clone-section-1-layer-row">
+          <span class="clone-section-1-layer-arrow">▼</span>
+          <div class="clone-section-1-layer-bar clone-section-1-layer-bar-short"></div>
+        </div>
+      </div>
+
+      <!-- Center Panel - Droplette -->
+      <div class="clone-section-1-panel-center">
+        <div class="clone-section-1-droplette-header">
+          <div class="clone-section-1-droplette-icon"></div>
+          <span class="clone-section-1-droplette-title">Droplette</span>
+        </div>
+        <div class="clone-section-1-color-bars">
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+          <div class="clone-section-1-color-bar"></div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="clone-section-1-panel-right">
+        <div class="clone-section-1-right-header">
+          <div class="clone-section-1-avatar">S</div>
+          <div class="clone-section-1-right-icons">
+            <span class="clone-section-1-play-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </span>
+            <button class="clone-section-1-share-btn">Share</button>
+          </div>
+        </div>
+        <div class="clone-section-1-prop-section">
+          <div class="clone-section-1-prop-row">
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-xs"></div>
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-md"></div>
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-sm"></div>
+          </div>
+          <div class="clone-section-1-prop-row">
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-md"></div>
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-sm"></div>
+          </div>
+        </div>
+        <div class="clone-section-1-divider"></div>
+        <div class="clone-section-1-prop-section">
+          <div class="clone-section-1-prop-row">
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-lg"></div>
+            <span class="clone-section-1-prop-icon" style="margin-left: auto;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+          </div>
+          <div class="clone-section-1-color-preview-row">
+            <div class="clone-section-1-color-preview"></div>
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-md"></div>
+            <div class="clone-section-1-color-preview clone-section-1-color-preview-2"></div>
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-sm"></div>
+            <span class="clone-section-1-prop-icon" style="margin-left: auto;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="1"/>
+                <circle cx="12" cy="5" r="1"/>
+                <circle cx="12" cy="19" r="1"/>
+              </svg>
+            </span>
+          </div>
+          <div class="clone-section-1-prop-row">
+            <div class="clone-section-1-prop-bar clone-section-1-prop-bar-lg"></div>
+            <span class="clone-section-1-prop-icon" style="margin-left: auto;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"/>
+                <line x1="4" y1="10" x2="4" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12" y2="3"/>
+                <line x1="20" y1="21" x2="20" y2="16"/>
+                <line x1="20" y1="12" x2="20" y2="3"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="clone-section-1-divider"></div>
+        <div class="clone-section-1-prop-row">
+          <div class="clone-section-1-prop-bar clone-section-1-prop-bar-md"></div>
+          <span class="clone-section-1-add-icon" style="margin-left: auto;">+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 02-features -->
+  <section class="clone-section-2-container">
+  <div class="clone-section-2-grid">
+    <!-- Card 1: Adjust as you go (Light) -->
+    <div class="clone-section-2-card clone-section-2-card-light">
+      <h3 class="clone-section-2-card-title">Adjust as you go</h3>
+      <p class="clone-section-2-card-description">
+        Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.
+      </p>
+
+      <div class="clone-section-2-ui-mockup clone-section-2-ui-mockup-light">
+        <div class="clone-section-2-ui-header">
+          <div class="clone-section-2-ui-logo"></div>
+          <span class="clone-section-2-ui-brand">Droplette</span>
+        </div>
+        <div class="clone-section-2-ui-content">
+          <div class="clone-section-2-palette-title">Impressionist sunflowers</div>
+          <div class="clone-section-2-sunflower-palette">
+            <!-- Column 1 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f5c542;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f0b830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e6a020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d98c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cc7810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #bf6408;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b25000;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #9e4200;"></div>
+            </div>
+            <!-- Column 2 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f7ca4a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f2bc38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e8a428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #db9020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ce7c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c16810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b45408;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a04400;"></div>
+            </div>
+            <!-- Column 3 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #f9cf52;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f4c040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #eaa830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #dd9428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d08020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c36c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b65810;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a24608;"></div>
+            </div>
+            <!-- Column 4 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fbd45a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f6c448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ecac38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #df9830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d28428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c57020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b85c18;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a44810;"></div>
+            </div>
+            <!-- Column 5 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fdd962;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f8c850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #eeb040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e19c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d48830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c77428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ba6020;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a64a18;"></div>
+            </div>
+            <!-- Column 6 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffde6a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #facc58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f0b448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e3a040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d68c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c97830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #bc6428;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #a84c20;"></div>
+            </div>
+            <!-- Column 7 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffe372;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #fcd060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f2b850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e5a448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d89040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cb7c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #be6830;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #aa4e28;"></div>
+            </div>
+            <!-- Column 8 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffe87a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #fed468;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f4bc58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e7a850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #da9448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cd8040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c06c38;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ac5030;"></div>
+            </div>
+            <!-- Column 9 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #ffed82;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ffd870;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f6c060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #e9ac58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #dc9850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #cf8448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c27040;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ae5238;"></div>
+            </div>
+            <!-- Column 10 -->
+            <div class="clone-section-2-sunflower-column">
+              <div class="clone-section-2-sunflower-cell" style="background: #fff28a;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ffdc78;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #f8c468;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #ebb060;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #de9c58;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #d18850;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #c47448;"></div>
+              <div class="clone-section-2-sunflower-cell" style="background: #b05440;"></div>
+            </div>
+          </div>
+          <div class="clone-section-2-slider-row">
+            <span class="clone-section-2-slider-label">Saturation</span>
+            <span class="clone-section-2-slider-value">+92</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Redo with AI (Dark) -->
+    <div class="clone-section-2-card clone-section-2-card-dark">
+      <h3 class="clone-section-2-card-title">Redo with AI</h3>
+      <p class="clone-section-2-card-description">
+        Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.
+      </p>
+
+      <div class="clone-section-2-ui-mockup clone-section-2-ui-mockup-dark">
+        <div class="clone-section-2-ui-header">
+          <div class="clone-section-2-ui-logo"></div>
+          <span class="clone-section-2-ui-brand">Droplette</span>
+        </div>
+        <div class="clone-section-2-ui-content">
+          <div class="clone-section-2-palette-title">A summer rainbow</div>
+          <div class="clone-section-2-rainbow-palette">
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ff4d4d, #ff6b6b);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ff8c42, #ffa366);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #ffd93d, #ffe066);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #6bcb77, #8fd99e);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #4ecdc4, #7eded7);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #45b7d1, #6fc9dd);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #5271ff, #7b93ff);"></div>
+            <div class="clone-section-2-rainbow-bar" style="background: linear-gradient(to bottom, #c45ab3, #d67ec6);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-faq -->
+  <section class="clone-section-3-faq">
+  <div class="clone-section-3-container">
+    <h2 class="clone-section-3-heading">Frequently asked<br>questions.</h2>
+
+    <div class="clone-section-3-accordion">
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">Give me the elevator pitch for Droplette...</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Droplette is a powerful tool that helps you create beautiful designs quickly and efficiently.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">Is Droplette free to use?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Yes, Droplette offers a free tier with generous limits for personal and small projects.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">What languages does Droplette support?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Droplette supports multiple languages including English, Spanish, French, German, and more.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">How accurate is Droplette?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Droplette achieves high accuracy rates across all supported features and use cases.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">How long does Droplette take to run?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Most operations complete within seconds, depending on the complexity of your request.
+          </div>
+        </div>
+      </div>
+
+      <div class="clone-section-3-item">
+        <button class="clone-section-3-question" onclick="this.parentElement.classList.toggle('active')">
+          <span class="clone-section-3-question-text">How do I setup Droplette?</span>
+          <span class="clone-section-3-icon"></span>
+        </button>
+        <div class="clone-section-3-answer">
+          <div class="clone-section-3-answer-content">
+            Getting started is easy - just sign up, connect your accounts, and follow the quick setup guide.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-pricing-footer -->
+  <section class="clone-section-4-pricing-wrapper">
+  <div class="clone-section-4-pricing-container">
+    <h2 class="clone-section-4-headline">One price.<br>No subscription.</h2>
+
+    <p class="clone-section-4-description">
+      Bring your own API key for OpenAI. Droplette is a single payment. <span class="clone-section-4-highlight">Special launch price of $9.</span>
+    </p>
+
+    <div class="clone-section-4-buttons">
+      <button class="clone-section-4-btn-primary">
+        Buy license $9 <span class="clone-section-4-strikethrough">$20</span>
+      </button>
+
+      <a href="#" class="clone-section-4-btn-secondary">
+        <svg class="clone-section-4-figma-icon" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+          <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+          <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+          <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+          <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+        </svg>
+        Try in Figma
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="clone-section-4-footer">
+  <div class="clone-section-4-footer-content">
+    <span class="clone-section-4-footer-text">
+      Another Figma plugin crafted by
+      <a href="#" class="clone-section-4-relay-logo">
+        <svg class="clone-section-4-relay-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="currentColor"/>
+          <path d="M7 8h10M7 12h10M7 16h6" stroke="var(--color-accent-foreground)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Relay
+      </a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>

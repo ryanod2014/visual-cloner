@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Droplette</title>
+  <style>
+    :root {
+      --color-bg: rgb(14,14,14);
+      --color-text: rgb(255,255,255);
+      --color-accent: rgba(255,255,255,0.9);
+      --color-accent-fg: rgb(44,44,44);
+      --font: ui-sans-serif, -apple-system, system-ui, sans-serif;
+      --h2-size: 69px;
+      --radius-button: 30px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .s4-pricing-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      overflow: hidden;
+    }
+
+    /* Colorful dots background */
+    .s4-dots-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .s4-dot {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(0px);
+    }
+
+    /* Row 1 - top dots */
+    .s4-dot-1 { width: 70px; height: 70px; background: linear-gradient(135deg, #4ecdc4, #44a3aa); top: 80px; left: 5%; }
+    .s4-dot-2 { width: 60px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); top: 160px; left: 12%; }
+    .s4-dot-3 { width: 55px; height: 55px; background: linear-gradient(135deg, #6b8dd6, #8e54e9); top: 160px; left: 20%; }
+    .s4-dot-4 { width: 60px; height: 60px; background: linear-gradient(135deg, #4facfe, #00f2fe); top: 160px; left: 28%; }
+    .s4-dot-5 { width: 55px; height: 55px; background: linear-gradient(135deg, #d53369, #daae51); top: 160px; left: 36%; }
+    .s4-dot-6 { width: 60px; height: 60px; background: linear-gradient(135deg, #b8405e, #d84545); top: 160px; left: 44%; }
+    .s4-dot-7 { width: 55px; height: 55px; background: linear-gradient(135deg, #c9a227, #f4d03f); top: 160px; left: 52%; }
+    .s4-dot-8 { width: 60px; height: 60px; background: linear-gradient(135deg, #8b6914, #a67c00); top: 160px; left: 60%; }
+    .s4-dot-9 { width: 55px; height: 55px; background: linear-gradient(135deg, #6b8e23, #9acd32); top: 160px; left: 68%; }
+    .s4-dot-10 { width: 60px; height: 60px; background: linear-gradient(135deg, #4a7c59, #52b788); top: 160px; left: 76%; }
+    .s4-dot-11 { width: 55px; height: 55px; background: linear-gradient(135deg, #5f9ea0, #48d1cc); top: 160px; left: 84%; }
+    .s4-dot-12 { width: 60px; height: 60px; background: linear-gradient(135deg, #6495ed, #4169e1); top: 160px; left: 92%; }
+
+    /* Row 2 - left side */
+    .s4-dot-13 { width: 80px; height: 80px; background: linear-gradient(135deg, #9acd32, #6b8e23); top: 270px; left: 3%; }
+    .s4-dot-14 { width: 75px; height: 75px; background: linear-gradient(135deg, #8bc34a, #689f38); top: 380px; left: 3%; }
+    .s4-dot-15 { width: 70px; height: 70px; background: linear-gradient(135deg, #7cb342, #558b2f); top: 490px; left: 3%; opacity: 0.7; }
+    .s4-dot-16 { width: 65px; height: 65px; background: linear-gradient(135deg, #8bc34a, #aed581); top: 600px; left: 3%; opacity: 0.5; }
+
+    /* Row 2 - right side */
+    .s4-dot-17 { width: 75px; height: 75px; background: linear-gradient(135deg, #00bcd4, #0097a7); top: 270px; left: 95%; transform: translateX(-50%); }
+    .s4-dot-18 { width: 80px; height: 80px; background: linear-gradient(135deg, #2196f3, #1976d2); top: 380px; left: 96%; transform: translateX(-50%); }
+    .s4-dot-19 { width: 70px; height: 70px; background: linear-gradient(135deg, #42a5f5, #1e88e5); top: 490px; left: 95%; transform: translateX(-50%); }
+    .s4-dot-20 { width: 75px; height: 75px; background: linear-gradient(135deg, #64b5f6, #42a5f5); top: 580px; left: 94%; transform: translateX(-50%); }
+    .s4-dot-21 { width: 65px; height: 65px; background: linear-gradient(135deg, #4fc3f7, #29b6f6); top: 480px; left: 90%; }
+
+    /* Bottom row dots */
+    .s4-dot-22 { width: 60px; height: 60px; background: linear-gradient(135deg, #8bc34a, #689f38); bottom: 40px; left: 5%; opacity: 0.6; }
+    .s4-dot-23 { width: 55px; height: 55px; background: linear-gradient(135deg, #4caf50, #388e3c); bottom: 40px; left: 13%; opacity: 0.6; }
+    .s4-dot-24 { width: 60px; height: 60px; background: linear-gradient(135deg, #66bb6a, #43a047); bottom: 40px; left: 21%; opacity: 0.6; }
+    .s4-dot-25 { width: 55px; height: 55px; background: linear-gradient(135deg, #81c784, #66bb6a); bottom: 40px; left: 29%; opacity: 0.6; }
+    .s4-dot-26 { width: 60px; height: 60px; background: linear-gradient(135deg, #a5d6a7, #81c784); bottom: 40px; left: 37%; opacity: 0.6; }
+    .s4-dot-27 { width: 55px; height: 55px; background: linear-gradient(135deg, #c8e6c9, #a5d6a7); bottom: 40px; left: 45%; opacity: 0.6; }
+    .s4-dot-28 { width: 60px; height: 60px; background: linear-gradient(135deg, #ffab91, #ff8a65); bottom: 40px; left: 53%; opacity: 0.6; }
+    .s4-dot-29 { width: 55px; height: 55px; background: linear-gradient(135deg, #ffcc80, #ffb74d); bottom: 40px; left: 61%; opacity: 0.6; }
+    .s4-dot-30 { width: 60px; height: 60px; background: linear-gradient(135deg, #ffe082, #ffd54f); bottom: 40px; left: 69%; opacity: 0.6; }
+    .s4-dot-31 { width: 55px; height: 55px; background: linear-gradient(135deg, #c5cae9, #9fa8da); bottom: 40px; left: 77%; opacity: 0.6; }
+    .s4-dot-32 { width: 60px; height: 60px; background: linear-gradient(135deg, #b39ddb, #9575cd); bottom: 40px; left: 85%; opacity: 0.6; }
+    .s4-dot-33 { width: 55px; height: 55px; background: linear-gradient(135deg, #90caf9, #64b5f6); bottom: 40px; left: 93%; opacity: 0.6; }
+
+    /* Additional decorative dots */
+    .s4-dot-34 { width: 50px; height: 50px; background: linear-gradient(135deg, #26a69a, #009688); top: 100px; left: 1%; opacity: 0.4; }
+    .s4-dot-35 { width: 45px; height: 45px; background: linear-gradient(135deg, #4db6ac, #26a69a); top: 700px; left: 7%; opacity: 0.3; }
+    .s4-dot-36 { width: 50px; height: 50px; background: linear-gradient(135deg, #80deea, #4dd0e1); top: 700px; left: 15%; opacity: 0.4; }
+
+    /* Content container */
+    .s4-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .s4-heading {
+      font-size: var(--h2-size);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    .s4-subtext {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .s4-subtext-highlight {
+      color: var(--color-text);
+    }
+
+    .s4-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .s4-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-button);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .s4-btn-primary {
+      background: transparent;
+      color: var(--color-text);
+    }
+
+    .s4-btn-primary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .s4-btn-price-old {
+      text-decoration: line-through;
+      opacity: 0.5;
+      margin-left: 4px;
+    }
+
+    .s4-btn-secondary {
+      background: var(--color-accent);
+      color: var(--color-accent-fg);
+      border-color: transparent;
+    }
+
+    .s4-btn-secondary:hover {
+      background: var(--color-text);
+    }
+
+    .s4-figma-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .s4-heading {
+        font-size: 42px;
+      }
+
+      .s4-subtext {
+        font-size: 16px;
+      }
+
+      .s4-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .s4-btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="s4-pricing-section">
+    <!-- Decorative dots background -->
+    <div class="s4-dots-container">
+      <!-- Top row dots -->
+      <div class="s4-dot s4-dot-1"></div>
+      <div class="s4-dot s4-dot-2"></div>
+      <div class="s4-dot s4-dot-3"></div>
+      <div class="s4-dot s4-dot-4"></div>
+      <div class="s4-dot s4-dot-5"></div>
+      <div class="s4-dot s4-dot-6"></div>
+      <div class="s4-dot s4-dot-7"></div>
+      <div class="s4-dot s4-dot-8"></div>
+      <div class="s4-dot s4-dot-9"></div>
+      <div class="s4-dot s4-dot-10"></div>
+      <div class="s4-dot s4-dot-11"></div>
+      <div class="s4-dot s4-dot-12"></div>
+
+      <!-- Left side dots -->
+      <div class="s4-dot s4-dot-13"></div>
+      <div class="s4-dot s4-dot-14"></div>
+      <div class="s4-dot s4-dot-15"></div>
+      <div class="s4-dot s4-dot-16"></div>
+
+      <!-- Right side dots -->
+      <div class="s4-dot s4-dot-17"></div>
+      <div class="s4-dot s4-dot-18"></div>
+      <div class="s4-dot s4-dot-19"></div>
+      <div class="s4-dot s4-dot-20"></div>
+      <div class="s4-dot s4-dot-21"></div>
+
+      <!-- Bottom row dots -->
+      <div class="s4-dot s4-dot-22"></div>
+      <div class="s4-dot s4-dot-23"></div>
+      <div class="s4-dot s4-dot-24"></div>
+      <div class="s4-dot s4-dot-25"></div>
+      <div class="s4-dot s4-dot-26"></div>
+      <div class="s4-dot s4-dot-27"></div>
+      <div class="s4-dot s4-dot-28"></div>
+      <div class="s4-dot s4-dot-29"></div>
+      <div class="s4-dot s4-dot-30"></div>
+      <div class="s4-dot s4-dot-31"></div>
+      <div class="s4-dot s4-dot-32"></div>
+      <div class="s4-dot s4-dot-33"></div>
+
+      <!-- Extra decorative dots -->
+      <div class="s4-dot s4-dot-34"></div>
+      <div class="s4-dot s4-dot-35"></div>
+      <div class="s4-dot s4-dot-36"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="s4-content">
+      <h2 class="s4-heading">One price.<br>No subscription.</h2>
+      <p class="s4-subtext">
+        Bring your own API key for OpenAI. Droplette is a single payment. <span class="s4-subtext-highlight">Special launch price of $9.</span>
+      </p>
+      <div class="s4-buttons">
+        <a href="#" class="s4-btn s4-btn-primary">
+          Buy license $9 <span class="s4-btn-price-old">$20</span>
+        </a>
+        <a href="#" class="s4-btn s4-btn-secondary">
+          <svg class="s4-figma-icon" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="currentColor"/>
+            <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="currentColor"/>
+            <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="currentColor"/>
+            <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="currentColor"/>
+            <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="currentColor"/>
+          </svg>
+          Try in Figma
+        </a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

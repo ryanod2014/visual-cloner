@@ -1,0 +1,136 @@
+<style>
+.faq {
+  background: rgb(14, 14, 14);
+  padding: 100px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-headline {
+  font-family: "Ein", ui-sans-serif, -apple-system, system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 60px;
+  text-align: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.faq-color-strip {
+  display: flex;
+  gap: 60px;
+  margin-top: 80px;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.faq-color-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+</style>
+
+<div class="faq">
+  <div class="faq-container">
+    <h2 class="faq-headline">Frequently asked questions.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">Give me the elevator pitch for Droplette...</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">Is Droplette free to use?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">What languages does Droplette support?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How accurate is Droplette?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How long does Droplette take to run?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">How do I setup Droplette?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-color-strip">
+      <div class="faq-color-dot" style="background: #2dd4bf;"></div>
+      <div class="faq-color-dot" style="background: #14b8a6;"></div>
+      <div class="faq-color-dot" style="background: #3b82f6;"></div>
+      <div class="faq-color-dot" style="background: #a855f7;"></div>
+      <div class="faq-color-dot" style="background: #f97316;"></div>
+      <div class="faq-color-dot" style="background: #eab308;"></div>
+      <div class="faq-color-dot" style="background: #84cc16;"></div>
+      <div class="faq-color-dot" style="background: #22d3ee;"></div>
+    </div>
+  </div>
+</div>

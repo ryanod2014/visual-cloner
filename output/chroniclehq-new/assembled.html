@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembled Clone</title>
+  
+  <style>
+    /* === Reset === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+/* === Section: 00-hero === */
+.chronicle-hero-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+  min-height: 100vh;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chronicle-hero-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.chronicle-hero-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-hero-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  border-radius: 6px;
+}
+
+.chronicle-hero-nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chronicle-hero-nav-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.chronicle-hero-nav-links a:hover {
+  color: #ffffff;
+}
+
+.chronicle-hero-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chronicle-hero-login-btn {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: color 0.2s;
+}
+
+.chronicle-hero-login-btn:hover {
+  color: #ffffff;
+}
+
+.chronicle-hero-cta-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.chronicle-hero-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.chronicle-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-hero-headline {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 24px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-hero-subheadline {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 40px;
+  font-weight: 400;
+  max-width: 500px;
+}
+
+.chronicle-hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.chronicle-hero-primary-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-hero-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+}
+
+.chronicle-hero-secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chronicle-hero-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.chronicle-hero-showcase {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+}
+
+.chronicle-hero-showcase-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.chronicle-hero-slide {
+  width: 280px;
+  height: 180px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s;
+}
+
+.chronicle-hero-slide:hover {
+  transform: translateY(-4px);
+}
+
+.chronicle-hero-slide-content {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chronicle-hero-slide-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chronicle-hero-slide-placeholder {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+  border-radius: 8px;
+}
+
+.chronicle-hero-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.chronicle-hero-tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chronicle-hero-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.chronicle-hero-tag.active {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #a855f7;
+}
+
+/* === Section: 01-logos === */
+.chronicle-logos-section {
+  background: #0a0a0a;
+  padding: 60px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  overflow: hidden;
+}
+
+.chronicle-logos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.chronicle-logos-title {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 40px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.chronicle-logos-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.chronicle-logos-track {
+  display: flex;
+  gap: 48px;
+  animation: chronicle-logos-scroll 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-logos-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-logo-item {
+  height: 28px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  flex-shrink: 0;
+}
+
+.chronicle-logo-item:hover {
+  opacity: 0.8;
+}
+
+.chronicle-logo-placeholder {
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* === Section: 02-how-it-works === */
+.chronicle-how-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+}
+
+.chronicle-how-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.chronicle-how-text {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.chronicle-how-step {
+  position: relative;
+}
+
+.chronicle-how-step-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-how-step-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.chronicle-how-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chronicle-how-visual-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.chronicle-how-slides-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.chronicle-how-slides-track {
+  display: flex;
+  animation: chronicle-how-slides 20s linear infinite;
+}
+
+@keyframes chronicle-how-slides {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-how-slide-item {
+  min-width: 280px;
+  height: 200px;
+  margin-right: 16px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.chronicle-how-slide-header {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.chronicle-how-slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.chronicle-how-slide-dot.red {
+  background: #ff5f57;
+}
+
+.chronicle-how-slide-dot.yellow {
+  background: #ffbd2e;
+}
+
+.chronicle-how-slide-dot.green {
+  background: #28ca42;
+}
+
+.chronicle-how-slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chronicle-how-slide-line {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+.chronicle-how-slide-line.short {
+  width: 60%;
+}
+
+.chronicle-how-slide-line.medium {
+  width: 80%;
+}
+
+.chronicle-how-slide-line.long {
+  width: 100%;
+}
+
+.chronicle-how-slide-block {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* === Section: 03-features === */
+.chronicle-features-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+}
+
+.chronicle-features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-features-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.chronicle-features-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-features-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.chronicle-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chronicle-features-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.chronicle-features-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.chronicle-features-card-large {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.chronicle-features-card-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.chronicle-features-card-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #a855f7;
+}
+
+.chronicle-features-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.chronicle-features-card-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.chronicle-features-card-visual {
+  flex: 1;
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border-radius: 12px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chronicle-features-card-visual-placeholder {
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.chronicle-features-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.chronicle-features-card-small {
+  min-height: auto;
+  padding: 24px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.chronicle-features-card-small .chronicle-features-card-desc {
+  font-size: 13px;
+}
+
+/* === Section: 04-widgets === */
+.chronicle-widgets-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-widgets-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-widgets-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.chronicle-widgets-badge {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.15);
+  color: #a855f7;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.chronicle-widgets-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.chronicle-widgets-title strong {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-widgets-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.chronicle-widgets-carousel {
+  position: relative;
+  margin-top: 40px;
+}
+
+.chronicle-widgets-track-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.chronicle-widgets-track {
+  display: flex;
+  gap: 20px;
+  animation: chronicle-widgets-scroll 25s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-widgets-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-widget-card {
+  min-width: 280px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.chronicle-widget-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-4px);
+}
+
+.chronicle-widget-card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-widget-placeholder {
+  width: 80%;
+  height: 70%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-widget-placeholder-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.chronicle-widgets-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.chronicle-widgets-nav-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chronicle-widgets-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chronicle-widgets-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chronicle-widgets-caption {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* === Section: 05-testimonials === */
+.chronicle-testimonials-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-testimonials-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-testimonials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chronicle-testimonials-row {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.chronicle-testimonials-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.chronicle-testimonials-track.scroll-left {
+  animation: chronicle-testimonials-scroll-left 40s linear infinite;
+}
+
+.chronicle-testimonials-track.scroll-right {
+  animation: chronicle-testimonials-scroll-right 40s linear infinite;
+}
+
+@keyframes chronicle-testimonials-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes chronicle-testimonials-scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.chronicle-testimonial-card {
+  min-width: 340px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.chronicle-testimonial-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.chronicle-testimonial-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px;
+}
+
+.chronicle-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chronicle-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(168, 85, 247, 0.3) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.chronicle-testimonial-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle-testimonial-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chronicle-testimonial-role {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* === Section: 06-templates === */
+.chronicle-templates-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.chronicle-templates-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-templates-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-templates-showcase {
+  position: relative;
+}
+
+.chronicle-templates-carousel {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.chronicle-templates-track {
+  display: flex;
+  gap: 24px;
+  animation: chronicle-templates-scroll 35s linear infinite;
+  width: max-content;
+}
+
+@keyframes chronicle-templates-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-template-card {
+  min-width: 320px;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+
+.chronicle-template-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.chronicle-template-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-template-placeholder {
+  width: 90%;
+  height: 85%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chronicle-template-placeholder-content {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.chronicle-template-placeholder-line {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.chronicle-template-placeholder-line.title {
+  width: 70%;
+  height: 14px;
+}
+
+.chronicle-template-placeholder-line.subtitle {
+  width: 50%;
+  height: 8px;
+}
+
+.chronicle-template-placeholder-line.body {
+  width: 90%;
+}
+
+.chronicle-template-placeholder-block {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.chronicle-templates-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.chronicle-templates-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chronicle-templates-meta-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chronicle-templates-meta-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.chronicle-templates-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.chronicle-templates-nav-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chronicle-templates-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chronicle-templates-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* === Section: 07-footer === */
+.chronicle-footer-section {
+  background: #0a0a0a;
+  padding: 0 40px 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+}
+
+.chronicle-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chronicle-footer-cta {
+  text-align: center;
+  padding: 80px 0;
+  position: relative;
+}
+
+.chronicle-footer-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.chronicle-footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 18px 36px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.chronicle-footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.6);
+}
+
+.chronicle-footer-brand {
+  font-size: 120px;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 40px 0 60px;
+  letter-spacing: -0.02em;
+}
+
+.chronicle-footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chronicle-footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.chronicle-footer-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  border-radius: 8px;
+}
+
+.chronicle-footer-logo-text {
+  font-size: 0;
+}
+
+.chronicle-footer-company {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+.chronicle-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chronicle-footer-nav-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chronicle-footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chronicle-footer-nav-list a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.chronicle-footer-nav-list a:hover {
+  color: #ffffff;
+}
+
+    /* === Hover States === */
+
+  </style>
+</head>
+<body>
+  <!-- Section: 00-hero -->
+  <section class="chronicle-hero-section">
+  <nav class="chronicle-hero-nav">
+    <div class="chronicle-hero-nav-left">
+      <a href="#" class="chronicle-hero-logo">
+        <div class="chronicle-hero-logo-icon"></div>
+        Chronicle
+      </a>
+      <ul class="chronicle-hero-nav-links">
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">Templates</a></li>
+        <li><a href="#">Enterprise</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="chronicle-hero-nav-right">
+      <a href="#" class="chronicle-hero-login-btn">Login</a>
+      <a href="#" class="chronicle-hero-cta-btn">Try for free</a>
+    </div>
+  </nav>
+
+  <div class="chronicle-hero-content">
+    <h1 class="chronicle-hero-headline">Every great presentation<br>starts with a Chronicle</h1>
+    <p class="chronicle-hero-subheadline">Create stunning presentations. No design skills required.</p>
+
+    <div class="chronicle-hero-buttons">
+      <a href="#" class="chronicle-hero-primary-btn">Start for free</a>
+      <a href="#" class="chronicle-hero-secondary-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5,3 19,12 5,21"></polygon>
+        </svg>
+        Watch video
+      </a>
+    </div>
+
+    <div class="chronicle-hero-showcase">
+      <div class="chronicle-hero-showcase-container">
+        <div class="chronicle-hero-slide">
+          <div class="chronicle-hero-slide-content">
+            <span class="chronicle-hero-slide-title">Sales Proposal</span>
+            <div class="chronicle-hero-slide-placeholder"></div>
+          </div>
+        </div>
+        <div class="chronicle-hero-slide">
+          <div class="chronicle-hero-slide-content">
+            <span class="chronicle-hero-slide-title">Pitch Deck</span>
+            <div class="chronicle-hero-slide-placeholder"></div>
+          </div>
+        </div>
+        <div class="chronicle-hero-slide">
+          <div class="chronicle-hero-slide-content">
+            <span class="chronicle-hero-slide-title">Product Showcase</span>
+            <div class="chronicle-hero-slide-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-hero-tags">
+      <span class="chronicle-hero-tag active">Product showcase</span>
+      <span class="chronicle-hero-tag">Sales proposal</span>
+      <span class="chronicle-hero-tag">Pitch deck</span>
+      <span class="chronicle-hero-tag">Portfolio</span>
+      <span class="chronicle-hero-tag">Business update</span>
+      <span class="chronicle-hero-tag">Project plan</span>
+      <span class="chronicle-hero-tag">Research report</span>
+      <span class="chronicle-hero-tag">Marketing campaign</span>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 01-logos -->
+  <section class="chronicle-logos-section">
+  <div class="chronicle-logos-container">
+    <p class="chronicle-logos-title">Used by 5000+ teams who value storytelling</p>
+
+    <div class="chronicle-logos-wrapper">
+      <div class="chronicle-logos-track">
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Accel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Berkeley</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Atlassian</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">OpenAI</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Deel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Binance</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">HubSpot</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Figma</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Stanford</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Plaid</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Accenture</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">TikTok</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Descript</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Ramp</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Vercel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">v0</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">ADPList</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Reforge</div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Accel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Berkeley</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Atlassian</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">OpenAI</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Deel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Binance</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">HubSpot</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Figma</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Stanford</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Plaid</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Accenture</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">TikTok</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Descript</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Ramp</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Vercel</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">v0</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">ADPList</div></div>
+        <div class="chronicle-logo-item"><div class="chronicle-logo-placeholder">Reforge</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 02-how-it-works -->
+  <section class="chronicle-how-section">
+  <div class="chronicle-how-container">
+    <div class="chronicle-how-text">
+      <div class="chronicle-how-step">
+        <h3 class="chronicle-how-step-title">Start with your raw<br>thoughts and ideas.</h3>
+        <p class="chronicle-how-step-desc">Choose a template, paste in a rough outline, or import existing content.</p>
+      </div>
+      <div class="chronicle-how-step">
+        <h3 class="chronicle-how-step-title">Watch Chronicle<br>bring your story to life.</h3>
+        <p class="chronicle-how-step-desc">Generate a well crafted presentation, with beautiful layouts that you can refine, share and present.</p>
+      </div>
+    </div>
+
+    <div class="chronicle-how-visual">
+      <div class="chronicle-how-visual-bg"></div>
+      <div class="chronicle-how-slides-container">
+        <div class="chronicle-how-slides-track">
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 03-features -->
+  <section class="chronicle-features-section">
+  <div class="chronicle-features-container">
+    <div class="chronicle-features-header">
+      <h2 class="chronicle-features-title">Built for business.<br>Feels like play.</h2>
+      <p class="chronicle-features-subtitle">Chronicle brings powerful new ways to create, made for serious use cases for fast-moving, collaborative teams.</p>
+    </div>
+
+    <div class="chronicle-features-grid">
+      <div class="chronicle-features-card chronicle-features-card-large">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Smart templates</h5>
+        <p class="chronicle-features-card-desc">Save your own templates that your team can insert or use to generate content.</p>
+        <div class="chronicle-features-card-visual">
+          <div class="chronicle-features-card-visual-placeholder">Template Preview</div>
+        </div>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-large">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Social and PDF export</h5>
+        <p class="chronicle-features-card-desc">Share your Chronicle as a high quality PDF or beautiful animated GIF.</p>
+        <div class="chronicle-features-card-visual">
+          <div class="chronicle-features-card-visual-placeholder">Export Preview</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chronicle-features-row">
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Themes & branding</h5>
+        <p class="chronicle-features-card-desc">Add your logo, and switch up colors, fonts and backgrounds to match your style.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Smart canvas</h5>
+        <p class="chronicle-features-card-desc">Drag widgets in a freeform canvas, then tidy up to snap elements into neat layouts.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Real-time collaboration</h5>
+        <p class="chronicle-features-card-desc">Work together live with shared editing, cursors, and team workspaces.</p>
+      </div>
+
+      <div class="chronicle-features-card chronicle-features-card-small">
+        <div class="chronicle-features-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <h5 class="chronicle-features-card-title">Publish to web</h5>
+        <p class="chronicle-features-card-desc">Turn your Chronicle into a shareable link and track engagement and views.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 04-widgets -->
+  <section class="chronicle-widgets-section">
+  <div class="chronicle-widgets-container">
+    <div class="chronicle-widgets-header">
+      <span class="chronicle-widgets-badge">Widgets</span>
+      <h2 class="chronicle-widgets-title"><strong>Build polished outputs with widgets that come with</strong> pixel perfect design, interactivity and motion out of the box.</h2>
+    </div>
+
+    <div class="chronicle-widgets-carousel">
+      <div class="chronicle-widgets-track-wrapper">
+        <div class="chronicle-widgets-track">
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-widget-card">
+            <div class="chronicle-widget-card-content">
+              <div class="chronicle-widget-placeholder">
+                <div class="chronicle-widget-placeholder-icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-widgets-nav">
+        <button class="chronicle-widgets-nav-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="chronicle-widgets-nav-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="chronicle-widgets-caption">Zoom in, highlight, or isolate key elements and never lose your audience's attention.</p>
+  </div>
+</section>
+
+  <!-- Section: 05-testimonials -->
+  <section class="chronicle-testimonials-section">
+  <div class="chronicle-testimonials-container">
+    <h2 class="chronicle-testimonials-title">Loved by world-class founders,<br>strategists, designers and teams.</h2>
+
+    <div class="chronicle-testimonials-grid">
+      <div class="chronicle-testimonials-row">
+        <div class="chronicle-testimonials-track scroll-left">
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"New web apps on Mobbin this week. Featuring: @Chronicle_HQ"</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">M</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Mobbin</p>
+                <p class="chronicle-testimonial-role">mobbin.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ravi Mehta</p>
+                <p class="chronicle-testimonial-role">Ex-CPO at Tinder</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Remarkable.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">G</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Guillermo Rauch</p>
+                <p class="chronicle-testimonial-role">Vercel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Gave my first presentation with Chronicle yesterday and the team (including myself) were absolutely floored. Now multiple pods are already using Chronicle (within 24 hrs!!)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">K</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Karim Saleh</p>
+                <p class="chronicle-testimonial-role">Senior Product Designer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"New web apps on Mobbin this week. Featuring: @Chronicle_HQ"</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">M</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Mobbin</p>
+                <p class="chronicle-testimonial-role">mobbin.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">I've tried many AI presentation tools, but Chronicle really stands out for me. It's fast and easy to create beautifully designed slides. This feels like the future of presentation creation.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ravi Mehta</p>
+                <p class="chronicle-testimonial-role">Ex-CPO at Tinder</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with Chronicle and I'm very impressed. One of my favorite parts of being a designer is finding a product with A+ design details. Chronicle is absurdly good.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Remarkable.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">G</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Guillermo Rauch</p>
+                <p class="chronicle-testimonial-role">Vercel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Gave my first presentation with Chronicle yesterday and the team (including myself) were absolutely floored. Now multiple pods are already using Chronicle (within 24 hrs!!)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">K</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Karim Saleh</p>
+                <p class="chronicle-testimonial-role">Senior Product Designer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-testimonials-row">
+        <div class="chronicle-testimonials-track scroll-right">
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">You know a product is great when your gut reaction is I won't tell anyone about this it will be my unfair advantage (but then you tell everyone it's @Chronicle_HQ)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">Y</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Yadin Soffer</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Chronicle's changed the way we approach case studies at Product Marketing Alliance (and we do a lot!). Anything I avoid starting because the formatting is a pain, I use Chronicle.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Richard King</p>
+                <p class="chronicle-testimonial-role">Product Marketing Alliance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">J</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Juan Alzugaray</p>
+                <p class="chronicle-testimonial-role">COO, Flai (YC S25)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"@Chronicle_HQ Insane product, I haven't been this blown away in a minute."</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">S</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Samudra</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with @Chronicle_HQ right now and I'm very impressed. I think I just found the "Cursor for slides".</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">just built a pitch deck using @Chronicle_HQ - and wow, the quality of layouts and designs it produces is simply mind-blowing. beautifully crafted, effortless creation, and instantly professional.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Raymond</p>
+                <p class="chronicle-testimonial-role">via LinkedIn</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">You know a product is great when your gut reaction is I won't tell anyone about this it will be my unfair advantage (but then you tell everyone it's @Chronicle_HQ)</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">Y</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Yadin Soffer</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Chronicle's changed the way we approach case studies at Product Marketing Alliance (and we do a lot!). Anything I avoid starting because the formatting is a pain, I use Chronicle.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Richard King</p>
+                <p class="chronicle-testimonial-role">Product Marketing Alliance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">No one on the planet knows presentations as deeply as these guys. I have no idea how anyone else will compete against them in this market. The product speaks for itself.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">J</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Juan Alzugaray</p>
+                <p class="chronicle-testimonial-role">COO, Flai (YC S25)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">"@Chronicle_HQ Insane product, I haven't been this blown away in a minute."</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">S</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Samudra</p>
+                <p class="chronicle-testimonial-role">via Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">Playing with @Chronicle_HQ right now and I'm very impressed. I think I just found the "Cursor for slides".</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Ridd</p>
+                <p class="chronicle-testimonial-role">Dive Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chronicle-testimonial-card">
+            <p class="chronicle-testimonial-text">just built a pitch deck using @Chronicle_HQ - and wow, the quality of layouts and designs it produces is simply mind-blowing. beautifully crafted, effortless creation, and instantly professional.</p>
+            <div class="chronicle-testimonial-author">
+              <div class="chronicle-testimonial-avatar">R</div>
+              <div class="chronicle-testimonial-info">
+                <p class="chronicle-testimonial-name">Raymond</p>
+                <p class="chronicle-testimonial-role">via LinkedIn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 06-templates -->
+  <section class="chronicle-templates-section">
+  <div class="chronicle-templates-container">
+    <h2 class="chronicle-templates-title">Templates from the world's<br>best storytellers.</h2>
+
+    <div class="chronicle-templates-showcase">
+      <div class="chronicle-templates-carousel">
+        <div class="chronicle-templates-track">
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chronicle-template-card">
+            <div class="chronicle-template-preview">
+              <div class="chronicle-template-placeholder">
+                <div class="chronicle-template-placeholder-content">
+                  <div class="chronicle-template-placeholder-line title"></div>
+                  <div class="chronicle-template-placeholder-line subtitle"></div>
+                  <div class="chronicle-template-placeholder-block"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chronicle-templates-info">
+        <div class="chronicle-templates-meta">
+          <h5 class="chronicle-templates-meta-title">01. Pitch deck</h5>
+          <p class="chronicle-templates-meta-desc">Win over investors with a clear, compelling story of your vision.</p>
+        </div>
+        <div class="chronicle-templates-nav">
+          <button class="chronicle-templates-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="chronicle-templates-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Section: 07-footer -->
+  <footer class="chronicle-footer-section">
+  <div class="chronicle-footer-container">
+    <div class="chronicle-footer-cta">
+      <a href="#" class="chronicle-footer-cta-btn">Start creating</a>
+    </div>
+
+    <div class="chronicle-footer-brand">Chronicle</div>
+
+    <div class="chronicle-footer-content">
+      <div class="chronicle-footer-logo-section">
+        <a href="#" class="chronicle-footer-logo">
+          <div class="chronicle-footer-logo-icon"></div>
+          <span class="chronicle-footer-logo-text">Chronicle</span>
+        </a>
+        <p class="chronicle-footer-company">ChronicleHQ Inc.</p>
+      </div>
+
+      <nav class="chronicle-footer-nav">
+        <strong class="chronicle-footer-nav-title">Resources</strong>
+        <ul class="chronicle-footer-nav-list">
+          <li><a href="#">Getting Started</a></li>
+          <li><a href="#">AI Presentation Maker</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">PowerPoint Alternatives</a></li>
+          <li><a href="#">Chronicle vs. Gamma</a></li>
+          <li><a href="#">Solutions</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Templates</a></li>
+        </ul>
+      </nav>
+
+      <nav class="chronicle-footer-nav">
+        <strong class="chronicle-footer-nav-title">Company</strong>
+        <ul class="chronicle-footer-nav-list">
+          <li><a href="#">Join our Community</a></li>
+          <li><a href="#">Academy</a></li>
+          <li><a href="#">Become an Affiliate</a></li>
+          <li><a href="#">Partner Network</a></li>
+          <li><a href="#">Enterprise</a></li>
+          <li><a href="#">Chronicle Studio</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <nav class="chronicle-footer-nav">
+        <strong class="chronicle-footer-nav-title">Social</strong>
+        <ul class="chronicle-footer-nav-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Chronicle 101</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

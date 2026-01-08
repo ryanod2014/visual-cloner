@@ -1,0 +1,251 @@
+<style>
+.chronicle-how-section {
+  background: #0a0a0a;
+  padding: 100px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #ffffff;
+}
+
+.chronicle-how-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.chronicle-how-text {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.chronicle-how-step {
+  position: relative;
+}
+
+.chronicle-how-step-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chronicle-how-step-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.chronicle-how-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chronicle-how-visual-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.chronicle-how-slides-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.chronicle-how-slides-track {
+  display: flex;
+  animation: chronicle-how-slides 20s linear infinite;
+}
+
+@keyframes chronicle-how-slides {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.chronicle-how-slide-item {
+  min-width: 280px;
+  height: 200px;
+  margin-right: 16px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.chronicle-how-slide-header {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.chronicle-how-slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.chronicle-how-slide-dot.red {
+  background: #ff5f57;
+}
+
+.chronicle-how-slide-dot.yellow {
+  background: #ffbd2e;
+}
+
+.chronicle-how-slide-dot.green {
+  background: #28ca42;
+}
+
+.chronicle-how-slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chronicle-how-slide-line {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+.chronicle-how-slide-line.short {
+  width: 60%;
+}
+
+.chronicle-how-slide-line.medium {
+  width: 80%;
+}
+
+.chronicle-how-slide-line.long {
+  width: 100%;
+}
+
+.chronicle-how-slide-block {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+</style>
+
+<section class="chronicle-how-section">
+  <div class="chronicle-how-container">
+    <div class="chronicle-how-text">
+      <div class="chronicle-how-step">
+        <h3 class="chronicle-how-step-title">Start with your raw<br>thoughts and ideas.</h3>
+        <p class="chronicle-how-step-desc">Choose a template, paste in a rough outline, or import existing content.</p>
+      </div>
+      <div class="chronicle-how-step">
+        <h3 class="chronicle-how-step-title">Watch Chronicle<br>bring your story to life.</h3>
+        <p class="chronicle-how-step-desc">Generate a well crafted presentation, with beautiful layouts that you can refine, share and present.</p>
+      </div>
+    </div>
+
+    <div class="chronicle-how-visual">
+      <div class="chronicle-how-visual-bg"></div>
+      <div class="chronicle-how-slides-container">
+        <div class="chronicle-how-slides-track">
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-line short"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+          <div class="chronicle-how-slide-item">
+            <div class="chronicle-how-slide-header">
+              <div class="chronicle-how-slide-dot red"></div>
+              <div class="chronicle-how-slide-dot yellow"></div>
+              <div class="chronicle-how-slide-dot green"></div>
+            </div>
+            <div class="chronicle-how-slide-content">
+              <div class="chronicle-how-slide-line long"></div>
+              <div class="chronicle-how-slide-line medium"></div>
+              <div class="chronicle-how-slide-block"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

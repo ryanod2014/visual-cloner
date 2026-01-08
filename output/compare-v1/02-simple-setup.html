@@ -1,0 +1,295 @@
+<style>
+.simple-setup {
+  background: rgb(14, 14, 14);
+  padding: 80px 40px;
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+.simple-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.simple-setup-card {
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.simple-setup-card.white {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.simple-setup-card.dark {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-plugin-preview {
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.simple-setup-plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-plugin-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.simple-setup-plugin-title {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.simple-setup-prompt {
+  padding: 20px 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.simple-setup-color-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px;
+}
+
+.simple-setup-color-pill {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.simple-setup-plugin-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-setup-palette-icon {
+  width: 32px;
+  height: 20px;
+  background: linear-gradient(90deg, #a855f7, #f97316);
+  border-radius: 4px;
+}
+
+.simple-setup-create-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+
+.simple-setup-settings-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.simple-setup-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.simple-setup-modal-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-setup-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+}
+
+.simple-setup-modal-desc {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.6);
+  margin: 0 0 20px;
+}
+
+.simple-setup-modal-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.simple-setup-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.simple-setup-status-dot {
+  width: 16px;
+  height: 8px;
+  background: linear-gradient(90deg, #3b82f6, #ec4899);
+  border-radius: 4px;
+}
+
+.simple-setup-done-btn {
+  background: rgba(30, 30, 30, 0.9);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+
+.simple-setup-feature-card {
+  padding: 40px;
+}
+
+.simple-setup-feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.simple-setup-feature-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 320px;
+}
+
+.simple-setup-feature-preview {
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.simple-setup-feature-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.simple-setup-feature-preview-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.simple-setup-feature-preview-title {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.simple-setup-feature-preview-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+</style>
+
+<div class="simple-setup">
+  <div class="simple-setup-grid">
+    <div class="simple-setup-card white">
+      <div class="simple-setup-plugin-preview">
+        <div class="simple-setup-plugin-header">
+          <div class="simple-setup-plugin-icon"></div>
+          <span class="simple-setup-plugin-title">Droplette</span>
+        </div>
+        <div class="simple-setup-prompt">A summer rainbow</div>
+        <div class="simple-setup-color-row">
+          <div class="simple-setup-color-pill" style="background: #7c3aed;"></div>
+          <div class="simple-setup-color-pill" style="background: #6366f1;"></div>
+          <div class="simple-setup-color-pill" style="background: #3b82f6;"></div>
+          <div class="simple-setup-color-pill" style="background: #14b8a6;"></div>
+          <div class="simple-setup-color-pill" style="background: #22c55e;"></div>
+          <div class="simple-setup-color-pill" style="background: #eab308;"></div>
+          <div class="simple-setup-color-pill" style="background: #f97316;"></div>
+          <div class="simple-setup-color-pill" style="background: #ef4444;"></div>
+        </div>
+        <div class="simple-setup-plugin-footer">
+          <div class="simple-setup-palette-icon"></div>
+          <button class="simple-setup-create-btn">Create</button>
+          <span class="simple-setup-settings-icon">&#9881;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark">
+      <div class="simple-setup-modal">
+        <div class="simple-setup-modal-icon">
+          <span style="color: white; font-size: 20px;">&#9741;</span>
+        </div>
+        <h3 class="simple-setup-modal-title">Add your colors</h3>
+        <p class="simple-setup-modal-desc">Navigate to the file containing your color styles to sync with Droplette.</p>
+        <div class="simple-setup-modal-status">
+          <span class="simple-setup-status-badge">
+            <span class="simple-setup-status-dot"></span>
+            160 colors synced
+          </span>
+          <button class="simple-setup-done-btn">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark simple-setup-feature-card">
+      <h3 class="simple-setup-feature-title">Adjust as you go</h3>
+      <p class="simple-setup-feature-desc">Like your palette but want to tweak it? No problem. Adjust your generated palette to suit your needs with ease.</p>
+      <div class="simple-setup-feature-preview">
+        <div class="simple-setup-feature-preview-header">
+          <div class="simple-setup-feature-preview-icon"></div>
+          <span class="simple-setup-feature-preview-title">Droplette</span>
+        </div>
+        <div class="simple-setup-feature-preview-text">Impressionist sunflowers</div>
+      </div>
+    </div>
+
+    <div class="simple-setup-card dark simple-setup-feature-card">
+      <h3 class="simple-setup-feature-title">Redo with AI</h3>
+      <p class="simple-setup-feature-desc">Iterate on your palette as much as you like. Suggest colors to take forward or start again from scratch.</p>
+      <div class="simple-setup-feature-preview">
+        <div class="simple-setup-feature-preview-header">
+          <div class="simple-setup-feature-preview-icon"></div>
+          <span class="simple-setup-feature-preview-title">Droplette</span>
+        </div>
+        <div class="simple-setup-feature-preview-text">A summer rainbow</div>
+      </div>
+    </div>
+  </div>
+</div>
