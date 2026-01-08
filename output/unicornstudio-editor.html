@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnicornStudio Editor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 20px;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      background: #000;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .controls {
+      width: 360px;
+      background: #111118;
+      padding: 24px;
+      overflow-y: auto;
+      border-left: 1px solid #222;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h1 .badge {
+      font-size: 10px;
+      background: #4af;
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.6;
+    }
+
+    .layer-list {
+      background: #1a1a24;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .layer-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .layer-item:hover {
+      background: #252530;
+    }
+
+    .layer-item .type {
+      font-size: 10px;
+      background: #333;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #888;
+    }
+
+    .layer-item .type.effect { background: #2a3040; color: #6af; }
+    .layer-item .type.shape { background: #402a30; color: #fa6; }
+
+    .control-group {
+      margin-bottom: 16px;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .control-value {
+      color: #4af;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #4af;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .color-row label {
+      flex: 1;
+      font-size: 13px;
+    }
+
+    input[type="color"] {
+      width: 48px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 2px;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .preset {
+      padding: 10px 8px;
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset:hover {
+      background: #252530;
+      border-color: #444;
+    }
+
+    .preset.active {
+      border-color: #4af;
+      background: rgba(68, 170, 255, 0.1);
+    }
+
+    .export-section {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #333;
+    }
+
+    .export-btn {
+      width: 100%;
+      padding: 12px;
+      background: #4af;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+
+    .export-btn:hover {
+      background: #5bf;
+    }
+
+    .export-btn.secondary {
+      background: transparent;
+      color: #4af;
+      border: 1px solid #4af;
+    }
+
+    .export-btn.secondary:hover {
+      background: rgba(68, 170, 255, 0.1);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .drop-zone {
+      border: 2px dashed #333;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+
+    .drop-zone:hover {
+      border-color: #4af;
+      background: rgba(68, 170, 255, 0.05);
+    }
+
+    .drop-zone.dragover {
+      border-color: #4af;
+      background: rgba(68, 170, 255, 0.1);
+    }
+
+    .drop-zone p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .drop-zone p strong {
+      color: #4af;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #4af;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .info-box {
+      background: #1a1a24;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .info-box code {
+      background: #252530;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #4af;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+    <div class="status" id="status">Loading UnicornStudio data...</div>
+  </div>
+
+  <div class="controls">
+    <h1>UnicornStudio Editor <span class="badge">NATIVE</span></h1>
+    <p class="subtitle">Edit extracted UnicornStudio effects</p>
+
+    <div class="section">
+      <div class="section-title">Load Project</div>
+      <div class="drop-zone" id="dropZone">
+        <p>Drop <strong>.json</strong> file or click to browse</p>
+      </div>
+      <input type="file" id="fileInput" class="file-input" accept=".json">
+    </div>
+
+    <div class="section">
+      <div class="section-title">Layers</div>
+      <div class="layer-list" id="layerList">
+        <div class="info-box">
+          Load a UnicornStudio JSON to see layers
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Presets</div>
+      <div class="presets">
+        <button class="preset active" data-preset="original">Original</button>
+        <button class="preset" data-preset="neon">Neon</button>
+        <button class="preset" data-preset="sunset">Sunset</button>
+        <button class="preset" data-preset="matrix">Matrix</button>
+        <button class="preset" data-preset="purple">Purple</button>
+        <button class="preset" data-preset="fire">Fire</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Colors</div>
+      <div class="color-row">
+        <label>Beam Color</label>
+        <input type="color" id="beamColor" value="#459aff">
+      </div>
+      <div class="color-row">
+        <label>Ring Color</label>
+        <input type="color" id="ringColor" value="#0081f7">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Edge Glow</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Inner Thickness</span>
+          <span class="control-value" id="innerGlowThicknessValue">0.02</span>
+        </div>
+        <input type="range" id="innerGlowThickness" min="0.005" max="0.1" step="0.005" value="0.02">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Outer Thickness</span>
+          <span class="control-value" id="outerGlowThicknessValue">0.08</span>
+        </div>
+        <input type="range" id="outerGlowThickness" min="0.01" max="0.2" step="0.01" value="0.08">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Expanding Ring</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Scale</span>
+          <span class="control-value" id="ringScaleValue">2.24</span>
+        </div>
+        <input type="range" id="ringScale" min="0.5" max="5" step="0.1" value="2.24">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Width</span>
+          <span class="control-value" id="ringWidthValue">0.5</span>
+        </div>
+        <input type="range" id="ringWidth" min="0.1" max="1" step="0.1" value="0.5">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Effects</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Blur Amount</span>
+          <span class="control-value" id="blurAmountValue">0.47</span>
+        </div>
+        <input type="range" id="blurAmount" min="0" max="1" step="0.01" value="0.47">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Noise Amount</span>
+          <span class="control-value" id="noiseAmountValue">0.1</span>
+        </div>
+        <input type="range" id="noiseAmount" min="0" max="0.5" step="0.01" value="0.1">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Animation Speed</span>
+          <span class="control-value" id="speedValue">1.0</span>
+        </div>
+        <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <div class="export-section">
+      <button class="export-btn" id="exportJson">Export Modified JSON</button>
+      <button class="export-btn secondary" id="copyConfig">Copy Config</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+<script type="module">
+// ========================================
+// UnicornStudio Native Interpreter
+// ========================================
+
+class UnicornStudioRenderer {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.gl = canvas.getContext('webgl2');
+    if (!this.gl) throw new Error('WebGL2 required');
+
+    this.programs = new Map();
+    this.framebuffers = [];
+    this.textures = [];
+    this.startTime = Date.now();
+    this.mousePos = [0.5, 0.5];
+    this.layers = [];
+    this.animating = false;
+
+    // Editable parameters
+    this.params = {
+      beamColor: [0.27, 0.60, 1.0],
+      ringColor: [0.0, 0.51, 0.97],
+      innerGlowThickness: 0.02,
+      outerGlowThickness: 0.08,
+      ringScale: 2.238,
+      ringWidth: 0.5,
+      blurAmount: 0.47,
+      noiseAmount: 0.1,
+      speed: 1.0
+    };
+
+    this._setupCanvas();
+    this._setupMouse();
+  }
+
+  _setupCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = this.canvas.getBoundingClientRect();
+    this.canvas.width = rect.width * dpr;
+    this.canvas.height = rect.height * dpr;
+    this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  _setupMouse() {
+    this.canvas.addEventListener('mousemove', (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      this.mousePos = [
+        e.clientX / rect.width,
+        1 - e.clientY / rect.height
+      ];
+    });
+  }
+
+  async load(data) {
+    if (typeof data === 'string') data = JSON.parse(data);
+    this.projectData = data;
+    this.layers = (data.history || []).filter(l => l.visible !== false);
+
+    this._setupFramebuffers();
+    await this._compileAll();
+
+    return this;
+  }
+
+  _injectParams(source) {
+    let s = source;
+
+    // Inject beam color
+    const bc = this.params.beamColor;
+    s = s.replace(
+      /vec3\(0\.27058823529411763,\s*0\.6039215686274509,\s*1\)/g,
+      `vec3(${bc[0].toFixed(6)}, ${bc[1].toFixed(6)}, ${bc[2].toFixed(6)})`
+    );
+
+    // Inject ring color
+    const rc = this.params.ringColor;
+    s = s.replace(
+      /vec3\(0,\s*0\.5058823529411764,\s*0\.9686274509803922\)/g,
+      `vec3(${rc[0].toFixed(6)}, ${rc[1].toFixed(6)}, ${rc[2].toFixed(6)})`
+    );
+
+    // Inject glow thickness
+    s = s.replace(
+      /glowThickness\s*=\s*0\.0200\s*\*/g,
+      `glowThickness = ${this.params.innerGlowThickness.toFixed(4)} *`
+    );
+    s = s.replace(
+      /glowThickness\s*=\s*0\.0800\s*\*/g,
+      `glowThickness = ${this.params.outerGlowThickness.toFixed(4)} *`
+    );
+
+    // Inject ring scale
+    s = s.replace(
+      /drawExpandingRings\(uv,\s*pos,\s*2\.2380/g,
+      `drawExpandingRings(uv, pos, ${this.params.ringScale.toFixed(4)}`
+    );
+
+    // Inject blur amount
+    s = s.replace(
+      /\(0\.4700\s*\*\s*amt\)/g,
+      `(${this.params.blurAmount.toFixed(4)} * amt)`
+    );
+
+    return s;
+  }
+
+  async _compileAll() {
+    this.programs.clear();
+    const gl = this.gl;
+
+    for (const layer of this.layers) {
+      if (!layer.compiledFragmentShaders?.length) continue;
+
+      const progs = [];
+      for (let i = 0; i < layer.compiledFragmentShaders.length; i++) {
+        const frag = this._injectParams(layer.compiledFragmentShaders[i]);
+        const vert = layer.compiledVertexShaders[Math.min(i, layer.compiledVertexShaders.length - 1)];
+
+        const prog = this._createProgram(vert, frag);
+        if (prog) {
+          progs.push({
+            program: prog,
+            uniforms: this._getUniforms(prog)
+          });
+        }
+      }
+      this.programs.set(layer.id, progs);
+    }
+  }
+
+  _createShader(type, src) {
+    const gl = this.gl;
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, src);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      console.error('Shader error:', gl.getShaderInfoLog(shader));
+      return null;
+    }
+    return shader;
+  }
+
+  _createProgram(vert, frag) {
+    const gl = this.gl;
+    const vs = this._createShader(gl.VERTEX_SHADER, vert);
+    const fs = this._createShader(gl.FRAGMENT_SHADER, frag);
+    if (!vs || !fs) return null;
+
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.error('Link error:', gl.getProgramInfoLog(prog));
+      return null;
+    }
+    return prog;
+  }
+
+  _getUniforms(prog) {
+    const gl = this.gl;
+    return {
+      uTime: gl.getUniformLocation(prog, 'uTime'),
+      uMousePos: gl.getUniformLocation(prog, 'uMousePos'),
+      uResolution: gl.getUniformLocation(prog, 'uResolution'),
+      uTexture: gl.getUniformLocation(prog, 'uTexture'),
+      uBgTexture: gl.getUniformLocation(prog, 'uBgTexture'),
+      uSampleBg: gl.getUniformLocation(prog, 'uSampleBg'),
+      uMVMatrix: gl.getUniformLocation(prog, 'uMVMatrix'),
+      uPMatrix: gl.getUniformLocation(prog, 'uPMatrix'),
+      uTextureMatrix: gl.getUniformLocation(prog, 'uTextureMatrix'),
+      uPos: gl.getUniformLocation(prog, 'uPos'),
+    };
+  }
+
+  _setupFramebuffers() {
+    const gl = this.gl;
+
+    // Clear old
+    this.framebuffers.forEach(fb => gl.deleteFramebuffer(fb));
+    this.textures.forEach(tex => gl.deleteTexture(tex));
+    this.framebuffers = [];
+    this.textures = [];
+
+    // Create new
+    for (let i = 0; i < 4; i++) {
+      const tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.canvas.width, this.canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+      const fb = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+
+      this.framebuffers.push(fb);
+      this.textures.push(tex);
+    }
+
+    // Quad buffer
+    if (!this.quadBuffer) {
+      this.quadBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, this.quadBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1, 0, 0, 0,
+         1, -1, 0, 1, 0,
+        -1,  1, 0, 0, 1,
+         1,  1, 0, 1, 1,
+      ]), gl.STATIC_DRAW);
+    }
+
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  }
+
+  setParam(name, value) {
+    if (this.params[name] !== undefined) {
+      this.params[name] = value;
+      this._compileAll();
+    }
+  }
+
+  start() {
+    this.animating = true;
+    this._render();
+  }
+
+  stop() {
+    this.animating = false;
+  }
+
+  _render() {
+    if (!this.animating) return;
+
+    const gl = this.gl;
+    const time = ((Date.now() - this.startTime) / 1000) * this.params.speed;
+
+    gl.clearColor(0, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    let fbIdx = 0;
+    let currentTex = null;
+    const identity = [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1];
+
+    const visibleLayers = this.layers.filter(l => this.programs.has(l.id) && this.programs.get(l.id).length > 0);
+
+    for (let layerIdx = 0; layerIdx < visibleLayers.length; layerIdx++) {
+      const layer = visibleLayers[layerIdx];
+      const progs = this.programs.get(layer.id);
+      if (!progs) continue;
+
+      for (let passIdx = 0; passIdx < progs.length; passIdx++) {
+        const { program, uniforms } = progs[passIdx];
+        const isLast = layerIdx === visibleLayers.length - 1 && passIdx === progs.length - 1;
+
+        gl.bindFramebuffer(gl.FRAMEBUFFER, isLast ? null : this.framebuffers[fbIdx]);
+        gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+        gl.useProgram(program);
+
+        // Uniforms
+        if (uniforms.uTime) gl.uniform1f(uniforms.uTime, time);
+        if (uniforms.uMousePos) gl.uniform2fv(uniforms.uMousePos, this.mousePos);
+        if (uniforms.uResolution) gl.uniform2f(uniforms.uResolution, this.canvas.width, this.canvas.height);
+        if (uniforms.uPos) gl.uniform2f(uniforms.uPos, 0.5, 0.5);
+        if (uniforms.uSampleBg) gl.uniform1i(uniforms.uSampleBg, currentTex ? 1 : 0);
+
+        if (currentTex) {
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, currentTex);
+          if (uniforms.uTexture) gl.uniform1i(uniforms.uTexture, 0);
+          if (uniforms.uBgTexture) gl.uniform1i(uniforms.uBgTexture, 0);
+        }
+
+        if (uniforms.uMVMatrix) gl.uniformMatrix4fv(uniforms.uMVMatrix, false, identity);
+        if (uniforms.uPMatrix) gl.uniformMatrix4fv(uniforms.uPMatrix, false, identity);
+        if (uniforms.uTextureMatrix) gl.uniformMatrix4fv(uniforms.uTextureMatrix, false, identity);
+
+        // Draw quad
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.quadBuffer);
+        const posLoc = gl.getAttribLocation(program, 'aVertexPosition');
+        const texLoc = gl.getAttribLocation(program, 'aTextureCoord');
+
+        if (posLoc >= 0) {
+          gl.enableVertexAttribArray(posLoc);
+          gl.vertexAttribPointer(posLoc, 3, gl.FLOAT, false, 20, 0);
+        }
+        if (texLoc >= 0) {
+          gl.enableVertexAttribArray(texLoc);
+          gl.vertexAttribPointer(texLoc, 2, gl.FLOAT, false, 20, 12);
+        }
+
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+        if (!isLast) {
+          currentTex = this.textures[fbIdx];
+          fbIdx = (fbIdx + 1) % this.framebuffers.length;
+        }
+      }
+    }
+
+    requestAnimationFrame(() => this._render());
+  }
+
+  getParams() {
+    return { ...this.params };
+  }
+
+  getLayers() {
+    return this.layers.map(l => ({
+      id: l.id,
+      type: l.type || l.layerType,
+      layerType: l.layerType,
+      name: l.layerName || l.id,
+      visible: l.visible !== false
+    }));
+  }
+}
+
+// ========================================
+// UI Controller
+// ========================================
+
+const canvas = document.getElementById('canvas');
+const status = document.getElementById('status');
+const layerList = document.getElementById('layerList');
+let renderer = null;
+
+// Presets
+const presets = {
+  original: {
+    beamColor: [0.27, 0.60, 1.0],
+    ringColor: [0.0, 0.51, 0.97],
+    innerGlowThickness: 0.02,
+    outerGlowThickness: 0.08,
+    ringScale: 2.238,
+    ringWidth: 0.5,
+    blurAmount: 0.47,
+    speed: 1.0
+  },
+  neon: {
+    beamColor: [1.0, 0.0, 0.8],
+    ringColor: [0.0, 1.0, 0.8],
+    innerGlowThickness: 0.03,
+    outerGlowThickness: 0.12,
+    ringScale: 2.5,
+    ringWidth: 0.4,
+    blurAmount: 0.5,
+    speed: 1.2
+  },
+  sunset: {
+    beamColor: [1.0, 0.4, 0.2],
+    ringColor: [1.0, 0.2, 0.5],
+    innerGlowThickness: 0.025,
+    outerGlowThickness: 0.1,
+    ringScale: 3.0,
+    ringWidth: 0.6,
+    blurAmount: 0.55,
+    speed: 0.8
+  },
+  matrix: {
+    beamColor: [0.0, 1.0, 0.3],
+    ringColor: [0.0, 0.8, 0.2],
+    innerGlowThickness: 0.015,
+    outerGlowThickness: 0.06,
+    ringScale: 2.0,
+    ringWidth: 0.3,
+    blurAmount: 0.3,
+    speed: 1.5
+  },
+  purple: {
+    beamColor: [0.6, 0.2, 1.0],
+    ringColor: [0.8, 0.3, 1.0],
+    innerGlowThickness: 0.02,
+    outerGlowThickness: 0.09,
+    ringScale: 2.8,
+    ringWidth: 0.5,
+    blurAmount: 0.5,
+    speed: 0.9
+  },
+  fire: {
+    beamColor: [1.0, 0.3, 0.0],
+    ringColor: [1.0, 0.6, 0.0],
+    innerGlowThickness: 0.03,
+    outerGlowThickness: 0.15,
+    ringScale: 2.2,
+    ringWidth: 0.45,
+    blurAmount: 0.4,
+    speed: 1.1
+  }
+};
+
+// Helper functions
+function hexToRgb(hex) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return r ? [
+    parseInt(r[1], 16) / 255,
+    parseInt(r[2], 16) / 255,
+    parseInt(r[3], 16) / 255
+  ] : [0, 0, 0];
+}
+
+function rgbToHex(rgb) {
+  return '#' + rgb.map(c => {
+    const h = Math.round(c * 255).toString(16);
+    return h.length === 1 ? '0' + h : h;
+  }).join('');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function updateUI() {
+  if (!renderer) return;
+  const p = renderer.getParams();
+
+  document.getElementById('beamColor').value = rgbToHex(p.beamColor);
+  document.getElementById('ringColor').value = rgbToHex(p.ringColor);
+  document.getElementById('innerGlowThickness').value = p.innerGlowThickness;
+  document.getElementById('innerGlowThicknessValue').textContent = p.innerGlowThickness.toFixed(3);
+  document.getElementById('outerGlowThickness').value = p.outerGlowThickness;
+  document.getElementById('outerGlowThicknessValue').textContent = p.outerGlowThickness.toFixed(2);
+  document.getElementById('ringScale').value = p.ringScale;
+  document.getElementById('ringScaleValue').textContent = p.ringScale.toFixed(2);
+  document.getElementById('ringWidth').value = p.ringWidth;
+  document.getElementById('ringWidthValue').textContent = p.ringWidth.toFixed(1);
+  document.getElementById('blurAmount').value = p.blurAmount;
+  document.getElementById('blurAmountValue').textContent = p.blurAmount.toFixed(2);
+  document.getElementById('noiseAmount').value = p.noiseAmount || 0.1;
+  document.getElementById('noiseAmountValue').textContent = (p.noiseAmount || 0.1).toFixed(2);
+  document.getElementById('speed').value = p.speed;
+  document.getElementById('speedValue').textContent = p.speed.toFixed(1);
+}
+
+function renderLayerList() {
+  if (!renderer) return;
+  const layers = renderer.getLayers();
+
+  if (layers.length === 0) {
+    layerList.innerHTML = '<div class="info-box">No layers found</div>';
+    return;
+  }
+
+  layerList.innerHTML = layers.map(l => `
+    <div class="layer-item">
+      <span class="type ${l.layerType}">${l.layerType}</span>
+      <span>${l.name}</span>
+      ${l.type && l.type !== l.layerType ? `<span class="type">${l.type}</span>` : ''}
+    </div>
+  `).join('');
+}
+
+async function loadProject(data) {
+  try {
+    status.textContent = 'Compiling shaders...';
+    renderer = new UnicornStudioRenderer(canvas);
+    await renderer.load(data);
+    renderer.start();
+
+    status.textContent = `Loaded: ${data.options?.name || data.id || 'Untitled'} (${renderer.getLayers().length} layers)`;
+    renderLayerList();
+    updateUI();
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message;
+    console.error(err);
+  }
+}
+
+// File handling
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('click', () => fileInput.click());
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('dragover');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('dragover');
+});
+
+dropZone.addEventListener('drop', async (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+
+  const file = e.dataTransfer.files[0];
+  if (file && file.name.endsWith('.json')) {
+    const text = await file.text();
+    loadProject(JSON.parse(text));
+  }
+});
+
+fileInput.addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const text = await file.text();
+    loadProject(JSON.parse(text));
+  }
+});
+
+// Control handlers
+document.getElementById('beamColor').addEventListener('input', e => {
+  if (renderer) renderer.setParam('beamColor', hexToRgb(e.target.value));
+});
+
+document.getElementById('ringColor').addEventListener('input', e => {
+  if (renderer) renderer.setParam('ringColor', hexToRgb(e.target.value));
+});
+
+['innerGlowThickness', 'outerGlowThickness', 'ringScale', 'ringWidth', 'blurAmount', 'noiseAmount', 'speed'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => {
+    const val = parseFloat(e.target.value);
+    document.getElementById(id + 'Value').textContent =
+      id === 'innerGlowThickness' ? val.toFixed(3) : val.toFixed(2);
+    if (renderer) renderer.setParam(id, val);
+  });
+});
+
+// Presets
+document.querySelectorAll('.preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const preset = presets[btn.dataset.preset];
+    if (renderer && preset) {
+      Object.entries(preset).forEach(([k, v]) => {
+        renderer.setParam(k, v);
+      });
+      updateUI();
+    }
+  });
+});
+
+// Export
+document.getElementById('exportJson').addEventListener('click', () => {
+  if (!renderer) return;
+  const config = {
+    params: renderer.getParams(),
+    projectId: renderer.projectData?.id,
+    modified: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'unicornstudio-config.json';
+  a.click();
+  showToast('Config exported!');
+});
+
+document.getElementById('copyConfig').addEventListener('click', () => {
+  if (!renderer) return;
+  const config = renderer.getParams();
+  navigator.clipboard.writeText(JSON.stringify(config, null, 2));
+  showToast('Config copied!');
+});
+
+// Auto-load aura data if available
+async function autoLoad() {
+  try {
+    const resp = await fetch('aura-shader-data.json');
+    if (resp.ok) {
+      const data = await resp.json();
+      loadProject(data);
+    }
+  } catch (e) {
+    status.textContent = 'Drop a UnicornStudio JSON to get started';
+  }
+}
+
+autoLoad();
+</script>
+</body>
+</html>

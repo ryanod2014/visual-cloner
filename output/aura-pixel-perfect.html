@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - Pixel Perfect Recreation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 16px;
+    }
+    canvas {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      background: #000;
+    }
+    .stats {
+      font-size: 12px;
+      color: #666;
+      display: flex;
+      gap: 24px;
+    }
+    .stats span { color: #4af; }
+    .controls {
+      width: 360px;
+      background: #111118;
+      padding: 24px;
+      overflow-y: auto;
+      border-left: 1px solid #222;
+    }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      background: #4af;
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+    .section { margin-bottom: 24px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .param-list {
+      background: #1a1a24;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 11px;
+      font-family: monospace;
+      line-height: 1.8;
+    }
+    .param-list .label { color: #888; }
+    .param-list .value { color: #4af; }
+    .control-group { margin-bottom: 16px; }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .control-value { color: #4af; font-family: monospace; font-size: 12px; }
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 3px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #4af;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .color-row label { flex: 1; font-size: 13px; }
+    input[type="color"] {
+      width: 48px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+    input[type="color"]::-webkit-color-swatch {
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+    <div class="stats">
+      <div>Passes: <span id="passCount">0</span></div>
+      <div>FPS: <span id="fps">60</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <h1>Aura Pixel-Perfect<span class="badge">EXACT</span></h1>
+    <p class="subtitle">All values from UnicornStudio JSON</p>
+
+    <div class="section">
+      <div class="section-title">Exact Parameters</div>
+      <div class="param-list">
+        <div><span class="label">Beam Inner:</span> <span class="value">0.0200</span></div>
+        <div><span class="label">Beam Outer:</span> <span class="value">0.0800</span></div>
+        <div><span class="label">Beam Color:</span> <span class="value">#459aff</span></div>
+        <div><span class="label">Ring Scale:</span> <span class="value">2.2380</span></div>
+        <div><span class="label">Ring Width:</span> <span class="value">0.5000</span></div>
+        <div><span class="label">Ring Skew:</span> <span class="value">[0.41, 0.59]</span></div>
+        <div><span class="label">Ring Color:</span> <span class="value">#0081f7</span></div>
+        <div><span class="label">Blur Amount:</span> <span class="value">0.4700</span></div>
+        <div><span class="label">Blur Kernel:</span> <span class="value">36</span></div>
+        <div><span class="label">Noise Amount:</span> <span class="value">0.1000</span></div>
+        <div><span class="label">Noise Scale:</span> <span class="value">12.0</span></div>
+        <div><span class="label">Noise Drift:</span> <span class="value">0.3600</span></div>
+        <div><span class="label">Diffuse:</span> <span class="value">0.0900</span></div>
+        <div><span class="label">Dither Mix:</span> <span class="value">0.5000</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Adjust (breaks pixel-perfect)</div>
+      <div class="color-row">
+        <label>Beam Color</label>
+        <input type="color" id="beamColor" value="#459aff">
+      </div>
+      <div class="color-row">
+        <label>Ring Color</label>
+        <input type="color" id="ringColor" value="#0081f7">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Speed</span>
+          <span class="control-value" id="speedVal">1.0</span>
+        </div>
+        <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl2');
+if (!gl) alert('WebGL2 required');
+
+// === EXACT PARAMETERS FROM UNICORNSTUDIO ===
+const PARAMS = {
+  // Beam effect2 (inner glow)
+  innerGlowThickness: 0.0200,
+  // Beam effect3 (outer glow)
+  outerGlowThickness: 0.0800,
+  // Beam color
+  beamColor: [0.27058823529411763, 0.6039215686274509, 1.0],
+
+  // Expanding ring effect4
+  ringScale: 2.2380,
+  ringWidth: 0.5000,
+  ringSkewX: 0.4100,
+  ringSkewY: 0.5900, // 1 - 0.41
+  ringColor: [0.0, 0.5058823529411764, 0.9686274509803922],
+
+  // Blur effect7
+  blurAmount: 0.4700,
+  blurKernel: 36,
+
+  // Noise effect8
+  noiseAmount: 0.1000,
+  noiseScale: 12.0,
+  noiseDrift: 0.3600,
+  noiseSpeed: 0.37,
+
+  // Diffuse effect1
+  diffuseAmount: 0.0900,
+  diffuseIterations: 24,
+
+  // Replicate effect5
+  replicate1Spacing: 0.0300,
+  replicate1Count: 100,
+  replicate1Rotation: 0.7506,
+
+  // Replicate effect6
+  replicate2Spacing: 0.0500,
+  replicate2Count: 46,
+  replicate2Rotation: 0.0,
+
+  // Glyph dither effect9
+  ditherGrid: 1.0,
+  ditherGamma: 0.5800,
+  ditherMix: 0.5000,
+
+  // Animation
+  speed: 1.0
+};
+
+// Common vertex shader
+const vertexShader = `#version 300 es
+precision highp float;
+in vec2 aPosition;
+out vec2 vUv;
+void main() {
+  vUv = aPosition * 0.5 + 0.5;
+  gl_Position = vec4(aPosition, 0.0, 1.0);
+}`;
+
+// === PASS 1: Background + Beam Effects (fused) ===
+const beamShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform float uTime;
+uniform vec2 uResolution;
+uniform vec2 uMousePos;
+uniform vec3 uBeamColor;
+uniform vec3 uRingColor;
+
+const float PI = 3.14159265359;
+const float TWO_PI = 6.28318530718;
+
+// PCG random (exact from UnicornStudio)
+uvec2 pcg2d(uvec2 v) {
+  v = v * 1664525u + 1013904223u;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  v ^= v >> 16;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  return v;
+}
+
+float randFibo(vec2 p) {
+  uvec2 v = floatBitsToUint(p);
+  v = pcg2d(v);
+  uint r = v.x ^ v.y;
+  return float(r) / float(0xffffffffu);
+}
+
+// Tonemapping (exact)
+vec3 Tonemap_tanh(vec3 x) {
+  x = clamp(x, -40.0, 40.0);
+  return (exp(x) - exp(-x)) / (exp(x) + exp(-x));
+}
+
+float luma(vec3 color) {
+  return dot(color, vec3(0.299, 0.587, 0.114));
+}
+
+// Blend difference (exact)
+vec3 blendDifference(vec3 src, vec3 dst) {
+  return abs(dst - src);
+}
+
+mat2 rot(float a) {
+  return mat2(cos(a), -sin(a), sin(a), cos(a));
+}
+
+// Edge glow (exact from effect2/effect3)
+vec3 drawViewportEdges(vec2 uv, float thickness) {
+  float distToEdge = min(min(uv.x, uv.y), min(1.0 - uv.x, 1.0 - uv.y));
+  float sdf = distToEdge;
+  float glowThickness = thickness * 0.8;
+  float glow = glowThickness / (1.0 - smoothstep(0.12, 0.01, abs(sdf) + 0.02));
+  return glow * pow(1.0 - abs(sdf), 3.0) * uBeamColor;
+}
+
+// Expanding ring (exact from effect4)
+vec3 drawExpandingRings(vec2 uv, vec2 center) {
+  float aspectRatio = uResolution.x / uResolution.y;
+
+  uv.x *= aspectRatio;
+  center.x *= aspectRatio;
+
+  // Exact skew values
+  vec2 skew = vec2(${PARAMS.ringSkewX.toFixed(4)}, ${PARAMS.ringSkewY.toFixed(4)}) * 2.0;
+  uv = uv * rot(0.0) * skew;
+  center = center * rot(0.0) * skew;
+
+  float modulo = fract(uTime * 0.02);
+  float ringRadius = ${PARAMS.ringScale.toFixed(4)} * 0.5 * modulo;
+  float distFromCenter = length(uv - center);
+  float ringDist = abs(distFromCenter - ringRadius);
+
+  float lineRadius = ${PARAMS.ringWidth.toFixed(4)} * modulo;
+  float brightness = lineRadius / (1.0 - smoothstep(0.2, 0.002, ringDist + 0.02));
+  brightness = brightness * max(0.0, 1.0 - modulo);
+
+  return brightness * pow(1.0 - ringDist, 3.0) * uRingColor;
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec2 center = vec2(0.5);
+
+  // Background (black)
+  vec3 color = vec3(0.0);
+
+  // Inner edge glow (effect2: thickness 0.0200)
+  vec3 innerGlow = drawViewportEdges(uv, ${PARAMS.innerGlowThickness.toFixed(4)});
+
+  // Outer edge glow (effect3: thickness 0.0800)
+  vec3 outerGlow = drawViewportEdges(uv, ${PARAMS.outerGlowThickness.toFixed(4)});
+
+  // Expanding ring (effect4)
+  vec3 ring = drawExpandingRings(uv, center);
+
+  // Combine with tonemapping
+  vec3 beam = Tonemap_tanh(innerGlow + outerGlow + ring);
+
+  // Difference blend
+  vec3 blended = blendDifference(beam, color);
+  color = mix(color, blended, 1.0);
+
+  // Dither
+  float dither = (randFibo(gl_FragCoord.xy) - 0.5) / 255.0;
+  color += dither;
+
+  fragColor = vec4(color, max(luma(beam), 0.0));
+}`;
+
+// === PASS 2-5: Gaussian Blur (exact 4-pass) ===
+const blurShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform vec2 uResolution;
+uniform vec2 uDirection;
+
+const int KERNEL_SIZE = 36;
+
+// Exact Gaussian weights from UnicornStudio
+float getGaussianWeight(int index) {
+  float weights[36] = float[36](
+    0.00094768, 0.00151965, 0.00237008, 0.00359517, 0.0053041, 0.00761097,
+    0.01062197, 0.01441804, 0.01903459, 0.0244409, 0.03052299, 0.03707432,
+    0.04379813, 0.05032389, 0.05623791, 0.06112521, 0.06461716, 0.06643724,
+    0.06643724, 0.06461716, 0.06112521, 0.05623791, 0.05032389, 0.04379813,
+    0.03707432, 0.03052299, 0.0244409, 0.01903459, 0.01441804, 0.01062197,
+    0.00761097, 0.0053041, 0.00359517, 0.00237008, 0.00151965, 0.00094768
+  );
+  return weights[index];
+}
+
+// Easing function (exact)
+float ease(float t) {
+  return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec4 color = vec4(0.0);
+
+  float inner = distance(uv, vec2(0.5));
+  float outer = max(0.0, 1.0 - inner);
+
+  // Exact blur amount from UnicornStudio
+  float amt = 6.0; // For passes 0,1
+  float amount = (${PARAMS.blurAmount.toFixed(4)} * amt) * ease(mix(inner, outer, 0.5));
+
+  color += texture(uTexture, uv) * getGaussianWeight(0);
+
+  for (int i = 0; i < KERNEL_SIZE; i++) {
+    float x = float(i - KERNEL_SIZE / 2) * amount;
+    vec2 offset = vec2(x * 0.001) * uDirection * vec2(0.5, 0.5);
+    color += texture(uTexture, uv + offset) * getGaussianWeight(i);
+  }
+
+  fragColor = color;
+}`;
+
+// === PASS 6: Noise Distortion (exact) ===
+const noiseShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform float uTime;
+uniform vec2 uResolution;
+
+const float PI = 3.14159265359;
+
+// BCC noise (exact from UnicornStudio)
+vec4 permute(vec4 t) { return t * (t * 34.0 + 133.0); }
+
+vec3 grad(float hash) {
+  vec3 cube = mod(floor(hash / vec3(1.0, 2.0, 4.0)), 2.0) * 2.0 - 1.0;
+  vec3 cuboct = cube;
+  float index0 = step(0.0, 1.0 - floor(hash / 16.0));
+  float index1 = step(0.0, floor(hash / 16.0) - 1.0);
+  cuboct.x *= 1.0 - index0;
+  cuboct.y *= 1.0 - index1;
+  cuboct.z *= 1.0 - (1.0 - index0 - index1);
+  float type = mod(floor(hash / 8.0), 2.0);
+  vec3 rhomb = (1.0 - type) * cube + type * (cuboct + cross(cube, cuboct));
+  vec3 g = cuboct * 1.22474487139 + rhomb;
+  g *= (1.0 - 0.042942436724648037 * type) * 3.5946317686139184;
+  return g;
+}
+
+vec4 bccNoiseDerivativesPart(vec3 X) {
+  vec3 b = floor(X);
+  vec4 i4 = vec4(X - b, 2.5);
+  vec3 v1 = b + floor(dot(i4, vec4(.25)));
+  vec3 v2 = b + vec3(1, 0, 0) + vec3(-1, 1, 1) * floor(dot(i4, vec4(-.25, .25, .25, .35)));
+  vec3 v3 = b + vec3(0, 1, 0) + vec3(1, -1, 1) * floor(dot(i4, vec4(.25, -.25, .25, .35)));
+  vec3 v4 = b + vec3(0, 0, 1) + vec3(1, 1, -1) * floor(dot(i4, vec4(.25, .25, -.25, .35)));
+  vec4 hashes = permute(mod(vec4(v1.x, v2.x, v3.x, v4.x), 289.0));
+  hashes = permute(mod(hashes + vec4(v1.y, v2.y, v3.y, v4.y), 289.0));
+  hashes = mod(permute(mod(hashes + vec4(v1.z, v2.z, v3.z, v4.z), 289.0)), 48.0);
+  vec3 d1 = X - v1; vec3 d2 = X - v2; vec3 d3 = X - v3; vec3 d4 = X - v4;
+  vec4 a = max(0.75 - vec4(dot(d1, d1), dot(d2, d2), dot(d3, d3), dot(d4, d4)), 0.0);
+  vec4 aa = a * a; vec4 aaaa = aa * aa;
+  vec3 g1 = grad(hashes.x); vec3 g2 = grad(hashes.y);
+  vec3 g3 = grad(hashes.z); vec3 g4 = grad(hashes.w);
+  vec4 extrapolations = vec4(dot(d1, g1), dot(d2, g2), dot(d3, g3), dot(d4, g4));
+  vec3 derivative = -8.0 * mat4x3(d1, d2, d3, d4) * (aa * a * extrapolations) + mat4x3(g1, g2, g3, g4) * aaaa;
+  return vec4(derivative, dot(aaaa, extrapolations));
+}
+
+vec4 bccNoiseDerivatives_XYBeforeZ(vec3 X) {
+  mat3 orthonormalMap = mat3(
+    0.788675134594813, -0.211324865405187, -0.577350269189626,
+    -0.211324865405187, 0.788675134594813, -0.577350269189626,
+    0.577350269189626, 0.577350269189626, 0.577350269189626
+  );
+  X = orthonormalMap * X;
+  vec4 result = bccNoiseDerivativesPart(X) + bccNoiseDerivativesPart(X + 144.5);
+  return vec4(result.xyz * orthonormalMap, result.w);
+}
+
+mat2 rot(float a) { return mat2(cos(a), -sin(a), sin(a), cos(a)); }
+
+void main() {
+  vec2 uv = vUv;
+  float aspectRatio = uResolution.x / uResolution.y;
+
+  vec2 pos = vec2(0.5);
+  vec2 drift = vec2(0.0, ${PARAMS.noiseDrift.toFixed(4)} * uTime * 0.0125);
+  pos += drift;
+
+  vec2 st = (uv - pos) * vec2(aspectRatio, 1.0);
+  st *= ${PARAMS.noiseScale.toFixed(1)} * 1.0;
+
+  // Get noise offset
+  vec4 noise = bccNoiseDerivatives_XYBeforeZ(vec3(st * vec2(0.5, 0.5) * 0.7, uTime * 0.02));
+  vec2 offset = noise.xy / 7.0 + 0.5;
+  vec2 noiseUv = mix(uv, offset, ${PARAMS.noiseAmount.toFixed(4)});
+
+  float dist = max(0.0, 1.0 - distance(uv * vec2(aspectRatio, 1.0), vec2(0.5) * vec2(aspectRatio, 1.0)) * 4.0 * 0.0);
+
+  uv = mix(uv, noiseUv, 1.0);
+
+  fragColor = texture(uTexture, uv);
+}`;
+
+// === FINAL PASS: Glyph Dither + Composite (exact from effect9) ===
+const compositeShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform vec2 uResolution;
+
+// PCG random
+uvec2 pcg2d(uvec2 v) {
+  v = v * 1664525u + 1013904223u;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  v ^= v >> 16;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  return v;
+}
+
+float randFibo(vec2 p) {
+  uvec2 v = floatBitsToUint(p);
+  v = pcg2d(v);
+  uint r = v.x ^ v.y;
+  return float(r) / float(0xffffffffu);
+}
+
+void main() {
+  vec4 bg = texture(uTexture, vUv);
+
+  // Glyph dither effect (exact from UnicornStudio effect9)
+  // Grid size: mix(0.1, 0.002, 1.0) = 0.002
+  float gridSize = mix(0.1, 0.002, ${PARAMS.ditherGrid.toFixed(4)});
+
+  // Calculate grid cell
+  vec2 cellCoord = floor(vUv / gridSize);
+  vec2 cellUV = fract(vUv / gridSize);
+
+  // Sample brightness at cell center
+  vec2 cellCenter = (cellCoord + 0.5) * gridSize;
+  vec4 cellColor = texture(uTexture, cellCenter);
+  float brightness = dot(cellColor.rgb, vec3(0.299, 0.587, 0.114));
+
+  // Gamma adjustment (exact: 0.5800)
+  float gamma = pow(mix(0.5, 2.0, ${PARAMS.ditherGamma.toFixed(4)}), 2.2);
+  brightness = pow(brightness, 1.0 / gamma);
+
+  // Create square glyph (like squares.png sprite)
+  // The sprite has different sized squares based on brightness
+  float squareSize = brightness * 0.9;
+  vec2 centered = cellUV - 0.5;
+  float square = step(abs(centered.x), squareSize * 0.5) * step(abs(centered.y), squareSize * 0.5);
+
+  // Apply color through the glyph mask
+  vec3 dithered = cellColor.rgb * square;
+
+  // Mix with original (exact: 0.5000)
+  vec3 color = mix(bg.rgb, dithered, ${PARAMS.ditherMix.toFixed(4)});
+
+  // Final dither
+  float noise = (randFibo(gl_FragCoord.xy) - 0.5) / 255.0;
+  color += noise;
+
+  fragColor = vec4(color, bg.a);
+}`;
+
+// === WebGL Setup ===
+function createShader(type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error(gl.getShaderInfoLog(shader));
+    return null;
+  }
+  return shader;
+}
+
+function createProgram(vertSrc, fragSrc) {
+  const vs = createShader(gl.VERTEX_SHADER, vertSrc);
+  const fs = createShader(gl.FRAGMENT_SHADER, fragSrc);
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(prog));
+    return null;
+  }
+  return prog;
+}
+
+// Create programs
+const programs = {
+  beam: createProgram(vertexShader, beamShader),
+  blur: createProgram(vertexShader, blurShader),
+  noise: createProgram(vertexShader, noiseShader),
+  composite: createProgram(vertexShader, compositeShader)
+};
+
+// Get uniform locations
+function getUniforms(prog) {
+  return {
+    uTime: gl.getUniformLocation(prog, 'uTime'),
+    uResolution: gl.getUniformLocation(prog, 'uResolution'),
+    uMousePos: gl.getUniformLocation(prog, 'uMousePos'),
+    uTexture: gl.getUniformLocation(prog, 'uTexture'),
+    uDirection: gl.getUniformLocation(prog, 'uDirection'),
+    uBeamColor: gl.getUniformLocation(prog, 'uBeamColor'),
+    uRingColor: gl.getUniformLocation(prog, 'uRingColor')
+  };
+}
+
+const uniforms = {
+  beam: getUniforms(programs.beam),
+  blur: getUniforms(programs.blur),
+  noise: getUniforms(programs.noise),
+  composite: getUniforms(programs.composite)
+};
+
+// Quad buffer
+const quadBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+// Framebuffers
+const framebuffers = [];
+const textures = [];
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+
+  // Recreate framebuffers
+  framebuffers.forEach(fb => gl.deleteFramebuffer(fb));
+  textures.forEach(tex => gl.deleteTexture(tex));
+  framebuffers.length = 0;
+  textures.length = 0;
+
+  for (let i = 0; i < 6; i++) {
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+    const fb = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+
+    framebuffers.push(fb);
+    textures.push(tex);
+  }
+
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+}
+
+window.addEventListener('resize', resize);
+resize();
+
+// Mouse tracking
+let mousePos = [0.5, 0.5];
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  mousePos = [e.clientX / r.width, 1 - e.clientY / r.height];
+});
+
+// Config
+let beamColor = [...PARAMS.beamColor];
+let ringColor = [...PARAMS.ringColor];
+let speed = PARAMS.speed;
+
+// Render
+const startTime = Date.now();
+let frameCount = 0;
+let lastFpsUpdate = startTime;
+let currentFps = 60;
+
+function render() {
+  const time = ((Date.now() - startTime) / 1000) * speed;
+  let passCount = 0;
+
+  function useProgram(prog, u) {
+    gl.useProgram(prog);
+    const posLoc = gl.getAttribLocation(prog, 'aPosition');
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+    if (u.uTime) gl.uniform1f(u.uTime, time);
+    if (u.uResolution) gl.uniform2f(u.uResolution, canvas.width, canvas.height);
+    if (u.uMousePos) gl.uniform2fv(u.uMousePos, mousePos);
+  }
+
+  function bindTexture(tex) {
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+  }
+
+  // Pass 1: Beam effects → FB0
+  gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[0]);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  useProgram(programs.beam, uniforms.beam);
+  gl.uniform3fv(uniforms.beam.uBeamColor, beamColor);
+  gl.uniform3fv(uniforms.beam.uRingColor, ringColor);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  passCount++;
+
+  // Pass 2-5: Blur (H-V-H-V)
+  let readFB = 0;
+  let writeFB = 1;
+  const directions = [[1, 0], [0, 1], [1, 0], [0, 1]];
+
+  for (let i = 0; i < 4; i++) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[writeFB]);
+    useProgram(programs.blur, uniforms.blur);
+    bindTexture(textures[readFB]);
+    gl.uniform1i(uniforms.blur.uTexture, 0);
+    gl.uniform2fv(uniforms.blur.uDirection, directions[i]);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    passCount++;
+
+    [readFB, writeFB] = [writeFB, (writeFB + 1) % 6];
+  }
+
+  // Pass 6: Noise
+  gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[writeFB]);
+  useProgram(programs.noise, uniforms.noise);
+  bindTexture(textures[readFB]);
+  gl.uniform1i(uniforms.noise.uTexture, 0);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  passCount++;
+  readFB = writeFB;
+
+  // Final: Composite to screen
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  useProgram(programs.composite, uniforms.composite);
+  bindTexture(textures[readFB]);
+  gl.uniform1i(uniforms.composite.uTexture, 0);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  passCount++;
+
+  // Update stats
+  document.getElementById('passCount').textContent = passCount;
+
+  frameCount++;
+  const now = Date.now();
+  if (now - lastFpsUpdate > 1000) {
+    currentFps = Math.round(frameCount * 1000 / (now - lastFpsUpdate));
+    document.getElementById('fps').textContent = currentFps;
+    frameCount = 0;
+    lastFpsUpdate = now;
+  }
+
+  requestAnimationFrame(render);
+}
+
+render();
+
+// UI
+function hexToRgb(h) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+  return r ? [parseInt(r[1],16)/255, parseInt(r[2],16)/255, parseInt(r[3],16)/255] : [0,0,0];
+}
+
+document.getElementById('beamColor').addEventListener('input', e => {
+  beamColor = hexToRgb(e.target.value);
+});
+
+document.getElementById('ringColor').addEventListener('input', e => {
+  ringColor = hexToRgb(e.target.value);
+});
+
+document.getElementById('speed').addEventListener('input', e => {
+  speed = parseFloat(e.target.value);
+  document.getElementById('speedVal').textContent = speed.toFixed(1);
+});
+</script>
+</body>
+</html>

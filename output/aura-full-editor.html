@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - Full Shader Editor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 16px;
+    }
+    canvas {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      background: #000;
+    }
+    .stats {
+      font-size: 12px;
+      color: #666;
+      display: flex;
+      gap: 24px;
+    }
+    .stats span { color: #4af; }
+    .controls {
+      width: 380px;
+      background: #111118;
+      padding: 20px;
+      overflow-y: auto;
+      border-left: 1px solid #222;
+      max-height: 100vh;
+    }
+    h1 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .badge {
+      display: inline-block;
+      font-size: 9px;
+      background: #4af;
+      color: #000;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .subtitle { font-size: 12px; color: #666; margin-bottom: 16px; }
+    .section { margin-bottom: 20px; }
+    .section-title {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #222;
+    }
+    .control-group { margin-bottom: 12px; }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .control-value { color: #4af; font-family: monospace; font-size: 11px; }
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 2px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #4af;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .color-row label { flex: 1; font-size: 12px; }
+    input[type="color"] {
+      width: 40px;
+      height: 26px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+    input[type="color"]::-webkit-color-swatch {
+      border-radius: 3px;
+      border: 1px solid #444;
+    }
+    .toggle-group {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 8px 10px;
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #888;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: #4af;
+      color: #000;
+      border-color: #4af;
+    }
+    .toggle-btn:hover:not(.active) {
+      background: #252530;
+      color: #fff;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+    .checkbox-row input {
+      width: 16px;
+      height: 16px;
+      accent-color: #4af;
+    }
+    .preset-btn {
+      padding: 6px 12px;
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #ccc;
+      font-size: 11px;
+      cursor: pointer;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .preset-btn:hover {
+      background: #252530;
+      border-color: #4af;
+    }
+    .export-btn {
+      width: 100%;
+      padding: 10px;
+      background: #4af;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .export-btn:hover { background: #5bf; }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+    <div class="stats">
+      <div>Passes: <span id="passCount">7</span></div>
+      <div>FPS: <span id="fps">60</span></div>
+      <div>Mode: <span id="modeDisplay">Time</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <h1>Aura Shader Editor<span class="badge">FULL</span></h1>
+    <p class="subtitle">All parameters exposed</p>
+
+    <!-- Animation Mode -->
+    <div class="section">
+      <div class="section-title">Animation Mode</div>
+      <div class="toggle-group">
+        <button class="toggle-btn active" data-mode="time">Time</button>
+        <button class="toggle-btn" data-mode="scroll">Scroll</button>
+        <button class="toggle-btn" data-mode="mouse">Mouse</button>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Speed</span>
+          <span class="control-value" id="speedVal">1.0</span>
+        </div>
+        <input type="range" id="speed" min="0" max="3" step="0.1" value="1.0">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Mouse Influence</span>
+          <span class="control-value" id="mouseInfluenceVal">0.5</span>
+        </div>
+        <input type="range" id="mouseInfluence" min="0" max="1" step="0.05" value="0.5">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Mouse Radius</span>
+          <span class="control-value" id="mouseRadiusVal">0.3</span>
+        </div>
+        <input type="range" id="mouseRadius" min="0.1" max="1" step="0.05" value="0.3">
+      </div>
+    </div>
+
+    <!-- Presets -->
+    <div class="section">
+      <div class="section-title">Presets</div>
+      <button class="preset-btn" data-preset="original">Original</button>
+      <button class="preset-btn" data-preset="neon">Neon</button>
+      <button class="preset-btn" data-preset="sunset">Sunset</button>
+      <button class="preset-btn" data-preset="matrix">Matrix</button>
+      <button class="preset-btn" data-preset="purple">Purple</button>
+      <button class="preset-btn" data-preset="fire">Fire</button>
+    </div>
+
+    <!-- Colors -->
+    <div class="section">
+      <div class="section-title">Colors</div>
+      <div class="color-row">
+        <label>Beam Color</label>
+        <input type="color" id="beamColor" value="#459aff">
+      </div>
+      <div class="color-row">
+        <label>Ring Color</label>
+        <input type="color" id="ringColor" value="#0081f7">
+      </div>
+      <div class="color-row">
+        <label>Background</label>
+        <input type="color" id="bgColor" value="#000000">
+      </div>
+    </div>
+
+    <!-- Beam/Glow -->
+    <div class="section">
+      <div class="section-title">Edge Glow</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Inner Thickness</span>
+          <span class="control-value" id="innerGlowVal">0.020</span>
+        </div>
+        <input type="range" id="innerGlow" min="0" max="0.1" step="0.002" value="0.020">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Outer Thickness</span>
+          <span class="control-value" id="outerGlowVal">0.080</span>
+        </div>
+        <input type="range" id="outerGlow" min="0" max="0.2" step="0.005" value="0.080">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Glow Intensity</span>
+          <span class="control-value" id="glowIntensityVal">1.0</span>
+        </div>
+        <input type="range" id="glowIntensity" min="0" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <!-- Expanding Ring -->
+    <div class="section">
+      <div class="section-title">Expanding Ring</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="ringEnabled" checked>
+        <label for="ringEnabled">Enable Ring</label>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Scale</span>
+          <span class="control-value" id="ringScaleVal">2.24</span>
+        </div>
+        <input type="range" id="ringScale" min="0.5" max="5" step="0.1" value="2.24">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Width</span>
+          <span class="control-value" id="ringWidthVal">0.50</span>
+        </div>
+        <input type="range" id="ringWidth" min="0.1" max="1" step="0.05" value="0.50">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Skew X</span>
+          <span class="control-value" id="ringSkewXVal">0.41</span>
+        </div>
+        <input type="range" id="ringSkewX" min="0" max="1" step="0.01" value="0.41">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Skew Y</span>
+          <span class="control-value" id="ringSkewYVal">0.59</span>
+        </div>
+        <input type="range" id="ringSkewY" min="0" max="1" step="0.01" value="0.59">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Speed</span>
+          <span class="control-value" id="ringSpeedVal">1.0</span>
+        </div>
+        <input type="range" id="ringSpeed" min="0" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <!-- Blur -->
+    <div class="section">
+      <div class="section-title">Blur</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="blurEnabled" checked>
+        <label for="blurEnabled">Enable Blur</label>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Amount</span>
+          <span class="control-value" id="blurAmountVal">0.47</span>
+        </div>
+        <input type="range" id="blurAmount" min="0" max="1" step="0.01" value="0.47">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Passes</span>
+          <span class="control-value" id="blurPassesVal">4</span>
+        </div>
+        <input type="range" id="blurPasses" min="0" max="8" step="2" value="4">
+      </div>
+    </div>
+
+    <!-- Noise -->
+    <div class="section">
+      <div class="section-title">Noise Distortion</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="noiseEnabled" checked>
+        <label for="noiseEnabled">Enable Noise</label>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Amount</span>
+          <span class="control-value" id="noiseAmountVal">0.10</span>
+        </div>
+        <input type="range" id="noiseAmount" min="0" max="0.5" step="0.01" value="0.10">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Scale</span>
+          <span class="control-value" id="noiseScaleVal">12.0</span>
+        </div>
+        <input type="range" id="noiseScale" min="1" max="30" step="1" value="12">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Drift</span>
+          <span class="control-value" id="noiseDriftVal">0.36</span>
+        </div>
+        <input type="range" id="noiseDrift" min="0" max="1" step="0.02" value="0.36">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Noise Speed</span>
+          <span class="control-value" id="noiseSpeedVal">1.0</span>
+        </div>
+        <input type="range" id="noiseSpeed" min="0" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <!-- Dither -->
+    <div class="section">
+      <div class="section-title">Dot Matrix Dither</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="ditherEnabled" checked>
+        <label for="ditherEnabled">Enable Dither</label>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Grid Size</span>
+          <span class="control-value" id="ditherGridVal">1.00</span>
+        </div>
+        <input type="range" id="ditherGrid" min="0" max="1" step="0.05" value="1.0">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Gamma</span>
+          <span class="control-value" id="ditherGammaVal">0.58</span>
+        </div>
+        <input type="range" id="ditherGamma" min="0" max="1" step="0.02" value="0.58">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Mix</span>
+          <span class="control-value" id="ditherMixVal">0.50</span>
+        </div>
+        <input type="range" id="ditherMix" min="0" max="1" step="0.05" value="0.50">
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="section">
+      <button class="export-btn" id="exportBtn">Export Shader Code</button>
+      <button class="export-btn" id="copyEmbedBtn" style="background:#333;color:#fff;margin-top:6px;">Copy Embed Code</button>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl2');
+if (!gl) alert('WebGL2 required');
+
+// === ALL PARAMETERS ===
+const params = {
+  // Animation
+  animMode: 'time', // 'time', 'scroll', 'mouse'
+  speed: 1.0,
+  mouseInfluence: 0.5,
+  mouseRadius: 0.3,
+
+  // Colors
+  beamColor: [0.271, 0.604, 1.0],
+  ringColor: [0.0, 0.506, 0.969],
+  bgColor: [0.0, 0.0, 0.0],
+
+  // Beam/Glow
+  innerGlow: 0.020,
+  outerGlow: 0.080,
+  glowIntensity: 1.0,
+
+  // Ring
+  ringEnabled: true,
+  ringScale: 2.238,
+  ringWidth: 0.50,
+  ringSkewX: 0.41,
+  ringSkewY: 0.59,
+  ringSpeed: 1.0,
+
+  // Blur
+  blurEnabled: true,
+  blurAmount: 0.47,
+  blurPasses: 4,
+
+  // Noise
+  noiseEnabled: true,
+  noiseAmount: 0.10,
+  noiseScale: 12.0,
+  noiseDrift: 0.36,
+  noiseSpeed: 1.0,
+
+  // Dither
+  ditherEnabled: true,
+  ditherGrid: 1.0,
+  ditherGamma: 0.58,
+  ditherMix: 0.50
+};
+
+// Vertex shader
+const vertexShader = `#version 300 es
+precision highp float;
+in vec2 aPosition;
+out vec2 vUv;
+void main() {
+  vUv = aPosition * 0.5 + 0.5;
+  gl_Position = vec4(aPosition, 0.0, 1.0);
+}`;
+
+// === PASS 1: Beam Effects ===
+const beamShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform float uTime;
+uniform vec2 uResolution;
+uniform vec2 uMousePos;
+uniform vec3 uBeamColor;
+uniform vec3 uRingColor;
+uniform vec3 uBgColor;
+uniform float uInnerGlow;
+uniform float uOuterGlow;
+uniform float uGlowIntensity;
+uniform float uRingEnabled;
+uniform float uRingScale;
+uniform float uRingWidth;
+uniform float uRingSkewX;
+uniform float uRingSkewY;
+uniform float uRingSpeed;
+uniform float uMouseInfluence;
+uniform float uMouseRadius;
+uniform int uAnimMode;
+
+const float PI = 3.14159265359;
+
+uvec2 pcg2d(uvec2 v) {
+  v = v * 1664525u + 1013904223u;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  v ^= v >> 16;
+  return v;
+}
+
+float randFibo(vec2 p) {
+  uvec2 v = floatBitsToUint(p);
+  v = pcg2d(v);
+  return float(v.x ^ v.y) / float(0xffffffffu);
+}
+
+vec3 Tonemap_tanh(vec3 x) {
+  x = clamp(x, -40.0, 40.0);
+  return (exp(x) - exp(-x)) / (exp(x) + exp(-x));
+}
+
+float luma(vec3 color) {
+  return dot(color, vec3(0.299, 0.587, 0.114));
+}
+
+vec3 blendDifference(vec3 src, vec3 dst) {
+  return abs(dst - src);
+}
+
+mat2 rot(float a) {
+  return mat2(cos(a), -sin(a), sin(a), cos(a));
+}
+
+vec3 drawViewportEdges(vec2 uv, float thickness, vec2 mousePos) {
+  float distToEdge = min(min(uv.x, uv.y), min(1.0 - uv.x, 1.0 - uv.y));
+
+  // Mouse influence on glow
+  float mouseDist = distance(uv, mousePos);
+  float mouseEffect = 1.0 + uMouseInfluence * smoothstep(uMouseRadius, 0.0, mouseDist);
+
+  float glowThickness = thickness * 0.8 * mouseEffect;
+  float sdf = distToEdge;
+  float glow = glowThickness / (1.0 - smoothstep(0.12, 0.01, abs(sdf) + 0.02));
+  return glow * pow(1.0 - abs(sdf), 3.0) * uBeamColor * uGlowIntensity;
+}
+
+vec3 drawExpandingRings(vec2 uv, vec2 center, float time) {
+  if (uRingEnabled < 0.5) return vec3(0.0);
+
+  float aspectRatio = uResolution.x / uResolution.y;
+  uv.x *= aspectRatio;
+  center.x *= aspectRatio;
+
+  vec2 skew = vec2(uRingSkewX, uRingSkewY) * 2.0;
+  uv = uv * rot(0.0) * skew;
+  center = center * rot(0.0) * skew;
+
+  float modulo = fract(time * 0.02 * uRingSpeed);
+  float ringRadius = uRingScale * 0.5 * modulo;
+  float distFromCenter = length(uv - center);
+  float ringDist = abs(distFromCenter - ringRadius);
+
+  float lineRadius = uRingWidth * modulo;
+  float brightness = lineRadius / (1.0 - smoothstep(0.2, 0.002, ringDist + 0.02));
+  brightness = brightness * max(0.0, 1.0 - modulo);
+
+  return brightness * pow(1.0 - ringDist, 3.0) * uRingColor;
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec2 center = vec2(0.5);
+
+  // Animation mode adjustments
+  float time = uTime;
+  vec2 effectCenter = center;
+
+  if (uAnimMode == 2) { // Mouse mode
+    effectCenter = mix(center, uMousePos, uMouseInfluence);
+  }
+
+  vec3 color = uBgColor;
+  vec3 innerGlow = drawViewportEdges(uv, uInnerGlow, uMousePos);
+  vec3 outerGlow = drawViewportEdges(uv, uOuterGlow, uMousePos);
+  vec3 ring = drawExpandingRings(uv, effectCenter, time);
+
+  vec3 beam = Tonemap_tanh(innerGlow + outerGlow + ring);
+  vec3 blended = blendDifference(beam, color);
+  color = mix(color, blended, 1.0);
+
+  float dither = (randFibo(gl_FragCoord.xy) - 0.5) / 255.0;
+  color += dither;
+
+  fragColor = vec4(color, max(luma(beam), 0.0));
+}`;
+
+// === BLUR SHADER ===
+const blurShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform vec2 uResolution;
+uniform vec2 uDirection;
+uniform float uBlurAmount;
+
+const int KERNEL_SIZE = 36;
+
+float getGaussianWeight(int index) {
+  float weights[36] = float[36](
+    0.00094768, 0.00151965, 0.00237008, 0.00359517, 0.0053041, 0.00761097,
+    0.01062197, 0.01441804, 0.01903459, 0.0244409, 0.03052299, 0.03707432,
+    0.04379813, 0.05032389, 0.05623791, 0.06112521, 0.06461716, 0.06643724,
+    0.06643724, 0.06461716, 0.06112521, 0.05623791, 0.05032389, 0.04379813,
+    0.03707432, 0.03052299, 0.0244409, 0.01903459, 0.01441804, 0.01062197,
+    0.00761097, 0.0053041, 0.00359517, 0.00237008, 0.00151965, 0.00094768
+  );
+  return weights[index];
+}
+
+float ease(float t) {
+  return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec4 color = vec4(0.0);
+
+  float inner = distance(uv, vec2(0.5));
+  float outer = max(0.0, 1.0 - inner);
+  float amt = 6.0;
+  float amount = (uBlurAmount * amt) * ease(mix(inner, outer, 0.5));
+
+  color += texture(uTexture, uv) * getGaussianWeight(0);
+
+  for (int i = 0; i < KERNEL_SIZE; i++) {
+    float x = float(i - KERNEL_SIZE / 2) * amount;
+    vec2 offset = vec2(x * 0.001) * uDirection * vec2(0.5, 0.5);
+    color += texture(uTexture, uv + offset) * getGaussianWeight(i);
+  }
+
+  fragColor = color;
+}`;
+
+// === NOISE SHADER ===
+const noiseShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform float uTime;
+uniform vec2 uResolution;
+uniform float uNoiseAmount;
+uniform float uNoiseScale;
+uniform float uNoiseDrift;
+uniform float uNoiseSpeed;
+
+vec4 permute(vec4 t) { return t * (t * 34.0 + 133.0); }
+
+vec3 grad(float hash) {
+  vec3 cube = mod(floor(hash / vec3(1.0, 2.0, 4.0)), 2.0) * 2.0 - 1.0;
+  vec3 cuboct = cube;
+  float index0 = step(0.0, 1.0 - floor(hash / 16.0));
+  float index1 = step(0.0, floor(hash / 16.0) - 1.0);
+  cuboct.x *= 1.0 - index0;
+  cuboct.y *= 1.0 - index1;
+  cuboct.z *= 1.0 - (1.0 - index0 - index1);
+  float type = mod(floor(hash / 8.0), 2.0);
+  vec3 rhomb = (1.0 - type) * cube + type * (cuboct + cross(cube, cuboct));
+  vec3 g = cuboct * 1.22474487139 + rhomb;
+  g *= (1.0 - 0.042942436724648037 * type) * 3.5946317686139184;
+  return g;
+}
+
+vec4 bccNoiseDerivativesPart(vec3 X) {
+  vec3 b = floor(X);
+  vec4 i4 = vec4(X - b, 2.5);
+  vec3 v1 = b + floor(dot(i4, vec4(.25)));
+  vec3 v2 = b + vec3(1, 0, 0) + vec3(-1, 1, 1) * floor(dot(i4, vec4(-.25, .25, .25, .35)));
+  vec3 v3 = b + vec3(0, 1, 0) + vec3(1, -1, 1) * floor(dot(i4, vec4(.25, -.25, .25, .35)));
+  vec3 v4 = b + vec3(0, 0, 1) + vec3(1, 1, -1) * floor(dot(i4, vec4(.25, .25, -.25, .35)));
+  vec4 hashes = permute(mod(vec4(v1.x, v2.x, v3.x, v4.x), 289.0));
+  hashes = permute(mod(hashes + vec4(v1.y, v2.y, v3.y, v4.y), 289.0));
+  hashes = mod(permute(mod(hashes + vec4(v1.z, v2.z, v3.z, v4.z), 289.0)), 48.0);
+  vec3 d1 = X - v1; vec3 d2 = X - v2; vec3 d3 = X - v3; vec3 d4 = X - v4;
+  vec4 a = max(0.75 - vec4(dot(d1, d1), dot(d2, d2), dot(d3, d3), dot(d4, d4)), 0.0);
+  vec4 aa = a * a; vec4 aaaa = aa * aa;
+  vec3 g1 = grad(hashes.x); vec3 g2 = grad(hashes.y);
+  vec3 g3 = grad(hashes.z); vec3 g4 = grad(hashes.w);
+  vec4 extrapolations = vec4(dot(d1, g1), dot(d2, g2), dot(d3, g3), dot(d4, g4));
+  vec3 derivative = -8.0 * mat4x3(d1, d2, d3, d4) * (aa * a * extrapolations) + mat4x3(g1, g2, g3, g4) * aaaa;
+  return vec4(derivative, dot(aaaa, extrapolations));
+}
+
+vec4 bccNoiseDerivatives_XYBeforeZ(vec3 X) {
+  mat3 orthonormalMap = mat3(
+    0.788675134594813, -0.211324865405187, -0.577350269189626,
+    -0.211324865405187, 0.788675134594813, -0.577350269189626,
+    0.577350269189626, 0.577350269189626, 0.577350269189626
+  );
+  X = orthonormalMap * X;
+  vec4 result = bccNoiseDerivativesPart(X) + bccNoiseDerivativesPart(X + 144.5);
+  return vec4(result.xyz * orthonormalMap, result.w);
+}
+
+void main() {
+  vec2 uv = vUv;
+  float aspectRatio = uResolution.x / uResolution.y;
+
+  vec2 pos = vec2(0.5);
+  vec2 drift = vec2(0.0, uNoiseDrift * uTime * 0.0125 * uNoiseSpeed);
+  pos += drift;
+
+  vec2 st = (uv - pos) * vec2(aspectRatio, 1.0);
+  st *= uNoiseScale;
+
+  vec4 noise = bccNoiseDerivatives_XYBeforeZ(vec3(st * 0.35, uTime * 0.02 * uNoiseSpeed));
+  vec2 offset = noise.xy / 7.0 + 0.5;
+  vec2 noiseUv = mix(uv, offset, uNoiseAmount);
+
+  uv = mix(uv, noiseUv, 1.0);
+
+  fragColor = texture(uTexture, uv);
+}`;
+
+// === COMPOSITE/DITHER SHADER ===
+const compositeShader = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform sampler2D uTexture;
+uniform vec2 uResolution;
+uniform float uDitherEnabled;
+uniform float uDitherGrid;
+uniform float uDitherGamma;
+uniform float uDitherMix;
+
+uvec2 pcg2d(uvec2 v) {
+  v = v * 1664525u + 1013904223u;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  v ^= v >> 16;
+  return v;
+}
+
+float randFibo(vec2 p) {
+  uvec2 v = floatBitsToUint(p);
+  v = pcg2d(v);
+  return float(v.x ^ v.y) / float(0xffffffffu);
+}
+
+void main() {
+  vec4 bg = texture(uTexture, vUv);
+  vec3 color = bg.rgb;
+
+  if (uDitherEnabled > 0.5) {
+    float gridSize = mix(0.1, 0.002, uDitherGrid);
+    vec2 cellCoord = floor(vUv / gridSize);
+    vec2 cellUV = fract(vUv / gridSize);
+    vec2 cellCenter = (cellCoord + 0.5) * gridSize;
+    vec4 cellColor = texture(uTexture, cellCenter);
+    float brightness = dot(cellColor.rgb, vec3(0.299, 0.587, 0.114));
+    float gamma = pow(mix(0.5, 2.0, uDitherGamma), 2.2);
+    brightness = pow(brightness, 1.0 / gamma);
+    float squareSize = brightness * 0.9;
+    vec2 centered = cellUV - 0.5;
+    float square = step(abs(centered.x), squareSize * 0.5) * step(abs(centered.y), squareSize * 0.5);
+    vec3 dithered = cellColor.rgb * square;
+    color = mix(bg.rgb, dithered, uDitherMix);
+  }
+
+  float noise = (randFibo(gl_FragCoord.xy) - 0.5) / 255.0;
+  color += noise;
+
+  fragColor = vec4(color, bg.a);
+}`;
+
+// === PASSTHROUGH SHADER (for skipping passes) ===
+const passthroughShader = `#version 300 es
+precision highp float;
+in vec2 vUv;
+out vec4 fragColor;
+uniform sampler2D uTexture;
+void main() {
+  fragColor = texture(uTexture, vUv);
+}`;
+
+// === WebGL Setup ===
+function createShader(type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error(gl.getShaderInfoLog(shader));
+    return null;
+  }
+  return shader;
+}
+
+function createProgram(vertSrc, fragSrc) {
+  const vs = createShader(gl.VERTEX_SHADER, vertSrc);
+  const fs = createShader(gl.FRAGMENT_SHADER, fragSrc);
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(prog));
+    return null;
+  }
+  return prog;
+}
+
+const programs = {
+  beam: createProgram(vertexShader, beamShader),
+  blur: createProgram(vertexShader, blurShader),
+  noise: createProgram(vertexShader, noiseShader),
+  composite: createProgram(vertexShader, compositeShader),
+  passthrough: createProgram(vertexShader, passthroughShader)
+};
+
+function getUniforms(prog) {
+  const uniforms = {};
+  const count = gl.getProgramParameter(prog, gl.ACTIVE_UNIFORMS);
+  for (let i = 0; i < count; i++) {
+    const info = gl.getActiveUniform(prog, i);
+    uniforms[info.name] = gl.getUniformLocation(prog, info.name);
+  }
+  return uniforms;
+}
+
+const uniforms = {
+  beam: getUniforms(programs.beam),
+  blur: getUniforms(programs.blur),
+  noise: getUniforms(programs.noise),
+  composite: getUniforms(programs.composite),
+  passthrough: getUniforms(programs.passthrough)
+};
+
+const quadBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+const framebuffers = [];
+const textures = [];
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+
+  framebuffers.forEach(fb => gl.deleteFramebuffer(fb));
+  textures.forEach(tex => gl.deleteTexture(tex));
+  framebuffers.length = 0;
+  textures.length = 0;
+
+  for (let i = 0; i < 10; i++) {
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+    const fb = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+
+    framebuffers.push(fb);
+    textures.push(tex);
+  }
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+}
+
+window.addEventListener('resize', resize);
+resize();
+
+// Mouse & scroll tracking
+let mousePos = [0.5, 0.5];
+let scrollPos = 0;
+
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  mousePos = [e.clientX / r.width, 1 - e.clientY / r.height];
+});
+
+window.addEventListener('scroll', () => {
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  scrollPos = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+});
+
+// Render
+const startTime = Date.now();
+let frameCount = 0;
+let lastFpsUpdate = startTime;
+
+function render() {
+  let time;
+  if (params.animMode === 'time') {
+    time = ((Date.now() - startTime) / 1000) * params.speed;
+  } else if (params.animMode === 'scroll') {
+    time = scrollPos * 100 * params.speed;
+  } else {
+    time = ((Date.now() - startTime) / 1000) * params.speed * 0.3;
+  }
+
+  let passCount = 0;
+
+  function useProgram(prog, u) {
+    gl.useProgram(prog);
+    const posLoc = gl.getAttribLocation(prog, 'aPosition');
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+    if (u.uTime !== undefined) gl.uniform1f(u.uTime, time);
+    if (u.uResolution !== undefined) gl.uniform2f(u.uResolution, canvas.width, canvas.height);
+    if (u.uMousePos !== undefined) gl.uniform2fv(u.uMousePos, mousePos);
+  }
+
+  function bindTexture(tex) {
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+  }
+
+  // Pass 1: Beam
+  gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[0]);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  useProgram(programs.beam, uniforms.beam);
+  gl.uniform3fv(uniforms.beam.uBeamColor, params.beamColor);
+  gl.uniform3fv(uniforms.beam.uRingColor, params.ringColor);
+  gl.uniform3fv(uniforms.beam.uBgColor, params.bgColor);
+  gl.uniform1f(uniforms.beam.uInnerGlow, params.innerGlow);
+  gl.uniform1f(uniforms.beam.uOuterGlow, params.outerGlow);
+  gl.uniform1f(uniforms.beam.uGlowIntensity, params.glowIntensity);
+  gl.uniform1f(uniforms.beam.uRingEnabled, params.ringEnabled ? 1.0 : 0.0);
+  gl.uniform1f(uniforms.beam.uRingScale, params.ringScale);
+  gl.uniform1f(uniforms.beam.uRingWidth, params.ringWidth);
+  gl.uniform1f(uniforms.beam.uRingSkewX, params.ringSkewX);
+  gl.uniform1f(uniforms.beam.uRingSkewY, params.ringSkewY);
+  gl.uniform1f(uniforms.beam.uRingSpeed, params.ringSpeed);
+  gl.uniform1f(uniforms.beam.uMouseInfluence, params.mouseInfluence);
+  gl.uniform1f(uniforms.beam.uMouseRadius, params.mouseRadius);
+  gl.uniform1i(uniforms.beam.uAnimMode, params.animMode === 'time' ? 0 : params.animMode === 'scroll' ? 1 : 2);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  passCount++;
+
+  // Blur passes
+  let readFB = 0;
+  let writeFB = 1;
+
+  if (params.blurEnabled && params.blurPasses > 0) {
+    const directions = [[1, 0], [0, 1], [1, 0], [0, 1], [1, 0], [0, 1], [1, 0], [0, 1]];
+    for (let i = 0; i < params.blurPasses; i++) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[writeFB]);
+      useProgram(programs.blur, uniforms.blur);
+      bindTexture(textures[readFB]);
+      gl.uniform1i(uniforms.blur.uTexture, 0);
+      gl.uniform2fv(uniforms.blur.uDirection, directions[i % directions.length]);
+      gl.uniform1f(uniforms.blur.uBlurAmount, params.blurAmount);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      passCount++;
+      [readFB, writeFB] = [writeFB, (writeFB + 1) % 10];
+    }
+  }
+
+  // Noise pass
+  if (params.noiseEnabled) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffers[writeFB]);
+    useProgram(programs.noise, uniforms.noise);
+    bindTexture(textures[readFB]);
+    gl.uniform1i(uniforms.noise.uTexture, 0);
+    gl.uniform1f(uniforms.noise.uNoiseAmount, params.noiseAmount);
+    gl.uniform1f(uniforms.noise.uNoiseScale, params.noiseScale);
+    gl.uniform1f(uniforms.noise.uNoiseDrift, params.noiseDrift);
+    gl.uniform1f(uniforms.noise.uNoiseSpeed, params.noiseSpeed);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    passCount++;
+    readFB = writeFB;
+  }
+
+  // Composite
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  useProgram(programs.composite, uniforms.composite);
+  bindTexture(textures[readFB]);
+  gl.uniform1i(uniforms.composite.uTexture, 0);
+  gl.uniform1f(uniforms.composite.uDitherEnabled, params.ditherEnabled ? 1.0 : 0.0);
+  gl.uniform1f(uniforms.composite.uDitherGrid, params.ditherGrid);
+  gl.uniform1f(uniforms.composite.uDitherGamma, params.ditherGamma);
+  gl.uniform1f(uniforms.composite.uDitherMix, params.ditherMix);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  passCount++;
+
+  document.getElementById('passCount').textContent = passCount;
+
+  frameCount++;
+  const now = Date.now();
+  if (now - lastFpsUpdate > 1000) {
+    document.getElementById('fps').textContent = Math.round(frameCount * 1000 / (now - lastFpsUpdate));
+    frameCount = 0;
+    lastFpsUpdate = now;
+  }
+
+  requestAnimationFrame(render);
+}
+
+render();
+
+// === UI ===
+function hexToRgb(h) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+  return r ? [parseInt(r[1],16)/255, parseInt(r[2],16)/255, parseInt(r[3],16)/255] : [0,0,0];
+}
+
+function rgbToHex(rgb) {
+  return '#' + rgb.map(v => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
+}
+
+// Animation mode buttons
+document.querySelectorAll('[data-mode]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    params.animMode = btn.dataset.mode;
+    document.getElementById('modeDisplay').textContent = btn.textContent;
+  });
+});
+
+// Presets
+const presets = {
+  original: { beamColor: [0.271, 0.604, 1.0], ringColor: [0.0, 0.506, 0.969], bgColor: [0,0,0] },
+  neon: { beamColor: [0, 1, 0.5], ringColor: [1, 0, 1], bgColor: [0.02, 0, 0.05] },
+  sunset: { beamColor: [1, 0.4, 0], ringColor: [1, 0.8, 0], bgColor: [0.05, 0, 0.02] },
+  matrix: { beamColor: [0, 1, 0], ringColor: [0.2, 0.8, 0.2], bgColor: [0, 0.02, 0] },
+  purple: { beamColor: [0.6, 0.2, 1], ringColor: [1, 0.4, 0.8], bgColor: [0.02, 0, 0.04] },
+  fire: { beamColor: [1, 0.3, 0], ringColor: [1, 0.6, 0], bgColor: [0.03, 0, 0] }
+};
+
+document.querySelectorAll('[data-preset]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = presets[btn.dataset.preset];
+    params.beamColor = [...p.beamColor];
+    params.ringColor = [...p.ringColor];
+    params.bgColor = [...p.bgColor];
+    document.getElementById('beamColor').value = rgbToHex(p.beamColor);
+    document.getElementById('ringColor').value = rgbToHex(p.ringColor);
+    document.getElementById('bgColor').value = rgbToHex(p.bgColor);
+  });
+});
+
+// Slider & color bindings
+const bindings = [
+  { id: 'speed', param: 'speed', display: 'speedVal', format: v => v.toFixed(1) },
+  { id: 'mouseInfluence', param: 'mouseInfluence', display: 'mouseInfluenceVal', format: v => v.toFixed(2) },
+  { id: 'mouseRadius', param: 'mouseRadius', display: 'mouseRadiusVal', format: v => v.toFixed(2) },
+  { id: 'innerGlow', param: 'innerGlow', display: 'innerGlowVal', format: v => v.toFixed(3) },
+  { id: 'outerGlow', param: 'outerGlow', display: 'outerGlowVal', format: v => v.toFixed(3) },
+  { id: 'glowIntensity', param: 'glowIntensity', display: 'glowIntensityVal', format: v => v.toFixed(1) },
+  { id: 'ringScale', param: 'ringScale', display: 'ringScaleVal', format: v => v.toFixed(2) },
+  { id: 'ringWidth', param: 'ringWidth', display: 'ringWidthVal', format: v => v.toFixed(2) },
+  { id: 'ringSkewX', param: 'ringSkewX', display: 'ringSkewXVal', format: v => v.toFixed(2) },
+  { id: 'ringSkewY', param: 'ringSkewY', display: 'ringSkewYVal', format: v => v.toFixed(2) },
+  { id: 'ringSpeed', param: 'ringSpeed', display: 'ringSpeedVal', format: v => v.toFixed(1) },
+  { id: 'blurAmount', param: 'blurAmount', display: 'blurAmountVal', format: v => v.toFixed(2) },
+  { id: 'blurPasses', param: 'blurPasses', display: 'blurPassesVal', format: v => v.toString() },
+  { id: 'noiseAmount', param: 'noiseAmount', display: 'noiseAmountVal', format: v => v.toFixed(2) },
+  { id: 'noiseScale', param: 'noiseScale', display: 'noiseScaleVal', format: v => v.toFixed(1) },
+  { id: 'noiseDrift', param: 'noiseDrift', display: 'noiseDriftVal', format: v => v.toFixed(2) },
+  { id: 'noiseSpeed', param: 'noiseSpeed', display: 'noiseSpeedVal', format: v => v.toFixed(1) },
+  { id: 'ditherGrid', param: 'ditherGrid', display: 'ditherGridVal', format: v => v.toFixed(2) },
+  { id: 'ditherGamma', param: 'ditherGamma', display: 'ditherGammaVal', format: v => v.toFixed(2) },
+  { id: 'ditherMix', param: 'ditherMix', display: 'ditherMixVal', format: v => v.toFixed(2) }
+];
+
+bindings.forEach(({ id, param, display, format }) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('input', e => {
+      params[param] = parseFloat(e.target.value);
+      document.getElementById(display).textContent = format(params[param]);
+    });
+  }
+});
+
+// Colors
+['beamColor', 'ringColor', 'bgColor'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => {
+    params[id] = hexToRgb(e.target.value);
+  });
+});
+
+// Checkboxes
+['ringEnabled', 'blurEnabled', 'noiseEnabled', 'ditherEnabled'].forEach(id => {
+  document.getElementById(id).addEventListener('change', e => {
+    params[id] = e.target.checked;
+  });
+});
+
+// Export
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const code = JSON.stringify(params, null, 2);
+  const blob = new Blob([code], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'shader-params.json';
+  a.click();
+});
+
+document.getElementById('copyEmbedBtn').addEventListener('click', () => {
+  const embedCode = `<div id="shader-container" style="width:100%;height:400px;"></div>
+<script src="aura-shader.js"><\/script>
+<script>initShader('shader-container', ${JSON.stringify(params)});<\/script>`;
+  navigator.clipboard.writeText(embedCode);
+  alert('Embed code copied!');
+});
+</script>
+</body>
+</html>

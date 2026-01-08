@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Shader Editor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/10;
+      border-radius: 12px;
+    }
+
+    .controls {
+      width: 340px;
+      background: #111118;
+      padding: 24px;
+      overflow-y: auto;
+      border-left: 1px solid #222;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .preset {
+      padding: 10px 8px;
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset:hover {
+      background: #252530;
+      border-color: #444;
+    }
+
+    .preset.active {
+      border-color: #4af;
+      background: rgba(68, 170, 255, 0.1);
+    }
+
+    .control-group {
+      margin-bottom: 16px;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .control-value {
+      color: #4af;
+      font-family: monospace;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #4af;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .color-row label {
+      flex: 1;
+      font-size: 13px;
+    }
+
+    input[type="color"] {
+      width: 48px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 2px;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+      accent-color: #4af;
+    }
+
+    .checkbox-row label {
+      font-size: 13px;
+    }
+
+    .export-section {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #333;
+    }
+
+    .export-btn {
+      width: 100%;
+      padding: 12px;
+      background: #4af;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+
+    .export-btn:hover {
+      background: #5bf;
+    }
+
+    .export-btn.secondary {
+      background: transparent;
+      color: #4af;
+      border: 1px solid #4af;
+    }
+
+    .export-btn.secondary:hover {
+      background: rgba(68, 170, 255, 0.1);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #4af;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <div class="controls">
+    <h1>Aura Shader Editor</h1>
+    <p class="subtitle">Extracted from aura.build component</p>
+
+    <div class="section">
+      <div class="section-title">Presets</div>
+      <div class="presets">
+        <button class="preset active" data-preset="aura">Aura</button>
+        <button class="preset" data-preset="neon">Neon</button>
+        <button class="preset" data-preset="sunset">Sunset</button>
+        <button class="preset" data-preset="matrix">Matrix</button>
+        <button class="preset" data-preset="purple">Purple</button>
+        <button class="preset" data-preset="fire">Fire</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Colors</div>
+      <div class="color-row">
+        <label>Edge Glow</label>
+        <input type="color" id="glowColor" value="#459aff">
+      </div>
+      <div class="color-row">
+        <label>Ring Color</label>
+        <input type="color" id="ringColor" value="#0081f7">
+      </div>
+      <div class="color-row">
+        <label>Background</label>
+        <input type="color" id="bgColor" value="#0a0a0f">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Edge Glow</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Inner Thickness</span>
+          <span class="control-value" id="innerThicknessValue">0.02</span>
+        </div>
+        <input type="range" id="innerThickness" min="0.005" max="0.1" step="0.005" value="0.02">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Outer Thickness</span>
+          <span class="control-value" id="outerThicknessValue">0.08</span>
+        </div>
+        <input type="range" id="outerThickness" min="0.01" max="0.2" step="0.01" value="0.08">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Intensity</span>
+          <span class="control-value" id="glowIntensityValue">1.0</span>
+        </div>
+        <input type="range" id="glowIntensity" min="0.1" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Expanding Ring</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="ringEnabled" checked>
+        <label for="ringEnabled">Enable Ring Pulse</label>
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Speed</span>
+          <span class="control-value" id="ringSpeedValue">0.4</span>
+        </div>
+        <input type="range" id="ringSpeed" min="0.1" max="2" step="0.1" value="0.4">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Scale</span>
+          <span class="control-value" id="ringScaleValue">2.2</span>
+        </div>
+        <input type="range" id="ringScale" min="0.5" max="5" step="0.1" value="2.2">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Width</span>
+          <span class="control-value" id="ringWidthValue">0.5</span>
+        </div>
+        <input type="range" id="ringWidth" min="0.1" max="1" step="0.1" value="0.5">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Effects</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Blur Amount</span>
+          <span class="control-value" id="blurAmountValue">0.47</span>
+        </div>
+        <input type="range" id="blurAmount" min="0" max="1" step="0.01" value="0.47">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Noise Amount</span>
+          <span class="control-value" id="noiseAmountValue">0.1</span>
+        </div>
+        <input type="range" id="noiseAmount" min="0" max="0.5" step="0.01" value="0.1">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Noise Scale</span>
+          <span class="control-value" id="noiseScaleValue">12</span>
+        </div>
+        <input type="range" id="noiseScale" min="1" max="30" step="1" value="12">
+      </div>
+    </div>
+
+    <div class="export-section">
+      <button class="export-btn" id="exportJson">Export JSON Config</button>
+      <button class="export-btn secondary" id="copyEmbed">Copy Embed Code</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+// ========================================
+// Aura Shader - WebGL2 Implementation
+// ========================================
+
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl2');
+
+if (!gl) {
+  alert('WebGL2 not supported');
+}
+
+// Configuration
+const config = {
+  glowColor: [0.27, 0.60, 1.0],
+  ringColor: [0.0, 0.51, 0.97],
+  bgColor: [0.04, 0.04, 0.06],
+  innerThickness: 0.02,
+  outerThickness: 0.08,
+  glowIntensity: 1.0,
+  ringEnabled: true,
+  ringSpeed: 0.4,
+  ringScale: 2.2,
+  ringWidth: 0.5,
+  blurAmount: 0.47,
+  noiseAmount: 0.1,
+  noiseScale: 12.0
+};
+
+// Presets
+const presets = {
+  aura: {
+    glowColor: [0.27, 0.60, 1.0],
+    ringColor: [0.0, 0.51, 0.97],
+    bgColor: [0.04, 0.04, 0.06],
+    innerThickness: 0.02,
+    outerThickness: 0.08,
+    glowIntensity: 1.0,
+    ringSpeed: 0.4,
+    ringScale: 2.2,
+    ringWidth: 0.5,
+    blurAmount: 0.47,
+    noiseAmount: 0.1,
+    noiseScale: 12.0
+  },
+  neon: {
+    glowColor: [1.0, 0.0, 0.8],
+    ringColor: [0.0, 1.0, 0.8],
+    bgColor: [0.02, 0.02, 0.05],
+    innerThickness: 0.03,
+    outerThickness: 0.12,
+    glowIntensity: 1.5,
+    ringSpeed: 0.6,
+    ringScale: 2.5,
+    ringWidth: 0.4,
+    blurAmount: 0.5,
+    noiseAmount: 0.05,
+    noiseScale: 8.0
+  },
+  sunset: {
+    glowColor: [1.0, 0.4, 0.2],
+    ringColor: [1.0, 0.2, 0.5],
+    bgColor: [0.08, 0.03, 0.05],
+    innerThickness: 0.025,
+    outerThickness: 0.1,
+    glowIntensity: 1.2,
+    ringSpeed: 0.3,
+    ringScale: 3.0,
+    ringWidth: 0.6,
+    blurAmount: 0.55,
+    noiseAmount: 0.12,
+    noiseScale: 10.0
+  },
+  matrix: {
+    glowColor: [0.0, 1.0, 0.3],
+    ringColor: [0.0, 0.8, 0.2],
+    bgColor: [0.0, 0.03, 0.01],
+    innerThickness: 0.015,
+    outerThickness: 0.06,
+    glowIntensity: 1.3,
+    ringSpeed: 0.8,
+    ringScale: 2.0,
+    ringWidth: 0.3,
+    blurAmount: 0.3,
+    noiseAmount: 0.15,
+    noiseScale: 15.0
+  },
+  purple: {
+    glowColor: [0.6, 0.2, 1.0],
+    ringColor: [0.8, 0.3, 1.0],
+    bgColor: [0.05, 0.02, 0.08],
+    innerThickness: 0.02,
+    outerThickness: 0.09,
+    glowIntensity: 1.1,
+    ringSpeed: 0.35,
+    ringScale: 2.8,
+    ringWidth: 0.5,
+    blurAmount: 0.5,
+    noiseAmount: 0.08,
+    noiseScale: 10.0
+  },
+  fire: {
+    glowColor: [1.0, 0.3, 0.0],
+    ringColor: [1.0, 0.6, 0.0],
+    bgColor: [0.06, 0.02, 0.0],
+    innerThickness: 0.03,
+    outerThickness: 0.15,
+    glowIntensity: 1.4,
+    ringSpeed: 0.5,
+    ringScale: 2.2,
+    ringWidth: 0.45,
+    blurAmount: 0.4,
+    noiseAmount: 0.18,
+    noiseScale: 8.0
+  }
+};
+
+// Vertex shader
+const vertexShaderSource = `#version 300 es
+precision highp float;
+in vec2 aPosition;
+out vec2 vUv;
+void main() {
+  vUv = aPosition * 0.5 + 0.5;
+  gl_Position = vec4(aPosition, 0.0, 1.0);
+}`;
+
+// Fragment shader with edge glow, expanding ring, noise
+const fragmentShaderSource = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform float uTime;
+uniform vec2 uResolution;
+uniform vec3 uGlowColor;
+uniform vec3 uRingColor;
+uniform vec3 uBgColor;
+uniform float uInnerThickness;
+uniform float uOuterThickness;
+uniform float uGlowIntensity;
+uniform float uRingEnabled;
+uniform float uRingSpeed;
+uniform float uRingScale;
+uniform float uRingWidth;
+uniform float uBlurAmount;
+uniform float uNoiseAmount;
+uniform float uNoiseScale;
+
+const float PI = 3.14159265359;
+const float TWO_PI = 6.28318530718;
+
+// Simplex noise
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod289(i);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m = m*m;
+  m = m*m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+  vec3 g;
+  g.x = a0.x * x0.x + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+// Edge glow effect (viewport border glow)
+vec3 drawEdgeGlow(vec2 uv, float thickness) {
+  float distToEdge = min(min(uv.x, uv.y), min(1.0 - uv.x, 1.0 - uv.y));
+  float glow = thickness / (1.0 - smoothstep(0.12, 0.01, abs(distToEdge) + 0.02));
+  return glow * pow(1.0 - abs(distToEdge), 3.0) * uGlowColor * uGlowIntensity;
+}
+
+// Expanding ring effect
+vec3 drawExpandingRing(vec2 uv, vec2 center) {
+  if (uRingEnabled < 0.5) return vec3(0.0);
+
+  float aspectRatio = uResolution.x / uResolution.y;
+  vec2 scaledUv = uv * vec2(aspectRatio, 1.0);
+  vec2 scaledCenter = center * vec2(aspectRatio, 1.0);
+
+  float modulo = fract(uTime * 0.02 * uRingSpeed);
+  float ringRadius = uRingScale * 0.5 * modulo;
+  float distFromCenter = length(scaledUv - scaledCenter);
+  float ringDist = abs(distFromCenter - ringRadius);
+
+  float lineRadius = uRingWidth * modulo;
+  float brightness = lineRadius / (1.0 - smoothstep(0.2, 0.002, ringDist + 0.02));
+  brightness *= max(0.0, 1.0 - modulo);
+
+  return brightness * pow(1.0 - ringDist, 3.0) * uRingColor;
+}
+
+// Tonemapping
+vec3 tonemap(vec3 x) {
+  x = clamp(x, -40.0, 40.0);
+  return (exp(x) - exp(-x)) / (exp(x) + exp(-x));
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec2 center = vec2(0.5);
+  float aspectRatio = uResolution.x / uResolution.y;
+
+  // Apply noise distortion
+  vec2 noiseUv = uv * uNoiseScale + uTime * 0.05;
+  float noise = snoise(noiseUv) * uNoiseAmount;
+  vec2 distortedUv = uv + vec2(noise * 0.1, noise * 0.1);
+
+  // Background
+  vec3 color = uBgColor;
+
+  // Inner edge glow (thin)
+  vec3 innerGlow = drawEdgeGlow(distortedUv, uInnerThickness);
+
+  // Outer edge glow (thicker, more diffuse)
+  vec3 outerGlow = drawEdgeGlow(distortedUv, uOuterThickness);
+
+  // Expanding ring from center
+  vec3 ring = drawExpandingRing(distortedUv, center);
+
+  // Combine effects with tonemapping
+  vec3 effects = tonemap(innerGlow + outerGlow * 0.5 + ring);
+
+  // Blend difference mode (like original)
+  color = abs(color - effects);
+
+  // Add some of the original glow back additively
+  color += (innerGlow + outerGlow * 0.3) * 0.5;
+
+  // Soft blur simulation via noise
+  float blurNoise = snoise(uv * 20.0 + uTime) * uBlurAmount * 0.02;
+  color += blurNoise * uGlowColor * 0.1;
+
+  // Vignette
+  float vignette = 1.0 - length(uv - 0.5) * 0.5;
+  color *= vignette;
+
+  // Dither to prevent banding
+  float dither = (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
+  color += dither;
+
+  fragColor = vec4(color, 1.0);
+}`;
+
+// Create shader
+function createShader(gl, type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('Shader compile error:', gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+  return shader;
+}
+
+// Create program
+function createProgram(gl, vertexShader, fragmentShader) {
+  const program = gl.createProgram();
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error('Program link error:', gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
+    return null;
+  }
+  return program;
+}
+
+// Initialize WebGL
+const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+const program = createProgram(gl, vertexShader, fragmentShader);
+
+// Get attribute and uniform locations
+const positionLocation = gl.getAttribLocation(program, 'aPosition');
+const timeLocation = gl.getUniformLocation(program, 'uTime');
+const resolutionLocation = gl.getUniformLocation(program, 'uResolution');
+const glowColorLocation = gl.getUniformLocation(program, 'uGlowColor');
+const ringColorLocation = gl.getUniformLocation(program, 'uRingColor');
+const bgColorLocation = gl.getUniformLocation(program, 'uBgColor');
+const innerThicknessLocation = gl.getUniformLocation(program, 'uInnerThickness');
+const outerThicknessLocation = gl.getUniformLocation(program, 'uOuterThickness');
+const glowIntensityLocation = gl.getUniformLocation(program, 'uGlowIntensity');
+const ringEnabledLocation = gl.getUniformLocation(program, 'uRingEnabled');
+const ringSpeedLocation = gl.getUniformLocation(program, 'uRingSpeed');
+const ringScaleLocation = gl.getUniformLocation(program, 'uRingScale');
+const ringWidthLocation = gl.getUniformLocation(program, 'uRingWidth');
+const blurAmountLocation = gl.getUniformLocation(program, 'uBlurAmount');
+const noiseAmountLocation = gl.getUniformLocation(program, 'uNoiseAmount');
+const noiseScaleLocation = gl.getUniformLocation(program, 'uNoiseScale');
+
+// Create buffer
+const positionBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+  -1, -1, 1, -1, -1, 1,
+  -1, 1, 1, -1, 1, 1
+]), gl.STATIC_DRAW);
+
+// Set up VAO
+const vao = gl.createVertexArray();
+gl.bindVertexArray(vao);
+gl.enableVertexAttribArray(positionLocation);
+gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+// Resize handler
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Render loop
+let startTime = Date.now();
+function render() {
+  const time = (Date.now() - startTime) / 1000;
+
+  gl.useProgram(program);
+  gl.bindVertexArray(vao);
+
+  // Set uniforms
+  gl.uniform1f(timeLocation, time);
+  gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+  gl.uniform3fv(glowColorLocation, config.glowColor);
+  gl.uniform3fv(ringColorLocation, config.ringColor);
+  gl.uniform3fv(bgColorLocation, config.bgColor);
+  gl.uniform1f(innerThicknessLocation, config.innerThickness);
+  gl.uniform1f(outerThicknessLocation, config.outerThickness);
+  gl.uniform1f(glowIntensityLocation, config.glowIntensity);
+  gl.uniform1f(ringEnabledLocation, config.ringEnabled ? 1.0 : 0.0);
+  gl.uniform1f(ringSpeedLocation, config.ringSpeed);
+  gl.uniform1f(ringScaleLocation, config.ringScale);
+  gl.uniform1f(ringWidthLocation, config.ringWidth);
+  gl.uniform1f(blurAmountLocation, config.blurAmount);
+  gl.uniform1f(noiseAmountLocation, config.noiseAmount);
+  gl.uniform1f(noiseScaleLocation, config.noiseScale);
+
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+  requestAnimationFrame(render);
+}
+render();
+
+// ========================================
+// UI Controls
+// ========================================
+
+// Helper functions
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16) / 255,
+    parseInt(result[2], 16) / 255,
+    parseInt(result[3], 16) / 255
+  ] : [0, 0, 0];
+}
+
+function rgbToHex(rgb) {
+  return '#' + rgb.map(c => {
+    const hex = Math.round(c * 255).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  }).join('');
+}
+
+function updateUI() {
+  document.getElementById('glowColor').value = rgbToHex(config.glowColor);
+  document.getElementById('ringColor').value = rgbToHex(config.ringColor);
+  document.getElementById('bgColor').value = rgbToHex(config.bgColor);
+  document.getElementById('innerThickness').value = config.innerThickness;
+  document.getElementById('innerThicknessValue').textContent = config.innerThickness.toFixed(3);
+  document.getElementById('outerThickness').value = config.outerThickness;
+  document.getElementById('outerThicknessValue').textContent = config.outerThickness.toFixed(2);
+  document.getElementById('glowIntensity').value = config.glowIntensity;
+  document.getElementById('glowIntensityValue').textContent = config.glowIntensity.toFixed(1);
+  document.getElementById('ringEnabled').checked = config.ringEnabled;
+  document.getElementById('ringSpeed').value = config.ringSpeed;
+  document.getElementById('ringSpeedValue').textContent = config.ringSpeed.toFixed(1);
+  document.getElementById('ringScale').value = config.ringScale;
+  document.getElementById('ringScaleValue').textContent = config.ringScale.toFixed(1);
+  document.getElementById('ringWidth').value = config.ringWidth;
+  document.getElementById('ringWidthValue').textContent = config.ringWidth.toFixed(1);
+  document.getElementById('blurAmount').value = config.blurAmount;
+  document.getElementById('blurAmountValue').textContent = config.blurAmount.toFixed(2);
+  document.getElementById('noiseAmount').value = config.noiseAmount;
+  document.getElementById('noiseAmountValue').textContent = config.noiseAmount.toFixed(2);
+  document.getElementById('noiseScale').value = config.noiseScale;
+  document.getElementById('noiseScaleValue').textContent = config.noiseScale.toFixed(0);
+}
+
+// Color inputs
+document.getElementById('glowColor').addEventListener('input', e => {
+  config.glowColor = hexToRgb(e.target.value);
+});
+document.getElementById('ringColor').addEventListener('input', e => {
+  config.ringColor = hexToRgb(e.target.value);
+});
+document.getElementById('bgColor').addEventListener('input', e => {
+  config.bgColor = hexToRgb(e.target.value);
+});
+
+// Slider inputs
+['innerThickness', 'outerThickness', 'glowIntensity', 'ringSpeed', 'ringScale', 'ringWidth', 'blurAmount', 'noiseAmount', 'noiseScale'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => {
+    config[id] = parseFloat(e.target.value);
+    document.getElementById(id + 'Value').textContent =
+      id === 'noiseScale' ? config[id].toFixed(0) :
+      id === 'innerThickness' ? config[id].toFixed(3) :
+      config[id].toFixed(2);
+  });
+});
+
+// Checkbox
+document.getElementById('ringEnabled').addEventListener('change', e => {
+  config.ringEnabled = e.target.checked;
+});
+
+// Presets
+document.querySelectorAll('.preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const preset = presets[btn.dataset.preset];
+    Object.assign(config, preset);
+    updateUI();
+  });
+});
+
+// Toast
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// Export JSON
+document.getElementById('exportJson').addEventListener('click', () => {
+  const json = JSON.stringify(config, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'aura-shader-config.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Config exported!');
+});
+
+// Copy embed code
+document.getElementById('copyEmbed').addEventListener('click', () => {
+  const embedCode = `<script>
+window.AURA_CONFIG = ${JSON.stringify(config, null, 2)};
+<\/script>
+<canvas class="aura-canvas"></canvas>
+<script src="aura-shader.js"><\/script>`;
+  navigator.clipboard.writeText(embedCode);
+  showToast('Embed code copied!');
+});
+
+// Initialize UI
+updateUI();
+</script>
+</body>
+</html>

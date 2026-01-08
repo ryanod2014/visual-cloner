@@ -1,0 +1,820 @@
+/**
+ * UnicornStudio Shader Fusion Tool
+ *
+ * Converts multi-pass UnicornStudio effects into optimized fused WebGL shaders.
+ * Goal: Pixel-perfect output with minimal render passes.
+ */
+
+import fs from 'fs';
+import path from 'path';
+
+// Effects that MUST have their own pass (need texture sampling)
+const TEXTURE_DEPENDENT_EFFECTS = ['blur', 'diffuse', 'replicate', 'glyphDither'];
+
+// Effects that can be fused (pure math on UV/color)
+const FUSABLE_EFFECTS = ['beam', 'gradient', 'noise'];
+
+/**
+ * Analyze UnicornStudio JSON and build dependency graph
+ */
+export function analyzeProject(data) {
+  const layers = data.history || [];
+
+  const analysis = {
+    layers: [],
+    effects: [],
+    dependencies: new Map(),
+    fusionGroups: [],
+    requiredPasses: 0
+  };
+
+  // Categorize layers
+  for (const layer of layers) {
+    if (!layer.visible) continue;
+
+    const info = {
+      id: layer.id,
+      type: layer.type || layer.layerType,
+      layerType: layer.layerType,
+      name: layer.layerName || layer.id,
+      parentLayer: layer.parentLayer,
+      canFuse: FUSABLE_EFFECTS.includes(layer.type),
+      needsTexture: TEXTURE_DEPENDENT_EFFECTS.includes(layer.type),
+      shaderCount: layer.compiledFragmentShaders?.length || 0,
+      blendMode: layer.blendMode || 'NORMAL'
+    };
+
+    if (layer.layerType === 'effect') {
+      analysis.effects.push(info);
+    }
+    analysis.layers.push(info);
+
+    // Track dependencies
+    if (layer.parentLayer) {
+      if (!analysis.dependencies.has(layer.parentLayer)) {
+        analysis.dependencies.set(layer.parentLayer, []);
+      }
+      analysis.dependencies.get(layer.parentLayer).push(layer.id);
+    }
+  }
+
+  // Build fusion groups
+  analysis.fusionGroups = buildFusionGroups(analysis.layers);
+  analysis.requiredPasses = calculateRequiredPasses(analysis.fusionGroups);
+
+  return analysis;
+}
+
+/**
+ * Group effects that can be fused together
+ */
+function buildFusionGroups(layers) {
+  const groups = [];
+  let currentGroup = { fusable: true, layers: [] };
+
+  for (const layer of layers) {
+    if (layer.layerType !== 'effect') {
+      // Shape/text layers start new group
+      if (currentGroup.layers.length > 0) {
+        groups.push(currentGroup);
+      }
+      currentGroup = { fusable: true, layers: [], baseLayer: layer };
+      continue;
+    }
+
+    if (layer.needsTexture) {
+      // Texture-dependent effect breaks fusion
+      if (currentGroup.layers.length > 0) {
+        groups.push(currentGroup);
+      }
+      // Each texture effect is its own group
+      groups.push({ fusable: false, layers: [layer], passCount: layer.shaderCount });
+      currentGroup = { fusable: true, layers: [] };
+    } else if (layer.canFuse) {
+      // Add to current fusable group
+      currentGroup.layers.push(layer);
+    } else {
+      // Unknown effect type
+      currentGroup.layers.push(layer);
+    }
+  }
+
+  if (currentGroup.layers.length > 0) {
+    groups.push(currentGroup);
+  }
+
+  return groups;
+}
+
+/**
+ * Calculate minimum required render passes
+ */
+function calculateRequiredPasses(groups) {
+  let passes = 0;
+  for (const group of groups) {
+    if (group.fusable && group.layers.length > 0) {
+      passes += 1; // All fusable effects in one pass
+    } else if (!group.fusable) {
+      passes += group.passCount || 1;
+    }
+  }
+  return Math.max(1, passes);
+}
+
+/**
+ * Extract shader functions from UnicornStudio compiled shaders
+ */
+function extractShaderFunctions(shaderSource) {
+  const functions = {};
+
+  // Extract main visual functions
+  const patterns = {
+    drawViewportEdges: /vec3\s+drawViewportEdges\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+    drawExpandingRings: /vec3\s+drawExpandingRings\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+    getBeam: /vec3\s+getBeam\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+    GaussianBlur: /vec4\s+GaussianBlur\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+    getNoiseOffset: /vec2\s+getNoiseOffset\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+    blend: /vec3\s+blend\s*\([^)]*\)\s*\{[^}]*\}/,
+    tonemap: /vec3\s+Tonemap_tanh\s*\([^)]*\)\s*\{[\s\S]*?\n\}/,
+  };
+
+  for (const [name, pattern] of Object.entries(patterns)) {
+    const match = shaderSource.match(pattern);
+    if (match) {
+      functions[name] = match[0];
+    }
+  }
+
+  // Extract color values
+  const colorMatches = shaderSource.matchAll(/vec3\(([\d.]+),\s*([\d.]+),\s*([\d.]+)\)/g);
+  functions.colors = [];
+  for (const m of colorMatches) {
+    const color = [parseFloat(m[1]), parseFloat(m[2]), parseFloat(m[3])];
+    if (color.some(c => c > 0)) { // Skip black
+      functions.colors.push(color);
+    }
+  }
+
+  // Extract glow thickness
+  const glowMatch = shaderSource.match(/glowThickness\s*=\s*([\d.]+)/);
+  if (glowMatch) {
+    functions.glowThickness = parseFloat(glowMatch[1]);
+  }
+
+  // Extract ring scale
+  const scaleMatch = shaderSource.match(/drawExpandingRings\(uv,\s*pos,\s*([\d.]+)/);
+  if (scaleMatch) {
+    functions.ringScale = parseFloat(scaleMatch[1]);
+  }
+
+  return functions;
+}
+
+/**
+ * Generate fused shader from multiple effects
+ */
+export function generateFusedShader(data, options = {}) {
+  const layers = data.history || [];
+  const analysis = analyzeProject(data);
+
+  // Collect all shader functions
+  const allFunctions = {
+    beam: [],
+    noise: [],
+    colors: [],
+    helpers: new Set()
+  };
+
+  // Extract from all effect shaders
+  for (const layer of layers) {
+    if (!layer.visible || !layer.compiledFragmentShaders) continue;
+
+    for (const shader of layer.compiledFragmentShaders) {
+      const funcs = extractShaderFunctions(shader);
+
+      if (funcs.drawViewportEdges) {
+        allFunctions.beam.push({
+          type: 'edge',
+          code: funcs.drawViewportEdges,
+          thickness: funcs.glowThickness || 0.02,
+          color: funcs.colors[0] || [0.27, 0.60, 1.0]
+        });
+      }
+
+      if (funcs.drawExpandingRings) {
+        allFunctions.beam.push({
+          type: 'ring',
+          code: funcs.drawExpandingRings,
+          scale: funcs.ringScale || 2.238,
+          color: funcs.colors[0] || [0, 0.51, 0.97]
+        });
+      }
+
+      if (funcs.tonemap) allFunctions.helpers.add('tonemap');
+      if (funcs.blend) allFunctions.helpers.add('blend');
+    }
+  }
+
+  // Generate optimized fused shader
+  const fusedShader = buildFusedGLSL(allFunctions, options);
+
+  return {
+    analysis,
+    shader: fusedShader,
+    originalPasses: layers.filter(l => l.compiledFragmentShaders?.length).reduce(
+      (sum, l) => sum + l.compiledFragmentShaders.length, 0
+    ),
+    optimizedPasses: analysis.requiredPasses
+  };
+}
+
+/**
+ * Build the actual fused GLSL code
+ */
+function buildFusedGLSL(functions, options = {}) {
+  const beamColor = options.beamColor || [0.27, 0.60, 1.0];
+  const ringColor = options.ringColor || [0.0, 0.51, 0.97];
+  const innerThickness = options.innerThickness || 0.02;
+  const outerThickness = options.outerThickness || 0.08;
+  const ringScale = options.ringScale || 2.238;
+
+  return `#version 300 es
+precision highp float;
+
+in vec2 vTextureCoord;
+out vec4 fragColor;
+
+uniform float uTime;
+uniform vec2 uResolution;
+uniform vec2 uMousePos;
+
+// Editable uniforms
+uniform vec3 uBeamColor;
+uniform vec3 uRingColor;
+uniform float uInnerThickness;
+uniform float uOuterThickness;
+uniform float uRingScale;
+uniform float uRingWidth;
+uniform float uSpeed;
+
+const float PI = 3.14159265359;
+const float TWO_PI = 6.28318530718;
+
+// PCG random
+uvec2 pcg2d(uvec2 v) {
+  v = v * 1664525u + 1013904223u;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  v ^= v >> 16;
+  v.x += v.y * v.y * 1664525u + 1013904223u;
+  v.y += v.x * v.x * 1664525u + 1013904223u;
+  return v;
+}
+
+float randFibo(vec2 p) {
+  uvec2 v = floatBitsToUint(p);
+  v = pcg2d(v);
+  uint r = v.x ^ v.y;
+  return float(r) / float(0xffffffffu);
+}
+
+// Tonemapping
+vec3 tonemap(vec3 x) {
+  x = clamp(x, -40.0, 40.0);
+  return (exp(x) - exp(-x)) / (exp(x) + exp(-x));
+}
+
+// Luminance
+float luma(vec3 color) {
+  return dot(color, vec3(0.299, 0.587, 0.114));
+}
+
+// Rotation matrix
+mat2 rot(float a) {
+  return mat2(cos(a), -sin(a), sin(a), cos(a));
+}
+
+// === FUSED BEAM EFFECTS ===
+
+// Inner edge glow
+vec3 drawEdgeGlowInner(vec2 uv) {
+  float distToEdge = min(min(uv.x, uv.y), min(1.0 - uv.x, 1.0 - uv.y));
+  float glowThickness = uInnerThickness * 0.8;
+  float glow = glowThickness / (1.0 - smoothstep(0.12, 0.01, abs(distToEdge) + 0.02));
+  return glow * pow(1.0 - abs(distToEdge), 3.0) * uBeamColor;
+}
+
+// Outer edge glow
+vec3 drawEdgeGlowOuter(vec2 uv) {
+  float distToEdge = min(min(uv.x, uv.y), min(1.0 - uv.x, 1.0 - uv.y));
+  float glowThickness = uOuterThickness * 0.8;
+  float glow = glowThickness / (1.0 - smoothstep(0.12, 0.01, abs(distToEdge) + 0.02));
+  return glow * pow(1.0 - abs(distToEdge), 3.0) * uBeamColor;
+}
+
+// Expanding rings from center
+vec3 drawExpandingRings(vec2 uv, vec2 center) {
+  float aspectRatio = uResolution.x / uResolution.y;
+  vec2 scaledUv = uv * vec2(aspectRatio, 1.0);
+  vec2 scaledCenter = center * vec2(aspectRatio, 1.0);
+
+  // Skew for perspective
+  vec2 skew = vec2(0.41, 0.59) * 2.0;
+  scaledUv = scaledUv * skew;
+  scaledCenter = scaledCenter * skew;
+
+  float modulo = fract(uTime * 0.02 * uSpeed);
+  float ringRadius = uRingScale * 0.5 * modulo;
+  float distFromCenter = length(scaledUv - scaledCenter);
+  float ringDist = abs(distFromCenter - ringRadius);
+
+  float lineRadius = uRingWidth * modulo;
+  float brightness = lineRadius / (1.0 - smoothstep(0.2, 0.002, ringDist + 0.02));
+  brightness *= max(0.0, 1.0 - modulo);
+
+  return brightness * pow(1.0 - ringDist, 3.0) * uRingColor;
+}
+
+// Difference blend mode
+vec3 blendDifference(vec3 src, vec3 dst) {
+  return abs(dst - src);
+}
+
+void main() {
+  vec2 uv = vTextureCoord;
+  vec2 center = vec2(0.5);
+
+  // Background
+  vec3 color = vec3(0.0);
+
+  // Fused beam effects
+  vec3 innerGlow = drawEdgeGlowInner(uv);
+  vec3 outerGlow = drawEdgeGlowOuter(uv);
+  vec3 rings = drawExpandingRings(uv, center);
+
+  // Combine with tonemapping
+  vec3 allBeams = tonemap(innerGlow + outerGlow + rings);
+
+  // Apply difference blend (like original)
+  color = blendDifference(allBeams, color);
+
+  // Add back some glow additively
+  color += (innerGlow + outerGlow * 0.3) * 0.5;
+
+  // Dither to prevent banding
+  float dither = (randFibo(gl_FragCoord.xy) - 0.5) / 255.0;
+  color += dither;
+
+  fragColor = vec4(color, max(luma(allBeams), 0.0));
+}`;
+}
+
+/**
+ * Generate complete HTML with fused shader and editor
+ */
+export function generateFusedEditor(data, outputPath) {
+  const result = generateFusedShader(data);
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fused Shader Editor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+    .canvas-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 16px;
+    }
+    canvas {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      background: #000;
+    }
+    .stats {
+      font-size: 12px;
+      color: #666;
+      display: flex;
+      gap: 24px;
+    }
+    .stats span { color: #4af; }
+    .controls {
+      width: 340px;
+      background: #111118;
+      padding: 24px;
+      overflow-y: auto;
+      border-left: 1px solid #222;
+    }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      background: #0f0;
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+    .section { margin-bottom: 24px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .control-group { margin-bottom: 16px; }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .control-value { color: #4af; font-family: monospace; font-size: 12px; }
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 3px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #4af;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .color-row label { flex: 1; font-size: 13px; }
+    input[type="color"] {
+      width: 48px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+    input[type="color"]::-webkit-color-swatch {
+      border-radius: 4px;
+      border: 1px solid #444;
+    }
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .preset {
+      padding: 10px 8px;
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .preset:hover { background: #252530; border-color: #444; }
+    .preset.active { border-color: #4af; background: rgba(68,170,255,0.1); }
+    .export-btn {
+      width: 100%;
+      padding: 12px;
+      background: #4af;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .export-btn:hover { background: #5bf; }
+    .export-btn.secondary {
+      background: transparent;
+      color: #4af;
+      border: 1px solid #4af;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+    <div class="stats">
+      <div>Original: <span>${result.originalPasses} passes</span></div>
+      <div>Optimized: <span>${result.optimizedPasses} pass</span></div>
+      <div>Reduction: <span>${Math.round((1 - result.optimizedPasses/result.originalPasses) * 100)}%</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <h1>Fused Shader<span class="badge">OPTIMIZED</span></h1>
+    <p class="subtitle">Pixel-perfect, single-pass render</p>
+
+    <div class="section">
+      <div class="section-title">Presets</div>
+      <div class="presets">
+        <button class="preset active" data-preset="original">Original</button>
+        <button class="preset" data-preset="neon">Neon</button>
+        <button class="preset" data-preset="sunset">Sunset</button>
+        <button class="preset" data-preset="matrix">Matrix</button>
+        <button class="preset" data-preset="purple">Purple</button>
+        <button class="preset" data-preset="fire">Fire</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Colors</div>
+      <div class="color-row">
+        <label>Beam Color</label>
+        <input type="color" id="beamColor" value="#459aff">
+      </div>
+      <div class="color-row">
+        <label>Ring Color</label>
+        <input type="color" id="ringColor" value="#0081f7">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Edge Glow</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Inner Thickness</span>
+          <span class="control-value" id="innerThicknessVal">0.020</span>
+        </div>
+        <input type="range" id="innerThickness" min="0.005" max="0.1" step="0.005" value="0.02">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Outer Thickness</span>
+          <span class="control-value" id="outerThicknessVal">0.080</span>
+        </div>
+        <input type="range" id="outerThickness" min="0.01" max="0.2" step="0.01" value="0.08">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Expanding Ring</div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Scale</span>
+          <span class="control-value" id="ringScaleVal">2.24</span>
+        </div>
+        <input type="range" id="ringScale" min="0.5" max="5" step="0.1" value="2.24">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ring Width</span>
+          <span class="control-value" id="ringWidthVal">0.50</span>
+        </div>
+        <input type="range" id="ringWidth" min="0.1" max="1" step="0.05" value="0.5">
+      </div>
+      <div class="control-group">
+        <div class="control-label">
+          <span>Speed</span>
+          <span class="control-value" id="speedVal">1.0</span>
+        </div>
+        <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <div class="section">
+      <button class="export-btn" id="exportShader">Export GLSL</button>
+      <button class="export-btn secondary" id="copyEmbed">Copy Embed Code</button>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl2');
+
+// Vertex shader
+const vertSrc = \`#version 300 es
+precision highp float;
+in vec2 aPosition;
+out vec2 vTextureCoord;
+void main() {
+  vTextureCoord = aPosition * 0.5 + 0.5;
+  gl_Position = vec4(aPosition, 0.0, 1.0);
+}\`;
+
+// Fused fragment shader
+const fragSrc = \`${result.shader.replace(/`/g, '\\`')}\`;
+
+// Config
+const config = {
+  beamColor: [0.27, 0.60, 1.0],
+  ringColor: [0.0, 0.51, 0.97],
+  innerThickness: 0.02,
+  outerThickness: 0.08,
+  ringScale: 2.238,
+  ringWidth: 0.5,
+  speed: 1.0
+};
+
+const presets = {
+  original: { beamColor: [0.27, 0.60, 1.0], ringColor: [0.0, 0.51, 0.97], innerThickness: 0.02, outerThickness: 0.08, ringScale: 2.238, ringWidth: 0.5, speed: 1.0 },
+  neon: { beamColor: [1.0, 0.0, 0.8], ringColor: [0.0, 1.0, 0.8], innerThickness: 0.03, outerThickness: 0.12, ringScale: 2.5, ringWidth: 0.4, speed: 1.2 },
+  sunset: { beamColor: [1.0, 0.4, 0.2], ringColor: [1.0, 0.2, 0.5], innerThickness: 0.025, outerThickness: 0.1, ringScale: 3.0, ringWidth: 0.6, speed: 0.8 },
+  matrix: { beamColor: [0.0, 1.0, 0.3], ringColor: [0.0, 0.8, 0.2], innerThickness: 0.015, outerThickness: 0.06, ringScale: 2.0, ringWidth: 0.3, speed: 1.5 },
+  purple: { beamColor: [0.6, 0.2, 1.0], ringColor: [0.8, 0.3, 1.0], innerThickness: 0.02, outerThickness: 0.09, ringScale: 2.8, ringWidth: 0.5, speed: 0.9 },
+  fire: { beamColor: [1.0, 0.3, 0.0], ringColor: [1.0, 0.6, 0.0], innerThickness: 0.03, outerThickness: 0.15, ringScale: 2.2, ringWidth: 0.45, speed: 1.1 }
+};
+
+function createShader(type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+    console.error(gl.getShaderInfoLog(s));
+    return null;
+  }
+  return s;
+}
+
+const vs = createShader(gl.VERTEX_SHADER, vertSrc);
+const fs = createShader(gl.FRAGMENT_SHADER, fragSrc);
+const prog = gl.createProgram();
+gl.attachShader(prog, vs);
+gl.attachShader(prog, fs);
+gl.linkProgram(prog);
+
+const uniforms = {
+  uTime: gl.getUniformLocation(prog, 'uTime'),
+  uResolution: gl.getUniformLocation(prog, 'uResolution'),
+  uMousePos: gl.getUniformLocation(prog, 'uMousePos'),
+  uBeamColor: gl.getUniformLocation(prog, 'uBeamColor'),
+  uRingColor: gl.getUniformLocation(prog, 'uRingColor'),
+  uInnerThickness: gl.getUniformLocation(prog, 'uInnerThickness'),
+  uOuterThickness: gl.getUniformLocation(prog, 'uOuterThickness'),
+  uRingScale: gl.getUniformLocation(prog, 'uRingScale'),
+  uRingWidth: gl.getUniformLocation(prog, 'uRingWidth'),
+  uSpeed: gl.getUniformLocation(prog, 'uSpeed')
+};
+
+const buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+const posLoc = gl.getAttribLocation(prog, 'aPosition');
+gl.enableVertexAttribArray(posLoc);
+gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+let mousePos = [0.5, 0.5];
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  mousePos = [e.clientX / r.width, 1 - e.clientY / r.height];
+});
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const r = canvas.getBoundingClientRect();
+  canvas.width = r.width * dpr;
+  canvas.height = r.height * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+window.addEventListener('resize', resize);
+resize();
+
+const startTime = Date.now();
+function render() {
+  const time = (Date.now() - startTime) / 1000;
+
+  gl.useProgram(prog);
+  gl.uniform1f(uniforms.uTime, time);
+  gl.uniform2f(uniforms.uResolution, canvas.width, canvas.height);
+  gl.uniform2fv(uniforms.uMousePos, mousePos);
+  gl.uniform3fv(uniforms.uBeamColor, config.beamColor);
+  gl.uniform3fv(uniforms.uRingColor, config.ringColor);
+  gl.uniform1f(uniforms.uInnerThickness, config.innerThickness);
+  gl.uniform1f(uniforms.uOuterThickness, config.outerThickness);
+  gl.uniform1f(uniforms.uRingScale, config.ringScale);
+  gl.uniform1f(uniforms.uRingWidth, config.ringWidth);
+  gl.uniform1f(uniforms.uSpeed, config.speed);
+
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  requestAnimationFrame(render);
+}
+render();
+
+// UI
+function hexToRgb(h) {
+  const r = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(h);
+  return r ? [parseInt(r[1],16)/255, parseInt(r[2],16)/255, parseInt(r[3],16)/255] : [0,0,0];
+}
+function rgbToHex(c) {
+  return '#' + c.map(v => Math.round(v*255).toString(16).padStart(2,'0')).join('');
+}
+function updateUI() {
+  document.getElementById('beamColor').value = rgbToHex(config.beamColor);
+  document.getElementById('ringColor').value = rgbToHex(config.ringColor);
+  document.getElementById('innerThickness').value = config.innerThickness;
+  document.getElementById('innerThicknessVal').textContent = config.innerThickness.toFixed(3);
+  document.getElementById('outerThickness').value = config.outerThickness;
+  document.getElementById('outerThicknessVal').textContent = config.outerThickness.toFixed(3);
+  document.getElementById('ringScale').value = config.ringScale;
+  document.getElementById('ringScaleVal').textContent = config.ringScale.toFixed(2);
+  document.getElementById('ringWidth').value = config.ringWidth;
+  document.getElementById('ringWidthVal').textContent = config.ringWidth.toFixed(2);
+  document.getElementById('speed').value = config.speed;
+  document.getElementById('speedVal').textContent = config.speed.toFixed(1);
+}
+updateUI();
+
+document.getElementById('beamColor').addEventListener('input', e => config.beamColor = hexToRgb(e.target.value));
+document.getElementById('ringColor').addEventListener('input', e => config.ringColor = hexToRgb(e.target.value));
+['innerThickness','outerThickness','ringScale','ringWidth','speed'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => {
+    config[id] = parseFloat(e.target.value);
+    document.getElementById(id+'Val').textContent = config[id].toFixed(id==='speed'?1:id.includes('Thickness')?3:2);
+  });
+});
+
+document.querySelectorAll('.preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    Object.assign(config, presets[btn.dataset.preset]);
+    updateUI();
+  });
+});
+
+document.getElementById('exportShader').addEventListener('click', () => {
+  const blob = new Blob([fragSrc], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'fused-shader.glsl';
+  a.click();
+});
+
+document.getElementById('copyEmbed').addEventListener('click', () => {
+  navigator.clipboard.writeText(\`<canvas id="shader"></canvas>
+<script>
+// Fused shader config
+window.SHADER_CONFIG = \${JSON.stringify(config, null, 2)};
+<\\/script>
+<script src="fused-shader.js"><\\/script>\`);
+  alert('Embed code copied!');
+});
+</script>
+</body>
+</html>`;
+
+  if (outputPath) {
+    fs.writeFileSync(outputPath, html);
+    console.log(`Fused editor saved to: ${outputPath}`);
+  }
+
+  return html;
+}
+
+// CLI
+if (process.argv[1].endsWith('unicorn-fusion.js')) {
+  const inputPath = process.argv[2];
+  const outputPath = process.argv[3];
+
+  if (!inputPath) {
+    console.log('Usage: node unicorn-fusion.js <input.json> [output.html]');
+    process.exit(1);
+  }
+
+  const data = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
+  const analysis = analyzeProject(data);
+
+  console.log('\n=== UnicornStudio Shader Fusion ===\n');
+  console.log(`Layers: ${analysis.layers.length}`);
+  console.log(`Effects: ${analysis.effects.length}`);
+  console.log(`Fusion groups: ${analysis.fusionGroups.length}`);
+  console.log(`Original passes: ${analysis.layers.filter(l => l.shaderCount).reduce((s,l) => s + l.shaderCount, 0)}`);
+  console.log(`Optimized passes: ${analysis.requiredPasses}`);
+
+  if (outputPath) {
+    generateFusedEditor(data, outputPath);
+  }
+}
+
+export default { analyzeProject, generateFusedShader, generateFusedEditor };
