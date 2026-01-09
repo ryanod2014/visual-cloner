@@ -330,8 +330,9 @@ function generateStateInjectionScript(state) {
 
   try {
     console.log('\n[PHASE 1] Loading page...');
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    await page.waitForTimeout(2000);
+    await page.goto(url, { waitUntil: 'load', timeout: 120000 });
+    console.log('  Page loaded, waiting for app initialization...');
+    await page.waitForTimeout(10000); // Wait for Photopea to initialize
     console.log('  Initial: ' + allResources.size + ' resources');
 
     // Trigger app initialization if needed
@@ -367,7 +368,13 @@ function generateStateInjectionScript(state) {
   }
 
   console.log('\n[SAVING...]');
-  let finalHtml = await page.content();
+  let finalHtml;
+  try {
+    finalHtml = await page.content();
+  } catch (e) {
+    console.log('  Warning: Could not get final page content, using basic HTML');
+    finalHtml = '<html><head></head><body>Page content could not be captured</body></html>';
+  }
 
   // Generate and inject state restoration script
   const stateScript = appState ? generateStateInjectionScript(appState) : '';
