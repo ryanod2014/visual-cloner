@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drag Drop Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+        }
+        #instructions {
+            background: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        #iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ccc;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #log {
+            margin-top: 20px;
+            padding: 15px;
+            background: #000;
+            color: #0f0;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="instructions">
+        <h2>Drag & Drop Test for Photopea Offline</h2>
+        <p>1. Wait for Photopea to load (~10 seconds)</p>
+        <p>2. Try to drag and drop an image file onto the canvas below</p>
+        <p>3. Watch the log to see what events fire</p>
+    </div>
+
+    <div id="iframe-container">
+        <iframe src="http://localhost:3344/?test=1" id="photopea-frame"></iframe>
+    </div>
+
+    <div id="log"></div>
+
+    <script>
+        const log = document.getElementById('log');
+
+        function addLog(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            log.innerHTML += `[${timestamp}] ${message}<br>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Monitor parent page drag events
+        const events = ['drag', 'dragstart', 'dragenter', 'dragover', 'dragleave', 'drop', 'dragend'];
+
+        events.forEach(eventName => {
+            document.addEventListener(eventName, (e) => {
+                addLog(`PARENT ${eventName} - target: ${e.target.tagName}`);
+            }, true);
+        });
+
+        // Try to monitor iframe events (may be blocked by same-origin policy)
+        window.addEventListener('message', (e) => {
+            addLog(`MESSAGE from iframe: ${JSON.stringify(e.data)}`);
+        });
+
+        addLog('Test page loaded. Waiting for Photopea to initialize...');
+        addLog('Try dragging an image file from your desktop onto the Photopea canvas.');
+
+        // Wait for iframe to load
+        document.getElementById('photopea-frame').addEventListener('load', () => {
+            addLog('Photopea iframe loaded');
+
+            setTimeout(() => {
+                addLog('Photopea should be initialized now. Try drag & drop!');
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

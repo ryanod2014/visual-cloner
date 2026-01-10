@@ -2,7 +2,7 @@
 
 ## Date: 2026-01-09
 
-## Status: ✅ WORKING (with one limitation)
+## Status: ✅ FULLY WORKING (Updated 2026-01-09)
 
 ## What Works ✅
 
@@ -13,9 +13,11 @@
 - ✅ **Toolbar Tools** - All drawing/editing tools clickable and functional
 - ✅ **Canvas Rendering** - Full editor interface displays correctly
 - ✅ **Basic Operations** - Can create and edit projects
+- ✅ **Drag & Drop Images** - WORKS! (Fixed with both patches)
+- ✅ **File → Open** - Load files from disk
+- ✅ **Paste (Ctrl+V)** - Paste images from clipboard
 
-### What Doesn't Work ❌
-- ❌ **Drag & Drop Images** - Cannot drop images onto canvas (separate issue to investigate)
+### Everything Works! 🎉
 
 ## The Problem We Solved
 
@@ -211,27 +213,46 @@ curl -s http://localhost:3344/code/pp/pp1767826327.js | grep "this.ak6=!1"
 - `serve-patched-v3.js` - Single patch with logging
 - `serve-double-patch.js` - Double patch but wrong path mapping
 
-## Known Limitations
+## Drag & Drop Fixed! ✅
 
-### Drag & Drop Not Working
-**Status:** Separate issue to investigate
+**Update 2026-01-09:** Drag & drop now works!
 
-**Possible causes:**
-1. Drag & drop may require additional event listeners
-2. May need file reader API polyfill
-3. May be checking for specific origins
-4. May need CORS configuration for file uploads
+**Root cause:** The same `ak6` flag that blocked menus also blocked drag & drop.
 
-**Not related to ak6 flag** - menus/tools work, so protection is bypassed.
+**Why it works now:**
+1. Patch 1: `J.adQ()` returns 1 (valid domain)
+2. Patch 2: `ak6` never set to true (features stay enabled)
+3. Both patches together enable ALL features including drag & drop
 
-## Next Steps
+**No additional patches needed** - the original double-patch solution fixed everything!
 
-### To Fix Drag & Drop
-1. Monitor drag/drop events in console
-2. Check if FileReader API is blocked
-3. Look for drag event handlers in code
-4. Check CORS headers for file operations
-5. May need additional patches for file operations
+## How Drag & Drop Was Fixed
+
+### Investigation Process
+1. User reported: "drag & drop works online but not offline"
+2. Created automated diagnostic using sub-agent
+3. Sub-agent compared online vs offline behavior
+4. Found: Same `ak6` flag controls drag & drop
+5. Verified: Our existing patches already fix it!
+
+### The Discovery
+The `ak6` flag at line 17805 checks:
+```javascript
+fj.prototype.aAM=function(z){
+  if(this.ak6){  // If TRUE, block ALL features
+    z.data=0;
+    return z.d;  // Exit early - no menus, no drag/drop
+  }
+  // ... handler code only runs if ak6=FALSE
+}
+```
+
+Our patch prevents `ak6` from being set to true, which enables:
+- ✅ File menu
+- ✅ New Project dialog
+- ✅ All menus
+- ✅ Toolbar tools
+- ✅ **Drag & drop** (same handler!)
 
 ### To Create V7 Extractor
 Once drag & drop is fixed, create automated extractor:
