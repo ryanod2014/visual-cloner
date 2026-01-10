@@ -8,3 +8,7 @@ node_modules/
 # Keep output HTML but ignore screenshots
 output/*/screenshots/
 output/
+
+# V7 generated outputs
+test-files/
+v7-reports/
