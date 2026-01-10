@@ -121,6 +121,22 @@ http.createServer((req, res) => {
     return res.end(r9Content);
   }
 
+  // Serve ext_formats directory (HEIC/JXL decoders)
+  if (reqPath.startsWith('/code/ext_formats/')) {
+    const extFile = path.join(OUTPUT_DIR, reqPath);
+    if (existsSync(extFile)) {
+      const contentType = reqPath.endsWith('.wasm') ? 'application/wasm' :
+                          reqPath.endsWith('.js') ? 'application/javascript' :
+                          reqPath.endsWith('.html') ? 'text/html' : 'application/octet-stream';
+      console.log(`  [EXT_FORMAT] Serving ${reqPath}`);
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Access-Control-Allow-Origin': '*'
+      });
+      return fs.createReadStream(extFile).pipe(res);
+    }
+  }
+
   // Serve other cached resources
   const cached = lookup[req.url] || lookup[reqPath];
   if (cached && existsSync(path.join(CACHE_DIR, cached.localFile))) {
