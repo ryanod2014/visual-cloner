@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0] - 2025-01-11
+
+### Added
+- **Strict Pure Function Extractor** (`extract-pure.js`) - Extracts TRULY isolated functions
+  - Detects parameter mutations (`obj.prop = x`, `array[i] = y`)
+  - Detects array mutation methods (`.push()`, `.splice()`, `.sort()`, etc.)
+  - Detects unsafe globals (`document`, `window`, `fetch`, `XMLHttpRequest`, etc.)
+  - Distinguishes truly extractable functions from those with hidden dependencies
+  - Outputs both `.js` file with functions and `.json` summary
+
+### Results
+- Previous "pure" count: 1,384 (overly optimistic)
+- Strict pure count: 1,003 (mutation-aware)
+- Non-trivial (5+ lines): 565
+- Unique function names: 369
+
 ## [1.1.0] - 2025-01-11
 
 ### Added
