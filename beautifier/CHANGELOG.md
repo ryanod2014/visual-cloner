@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.3.0] - 2026-01-11
+
+### Added
+- **Runtime I/O Capture Tool** (`tools/capture-io.js`) - Captures input/output pairs from live Photopea
+  - Uses Playwright to load Photopea and execute functions in native runtime
+  - Generates JSON files with function signatures, param types, and I/O pairs
+  - Format suitable for training AI to replicate function behavior
+  - Discovered 30+ exposed APIs: FFT, UPNG, pako, Typr, UZIP, UDOC, UTIF, etc.
+
+### Captured Functions
+- `FFT.fft2d` - 2D Fast Fourier Transform (4 test cases)
+- `UPNG.encode` - PNG encoding from RGBA (4 test cases)
+- `pako.deflate` - zlib compression (5 test cases)
+
+### Output Format
+```json
+{
+  "function": "FFT.fft2d",
+  "params": [{ "name": "real", "type": "Float64Array" }],
+  "results": [{ "input": [...], "output": [...], "error": null }]
+}
+```
+
 ## [1.2.0] - 2025-01-11
 
 ### Added

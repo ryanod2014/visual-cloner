@@ -192,6 +192,56 @@ node lib/inline-constants.js input.js output.js --verbose
 node lib/infer-classes.js input.js output.js
 ```
 
+## Runtime I/O Capture
+
+For functions that can't be extracted (due to dependencies), capture their behavior via runtime injection:
+
+```bash
+# Capture I/O pairs from live Photopea
+node ../tools/capture-io.js
+
+# Capture specific function
+node ../tools/capture-io.js FFT.fft2d
+
+# List available functions
+node ../tools/capture-io.js --list
+```
+
+### Output Format
+
+```json
+{
+  "function": "FFT.fft2d",
+  "namespace": "FFT",
+  "params": [
+    { "name": "real", "type": "Float64Array" },
+    { "name": "imag", "type": "Float64Array" }
+  ],
+  "results": [
+    {
+      "input": { "real": [1,0,0,...], "imag": [0,0,0,...] },
+      "output": { "real": [1,1,1,...], "imag": [0,0,0,...] },
+      "error": null
+    }
+  ]
+}
+```
+
+### Discovered APIs in Photopea
+
+| API | Purpose |
+|-----|---------|
+| `FFT` | 2D Fast Fourier Transform |
+| `UPNG` | PNG encoding/decoding |
+| `pako` | zlib compression |
+| `Typr` | Font/typography parsing |
+| `UZIP` | ZIP file handling |
+| `UDOC` | Document handling |
+| `UTIF` | TIFF processing |
+| `LZMA` | LZMA compression |
+
+Captured I/O pairs are saved to `../captured-io/`.
+
 ## License
 
 MIT
