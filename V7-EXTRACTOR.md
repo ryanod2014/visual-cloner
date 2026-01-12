@@ -832,3 +832,115 @@ Downloaded the 6 missing files, re-tested → 100/100 ✅
 - Step-by-step implementation guide
 
 Engineers get a ready-to-implement blueprint without reading any code. 🎉
+
+---
+
+## V8 Enhancer - JavaScript Beautification (Post-Processing)
+
+**After V7 extraction is complete**, you can optionally run **V8 Enhancer** to make the extracted JavaScript readable.
+
+### What V8 Does
+
+V8 is a **separate tool** that only handles code beautification:
+
+```
+V8 Enhancement Pipeline:
+┌──────────────────────────────────────────────┐
+│ Phase 0: Analysis    - Detect obfuscation   │
+│ Phase 1: Recovery    - Extract source maps  │
+│ Phase 2: Deobfuscate - Unwrap bundles       │
+│ Phase 3: Format      - Prettier (beautify)  │ ⭐
+│ Phase 4: Rename      - Variable naming      │ ⭐
+│ Phase 5: Document    - Add JSDoc            │
+│ Phase 6: Validate    - Verify syntax        │
+└──────────────────────────────────────────────┘
+```
+
+### Example
+
+**Input (from V7):**
+```javascript
+function a(b,c){return b+c}const d=a(1,2);
+```
+
+**Output (from V8):**
+```javascript
+/**
+ * Adds two numbers together
+ * @param {number} firstNumber
+ * @param {number} secondNumber
+ * @returns {number} Sum
+ */
+function add(firstNumber, secondNumber) {
+  return firstNumber + secondNumber;
+}
+const sum = add(1, 2);
+```
+
+### Running V8
+
+```bash
+# After V7 extraction is complete
+python tools/v8-enhance.py ./output/resources/
+
+# Output:
+# ✅ Formatted 1 file (Prettier)
+# ✅ Renamed 19 variables, 9 functions
+# ✅ Documented 50 functions
+# ✅ Validation: PASSED
+```
+
+### When to Use V8
+
+**Use V8 when:**
+- ✅ Need to read/modify extracted JavaScript
+- ✅ Debugging webapp behavior
+- ✅ Documenting codebase
+- ✅ Understanding complex logic
+
+**Skip V8 when:**
+- ❌ Just deploying the clone as-is
+- ❌ Don't need to modify JavaScript
+- ❌ Time-constrained
+
+### Key Point
+
+**V7 and V8 are separate:**
+- **V7 = Extraction** (resources, WebGL, backend mapping)
+- **V8 = Beautification** (formatting, variable naming)
+- V7 is **required**, V8 is **optional**
+
+See `SYSTEM-OVERVIEW.md` for complete V7/V8 comparison.
+
+---
+
+## Complete Workflow: V7 + V8
+
+```
+Step 1: V7 Extraction (REQUIRED)
+─────────────────────────────────────────
+node tools/v7-extractor.js <output> <online> <offline>
+
+Result:
+  ✅ All resources extracted
+  ✅ WebGL shaders captured
+  ✅ Backend documented
+  ✅ BACKEND-BLUEPRINT.md generated
+
+Step 2: V8 Beautification (OPTIONAL)
+─────────────────────────────────────────
+python tools/v8-enhance.py ./output/resources/
+
+Result:
+  ✅ JavaScript beautified
+  ✅ Variables renamed
+  ✅ Documentation added
+
+Step 3: Implementation
+─────────────────────────────────────────
+Follow BACKEND-BLUEPRINT.md (if backend needed)
+
+Step 4: Deploy
+─────────────────────────────────────────
+Serve files + backend → Fully functional clone ✅
+```

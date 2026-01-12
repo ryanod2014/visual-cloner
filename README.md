@@ -2,6 +2,34 @@
 
 Pixel-perfect website cloning with WebGL shader extraction and reusable template generation.
 
+## System Architecture
+
+This system has **four main pipelines**:
+
+1. **V7 Extractor** - Complete webapp extraction (resources, WebGL, backend mapping)
+2. **Behavioral Pipeline** - UI logic extraction (state, actions, interactions)
+3. **V8 Enhancer** - JavaScript beautification (formatting, variable naming)
+4. **Complete Pipeline** - 100% operation extraction (for specialized apps) ⭐ **NEW**
+
+📚 **Documentation:**
+- **[THREE-PIPELINES.md](./THREE-PIPELINES.md)** - **START HERE** - Overview of all pipelines
+- **[INDEX.md](./INDEX.md)** - Documentation index
+- **[V7-V8-QUICK-REFERENCE.md](./V7-V8-QUICK-REFERENCE.md)** - Quick comparison (5 min read)
+- **[SYSTEM-OVERVIEW.md](./SYSTEM-OVERVIEW.md)** - Complete architecture guide
+- **[capture-system/COMPLETE-PIPELINE.md](./capture-system/COMPLETE-PIPELINE.md)** - 100% completeness guide ⭐
+
+**Quick Summary:**
+- **V7 = Extraction** (HTML, CSS, JS, WASM, WebGL shaders, backend APIs) - **REQUIRED**
+- **Behavioral = Logic** (state variables, action mappings, UI interactions) - **OPTIONAL**
+- **V8 = Beautification** (prettier formatting, variable naming) - **OPTIONAL**
+- **Complete = 100% Operations** (all operations + parameters + I/O examples) - **SPECIALIZED**
+
+**Key Points:**
+- V7 extracts resources (always first)
+- Behavioral Pipeline extracts UI logic (~60-85% completeness)
+- Complete Pipeline achieves 100% completeness for specialized apps (image editors, canvas apps)
+- V8 beautifies code (optional post-processing)
+
 ## Key Features
 
 ### 🎨 V3 Clone with Shader Extraction

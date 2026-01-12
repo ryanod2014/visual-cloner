@@ -1,0 +1,158 @@
+{
+  "_README": "This file is for MANUAL CURATION of discovered operations",
+  "_INSTRUCTIONS": "After running static analysis, copy operations here and add semantic information",
+
+  "operations": {
+    "gaussianBlur": {
+      "name": "gaussianBlur",
+      "category": "blur",
+
+      "_MANUAL_FIELDS": {
+        "displayName": "Gaussian Blur",
+        "menuPath": "Filter > Blur > Gaussian Blur",
+        "description": "Smooths image using Gaussian distribution kernel. Most common blur type.",
+        "commonUse": "Remove noise, soften edges, create depth of field effect",
+        "performance": "Medium - slows down significantly at radius > 50",
+        "destructive": true,
+        "undoable": true
+      },
+
+      "parameters": {
+        "param0": {
+          "_AUTO_DISCOVERED": {
+            "type": "number",
+            "min": 0.1,
+            "max": 250,
+            "workingValues": [1, 5, 10, 25, 50, 100, 250]
+          },
+
+          "_MANUAL_ENHANCEMENT": {
+            "name": "radius",
+            "displayName": "Blur Radius",
+            "unit": "pixels",
+            "description": "The radius of the Gaussian kernel. Larger values = more blur.",
+            "commonValues": [5, 10, 25],
+            "recommended": {
+              "softBlur": 5,
+              "mediumBlur": 10,
+              "heavyBlur": 25,
+              "extreme": 100
+            },
+            "notes": "Values > 50 can be very slow. 0 has no effect.",
+            "relatedOperations": ["boxBlur", "motionBlur", "smartBlur"]
+          }
+        }
+      },
+
+      "_EXAMPLES": {
+        "basicUsage": "gaussianBlur(10) - Medium smoothing",
+        "portraitBlur": "gaussianBlur(25) - Smooth skin texture",
+        "backgroundBlur": "gaussianBlur(50) - Depth of field effect"
+      }
+    },
+
+    "brightness": {
+      "name": "brightness",
+      "category": "color",
+
+      "_MANUAL_FIELDS": {
+        "displayName": "Brightness/Contrast",
+        "menuPath": "Image > Adjustments > Brightness/Contrast",
+        "description": "Adjusts overall brightness and contrast of the image",
+        "commonUse": "Correct underexposed photos, increase contrast for flat images",
+        "performance": "Fast - operates on each pixel independently",
+        "destructive": true,
+        "undoable": true
+      },
+
+      "parameters": {
+        "param0": {
+          "_AUTO_DISCOVERED": {
+            "type": "number",
+            "min": -150,
+            "max": 150,
+            "workingValues": [-100, -50, 0, 50, 100, 150]
+          },
+
+          "_MANUAL_ENHANCEMENT": {
+            "name": "brightness",
+            "displayName": "Brightness",
+            "unit": "percent",
+            "description": "Brightness adjustment. Positive = brighter, negative = darker.",
+            "commonValues": [-50, -25, 0, 25, 50],
+            "recommended": {
+              "slightBrighten": 25,
+              "moderateBrighten": 50,
+              "heavyBrighten": 100
+            },
+            "notes": "Values near ±150 cause clipping (loss of detail)"
+          }
+        },
+        "param1": {
+          "_AUTO_DISCOVERED": {
+            "type": "number",
+            "min": -150,
+            "max": 150,
+            "workingValues": [-100, -50, 0, 50, 100, 150]
+          },
+
+          "_MANUAL_ENHANCEMENT": {
+            "name": "contrast",
+            "displayName": "Contrast",
+            "unit": "percent",
+            "description": "Contrast adjustment. Positive = more contrast, negative = less contrast.",
+            "commonValues": [-50, 0, 50, 100],
+            "recommended": {
+              "subtle": 25,
+              "moderate": 50,
+              "dramatic": 100
+            },
+            "notes": "High contrast can make images look harsh"
+          }
+        }
+      },
+
+      "_EXAMPLES": {
+        "brightPhoto": "brightness(50, 0) - Brighten underexposed photo",
+        "increaseContrast": "brightness(0, 50) - Add punch to flat image",
+        "combined": "brightness(25, 25) - Subtle improvement"
+      }
+    },
+
+    "invert": {
+      "name": "invert",
+      "category": "color",
+
+      "_MANUAL_FIELDS": {
+        "displayName": "Invert",
+        "menuPath": "Image > Adjustments > Invert",
+        "description": "Inverts all colors to their opposites (negative effect)",
+        "commonUse": "Create negative effect, artistic purposes, mask inversion",
+        "performance": "Very fast",
+        "destructive": true,
+        "undoable": true
+      },
+
+      "parameters": {},
+
+      "_EXAMPLES": {
+        "basicUsage": "invert() - No parameters, simple inversion"
+      }
+    }
+  },
+
+  "_CURATION_GUIDELINES": {
+    "displayName": "Human-readable name shown in UI",
+    "menuPath": "Where to find it in the app (exact menu path)",
+    "description": "What it does technically (1-2 sentences)",
+    "commonUse": "When/why users would use this (real-world scenarios)",
+    "performance": "Fast/Medium/Slow and any performance notes",
+    "destructive": "Does it permanently modify pixels? (vs adjustment layer)",
+    "undoable": "Can it be undone with Ctrl+Z?",
+    "commonValues": "Values users typically use (from experience/forums)",
+    "recommended": "Presets for common use cases",
+    "notes": "Important warnings, edge cases, gotchas",
+    "relatedOperations": "Similar operations users might want to try",
+    "examples": "Concrete usage examples with explanations"
+  }
+}

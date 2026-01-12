@@ -1,0 +1,18 @@
+{
+  "name": "Photopea",
+  "setupWait": 20000,
+  "operationWait": 500,
+  "captureMethod": "screenshot",
+  "viewport": { "width": 1280, "height": 800 },
+  "setup": {
+    "click": { "x": 640, "y": 310 },
+    "waitAfterClick": 8000
+  },
+  "operations": [
+    { "name": "Invert", "shortcut": ["Meta", "i"] },
+    { "name": "Desaturate", "shortcut": ["Meta", "Shift", "u"] },
+    { "name": "AutoTone", "shortcut": ["Meta", "Shift", "l"] },
+    { "name": "Levels", "shortcut": ["Meta", "l"], "wait": 1000 },
+    { "name": "Curves", "shortcut": ["Meta", "m"], "wait": 1000 }
+  ]
+}
