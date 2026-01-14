@@ -1,6 +1,10 @@
 /**
  * Phase 02: Capture
  * Network response capture during page load
+ *
+ * Sets up CDP capture before navigation, navigates to URL,
+ * waits for networkidle, saves initial HTML, and stores
+ * captured resources in context.resources.
  */
 
 import { Phase } from '../core/pipeline.js';
@@ -20,6 +24,7 @@ export class CapturePhase extends Phase {
     let totalSize = 0;
 
     if (this.config.dryRun) {
+      this.logger.info('Would set up CDP capture before navigation');
       this.logger.info('Would navigate to page and capture network responses');
       this.logger.info('Would set up response listeners for all network requests');
       this.logger.info('Would wait for networkidle state');
@@ -41,8 +46,20 @@ export class CapturePhase extends Phase {
       };
     }
 
+    // Set up CDP session for enhanced capture if available
+    let cdpSession = null;
+    try {
+      const browserContext = context.browserContext;
+      cdpSession = await browserContext.newCDPSession(page);
+      await cdpSession.send('Network.enable');
+      this.logger.debug('CDP session established for enhanced capture');
+      this.trackAction('CDP capture enabled');
+    } catch (error) {
+      this.logger.debug('CDP session not available, using standard capture');
+    }
+
     // Set up response listener
-    page.on('response', async (response) => {
+    const responseHandler = async (response) => {
       const resUrl = response.url();
       const status = response.status();
 
@@ -65,6 +82,7 @@ export class CapturePhase extends Phase {
           body,
           size: body.length,
           capturedAt: new Date().toISOString(),
+          source: 'capture',
         });
 
         capturedCount++;
@@ -83,15 +101,18 @@ export class CapturePhase extends Phase {
         this.trackError();
         this.logger.debug(`Failed to capture: ${resUrl.slice(0, 60)}...`, { error: error.message });
       }
-    });
+    };
+
+    page.on('response', responseHandler);
 
     // Track failed requests
-    page.on('requestfailed', (request) => {
+    const failedHandler = (request) => {
       const failure = request.failure();
       this.logger.debug(`Request failed: ${request.url().slice(0, 60)}...`, {
         error: failure?.errorText,
       });
-    });
+    };
+    page.on('requestfailed', failedHandler);
 
     // Navigate to page
     this.logger.info(`Loading ${url}...`);
@@ -146,6 +167,19 @@ export class CapturePhase extends Phase {
     // Capture final HTML (use landing page for offline serving)
     this.logger.info('Using landing page HTML for offline serving');
     context.html = landingHtml;
+
+    // Clean up CDP session
+    if (cdpSession) {
+      try {
+        await cdpSession.detach();
+      } catch (error) {
+        // Ignore cleanup errors
+      }
+    }
+
+    // Remove event listeners
+    page.off('response', responseHandler);
+    page.off('requestfailed', failedHandler);
 
     // Log summary
     this.logger.info(`Capture complete: ${capturedCount} resources, ${failedCount} failed`);

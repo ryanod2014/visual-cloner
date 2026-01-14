@@ -1,7 +1,7 @@
 {
-  "name": "visual-cloner",
+  "name": "webapp-extractor",
   "version": "1.0.0",
-  "description": "Extract and serve any webapp locally",
+  "description": "Generic web app extraction and offline serving",
   "type": "module",
   "main": "extract.js",
   "bin": {
@@ -9,10 +9,26 @@
   },
   "scripts": {
     "extract": "node extract.js",
-    "test": "node extract.js https://www.photopea.com",
-    "debug": "node debug-browser.js"
+    "test": "node --test tests/",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "playwright": "^1.40.0"
-  }
+    "playwright": "^1.40.0",
+    "express": "^4.18.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "web-scraper",
+    "extraction",
+    "offline",
+    "playwright",
+    "spa"
+  ],
+  "author": "",
+  "license": "MIT"
 }

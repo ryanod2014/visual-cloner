@@ -1,362 +1,367 @@
 #!/usr/bin/env node
 /**
- * Visual Cloner - Single Entry Point
+ * Generic Web App Extractor
  *
  * Usage:
- *   node extract.js <url>                     # Extract website
- *   node extract.js <url> --output ./my-dir   # Custom output
- *   node extract.js <url> --debug             # Debug logging
- *   node extract.js <url> --verbose           # Detailed phase metrics
- *   node extract.js <url> --headless false    # Show browser
- *
- * Commands:
- *   node extract.js serve <dir>               # Serve extraction
- *   node extract.js --help                    # Show help
+ *   node extract.js <url>                    # Basic extraction
+ *   node extract.js <url> --phase=03         # Start from specific phase
+ *   node extract.js <url> --no-triggers      # Skip trigger phase
+ *   node extract.js <url> --debug            # Verbose debug output
+ *   node extract.js serve <output-dir>       # Serve extracted app
+ *   node extract.js validate <output-dir>    # Validate extraction
  */
 
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { Pipeline } from './core/index.js';
+import { parseArgs } from 'util';
+import { existsSync } from 'fs';
+import { resolve } from 'path';
+import express from 'express';
 
-import { Pipeline } from './core/pipeline.js';
-import { ExtractionState } from './core/state.js';
-import { Logger } from './core/logger.js';
+// ANSI color codes for terminal output
+const colors = {
+  reset: '\x1b[0m',
+  bold: '\x1b[1m',
+  dim: '\x1b[2m',
+  red: '\x1b[31m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  blue: '\x1b[34m',
+  magenta: '\x1b[35m',
+  cyan: '\x1b[36m',
+  white: '\x1b[37m',
+};
 
-import { InitPhase } from './phases/01-init.js';
-import { CapturePhase } from './phases/02-capture.js';
-import { TriggerPhase } from './phases/03-trigger.js';
-import { DiscoverPhase } from './phases/04-discover.js';
-import { AssemblePhase } from './phases/06-assemble.js';
+const c = (color, text) => `${colors[color]}${text}${colors.reset}`;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Help message
+const HELP = `
+${c('cyan', c('bold', 'Generic Web App Extractor'))}
+
+${c('yellow', 'Usage:')}
+  node extract.js <url>                    Extract a web app
+  node extract.js serve <output-dir>       Serve extracted app locally
+  node extract.js validate <output-dir>    Validate extraction completeness
+
+${c('yellow', 'Options:')}
+  --phase=<num>      Start from specific phase (e.g., --phase=03)
+  --no-triggers      Skip the trigger discovery phase
+  --no-patch         Skip the patching phase
+  --debug            Enable verbose debug output
+  --output=<dir>     Custom output directory (default: ./output/<domain>)
+  --help, -h         Show this help message
+
+${c('yellow', 'Examples:')}
+  node extract.js https://example.com
+  node extract.js https://app.example.com --phase=03 --debug
+  node extract.js https://example.com --output=./my-extraction
+  node extract.js serve ./output/example.com
+  node extract.js validate ./output/example.com
+
+${c('yellow', 'Phases:')}
+  01  Initial page load capture
+  02  Asset discovery and download
+  03  Trigger interaction capture
+  04  Patching and finalization
+
+${c('dim', 'Press Ctrl+C during extraction to save checkpoint and exit gracefully.')}
+`;
 
 // Parse command line arguments
-function parseArgs(args) {
-  const result = {
+function parseCliArgs() {
+  const args = process.argv.slice(2);
+
+  // Check for help flag first
+  if (args.includes('--help') || args.includes('-h') || args.length === 0) {
+    console.log(HELP);
+    process.exit(0);
+  }
+
+  // Check for subcommands
+  const command = args[0];
+  if (command === 'serve') {
+    return { command: 'serve', dir: args[1] };
+  }
+  if (command === 'validate') {
+    return { command: 'validate', dir: args[1] };
+  }
+
+  // Parse extraction options
+  const options = {
+    command: 'extract',
     url: null,
-    command: null,
-    output: null,
-    debug: false,
-    verbose: false,
-    headless: true,
-    timeout: 60000,
     phase: null,
-    dryRun: false,
+    noTriggers: false,
+    noPatch: false,
+    debug: false,
+    output: null,
   };
 
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-
-    if (arg === '--help' || arg === '-h') {
-      printUsage();
-      process.exit(0);
-    }
-
-    if (arg === '--debug' || arg === '-d') {
-      result.debug = true;
-      continue;
-    }
-
-    if (arg === '--verbose' || arg === '-v') {
-      result.verbose = true;
-      continue;
-    }
-
-    if (arg === '--dry-run') {
-      result.dryRun = true;
-      continue;
-    }
-
-    if (arg === '--output' || arg === '-o') {
-      result.output = args[++i];
-      continue;
-    }
-
-    if (arg === '--headless') {
-      result.headless = args[++i] !== 'false';
-      continue;
-    }
-
-    if (arg === '--timeout') {
-      result.timeout = parseInt(args[++i], 10);
-      continue;
-    }
-
+  for (const arg of args) {
     if (arg.startsWith('--phase=')) {
-      result.phase = arg.split('=')[1];
-      continue;
-    }
-
-    if (arg === '--phase') {
-      result.phase = args[++i];
-      continue;
-    }
-
-    if (arg === 'serve') {
-      result.command = 'serve';
-      result.target = args[++i];
-      continue;
-    }
-
-    // If starts with http, it's a URL
-    if (arg.startsWith('http://') || arg.startsWith('https://')) {
-      result.url = arg;
-      continue;
-    }
-
-    // Otherwise might be a URL without protocol
-    if (!arg.startsWith('-') && !result.url) {
-      result.url = `https://${arg}`;
+      options.phase = arg.split('=')[1];
+    } else if (arg === '--no-triggers') {
+      options.noTriggers = true;
+    } else if (arg === '--no-patch') {
+      options.noPatch = true;
+    } else if (arg === '--debug') {
+      options.debug = true;
+    } else if (arg.startsWith('--output=')) {
+      options.output = arg.split('=')[1];
+    } else if (!arg.startsWith('--') && !options.url) {
+      options.url = arg;
     }
   }
 
-  return result;
+  return options;
 }
 
-function printUsage() {
-  console.log(`
-Visual Cloner - Extract any webapp to run locally
+// Serve extracted app locally
+async function serveExtractedApp(dir) {
+  const resolvedDir = resolve(dir);
 
-USAGE:
-  node extract.js <url> [options]
+  if (!existsSync(resolvedDir)) {
+    console.error(c('red', `Error: Directory not found: ${resolvedDir}`));
+    process.exit(1);
+  }
 
-EXAMPLES:
-  node extract.js https://www.photopea.com
-  node extract.js https://example.com --output ./my-output
-  node extract.js https://example.com --debug --headless false
-  node extract.js https://example.com --dry-run
-  node extract.js https://example.com --phase=capture
-  node extract.js https://example.com --phase=discover
+  const app = express();
+  const port = 3000;
 
-OPTIONS:
-  --output, -o <dir>    Output directory (default: ./output/<domain>-<timestamp>)
-  --debug, -d           Enable debug logging
-  --verbose, -v         Show detailed phase actions and metrics
-  --dry-run             Show what would be done without actually doing it
-  --headless <bool>     Run browser headless (default: true)
-  --timeout <ms>        Page load timeout (default: 60000)
-  --phase <name>        Run single phase in isolation (init, capture, trigger, discover, assemble)
-                        For phases needing prior context, loads from checkpoint
-  --help, -h            Show this help
+  // Serve static files
+  app.use(express.static(resolvedDir));
 
-COMMANDS:
-  serve <dir>           Start local server for extraction
+  // Fallback to index.html for SPA routing
+  app.get('*', (req, res) => {
+    const indexPath = resolve(resolvedDir, 'index.html');
+    if (existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send('Not found');
+    }
+  });
 
-PHASE ISOLATION:
-  Run a single phase for debugging or re-execution:
-    --phase=init        Initialize browser and page
-    --phase=capture     Capture network responses (needs init)
-    --phase=trigger     Trigger dynamic content (needs capture)
-    --phase=discover    Discover resources in page (needs capture)
-    --phase=assemble    Assemble final output (needs all prior)
-
-OUTPUT:
-  After extraction, run the local server:
-    cd <output-dir>
-    node serve.js
-    # Open http://localhost:3333
-`);
+  app.listen(port, () => {
+    console.log(c('green', `\nServing extracted app from: ${resolvedDir}`));
+    console.log(c('cyan', `\nOpen in browser: http://localhost:${port}`));
+    console.log(c('dim', '\nPress Ctrl+C to stop the server.\n'));
+  });
 }
 
-async function runServe(dir) {
-  const servePath = path.join(dir, 'serve.js');
-  try {
-    await fs.access(servePath);
-    console.log(`Starting server from ${dir}...`);
-    const { spawn } = await import('child_process');
-    spawn('node', [servePath], { stdio: 'inherit' });
-  } catch (e) {
-    console.error(`Error: No serve.js found in ${dir}`);
-    console.error('Make sure this is an extraction output directory.');
+// Validate extraction
+async function validateExtraction(dir) {
+  const resolvedDir = resolve(dir);
+
+  if (!existsSync(resolvedDir)) {
+    console.error(c('red', `Error: Directory not found: ${resolvedDir}`));
+    process.exit(1);
+  }
+
+  console.log(c('cyan', `\nValidating extraction: ${resolvedDir}\n`));
+
+  const checks = [
+    { name: 'index.html exists', path: 'index.html' },
+    { name: 'manifest.json exists', path: 'manifest.json' },
+    { name: 'assets directory exists', path: 'assets' },
+  ];
+
+  let passed = 0;
+  let failed = 0;
+
+  for (const check of checks) {
+    const fullPath = resolve(resolvedDir, check.path);
+    if (existsSync(fullPath)) {
+      console.log(c('green', `  [PASS] ${check.name}`));
+      passed++;
+    } else {
+      console.log(c('red', `  [FAIL] ${check.name}`));
+      failed++;
+    }
+  }
+
+  console.log('');
+  if (failed === 0) {
+    console.log(c('green', `All ${passed} checks passed!`));
+    process.exit(0);
+  } else {
+    console.log(c('yellow', `${passed} passed, ${failed} failed`));
     process.exit(1);
   }
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
-
-  // Handle serve command
-  if (args.command === 'serve') {
-    if (!args.target) {
-      console.error('Error: Please specify extraction directory');
-      console.error('Usage: node extract.js serve <dir>');
-      process.exit(1);
-    }
-    return runServe(args.target);
+// Run extraction
+async function runExtraction(options) {
+  if (!options.url) {
+    console.error(c('red', 'Error: URL is required'));
+    console.log(c('dim', 'Run with --help for usage information'));
+    process.exit(1);
   }
 
   // Validate URL
-  if (!args.url) {
-    printUsage();
+  let url;
+  try {
+    url = new URL(options.url);
+  } catch (e) {
+    console.error(c('red', `Error: Invalid URL: ${options.url}`));
     process.exit(1);
   }
 
-  // Validate phase if specified
-  const validPhases = ['init', 'capture', 'trigger', 'discover', 'assemble'];
-  if (args.phase && !validPhases.includes(args.phase)) {
-    console.error(`Error: Invalid phase '${args.phase}'`);
-    console.error(`Valid phases: ${validPhases.join(', ')}`);
-    process.exit(1);
+  console.log(c('cyan', c('bold', '\n  Web App Extractor\n')));
+  console.log(c('white', `  Target: ${c('bold', url.href)}`));
+  if (options.phase) {
+    console.log(c('white', `  Starting from phase: ${c('bold', options.phase)}`));
   }
-
-  // Create logger
-  const logger = new Logger({
-    level: args.debug ? 'debug' : 'info',
-    dryRun: args.dryRun
-  });
-
-  // Print header
+  if (options.noTriggers) {
+    console.log(c('yellow', '  Triggers: skipped'));
+  }
+  if (options.noPatch) {
+    console.log(c('yellow', '  Patching: skipped'));
+  }
+  if (options.debug) {
+    console.log(c('magenta', '  Debug mode: enabled'));
+  }
   console.log('');
-  console.log('='.repeat(50));
-  console.log(`  VISUAL CLONER${args.dryRun ? ' [DRY RUN MODE]' : ''}`);
-  console.log('='.repeat(50));
-  console.log('');
-  if (args.dryRun) {
-    console.log('  NOTE: Dry run mode - no files will be written, minimal network requests');
-    console.log('');
-  }
-  logger.info(`Target: ${args.url}`);
-  if (args.phase) {
-    logger.info(`Mode: Single phase (${args.phase})`);
-  }
 
-  // Generate output directory
-  const domain = new URL(args.url).hostname.replace('www.', '');
-  const timestamp = Date.now();
-  const outputDir = args.output || path.join(__dirname, 'output', `${domain}-${timestamp}`);
-
-  // Create output directory (unless dry run)
-  if (!args.dryRun) {
-    await fs.mkdir(outputDir, { recursive: true });
-  }
-  logger.info(`Output: ${outputDir}`);
-
-  // Initialize state
-  const state = new ExtractionState();
-  state.init(args.url, outputDir);
-
-  // Load checkpoint if running single phase (except init)
-  if (args.phase && args.phase !== 'init') {
-    const checkpointLoaded = await state.loadCheckpoint(outputDir);
-    if (!checkpointLoaded) {
-      console.error('');
-      console.error(`Error: No checkpoint found in ${outputDir}`);
-      console.error('');
-      console.error('Phase isolation requires a checkpoint from prior phases.');
-      console.error('Either run the full extraction first, or run phases in sequence:');
-      console.error(`  node extract.js ${args.url} --phase=init`);
-      console.error(`  node extract.js ${args.url} --phase=capture --output ${outputDir}`);
-      console.error('');
-      process.exit(1);
-    }
-    logger.info('Loaded checkpoint from prior phases');
-  }
-
-  // Build pipeline
-  const config = {
-    headless: args.headless,
-    timeout: args.timeout,
-    debug: args.debug,
-    verbose: args.verbose,
-    port: 3333,
-    dryRun: args.dryRun,
+  // Build pipeline configuration
+  const pipelineConfig = {
+    url: url.href,
+    outputDir: options.output || `./output/${url.hostname}`,
+    debug: options.debug,
+    skipTriggers: options.noTriggers,
+    skipPatch: options.noPatch,
+    startPhase: options.phase,
   };
 
-  const pipeline = new Pipeline(config);
+  // Track if we're shutting down
+  let isShuttingDown = false;
+  let pipeline = null;
 
-  // If single phase mode, only add that phase
-  if (args.phase) {
-    const phaseMap = {
-      'init': InitPhase,
-      'capture': CapturePhase,
-      'trigger': TriggerPhase,
-      'discover': DiscoverPhase,
-      'assemble': AssemblePhase,
-    };
-    const PhaseClass = phaseMap[args.phase];
-    pipeline.addPhase(new PhaseClass(config));
-    logger.info(`Running only: ${args.phase}`);
-  } else {
-    // Full pipeline
-    pipeline.addPhase(new InitPhase(config));
-    pipeline.addPhase(new CapturePhase(config));
-    pipeline.addPhase(new TriggerPhase(config));
-    pipeline.addPhase(new DiscoverPhase(config));
-    pipeline.addPhase(new AssemblePhase(config));
-  }
-
-  // Execute pipeline
-  try {
-    await pipeline.execute(state, logger);
-
-    // Get final result
-    const result = state.getFinalResult();
-
-    // Close browser
-    if (state.context.browser) {
-      await state.context.browser.close();
+  // Handle Ctrl+C gracefully
+  const handleShutdown = async (signal) => {
+    if (isShuttingDown) {
+      console.log(c('red', '\nForce quitting...'));
+      process.exit(1);
     }
 
-    // Print summary
-    logger.summary(args.dryRun ? 'DRY RUN COMPLETE' : 'EXTRACTION COMPLETE', {
-      'URL': result.url,
-      'Resources': result.resourceCount,
-      'Total Size': `${(result.byType ? Object.values(result.byType).reduce((a, b) => a + b, 0) : result.resourceCount)} files`,
-      'JavaScript': result.byType?.js || 0,
-      'CSS': result.byType?.css || 0,
-      'Images': result.byType?.image || 0,
-      'Time': `${(result.totalTime / 1000).toFixed(1)}s`,
+    isShuttingDown = true;
+    console.log(c('yellow', `\n\nReceived ${signal}. Saving checkpoint...`));
+
+    if (pipeline) {
+      try {
+        await pipeline.saveCheckpoint();
+        console.log(c('green', 'Checkpoint saved. You can resume with --phase option.'));
+      } catch (e) {
+        console.error(c('red', `Failed to save checkpoint: ${e.message}`));
+      }
+    }
+
+    process.exit(0);
+  };
+
+  process.on('SIGINT', () => handleShutdown('SIGINT'));
+  process.on('SIGTERM', () => handleShutdown('SIGTERM'));
+
+  // Run the pipeline
+  const startTime = Date.now();
+
+  try {
+    pipeline = new Pipeline(pipelineConfig);
+
+    // Progress callback
+    pipeline.on('progress', (phase, message) => {
+      const prefix = c('blue', `[${phase}]`);
+      console.log(`${prefix} ${message}`);
     });
 
-    if (args.dryRun) {
-      console.log('');
-      console.log('  DRY RUN SUMMARY:');
-      console.log('  - No files were written');
-      console.log('  - Browser was launched but pages were not navigated');
-      console.log('  - Resource discovery was simulated');
-      console.log('  - To perform actual extraction, run without --dry-run');
-      console.log('');
-    } else {
-      console.log('  To run locally:');
-      console.log(`    cd ${outputDir}`);
-      console.log('    node serve.js');
-      console.log('    # Open http://localhost:3333');
-      console.log('');
+    pipeline.on('phase:start', (phase) => {
+      console.log(c('cyan', `\n>> Starting phase ${phase.id}: ${phase.name}`));
+    });
+
+    pipeline.on('phase:complete', (phase) => {
+      console.log(c('green', `[OK] Phase ${phase.id} complete`));
+    });
+
+    pipeline.on('warning', (message) => {
+      console.log(c('yellow', `[WARN] ${message}`));
+    });
+
+    if (options.debug) {
+      pipeline.on('debug', (message) => {
+        console.log(c('dim', `  [debug] ${message}`));
+      });
     }
+
+    // Execute extraction
+    const result = await pipeline.run();
+
+    // Show summary
+    const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+
+    console.log(c('green', '\n' + '='.repeat(50)));
+    console.log(c('green', c('bold', '  Extraction Complete!')));
+    console.log(c('green', '='.repeat(50)));
+    console.log('');
+    console.log(`  ${c('white', 'Output:')} ${result.outputDir}`);
+    console.log(`  ${c('white', 'Duration:')} ${duration}s`);
+    console.log(`  ${c('white', 'Assets:')} ${result.assetCount || 'N/A'}`);
+    console.log(`  ${c('white', 'Pages:')} ${result.pageCount || 'N/A'}`);
+    console.log('');
+    console.log(c('dim', `  To serve: node extract.js serve ${result.outputDir}`));
+    console.log('');
+
+    process.exit(0);
 
   } catch (error) {
-    // Close browser on error
-    if (state.context.browser) {
-      await state.context.browser.close();
+    console.error(c('red', `\n[ERROR] Extraction failed: ${error.message}`));
+
+    if (options.debug) {
+      console.error(c('dim', error.stack));
     }
 
-    // Save checkpoint with error (unless dry run)
-    if (!args.dryRun) {
-      await state.saveCheckpoint(outputDir);
-    }
-
-    // Print error
-    console.error('');
-    console.error('='.repeat(50));
-    console.error('  EXTRACTION FAILED');
-    console.error('='.repeat(50));
-    console.error('');
-    console.error(`  Phase: ${error.phaseName || 'unknown'}`);
-    console.error(`  Error: ${error.message}`);
-    console.error('');
-    console.error(`  Checkpoint saved: ${outputDir}/.checkpoint.json`);
-    console.error('');
-
-    if (args.debug) {
-      console.error('Stack trace:');
-      console.error(error.stack);
+    // Try to save checkpoint on error
+    if (pipeline) {
+      try {
+        await pipeline.saveCheckpoint();
+        console.log(c('yellow', '\nCheckpoint saved. You may be able to resume.'));
+      } catch (e) {
+        // Ignore checkpoint save errors
+      }
     }
 
     process.exit(1);
   }
 }
 
-main().catch(err => {
-  console.error('Fatal error:', err);
+// Main entry point
+async function main() {
+  const options = parseCliArgs();
+
+  switch (options.command) {
+    case 'serve':
+      if (!options.dir) {
+        console.error(c('red', 'Error: Directory required for serve command'));
+        console.log(c('dim', 'Usage: node extract.js serve <output-dir>'));
+        process.exit(1);
+      }
+      await serveExtractedApp(options.dir);
+      break;
+
+    case 'validate':
+      if (!options.dir) {
+        console.error(c('red', 'Error: Directory required for validate command'));
+        console.log(c('dim', 'Usage: node extract.js validate <output-dir>'));
+        process.exit(1);
+      }
+      await validateExtraction(options.dir);
+      break;
+
+    case 'extract':
+    default:
+      await runExtraction(options);
+      break;
+  }
+}
+
+main().catch((error) => {
+  console.error(c('red', `Fatal error: ${error.message}`));
   process.exit(1);
 });
