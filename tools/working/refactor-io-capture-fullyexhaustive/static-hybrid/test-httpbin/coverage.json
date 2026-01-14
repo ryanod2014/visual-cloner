@@ -1,0 +1,16 @@
+{
+  "elements": {
+    "total": 222,
+    "interactive": 28,
+    "covered": 101
+  },
+  "events": {
+    "total": 8,
+    "covered": 101
+  },
+  "cssStates": {
+    "total": 270,
+    "covered": 265
+  },
+  "completeness": 70
+}

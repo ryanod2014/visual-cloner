@@ -1,0 +1,193 @@
+{
+  "specs": [
+    {
+      "id": "io-0",
+      "type": "element",
+      "element": {
+        "selector": "html > body > div > p:nth-child(2) > a",
+        "tag": "a",
+        "id": null,
+        "className": null
+      },
+      "eventType": "click",
+      "input": {
+        "type": "click",
+        "target": "html > body > div > p:nth-child(2) > a"
+      },
+      "output": {
+        "predicted": {
+          "domChanges": [],
+          "styleChanges": [],
+          "classChanges": [],
+          "networkCalls": [],
+          "navigation": [],
+          "focus": [],
+          "scroll": [],
+          "timer": []
+        },
+        "cssTransition": null
+      },
+      "confidence": 0.5,
+      "analysis": {
+        "listenerFound": false,
+        "handlerFound": false,
+        "effectsAnalyzed": 0,
+        "cssStatesFound": 0
+      },
+      "verified": true,
+      "actualOutput": {
+        "error": "page.click: Timeout 2000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('html > body > div > p:nth-child(2) > a')\u001b[22m\n"
+      }
+    },
+    {
+      "id": "io-1",
+      "type": "element",
+      "element": {
+        "selector": "html > body > div > p:nth-child(2) > a",
+        "tag": "a",
+        "id": null,
+        "className": null
+      },
+      "eventType": "focus",
+      "input": {
+        "type": "focus",
+        "target": "html > body > div > p:nth-child(2) > a"
+      },
+      "output": {
+        "predicted": {
+          "domChanges": [],
+          "styleChanges": [],
+          "classChanges": [],
+          "networkCalls": [],
+          "navigation": [],
+          "focus": [],
+          "scroll": [],
+          "timer": []
+        },
+        "cssTransition": null
+      },
+      "confidence": 0.5,
+      "analysis": {
+        "listenerFound": false,
+        "handlerFound": false,
+        "effectsAnalyzed": 0,
+        "cssStatesFound": 0
+      },
+      "verified": true,
+      "actualOutput": {
+        "error": "page.focus: Timeout 2000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('html > body > div > p:nth-child(2) > a')\u001b[22m\n"
+      }
+    },
+    {
+      "id": "io-2",
+      "type": "element",
+      "element": {
+        "selector": "html > body > div > p:nth-child(2) > a",
+        "tag": "a",
+        "id": null,
+        "className": null
+      },
+      "eventType": "hover",
+      "input": {
+        "type": "hover",
+        "target": "html > body > div > p:nth-child(2) > a"
+      },
+      "output": {
+        "predicted": {
+          "domChanges": [],
+          "styleChanges": [],
+          "classChanges": [],
+          "networkCalls": [],
+          "navigation": [],
+          "focus": [],
+          "scroll": [],
+          "timer": []
+        },
+        "cssTransition": null
+      },
+      "confidence": 0.5,
+      "analysis": {
+        "listenerFound": false,
+        "handlerFound": false,
+        "effectsAnalyzed": 0,
+        "cssStatesFound": 0
+      },
+      "verified": true,
+      "actualOutput": {
+        "error": "page.hover: Timeout 2000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('html > body > div > p:nth-child(2) > a')\u001b[22m\n"
+      }
+    },
+    {
+      "id": "io-3",
+      "type": "element",
+      "element": {
+        "selector": "html > body > div > p:nth-child(2) > a",
+        "tag": "a",
+        "id": null,
+        "className": null
+      },
+      "eventType": "navigate",
+      "input": {
+        "type": "navigate",
+        "target": "html > body > div > p:nth-child(2) > a"
+      },
+      "output": {
+        "predicted": {
+          "domChanges": [],
+          "styleChanges": [],
+          "classChanges": [],
+          "networkCalls": [],
+          "navigation": [],
+          "focus": [],
+          "scroll": [],
+          "timer": []
+        },
+        "cssTransition": null
+      },
+      "confidence": 1,
+      "analysis": {
+        "listenerFound": false,
+        "handlerFound": false,
+        "effectsAnalyzed": 0,
+        "cssStatesFound": 0
+      },
+      "verified": true,
+      "actualOutput": {}
+    },
+    {
+      "id": "io-4",
+      "type": "css-state",
+      "selector": "a:visited",
+      "baseSelector": "a",
+      "state": "visited",
+      "mediaQuery": null,
+      "input": {
+        "type": "click",
+        "target": "a"
+      },
+      "output": {
+        "predicted": {
+          "styleChanges": [
+            {
+              "property": "color",
+              "value": "#348"
+            }
+          ]
+        },
+        "cssTransition": null
+      },
+      "matchingElements": 10,
+      "confidence": 1
+    }
+  ],
+  "total": 5,
+  "highConfidence": 1,
+  "needsVerification": 4,
+  "byType": {
+    "element": 4,
+    "cssState": 1,
+    "keyboard": 0,
+    "form": 0,
+    "breakpoint": 0
+  }
+}
