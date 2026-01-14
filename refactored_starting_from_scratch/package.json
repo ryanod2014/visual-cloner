@@ -1,0 +1,18 @@
+{
+  "name": "visual-cloner",
+  "version": "1.0.0",
+  "description": "Extract and serve any webapp locally",
+  "type": "module",
+  "main": "extract.js",
+  "bin": {
+    "extract": "./extract.js"
+  },
+  "scripts": {
+    "extract": "node extract.js",
+    "test": "node extract.js https://www.photopea.com",
+    "debug": "node debug-browser.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}

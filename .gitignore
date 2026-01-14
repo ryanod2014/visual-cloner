@@ -1,14 +1,30 @@
+# Dependencies
 node_modules/
+
+# OS files
+.DS_Store
+*.log
+
+# Images (except docs)
 *.png
 *.jpg
 *.jpeg
 !docs/*.png
-.DS_Store
 
-# Keep output HTML but ignore screenshots
-output/*/screenshots/
+# Output directories (too large for git)
 output/
+refactored_starting_from_scratch/output/
 
-# V7 generated outputs
-test-files/
-v7-reports/
+# Archive (old experiments)
+.archive/
+
+# Playwright
+.playwright-mcp/
+
+# Temporary files
+*.tmp
+.checkpoint.json
+
+# IDE
+.vscode/
+.idea/

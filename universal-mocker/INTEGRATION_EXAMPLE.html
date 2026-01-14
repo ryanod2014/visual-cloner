@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Auth Mock - Integration Example</title>
+
+  <!--
+    CRITICAL LOAD ORDER:
+    1. Firebase mock FIRST (before any app code)
+    2. Auto-mocker SECOND
+    3. Firebase integration THIRD
+    4. App code LAST
+  -->
+
+  <!-- 1. FIREBASE MOCK - Loads synchronously BEFORE any other scripts -->
+  <script src="firebase-auth-mock.js"></script>
+
+  <!-- 2. AUTO-MOCKER - Loads after Firebase mock is in place -->
+  <script src="auto-mocker.js"></script>
+
+  <!-- 3. FIREBASE INTEGRATION - Connects Firebase mock to auto-mocker -->
+  <script src="firebase-integration.js"></script>
+
+  <!--
+    At this point:
+    - window.firebase is mocked and non-configurable
+    - firebase.auth().currentUser returns authenticated user
+    - onAuthStateChanged callbacks will fire immediately
+    - All Firebase API calls are intercepted
+  -->
+
+  <!-- 4. APP CODE - Your Vue/React/Angular app loads last -->
+  <!-- <script src="app.js"></script> -->
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      border-bottom: 3px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .status.success { background: #4CAF50; color: white; }
+    .status.error { background: #f44336; color: white; }
+    .status.warning { background: #ff9800; color: white; }
+
+    .section {
+      margin: 20px 0;
+      padding: 20px;
+      background: #fafafa;
+      border-left: 4px solid #2196F3;
+      border-radius: 4px;
+    }
+    .code {
+      background: #263238;
+      color: #aed581;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: "Monaco", "Courier New", monospace;
+      font-size: 13px;
+    }
+    button {
+      background: #2196F3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #1976D2;
+    }
+    .test-result {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .test-result.pass {
+      background: #E8F5E9;
+      border-left: 4px solid #4CAF50;
+    }
+    .test-result.fail {
+      background: #FFEBEE;
+      border-left: 4px solid #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      🔥 Firebase Auth Mock - Integration Test
+      <span id="overallStatus" class="status">Loading...</span>
+    </h1>
+
+    <div class="section">
+      <h2>1. Firebase Mock Status</h2>
+      <div id="firebaseMockStatus">Checking...</div>
+    </div>
+
+    <div class="section">
+      <h2>2. Current User</h2>
+      <div id="currentUserStatus">Checking...</div>
+      <div class="code" id="currentUserData"></div>
+    </div>
+
+    <div class="section">
+      <h2>3. Auth State Callbacks</h2>
+      <div id="authStateStatus">Checking...</div>
+      <button onclick="testAuthStateCallback()">Test onAuthStateChanged</button>
+      <div class="code" id="authStateLog" style="display: none;"></div>
+    </div>
+
+    <div class="section">
+      <h2>4. Token Generation</h2>
+      <div id="tokenStatus">Checking...</div>
+      <button onclick="testGetIdToken()">Test getIdToken()</button>
+      <div class="code" id="tokenData" style="display: none;"></div>
+    </div>
+
+    <div class="section">
+      <h2>5. Auto-Mocker Integration</h2>
+      <div id="autoMockerStatus">Checking...</div>
+    </div>
+
+    <div class="section">
+      <h2>6. Route Guard Simulation</h2>
+      <p>Simulating how Vue Router navigation guards would check auth:</p>
+      <button onclick="simulateRouteGuard()">Simulate Route Guard Check</button>
+      <div id="routeGuardResult"></div>
+    </div>
+
+    <div class="section">
+      <h2>7. Debug Utilities</h2>
+      <button onclick="showDebugInfo()">Show Debug Info</button>
+      <button onclick="triggerAuthCallbacks()">Trigger Auth Callbacks</button>
+      <button onclick="clearConsole()">Clear Console</button>
+    </div>
+  </div>
+
+  <script>
+    // Wait for everything to load
+    window.addEventListener('load', runTests);
+
+    function runTests() {
+      console.log('🧪 Running Firebase Auth Mock tests...');
+
+      testFirebaseMock();
+      testCurrentUser();
+      testAutoMockerIntegration();
+      updateOverallStatus();
+    }
+
+    function testFirebaseMock() {
+      const statusDiv = document.getElementById('firebaseMockStatus');
+
+      if (window.__FIREBASE_MOCK__) {
+        statusDiv.innerHTML = `
+          <div class="test-result pass">
+            ✅ Firebase mock loaded successfully<br>
+            <small>Mock object available at: window.__FIREBASE_MOCK__</small>
+          </div>
+        `;
+      } else {
+        statusDiv.innerHTML = `
+          <div class="test-result fail">
+            ❌ Firebase mock NOT loaded<br>
+            <small>Check if firebase-auth-mock.js is loaded before this file</small>
+          </div>
+        `;
+      }
+    }
+
+    function testCurrentUser() {
+      const statusDiv = document.getElementById('currentUserStatus');
+      const dataDiv = document.getElementById('currentUserData');
+
+      try {
+        const currentUser = firebase.auth().currentUser;
+
+        if (currentUser && currentUser.uid) {
+          statusDiv.innerHTML = `
+            <div class="test-result pass">
+              ✅ Current user is authenticated<br>
+              <small>UID: ${currentUser.uid}</small><br>
+              <small>Email: ${currentUser.email}</small>
+            </div>
+          `;
+
+          dataDiv.textContent = JSON.stringify({
+            uid: currentUser.uid,
+            email: currentUser.email,
+            emailVerified: currentUser.emailVerified,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+            phoneNumber: currentUser.phoneNumber,
+            isAnonymous: currentUser.isAnonymous
+          }, null, 2);
+        } else {
+          statusDiv.innerHTML = `
+            <div class="test-result fail">
+              ❌ Current user is NULL<br>
+              <small>Route guards will fail and redirect to login</small>
+            </div>
+          `;
+        }
+      } catch (e) {
+        statusDiv.innerHTML = `
+          <div class="test-result fail">
+            ❌ Error accessing firebase.auth(): ${e.message}
+          </div>
+        `;
+      }
+    }
+
+    function testAuthStateCallback() {
+      const statusDiv = document.getElementById('authStateStatus');
+      const logDiv = document.getElementById('authStateLog');
+
+      logDiv.style.display = 'block';
+      logDiv.textContent = 'Registering callback...\n';
+
+      const startTime = Date.now();
+
+      firebase.auth().onAuthStateChanged((user) => {
+        const elapsed = Date.now() - startTime;
+
+        logDiv.textContent += `\n✅ Callback fired after ${elapsed}ms\n`;
+
+        if (user) {
+          logDiv.textContent += `User authenticated: ${user.email}\n`;
+          statusDiv.innerHTML = `
+            <div class="test-result pass">
+              ✅ onAuthStateChanged fired immediately (${elapsed}ms)<br>
+              <small>Route guards will see authenticated user</small>
+            </div>
+          `;
+        } else {
+          logDiv.textContent += `User is NULL\n`;
+          statusDiv.innerHTML = `
+            <div class="test-result fail">
+              ❌ Callback received null user<br>
+              <small>Route guards will fail</small>
+            </div>
+          `;
+        }
+      });
+    }
+
+    async function testGetIdToken() {
+      const statusDiv = document.getElementById('tokenStatus');
+      const dataDiv = document.getElementById('tokenData');
+
+      try {
+        const currentUser = firebase.auth().currentUser;
+        const token = await currentUser.getIdToken();
+
+        if (token && token.length > 0) {
+          dataDiv.style.display = 'block';
+          dataDiv.textContent = `Token (${token.length} chars):\n${token}`;
+
+          // Try to decode JWT
+          try {
+            const parts = token.split('.');
+            const payload = JSON.parse(atob(parts[1]));
+
+            dataDiv.textContent += '\n\nDecoded payload:\n' + JSON.stringify(payload, null, 2);
+
+            statusDiv.innerHTML = `
+              <div class="test-result pass">
+                ✅ getIdToken() returned valid JWT<br>
+                <small>Token will be sent with API calls</small>
+              </div>
+            `;
+          } catch (e) {
+            statusDiv.innerHTML = `
+              <div class="test-result warning">
+                ⚠️ Token generated but couldn't decode: ${e.message}
+              </div>
+            `;
+          }
+        } else {
+          statusDiv.innerHTML = `
+            <div class="test-result fail">
+              ❌ getIdToken() returned empty token
+            </div>
+          `;
+        }
+      } catch (e) {
+        statusDiv.innerHTML = `
+          <div class="test-result fail">
+            ❌ getIdToken() error: ${e.message}
+          </div>
+        `;
+      }
+    }
+
+    function testAutoMockerIntegration() {
+      const statusDiv = document.getElementById('autoMockerStatus');
+
+      const checks = [];
+
+      if (window.__AUTO_MOCKER__) {
+        checks.push('✅ Auto-mocker loaded');
+      } else {
+        checks.push('❌ Auto-mocker NOT loaded');
+      }
+
+      if (window.__FIREBASE_INTEGRATION__) {
+        checks.push('✅ Firebase integration loaded');
+      } else {
+        checks.push('⚠️ Firebase integration NOT loaded (optional)');
+      }
+
+      if (window.__FIREBASE_MOCK__) {
+        checks.push('✅ Firebase mock loaded');
+      } else {
+        checks.push('❌ Firebase mock NOT loaded');
+      }
+
+      statusDiv.innerHTML = `
+        <div class="test-result ${checks.every(c => c.startsWith('✅')) ? 'pass' : 'fail'}">
+          ${checks.join('<br>')}
+        </div>
+      `;
+    }
+
+    function simulateRouteGuard() {
+      const resultDiv = document.getElementById('routeGuardResult');
+
+      // Simulate Vue Router beforeEach guard
+      const to = { path: '/dashboard', meta: { requiresAuth: true } };
+      const from = { path: '/login' };
+
+      try {
+        // This is what Vue Router guard does
+        const currentUser = firebase.auth().currentUser;
+
+        if (to.meta.requiresAuth && !currentUser) {
+          // Guard would redirect to login
+          resultDiv.innerHTML = `
+            <div class="test-result fail">
+              ❌ ROUTE GUARD FAILED<br>
+              <small>Would redirect to /login</small><br>
+              <small>Reason: currentUser is null</small>
+            </div>
+          `;
+        } else {
+          // Guard would allow navigation
+          resultDiv.innerHTML = `
+            <div class="test-result pass">
+              ✅ ROUTE GUARD PASSED<br>
+              <small>Navigation to ${to.path} allowed</small><br>
+              <small>User: ${currentUser.email}</small><br>
+              <small><strong>Dashboard would load successfully!</strong></small>
+            </div>
+          `;
+        }
+      } catch (e) {
+        resultDiv.innerHTML = `
+          <div class="test-result fail">
+            ❌ ROUTE GUARD ERROR<br>
+            <small>${e.message}</small>
+          </div>
+        `;
+      }
+    }
+
+    function showDebugInfo() {
+      console.log('=== FIREBASE MOCK DEBUG INFO ===');
+      console.log('window.__FIREBASE_MOCK__:', window.__FIREBASE_MOCK__);
+      console.log('window.firebase:', window.firebase);
+      console.log('firebase.auth():', firebase.auth());
+      console.log('firebase.auth().currentUser:', firebase.auth().currentUser);
+      console.log('window.__AUTO_MOCKER__:', window.__AUTO_MOCKER__);
+      console.log('window.__FIREBASE_INTEGRATION__:', window.__FIREBASE_INTEGRATION__);
+      console.log('================================');
+      alert('Debug info logged to console (F12)');
+    }
+
+    function triggerAuthCallbacks() {
+      if (window.__FIREBASE_MOCK__) {
+        window.__FIREBASE_MOCK__.triggerAuthCallbacks();
+        alert('Auth callbacks triggered. Check console for logs.');
+      } else {
+        alert('Firebase mock not loaded!');
+      }
+    }
+
+    function clearConsole() {
+      console.clear();
+      alert('Console cleared');
+    }
+
+    function updateOverallStatus() {
+      const statusSpan = document.getElementById('overallStatus');
+
+      const allPassed =
+        window.__FIREBASE_MOCK__ &&
+        firebase.auth().currentUser &&
+        firebase.auth().currentUser.uid;
+
+      if (allPassed) {
+        statusSpan.textContent = 'All Tests Passed ✅';
+        statusSpan.className = 'status success';
+      } else {
+        statusSpan.textContent = 'Tests Failed ❌';
+        statusSpan.className = 'status error';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quick IndexedDB Test</title>
+</head>
+<body>
+  <h1>IndexedDB Mock - Quick Test</h1>
+  <pre id="output"></pre>
+
+  <script src="indexeddb-mock.js"></script>
+  <script>
+    const output = document.getElementById('output');
+    function log(msg) {
+      output.textContent += msg + '\n';
+      console.log(msg);
+    }
+
+    log('=== Quick Verification ===\n');
+    log('✓ indexedDB loaded: ' + (typeof indexedDB));
+    log('✓ IDBKeyRange loaded: ' + (typeof IDBKeyRange));
+
+    // Quick test
+    const request = indexedDB.open('TestDB', 1);
+
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      db.createObjectStore('store', { keyPath: 'id' });
+      log('✓ Database created');
+    };
+
+    request.onsuccess = (e) => {
+      const db = e.target.result;
+      log('✓ Database opened');
+
+      const tx = db.transaction('store', 'readwrite');
+      const store = tx.objectStore('store');
+
+      store.add({ id: 1, name: 'Test' });
+
+      tx.oncomplete = () => {
+        log('✓ Data written');
+
+        const tx2 = db.transaction('store', 'readonly');
+        const store2 = tx2.objectStore('store');
+
+        const getReq = store2.get(1);
+        getReq.onsuccess = () => {
+          log('✓ Data read: ' + JSON.stringify(getReq.result));
+          log('\n🎉 All tests passed!');
+        };
+      };
+    };
+
+    request.onerror = () => {
+      log('✗ Error: ' + request.error);
+    };
+  </script>
+</body>
+</html>

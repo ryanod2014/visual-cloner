@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndexedDB Mock Test Suite</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .test-result {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .test-result.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .test-result.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .test-result.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    pre {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>IndexedDB Mock - Test Suite</h1>
+
+  <div class="test-section">
+    <h2>Test Controls</h2>
+    <button onclick="runAllTests()">Run All Tests</button>
+    <button onclick="clearResults()">Clear Results</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script src="indexeddb-mock.js"></script>
+  <script>
+    const resultsDiv = document.getElementById('results');
+
+    function log(message, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `test-result ${type}`;
+      div.textContent = message;
+      resultsDiv.appendChild(div);
+      console.log(message);
+    }
+
+    function clearResults() {
+      resultsDiv.innerHTML = '';
+    }
+
+    async function runAllTests() {
+      clearResults();
+      log('=== Starting IndexedDB Mock Test Suite ===', 'info');
+
+      try {
+        await testBasicOperations();
+        await testIndexes();
+        await testCursors();
+        await testTransactions();
+        await testKeyRanges();
+        await testAutoIncrement();
+        await testMultipleStores();
+
+        log('=== All Tests Completed Successfully ===', 'success');
+      } catch (e) {
+        log(`Fatal Error: ${e.message}`, 'error');
+        console.error(e);
+      }
+    }
+
+    async function testBasicOperations() {
+      log('\n--- Test 1: Basic CRUD Operations ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB1', 1);
+
+        request.onerror = () => reject(request.error);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          const store = db.createObjectStore('users', { keyPath: 'id' });
+          log('✓ Object store created', 'success');
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Add data
+          const tx1 = db.transaction('users', 'readwrite');
+          const store1 = tx1.objectStore('users');
+
+          const addReq = store1.add({ id: 1, name: 'Alice', age: 30 });
+          addReq.onsuccess = () => log('✓ Added user Alice', 'success');
+
+          tx1.oncomplete = () => {
+            log('✓ Transaction completed', 'success');
+
+            // Read data
+            const tx2 = db.transaction('users', 'readonly');
+            const store2 = tx2.objectStore('users');
+
+            const getReq = store2.get(1);
+            getReq.onsuccess = () => {
+              const user = getReq.result;
+              if (user && user.name === 'Alice') {
+                log(`✓ Retrieved user: ${JSON.stringify(user)}`, 'success');
+              } else {
+                log('✗ Failed to retrieve user', 'error');
+              }
+            };
+
+            tx2.oncomplete = () => {
+              // Update data
+              const tx3 = db.transaction('users', 'readwrite');
+              const store3 = tx3.objectStore('users');
+
+              const putReq = store3.put({ id: 1, name: 'Alice', age: 31 });
+              putReq.onsuccess = () => log('✓ Updated user age', 'success');
+
+              tx3.oncomplete = () => {
+                // Delete data
+                const tx4 = db.transaction('users', 'readwrite');
+                const store4 = tx4.objectStore('users');
+
+                const delReq = store4.delete(1);
+                delReq.onsuccess = () => log('✓ Deleted user', 'success');
+
+                tx4.oncomplete = () => {
+                  db.close();
+                  resolve();
+                };
+              };
+            };
+          };
+        };
+      });
+    }
+
+    async function testIndexes() {
+      log('\n--- Test 2: Index Operations ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB2', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          const store = db.createObjectStore('products', { keyPath: 'id' });
+          store.createIndex('nameIdx', 'name', { unique: false });
+          store.createIndex('priceIdx', 'price', { unique: false });
+          log('✓ Created indexes', 'success');
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Add test data
+          const tx1 = db.transaction('products', 'readwrite');
+          const store1 = tx1.objectStore('products');
+
+          store1.add({ id: 1, name: 'Laptop', price: 1200 });
+          store1.add({ id: 2, name: 'Mouse', price: 25 });
+          store1.add({ id: 3, name: 'Keyboard', price: 75 });
+
+          tx1.oncomplete = () => {
+            log('✓ Added test products', 'success');
+
+            // Query by index
+            const tx2 = db.transaction('products', 'readonly');
+            const store2 = tx2.objectStore('products');
+            const index = store2.index('nameIdx');
+
+            const getReq = index.get('Mouse');
+            getReq.onsuccess = () => {
+              const product = getReq.result;
+              if (product && product.price === 25) {
+                log(`✓ Found product by index: ${JSON.stringify(product)}`, 'success');
+              } else {
+                log('✗ Index query failed', 'error');
+              }
+            };
+
+            tx2.oncomplete = () => {
+              // Get all by index
+              const tx3 = db.transaction('products', 'readonly');
+              const store3 = tx3.objectStore('products');
+              const priceIndex = store3.index('priceIdx');
+
+              const getAllReq = priceIndex.getAll();
+              getAllReq.onsuccess = () => {
+                log(`✓ Got all products: ${getAllReq.result.length} items`, 'success');
+              };
+
+              tx3.oncomplete = () => {
+                db.close();
+                resolve();
+              };
+            };
+          };
+        };
+      });
+    }
+
+    async function testCursors() {
+      log('\n--- Test 3: Cursor Operations ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB3', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore('items', { keyPath: 'id' });
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Add test data
+          const tx1 = db.transaction('items', 'readwrite');
+          const store1 = tx1.objectStore('items');
+
+          for (let i = 1; i <= 5; i++) {
+            store1.add({ id: i, value: `Item ${i}` });
+          }
+
+          tx1.oncomplete = () => {
+            log('✓ Added 5 items', 'success');
+
+            // Iterate with cursor
+            const tx2 = db.transaction('items', 'readonly');
+            const store2 = tx2.objectStore('items');
+            const cursorReq = store2.openCursor();
+
+            const items = [];
+            cursorReq.onsuccess = (event) => {
+              const cursor = event.target.result;
+              if (cursor) {
+                items.push(cursor.value);
+                cursor.continue();
+              } else {
+                log(`✓ Cursor iterated ${items.length} items`, 'success');
+                log(`  Items: ${items.map(i => i.value).join(', ')}`, 'info');
+              }
+            };
+
+            tx2.oncomplete = () => {
+              db.close();
+              resolve();
+            };
+          };
+        };
+      });
+    }
+
+    async function testTransactions() {
+      log('\n--- Test 4: Transaction Management ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB4', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore('accounts', { keyPath: 'id' });
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Test transaction commit
+          const tx1 = db.transaction('accounts', 'readwrite');
+          const store1 = tx1.objectStore('accounts');
+
+          store1.add({ id: 1, balance: 1000 });
+
+          tx1.oncomplete = () => {
+            log('✓ Transaction committed successfully', 'success');
+
+            // Test transaction abort
+            const tx2 = db.transaction('accounts', 'readwrite');
+            const store2 = tx2.objectStore('accounts');
+
+            store2.put({ id: 1, balance: 500 });
+            tx2.abort();
+
+            tx2.onabort = () => {
+              log('✓ Transaction aborted successfully', 'success');
+
+              // Verify abort rolled back changes
+              const tx3 = db.transaction('accounts', 'readonly');
+              const store3 = tx3.objectStore('accounts');
+
+              const getReq = store3.get(1);
+              getReq.onsuccess = () => {
+                const account = getReq.result;
+                if (account.balance === 1000) {
+                  log('✓ Changes were rolled back', 'success');
+                } else {
+                  log('✗ Rollback failed', 'error');
+                }
+              };
+
+              tx3.oncomplete = () => {
+                db.close();
+                resolve();
+              };
+            };
+          };
+        };
+      });
+    }
+
+    async function testKeyRanges() {
+      log('\n--- Test 5: IDBKeyRange Operations ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB5', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore('scores', { keyPath: 'score' });
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Add test data
+          const tx1 = db.transaction('scores', 'readwrite');
+          const store1 = tx1.objectStore('scores');
+
+          [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].forEach(score => {
+            store1.add({ score, player: `Player${score}` });
+          });
+
+          tx1.oncomplete = () => {
+            log('✓ Added score data', 'success');
+
+            // Test bound range
+            const tx2 = db.transaction('scores', 'readonly');
+            const store2 = tx2.objectStore('scores');
+
+            const range = IDBKeyRange.bound(40, 70);
+            const getAllReq = store2.getAll(range);
+
+            getAllReq.onsuccess = () => {
+              const results = getAllReq.result;
+              log(`✓ Bound range (40-70): ${results.length} items`, 'success');
+              log(`  Scores: ${results.map(r => r.score).join(', ')}`, 'info');
+            };
+
+            tx2.oncomplete = () => {
+              // Test upper bound
+              const tx3 = db.transaction('scores', 'readonly');
+              const store3 = tx3.objectStore('scores');
+
+              const upperRange = IDBKeyRange.upperBound(50);
+              const getReq = store3.getAll(upperRange);
+
+              getReq.onsuccess = () => {
+                log(`✓ Upper bound (≤50): ${getReq.result.length} items`, 'success');
+              };
+
+              tx3.oncomplete = () => {
+                db.close();
+                resolve();
+              };
+            };
+          };
+        };
+      });
+    }
+
+    async function testAutoIncrement() {
+      log('\n--- Test 6: Auto-Increment Keys ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB6', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore('messages', { autoIncrement: true });
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          const tx = db.transaction('messages', 'readwrite');
+          const store = tx.objectStore('messages');
+
+          const keys = [];
+          const add1 = store.add({ text: 'First message' });
+          add1.onsuccess = () => keys.push(add1.result);
+
+          const add2 = store.add({ text: 'Second message' });
+          add2.onsuccess = () => keys.push(add2.result);
+
+          const add3 = store.add({ text: 'Third message' });
+          add3.onsuccess = () => keys.push(add3.result);
+
+          tx.oncomplete = () => {
+            log(`✓ Auto-increment keys: ${keys.join(', ')}`, 'success');
+
+            // Verify sequential keys
+            if (keys[0] === 1 && keys[1] === 2 && keys[2] === 3) {
+              log('✓ Keys are sequential', 'success');
+            } else {
+              log('✗ Keys are not sequential', 'error');
+            }
+
+            db.close();
+            resolve();
+          };
+        };
+      });
+    }
+
+    async function testMultipleStores() {
+      log('\n--- Test 7: Multiple Object Stores ---', 'info');
+
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open('TestDB7', 1);
+
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore('customers', { keyPath: 'id' });
+          db.createObjectStore('orders', { keyPath: 'id' });
+          db.createObjectStore('inventory', { keyPath: 'sku' });
+          log('✓ Created 3 object stores', 'success');
+        };
+
+        request.onsuccess = async (event) => {
+          const db = event.target.result;
+
+          // Verify stores exist
+          const storeNames = Array.from(db.objectStoreNames);
+          log(`✓ Object stores: ${storeNames.join(', ')}`, 'success');
+
+          // Test multi-store transaction
+          const tx = db.transaction(['customers', 'orders'], 'readwrite');
+
+          const customers = tx.objectStore('customers');
+          const orders = tx.objectStore('orders');
+
+          customers.add({ id: 1, name: 'John Doe' });
+          orders.add({ id: 101, customerId: 1, total: 99.99 });
+
+          tx.oncomplete = () => {
+            log('✓ Multi-store transaction completed', 'success');
+
+            // Verify data
+            const tx2 = db.transaction(['customers', 'orders'], 'readonly');
+
+            const getCustomer = tx2.objectStore('customers').get(1);
+            const getOrder = tx2.objectStore('orders').get(101);
+
+            tx2.oncomplete = () => {
+              if (getCustomer.result && getOrder.result) {
+                log('✓ Data verified across stores', 'success');
+              }
+
+              db.close();
+              resolve();
+            };
+          };
+        };
+      });
+    }
+
+    // Auto-run tests on page load
+    window.addEventListener('load', () => {
+      log('IndexedDB Mock loaded successfully!', 'success');
+      log('Click "Run All Tests" to start testing', 'info');
+    });
+  </script>
+</body>
+</html>

@@ -1,182 +1,142 @@
 # Visual Cloner
 
-Pixel-perfect website cloning with WebGL shader extraction and reusable template generation.
-
-## System Architecture
-
-This system has **four main pipelines**:
-
-1. **V7 Extractor** - Complete webapp extraction (resources, WebGL, backend mapping)
-2. **Behavioral Pipeline** - UI logic extraction (state, actions, interactions)
-3. **V8 Enhancer** - JavaScript beautification (formatting, variable naming)
-4. **Complete Pipeline** - 100% operation extraction (for specialized apps) ⭐ **NEW**
-
-📚 **Documentation:**
-- **[THREE-PIPELINES.md](./THREE-PIPELINES.md)** - **START HERE** - Overview of all pipelines
-- **[INDEX.md](./INDEX.md)** - Documentation index
-- **[V7-V8-QUICK-REFERENCE.md](./V7-V8-QUICK-REFERENCE.md)** - Quick comparison (5 min read)
-- **[SYSTEM-OVERVIEW.md](./SYSTEM-OVERVIEW.md)** - Complete architecture guide
-- **[capture-system/COMPLETE-PIPELINE.md](./capture-system/COMPLETE-PIPELINE.md)** - 100% completeness guide ⭐
-
-**Quick Summary:**
-- **V7 = Extraction** (HTML, CSS, JS, WASM, WebGL shaders, backend APIs) - **REQUIRED**
-- **Behavioral = Logic** (state variables, action mappings, UI interactions) - **OPTIONAL**
-- **V8 = Beautification** (prettier formatting, variable naming) - **OPTIONAL**
-- **Complete = 100% Operations** (all operations + parameters + I/O examples) - **SPECIALIZED**
-
-**Key Points:**
-- V7 extracts resources (always first)
-- Behavioral Pipeline extracts UI logic (~60-85% completeness)
-- Complete Pipeline achieves 100% completeness for specialized apps (image editors, canvas apps)
-- V8 beautifies code (optional post-processing)
-
-## Key Features
-
-### 🎨 V3 Clone with Shader Extraction
-
-Clone any website and automatically extract:
-- Complete HTML/CSS
-- **WebGL shaders** (animated gradients, effects)
-- CSS animations
-- Design tokens (colors, typography, spacing)
-- Reusable template files
-
-```bash
-node tools/clone-v3-with-shaders.js https://stripe.com
-```
-
-**Output:**
-```
-output/stripe.com-v3-20260108/
-├── index.html           # Self-contained clone
-├── shaders.json         # Extracted WebGL shaders
-├── animations.json      # CSS animations
-├── template/            # Reusable design system
-│   ├── template.json    # Design specification
-│   ├── template.css     # CSS with tokens
-│   ├── template.js      # Shader + animations
-│   └── example.html     # Usage example
-└── shader-editor.html   # Interactive customizer
-```
-
----
-
-### 🌈 WebGL Shader Editor
-
-Interactive tool to customize extracted gradient shaders in real-time.
-
-![Shader Editor](https://raw.githubusercontent.com/ryanod2014/visual-cloner/main/docs/shader-editor.png)
-
-**Features:**
-- **6 Presets:** Stripe, Ocean, Sunset, Forest, Neon, Midnight
-- **4 Color Pickers:** Base color + 3 wave layers
-- **Animation Controls:** Speed, Flow
-- **Noise Controls:** Frequency X/Y, Amplitude
-- **Effects:** Shadow power, Darken top
-- **Export:** JSON config or embed code
-
-**Open the editor:**
-```bash
-open output/stripe.com-v3-20260108/shader-editor.html
-```
-
-**Customize colors programmatically:**
-```html
-<script>
-window.GRADIENT_CONFIG = {
-  baseColor: [0.2, 0.3, 0.8],    // Blue
-  wave0Color: [0.9, 0.2, 0.5],   // Pink
-  wave1Color: [0.3, 0.9, 0.7],   // Teal
-  wave2Color: [1.0, 0.6, 0.2],   // Orange
-  speed: 1.2,
-  amplitude: 350
-};
-</script>
-<canvas class="Gradient__canvas"></canvas>
-<script src="template.js"></script>
-```
-
----
+Extract and run any webapp locally with full offline support.
 
 ## Quick Start
 
 ```bash
-# Clone a website with full shader extraction
-node tools/clone-v3-with-shaders.js https://stripe.com
+# 1. Extract a website
+cd refactored_starting_from_scratch
+node extract.js https://photopea.com
 
-# Generate template from existing clone
-node tools/generate-template.js output/stripe.com-v3-20260108
+# 2. Serve it locally
+cd output/photopea.com-*/
+node serve.js
 
-# Open the shader editor
-open output/stripe.com-v3-20260108/shader-editor.html
+# 3. Open in browser
+open http://localhost:3333
 ```
-
----
-
-## Template System
-
-Every clone generates a reusable template with:
-
-| File | Purpose |
-|------|---------|
-| `template.json` | Machine-readable design spec (tokens, components) |
-| `template.css` | CSS with design tokens as variables |
-| `template.js` | GradientShader class + ScrollAnimations + NumberCounter |
-| `example.html` | Shows how to use everything |
-
-**Use the template to build new pages in the same style:**
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="template.css">
-</head>
-<body>
-  <section class="hero bg-dark">
-    <canvas class="Gradient__canvas"></canvas>
-    <div class="hero__content text-white">
-      <h1 class="headline-hero">Your Title</h1>
-      <a href="#" class="btn btn-primary">Get Started</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-3">
-        <div class="card" data-animate="slideUp">Feature 1</div>
-        <div class="card" data-animate="slideUp" data-delay="0.1">Feature 2</div>
-        <div class="card" data-animate="slideUp" data-delay="0.2">Feature 3</div>
-      </div>
-    </div>
-  </section>
-
-  <script src="template.js"></script>
-</body>
-</html>
-```
-
----
-
-## Tools
-
-| Tool | Description |
-|------|-------------|
-| `clone-v3-with-shaders.js` | Full clone with WebGL shader extraction |
-| `generate-template.js` | Generate reusable template from clone |
-| `stripe-gradient.js` | Standalone Stripe gradient shader module |
-
----
 
 ## How It Works
 
-1. **Intercept WebGL** - Hooks `shaderSource()` before page load to capture all shader code
-2. **Extract Uniforms** - Reads live uniform values from running WebGL programs
-3. **Capture CSS** - Extracts all computed styles and CSS variables
-4. **Generate Template** - Creates reusable CSS/JS with design tokens
-5. **Build Editor** - Generates interactive shader customizer
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    EXTRACTION PIPELINE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  1. CAPTURE      Browser intercepts all network requests     │
+│                  → HTML, CSS, JS, WASM, images, fonts        │
+│                                                              │
+│  2. DISCOVER     Finds lazy-loaded chunks                    │
+│                  → Webpack manifests, dynamic imports        │
+│                                                              │
+│  3. PATCH        Bypasses domain checks at runtime           │
+│                  → License validation, hostname checks       │
+│                                                              │
+│  4. SERVE        Self-contained local server                 │
+│                  → No external dependencies                  │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
 
----
+## Project Structure
+
+```
+visual-cloner/
+├── refactored_starting_from_scratch/   # Main extraction pipeline
+│   ├── extract.js                      # Entry point
+│   ├── core/                           # Pipeline orchestration
+│   ├── phases/                         # Extraction phases
+│   ├── plugins/                        # Patchers, triggers
+│   └── output/                         # Extracted sites
+│
+├── tools/                              # Utility scripts
+├── universal-mocker/                   # API mocking system
+├── .archive/                           # Old experiments (reference)
+└── output/                             # Legacy extractions
+```
+
+## Extracted Site Structure
+
+Each extraction produces a self-contained directory:
+
+```
+output/photopea.com-1234567890/
+├── index.html          # Entry point
+├── serve.js            # Local server with runtime patching
+├── url-map.json        # URL → local file mapping
+├── manifest.json       # Extraction metadata
+├── resources/          # All captured files
+│   ├── r0.html
+│   ├── r1.js
+│   └── ...
+└── __runtime__/        # Runtime mocks
+    ├── runtime-mock.js
+    ├── network-interceptor.js
+    └── indexeddb-mock.js
+```
+
+## Runtime Patching
+
+The server applies patches at startup to bypass domain restrictions:
+
+| Patch | Purpose |
+|-------|---------|
+| `lm-variable` | Force app mode (Photopea vs Vectorpea) |
+| `U.alp` | App mode function override |
+| `hostname-check` | Bypass domain validation |
+| `license-check` | Bypass license validation |
+
+## Supported Sites
+
+Tested and working:
+- **Photopea** - Full image editor functionality
+- **Vectorpea** - Vector editing mode
+- **Jampea** - Audio editing mode
+
+## Architecture Notes
+
+### Same Codebase, Different Apps
+
+Photopea, Vectorpea, and Jampea share the same codebase. A single variable `lm` determines the mode:
+- `lm = 0` → Photopea (image editor)
+- `lm = 1` → Vectorpea (vector editor)
+- `lm = 2` → Jampea (audio editor)
+
+### Network Interception
+
+The `network-interceptor.js` intercepts browser fetch/XHR requests to:
+1. Route requests to local extracted resources
+2. Fall back to network for uncaptured resources
+3. Track request statistics
+
+### Runtime Mocking
+
+The `runtime-mock.js` provides:
+- Location spoofing (makes app think it's on original domain)
+- IndexedDB persistence
+- Auth state mocking
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run extraction
+cd refactored_starting_from_scratch
+node extract.js <url>
+
+# Serve extracted site
+cd output/<site>/
+node serve.js
+```
+
+## Known Issues
+
+1. **Browser caching** - Use hard refresh (Cmd+Shift+R) if seeing old content
+2. **Some external APIs** - May need network access for auth, analytics
+3. **WebGL shaders** - Some require additional extraction steps
 
 ## License
 
