@@ -18,8 +18,10 @@ const { fetchAssets } = require('./fetch');
 const { analyzeHTML } = require('./analyze-html');
 const { analyzeCSS } = require('./analyze-css');
 const { analyzeJS } = require('./analyze-js');
+const { analyzeASTExhaustive } = require('./analyze-ast');
 const { synthesizeIOSpecs } = require('./synthesize');
 const { verifyUncertain } = require('./verify');
+const { verifyIOSpecs } = require('./parallel-executor');
 
 /**
  * Main entry point
@@ -62,6 +64,10 @@ async function captureIO(url, options = {}) {
   console.log(`  ✓ Scripts: ${assets.scripts.length} files (${assets.scripts.reduce((a, s) => a + s.content.length, 0)} bytes total)`);
   console.log(`  ✓ Styles: ${assets.styles.length} files`);
   console.log(`  ✓ Event listeners: ${assets.eventListeners.length} bindings`);
+  if (assets.canvasCapture?.summary) {
+    console.log(`  ✓ Canvas calls captured: ${assets.canvasCapture.summary.totalCalls}`);
+    console.log(`  ✓ Canvas contexts: ${assets.canvasCapture.summary.contextCount}`);
+  }
   console.log(`  ✓ Phase 0 complete: ${Date.now() - phase0Start}ms\n`);
 
   // =========================================================================
@@ -71,10 +77,11 @@ async function captureIO(url, options = {}) {
   const phase1Start = Date.now();
 
   // Run analyzers in parallel
-  const [htmlAnalysis, cssAnalysis, jsAnalysis] = await Promise.all([
+  const [htmlAnalysis, cssAnalysis, jsAnalysis, exhaustiveAnalysis] = await Promise.all([
     analyzeHTML(assets.html),
     analyzeCSS(assets.styles),
-    analyzeJS(assets.scripts)
+    analyzeJS(assets.scripts),
+    Promise.resolve(analyzeASTExhaustive(assets.scripts))
   ]);
 
   console.log(`  ✓ Elements: ${htmlAnalysis.elements.length}`);
@@ -82,7 +89,23 @@ async function captureIO(url, options = {}) {
   console.log(`  ✓ CSS states: ${cssAnalysis.stateRules.length}`);
   console.log(`  ✓ Functions: ${jsAnalysis.functions.length}`);
   console.log(`  ✓ Effect patterns: ${jsAnalysis.effects.length}`);
+
+  // Exhaustive AST results
+  console.log(`  ────────────────────────────`);
+  console.log(`  EXHAUSTIVE AST ANALYSIS:`);
+  console.log(`  ✓ Keyboard shortcuts: ${exhaustiveAnalysis.shortcuts.length}`);
+  console.log(`  ✓ Blending modes: ${exhaustiveAnalysis.blendingModes.length} (${exhaustiveAnalysis.blendingModes.slice(0, 5).join(', ')}${exhaustiveAnalysis.blendingModes.length > 5 ? '...' : ''})`);
+  console.log(`  ✓ Canvas operations: ${exhaustiveAnalysis.canvasOperations.length}`);
+  console.log(`  ✓ WebGL operations: ${exhaustiveAnalysis.webglOperations.length}`);
+  console.log(`  ✓ Menu items: ${exhaustiveAnalysis.menuItems.length}`);
+  console.log(`  ✓ Tool definitions: ${exhaustiveAnalysis.toolDefinitions.length}`);
+  console.log(`  ✓ Event handlers: ${exhaustiveAnalysis.eventHandlers.length}`);
+  console.log(`  ✓ API calls: ${exhaustiveAnalysis.apiCalls.length}`);
+  console.log(`  ✓ Parse stats: ${exhaustiveAnalysis.stats.parsedAST} AST, ${exhaustiveAnalysis.stats.parsedRegex} regex, ${exhaustiveAnalysis.stats.failed} failed`);
   console.log(`  ✓ Phase 1 complete: ${Date.now() - phase1Start}ms\n`);
+
+  // Save exhaustive analysis to disk
+  fs.writeFileSync(path.join(outputDir, 'exhaustive-analysis.json'), JSON.stringify(exhaustiveAnalysis, null, 2));
 
   // =========================================================================
   // PHASE 2: Synthesis (Generate I/O Specs - ~10 seconds)
@@ -94,6 +117,7 @@ async function captureIO(url, options = {}) {
     elements: htmlAnalysis,
     css: cssAnalysis,
     js: jsAnalysis,
+    exhaustive: exhaustiveAnalysis,
     eventListeners: assets.eventListeners
   });
 
@@ -103,29 +127,30 @@ async function captureIO(url, options = {}) {
   console.log(`  ✓ Phase 2 complete: ${Date.now() - phase2Start}ms\n`);
 
   // =========================================================================
-  // PHASE 3: Targeted Verification (Browser - ~30 seconds)
+  // PHASE 3: Targeted Verification (Parallel Browsers - ~30 seconds)
   // =========================================================================
   if (ioSpecs.needsVerification > 0 && options.verify !== false) {
-    console.log('PHASE 3: Verifying uncertain predictions...');
+    console.log('PHASE 3: Verifying uncertain predictions with parallel browsers...');
     const phase3Start = Date.now();
 
-    const uncertainSpecs = ioSpecs.specs.filter(s => s.confidence < 0.9);
-    const verified = await verifyUncertain(url, uncertainSpecs, {
-      parallel: options.parallel || 4
+    // Use new parallel executor for faster verification
+    const verificationResult = await verifyIOSpecs(url, ioSpecs.specs, {
+      maxSpecs: options.maxVerify || 50, // Limit verification for speed
+      browserCount: options.parallel || 4
     });
 
     // Merge verified results
-    for (const v of verified) {
-      const spec = ioSpecs.specs.find(s => s.id === v.id);
+    for (const v of verificationResult.verified) {
+      const spec = ioSpecs.specs.find(s => s.id === v.trigger?.id);
       if (spec) {
         spec.verified = true;
-        spec.actualOutput = v.actualOutput;
-        spec.confidence = v.match ? 1.0 : spec.confidence;
+        spec.runtimeResult = v.result;
+        spec.confidence = v.success ? Math.max(spec.confidence, 0.95) : spec.confidence;
       }
     }
 
-    console.log(`  ✓ Verified: ${verified.length} interactions`);
-    console.log(`  ✓ Predictions correct: ${verified.filter(v => v.match).length}`);
+    console.log(`  ✓ Verified: ${verificationResult.stats.successful}/${verificationResult.stats.total} interactions`);
+    console.log(`  ✓ Duration: ${verificationResult.stats.duration}ms`);
     console.log(`  ✓ Phase 3 complete: ${Date.now() - phase3Start}ms\n`);
   } else {
     console.log('PHASE 3: Skipped (all predictions high confidence)\n');

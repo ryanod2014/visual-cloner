@@ -10,7 +10,7 @@ const crypto = require('crypto');
 /**
  * Synthesize I/O specs from all analysis results
  */
-function synthesizeIOSpecs({ elements, css, js, eventListeners }) {
+function synthesizeIOSpecs({ elements, css, js, exhaustive, eventListeners }) {
   const specs = [];
   let idCounter = 0;
 
@@ -33,10 +33,17 @@ function synthesizeIOSpecs({ elements, css, js, eventListeners }) {
     specs.push(spec);
   }
 
-  // 3. Keyboard shortcuts (global event listeners)
-  const keyboardSpecs = synthesizeKeyboardSpecs(js, eventListeners, idCounter);
-  idCounter += keyboardSpecs.length;
-  specs.push(...keyboardSpecs);
+  // 3. Keyboard shortcuts from exhaustive AST analysis
+  if (exhaustive?.shortcuts?.length > 0) {
+    const shortcutSpecs = synthesizeExhaustiveKeyboardSpecs(exhaustive.shortcuts, idCounter);
+    idCounter += shortcutSpecs.length;
+    specs.push(...shortcutSpecs);
+  } else {
+    // Fall back to basic keyboard spec synthesis
+    const keyboardSpecs = synthesizeKeyboardSpecs(js, eventListeners, idCounter);
+    idCounter += keyboardSpecs.length;
+    specs.push(...keyboardSpecs);
+  }
 
   // 4. Form interactions
   for (const form of elements.forms) {
@@ -48,6 +55,48 @@ function synthesizeIOSpecs({ elements, css, js, eventListeners }) {
   for (const breakpoint of css.breakpoints) {
     const spec = createBreakpointSpec(breakpoint, css, elements, idCounter++);
     specs.push(spec);
+  }
+
+  // 6. Canvas operations from exhaustive analysis
+  if (exhaustive?.canvasOperations?.length > 0) {
+    const canvasSpecs = synthesizeCanvasSpecs(exhaustive.canvasOperations, idCounter);
+    idCounter += canvasSpecs.length;
+    specs.push(...canvasSpecs);
+  }
+
+  // 7. Blending modes from exhaustive analysis
+  if (exhaustive?.blendingModes?.length > 0) {
+    const blendSpecs = synthesizeBlendingModeSpecs(exhaustive.blendingModes, idCounter);
+    idCounter += blendSpecs.length;
+    specs.push(...blendSpecs);
+  }
+
+  // 8. Tool definitions from exhaustive analysis
+  if (exhaustive?.toolDefinitions?.length > 0) {
+    const toolSpecs = synthesizeToolSpecs(exhaustive.toolDefinitions, idCounter);
+    idCounter += toolSpecs.length;
+    specs.push(...toolSpecs);
+  }
+
+  // 9. Menu items from exhaustive analysis
+  if (exhaustive?.menuItems?.length > 0) {
+    const menuSpecs = synthesizeMenuSpecs(exhaustive.menuItems, idCounter);
+    idCounter += menuSpecs.length;
+    specs.push(...menuSpecs);
+  }
+
+  // 10. WebGL operations from exhaustive analysis
+  if (exhaustive?.webglOperations?.length > 0) {
+    const webglSpecs = synthesizeWebGLSpecs(exhaustive.webglOperations, idCounter);
+    idCounter += webglSpecs.length;
+    specs.push(...webglSpecs);
+  }
+
+  // 11. API endpoints from exhaustive analysis
+  if (exhaustive?.apiCalls?.length > 0) {
+    const apiSpecs = synthesizeAPISpecs(exhaustive.apiCalls, idCounter);
+    idCounter += apiSpecs.length;
+    specs.push(...apiSpecs);
   }
 
   // Calculate statistics
@@ -64,7 +113,13 @@ function synthesizeIOSpecs({ elements, css, js, eventListeners }) {
       cssState: specs.filter(s => s.type === 'css-state').length,
       keyboard: specs.filter(s => s.type === 'keyboard').length,
       form: specs.filter(s => s.type === 'form').length,
-      breakpoint: specs.filter(s => s.type === 'breakpoint').length
+      breakpoint: specs.filter(s => s.type === 'breakpoint').length,
+      canvas: specs.filter(s => s.type === 'canvas').length,
+      blendMode: specs.filter(s => s.type === 'blend-mode').length,
+      tool: specs.filter(s => s.type === 'tool').length,
+      menu: specs.filter(s => s.type === 'menu').length,
+      webgl: specs.filter(s => s.type === 'webgl').length,
+      api: specs.filter(s => s.type === 'api').length
     }
   };
 }
@@ -468,6 +523,315 @@ function calculateConfidence({ hasListener, hasHandler, handlerAnalyzed, hasCSSC
   if (hasCSSChanges) score += 0.05;
 
   return Math.min(score, 1.0);
+}
+
+/**
+ * Synthesize keyboard specs from exhaustive AST analysis
+ */
+function synthesizeExhaustiveKeyboardSpecs(shortcuts, startId) {
+  const specs = [];
+  let id = startId;
+
+  for (const shortcut of shortcuts) {
+    specs.push({
+      id: `io-${id++}`,
+      type: 'keyboard',
+      shortcut: {
+        key: shortcut.key,
+        modifiers: shortcut.modifiers || [],
+        keyCode: shortcut.keyCode,
+        pattern: shortcut.pattern
+      },
+      input: {
+        type: 'keydown',
+        key: shortcut.key,
+        modifiers: shortcut.modifiers || []
+      },
+      output: {
+        predicted: {
+          effects: [] // Will be determined from handler analysis or runtime
+        }
+      },
+      source: shortcut.source || 'ast',
+      confidence: shortcut.modifiers?.length > 0 ? 0.9 : 0.8 // Higher confidence for modifier combinations
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Synthesize canvas operation specs
+ */
+function synthesizeCanvasSpecs(operations, startId) {
+  const specs = [];
+  let id = startId;
+  const seenMethods = new Set();
+
+  for (const op of operations) {
+    if (seenMethods.has(op.method)) continue;
+    seenMethods.add(op.method);
+
+    specs.push({
+      id: `io-${id++}`,
+      type: 'canvas',
+      operation: op.method,
+      callee: op.callee,
+      input: {
+        type: 'canvas-operation',
+        method: op.method
+      },
+      output: {
+        predicted: {
+          canvasEffect: getCanvasEffectType(op.method)
+        }
+      },
+      confidence: 1.0 // Canvas methods are deterministic
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Get canvas effect type for a method
+ */
+function getCanvasEffectType(method) {
+  const drawMethods = ['fillRect', 'strokeRect', 'clearRect', 'fill', 'stroke', 'fillText', 'strokeText', 'drawImage'];
+  const pathMethods = ['beginPath', 'closePath', 'moveTo', 'lineTo', 'arc', 'arcTo', 'bezierCurveTo', 'quadraticCurveTo'];
+  const transformMethods = ['save', 'restore', 'scale', 'rotate', 'translate', 'transform', 'setTransform'];
+  const gradientMethods = ['createLinearGradient', 'createRadialGradient', 'createPattern'];
+  const imageDataMethods = ['getImageData', 'putImageData', 'createImageData'];
+
+  if (drawMethods.includes(method)) return 'draw';
+  if (pathMethods.includes(method)) return 'path';
+  if (transformMethods.includes(method)) return 'transform';
+  if (gradientMethods.includes(method)) return 'gradient';
+  if (imageDataMethods.includes(method)) return 'imageData';
+  return 'other';
+}
+
+/**
+ * Synthesize blending mode specs
+ */
+function synthesizeBlendingModeSpecs(modes, startId) {
+  const specs = [];
+  let id = startId;
+
+  for (const mode of modes) {
+    specs.push({
+      id: `io-${id++}`,
+      type: 'blend-mode',
+      mode,
+      input: {
+        type: 'blend-mode-change',
+        value: mode
+      },
+      output: {
+        predicted: {
+          compositeOperation: mode,
+          visualEffect: getBlendModeDescription(mode)
+        }
+      },
+      confidence: 1.0 // Blending modes are deterministic
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Get human-readable description of blending mode
+ */
+function getBlendModeDescription(mode) {
+  const descriptions = {
+    'source-over': 'Default composition - new content drawn over existing',
+    'source-in': 'New content only where both exist',
+    'source-out': 'New content only where it does not overlap',
+    'source-atop': 'New content only where existing exists',
+    'destination-over': 'New content behind existing',
+    'destination-in': 'Existing content only where both exist',
+    'destination-out': 'Existing content only where it does not overlap',
+    'destination-atop': 'Existing content only where new exists',
+    'lighter': 'Adds color values',
+    'copy': 'Replaces existing content',
+    'xor': 'Exclusive OR - only non-overlapping shown',
+    'multiply': 'Multiplies colors (darken)',
+    'screen': 'Inverse multiply (lighten)',
+    'overlay': 'Multiply or screen based on background',
+    'darken': 'Keep darker pixels',
+    'lighten': 'Keep lighter pixels',
+    'color-dodge': 'Brighten to reflect source',
+    'color-burn': 'Darken to reflect source',
+    'hard-light': 'Multiply or screen based on source',
+    'soft-light': 'Subtle darkening/lightening',
+    'difference': 'Subtract colors',
+    'exclusion': 'Softer difference',
+    'hue': 'Use source hue with dest saturation/luminosity',
+    'saturation': 'Use source saturation with dest hue/luminosity',
+    'color': 'Use source hue/saturation with dest luminosity',
+    'luminosity': 'Use source luminosity with dest hue/saturation'
+  };
+  return descriptions[mode] || mode;
+}
+
+/**
+ * Synthesize tool definition specs
+ */
+function synthesizeToolSpecs(tools, startId) {
+  const specs = [];
+  let id = startId;
+
+  for (const tool of tools) {
+    specs.push({
+      id: `io-${id++}`,
+      type: 'tool',
+      tool: {
+        name: tool.name,
+        id: tool.id,
+        icon: tool.icon,
+        cursor: tool.cursor,
+        shortcut: tool.shortcut
+      },
+      input: {
+        type: 'tool-select',
+        toolName: tool.name
+      },
+      output: {
+        predicted: {
+          cursorChange: tool.cursor,
+          toolbarHighlight: tool.name,
+          optionsPanel: `${tool.name} options`
+        }
+      },
+      confidence: 0.9 // High confidence from source analysis
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Synthesize menu item specs
+ */
+function synthesizeMenuSpecs(menuItems, startId) {
+  const specs = [];
+  let id = startId;
+
+  for (const item of menuItems) {
+    specs.push({
+      id: `io-${id++}`,
+      type: 'menu',
+      menu: {
+        label: item.label,
+        path: item.path,
+        command: item.command,
+        shortcut: item.shortcut
+      },
+      input: {
+        type: 'menu-click',
+        path: item.path || [item.label]
+      },
+      output: {
+        predicted: {
+          command: item.command,
+          dialogOpen: item.label?.includes('...') || false
+        }
+      },
+      confidence: 0.85 // Menu items may have dynamic behavior
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Synthesize WebGL operation specs
+ */
+function synthesizeWebGLSpecs(operations, startId) {
+  const specs = [];
+  let id = startId;
+  const seenMethods = new Set();
+
+  for (const op of operations) {
+    if (seenMethods.has(op.method)) continue;
+    seenMethods.add(op.method);
+
+    specs.push({
+      id: `io-${id++}`,
+      type: 'webgl',
+      operation: op.method,
+      input: {
+        type: 'webgl-operation',
+        method: op.method
+      },
+      output: {
+        predicted: {
+          gpuEffect: getWebGLEffectType(op.method)
+        }
+      },
+      confidence: 1.0 // WebGL methods are deterministic
+    });
+  }
+
+  return specs;
+}
+
+/**
+ * Get WebGL effect type for a method
+ */
+function getWebGLEffectType(method) {
+  const drawMethods = ['drawArrays', 'drawElements', 'drawArraysInstanced', 'drawElementsInstanced'];
+  const shaderMethods = ['createShader', 'shaderSource', 'compileShader', 'createProgram', 'attachShader', 'linkProgram', 'useProgram'];
+  const bufferMethods = ['createBuffer', 'bindBuffer', 'bufferData'];
+  const textureMethods = ['createTexture', 'bindTexture', 'texImage2D', 'texParameteri'];
+  const stateMethods = ['enable', 'disable', 'blendFunc', 'blendFuncSeparate', 'blendEquation'];
+
+  if (drawMethods.includes(method)) return 'draw';
+  if (shaderMethods.includes(method)) return 'shader';
+  if (bufferMethods.includes(method)) return 'buffer';
+  if (textureMethods.includes(method)) return 'texture';
+  if (stateMethods.includes(method)) return 'state';
+  return 'other';
+}
+
+/**
+ * Synthesize API call specs
+ */
+function synthesizeAPISpecs(apiCalls, startId) {
+  const specs = [];
+  let id = startId;
+  const seenUrls = new Set();
+
+  for (const call of apiCalls) {
+    const urlKey = call.url || call.callee;
+    if (seenUrls.has(urlKey)) continue;
+    seenUrls.add(urlKey);
+
+    specs.push({
+      id: `io-${id++}`,
+      type: 'api',
+      api: {
+        type: call.type,
+        url: call.url,
+        method: call.method || 'GET'
+      },
+      input: {
+        type: 'api-request',
+        url: call.url,
+        method: call.method || 'GET'
+      },
+      output: {
+        predicted: {
+          responseType: 'json', // Assumption
+          sideEffects: [] // Depends on response handling
+        }
+      },
+      confidence: 0.7 // API responses are dynamic
+    });
+  }
+
+  return specs;
 }
 
 module.exports = { synthesizeIOSpecs };

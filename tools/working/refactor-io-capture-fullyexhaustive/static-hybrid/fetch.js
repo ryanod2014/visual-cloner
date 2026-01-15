@@ -10,6 +10,7 @@
  */
 
 const { chromium } = require('playwright');
+const { injectCanvasInstrumentation, getCanvasCaptureData } = require('./instrument-canvas');
 
 /**
  * Fetch all assets from a URL
@@ -22,6 +23,10 @@ async function fetchAssets(url) {
     viewport: { width: 1280, height: 720 }
   });
   const page = await context.newPage();
+
+  // Inject canvas instrumentation BEFORE page loads
+  // Note: Temporarily disabled as it may interfere with some apps
+  // await injectCanvasInstrumentation(page);
 
   // Track script URLs we've captured via response handler
   const capturedScriptUrls = new Set();
@@ -104,12 +109,21 @@ async function fetchAssets(url) {
           console.log(`  Found entry button: "${btnText?.trim()?.substring(0, 40)}", clicking...`);
           await btn.click();
 
-          // Wait for the app to load
+          // Wait for the app to load - look for canvas or significant DOM change
           console.log('  Waiting for app to load...');
-          await page.waitForTimeout(10000);
+
+          // Wait for either canvas to appear or major DOM change
+          await Promise.race([
+            page.waitForSelector('canvas', { timeout: 30000 }),
+            page.waitForFunction(() => document.querySelectorAll('*').length > 300, { timeout: 30000 }),
+            page.waitForTimeout(15000)
+          ]).catch(() => {});
 
           // Wait for network idle again
-          await page.waitForLoadState('networkidle').catch(() => {});
+          await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+
+          // Extra wait for lazy-loaded scripts
+          await page.waitForTimeout(5000);
           break;
         }
       } catch (e) {
@@ -251,6 +265,20 @@ async function fetchAssets(url) {
   // Extract event listeners via CDP
   const eventListeners = await extractEventListeners(page);
 
+  // Extract canvas capture data (if instrumentation was enabled)
+  let canvasCaptureData = null;
+  try {
+    canvasCaptureData = await getCanvasCaptureData(page);
+    if (canvasCaptureData?.summary?.totalCalls > 0) {
+      console.log('  Extracting canvas instrumentation data...');
+      console.log(`    ✓ Canvas calls: ${canvasCaptureData.summary.totalCalls}`);
+      console.log(`    ✓ Canvas snapshots: ${canvasCaptureData.summary.totalSnapshots}`);
+      console.log(`    ✓ Canvas contexts: ${canvasCaptureData.summary.contextCount}`);
+    }
+  } catch (e) {
+    // Canvas instrumentation not available
+  }
+
   // Get initial DOM state
   const initialDOM = await page.evaluate(() => {
     function serializeElement(el, depth = 0) {
@@ -289,6 +317,7 @@ async function fetchAssets(url) {
     styles,
     eventListeners,
     initialDOM,
+    canvasCapture: canvasCaptureData,
     timing: Date.now() - startTime
   };
 }

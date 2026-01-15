@@ -11,6 +11,8 @@
     "test": "node index.js --url https://example.com --verbose"
   },
   "dependencies": {
+    "@babel/parser": "^7.28.6",
+    "acorn-walk": "^8.3.4",
     "playwright": "^1.40.0"
   },
   "keywords": [
