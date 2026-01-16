@@ -17,6 +17,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { Phase } from '../core/pipeline.js';
 import { generateServeTemplate, generatePackageJson } from '../server/index.js';
+import { generateShaderReplayScript, canReplayShaders } from '../utils/shader-replay-generator.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.dirname(__dirname);
@@ -28,7 +29,7 @@ export class AssemblePhase extends Phase {
   }
 
   async execute(context) {
-    const { outputDir, resources, html, url, detection, patchReport } = context;
+    const { outputDir, resources, html, url, detection, patchReport, webglData } = context;
 
     if (this.config.dryRun) {
       this.logger.info('Would create output directories (resources/, __runtime__/)');
@@ -109,9 +110,36 @@ export class AssemblePhase extends Phase {
     );
     this.trackCreated();
 
-    // Save HTML WITHOUT patching (runtime scripts will be injected by server)
+    // Save HTML with shader replay injection if shaders were captured
     this.logger.info('Saving index.html...');
-    await fs.writeFile(path.join(outputDir, 'index.html'), html);
+    let finalHtml = html;
+    let shaderReplayInjected = false;
+
+    // Inject shader replay runtime if we have captured shaders
+    if (webglData && canReplayShaders(webglData)) {
+      this.logger.info('Generating shader replay runtime...');
+      const shaderReplayScript = generateShaderReplayScript(webglData, {
+        canvasSelectors: ['.Gradient__canvas', 'canvas[class*="gradient"]', 'canvas[class*="Gradient"]', 'canvas'],
+        delayMs: 0,  // No delay - smooth transition handled in shader-replay-generator
+        checkOriginal: true,
+      });
+
+      if (shaderReplayScript) {
+        // Inject before </body> or </html>
+        if (finalHtml.includes('</body>')) {
+          finalHtml = finalHtml.replace('</body>', shaderReplayScript + '\n</body>');
+        } else if (finalHtml.includes('</html>')) {
+          finalHtml = finalHtml.replace('</html>', shaderReplayScript + '\n</html>');
+        } else {
+          finalHtml += shaderReplayScript;
+        }
+        shaderReplayInjected = true;
+        this.logger.info('Shader replay runtime injected into HTML');
+        this.trackAction('Injected shader replay runtime');
+      }
+    }
+
+    await fs.writeFile(path.join(outputDir, 'index.html'), finalHtml);
     this.trackCreated();
 
     // Copy runtime scripts to output directory
@@ -149,7 +177,7 @@ export class AssemblePhase extends Phase {
     this.logger.info('Generating serve.js...');
     const serverCode = generateServeTemplate({
       port: this.config.port || 3333,
-      enableProxy: this.config.proxy !== false,
+      enableProxy: this.config.proxy === true,  // Proxy OFF by default
       enableCors: true,
     });
     await fs.writeFile(path.join(outputDir, 'serve.js'), serverCode);
@@ -192,6 +220,11 @@ export class AssemblePhase extends Phase {
         injectionMethod: 'server-side',
       },
       patchingEnabled: patchReport && patchReport.totalPatches > 0,
+      shaderReplay: shaderReplayInjected ? {
+        enabled: true,
+        shaderCount: webglData?.shaders?.length || 0,
+        injectionMethod: 'html-script',
+      } : null,
     };
 
     await fs.writeFile(
@@ -210,6 +243,31 @@ export class AssemblePhase extends Phase {
       this.trackCreated();
     }
 
+    // Save WebGL shader data if captured
+    if (webglData && webglData.shaders && webglData.shaders.length > 0) {
+      this.logger.info('Saving shaders.json...');
+      const shadersOutput = {
+        meta: {
+          extractedAt: new Date().toISOString(),
+          sourceUrl: url,
+          ...webglData.meta,
+        },
+        shaders: webglData.shaders,
+        uniforms: webglData.uniforms,
+        uniformValues: webglData.uniformValues || {},  // Captured uniform values!
+        canvases: webglData.canvases,
+      };
+      await fs.writeFile(
+        path.join(outputDir, 'shaders.json'),
+        JSON.stringify(shadersOutput, null, 2)
+      );
+      this.trackCreated();
+      this.logger.info(`Saved ${webglData.shaders.length} shaders to shaders.json`);
+      this.trackAction(`Saved ${webglData.shaders.length} WebGL shaders`);
+    } else {
+      this.logger.debug('No WebGL shaders to save');
+    }
+
     this.logger.info('Assembly complete');
     this.logger.info('Runtime mocking enabled - origin spoofing handled at runtime');
     this.trackAction('Assembly complete');
@@ -220,6 +278,9 @@ export class AssemblePhase extends Phase {
       urlMapPath: path.join(outputDir, 'url-map.json'),
       servePath: path.join(outputDir, 'serve.js'),
       manifestPath: path.join(outputDir, 'manifest.json'),
+      shadersPath: webglData?.shaders?.length > 0 ? path.join(outputDir, 'shaders.json') : null,
+      shaderCount: webglData?.shaders?.length || 0,
+      shaderReplayInjected,
     };
   }
 

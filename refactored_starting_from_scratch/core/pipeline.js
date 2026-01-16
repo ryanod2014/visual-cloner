@@ -17,6 +17,22 @@
 import { EventEmitter } from 'events';
 import { PhaseError } from './errors.js';
 import { PhaseStatus } from './state.js';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+// Load WebGL capture script for early injection
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+let WEBGL_CAPTURE_SCRIPT = '';
+try {
+  WEBGL_CAPTURE_SCRIPT = readFileSync(
+    join(__dirname, '..', 'runtime', 'webgl-capture.js'),
+    'utf8'
+  );
+} catch (e) {
+  // Script not available - WebGL capture disabled
+}
 
 /**
  * Standard phase order
@@ -388,9 +404,10 @@ export class Pipeline extends EventEmitter {
     this.emit('progress', 'init', `Starting extraction of ${url}`);
 
     // Launch browser
+    // Note: headless: false is required for reliable WebGL capture
     this.emit('progress', 'browser', 'Launching browser...');
     const browser = await chromium.launch({
-      headless: this.config.headless !== false,
+      headless: false,
     });
     context.browser = browser;
 
@@ -399,6 +416,14 @@ export class Pipeline extends EventEmitter {
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
     });
     context.page = await browserContext.newPage();
+    context.browserContext = browserContext;
+
+    // Install WebGL capture hooks BEFORE any navigation
+    // This ensures shaders are captured from the first page load
+    if (WEBGL_CAPTURE_SCRIPT) {
+      await context.page.addInitScript(WEBGL_CAPTURE_SCRIPT);
+      this.emit('progress', 'webgl', 'WebGL capture hooks installed');
+    }
 
     try {
       // Execute pipeline
