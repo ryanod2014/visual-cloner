@@ -8,6 +8,7 @@ import { CapturePhase } from './02-capture.js';
 import { DiscoverPhase } from './03-discover.js';
 import { TriggerPhase } from './04-trigger.js';
 import { PatchPhase } from './05-patch.js';
+import { NormalizePhase } from './05b-normalize.js';
 import { AssemblePhase } from './06-assemble.js';
 import { ValidatePhase } from './07-validate.js';
 
@@ -18,6 +19,7 @@ export const PHASE_ORDER = [
   'discover',
   'trigger',
   'patch',
+  'normalize',
   'assemble',
   'validate',
 ];
@@ -29,6 +31,7 @@ export {
   DiscoverPhase,
   TriggerPhase,
   PatchPhase,
+  NormalizePhase,
   AssemblePhase,
   ValidatePhase,
 };
@@ -45,6 +48,7 @@ export function getPhases(config = {}) {
     new DiscoverPhase(config),
     new TriggerPhase(config),
     new PatchPhase(config),
+    new NormalizePhase(config),
     new AssemblePhase(config),
     new ValidatePhase(config),
   ];
@@ -63,6 +67,7 @@ export function getPhase(name, config = {}) {
     discover: DiscoverPhase,
     trigger: TriggerPhase,
     patch: PatchPhase,
+    normalize: NormalizePhase,
     assemble: AssemblePhase,
     validate: ValidatePhase,
   };

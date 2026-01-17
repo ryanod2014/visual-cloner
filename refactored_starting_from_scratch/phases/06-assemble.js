@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url';
 import { Phase } from '../core/pipeline.js';
 import { generateServeTemplate, generatePackageJson } from '../server/index.js';
 import { generateShaderReplayScript, canReplayShaders } from '../utils/shader-replay-generator.js';
+import { getAllPatchers } from '../plugins/patchers/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.dirname(__dirname);
@@ -67,21 +68,135 @@ export class AssemblePhase extends Phase {
     this.trackCreated(2);
     this.trackAction('Created output directories');
 
-    // Build URL map and save resources (NO patching - let runtime handle it)
-    this.logger.info('Saving resources...');
+    // Load patchers for JS files
+    const patchers = getAllPatchers();
+    this.logger.info(`Loaded ${patchers.length} patchers: ${patchers.map(p => p.name).join(', ')}`);
+    let totalPatchesApplied = 0;
+
+    // Get original hostname for universal hostname substitution
+    // This makes domain checks pass without site-specific patches
+    let originalHostname = 'localhost';
+    let originalOrigin = 'http://localhost';
+    try {
+      const urlObj = new URL(url);
+      originalHostname = urlObj.hostname;
+      originalOrigin = urlObj.origin;
+    } catch (e) {
+      this.logger.warn(`Could not parse original URL: ${url}`);
+    }
+
+    // Build URL map and save resources with ORIGINAL FILENAMES
+    // This preserves ES module import paths so relative imports work
+    this.logger.info('Saving resources with original filenames...');
     const urlMap = {};
     let i = 0;
     let savedSize = 0;
+    const usedFilenames = new Set();
 
     for (const [resUrl, data] of resources) {
-      // Generate filename based on content type
-      const ext = this.getExtension(data.contentType, resUrl);
-      const filename = `r${i}${ext}`;
+      // Extract original filename from URL to preserve import paths
+      let filename;
+      try {
+        const urlObj = new URL(resUrl);
+        const urlPath = urlObj.pathname;
+        filename = path.basename(urlPath);
+
+        // Sanitize filename: remove query string artifacts and invalid chars
+        filename = filename.split('?')[0].split('#')[0];
+        filename = filename.replace(/[<>:"/\\|?*;=&%]/g, '_');
+
+        // If filename is too long (tracking pixels, etc), use hash-based name
+        // Check this BEFORE other processing to avoid ENAMETOOLONG errors
+        if (filename.length > 100) {
+          const ext = this.getExtension(data.contentType, resUrl) || '';
+          const hash = this.simpleHash(resUrl);
+          filename = `resource-${hash}${ext}`;
+        }
+
+        // If no filename or just extension, generate one
+        if (!filename || filename.startsWith('.') || filename.length < 2) {
+          const ext = this.getExtension(data.contentType, resUrl);
+          filename = `resource-${i}${ext}`;
+        }
+
+        // Handle filename collisions by adding a suffix
+        let uniqueFilename = filename;
+        let collisionCount = 1;
+        while (usedFilenames.has(uniqueFilename)) {
+          const ext = path.extname(filename);
+          const base = path.basename(filename, ext);
+          uniqueFilename = `${base}-${collisionCount}${ext}`;
+          collisionCount++;
+        }
+        filename = uniqueFilename;
+        usedFilenames.add(filename);
+      } catch (e) {
+        // Fallback for invalid URLs
+        const ext = this.getExtension(data.contentType, resUrl);
+        filename = `resource-${i}${ext}`;
+        usedFilenames.add(filename);
+      }
       i++;
 
-      // Save file WITHOUT any patching
+      // Apply patches to JS files before saving
       const filePath = path.join(outputDir, 'resources', filename);
-      await fs.writeFile(filePath, data.body);
+      let contentToWrite = data.body;
+
+      if (filename.endsWith('.js') || data.contentType?.includes('javascript')) {
+        let content = data.body.toString('utf-8');
+        let filePatched = false;
+
+        // UNIVERSAL HOSTNAME SUBSTITUTION
+        // Replace window.location.hostname with the actual hostname string
+        // This makes domain checks pass without knowing variable names
+        const hostnamePatterns = [
+          // Direct hostname access: window.location.hostname
+          { pattern: /window\.location\.hostname/g, replacement: `"${originalHostname}"` },
+          // Also handle location.hostname (without window prefix)
+          { pattern: /(?<!\w)location\.hostname(?!\w)/g, replacement: `"${originalHostname}"` },
+          // Handle origin checks
+          { pattern: /window\.location\.origin/g, replacement: `"${originalOrigin}"` },
+          { pattern: /(?<!\w)location\.origin(?!\w)/g, replacement: `"${originalOrigin}"` },
+          // Handle host (hostname:port)
+          { pattern: /window\.location\.host(?!name)/g, replacement: `"${originalHostname}"` },
+          { pattern: /(?<!\w)location\.host(?!name)(?!\w)/g, replacement: `"${originalHostname}"` },
+        ];
+
+        let hostnameSubstitutions = 0;
+        for (const { pattern, replacement } of hostnamePatterns) {
+          const matches = content.match(pattern);
+          if (matches) {
+            content = content.replace(pattern, replacement);
+            hostnameSubstitutions += matches.length;
+          }
+        }
+
+        if (hostnameSubstitutions > 0) {
+          filePatched = true;
+          totalPatchesApplied += hostnameSubstitutions;
+          this.logger.info(`[HOSTNAME] ${filename} - ${hostnameSubstitutions} hostname substitutions`);
+        }
+
+        // Apply other patchers
+        for (const patcher of patchers) {
+          if (patcher.shouldApply(content, filename)) {
+            const result = patcher.apply(content);
+            if (result.patches.length > 0) {
+              content = result.content;
+              filePatched = true;
+              const patchCount = result.patches.reduce((sum, p) => sum + p.count, 0);
+              totalPatchesApplied += patchCount;
+              this.logger.info(`[PATCHED] ${filename} - ${patcher.name}: ${patchCount} patches`);
+            }
+          }
+        }
+
+        if (filePatched) {
+          contentToWrite = Buffer.from(content, 'utf-8');
+        }
+      }
+
+      await fs.writeFile(filePath, contentToWrite);
       savedSize += data.size;
       this.trackCreated();
 
@@ -100,6 +215,9 @@ export class AssemblePhase extends Phase {
     }
 
     this.logger.info(`Saved ${i} resources (${(savedSize / 1024 / 1024).toFixed(2)} MB)`);
+    if (totalPatchesApplied > 0) {
+      this.logger.info(`Applied ${totalPatchesApplied} patches to JS files`);
+    }
     this.trackAction(`Saved ${i} resources`);
 
     // Save URL map
@@ -110,22 +228,139 @@ export class AssemblePhase extends Phase {
     );
     this.trackCreated();
 
-    // Save HTML with shader replay injection if shaders were captured
-    this.logger.info('Saving index.html...');
+    // Rewrite URLs in HTML to use local paths
+    // This makes all external resources load from our local server
+    this.logger.info('Rewriting URLs in HTML to use local paths...');
     let finalHtml = html;
-    let shaderReplayInjected = false;
+    let urlsRewritten = 0;
+    let urlsSkipped = 0;
 
-    // Inject shader replay runtime if we have captured shaders
-    if (webglData && canReplayShaders(webglData)) {
-      this.logger.info('Generating shader replay runtime...');
+    // Build a set of files that actually exist
+    const existingFiles = new Set();
+    for (const info of Object.values(urlMap)) {
+      existingFiles.add(info.localFile);
+    }
+
+    // Sort URLs by length (longest first) to avoid partial replacements
+    // e.g., replace "https://example.com/foo/bar.js" before "https://example.com/foo"
+    const sortedUrls = Object.keys(urlMap).sort((a, b) => b.length - a.length);
+
+    for (const originalUrl of sortedUrls) {
+      const info = urlMap[originalUrl];
+      const localPath = '/' + info.localFile;
+
+      // Only rewrite if the file actually exists in our captured resources
+      if (!existingFiles.has(info.localFile)) {
+        urlsSkipped++;
+        continue;
+      }
+
+      // Count occurrences before replacement
+      const regex = new RegExp(this.escapeRegExp(originalUrl), 'g');
+      const matches = finalHtml.match(regex);
+      if (matches) {
+        urlsRewritten += matches.length;
+        finalHtml = finalHtml.replace(regex, localPath);
+      }
+    }
+
+    this.logger.info(`Rewrote ${urlsRewritten} URL references to local paths (skipped ${urlsSkipped} missing)`);
+    this.trackAction(`Rewrote ${urlsRewritten} URLs`);
+
+    // UNIVERSAL: Remove external script tags
+    // Scripts from external domains are not needed for offline operation
+    // This prevents ad scripts, analytics, etc. from even trying to load
+    const targetHostname = new URL(url).hostname;
+    let externalScriptsRemoved = 0;
+
+    // Match script tags with src attribute pointing to external domains
+    const scriptTagRegex = /<script[^>]+src\s*=\s*["']([^"']+)["'][^>]*>[\s\S]*?<\/script>/gi;
+    finalHtml = finalHtml.replace(scriptTagRegex, (match, src) => {
+      try {
+        const srcUrl = new URL(src, url);
+        const srcHostname = srcUrl.hostname;
+
+        // Keep scripts from the same domain or localhost
+        if (srcHostname === targetHostname ||
+            srcHostname === 'localhost' ||
+            srcHostname === '127.0.0.1' ||
+            src.startsWith('/') ||
+            src.startsWith('./') ||
+            src.startsWith('../') ||
+            !src.includes('://')) {
+          return match; // Keep it
+        }
+
+        // Remove external scripts
+        externalScriptsRemoved++;
+        return `<!-- REMOVED: external script from ${srcHostname} -->`;
+      } catch (e) {
+        return match; // Keep if we can't parse
+      }
+    });
+
+    // Also handle self-closing script tags
+    const selfClosingScriptRegex = /<script[^>]+src\s*=\s*["']([^"']+)["'][^>]*\/>/gi;
+    finalHtml = finalHtml.replace(selfClosingScriptRegex, (match, src) => {
+      try {
+        const srcUrl = new URL(src, url);
+        const srcHostname = srcUrl.hostname;
+
+        if (srcHostname === targetHostname ||
+            srcHostname === 'localhost' ||
+            srcHostname === '127.0.0.1' ||
+            src.startsWith('/') ||
+            src.startsWith('./') ||
+            src.startsWith('../') ||
+            !src.includes('://')) {
+          return match;
+        }
+
+        externalScriptsRemoved++;
+        return `<!-- REMOVED: external script from ${srcHostname} -->`;
+      } catch (e) {
+        return match;
+      }
+    });
+
+    if (externalScriptsRemoved > 0) {
+      this.logger.info(`Removed ${externalScriptsRemoved} external script tags (universal offline mode)`);
+    }
+
+    // Also remove external iframes (often used for ads)
+    let externalIframesRemoved = 0;
+    const iframeRegex = /<iframe[^>]+src\s*=\s*["']([^"']+)["'][^>]*>[\s\S]*?<\/iframe>/gi;
+    finalHtml = finalHtml.replace(iframeRegex, (match, src) => {
+      try {
+        if (src.startsWith('//') || src.startsWith('http://') || src.startsWith('https://')) {
+          const srcUrl = new URL(src.startsWith('//') ? 'https:' + src : src);
+          if (srcUrl.hostname !== targetHostname) {
+            externalIframesRemoved++;
+            return `<!-- REMOVED: external iframe from ${srcUrl.hostname} -->`;
+          }
+        }
+        return match;
+      } catch (e) {
+        return match;
+      }
+    });
+
+    if (externalIframesRemoved > 0) {
+      this.logger.info(`Removed ${externalIframesRemoved} external iframes`);
+    }
+
+    // Optional: Inject shader replay as fallback if original code fails
+    // Only inject if explicitly enabled via config
+    let shaderReplayInjected = false;
+    if (this.config.shaderReplayFallback && webglData && canReplayShaders(webglData)) {
+      this.logger.info('Generating shader replay fallback...');
       const shaderReplayScript = generateShaderReplayScript(webglData, {
         canvasSelectors: ['.Gradient__canvas', 'canvas[class*="gradient"]', 'canvas[class*="Gradient"]', 'canvas'],
-        delayMs: 0,  // No delay - smooth transition handled in shader-replay-generator
-        checkOriginal: true,
+        delayMs: 2000,  // Wait for original code to potentially initialize
+        checkOriginal: true,  // Only activate if original WebGL not detected
       });
 
       if (shaderReplayScript) {
-        // Inject before </body> or </html>
         if (finalHtml.includes('</body>')) {
           finalHtml = finalHtml.replace('</body>', shaderReplayScript + '\n</body>');
         } else if (finalHtml.includes('</html>')) {
@@ -134,11 +369,30 @@ export class AssemblePhase extends Phase {
           finalHtml += shaderReplayScript;
         }
         shaderReplayInjected = true;
-        this.logger.info('Shader replay runtime injected into HTML');
-        this.trackAction('Injected shader replay runtime');
+        this.logger.info('Shader replay fallback injected');
       }
     }
 
+    // VIEWPORT BASELINE CSS
+    // Ensures SPA apps can fill the viewport properly with percentage heights
+    // Injected at start of <head> so app CSS can override if needed
+    const viewportCSS = `<style id="viewport-baseline">
+/* Viewport baseline - ensures app fills screen */
+html { height: 100%; }
+body { height: 100%; margin: 0; }
+</style>`;
+
+    if (finalHtml.includes('<head>')) {
+      finalHtml = finalHtml.replace('<head>', `<head>\n${viewportCSS}`);
+      this.logger.info('Injected viewport baseline CSS');
+      this.trackAction('Injected viewport baseline CSS');
+    } else if (finalHtml.includes('<HEAD>')) {
+      finalHtml = finalHtml.replace('<HEAD>', `<HEAD>\n${viewportCSS}`);
+      this.logger.info('Injected viewport baseline CSS');
+      this.trackAction('Injected viewport baseline CSS');
+    }
+
+    this.logger.info('Saving index.html...');
     await fs.writeFile(path.join(outputDir, 'index.html'), finalHtml);
     this.trackCreated();
 
@@ -220,11 +474,20 @@ export class AssemblePhase extends Phase {
         injectionMethod: 'server-side',
       },
       patchingEnabled: patchReport && patchReport.totalPatches > 0,
+      urlRewriting: {
+        enabled: true,
+        urlsRewritten: urlsRewritten,
+        preservedFilenames: true,
+      },
       shaderReplay: shaderReplayInjected ? {
         enabled: true,
         shaderCount: webglData?.shaders?.length || 0,
         injectionMethod: 'html-script',
-      } : null,
+        mode: 'fallback',
+      } : {
+        enabled: false,
+        reason: 'Original code should run with local URLs',
+      },
     };
 
     await fs.writeFile(
@@ -281,6 +544,7 @@ export class AssemblePhase extends Phase {
       shadersPath: webglData?.shaders?.length > 0 ? path.join(outputDir, 'shaders.json') : null,
       shaderCount: webglData?.shaders?.length || 0,
       shaderReplayInjected,
+      urlsRewritten,
     };
   }
 
@@ -329,6 +593,26 @@ export class AssemblePhase extends Phase {
     }
 
     return '';
+  }
+
+  /**
+   * Escape special regex characters in a string
+   */
+  escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  /**
+   * Generate a simple hash for a string (for filename deduplication)
+   */
+  simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash).toString(36).substring(0, 8);
   }
 }
 
