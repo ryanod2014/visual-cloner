@@ -43,6 +43,7 @@ export const PHASE_ORDER = [
   '03-trigger',
   '04-discover',
   '05-patch',
+  '05b-normalize',
   '06-assemble',
   '07-validate',
 ];
@@ -56,6 +57,7 @@ export const PHASE_ALIASES = {
   'trigger': '03-trigger',
   'discover': '04-discover',
   'patch': '05-patch',
+  'normalize': '05b-normalize',
   'assemble': '06-assemble',
   'validate': '07-validate',
   'init': '01-detect', // Legacy alias
@@ -431,6 +433,16 @@ export class Pipeline extends EventEmitter {
 
       // Get final stats
       const assetCount = context.resources?.size || 0;
+
+      // Generate API spec (non-blocking)
+      try {
+        const { execSync } = await import('child_process');
+        const toolPath = new URL('../tools/analyze-api.js', import.meta.url).pathname;
+        execSync(`node "${toolPath}" "${outputDir}"`, { stdio: 'pipe' });
+        this.emit('progress', 'api-spec', 'API spec generated');
+      } catch (e) {
+        this.emit('progress', 'api-spec', 'API spec generation skipped (no API calls found)');
+      }
 
       // Emit completion
       this.emit('progress', 'done', `Extraction complete: ${assetCount} resources`);
